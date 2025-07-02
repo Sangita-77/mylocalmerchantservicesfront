@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./../../styles/styles.css";
+// import axios from "axios";
 // import bgEclipseImg from "./../../assets/images/merchant_list_bg_eclipse.png";
 import ChatWindow from "../../components/ChatWindow";
 import { PiEyeLight } from "react-icons/pi";
@@ -20,6 +21,7 @@ const UserConnectedHistory = () => {
   const [merchantDetails, setMerchantDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedConnection, setSelectedConnection] = useState(null);
+  const [connections, setConnections] = useState([]);
 
   const {
     token,
@@ -93,7 +95,10 @@ const UserConnectedHistory = () => {
   };
 
 
-  const handleLogout = async () => {
+
+
+
+const handleLogout = async () => {
     try {
       const response = await axios.post(
         `${BASE_URL}/logoutM`,
@@ -120,6 +125,45 @@ const UserConnectedHistory = () => {
       alert("Something went wrong during logout.");
     }
   };
+
+
+
+const handleDeleteClick = async (connection) => { 
+  const confirmed = window.confirm('Are you sure you want to delete this connection?');
+  const user_id = parseInt(connection.merchant_id, 10);
+  const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+  if (!confirmed) return;
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/merchantDeleteConnectedHistory`,
+      {
+        user_id: user_id,
+        merchant_id: merchant_id, 
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("dd.d,l,,,,,,,,,,,,,,,,,",response);
+
+    if (response.data.status) {
+        window.location.reload();
+      } else {
+        console.error("Deletion failed:", response.data.message);
+        alert("Deletion failed: " + response.data.message);
+      }
+    } catch (error) {
+      console.error("Deletion error:", error);
+      alert("Something went wrong during Deletion.");
+    }
+};
+
+
+
+
 
   return (
     <div className="userConnectedHistoryPageWrapper">
@@ -191,8 +235,8 @@ const UserConnectedHistory = () => {
                     <button className="viewButton" onClick={() => handleViewClick(connection)}>
                       <PiEyeLight size={22} color="white" />
                     </button>
-                    <button className="delButton">
-                      <AiOutlineDelete size={22} color="#E60E4E" />
+                    <button  className="delButton" onClick={() => handleDeleteClick(connection)}>
+                      <AiOutlineDelete size={22}  color="#E60E4E" style={{ cursor: "pointer" }}/>
                     </button>
                   </td>
                 </tr>

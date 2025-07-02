@@ -200,7 +200,3 @@ const MerchantDashboard = () => {
 };
 
 export default MerchantDashboard;
-<<<<<<< HEAD
-=======
-
->>>>>>> beaa12773424be0f21ee80fe5807b2f158362b5e
