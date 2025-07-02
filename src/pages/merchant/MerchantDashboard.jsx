@@ -25,7 +25,8 @@ const MerchantDashboard = () => {
 
   const formatGraphData = (data, filter) => {
     return Object.entries(data).map(([key, value]) => ({
-      label: key,
+
+      month: key,
       merchants: value,
     }));
   };
@@ -34,9 +35,17 @@ const MerchantDashboard = () => {
     try {
       setGraphLoading(true);
 
+      // const merchantId = localStorage.getItem("merchant_id");
+
+
+      const merchantId = parseInt(localStorage.getItem("merchant_id"), 10);
+
+      // console.log("merchantId....................",merchantId);
+      // console.log("merchantId....................", merchantId, typeof merchantId);
+
       const body = {
         filter: filterBy,
-        merchant_id: 20,
+        merchant_id: merchantId,
       };
 
       const response = await axios.post(
@@ -200,7 +209,3 @@ const MerchantDashboard = () => {
 };
 
 export default MerchantDashboard;
-<<<<<<< HEAD
-=======
-
->>>>>>> beaa12773424be0f21ee80fe5807b2f158362b5e
