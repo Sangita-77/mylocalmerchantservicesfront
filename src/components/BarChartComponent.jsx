@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import {
   BarChart,
   Bar,
@@ -6,50 +6,90 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from "recharts";
 
+// const data = [
+//   {
+//     month: "Jan",
+//     merchants: 2908,
+//   },
+//   {
+//     month: "Feb",
+//     merchants: 1908,
+//   },
+//   {
+//     month: "Mar",
+//     merchants: 908,
+//   },
+//   {
+//     month: "Apr",
+//     merchants: 3908,
+//   },
+//   {
+//     month: "May",
+//     merchants: 4800,
+//   },
+//   {
+//     month: "Jun",
+//     merchants: 3800,
+//   },
+//   {
+//     month: "Jul",
+//     merchants: 4300,
+//   },
+//    {
+//     month: "Aug",
+//     merchants: 3300,
+//   },
+//    {
+//     month: "Sept",
+//     merchants: 5315,
+//   },
+//    {
+//     month: "Oct",
+//     merchants: 5250,
+//   },
+//    {
+//     month: "Nov",
+//     merchants: 4150,
+//   },
+//    {
+//     month: "Dec",
+//     merchants: 4000,
+//   },
+// ];
+
 const BarChartComponent = ({ data }) => {
-  const maxValue = data.length ? Math.max(...data.map(d => d.merchants)) : 0;
-
-  const divisions = 10;
-  let step = Math.ceil(maxValue / divisions);
-
-  const minStep = 10;
-  if (step === 0) step = minStep;
-
-  const yTicks = [];
-  for (let i = 0; i <= maxValue + step; i += step) {
-    yTicks.push(i);
-  }
 
   return (
     <ResponsiveContainer width="100%" height={400}>
       <BarChart
         data={data}
-        margin={{ top: 5, right: 0, left: 0, bottom: 10 }}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         barSize={12}
       >
         <XAxis
-          dataKey="label"
+          dataKey="month"
           scale="point"
-          padding={{ left: 30, right: 30 }}
-          tick={{ fill: 'white', fontSize: 12, fontFamily: '"Sora", sans-serif' }}
+          padding={{ left: 10, right: 10 }}
+          tick={{ fill: 'white', fontSize: 14 }}
           axisLine={{ stroke: "white" }}
-          tickLine={{ stroke: "" }}
+          tickLine={{ stroke: "white" }}
         />
         <YAxis
-          ticks={yTicks}
-          tick={{ fill: 'white', fontSize: 12, fontFamily: '"Sora", sans-serif' }}
+          tick={{ fill: 'white', fontSize: 14 }}
           axisLine={{ stroke: "white" }}
-          tickLine={{ stroke: "" }}
+          tickLine={{ stroke: "white" }}
         />
         <Tooltip />
         <CartesianGrid strokeDasharray="0" horizontal vertical={false} stroke="#8dd7ee" />
-        <Bar dataKey="merchants" fill="white" radius={[12, 12, 12, 12]} />
+        <Bar dataKey="merchants" fill="white" radius={[12, 12, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
 };
+
 
 export default BarChartComponent;

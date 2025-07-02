@@ -27,7 +27,7 @@ const AreaChartComponent = ({
   secondaryColor,
   strokeColor,
 }) => {
-  console.log("Graph data ===>", data);
+  // console.log("Graph data ===>", data);
 
   return (
     <ResponsiveContainer width="100%" height={400}>

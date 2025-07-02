@@ -25,7 +25,8 @@ const MerchantDashboard = () => {
 
   const formatGraphData = (data, filter) => {
     return Object.entries(data).map(([key, value]) => ({
-      label: key,
+
+      month: key,
       merchants: value,
     }));
   };
@@ -34,9 +35,17 @@ const MerchantDashboard = () => {
     try {
       setGraphLoading(true);
 
+      // const merchantId = localStorage.getItem("merchant_id");
+
+
+      const merchantId = parseInt(localStorage.getItem("merchant_id"), 10);
+
+      // console.log("merchantId....................",merchantId);
+      // console.log("merchantId....................", merchantId, typeof merchantId);
+
       const body = {
         filter: filterBy,
-        merchant_id: 20,
+        merchant_id: merchantId,
       };
 
       const response = await axios.post(
@@ -97,12 +106,12 @@ const MerchantDashboard = () => {
           <h3 className="adminDashboardTopTitle">Merchant Dashboard</h3>
         </div>
         <div className="adminDashboardTopbarRight">
-          <div className="adminDashboardTopSearchInputContainer">
+          {/* <div className="adminDashboardTopSearchInputContainer">
             <input className="adminSearchInput" placeholder="Search" />
             <div className="inputSearchIconContainer">
               <CiSearch size={20} color="white" />
             </div>
-          </div>
+          </div> */}
           <div className="logoutIconContainer" onClick={handleLogout} style={{ cursor: "pointer" }}>
             <FaPowerOff size={24} color={"#0d64a9"} />
           </div>

@@ -20,6 +20,8 @@ import pendingIcon from "./../assets/images/pending_icon.png";
 import logo from "./../assets/images/logo.png";
 import { useLocation } from "react-router-dom";
 import { routes } from "../utils/routes";
+import { useNavigate } from "react-router-dom";
+import { BASENAME } from "../config";
 
 const AdminSidebar = () => {
   const [dashboardHover, setDashboardHover] = useState(false);
@@ -28,6 +30,9 @@ const AdminSidebar = () => {
   const [connectHover, setConnectHover] = useState(false);
 
   const location = useLocation();
+
+  const navigate = useNavigate();
+  const url = window.location.pathname;
 
   return (
     <div className="adminSidebarWrapper">
@@ -41,9 +46,11 @@ const AdminSidebar = () => {
 
         <div className="adminSidebarContainer">
           <div
-            className={`sidebarItem ${location.pathname === routes.admin_dashboard() && "sidebarItemActive"}`}
-            onMouseEnter={() => setDashboardHover(true)}
-            onMouseLeave={() => setDashboardHover(false)}
+            // className={`sidebarItem ${location.pathname === routes.admin_dashboard() && "sidebarItemActive"}`}
+            // onMouseEnter={() => setDashboardHover(true)}
+            // onMouseLeave={() => setDashboardHover(false)}
+            className={`sidebarItem ${url === `${BASENAME}/admin/dashboard` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_dashboard())}
           >
             <LuLayoutDashboard
               color={dashboardHover === true || location.pathname === routes.admin_dashboard() ? "#838383" : "white"}
@@ -53,13 +60,11 @@ const AdminSidebar = () => {
           </div>
 
           <div
-            className="sidebarItem"
-            onMouseEnter={() => setProfileHover(true)}
-            onMouseLeave={() => setProfileHover(false)}
+            className={`sidebarItem ${url === `${BASENAME}/admin/profile` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_profile())}
           >
             <BiUser
-              color={profileHover === true ? "#838383" : "white"}
-              size={24}
+              color={"#ffffff"} size={24}
             />
             <div>Profile</div>
           </div>

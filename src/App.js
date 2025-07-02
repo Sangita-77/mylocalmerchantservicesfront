@@ -35,6 +35,7 @@ import { middleware, testAuthToken } from "./utils/helper";
 import UserConnectedHistory from "./pages/merchant/UserConnectedHistory";
 
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminProfile from "./pages/admin/AdminProfile";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -158,6 +159,10 @@ function App() {
           {
             path: "/admin/dashboard",
             element: <SuperAdminDashboard />,
+          },
+          {
+            path: "/admin/profile",
+            element: <AdminProfile />,
           },
           {
             path: "/admin/merchant_list",
