@@ -3043,13 +3043,13 @@
   padding: 15px 0px 24px 0px;
 }
 .merchantSidebarContainer .sidebarItem {
-  margin: 19px 30px 17px 23px;
+  margin: 19px 30px 17px 30px;
   padding: 10px 18px;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  width: 60%;
+  width: 70%;
   transition: 0.2s;
   cursor: pointer;
   user-select: none;
@@ -4427,7 +4427,7 @@
 
 .merchantProfileInnerDetailsContainer {
   margin: 0;
-  width: 69.8vw;
+  width: 73vw;
   padding: 0 28px;
   /* background-color: #144d99; */
   border: 1px solid #1a77b8;
@@ -4564,12 +4564,12 @@
   margin: 0;
   padding: 0;
   margin-top: 50px;
-  width: 378px;
-  height: 93px;
+  width: 150px;
+  height: 55px;
   background-color: #0f8cdd;
   font-family: "Poppins";
   color: #ffffff;
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 700;
   text-align: center;
   letter-spacing: 0.6px;
@@ -4580,7 +4580,7 @@
 }
 /* 26.06.25 */
 .merchantProfileWrapper .adminDashboardTopbar .adminDashboardTopbarLeft {padding-left: 52px;}
-.merchantProfileWrapper .adminDashboardTopbar {border-top-left-radius: 42px;}
+.merchantProfileWrapper .adminDashboardTopbar {border-top-left-radius: 42px; padding: 30px 0;}
 /* 26.06.25 */
 
 .adminDashboardTopbar {margin: 0; padding: 0px; width: 78vw; background: transparent; display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden; position: fixed; background-color: #f5f5fe; z-index: 999; top: 0;}
@@ -4626,7 +4626,7 @@
 
 .userConnectedHistoryPageWrapper .userConnectedHistoryContainer {
   margin: 0;
-  padding: 48px;
+  padding: 52px;
   padding-top: 75px;
 }
 .userConnectedHistoryPageWrapper .tableContainer {
@@ -4691,16 +4691,15 @@
   border-radius: 50%;
   cursor: pointer;
   outline: none;
-  padding-top: 3px;  /* 30.06.25 */
   margin-right: 14px; /* 30.06.25 */
 }
 
 /* 30.06.25 */
 .userConnectedHistoryPageWrapper .adminDashboardTopbarLeft {padding-left: 52px;}
-.userConnectedHistoryPageWrapper .adminDashboardTopbar {border-top-left-radius: 42px;}
+.userConnectedHistoryPageWrapper .adminDashboardTopbar {border-top-left-radius: 42px; padding: 30px 0;}
 .userConnectedHistoryPageWrapper .merchantContainerHeader {margin: 0; padding: 0; background-color: #FFFFFF; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
-.userConnectedHistoryContainer .merchantHeaderTitle .HeadingText {padding: 0 28px; color: #807B7B; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px;}
-.userConnectedHistoryPageWrapper .delButton {width: 35px; height: 35px; padding-top: 3px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none;}
+.userConnectedHistoryContainer .merchantHeaderTitle .HeadingText {padding: 0 28px; color: #807B7B; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin-bottom: 0;}
+.userConnectedHistoryPageWrapper .delButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none;}
   /* 30.06.25 */
 
 
@@ -4771,8 +4770,8 @@
   border: none;
   border-radius: 50%;
   position: absolute;
-  top: -14px;
-  right: -14px;
+  top: -7px;
+  right: -7px;
   z-index: 999999999;
 }
 .userName {

@@ -151,4 +151,3 @@ const MerchantProductList = () => {
 export default MerchantProductList;
 
 
-//Souvick Das ........

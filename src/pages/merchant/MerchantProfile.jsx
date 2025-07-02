@@ -235,18 +235,18 @@ const MerchantProfile = () => {
   return (
     <div className="merchantProfileWrapper">
 
-      <DashBoardTopBar />
-      {/* <div className="adminDashboardTopbar">
+      {/* <DashBoardTopBar /> */}
+      <div className="adminDashboardTopbar">
         <div className="adminDashboardTopbarLeft">
-          <div className="adminDashboardTopTitle"><DashboardTopHeading text="Merchant Profile" /> </div>
+          <h3 className="adminDashboardTopTitle">Merchant Profile</h3>
         </div>
         <div className="adminDashboardTopbarRight">
-          <div className="adminDashboardTopSearchInputContainer">
+          {/* <div className="adminDashboardTopSearchInputContainer">
             <input className="adminSearchInput" placeholder="Search" />
             <div className="inputSearchIconContainer">
               <CiSearch size={20} color="white" />
             </div>
-          </div>
+          </div> */}
 
           <div className="logoutIconContainer" onClick={handleLogout} style={{ cursor: "pointer" }}>
             <FaPowerOff size={24} color={"#0d64a9"} />
@@ -255,13 +255,17 @@ const MerchantProfile = () => {
             <FaCircleUser size={24} color={"#0d64a9"} />
           </div>
         </div>
-      </div> */}
+      </div>
 
       {loading ? (
-        <div className="merchantProfileLoaderContainer">
-          <PreLoader />
-          <div>Loading...</div>
+        // 26.06.25
+        <div className="merchantDashboardLoaderWrapper">
+          <div className="merchantDashboardLoaderContainer">
+            <PreLoader />
+            <div>Loading...</div>
+          </div>
         </div>
+        // 26.06.25
       ) : (
         <>
           {/* <img src={eclipse} alt="" className="merchantProfileEclipseImage" /> */}

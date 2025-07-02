@@ -9,6 +9,7 @@ export const routes = {
 
   //////////////   SUPER ADMIN     ///////////////
   admin_dashboard: () => "/admin/dashboard",
+  admin_profile: () => "/admin/profile",
   admin_merchant_list: () => "/admin/merchant_list",
 
 

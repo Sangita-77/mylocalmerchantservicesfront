@@ -97,12 +97,12 @@ const MerchantDashboard = () => {
           <h3 className="adminDashboardTopTitle">Merchant Dashboard</h3>
         </div>
         <div className="adminDashboardTopbarRight">
-          <div className="adminDashboardTopSearchInputContainer">
+          {/* <div className="adminDashboardTopSearchInputContainer">
             <input className="adminSearchInput" placeholder="Search" />
             <div className="inputSearchIconContainer">
               <CiSearch size={20} color="white" />
             </div>
-          </div>
+          </div> */}
           <div className="logoutIconContainer" onClick={handleLogout} style={{ cursor: "pointer" }}>
             <FaPowerOff size={24} color={"#0d64a9"} />
           </div>
@@ -200,7 +200,3 @@ const MerchantDashboard = () => {
 };
 
 export default MerchantDashboard;
-<<<<<<< HEAD
-=======
-
->>>>>>> beaa12773424be0f21ee80fe5807b2f158362b5e

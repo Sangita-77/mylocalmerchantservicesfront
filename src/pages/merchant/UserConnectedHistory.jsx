@@ -129,12 +129,12 @@ const UserConnectedHistory = () => {
           <h3 className="adminDashboardTopTitle">User connected history</h3>
         </div>
         <div className="adminDashboardTopbarRight">
-          <div className="adminDashboardTopSearchInputContainer">
+          {/* <div className="adminDashboardTopSearchInputContainer">
             <input className="adminSearchInput" placeholder="Search" />
             <div className="inputSearchIconContainer">
               <CiSearch size={20} color="white" />
             </div>
-          </div>
+          </div> */}
 
           <div className="logoutIconContainer" onClick={handleLogout} style={{ cursor: "pointer" }}>
             <FaPowerOff size={24} color={"#0d64a9"} />
