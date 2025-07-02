@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import {
   BarChart,
   Bar,
@@ -6,21 +6,22 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 
-
 const BarChartComponent = ({ data }) => {
-const maxValue = Math.max(...data.map(d => d.merchants));
-const divisions = 10;
-let step = Math.ceil(maxValue / divisions);
-const minStep = 10;
-step = Math.ceil(step / minStep) * minStep;
-const yTicks = [];
-for (let i = 0; i <= maxValue + step; i += step) {
-  yTicks.push(i);
-}
+  const maxValue = data.length ? Math.max(...data.map(d => d.merchants)) : 0;
+
+  const divisions = 10;
+  let step = Math.ceil(maxValue / divisions);
+
+  const minStep = 10;
+  if (step === 0) step = minStep;
+
+  const yTicks = [];
+  for (let i = 0; i <= maxValue + step; i += step) {
+    yTicks.push(i);
+  }
 
   return (
     <ResponsiveContainer width="100%" height={400}>
@@ -30,16 +31,16 @@ for (let i = 0; i <= maxValue + step; i += step) {
         barSize={12}
       >
         <XAxis
-          dataKey="month"
+          dataKey="label"
           scale="point"
           padding={{ left: 30, right: 30 }}
-          tick={{ fill: 'white', fontSize: 12, fontFamily: '"Sora", sans-serif', }}
-          axisLine={{ stroke: "white" }} 
+          tick={{ fill: 'white', fontSize: 12, fontFamily: '"Sora", sans-serif' }}
+          axisLine={{ stroke: "white" }}
           tickLine={{ stroke: "" }}
         />
         <YAxis
           ticks={yTicks}
-          tick={{ fill: 'white', fontSize: 12, fontFamily: '"Sora", sans-serif', }}
+          tick={{ fill: 'white', fontSize: 12, fontFamily: '"Sora", sans-serif' }}
           axisLine={{ stroke: "white" }}
           tickLine={{ stroke: "" }}
         />
@@ -50,6 +51,5 @@ for (let i = 0; i <= maxValue + step; i += step) {
     </ResponsiveContainer>
   );
 };
-
 
 export default BarChartComponent;
