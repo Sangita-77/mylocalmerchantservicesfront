@@ -384,7 +384,7 @@ const getHeaderColor = (index) => {
           </div>
 
           {searched === true && (
-            <div className="searchResultsText">
+            <div className="searchResultsText" style={{ color: '#0d64a9' }}>
               Showing {searchResults} results
             </div>
           )}
