@@ -123,8 +123,16 @@ const MerchantList = () => {
   };
 
   const toggleViewDetailsModal = (data) => {
+
+    // console.log("........data",typeof(data));
+
+    if(typeof(data) == 'object'){
+      setModalData(data.merchant_id);
+    }else{
+      setModalData(data);
+    }
   
-  setModalData(data)
+
   
    setShowViewDetailsModal(true)
    };
@@ -143,7 +151,7 @@ const MerchantList = () => {
         text: searchParamsValue,
         offset: 1,
       };
-      // console.log("data",body)
+      console.log("data",body)
       const response = await axios.post(
         `${BASE_URL}/searchingData`,
         JSON.stringify(body),
