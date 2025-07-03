@@ -115,13 +115,11 @@ const OnboardingPage = () => {
           <p className="bannerTitleSmall">
             Save time and money while improving service
           </p>
-          <div onClick={() => navigate(routes.merchant_list())}>
           <ButtonLarge
             title={"Find Local Agents"}
             icon={<GoArrowRight size={32} color="#000000" />}
-            
+            onClick={() => navigate(routes.merchant_list())}
           />
-          </div>
         </div>
       </div>
 
@@ -300,12 +298,11 @@ const OnboardingPage = () => {
               </p>
             </div>
           </div>
-          <div onClick={() => navigate(routes.registration())}>
             <ButtonLarge
               title={"Register Your Merchant"}
               icon={<GoArrowRight size={32} />}
+              onClick={() => navigate(routes.registration())}
             />
-          </div>
         </div>
       </div>
 
@@ -359,12 +356,11 @@ const OnboardingPage = () => {
                 <p className="findAgentsParticulars">Additional services</p>
               </div>
             </div>
-            <div onClick={() => navigate(routes.registration())}>
             <ButtonLarge
               title={"Register Your Merchant"}
               icon={<GoArrowRight size={32} color="#000000" />}
+              onClick={() => navigate(routes.registration())}
             />
-            </div>
           </div>
         </div>
 
@@ -382,13 +378,11 @@ const OnboardingPage = () => {
             Real, local, and 100% free!
           </p>
         </div>
-        <div onClick={() => navigate(routes.registration())}>
-
           <ButtonLarge
             title={"Register Now"}
             icon={<GoArrowRight size={32} color="#000000" />}
+            onClick={() => navigate(routes.registration())}
           />
-        </div>
       </div>
 
       <div className="articleSection">
