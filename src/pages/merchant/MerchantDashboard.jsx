@@ -8,6 +8,7 @@ import { BASE_URL } from "../../utils/apiManager.js";
 import { AppContext } from "../../utils/context.js";
 import PreLoader from "../../components/PreLoader.jsx";
 import BarChartComponent from "../../components/BarChartComponent";
+import DashBoardTopBar from "../../components/DashBoardTopBar";
 
 const MerchantDashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -76,50 +77,11 @@ const MerchantDashboard = () => {
     fetchDashboardData();
   }, [filterBy]);
 
-  const handleLogout = async () => {
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/logoutM`,
-        { user_id: localStorage.getItem("user_id") },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (response.data.status) {
-        window.location.reload();
-      } else {
-        alert("Logout failed: " + response.data.message);
-      }
-    } catch (error) {
-      alert("Something went wrong during logout.");
-    }
-  };
 
   return (
     <div className="merchantDashboardWrapper" onClick={() => setShowDropdown(false)}>
-      <div className="adminDashboardTopbar">
-        <div className="adminDashboardTopbarLeft">
-          <h3 className="adminDashboardTopTitle">Merchant Dashboard</h3>
-        </div>
-        <div className="adminDashboardTopbarRight">
-          {/* <div className="adminDashboardTopSearchInputContainer">
-            <input className="adminSearchInput" placeholder="Search" />
-            <div className="inputSearchIconContainer">
-              <CiSearch size={20} color="white" />
-            </div>
-          </div> */}
-          <div className="logoutIconContainer" onClick={handleLogout} style={{ cursor: "pointer" }}>
-            <FaPowerOff size={24} color={"#0d64a9"} />
-          </div>
-          <div className="profileIconContainer">
-            <FaCircleUser size={24} color={"#0d64a9"} />
-          </div>
-        </div>
-      </div>
+
+      <DashBoardTopBar heading="Merchant Dashboard" />
 
       {loading ? (
         <div className="merchantDashboardLoaderWrapper">

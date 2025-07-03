@@ -8,12 +8,11 @@ import axios from "axios";
 import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
 import PreLoader from "../../components/PreLoader";
-// import DashBoardTopBar from "../../components/DashBoardTopBar";
-// import DashboardTopHeading from "../../components/DashboardTopHeading";
 import { CiCalendar, CiCircleInfo, CiSearch } from "react-icons/ci";
 import { FaPowerOff, FaCircleUser } from "react-icons/fa6";
 import { AiOutlineDelete } from "react-icons/ai";
 import DashboardTopHeading from "../../components/DashboardTopHeading";
+import DashBoardTopBar from "../../components/DashBoardTopBar";
 
 const UserConnectedHistory = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -96,38 +95,6 @@ const UserConnectedHistory = () => {
 
 
 
-
-
-const handleLogout = async () => {
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/logoutM`,
-        {
-          user_id: localStorage.getItem("user_id"),
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (response.data.status) {
-        // Logout successful, reload the page
-        window.location.reload();
-      } else {
-        console.error("Logout failed:", response.data.message);
-        alert("Logout failed: " + response.data.message);
-      }
-    } catch (error) {
-      console.error("Logout error:", error);
-      alert("Something went wrong during logout.");
-    }
-  };
-
-
-
 const handleDeleteClick = async (connection) => { 
   const confirmed = window.confirm('Are you sure you want to delete this connection?');
   const user_id = parseInt(connection.merchant_id, 10);
@@ -168,28 +135,7 @@ const handleDeleteClick = async (connection) => {
   return (
     <div className="userConnectedHistoryPageWrapper">
 
-      <div className="adminDashboardTopbar">
-        <div className="adminDashboardTopbarLeft">
-          <h3 className="adminDashboardTopTitle">User connected history</h3>
-        </div>
-        <div className="adminDashboardTopbarRight">
-          {/* <div className="adminDashboardTopSearchInputContainer">
-            <input className="adminSearchInput" placeholder="Search" />
-            <div className="inputSearchIconContainer">
-              <CiSearch size={20} color="white" />
-            </div>
-          </div> */}
-
-          <div className="logoutIconContainer" onClick={handleLogout} style={{ cursor: "pointer" }}>
-            <FaPowerOff size={24} color={"#0d64a9"} />
-          </div>
-          <div className="profileIconContainer">
-            <FaCircleUser size={24} color={"#0d64a9"} />
-          </div>
-        </div>
-      </div>
-      {/* <img src={bgEclipseImg} alt="" className="eclipseImg" />
-      <div className="merchantUserConnectedTitle">User Connected History</div> */}
+      <DashBoardTopBar heading="User Connected History"/>
 
       <div className="userConnectedHistoryContainer">
 

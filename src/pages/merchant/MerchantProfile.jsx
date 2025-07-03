@@ -204,58 +204,11 @@ const MerchantProfile = () => {
   }, [merchantProfileData]);
 
 
-  const handleLogout = async () => {
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/logoutM`,
-        {
-          user_id: localStorage.getItem("user_id"),
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-  
-      if (response.data.status) {
-        // Logout successful, reload the page
-        window.location.reload();
-      } else {
-        console.error("Logout failed:", response.data.message);
-        alert("Logout failed: " + response.data.message);
-      }
-    } catch (error) {
-      console.error("Logout error:", error);
-      alert("Something went wrong during logout.");
-    }
-  };
 
   return (
     <div className="merchantProfileWrapper">
 
-      {/* <DashBoardTopBar /> */}
-      <div className="adminDashboardTopbar">
-        <div className="adminDashboardTopbarLeft">
-          <h3 className="adminDashboardTopTitle">Merchant Profile</h3>
-        </div>
-        <div className="adminDashboardTopbarRight">
-          {/* <div className="adminDashboardTopSearchInputContainer">
-            <input className="adminSearchInput" placeholder="Search" />
-            <div className="inputSearchIconContainer">
-              <CiSearch size={20} color="white" />
-            </div>
-          </div> */}
-
-          <div className="logoutIconContainer" onClick={handleLogout} style={{ cursor: "pointer" }}>
-            <FaPowerOff size={24} color={"#0d64a9"} />
-          </div>
-          <div className="profileIconContainer">
-            <FaCircleUser size={24} color={"#0d64a9"} />
-          </div>
-        </div>
-      </div>
+      <DashBoardTopBar heading="Merchant Profile" />
 
       {loading ? (
         // 26.06.25

@@ -7,9 +7,13 @@ import { BASE_URL } from "./../utils/apiManager.js";
 import { AppContext } from "./../utils/context.js";
 import DashboardTopHeading from "./DashboardTopHeading";
 import "../styles/styles.css";
+import { useNavigate } from "react-router-dom";
+import { routes } from "./../utils/routes";
 
 
-function DashBoardTopBar() {
+function DashBoardTopBar({ heading }) {
+
+  const navigate = useNavigate();
 
   const {
     token,
@@ -49,21 +53,23 @@ function DashBoardTopBar() {
     <>
     <div className="adminDashboardTopbar">
         <div className="adminDashboardTopbarLeft">
-          <div className="adminDashboardTopTitle"><DashboardTopHeading text="Merchant Profile" /> </div>
+          <div className="adminDashboardTopTitle">
+            <DashboardTopHeading text={heading} />
+          </div>
         </div>
         <div className="adminDashboardTopbarRight">
-          <div className="adminDashboardTopSearchInputContainer">
+          {/* <div className="adminDashboardTopSearchInputContainer">
             <input className="adminSearchInput" placeholder="Search" />
             <div className="inputSearchIconContainer">
               <CiSearch size={20} color="white" />
             </div>
-          </div>
+          </div> */}
 
           <div className="logoutIconContainer" onClick={() => {handleLogout();localStorage.removeItem("is_authenticated");
                 localStorage.removeItem("user_id");}} style={{ cursor: "pointer" }}>
             <FaPowerOff size={24} color={"#0d64a9"} />
           </div>
-          <div className="profileIconContainer">
+          <div className="profileIconContainer" onClick={() => navigate(routes.merchant_profile())} style={{ cursor: "pointer" }}>
             <FaCircleUser size={24} color={"#0d64a9"} />
           </div>
         </div>
