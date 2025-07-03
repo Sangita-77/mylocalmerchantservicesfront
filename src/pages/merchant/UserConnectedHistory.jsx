@@ -147,7 +147,7 @@ const handleDeleteClick = async (connection) => {
         },
       }
     );
-    console.log("dd.d,l,,,,,,,,,,,,,,,,,",response);
+    // console.log("dd.d,l,,,,,,,,,,,,,,,,,",response);
 
     if (response.data.status) {
         window.location.reload();

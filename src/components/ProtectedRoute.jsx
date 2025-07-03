@@ -50,7 +50,7 @@ const ProtectedRoute = ({ children }) => {
 
       try {
         const response = await axios.post(
-          `${BASE_URL}/getMerchantProfile`,
+          `${BASE_URL}/validationforLogin`,
           { user_id },
           {
             headers: {
@@ -60,9 +60,11 @@ const ProtectedRoute = ({ children }) => {
           }
         );
 
+
+
         const { merchant } = response.data;
 
-        if (merchant && merchant.merchant_token === storedToken) {
+        if (merchant && merchant === storedToken) {
           setIsAllowed(true);
         } else {
           setIsAllowed(false);
