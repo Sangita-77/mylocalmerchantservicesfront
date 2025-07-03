@@ -39,7 +39,7 @@ const MerchantList = () => {
   let searchParamsValue = [];
   let searchResultsNumber=0 
   const { token } = useContext(AppContext);
-   console.log("Context token from list===>", token);
+  //  console.log("Context token from list===>", token);
 
   useEffect(() => {
     fetchTableData();
@@ -60,7 +60,7 @@ const MerchantList = () => {
     try {
       setTableIndex(index);
 
-      console.log("pagination offset===>", offset);
+      // console.log("pagination offset===>", offset);
       const body = {
         flag: type,
         offset: offset,
@@ -76,7 +76,7 @@ const MerchantList = () => {
         }
       );
 
-      console.log(`Paginate table response===>`, response);
+      // console.log(`Paginate table response===>`, response);
 
       if (response?.status === 200) {
         const newData = response?.data;
@@ -108,7 +108,7 @@ const MerchantList = () => {
         }
       );
 
-      console.log(`Table data new response===>`, response?.data?.data);
+      // console.log(`Table data new response===>`, response?.data?.data);
 
       if (response?.status === 200) {
         const data = response?.data?.data;
@@ -143,7 +143,7 @@ const MerchantList = () => {
         text: searchParamsValue,
         offset: 1,
       };
-console.log("data",body)
+      // console.log("data",body)
       const response = await axios.post(
         `${BASE_URL}/searchingData`,
         JSON.stringify(body),
@@ -154,20 +154,20 @@ console.log("data",body)
           },
         }
       );
-       console.log("Search response=====>", response?.data?.users);
+      //  console.log("Search response=====>", response?.data?.users);
       const data = response?.data?.users;
 
       const tableData = prepareTableData(data);
       setSearchTableData(tableData);
 
-      console.log("Searched table data===>", tableData);
+      // console.log("Searched table data===>", tableData);
 
        searchResultsNumber = calculateTableDataLength(tableData);
    
-       if (tableData.length === 0) {
-  console.log("No data found, setting searchResultsNumber to 0.");
-  setSearchResults(0);
-}
+        if (tableData.length === 0) {
+          // console.log("No data found, setting searchResultsNumber to 0.");
+          setSearchResults(0);
+        }
       setSearchResults(searchResultsNumber);
      
     } catch (error) {
@@ -392,7 +392,7 @@ const getHeaderColor = (index) => {
           <div className="merchantListTableSection">
             {searched === false ? (
               tableData?.map((table, index) => (
-                <div>
+                <div key={table?.type || index}>
                   <div className="merchantListSingleTablePart" key={index}>
                     <div className="tableTitle">
                       {textUppercase(table?.type)}
@@ -493,7 +493,7 @@ const getHeaderColor = (index) => {
               <div className="noResultFound">No Entries Found</div>
             ) : (
               searchTableData?.map((table, index) => (
-                <div>
+                <div key={table?.type || index}>
                   <div className="merchantListSingleTablePart" key={index}>
                     <div className="tableTitle">
                       {textUppercase(table?.tableTitle)}
