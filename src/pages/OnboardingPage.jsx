@@ -168,7 +168,6 @@ const OnboardingPage = () => {
           className="findAgentsSectionBottom"
           variants={containerVariants}
           initial="hidden"
-          whileInView="show"
           viewport={{ once: false, amount: 0.4 }}
         >
           {/* Item 1 */}

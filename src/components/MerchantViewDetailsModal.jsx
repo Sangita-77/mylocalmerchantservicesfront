@@ -7,7 +7,7 @@ import PreLoader from "../components/PreLoader";
 import { AppContext } from "../utils/context";
 
 const MerchantViewDetailsModal = ({ id, handleClose }) => {
-  console.log("Modal data===>", id);
+  // console.log("Modal data===>", id);
   const[data,setData]=useState(null)
   const { token } = useContext(AppContext);
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const MerchantViewDetailsModal = ({ id, handleClose }) => {
             },
           }
         );
-         console.log("Toggle response=====>", response?.data.data);
+        //  console.log("Toggle response=====>", response?.data.data);
        setData(response?.data?.data)
        setIsLoading(false)
         }catch(error){ 
@@ -72,7 +72,7 @@ fetchDataToggleViewDetailsModal()
         throw new Error("Connection failed.");
       }
   
-      console.log("Connection successful:", response.data);
+      // console.log("Connection successful:", response.data);
       navigate("/merchant/user_connected_history");
     } catch (error) {
       console.error("Error while connecting:", error);

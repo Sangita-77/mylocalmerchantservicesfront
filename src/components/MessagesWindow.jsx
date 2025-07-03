@@ -5,8 +5,8 @@ import bgEclipseImg from "./../assets/images/merchant_list_bg_eclipse.png";
 import { BsSendFill } from "react-icons/bs";
 
 const MessagesWindow = ({ onClose, chatData = [], selectedInfo = {} }) => {
-  console.log("chatData.........................",chatData);
-  console.log("selectedInfo....................",selectedInfo);
+  // console.log("chatData.........................",chatData);
+  // console.log("selectedInfo....................",selectedInfo);
   return (
     <>
       <div className="messagesOverlay" />
