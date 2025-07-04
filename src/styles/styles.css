@@ -2270,7 +2270,8 @@
   height: 100vh; /* or any fixed height */
   overflow-y: auto !important; /* enable vertical scrolling */
 }
-.adminDashboardWrapper .adminDashboardContainer .adminDashboardTopbar {
+.adminDashboardWrapper .adminDashboardContainer .adminDashboardTopbar,
+.adminProfileWrapper .adminDashboardContainer .adminDashboardTopbar {
   margin: 0;
   padding: 18px 0;
   width: 75%;
@@ -4648,7 +4649,7 @@
   width: 100%;
   height: 60px;
   background-color: #0085da;
-  border: 1px solid #1894d4;
+  /* border: 1px solid #1894d4; */
 }
 .userConnectedHistoryPageWrapper .th {
   padding: 0 36px;
@@ -5144,3 +5145,32 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* ---------------- Admin Profile -------------- */
+.adminProfileWrapper .adminDashboardContainer {padding: 0 52px;}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainer {padding-top: 119px;}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px;
+  padding: 0;
+  background-color: #FFFFFF;
+  width: 73vw;
+  height: 65px;
+  align-content: center;
+  border-radius: 15px;
+  margin-bottom: 35px;
+  box-shadow: 0 0 5px 0 rgb(192, 192, 192);
+}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader .adminProfileHeaderCompanyTitle {padding: 0 28px; color: #807B7B; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px;}
+.adminProfileWrapper .profileInnerDetailsContainer {margin: 0; width: 73vw; background-color: #144d99; border: 1px solid #1a77b8; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; padding: 36px 28px 15px; background-color: #fff; border: none; border-radius: 20px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox {padding-bottom: 14px; margin-bottom: 25px;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox:first-child {border-bottom: 1px solid #0f8cdd;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileDataTitle {color: #807B7B; font: 600 15px/25px "Poppins";}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileData {color: #807B7B; font: 400 15px/25px "Poppins";}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .loginInputCol,
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputCol {border-bottom: 1px solid #0f8cdd; width: 45%; margin-bottom: 15px;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .loginFormInputField {border: none; padding: 0px 0 15px;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .checkBoxRow {margin-top: 19px; }
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .checkBoxRow .showPassword {color: #807B7B; font: 400 15px/25px "Poppins";}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .forgetPassword {color: #807B7B; font: 400 15px/25px "Poppins"; margin-top: 10px;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .forgetPassword .forgetPasswordLink {margin-left: 5px;}
+.adminProfileWrapper .profileInnerDetailsContainer .inputColWrapper {padding-top: 30px;}
+.adminProfileWrapper .profileInnerDetailsContainer .inputColWrapper .inputCol p {color: #807B7B; font: 600 15px/25px "Poppins";}

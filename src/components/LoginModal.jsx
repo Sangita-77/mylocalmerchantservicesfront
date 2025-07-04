@@ -184,7 +184,7 @@ const LoginModal = ({ handleClose }) => {
     if (personType) {
       setValidationError((prev) => ({ ...prev, flagError: "" }));
     }
-  }, [email, password, personType]);
+  }, [email, password, personType]); 
 
   return (
     <>
