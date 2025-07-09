@@ -8,20 +8,24 @@ import PreLoader from "../../components/PreLoader";
 import { PiEyeLight } from "react-icons/pi";
 import { AiOutlineDelete } from "react-icons/ai";
 import ChatWindow from "../../components/ChatWindow";
+import MessagesWindow from "../../components/MessagesWindow";
 
 const AdminConnect = () => {
     const [connectedHistory, setConnectedHistory] = useState([]);
     const [merchantDetails, setMerchantDetails] = useState([]);
     const [userDetails, setUserDetails] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [showChatWindow, setShowChatWindow] = useState(false);
+    const [showWindow, setShowChatWindow] = useState(false);
     const [selectedConnection, setSelectedConnection] = useState(null);
+    const [loadingChatId, setLoadingChatId] = useState(null);
+    const [chatData, setChatData] = useState([]);
+    const [selectedChatInfo, setSelectedChatInfo] = useState(null); 
 
     const { token } = useContext(AppContext);
 
-    const toggleChatWindow = () => {
-        setShowChatWindow(false);
-    };
+    // const toggleChatWindow = () => {
+    //     setShowChatWindow(false);
+    // };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,6 +72,41 @@ const AdminConnect = () => {
         setShowChatWindow(true);
     };
 
+    const handleViewChat = async (connected_id, user_id, merchant_id) => {
+        try {
+          setLoadingChatId(connected_id); // show loader on the button being clicked
+          const res = await axios.post(
+            `${BASE_URL}/getChat`,
+            {
+              connected_id,
+              user_id,
+              merchant_id,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+      
+          if (res.data.status) {
+            setChatData(res.data);
+            setSelectedChatInfo({
+              connected_id,
+              user_id,
+              merchant_id,
+              merchant_name: res.data.merchant?.merchant_name,
+            });
+            setShowChatWindow(true);
+          }
+        } catch (error) {
+          console.error("Error fetching chat:", error);
+        } finally {
+          setLoadingChatId(null); // hide button loader after chat fetch
+        }
+      };
+
     return (
         <div className="adminUserlistWrapper">
             <div className="adminDashboardContainer">
@@ -107,8 +146,13 @@ const AdminConnect = () => {
                                             <td className="td">{merchant ? merchant.user_id : "N/A"}</td>
                                             <td className="td">{user ? user.user_id : "N/A"}</td>
                                             <td className="actionTd">
-                                                <button className="viewButton" onClick={() => handleViewClick(connection)}>
-                                                    <PiEyeLight size={22} color="white" />
+                                                <button className="viewButton" disabled={loadingChatId === connection.connected_id} onClick={() => handleViewChat(connection.connected_id, connection.user_id, connection.merchant_id)}>
+                                                    {/* <PiEyeLight size={22} color="white" /> */}
+                                                    {loadingChatId === connection.connected_id ? (
+                                                        <div className="spinner" style={{ width: "16px", height: "16px" }} />
+                                                    ) : (
+                                                        <PiEyeLight size={22} color="white" />
+                                                    )}
                                                 </button>
                                                 <button className="delButton">
                                                     <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
@@ -122,13 +166,12 @@ const AdminConnect = () => {
                     </table>
                 </div>
             </div>
-            {showChatWindow && selectedConnection && (
-                <ChatWindow
-                    onClose={toggleChatWindow}
-                    connection={selectedConnection}
-                    connectedHistory={connectedHistory}
-                    userDetails={userDetails}
-                />
+            {showWindow && (
+            <MessagesWindow
+                chatData={chatData}
+                onClose={() => setShowChatWindow(false)}
+                selectedInfo={selectedChatInfo}
+            />
             )}
         </div>
     );
