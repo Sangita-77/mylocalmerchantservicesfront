@@ -2142,12 +2142,12 @@
   min-height: 100vh;
   background-color: #22a0f1 !important;
 }
-.adminSidebarInner {
+/* .adminSidebarInner {
   width: 90%;
-}
+} */
 .adminSidebarWrapper .adminSidebarTopContainer {
   margin: 0;
-  padding: 60px 14px;
+  padding: 30px 18px;
   width: 90%;
 }
 .adminSidebarWrapper .adminSidebarLogoContainer {
@@ -2256,6 +2256,14 @@
   height: 16px;
 }
 
+.adminSidebarContainer .sidebarItemActive {color: #838383 !important; background-color: #eef5ff;}
+.adminSidebarContainer .sidebarItemActive svg {stroke: #838383; color: #838383 !important;}
+.adminSidebarContainer .sidebarItemActive .sidebarItemTitle {color: #838383;}
+
+.adminSidebarContainer .sidebarItem:hover {color: #838383; background-color: #eef5ff; }
+.adminSidebarContainer .sidebarItem:hover svg {stroke: #838383; color: #838383 !important;}
+.adminSidebarContainer .sidebarItem:hover .sidebarItemTitle {color: #838383;}
+
 /* /////////////////////////////         ADMIN  DASHBOARD  DESIGN      /////////////////////////////////////// */
 .adminDashboardWrapper {
   margin: 0;
@@ -2271,9 +2279,11 @@
   overflow-y: auto !important; /* enable vertical scrolling */
 }
 .adminDashboardWrapper .adminDashboardContainer .adminDashboardTopbar,
-.adminProfileWrapper .adminDashboardContainer .adminDashboardTopbar {
+.adminProfileWrapper .adminDashboardContainer .adminDashboardTopbar,
+.adminUserlistWrapper .adminDashboardContainer .adminDashboardTopbar,
+.contactlistWrapper .adminDashboardContainer .adminDashboardTopbar {
   margin: 0;
-  padding: 18px 0;
+  padding: 30px 0;
   width: 75%;
   background: transparent;
   display: flex;
@@ -3033,12 +3043,6 @@
   top: -10px;
   left: 0;
 }
-.merchantSidebarWrapper .merchantSidebarTopContainer{
-
-}
-.merchantSidebarWrapper .merchantSidebarLogoContainer{}
-.merchantSidebarWrapper .merchantSidebarLogo{}
-.merchantSidebarWrapper .merchantSidebarDivider{}
 .merchantSidebarWrapper .merchantSidebarContainer {
   margin: 0;
   padding: 15px 0px 24px 0px;
@@ -3813,6 +3817,7 @@
   height: 100vh; /* or any fixed height */
   overflow-y: auto !important; /* enable vertical scrolling */
 }
+.merchantDashboardWrapper .adminDashboardTopbar {padding: 30px 0;}
 
 
 .merchantDashboardWrapper .merchantDashboardTopbar {
@@ -4587,7 +4592,7 @@
 .adminDashboardTopbar {margin: 0; padding: 0px; width: 78vw; background: transparent; display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden; position: fixed; background-color: #f5f5fe; z-index: 999; top: 0;}
 .adminDashboardTopbar .adminDashboardTopbarLeft {/* 26.06.25 */padding-left: 0px;/* 26.06.25 */ display: flex; flex-direction: row; align-items: center; gap: 12px;  width: 40%;}
 .adminDashboardTopbar .adminDashboardTopbarLeft .adminDashboardTopTitle {color: #4f87bf; font-family: "Sora"; font-weight: 600; font-size: 25px;}
-.adminDashboardTopbar .adminDashboardTopbarLeft .adminDashboardTopTitle .HeadingText {font-size: 25px;}
+.adminDashboardTopbar .adminDashboardTopbarLeft .adminDashboardTopTitle .HeadingText {font-size: 25px; font-family: "Sora"; font-weight: 600;}
 .adminDashboardTopbar .adminDashboardTopbarRight {padding-right: 40px; display: flex; flex-direction: row; align-items: center; gap: 24px;}
 .adminDashboardTopbar .adminDashboardTopbarRight .adminDashboardTopSearchInputContainer {margin: 0; padding: 0 10px; width: 360px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; background-color: white; border: 1px solid #d9d9d9; border-radius: 25px; outline: none;}
 .adminDashboardTopbar .adminDashboardTopbarRight .adminSearchInput {margin: 0; padding: 14px 4px; width: 90%; font-family: "Sora"; background-color: transparent; border: none; outline: none;}
@@ -5147,18 +5152,9 @@
 }
 
 /* ---------------- Admin Profile -------------- */
-.adminProfileWrapper .adminDashboardContainer {padding: 0 52px;}
+.adminProfileWrapper .adminDashboardContainer {padding: 0 52px 40px;}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainer {padding-top: 119px;}
-.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px;
-  padding: 0;
-  background-color: #FFFFFF;
-  width: 73vw;
-  height: 65px;
-  align-content: center;
-  border-radius: 15px;
-  margin-bottom: 35px;
-  box-shadow: 0 0 5px 0 rgb(192, 192, 192);
-}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px; padding: 0; background-color: #FFFFFF; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader .adminProfileHeaderCompanyTitle {padding: 0 28px; color: #807B7B; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px;}
 .adminProfileWrapper .profileInnerDetailsContainer {margin: 0; width: 73vw; background-color: #144d99; border: 1px solid #1a77b8; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; padding: 36px 28px 15px; background-color: #fff; border: none; border-radius: 20px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox {padding-bottom: 14px; margin-bottom: 25px;}
@@ -5174,3 +5170,24 @@
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .forgetPassword .forgetPasswordLink {margin-left: 5px;}
 .adminProfileWrapper .profileInnerDetailsContainer .inputColWrapper {padding-top: 30px;}
 .adminProfileWrapper .profileInnerDetailsContainer .inputColWrapper .inputCol p {color: #807B7B; font: 600 15px/25px "Poppins";}
+
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputColWrapper > .row {border-bottom: none; margin: 0 0 15px; column-gap: 50px; width: 100%; justify-content: space-between;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputColWrapper > .row > .col-lg-6 {width: calc(50% - 25px); padding: 0; border-bottom: 1px solid #0f8cdd;}
+
+/* ------ Admin Connect ------  */
+.adminUserlistWrapper .adminDashboardContainer {padding: 0 52px 40px;}
+.adminUserlistWrapper .adminDashboardContainer .adminUserlIstContainer {padding-top: 119px;}
+.adminUserlistWrapper .tableContainer {margin: 0; padding: 0; width: 73vw; background-color: #fff; border: none; box-shadow: 0 0 5px 0 rgb(192, 192, 192); border-collapse: collapse; outline: none; border-spacing: 0; overflow: hidden; border-radius: 20px;}
+.adminUserlistWrapper .tableContainer .theadContainer {margin: 0; padding: 0; width: 100%; height: 60px; background-color: #0085da;}
+.adminUserlistWrapper .th {padding: 0 36px; color: #fff; letter-spacing: 0.4px; text-align: left; font: 600 14px "Sora";}
+.adminUserlistWrapper .thActions {margin: 0; padding: 0 40px 0 0; color: #fff; font: 600 14px "Sora"; text-align: center;}
+.adminUserlistWrapper .tr {height: 60px; border-bottom: 1px solid #EAEAED !important;}
+.adminUserlistWrapper .td {color: #7D7D7E; font: 400 15px "Poppins"; padding: 0 36px;}
+.adminUserlistWrapper .viewButton {width: 35px; height: 35px; background-color: #0085da; border: 1px solid #23b7e5; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
+.adminUserlistWrapper .delButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none;}
+.adminUserlistWrapper .actionTd {padding: 0 48px 0 0; text-align: center;}
+.adminUserlistWrapper .chatWindowWrapper .writeMessageView {display: none;}
+
+/* ------ Contact list ------ */
+.contactlistWrapper .adminDashboardContainer {padding: 0 52px 40px;}
+.contactlistWrapper .contactlistContainer {padding-top: 119px; width: 73vw;}

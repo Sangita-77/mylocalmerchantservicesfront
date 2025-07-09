@@ -36,6 +36,9 @@ import UserConnectedHistory from "./pages/merchant/UserConnectedHistory";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminProfile from "./pages/admin/AdminProfile";
+import AdminUserList from "./pages/admin/AdminUserList";
+import AdminConnect from "./pages/admin/AdminConnect";
+import ContactList from "./pages/admin/ContactList";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -165,8 +168,20 @@ function App() {
             element: <AdminProfile />,
           },
           {
+            path: "/admin/user_list",
+            element: <AdminUserList />
+          },
+          {
             path: "/admin/merchant_list",
             element: <AdminMerchantList />,
+          },
+          {
+            path: "/admin/contact",
+            element: <ContactList />,
+          },
+          {
+            path: "/admin/connect",
+            element: <AdminConnect />,
           },
         ],
       },

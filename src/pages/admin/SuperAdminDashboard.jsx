@@ -18,6 +18,7 @@ import MessagesWindow from "../../components/MessagesWindow";
 import axios from "axios";
 import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
+import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
 
 const SuperAdminDashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -371,33 +372,33 @@ const SuperAdminDashboard = () => {
       <CircularProgressBar percentage={parseFloat(percentage.toFixed(1))} />
     </div>
   );
-  const handleLogout = async () => {
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/logoutM`,
-        {
-          user_id: localStorage.getItem("user_id"),
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       `${BASE_URL}/logoutM`,
+  //       {
+  //         user_id: localStorage.getItem("user_id"),
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
   
-      if (response.data.status) {
-        // Logout successful, reload the page
-        window.location.reload();
-      } else {
-        console.error("Logout failed:", response.data.message);
-        alert("Logout failed: " + response.data.message);
-      }
-    } catch (error) {
-      console.error("Logout error:", error);
-      alert("Something went wrong during logout.");
-    }
-  };
+  //     if (response.data.status) {
+  //       // Logout successful, reload the page
+  //       window.location.reload();
+  //     } else {
+  //       console.error("Logout failed:", response.data.message);
+  //       alert("Logout failed: " + response.data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error("Logout error:", error);
+  //     alert("Something went wrong during logout.");
+  //   }
+  // };
   
   
   
@@ -454,26 +455,8 @@ const SuperAdminDashboard = () => {
       onClick={() => toggleCloseAllDropdown()}
     >
       <div className="adminDashboardContainer">
-        <div className="adminDashboardTopbar">
-          <div className="adminDashboardTopbarLeft">
-            <div className="adminDashboardTopTitle">Super Admin Dashboard</div>
-          </div>
-          <div className="adminDashboardTopbarRight">
-            {/* <div className="adminDashboardTopSearchInputContainer">
-              <input className="adminSearchInput" placeholder="Search" />
-              <div className="inputSearchIconContainer">
-                <CiSearch size={20} color="white" />
-              </div>
-            </div> */}
-
-            <div className="logoutIconContainer" onClick={handleLogout} style={{ cursor: "pointer" }}>
-              <FaPowerOff size={24} color={"#0d64a9"} />
-            </div>
-            <div className="profileIconContainer">
-              <FaCircleUser size={24} color={"#0d64a9"} />
-            </div>
-          </div>
-        </div>
+        
+        <AdminDashBoardTopBar heading="Super Admin Dashboard" />
 
         <div className="adminDashboardMain">
           <div className="adminDashboardCountContainer">
