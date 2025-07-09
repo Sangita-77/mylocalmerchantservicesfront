@@ -7,8 +7,46 @@ import { AppContext } from "../../utils/context";
 import { AiOutlineDelete } from "react-icons/ai";
 import { PiEyeLight } from "react-icons/pi";
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
+import PreLoader from "../../components/PreLoader";
 
 const AdminUserList = () => {
+
+  const [loading, setLoading] = useState(true);
+  const [userList, setUserList] = useState({ contactList: [] });
+
+  const { token } = useContext(AppContext);
+
+  useEffect(() => {
+    fetchConnectedHistory();
+  }, []);
+
+
+  const fetchConnectedHistory = async () => {
+    try {
+      const body = { }; 
+      const res = await axios.post(
+        `${BASE_URL}/getUserList`,
+        JSON.stringify(body),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (res.data.status) {
+        // console.log("API Response:", res.data); 
+        setUserList(res.data); 
+      } else {
+        setUserList({ connect: [] }); 
+      }
+    } catch (error) {
+      console.error("Error fetching connected history:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   return (
@@ -29,48 +67,37 @@ const AdminUserList = () => {
                 </tr>
               </thead>
               <tbody className="tbodyContainer">
-                <tr className="tr">
-                  <td className="td">Ronnie E. Barrett</td>
-                  <td className="td"> ronnie@dreamlogodesign.com </td>
-                  <td className="td"> Healthcare </td>
-                  <td className="actionTd">
-                    <button className="viewButton">
-                      <PiEyeLight size={22} color="white" />
-                    </button>
-                    <button className="delButton">
-                      <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
-                    </button>
-                  </td>
-                </tr>
-                <tr className="tr">
-                  <td className="td">Epstein E. Barrett</td>
-                  <td className="td">epstein@dreamlogodesign.com</td>
-                  <td className="td">Transportation and logistics</td>
-                  <td className="actionTd">
-                    <button className="viewButton">
-                      <PiEyeLight size={22} color="#fff" />
-                    </button>
-                    <button className="delButton">
-                      <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
-                    </button>
-                  </td>
-                </tr>
-                <tr className="tr">
-                  <td className="td">Christina M</td>
-                  <td className="td">christina@dreamlogodesign.com</td>
-                  <td className="td">Software and services</td>
-                  <td className="actionTd">
-                    <button className="viewButton">
-                      <PiEyeLight size={22} color="#fff" />
-                    </button>
-                    <button className="delButton">
-                      <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
-                    </button>
-                  </td>
-                </tr>
-                
-
+                {loading ? (
+                  <tr>
+                    <td colSpan="5" style={{ textAlign: "center", padding: "20px" }}>
+                      <div>Loading data...</div>
+                    </td>
+                  </tr>
+                ) : Array.isArray(userList.contactList) && userList.contactList.length > 0 ? (
+                  userList.contactList.map((user, index) => (
+                    <tr key={index} className="tr">
+                      <td className="td">{user.company_name}</td>
+                      <td className="td">{user.user_id}</td>
+                      <td className="td">{user.industry || "N/A"}</td>
+                      <td className="actionTd">
+                        <button className="viewButton">
+                          <PiEyeLight size={22} color="white" />
+                        </button>
+                        <button className="delButton">
+                          <AiOutlineDelete size={22} color="#E60E4E" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td className="td" colSpan="5" style={{ textAlign: "center" }}>
+                      No User Found.
+                    </td>
+                  </tr>
+                )}
               </tbody>
+
             </table>
           </div>
 
