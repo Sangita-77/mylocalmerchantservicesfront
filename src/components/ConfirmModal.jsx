@@ -9,7 +9,7 @@ const ConfirmModal = ({ title, message, onConfirm, onCancel }) => {
         <p>{message || 'Are you sure you want to proceed?'}</p>
         <div className="modalActions">
           <button className="cancelBtn" onClick={onCancel}>Cancel</button>
-          <button className="confirmBtn" onClick={onConfirm}>Delete</button>
+          <button className="confirmBtn" onClick={onConfirm}>Ok</button>
         </div>
       </div>
     </div>

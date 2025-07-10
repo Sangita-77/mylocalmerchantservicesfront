@@ -8,15 +8,21 @@ import DashboardTopHeading from "./DashboardTopHeading";
 import "../styles/styles.css";
 import { useNavigate } from "react-router-dom";
 import { routes } from "./../utils/routes";
+import ConfirmModal from "../components/ConfirmModal";
 
 
 function AdminDashBoardTopBar({ heading }) {
 
   const navigate = useNavigate();
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const {
     token,
   } = useContext(AppContext);
+
+  const handleDeleteClick = () => {
+    setShowConfirmModal(true);
+  };
 
   const handleLogout = async () => {
     try {
@@ -35,6 +41,8 @@ function AdminDashBoardTopBar({ heading }) {
   
       if (response.data.status) {
         // Logout successful, reload the page
+        localStorage.removeItem("is_authenticated");
+        localStorage.removeItem("user_id");
         window.location.reload();
       } else {
         console.error("Logout failed:", response.data.message);
@@ -58,8 +66,7 @@ function AdminDashBoardTopBar({ heading }) {
         </div>
         <div className="adminDashboardTopbarRight">
 
-          <div className="logoutIconContainer" onClick={() => {handleLogout();localStorage.removeItem("is_authenticated");
-                localStorage.removeItem("user_id");}} style={{ cursor: "pointer" }}>
+          <div className="logoutIconContainer" onClick={() => {handleDeleteClick();}} style={{ cursor: "pointer" }}>
             <FaPowerOff size={24} color={"#0d64a9"} />
           </div>
           <div className="profileIconContainer" onClick={() => navigate(routes.admin_profile())} style={{ cursor: "pointer" }}>
@@ -67,6 +74,14 @@ function AdminDashBoardTopBar({ heading }) {
           </div>
           
         </div>
+        {showConfirmModal && (
+          <ConfirmModal
+            title="Logout"
+            message="Are you sure you want to logout?"
+            onConfirm={handleLogout}
+            onCancel={() => setShowConfirmModal(false)}
+          />
+        )}
       </div>
     </>
   )
