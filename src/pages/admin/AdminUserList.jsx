@@ -8,6 +8,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { PiEyeLight } from "react-icons/pi";
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
 import PreLoader from "../../components/PreLoader";
+import ConfirmModal from "../../components/ConfirmModal";
 
 const AdminUserList = () => {
 
@@ -15,6 +16,40 @@ const AdminUserList = () => {
   const [userList, setUserList] = useState({ contactList: [] });
 
   const { token } = useContext(AppContext);
+
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+const [selectedUserId, setSelectedUserId] = useState(null);
+
+const handleDeleteClick = (user_id) => {
+  setSelectedUserId(user_id);
+  setShowConfirmModal(true);
+};
+
+const confirmDelete = async () => {
+  try {
+    const body = { user_id: selectedUserId, flag: 'user' };
+    const res = await axios.post(
+      `${BASE_URL}/deleteUser`,
+      JSON.stringify(body),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (res.data.status) {
+      fetchConnectedHistory(); // Refresh list
+    }
+  } catch (error) {
+    console.error("Error deleting user:", error);
+  } finally {
+    setShowConfirmModal(false);
+    setSelectedUserId(null);
+  }
+};
+
 
   useEffect(() => {
     fetchConnectedHistory();
@@ -41,6 +76,31 @@ const AdminUserList = () => {
       } else {
         setUserList({ connect: [] }); 
       }
+    } catch (error) {
+      console.error("Error fetching connected history:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const deleteUser = async (user_id) => {
+    try {
+      const body = {user_id : user_id , flag : 'user'}; 
+      const res = await axios.post(
+        `${BASE_URL}/deleteUser`,
+        JSON.stringify(body),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (res.data.status) {
+        console.log("API Response:", res.data); 
+
+      } 
     } catch (error) {
       console.error("Error fetching connected history:", error);
     } finally {
@@ -83,7 +143,9 @@ const AdminUserList = () => {
                         <button className="viewButton">
                           <PiEyeLight size={22} color="white" />
                         </button>
-                        <button className="delButton">
+                        <button className="delButton"  onClick={() => {
+                            handleDeleteClick(user.user_id);
+                        }}>
                           <AiOutlineDelete size={22} color="#E60E4E" />
                         </button>
                       </td>
@@ -103,6 +165,15 @@ const AdminUserList = () => {
 
 
         </div>
+
+        {showConfirmModal && (
+          <ConfirmModal
+            title="Delete User"
+            message="Are you sure you want to delete this user?"
+            onConfirm={confirmDelete}
+            onCancel={() => setShowConfirmModal(false)}
+          />
+        )}
       </div>
 
     </>
