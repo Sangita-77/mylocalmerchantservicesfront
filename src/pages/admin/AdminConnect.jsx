@@ -9,6 +9,7 @@ import { PiEyeLight } from "react-icons/pi";
 import { AiOutlineDelete } from "react-icons/ai";
 import ChatWindow from "../../components/ChatWindow";
 import MessagesWindow from "../../components/MessagesWindow";
+import ConfirmModal from "../../components/ConfirmModal";
 
 const AdminConnect = () => {
     const [connectedHistory, setConnectedHistory] = useState([]);
@@ -20,6 +21,8 @@ const AdminConnect = () => {
     const [loadingChatId, setLoadingChatId] = useState(null);
     const [chatData, setChatData] = useState([]);
     const [selectedChatInfo, setSelectedChatInfo] = useState(null); 
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [selectedUserData, setSelectedUserData] = useState({ user_id: null, merchant_id: null });
 
     const { token } = useContext(AppContext);
 
@@ -28,44 +31,46 @@ const AdminConnect = () => {
     // };
 
     useEffect(() => {
-        const fetchData = async () => {
-            const merchantId = localStorage.getItem("merchant_id");
-
-            if (!merchantId) {
-                console.error("No merchant_id in localStorage");
-                return;
-            }
-
-            setLoading(true);
-
-            try {
-                const response = await axios.post(
-                    `${BASE_URL}/getchatHistoryDetails`,
-                    { merchant_id: merchantId },
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-
-                if (response.data.status) {
-                    setConnectedHistory(response.data.connectedHistory || []);
-                    setMerchantDetails(response.data.merchantDetails || []);
-                    setUserDetails(response.data.userDetails || []);
-                } else {
-                    console.error(response.data.message);
-                }
-            } catch (error) {
-                console.error("API Error:", error);
-            }
-
-            setLoading(false);
-        };
 
         fetchData();
     }, [token]);
+
+    const fetchData = async () => {
+        const merchantId = localStorage.getItem("merchant_id");
+
+        if (!merchantId) {
+            console.error("No merchant_id in localStorage");
+            return;
+        }
+
+        setLoading(true);
+
+        try {
+            const response = await axios.post(
+                `${BASE_URL}/getchatHistoryDetails`,
+                { merchant_id: merchantId },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            if (response.data.status) {
+                setConnectedHistory(response.data.connectedHistory || []);
+                setMerchantDetails(response.data.merchantDetails || []);
+                setUserDetails(response.data.userDetails || []);
+            } else {
+                console.error(response.data.message);
+            }
+        } catch (error) {
+            console.error("API Error:", error);
+        }
+
+        setLoading(false);
+    };
+
 
     const handleViewClick = (connection) => {
         setSelectedConnection(connection);
@@ -104,6 +109,36 @@ const AdminConnect = () => {
           console.error("Error fetching chat:", error);
         } finally {
           setLoadingChatId(null); // hide button loader after chat fetch
+        }
+      };
+
+      const handleDeleteClick = (user_id,merchant_id) => {
+        setSelectedUserData({ user_id, merchant_id });
+        setShowConfirmModal(true);
+      };
+
+      const confirmDelete = async () => {
+        const { user_id, merchant_id } = selectedUserData;
+        try {
+          const body = { user_id: user_id , merchant_id: merchant_id };
+          const res = await axios.post(
+            `${BASE_URL}/merchantDeleteConnectedHistory`,
+            JSON.stringify(body),
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+      
+          if (res.data.status) {
+            fetchData(); // Refresh list
+          }
+        } catch (error) {
+          console.error("Error deleting user:", error);
+        } finally {
+          setShowConfirmModal(false);
         }
       };
 
@@ -154,7 +189,9 @@ const AdminConnect = () => {
                                                         <PiEyeLight size={22} color="white" />
                                                     )}
                                                 </button>
-                                                <button className="delButton">
+                                                <button className="delButton" onClick={() => {
+                                                    handleDeleteClick(connection.user_id, connection.merchant_id);
+                                                }}>
                                                     <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
                                                 </button>
                                             </td>
@@ -171,6 +208,15 @@ const AdminConnect = () => {
                 chatData={chatData}
                 onClose={() => setShowChatWindow(false)}
                 selectedInfo={selectedChatInfo}
+            />
+            )}
+
+            {showConfirmModal && (
+            <ConfirmModal
+                title="Delete User"
+                message="Are you sure you want to delete this connection details?"
+                onConfirm={confirmDelete}
+                onCancel={() => setShowConfirmModal(false)}
             />
             )}
         </div>

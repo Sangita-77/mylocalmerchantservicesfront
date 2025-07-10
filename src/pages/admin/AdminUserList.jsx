@@ -143,7 +143,7 @@ const confirmDelete = async () => {
                         <button className="viewButton">
                           <PiEyeLight size={22} color="white" />
                         </button>
-                        <button className="delButton"  onClick={() => {
+                        <button className="delButton" onClick={() => {
                             handleDeleteClick(user.user_id);
                         }}>
                           <AiOutlineDelete size={22} color="#E60E4E" />
