@@ -1,117 +1,106 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./../../styles/styles.css";
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
+import axios from "axios";
+import { BASE_URL } from "../../utils/apiManager";
+import { AppContext } from "../../utils/context";
+import { AiOutlineDelete } from "react-icons/ai";
+import { PiEyeLight } from "react-icons/pi";
 
 const ContactList = () => {
+
+  const [loading, setLoading] = useState(true);
+  const [ContactList, setContactList] = useState({ contactList: [] });
+
+  const { token } = useContext(AppContext);
+
+  useEffect(() => {
+    fetchContactHistory();
+  }, []);
+
+
+  const fetchContactHistory = async () => {
+    try {
+      const body = { }; 
+      const res = await axios.post(
+        `${BASE_URL}/getContactList`,
+        JSON.stringify(body),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (res.data.status) {
+        // console.log("API Response:", res.data); 
+        setContactList(res.data); 
+      } else {
+        setContactList({ connect: [] }); 
+      }
+    } catch (error) {
+      console.error("Error fetching connected history:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
   return (
     <div className="contactlistWrapper">
       <div className="adminDashboardContainer">
         <AdminDashBoardTopBar heading={"Contact  List"} />
 
         <div className="contactlistContainer">
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button
-                  class="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
+          <div className="accordion" id="accordionExample">
+            {ContactList.contactList.map((contact, index) => (
+              <div className="accordion-item" key={contact.contact_id}>
+                <h2 className="accordion-header" id={`heading${index}`}>
+                  <button
+                    className={`accordion-button ${index !== 0 ? 'collapsed' : ''}`}
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target={`#collapse${index}`}
+                    aria-expanded={index === 0 ? "true" : "false"}
+                    aria-controls={`collapse${index}`}
+                  >
+                    {contact.name}
+                  </button>
+                </h2>
+                <div
+                  id={`collapse${index}`}
+                  className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
+                  aria-labelledby={`heading${index}`}
+                  data-bs-parent="#accordionExample"
                 >
-                  Ronnie E.Barret
-                </button>
-              </h2>
-              <div
-                id="collapseOne"
-                class="accordion-collapse collapse show"
-                aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body">
-                  <table class="table">
-                    <tr>
-                      <td>Email :</td>
-                      <td>Shane@dreamlogodesign.com</td>
-                    </tr>
-                    <tr>
-                      <td>Phone:</td>
-                      <td> 9674669100</td>
-                    </tr>
-                  </table>
-                </div>
-
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
-                >
-                  Susana A. Wilson
-                </button>
-              </h2>
-              <div
-                id="collapseTwo"
-                class="accordion-collapse collapse"
-                aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body">
-                <table class="table">
-                    <tr>
-                      <td>Email :</td>
-                      <td>Shane@dreamlogodesign.com</td>
-                    </tr>
-                    <tr>
-                      <td>Phone:</td>
-                      <td> 9674669100</td>
-                    </tr>
-                  </table>
+                  <div className="accordion-body">
+                    <div>Email : {contact.email}</div><br></br>
+                    <div>Phone : {contact.phone}</div><br></br>
+                    <div>Message : {contact.message}</div>
+                    {/* <table className="table">
+                      <tbody>
+                        <tr>
+                          <td>Email :</td>
+                          <td>{contact.email}</td>
+                        </tr>
+                        <tr>
+                          <td>Phone:</td>
+                          <td>{contact.phone}</td>
+                        </tr>
+                        <tr>
+                          <td>Message:</td>
+                          <td>{contact.message}</td>
+                        </tr>
+                      </tbody>
+                    </table> */}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseThree"
-                  aria-expanded="false"
-                  aria-controls="collapseThree"
-                >
-                  Christopher Mayer
-                </button>
-              </h2>
-              <div
-                id="collapseThree"
-                class="accordion-collapse collapse"
-                aria-labelledby="headingThree"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body">
-                <table class="table">
-                    <tr>
-                      <td>Email :</td>
-                      <td>Shane@dreamlogodesign.com</td>
-                    </tr>
-                    <tr>
-                      <td>Phone:</td>
-                      <td> 9674669100</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
+
       </div>
     </div>
   );
