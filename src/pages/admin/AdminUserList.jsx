@@ -9,6 +9,7 @@ import { PiEyeLight } from "react-icons/pi";
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
 import PreLoader from "../../components/PreLoader";
 import ConfirmModal from "../../components/ConfirmModal";
+import UserDetailsModal from "../../components/UserDetailsModal"; 
 
 const AdminUserList = () => {
 
@@ -18,11 +19,18 @@ const AdminUserList = () => {
   const { token } = useContext(AppContext);
 
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-const [selectedUserId, setSelectedUserId] = useState(null);
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
 const handleDeleteClick = (user_id) => {
   setSelectedUserId(user_id);
   setShowConfirmModal(true);
+};
+
+const [selectedUserDetails, setSelectedUserDetails] = useState(null);
+
+// Function to handle view
+const handleViewClick = (user) => {
+  setSelectedUserDetails(user);
 };
 
 const confirmDelete = async () => {
@@ -83,31 +91,6 @@ const confirmDelete = async () => {
     }
   };
 
-  const deleteUser = async (user_id) => {
-    try {
-      const body = {user_id : user_id , flag : 'user'}; 
-      const res = await axios.post(
-        `${BASE_URL}/deleteUser`,
-        JSON.stringify(body),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-  
-      if (res.data.status) {
-        console.log("API Response:", res.data); 
-
-      } 
-    } catch (error) {
-      console.error("Error fetching connected history:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
 
   return (
     <>
@@ -140,7 +123,7 @@ const confirmDelete = async () => {
                       <td className="td">{user.user_id}</td>
                       <td className="td">{user.industry || "N/A"}</td>
                       <td className="actionTd">
-                        <button className="viewButton">
+                        <button className="viewButton" onClick={() => handleViewClick(user)}>
                           <PiEyeLight size={22} color="white" />
                         </button>
                         <button className="delButton" onClick={() => {
@@ -172,6 +155,13 @@ const confirmDelete = async () => {
             message="Are you sure you want to delete this user?"
             onConfirm={confirmDelete}
             onCancel={() => setShowConfirmModal(false)}
+          />
+        )}
+
+        {selectedUserDetails && (
+          <UserDetailsModal
+            user={selectedUserDetails}
+            onClose={() => setSelectedUserDetails(null)}
           />
         )}
       </div>
