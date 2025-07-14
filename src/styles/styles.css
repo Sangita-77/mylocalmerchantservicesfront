@@ -1036,6 +1036,7 @@
 
 
 /* --------- connect popup ---------- */
+<<<<<<< HEAD
 .messagesWindowWrapper {overflow: visible;}
 .messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px; padding: 25px 24px;}
 .messagesWindowWrapper .messagesWindowInner {width: 100%;}
@@ -1048,3 +1049,19 @@
 .messagesWindowWrapper .ownMessageContainer {background-color: #648cbb; font: 300 15px/24px "Sora"; border: none;}
 .messagesWindowWrapper .ownMessageContainer .messageContainerTop {color: #fff; font: 300 15px/24px "Sora"; }
 .messagesWindowWrapper .ownMessageContainer .messageText {color: #fff; font: 300 15px/24px "Sora"; }
+=======
+.adminDashboardWrapper .messagesWindowWrapper {overflow: visible;}
+/* .adminDashboardWrapper .messagesWindowWrapper .messagesWindowCloseBtn {} */
+.adminDashboardWrapper .messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px;}
+.adminDashboardWrapper .messagesWindowWrapper .messagesWindowInner {width: 100%;}
+.adminDashboardWrapper .messagesWindowWrapper .usersMessageContainer {background-color: #3bb2ff; color: #fff;}
+.adminDashboardWrapper .messagesWindowWrapper .username {color: #fff;}
+.adminDashboardWrapper .messagesWindowWrapper .messageTime {color: #fff;}
+
+/* --------------------- tooltip design ------------------------  */
+
+.tooltipWrapper { position: relative; display: inline-block; }
+.tooltipWrapper:hover .tooltipText { visibility: visible; opacity: 1; }
+.tooltipText { visibility: hidden; width: max-content; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 6px 8px; position: absolute; z-index: 10; top: 125%; /* Changed from bottom: 125% to top: 125% */ left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; font-size: 12px; }
+.tooltipText::after { content: ""; position: absolute; bottom: 100%; /* Arrow points up now */ left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: transparent transparent #333 transparent; /* Changed arrow color direction */ }
+>>>>>>> 18145f24ec7ca7a3ad3c881ff6e050534b5808cb

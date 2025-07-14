@@ -9,6 +9,7 @@ import "../styles/styles.css";
 import { useNavigate } from "react-router-dom";
 import { routes } from "./../utils/routes";
 import ConfirmModal from "../components/ConfirmModal";
+import Tooltip from "../components/Tooltip";
 
 
 function AdminDashBoardTopBar({ heading }) {
@@ -67,10 +68,14 @@ function AdminDashBoardTopBar({ heading }) {
         <div className="adminDashboardTopbarRight">
 
           <div className="logoutIconContainer" onClick={() => {handleDeleteClick();}} style={{ cursor: "pointer" }}>
-            <FaPowerOff size={24} color={"#0d64a9"} />
+            <Tooltip text="Logout">
+              <FaPowerOff size={24} color={"#0d64a9"} />
+            </Tooltip>
           </div>
           <div className="profileIconContainer" onClick={() => navigate(routes.admin_profile())} style={{ cursor: "pointer" }}>
-            <FaCircleUser size={24} color={"#0d64a9"} />
+            <Tooltip text="Profile">
+              <FaCircleUser size={24} color={"#0d64a9"} />
+            </Tooltip>
           </div>
           
         </div>
