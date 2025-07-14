@@ -4,13 +4,15 @@ import { useContext } from "react";
 import { AppContext } from "./context";
 
 export const apiErrorHandler = (error) => {
-  return (
-    error?.response?.data?.message ||
-    error?.message ||
-    error?.response?.message ||
-    error?.data?.meessage
-  );
+  if (error.response?.data?.message) {
+    return error.response.data.message;
+  } else if (error.message) {
+    return error.message;
+  } else {
+    return "An unknown error occurred.";
+  }
 };
+
 
 export const getAuthToken = async () => {
   try {

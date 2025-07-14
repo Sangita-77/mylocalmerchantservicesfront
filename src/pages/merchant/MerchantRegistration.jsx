@@ -133,6 +133,15 @@ const MerchantRegistration = () => {
       setMessage("Please check the zipcode!!");
       return;
     }
+
+    if (!otpVerified) {
+      console.log("OTP not verified, blocking registration.");
+      setShowToast(true);
+      setSeverity("error");
+      setMessageTitle("OTP Required");
+      setMessage("Please verify your email with the OTP before registering.");
+      return;
+    }
     try {
       setLoading(true);
       setError("");
@@ -381,7 +390,11 @@ const MerchantRegistration = () => {
 
   const sendOtpToEmail = async () => {
     if (!email) {
-      alert("Please enter a valid email.");
+      setValidationError((prev) => ({
+        ...prev,
+        emailError: "Please enter a valid email.",
+      }));
+
       return;
     }
   
@@ -402,13 +415,27 @@ const MerchantRegistration = () => {
       if (data.status) {
         setOtpSent(true);
         setServerOtp(data.otp); // Store OTP if needed
-        alert("OTP sent to your email.");
+        setValidationError((prev) => ({
+          ...prev,
+          emailError: "OTP sent to your email.",
+        }));
       } else {
-        alert(data.message || "Failed to send OTP.");
+        // alert(data.message || "Failed to send OTP.");
+
+        setValidationError((prev) => ({
+          ...prev,
+          emailError: "Failed to send OTP.",
+        }));
       }
     } catch (error) {
       console.error("OTP API Error:", error);
-      alert("Error sending OTP.");
+      // alert("Error sending OTP.");
+
+      setValidationError((prev) => ({
+        ...prev,
+        emailError: "Error sending OTP.",
+      }));
+
     }
   };
 
@@ -455,7 +482,7 @@ const MerchantRegistration = () => {
         const response = await axios.post(
           `${BASE_URL}/verifyOtpFrpmMail`,
           {
-            user_id: email,
+            email: email,
             otp: parseInt(value),
           },
           {
