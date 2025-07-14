@@ -8,6 +8,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { PiEyeLight } from "react-icons/pi";
 import PreLoader from "../../components/PreLoader";
 import contactlisticon from "../../assets/images/contactlisticon.png";
+import ConfirmModal from "../../components/ConfirmModal";
 
 const ContactList = () => {
 
@@ -48,6 +49,39 @@ const ContactList = () => {
     }
   };
 
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
+  const handleDeleteClick = (user_id) => {
+    setSelectedUserId(user_id);
+    setShowConfirmModal(true);
+  };
+
+  const confirmDelete = async () => {
+    try {
+      const body = { contact_id : selectedUserId };
+      const res = await axios.post(
+        `${BASE_URL}/deleteContact`,
+        JSON.stringify(body),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (res.data.status) {
+        fetchContactHistory(); // Refresh list
+      }
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    } finally {
+      setShowConfirmModal(false);
+      setSelectedUserId(null);
+    }
+  };
+
 
   return (
     <div className="contactlistWrapper">
@@ -76,7 +110,9 @@ const ContactList = () => {
                     >
                       <img src={contactlisticon} alt="" /> {contact.name}
                     </button>
-                    <button className="delButton">
+                    <button className="delButton" onClick={() => {
+                            handleDeleteClick(contact.contact_id);
+                        }}>
                           <AiOutlineDelete size={22} color="#E60E4E" />
                     </button>
                   </h2>
@@ -122,6 +158,15 @@ const ContactList = () => {
         </div>
 
       </div>
+
+      {showConfirmModal && (
+        <ConfirmModal
+          title="Delete Conatct"
+          message="Are you sure you want to delete this Contact?"
+          onConfirm={confirmDelete}
+          onCancel={() => setShowConfirmModal(false)}
+        />
+      )}
     </div>
   );
 };
