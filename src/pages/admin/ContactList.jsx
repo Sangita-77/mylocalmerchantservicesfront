@@ -7,6 +7,7 @@ import { AppContext } from "../../utils/context";
 import { AiOutlineDelete } from "react-icons/ai";
 import { PiEyeLight } from "react-icons/pi";
 import PreLoader from "../../components/PreLoader";
+import contactlisticon from "../../assets/images/contactlisticon.png";
 
 const ContactList = () => {
 
@@ -73,7 +74,10 @@ const ContactList = () => {
                       aria-expanded={index === 0 ? "true" : "false"}
                       aria-controls={`collapse${index}`}
                     >
-                      {contact.name}
+                      <img src={contactlisticon} alt="" /> {contact.name}
+                    </button>
+                    <button className="delButton">
+                          <AiOutlineDelete size={22} color="#E60E4E" />
                     </button>
                   </h2>
                   <div
@@ -82,10 +86,10 @@ const ContactList = () => {
                     aria-labelledby={`heading${index}`}
                     data-bs-parent="#accordionExample"
                   >
-                    <div className="accordion-body">
-                      <div>Email : {contact.email}</div><br></br>
-                      <div>Phone : {contact.phone}</div><br></br>
-                      <div>Message : {contact.message}</div>
+                    <div className="accordion-body row">
+                      <div className="col-lg-3">Email :</div> <div className="col-lg-9">{contact.email}</div>
+                      <div className="col-lg-3">Phone :</div> <div className="col-lg-9">{contact.phone}</div>
+                      <div className="col-lg-3">Message :</div> <div className="col-lg-9">{contact.message}</div>
                       {/* <table className="table">
                         <tbody>
                           <tr>
