@@ -9,6 +9,7 @@ import { PiEyeLight } from "react-icons/pi";
 import PreLoader from "../../components/PreLoader";
 import contactlisticon from "../../assets/images/contactlisticon.png";
 import ConfirmModal from "../../components/ConfirmModal";
+import Tooltip from "../../components/Tooltip";
 
 const ContactList = () => {
 
@@ -113,7 +114,9 @@ const ContactList = () => {
                     <button className="delButton" onClick={() => {
                             handleDeleteClick(contact.contact_id);
                         }}>
-                          <AiOutlineDelete size={22} color="#E60E4E" />
+                          <Tooltip text="Delete">
+                            <AiOutlineDelete size={22} color="#E60E4E" />
+                          </Tooltip>
                     </button>
                   </h2>
                   <div
