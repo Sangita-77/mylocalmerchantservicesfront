@@ -10,6 +10,7 @@ import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
 import PreLoader from "../../components/PreLoader";
 import ConfirmModal from "../../components/ConfirmModal";
 import UserDetailsModal from "../../components/UserDetailsModal"; 
+import Tooltip from "../../components/Tooltip";
 
 const AdminUserList = () => {
 
@@ -124,12 +125,16 @@ const confirmDelete = async () => {
                       <td className="td">{user.industry || "N/A"}</td>
                       <td className="actionTd">
                         <button className="viewButton" onClick={() => handleViewClick(user)}>
-                          <PiEyeLight size={22} color="white" />
+                          <Tooltip text="View Details">
+                            <PiEyeLight size={22} color="white" />
+                          </Tooltip>
                         </button>
                         <button className="delButton" onClick={() => {
                             handleDeleteClick(user.user_id);
                         }}>
-                          <AiOutlineDelete size={22} color="#E60E4E" />
+                          <Tooltip text="Delete">
+                            <AiOutlineDelete size={22} color="#E60E4E" />
+                          </Tooltip>
                         </button>
                       </td>
                     </tr>

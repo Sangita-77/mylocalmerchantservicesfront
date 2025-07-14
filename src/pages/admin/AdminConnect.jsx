@@ -10,6 +10,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import ChatWindow from "../../components/ChatWindow";
 import MessagesWindow from "../../components/MessagesWindow";
 import ConfirmModal from "../../components/ConfirmModal";
+import Tooltip from "../../components/Tooltip";
 
 const AdminConnect = () => {
     const [connectedHistory, setConnectedHistory] = useState([]);
@@ -186,13 +187,18 @@ const AdminConnect = () => {
                                                     {loadingChatId === connection.connected_id ? (
                                                         <div className="spinner" style={{ width: "16px", height: "16px" }} />
                                                     ) : (
-                                                        <PiEyeLight size={22} color="white" />
+                                                        <Tooltip text="View Details">
+                                                            <PiEyeLight size={22} color="white" />
+                                                        </Tooltip>
                                                     )}
                                                 </button>
                                                 <button className="delButton" onClick={() => {
                                                     handleDeleteClick(connection.user_id, connection.merchant_id);
                                                 }}>
-                                                    <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
+                                                    
+                                                    <Tooltip text="Delete">
+                                                        <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
+                                                    </Tooltip>
                                                 </button>
                                             </td>
                                         </tr>

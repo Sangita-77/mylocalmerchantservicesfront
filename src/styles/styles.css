@@ -963,8 +963,8 @@
 /* ---------------- Admin Profile -------------- */
 .adminProfileWrapper .adminDashboardContainer {padding: 0 52px 40px;}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainer {padding-top: 119px;}
-.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px; padding: 0; background-color: #FFFFFF; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
-.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader .adminProfileHeaderCompanyTitle {padding: 0 28px; color: #807B7B; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px;}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px; padding: 0; background-color: #0085da; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader .adminProfileHeaderCompanyTitle {padding: 0 28px; color: #fff; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px;}
 .adminProfileWrapper .profileInnerDetailsContainer {margin: 0; width: 73vw; background-color: #144d99; border: 1px solid #1a77b8; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; padding: 36px 28px 15px; background-color: #fff; border: none; border-radius: 20px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox {padding-bottom: 14px; margin-bottom: 25px;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox:first-child {border-bottom: 1px solid #0f8cdd;}
@@ -1006,14 +1006,18 @@
 .cancelBtn { background-color: #ccc; padding: 6px 12px; border: none; border-radius: 5px; }
 .confirmBtn { background-color: #e60e4e; color: white; padding: 6px 12px; border: none; border-radius: 5px; }
 
-/* ------------- User Details Modal ----------------- */
 
-.userDetailsOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: flex; align-items: center; justify-content: center; z-index: 9999; }
-.userDetailsBox { background-color: #60cdf6; padding: 30px; border-radius: 10px; width: 600px; position: relative; }
-.closeButton { position: absolute; top: 15px; right: 20px; font-size: 22px; font-weight: bold; color: #333; background: none; border: none; cursor: pointer; }
-.formGroup { margin-bottom: 15px; }
-.formGroup label { display: block; font-weight: bold; margin-bottom: 5px; color: white; }
-.formGroup input, .formGroup textarea { width: 100%; padding: 8px 12px; border: none; border-radius: 4px; background: white; }
+/* ------------- User Details Modal ----------------- */
+.userDetailsOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.85); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+.userDetailsBoxWrapper {position: relative;}
+.userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #6a8196; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -7px; right: -7px; z-index: 999999999;}
+.userDetailsBoxWrapper .userDetailsBox {background-color: #71CDEA; padding: 50px 50px 35px; border-radius: 24px; width: 950px; position: relative; }
+.userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 20px; align-items: center; column-gap: 15px;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup label {color: #fff; font: 600 17px/25px "Sora"; flex: 0 0 150px;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup input, 
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea 
+{ width: 100%; padding: 8px 25px; border: 1px solid #FFFFFF; color: #fff; border-radius: 6px; background: transparent; height: 58px; outline: none; box-shadow: none; font: 300 17px/25px "Sora";}
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;}
 
 
 /* ------ Admin Contact list ------ */
@@ -1032,6 +1036,20 @@
 
 
 /* --------- connect popup ---------- */
+
+.messagesWindowWrapper {overflow: visible;}
+.messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px; padding: 25px 24px;}
+.messagesWindowWrapper .messagesWindowInner {width: 100%;}
+.messagesWindowWrapper .usersMessageContainer {background-color: #3bb2ff; color: #fff;}
+.messagesWindowWrapper .username {color: #fff;}
+.messagesWindowWrapper .messageTime {color: #fff; margin-top: 5px;}
+.messagesWindowWrapper .messagesWindowCloseBtn {top: -10px; right: -7px;}
+.messagesWindowWrapper .messageText {font: 300 16px/25px "Sora";}
+.messagesOverlay {background-color: rgba(255, 255, 255, 0.85);}
+.messagesWindowWrapper .ownMessageContainer {background-color: #648cbb; font: 300 15px/24px "Sora"; border: none;}
+.messagesWindowWrapper .ownMessageContainer .messageContainerTop {color: #fff; font: 300 15px/24px "Sora"; }
+.messagesWindowWrapper .ownMessageContainer .messageText {color: #fff; font: 300 15px/24px "Sora"; }
+
 .adminDashboardWrapper .messagesWindowWrapper {overflow: visible;}
 /* .adminDashboardWrapper .messagesWindowWrapper .messagesWindowCloseBtn {} */
 .adminDashboardWrapper .messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px;}
@@ -1039,3 +1057,10 @@
 .adminDashboardWrapper .messagesWindowWrapper .usersMessageContainer {background-color: #3bb2ff; color: #fff;}
 .adminDashboardWrapper .messagesWindowWrapper .username {color: #fff;}
 .adminDashboardWrapper .messagesWindowWrapper .messageTime {color: #fff;}
+
+/* --------------------- tooltip design ------------------------  */
+
+.tooltipWrapper { position: relative; display: inline-block; }
+.tooltipWrapper:hover .tooltipText { visibility: visible; opacity: 1; }
+.tooltipText { visibility: hidden; width: max-content; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 6px 8px; position: absolute; z-index: 999; top: 125%; /* Changed from bottom: 125% to top: 125% */ left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; font-size: 12px; }
+.tooltipText::after { content: ""; position: absolute; bottom: 100%; /* Arrow points up now */ left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: transparent transparent #333 transparent; /* Changed arrow color direction */ }
