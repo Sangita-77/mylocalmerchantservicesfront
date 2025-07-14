@@ -4,6 +4,8 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { LiaStoreAltSolid } from "react-icons/lia";
 import { HiLink } from "react-icons/hi";
 import { BiUser } from "react-icons/bi";
+import { PiUsersThree } from "react-icons/pi";
+import { PiPhoneCall } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdOutlineStorefront } from "react-icons/md";
 import dashboardIcon from "./../assets/images/dashboard_icon.png";
@@ -70,6 +72,16 @@ const AdminSidebar = () => {
           </div>
 
           <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/user_list` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_user_list())}
+          >
+            <PiUsersThree
+              color={"#ffffff"} size={24}
+            />
+            <div>User List</div>
+          </div>
+
+          <div
             className="sidebarItem"
             onMouseEnter={() => setMerchantHover(true)}
             onMouseLeave={() => setMerchantHover(false)}
@@ -82,15 +94,19 @@ const AdminSidebar = () => {
           </div>
 
           <div
-            className="sidebarItem"
-            onMouseEnter={() => setConnectHover(true)}
-            onMouseLeave={() => setConnectHover(false)}
+            className={`sidebarItem ${url === `${BASENAME}/admin/connect` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_user_connect())}
           >
-            <HiLink
-              color={connectHover === true ? "#838383" : "white"}
-              size={24}
-            />
+            <HiLink color={"#fff"} size={24}/>
             <div>Connect</div>
+          </div>
+
+          <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/contact` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_contact())}
+          >
+            <PiPhoneCall color={"#fff"} size={24}/>
+            <div>Contact</div>
           </div>
         </div>
       </div>
@@ -99,6 +115,3 @@ const AdminSidebar = () => {
 };
 
 export default AdminSidebar;
-
-
-// Swati
