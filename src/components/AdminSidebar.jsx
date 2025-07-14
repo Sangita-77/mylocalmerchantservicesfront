@@ -94,6 +94,14 @@ const AdminSidebar = () => {
           </div>
 
           <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/usermerchant-list` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes. admin_user_merchant())}
+          >
+            <HiLink color={"#fff"} size={24}/>
+            <div>Merchant</div>
+          </div>
+
+          <div
             className={`sidebarItem ${url === `${BASENAME}/admin/connect` && "sidebarItemActive"}`}
             onClick={() => navigate(routes.admin_user_connect())}
           >

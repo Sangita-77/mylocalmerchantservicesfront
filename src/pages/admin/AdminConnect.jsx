@@ -10,6 +10,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import ChatWindow from "../../components/ChatWindow";
 import MessagesWindow from "../../components/MessagesWindow";
 import ConfirmModal from "../../components/ConfirmModal";
+import Tooltip from "../../components/Tooltip";
 
 const AdminConnect = () => {
     const [connectedHistory, setConnectedHistory] = useState([]);
@@ -181,18 +182,23 @@ const AdminConnect = () => {
                                             <td className="td">{merchant ? merchant.user_id : "N/A"}</td>
                                             <td className="td">{user ? user.user_id : "N/A"}</td>
                                             <td className="actionTd">
-                                                <button className="viewButton" disabled={loadingChatId === connection.connected_id} onClick={() => handleViewChat(connection.connected_id, connection.user_id, connection.merchant_id)}>
+                                                <button className="viewButton" disabled={loadingChatId === connection.connected_id} onClick={() => handleViewChat(connection.connected_id, connection.user_id, connection.merchant_id)} data-bs-toggle="tooltip"
+                                                    data-bs-placement="auto"
+                                                    title="View Details">
                                                     {/* <PiEyeLight size={22} color="white" /> */}
                                                     {loadingChatId === connection.connected_id ? (
                                                         <div className="spinner" style={{ width: "16px", height: "16px" }} />
                                                     ) : (
-                                                        <PiEyeLight size={22} color="white" />
+                                                            <PiEyeLight size={22} color="white" />
                                                     )}
                                                 </button>
                                                 <button className="delButton" onClick={() => {
                                                     handleDeleteClick(connection.user_id, connection.merchant_id);
-                                                }}>
-                                                    <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
+                                                }} data-bs-toggle="tooltip"
+                                                    data-bs-placement="auto"
+                                                    title="Delete">
+                                                    
+                                                        <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
                                                 </button>
                                             </td>
                                         </tr>

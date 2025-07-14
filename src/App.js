@@ -180,6 +180,10 @@ function App() {
             element: <ContactList />,
           },
           {
+            path: "/admin/usermerchant-list",
+            element: <AdminMerchantList />,
+          },
+          {
             path: "/admin/connect",
             element: <AdminConnect />,
           },

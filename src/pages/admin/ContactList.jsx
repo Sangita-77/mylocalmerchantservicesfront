@@ -9,6 +9,8 @@ import { PiEyeLight } from "react-icons/pi";
 import PreLoader from "../../components/PreLoader";
 import contactlisticon from "../../assets/images/contactlisticon.png";
 import ConfirmModal from "../../components/ConfirmModal";
+import Tooltip from "../../components/Tooltip";
+import * as bootstrap from 'bootstrap';
 
 const ContactList = () => {
 
@@ -82,6 +84,22 @@ const ContactList = () => {
     }
   };
 
+  useEffect(() => {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach((tooltipTriggerEl) => {
+      const existing = bootstrap.Tooltip.getInstance(tooltipTriggerEl);
+      if (!existing) {
+        new bootstrap.Tooltip(tooltipTriggerEl, {
+          customClass: 'custom-tooltip',
+          placement: 'auto',
+          fallbackPlacements: ['top'],
+          boundary: 'window',
+        });
+      }
+    });
+  }, []);
+  
+
 
   return (
     <div className="contactlistWrapper">
@@ -112,7 +130,10 @@ const ContactList = () => {
                     </button>
                     <button className="delButton" onClick={() => {
                             handleDeleteClick(contact.contact_id);
-                        }}>
+                        }}    
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="auto"
+                        title="Delete">
                           <AiOutlineDelete size={22} color="#E60E4E" />
                     </button>
                   </h2>

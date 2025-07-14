@@ -1050,6 +1050,10 @@
 .messagesWindowWrapper .ownMessageContainer {background-color: #648cbb; font: 300 15px/24px "Sora"; border: none;}
 .messagesWindowWrapper .ownMessageContainer .messageContainerTop {color: #fff; font: 300 15px/24px "Sora"; }
 .messagesWindowWrapper .ownMessageContainer .messageText {color: #fff; font: 300 15px/24px "Sora"; }
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6ed441485d96697b2fcc86c3e1135048a2465fd
 .adminDashboardWrapper .messagesWindowWrapper {overflow: visible;}
 .adminDashboardWrapper .messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px;}
 .adminDashboardWrapper .messagesWindowWrapper .messagesWindowInner {width: 100%;}
@@ -1059,8 +1063,43 @@
 
 /* --------------------- tooltip design ------------------------  */
 
+.tooltip.custom-tooltip .tooltip-inner {
+  background-color: #333 !important;
+  color: #fff !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  max-width: none !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.tooltip.custom-tooltip .tooltip-arrow::before {
+  content: "";
+  border-width: 5px !important;
+  border-style: solid !important;
+}
+
+/* Top arrow */
+.tooltip.custom-tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: #333 !important;
+}
+
+/* Bottom arrow */
+.tooltip.custom-tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: #333 !important;
+}
+
+
+
 .tooltipWrapper { position: relative; display: inline-block; }
 .tooltipWrapper:hover .tooltipText { visibility: visible; opacity: 1; }
+<<<<<<< HEAD
 .tooltipText { visibility: hidden; width: max-content; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 6px 8px; position: absolute; z-index: 10; top: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; font-size: 12px; }
 .tooltipText::after { content: ""; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: transparent transparent #333 transparent; }
 
+=======
+.tooltipText { visibility: hidden; width: max-content; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 6px 8px; position: absolute; z-index: 10; top: 125%; /* Changed from bottom: 125% to top: 125% */ left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; font-size: 12px; }
+.tooltipText::after { content: ""; position: absolute; bottom: 100%; /* Arrow points up now */ left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: transparent transparent #333 transparent; /* Changed arrow color direction */ }
+>>>>>>> c6ed441485d96697b2fcc86c3e1135048a2465fd
