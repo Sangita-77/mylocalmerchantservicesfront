@@ -1023,11 +1023,19 @@
 .contactlistWrapper .contactlistContainer .accordion .accordion-item {border: none; background-color: #fff;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button {column-gap: 20px; text-transform: capitalize; padding-left: 40px; outline: none; box-shadow: none; padding-right: 85px; height: 75px; color: #6A8196; font: 400 16px "Sora";}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-header {display: flex; background-color: #fff;}
-.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-header .delButton {margin-left: -70px;
-  z-index: 9; width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none; margin-top: 20px;
-  display: flex; justify-content: center; align-items: center;}
-  .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button[aria-expanded="true"] {background-color: #F5F5FE; box-shadow: 0px 3px 7px -6px rgb(192, 192, 192);}
-  .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body {row-gap: 20px; background-color: #F5F5FE; padding: 40px 42px;}
-  .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body > .col-lg-3 {font: 600 16px/24px "Sora"; color: #6A8196;}
-  .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body > .col-lg-9 {font: 300 16px/24px "Sora"; color: #6A8196;}
-  .accordion-button::after { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230085DA'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;  }
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-header .delButton {margin-left: -70px; z-index: 9; width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none; margin-top: 20px; display: flex; justify-content: center; align-items: center;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button[aria-expanded="true"] {background-color: #F5F5FE; box-shadow: 0px 3px 7px -6px rgb(192, 192, 192);}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body {row-gap: 20px; background-color: #F5F5FE; padding: 40px 42px;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body > .col-lg-3 {font: 600 16px/24px "Sora"; color: #6A8196;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body > .col-lg-9 {font: 300 16px/24px "Sora"; color: #6A8196;}
+.accordion-button::after { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230085DA'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;  }
+
+
+/* --------- connect popup ---------- */
+.adminDashboardWrapper .messagesWindowWrapper {overflow: visible;}
+/* .adminDashboardWrapper .messagesWindowWrapper .messagesWindowCloseBtn {} */
+.adminDashboardWrapper .messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px;}
+.adminDashboardWrapper .messagesWindowWrapper .messagesWindowInner {width: 100%;}
+.adminDashboardWrapper .messagesWindowWrapper .usersMessageContainer {background-color: #3bb2ff; color: #fff;}
+.adminDashboardWrapper .messagesWindowWrapper .username {color: #fff;}
+.adminDashboardWrapper .messagesWindowWrapper .messageTime {color: #fff;}

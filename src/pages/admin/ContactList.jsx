@@ -57,11 +57,11 @@ const ContactList = () => {
         <div className="contactlistContainer">
           <div className="accordion" id="accordionExample">
             {loading ? (
-              <tr>
-                <td colSpan="5" style={{ textAlign: "center", padding: "20px" }}>
+              <div>
+                <div style={{ textAlign: "center", padding: "20px" }}>
                   <PreLoader />
-                </td>
-              </tr>
+                </div>
+              </div>
             ) : Array.isArray(ContactList.contactList) && ContactList.contactList.length > 0 ? (
               ContactList.contactList.map((contact, index) => (
                 <div className="accordion-item" key={contact.contact_id}>
