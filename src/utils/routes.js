@@ -4,6 +4,7 @@ export const routes = {
   reset_password: () => "/reset-password",
   registration: () => "/registration",
   merchant_list: () => "/merchant-list",
+  contact: () => "/contact",
 
 
 
