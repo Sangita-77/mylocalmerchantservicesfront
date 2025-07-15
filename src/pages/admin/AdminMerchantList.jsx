@@ -5,7 +5,7 @@ import MerchantList from "../../components/MerchantList";
 
 const AdminMerchantList = () => {
   return (
-     <div className="adminUserlistWrapper">
+     <div className="adminUserlistWrapper merchantListAdmin">
       <div className="adminDashboardContainer">
             <AdminDashBoardTopBar heading="Merchant List" />
               <div className='adminUserlIstContainer'>

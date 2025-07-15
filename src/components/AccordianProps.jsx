@@ -6,18 +6,16 @@ import Table from 'react-bootstrap/Table';
 const AccordianProps = (props) => {
   return (
 
-<div>
+<div className="merchantaccordian-table">
    <Accordion defaultActiveKey={['0']} alwaysOpen>
       <Accordion.Item eventKey="0">
-        <Accordion.Header>
+        <Accordion.Header style={{ backgroundColor: props.bgColor}}>
             <div className="d-flex">
-                 {props.Icon && <props.Icon/>}
-            <div>
-              
+            <div className="merchant-icon">
+                 {props.Icon && <props.Icon  style={{ color: props.bgColor}}/>}
             </div>
-                 {props.Heading}
-             <div>
-                
+             <div className="merchant-heading">
+                {props.Heading}
             </div>
             </div>
             </Accordion.Header>
@@ -33,27 +31,7 @@ const AccordianProps = (props) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Larry the Bird</td>
-          <td>Larry the Bird</td>
-          <td>@twitter</td>
-          <td>@twitter</td>
-        </tr>
+         {props.tbody}
       </tbody>
     </Table>
         </Accordion.Body>
