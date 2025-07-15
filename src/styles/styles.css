@@ -857,10 +857,7 @@
 .messagesWindowWrapper .ownMessageContainer {background-color: #648cbb; font: 300 15px/24px "Sora"; border: none;}
 .messagesWindowWrapper .ownMessageContainer .messageContainerTop {color: #fff; font: 300 15px/24px "Sora"; }
 .messagesWindowWrapper .ownMessageContainer .messageText {color: #fff; font: 300 15px/24px "Sora"; }
-<<<<<<< HEAD
 
-=======
->>>>>>> 61f8bee41f083067b72b27bf0791c42729adce6d
 .adminDashboardWrapper .messagesWindowWrapper {overflow: visible;}
 .adminDashboardWrapper .messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px;}
 .adminDashboardWrapper .messagesWindowWrapper .messagesWindowInner {width: 100%;}
@@ -898,15 +895,6 @@
   border-bottom-color: #333 !important;
 }
 .tooltipWrapper { position: relative; display: inline-block; }
-<<<<<<< HEAD
-.tooltipWrapper:hover .tooltipText { visibility: visible; opacity: 1; }
-.tooltipText { visibility: hidden; width: max-content; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 6px 8px; position: absolute; z-index: 10; top: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; font-size: 12px; }
-.tooltipText::after { content: ""; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: transparent transparent #333 transparent; }
-
-.tooltipText { visibility: hidden; width: max-content; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 6px 8px; position: absolute; z-index: 10; top: 125%; /* Changed from bottom: 125% to top: 125% */ left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; font-size: 12px; }
-.tooltipText::after { content: ""; position: absolute; bottom: 100%; /* Arrow points up now */ left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: transparent transparent #333 transparent; /* Changed arrow color direction */ }
-
-=======
 
 .tooltipWrapper:hover .tooltipText { visibility: visible; opacity: 1; }
 .tooltipText { visibility: hidden; width: max-content; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 6px 8px; position: absolute; z-index: 999; top: 125%; /* Changed from bottom: 125% to top: 125% */ left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; font-size: 12px; }
@@ -950,4 +938,4 @@ border-radius: 5px; margin-right: 30px;}
 .contactPageWrapper button:hover { background-color: #007fd4; }
 .contactPageWrapper .imageContainer { flex: 1; max-width: 45%; display: flex; justify-content: center; align-items: center; }
 .contactPageWrapper .imageContainer img { max-width: 100%; height: auto; object-fit: contain; }
->>>>>>> 61f8bee41f083067b72b27bf0791c42729adce6d
+
