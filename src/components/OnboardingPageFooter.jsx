@@ -64,9 +64,9 @@ const OnboardingPageFooter = () => {
 
         <div className="footerCol">
           <p className="footerColTitle">Contact us</p>
-          <div className="footerRow">
+          <div className="footerRow footerLocation">
             <IoLocationSharp size={28} color="#ffffff"/>
-            <p className="footerColDesc">1 Chestnut Hill Plaza #1452 Newark, DE 19713 United States</p>
+            <p className="footerColDesc">1 Chestnut Hill Plaza #1452 <br />Newark, DE 19713 <br />United States</p>
           </div>
           <div className="footerRow">
             <IoMail size={22} color="#ffffff"/>

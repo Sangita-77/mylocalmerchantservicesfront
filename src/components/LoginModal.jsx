@@ -190,8 +190,7 @@ const LoginModal = ({ handleClose }) => {
     <>
       <div className="overlay">
         <div className="loginCloseBtnContainer" onClick={handleClose}>
-          <div className="loginCloseBtn"></div>
-          &times;
+          <div className="loginCloseBtn">&times;</div>
         </div>
         <div className="loginModalWrapper">
           <img src={blueShade} alt="" className="loginBlueShade" />

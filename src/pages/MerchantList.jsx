@@ -289,7 +289,7 @@ useEffect(() => {
   }
 }, [searchByName, searchByState, searchByZip, searchByType]);
 const getHeaderColor = (index) => {
-  const colors = ["#71cdea", "#DAA520", "#98fb98", "#71cdea"];
+  const colors = ["#71cdea", "#FFBF61", "#98fb98", "#71cdea"];
   return colors[index % colors.length]; 
 };
 

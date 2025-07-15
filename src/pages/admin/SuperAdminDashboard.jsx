@@ -745,14 +745,14 @@ const SuperAdminDashboard = () => {
               <div className="colorDefineContainer">
                 <div className="colorDefineSingleItem">
                   <div className="colorBox"></div>
-                  <div>USER</div>
+                  <div className="colorBoxTitle">USER</div>
                 </div>
                 <div className="colorDefineSingleItem">
                   <div
                     className="colorBox"
                     style={{ backgroundColor: "#71cdea" }}
                   ></div>
-                  <div>MERCHANT</div>
+                  <div className="colorBoxTitle">MERCHANT</div>
                 </div>
               </div>
 
