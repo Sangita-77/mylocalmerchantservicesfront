@@ -82,8 +82,8 @@ const AdminSidebar = () => {
           </div>
 
           <div
-            className={`sidebarItem ${url === `${BASENAME}/admin/usermerchant-list` && "sidebarItemActive"}`}
-            onClick={() => navigate(routes. admin_user_merchant())}
+            className={`sidebarItem ${url === `${BASENAME}/admin/admin-merchant-list` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes. admin_merchant_list())}
           >
             <LiaStoreAltSolid color={"#fff"} size={24}/>
             <div>Merchant</div>

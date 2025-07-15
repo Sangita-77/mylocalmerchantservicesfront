@@ -1,7 +1,7 @@
 import React from 'react';
 import './../../styles/styles.css';
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
-import MerchantList from "../../components/MerchantList";
+import MerchantListComp from "../../components/MerchantListComp";
 
 const AdminMerchantList = () => {
   return (
@@ -9,7 +9,7 @@ const AdminMerchantList = () => {
       <div className="adminDashboardContainer">
             <AdminDashBoardTopBar heading="Merchant List" />
               <div className='adminUserlIstContainer'>
-                 <MerchantList/>
+                 <MerchantListComp/>
                </div>
         </div>
     </div>

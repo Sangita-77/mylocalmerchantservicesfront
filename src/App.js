@@ -186,7 +186,7 @@ function App() {
             element: <ContactList />,
           },
           {
-            path: "/admin/usermerchant-list",
+            path: "/admin/admin-merchant-list",
             element: <AdminMerchantList />,
           },
           {
