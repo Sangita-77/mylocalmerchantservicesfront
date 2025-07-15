@@ -178,10 +178,14 @@ const handleDeleteClick = async (connection) => {
                     {getUserEmail(connection.merchant_id)}
                   </td>
                   <td className="actionTd">
-                    <button className="viewButton" onClick={() => handleViewClick(connection)}>
+                    <button className="viewButton" onClick={() => handleViewClick(connection)} data-bs-toggle="tooltip"
+                        data-bs-placement="auto"
+                        title="View Details">
                       <PiEyeLight size={22} color="white" />
                     </button>
-                    <button  className="delButton" onClick={() => handleDeleteClick(connection)}>
+                    <button  className="delButton" onClick={() => handleDeleteClick(connection)} data-bs-toggle="tooltip"
+                        data-bs-placement="auto"
+                        title="Delete">
                       <AiOutlineDelete size={22}  color="#E60E4E" style={{ cursor: "pointer" }}/>
                     </button>
                   </td>

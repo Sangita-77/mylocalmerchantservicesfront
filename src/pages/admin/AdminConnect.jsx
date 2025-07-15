@@ -182,23 +182,23 @@ const AdminConnect = () => {
                                             <td className="td">{merchant ? merchant.user_id : "N/A"}</td>
                                             <td className="td">{user ? user.user_id : "N/A"}</td>
                                             <td className="actionTd">
-                                                <button className="viewButton" disabled={loadingChatId === connection.connected_id} onClick={() => handleViewChat(connection.connected_id, connection.user_id, connection.merchant_id)}>
+                                                <button className="viewButton" disabled={loadingChatId === connection.connected_id} onClick={() => handleViewChat(connection.connected_id, connection.user_id, connection.merchant_id)} data-bs-toggle="tooltip"
+                                                    data-bs-placement="auto"
+                                                    title="View Details">
                                                     {/* <PiEyeLight size={22} color="white" /> */}
                                                     {loadingChatId === connection.connected_id ? (
                                                         <div className="spinner" style={{ width: "16px", height: "16px" }} />
                                                     ) : (
-                                                        <Tooltip text="View Details">
                                                             <PiEyeLight size={22} color="white" />
-                                                        </Tooltip>
                                                     )}
                                                 </button>
                                                 <button className="delButton" onClick={() => {
                                                     handleDeleteClick(connection.user_id, connection.merchant_id);
-                                                }}>
+                                                }} data-bs-toggle="tooltip"
+                                                    data-bs-placement="auto"
+                                                    title="Delete">
                                                     
-                                                    <Tooltip text="Delete">
                                                         <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
-                                                    </Tooltip>
                                                 </button>
                                             </td>
                                         </tr>

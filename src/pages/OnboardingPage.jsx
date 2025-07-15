@@ -132,20 +132,20 @@ const OnboardingPage = () => {
 
         <div className="bannerLeafletItem">
           <img src={rateStar} alt="" className="leafletItemImg" />
-          <p className="leafletItemTitle">100% Free</p>
-          <p className="leafletItemSubTitle">So, search away</p>
+          <p className="leafletItemTitle">Compare Rates</p>
+          <p className="leafletItemSubTitle">from local agents</p>
         </div>
 
         <div className="bannerLeafletItem">
           <img src={dollarPig} alt="" className="leafletItemImg" />
-          <p className="leafletItemTitle">100% Free</p>
-          <p className="leafletItemSubTitle">So, search away</p>
+          <p className="leafletItemTitle">Save Big On</p>
+          <p className="leafletItemSubTitle">processing & point of sale</p>
         </div>
 
         <div className="bannerLeafletItem">
           <img src={support} alt="" className="leafletItemImg" />
-          <p className="leafletItemTitle">100% Free</p>
-          <p className="leafletItemSubTitle">So, search away</p>
+          <p className="leafletItemTitle">Full-Service Support</p>
+          <p className="leafletItemSubTitle">from local professionals</p>
         </div>
       </div>
 
@@ -418,11 +418,10 @@ const OnboardingPage = () => {
 
             <div className="articleItemContent">
               <p className="articleTitle">
-                What is a Group Purchasing Organization?
+                Stripe Chargeback Protection A Guide to Managing
               </p>
               <p className="articleDesc">
-                If you are a small business owner, keeping track of how things
-                add up so quickly can be extra straining.
+                Stripe is a multi-national SAAS company relied upon for its power-packed APIs and online payment processing ...
               </p>
 
               <button className="articleButton">
@@ -439,11 +438,10 @@ const OnboardingPage = () => {
 
             <div className="articleItemContent">
               <p className="articleTitle">
-                What is a Group Purchasing Organization?
+              Walmart MoneyCenter Hours and Services
               </p>
               <p className="articleDesc">
-                If you are a small business owner, keeping track of how things
-                add up so quickly can be extra straining.
+              Are you seeking an affordable and convenient way to handle all your money matters? Walmart MoneyCenter
               </p>
 
               <button className="articleButton">

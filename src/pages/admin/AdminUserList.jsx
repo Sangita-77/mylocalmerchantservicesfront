@@ -124,17 +124,17 @@ const confirmDelete = async () => {
                       <td className="td">{user.user_id}</td>
                       <td className="td">{user.industry || "N/A"}</td>
                       <td className="actionTd">
-                        <button className="viewButton" onClick={() => handleViewClick(user)}>
-                          <Tooltip text="View Details">
-                            <PiEyeLight size={22} color="white" />
-                          </Tooltip>
+                        <button className="viewButton" onClick={() => handleViewClick(user)} data-bs-toggle="tooltip"
+                        data-bs-placement="auto"
+                        title="View Details">
+                          <PiEyeLight size={22} color="white" />
                         </button>
                         <button className="delButton" onClick={() => {
                             handleDeleteClick(user.user_id);
-                        }}>
-                          <Tooltip text="Delete">
-                            <AiOutlineDelete size={22} color="#E60E4E" />
-                          </Tooltip>
+                        }} data-bs-toggle="tooltip"
+                        data-bs-placement="auto"
+                        title="Delete">
+                          <AiOutlineDelete size={22} color="#E60E4E" />
                         </button>
                       </td>
                     </tr>
