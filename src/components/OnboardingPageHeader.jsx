@@ -156,7 +156,7 @@ const OnboardingPageHeader = () => {
 
 
 
-          <button className="header_Btn">Contact</button>
+          <button className="header_Btn" onClick={() => navigate(routes.contact())}>Contact</button>
         </div>
 
         <div className="headerRightMobileView">
