@@ -82,22 +82,10 @@ const AdminSidebar = () => {
           </div>
 
           <div
-            className="sidebarItem"
-            onMouseEnter={() => setMerchantHover(true)}
-            onMouseLeave={() => setMerchantHover(false)}
+            className={`sidebarItem ${url === `${BASENAME}/admin/admin-merchant-list` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes. admin_merchant_list())}
           >
-            <LiaStoreAltSolid
-              color={merchantHover === true ? "#838383" : "white"}
-              size={24}
-            />
-            <div>Merchant</div>
-          </div>
-
-          <div
-            className={`sidebarItem ${url === `${BASENAME}/admin/usermerchant-list` && "sidebarItemActive"}`}
-            onClick={() => navigate(routes. admin_user_merchant())}
-          >
-            <HiLink color={"#fff"} size={24}/>
+            <LiaStoreAltSolid color={"#fff"} size={24}/>
             <div>Merchant</div>
           </div>
 

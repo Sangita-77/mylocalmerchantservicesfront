@@ -40,6 +40,8 @@ import AdminUserList from "./pages/admin/AdminUserList";
 import AdminConnect from "./pages/admin/AdminConnect";
 import ContactList from "./pages/admin/ContactList";
 
+import Contact from "./pages/Contact";
+
 function App() {
   const [loading, setLoading] = useState(false);
 
@@ -149,6 +151,10 @@ function App() {
             path: "/merchant-list",
             element: <MerchantList />,
           },
+          {
+            path: "/contact",
+            element: <Contact />,
+          },
         ],
       },
       {
@@ -180,7 +186,7 @@ function App() {
             element: <ContactList />,
           },
           {
-            path: "/admin/usermerchant-list",
+            path: "/admin/admin-merchant-list",
             element: <AdminMerchantList />,
           },
           {

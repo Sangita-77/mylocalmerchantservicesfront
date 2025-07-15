@@ -4,16 +4,17 @@ export const routes = {
   reset_password: () => "/reset-password",
   registration: () => "/registration",
   merchant_list: () => "/merchant-list",
+  contact: () => "/contact",
 
 
 
   //////////////   SUPER ADMIN     ///////////////
   admin_dashboard: () => "/admin/dashboard",
   admin_profile: () => "/admin/profile",
-  admin_merchant_list: () => "/admin/merchant_list",
+  // admin_merchant_list: () => "/admin/merchant_list",
   admin_user_list: () => "/admin/user_list",
   admin_user_connect: () => "/admin/connect",
-  admin_user_merchant: () => "/admin/usermerchant-list",
+  admin_merchant_list: () => "/admin/admin-merchant-list",
   admin_contact: () => "/admin/contact",
 
 
