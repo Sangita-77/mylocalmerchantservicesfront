@@ -11,6 +11,8 @@ import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import { AppContext } from "../utils/context";
 import ConfirmModal from "../components/ConfirmModal";
+import AdminApproveModal from "./AdminApproveModal";
+import AdminMerchantUpdate from "./AdminMerchantUpdate";
 
 
 
@@ -53,10 +55,22 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , ap
 
 
   const [selectedUserDetails, setSelectedUserDetails] = useState(null);
+  const [selectedUserApprove, setSelectedUserApprove] = useState(null);
+  const [editUserDetails, setEditUserDetails] = useState(null);
 
 // Function to handle view
 const handleViewClick = (user) => {
   setSelectedUserDetails(user);
+};
+
+// Function to handle view
+const handleApproveClick = (user) => {
+  setSelectedUserApprove(user);
+};
+
+// Function to Edit
+const handleEditClick = (user) => {
+  setEditUserDetails(user);
 };
 
 
@@ -86,7 +100,7 @@ const handleViewClick = (user) => {
                   <button className="viewButton" onClick={() => handleViewClick(user)} data-bs-toggle="tooltip" data-bs-placement="auto" title="View Details">
                     <PiEyeLight size={22} color="white" />
                   </button>
-                  <button className="editButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Edit">                               
+                  <button className="editButton" onClick={() => handleEditClick(user)} data-bs-toggle="tooltip" data-bs-placement="auto" title="Edit">                               
                     <GoPencil color="green" />
                   </button>
                   <button className="delButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Delete" onClick={() => {
@@ -128,7 +142,7 @@ const handleViewClick = (user) => {
                   <td>{user.street} , {user.city} , Zip - {user.zip_code}</td>
                   <td>{user.type_of_service}</td>
                   <td>
-                    <button className="viewButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="View Details">
+                    <button className="viewButton" onClick={() => handleApproveClick(user)} data-bs-toggle="tooltip" data-bs-placement="auto" title="View Details">
                       <PiEyeLight size={22} color="white" />
                     </button>
                     <button className="delButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Delete" onClick={() => {
@@ -155,7 +169,18 @@ const handleViewClick = (user) => {
             onClose={() => setSelectedUserDetails(null)}
           />
         )}
-
+      {selectedUserApprove && (
+          <AdminApproveModal
+            user={selectedUserApprove}
+            onClose={() => setSelectedUserApprove(null)}
+          />
+        )}
+      {editUserDetails && (
+          <AdminMerchantUpdate
+            user={editUserDetails}
+            onClose={() => setEditUserDetails(null)}
+          />
+        )}
       {showConfirmModal && (
         <ConfirmModal
           title="Delete User"
