@@ -3,11 +3,21 @@ import "./../styles/styles.css";
 import { IoMdClose } from "react-icons/io";
 
 const UserDetailsModal = ({ user, onClose }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 100); 
+    return () => clearTimeout(timer);
+  }, []);
+  
   if (!user) return null;
 
   return (
     <div className="userDetailsOverlay">
-      <div className="userDetailsBoxWrapper">
+      <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
         <div className="messagesWindowCloseBtn" onClick={onClose}>
           <IoMdClose color="white" size={24} />
         </div>

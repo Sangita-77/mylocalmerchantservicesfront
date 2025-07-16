@@ -123,7 +123,8 @@ const handleEditClick = (user) => {
       />
       
       <AccordianProps 
-        bgColor="#71CDEA"
+        bgColor="#6586B3"
+        borderColor="#4A70A4"
         Icon={MdOutlineGroup}
         Heading={pendingHeading}
         tbody={
