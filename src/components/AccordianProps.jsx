@@ -9,7 +9,7 @@ const AccordianProps = (props) => {
 <div className="merchantaccordian-table">
    <Accordion defaultActiveKey={['0']} alwaysOpen>
       <Accordion.Item eventKey="0">
-        <Accordion.Header style={{ backgroundColor: props.bgColor}}>
+        <Accordion.Header style={{ backgroundColor: props.bgColor, borderBottomColor: props.borderColor}}>
             <div className="d-flex">
             <div className="merchant-icon">
                  {props.Icon && <props.Icon  style={{ color: props.bgColor}}/>}

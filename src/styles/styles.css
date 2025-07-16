@@ -904,14 +904,15 @@
 
 /*.......accordian start...........*/
 .merchantaccordian-table .accordion .accordion-header button{background: transparent;}
-.merchantaccordian-table .accordion .accordion-header{border-radius: 8px;}
+.merchantaccordian-table .accordion .accordion-header{border-radius: 8px; border-width: 3px; border-bottom-style: solid;}
 .merchantaccordian-table .accordion .accordion-header .accordion-button::after{filter:  brightness(0) invert(1);}
 .merchantaccordian-table .accordion .accordion-header .merchant-icon svg{background: #fff; height: 43px; width: 40px; padding: 1px 7px;
 border-radius: 5px; margin-right: 30px;}
-.merchantaccordian-table .accordion .accordion-header button{padding: 12px 15px; box-shadow: none;}
+.merchantaccordian-table .accordion .accordion-header button{padding: 12px 15px 8px; box-shadow: none;}
 .merchantaccordian-table .merchant-heading{color: #fff; font: 400 14px/45px 'Poppins';}
 .merchantaccordian-table .accordion-item{border: none; background: transparent;}
 .merchantListAdmin .adminDashboardContainer{width: 78.3vw;}
+.merchantaccordian-table  .accordion-body{padding: 38px 10px;}
 /*.......accordian End...........*/
 
 

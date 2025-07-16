@@ -13,6 +13,7 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , ap
     <div>
       <AccordianProps 
         bgColor="#71CDEA"
+        borderColor="#23B7E5"
         Icon={MdOutlineGroup}
         Heading={approvedHeading}
         tbody={
