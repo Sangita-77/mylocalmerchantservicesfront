@@ -12,6 +12,7 @@ const AdminMerchantList = () => {
   const { token } = useContext(AppContext);
   const [approvedUsers, setApprovedUsers] = useState([]);
   const [pendingUsers, setPendingUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchapprovedUsers();
@@ -32,13 +33,16 @@ const AdminMerchantList = () => {
         );
 
         if (response.data.status) {
-          console.log("Approveddddddddddddd",response.data);
+          // console.log("Approveddddddddddddd",response.data);
           setApprovedUsers(response.data.getMerchantList);
         } else {
             console.error(response.data.message);
         }
     } catch (error) {
         console.error("API Error:", error);
+    }
+    finally {
+      setLoading(false); // ✅ called once after both finish
     }
 
   };
@@ -57,13 +61,15 @@ const AdminMerchantList = () => {
         );
 
         if (response.data.status) {
-          console.log("pendinggggggggggg",response.data);
+          // console.log("pendinggggggggggg",response.data);
           setPendingUsers(response.data.getMerchantList);
         } else {
             console.error(response.data.message);
         }
     } catch (error) {
         console.error("API Error:", error);
+    }finally {
+      setLoading(false); // ✅ called once after both finish
     }
 
   };
@@ -72,7 +78,7 @@ const AdminMerchantList = () => {
       <div className="adminDashboardContainer">
             <AdminDashBoardTopBar heading="Merchant List" />
               <div className='adminUserlIstContainer'>
-                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers}/>
+                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading}/>
                </div>
         </div>
     </div>
