@@ -11,6 +11,11 @@ const AdminProcessor = () => {
     const [approvedUsers, setApprovedUsers] = useState([]);
     const [pendingUsers, setPendingUsers] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const refreshPage = () => {
+      fetchapprovedUsers(); 
+      fetchpendingUsers(); 
+    };
   
     useEffect(() => {
       fetchapprovedUsers();
@@ -76,7 +81,7 @@ const AdminProcessor = () => {
         <div className="adminDashboardContainer">
               <AdminDashBoardTopBar heading="Merchant List" />
                 <div className='adminUserlIstContainer'>
-                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Processors" pendingHeading="Pending Processors"/>
+                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Processors" pendingHeading="Pending Processors" flag="processors" onRefresh={refreshPage}/>
                  </div>
           </div>
       </div>

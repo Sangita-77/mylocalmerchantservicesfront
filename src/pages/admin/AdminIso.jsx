@@ -11,6 +11,11 @@ const AdminIso = () => {
     const [approvedUsers, setApprovedUsers] = useState([]);
     const [pendingUsers, setPendingUsers] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const refreshPage = () => {
+      fetchapprovedUsers(); 
+      fetchpendingUsers(); 
+    };
   
     useEffect(() => {
       fetchapprovedUsers();
@@ -76,7 +81,7 @@ const AdminIso = () => {
         <div className="adminDashboardContainer">
               <AdminDashBoardTopBar heading="Merchant List" />
                 <div className='adminUserlIstContainer'>
-                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Isos" pendingHeading="Pending Isos"/>
+                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Isos" pendingHeading="Pending Isos" flag="ISOs" onRefresh={refreshPage}/>
                  </div>
           </div>
       </div>
