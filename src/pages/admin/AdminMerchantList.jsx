@@ -14,6 +14,11 @@ const AdminMerchantList = () => {
   const [pendingUsers, setPendingUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const refreshPage = () => {
+    fetchapprovedUsers(); 
+    fetchpendingUsers(); 
+  };
+
   useEffect(() => {
     fetchapprovedUsers();
     fetchpendingUsers();
@@ -78,7 +83,7 @@ const AdminMerchantList = () => {
       <div className="adminDashboardContainer">
             <AdminDashBoardTopBar heading="Merchant List" />
               <div className='adminUserlIstContainer'>
-                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant"/>
+                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant" flag="merchant services providers" onRefresh={refreshPage}/>
                </div>
         </div>
     </div>

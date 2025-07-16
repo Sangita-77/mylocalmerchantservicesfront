@@ -4,9 +4,48 @@ import { MdOutlineGroup } from "react-icons/md";
 import { PiEyeLight } from "react-icons/pi";
 import { GoPencil } from "react-icons/go";
 import { AiOutlineDelete } from "react-icons/ai";
+import axios from "axios";
+import { BASE_URL } from "../utils/apiManager";
+import { AppContext } from "../utils/context";
+import ConfirmModal from "../components/ConfirmModal";
 
 
-const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , approvedHeading , pendingHeading }) => {
+const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , approvedHeading , pendingHeading , flag , onRefresh}) => {
+
+  const { token } = useContext(AppContext);
+
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
+  const handleDeleteClick = (user_id) => {
+    setSelectedUserId(user_id);
+    setShowConfirmModal(true);
+  };
+
+  const confirmDelete = async () => {
+    try {
+      const body = { user_id: selectedUserId, flag: flag };
+      const res = await axios.post(
+        `${BASE_URL}/deleteUser`,
+        JSON.stringify(body),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (res.data.status) {
+        onRefresh();
+      }
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    } finally {
+      setShowConfirmModal(false);
+      setSelectedUserId(null);
+    }
+  };
 
 
   return (
@@ -37,7 +76,9 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , ap
                   <button className="editButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Edit">                               
                     <GoPencil color="green" />
                   </button>
-                  <button className="delButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Delete">                               
+                  <button className="delButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Delete" onClick={() => {
+                            handleDeleteClick(user.user_id);
+                        }}>                               
                     <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
                   </button>
                 
@@ -77,7 +118,9 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , ap
                     <button className="viewButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="View Details">
                       <PiEyeLight size={22} color="white" />
                     </button>
-                    <button className="delButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Delete">                               
+                    <button className="delButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Delete" onClick={() => {
+                            handleDeleteClick(user.user_id);
+                        }}>                               
                       <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
                     </button>
                     
@@ -93,6 +136,15 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , ap
           </>
         }
       />
+
+      {showConfirmModal && (
+        <ConfirmModal
+          title="Delete User"
+          message="Are you sure you want to delete this merchant?"
+          onConfirm={confirmDelete}
+          onCancel={() => setShowConfirmModal(false)}
+        />
+      )}
     </div>
   );
 };
