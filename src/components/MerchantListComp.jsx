@@ -6,7 +6,7 @@ import { GoPencil } from "react-icons/go";
 import { AiOutlineDelete } from "react-icons/ai";
 
 
-const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading }) => {
+const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , approvedHeading , pendingHeading }) => {
 
 
   return (
@@ -14,7 +14,7 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading }) =
       <AccordianProps 
         bgColor="#71CDEA"
         Icon={MdOutlineGroup}
-        Heading="Approved Merchant"
+        Heading={approvedHeading}
         tbody={
           <>
             {loading ? (
@@ -54,7 +54,7 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading }) =
       <AccordianProps 
         bgColor="#71CDEA"
         Icon={MdOutlineGroup}
-        Heading="Pending Merchant"
+        Heading={pendingHeading}
         tbody={
           <>
             {loading ? (

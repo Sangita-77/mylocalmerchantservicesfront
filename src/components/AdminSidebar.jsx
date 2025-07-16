@@ -88,6 +88,27 @@ const AdminSidebar = () => {
             <LiaStoreAltSolid color={"#fff"} size={24}/>
             <div>Merchant</div>
           </div>
+          <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/admin-agent` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes. admin_agent())}
+          >
+            <LiaStoreAltSolid color={"#fff"} size={24}/>
+            <div>Agents</div>
+          </div>
+          <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/agent-iso` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes. admin_iso())}
+          >
+            <LiaStoreAltSolid color={"#fff"} size={24}/>
+            <div>Isos</div>
+          </div>
+          <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/agent-processor` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes. admin_processor())}
+          >
+            <LiaStoreAltSolid color={"#fff"} size={24}/>
+            <div>Proceesors</div>
+          </div>
 
           <div
             className={`sidebarItem ${url === `${BASENAME}/admin/connect` && "sidebarItemActive"}`}

@@ -78,7 +78,7 @@ const AdminMerchantList = () => {
       <div className="adminDashboardContainer">
             <AdminDashBoardTopBar heading="Merchant List" />
               <div className='adminUserlIstContainer'>
-                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading}/>
+                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant"/>
                </div>
         </div>
     </div>

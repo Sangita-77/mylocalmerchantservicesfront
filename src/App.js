@@ -42,6 +42,10 @@ import ContactList from "./pages/admin/ContactList";
 
 import Contact from "./pages/Contact";
 
+import AdminAgent from "./pages/admin/AdminAgent";
+import AdminIso from "./pages/admin/AdminIso";
+import AdminProcessor from "./pages/admin/AdminProcessor";
+
 function App() {
   const [loading, setLoading] = useState(false);
 
@@ -192,6 +196,18 @@ function App() {
           {
             path: "/admin/connect",
             element: <AdminConnect />,
+          },
+          {
+            path: "/admin/admin-agent",
+            element: <AdminAgent />,
+          },
+          {
+            path: "/admin/agent-iso",
+            element: <AdminIso />,
+          },
+          {
+            path: "/admin/agent-processor",
+            element: <AdminProcessor />,
           },
         ],
       },
