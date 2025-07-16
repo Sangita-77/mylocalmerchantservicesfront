@@ -42,7 +42,7 @@ const AdminMerchantList = () => {
         console.error("API Error:", error);
     }
     finally {
-      setLoading(false); // ✅ called once after both finish
+      setLoading(false);
     }
 
   };
@@ -69,7 +69,7 @@ const AdminMerchantList = () => {
     } catch (error) {
         console.error("API Error:", error);
     }finally {
-      setLoading(false); // ✅ called once after both finish
+      setLoading(false);
     }
 
   };

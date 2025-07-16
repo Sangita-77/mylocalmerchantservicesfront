@@ -4,9 +4,18 @@ import { MdOutlineGroup } from "react-icons/md";
 import { PiEyeLight } from "react-icons/pi";
 import { GoPencil } from "react-icons/go";
 import { AiOutlineDelete } from "react-icons/ai";
+import UserDetailsModal from "./UserDetailsModal";
 
 
 const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , approvedHeading , pendingHeading }) => {
+
+
+  const [selectedUserDetails, setSelectedUserDetails] = useState(null);
+
+// Function to handle view
+const handleViewClick = (user) => {
+  setSelectedUserDetails(user);
+};
 
 
   return (
@@ -31,7 +40,7 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , ap
                 <td>{user.street} , {user.city} , Zip - {user.zip_code}</td>
                 <td>{user.type_of_service}</td>
                 <td>
-                  <button className="viewButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="View Details">
+                  <button className="viewButton" onClick={() => handleViewClick(user)} data-bs-toggle="tooltip" data-bs-placement="auto" title="View Details">
                     <PiEyeLight size={22} color="white" />
                   </button>
                   <button className="editButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Delete">                               
@@ -90,6 +99,12 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , ap
           </>
         }
       />
+      {selectedUserDetails && (
+          <UserDetailsModal
+            user={selectedUserDetails}
+            onClose={() => setSelectedUserDetails(null)}
+          />
+        )}
     </div>
   );
 };
