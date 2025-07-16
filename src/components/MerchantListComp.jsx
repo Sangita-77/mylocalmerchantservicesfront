@@ -4,14 +4,14 @@ import { MdOutlineGroup } from "react-icons/md";
 import { PiEyeLight } from "react-icons/pi";
 import { GoPencil } from "react-icons/go";
 import { AiOutlineDelete } from "react-icons/ai";
-<<<<<<< HEAD
+
 import UserDetailsModal from "./UserDetailsModal";
-=======
+
 import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import { AppContext } from "../utils/context";
 import ConfirmModal from "../components/ConfirmModal";
->>>>>>> bb4c98ac3b7402d99ea6901e6e3b984c31ae06bd
+
 
 
 const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , approvedHeading , pendingHeading , flag , onRefresh}) => {
@@ -149,14 +149,12 @@ const handleViewClick = (user) => {
           </>
         }
       />
-<<<<<<< HEAD
       {selectedUserDetails && (
           <UserDetailsModal
             user={selectedUserDetails}
             onClose={() => setSelectedUserDetails(null)}
           />
         )}
-=======
 
       {showConfirmModal && (
         <ConfirmModal
@@ -166,7 +164,6 @@ const handleViewClick = (user) => {
           onCancel={() => setShowConfirmModal(false)}
         />
       )}
->>>>>>> bb4c98ac3b7402d99ea6901e6e3b984c31ae06bd
     </div>
   );
 };
