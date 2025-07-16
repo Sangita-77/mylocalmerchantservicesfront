@@ -801,7 +801,7 @@
 .adminUserlistWrapper .td {color: #7D7D7E; font: 400 15px "Poppins"; padding: 0 36px;}
 .adminUserlistWrapper .viewButton {width: 35px; height: 35px; background-color: #0085da; border: 1px solid #23b7e5; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
 .adminUserlistWrapper .delButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none;}
-.adminUserlistWrapper .editButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #008000; border-radius: 50%; cursor: pointer; outline: none;}
+.adminUserlistWrapper .editButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #008000; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
 .adminUserlistWrapper .actionTd {padding: 0 48px 0 0; text-align: center;}
 .adminUserlistWrapper .chatWindowWrapper .writeMessageView {display: none;}
 

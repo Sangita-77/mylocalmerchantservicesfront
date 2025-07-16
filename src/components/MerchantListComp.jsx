@@ -34,8 +34,11 @@ const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , ap
                   <button className="viewButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="View Details">
                     <PiEyeLight size={22} color="white" />
                   </button>
-                  <button className="editButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Delete">                               
-                    <GoPencil />
+                  <button className="editButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Edit">                               
+                    <GoPencil color="green" />
+                  </button>
+                  <button className="delButton" data-bs-toggle="tooltip" data-bs-placement="auto" title="Delete">                               
+                    <AiOutlineDelete size={22} color="#E60E4E" style={{ cursor: "pointer" }} />
                   </button>
                 
                 </td>
