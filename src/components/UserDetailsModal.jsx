@@ -7,9 +7,7 @@ const UserDetailsModal = ({ user, onClose }) => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 100); 
+    const timer = setTimeout(() => setIsOpen(true), 20);
     return () => clearTimeout(timer);
   }, []);
   
