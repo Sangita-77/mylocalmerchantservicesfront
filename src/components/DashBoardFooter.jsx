@@ -4,7 +4,7 @@ import "../styles/styles.css";
 const DashBoardFooter = () => {
   return (
     <>
-    <p>© My Local Merchant Services - 2018-2020. All rights reserved.</p>
+    <p className='footerBottomBar'>© My Local Merchant Services - 2018-2020. All rights reserved.</p>
     </>
   )
 }

@@ -6,6 +6,7 @@ import { BASE_URL } from "../../utils/apiManager";
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
 import { AppContext } from "../../utils/context";
 import { apiErrorHandler } from "../../utils/helper";
+import DashBoardFooter from "../../components/DashBoardFooter";
 
 const AdminProfile = () => {
   // password
@@ -452,6 +453,7 @@ const AdminProfile = () => {
 
         {/* <button className="loginBtn">Update</button> */}
       </div>
+      <DashBoardFooter />
     </div>
   );
 };

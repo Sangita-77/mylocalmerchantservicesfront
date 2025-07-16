@@ -19,6 +19,7 @@ import axios from "axios";
 import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
+import DashBoardFooter from "../../components/DashBoardFooter";
 
 const SuperAdminDashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -1009,6 +1010,8 @@ const SuperAdminDashboard = () => {
             </div>
           </div>
         </div>
+
+        <DashBoardFooter />
       </div>
       {showWindow && (
       <MessagesWindow

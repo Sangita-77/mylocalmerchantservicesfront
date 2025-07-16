@@ -323,7 +323,7 @@
 
 /* /////////////////////////////         ADMIN  DASHBOARD  DESIGN      /////////////////////////////////////// */
 .adminDashboardWrapper { margin: 0; padding: 0; background-color: #f5f5fe; width: 100%; }
-.adminDashboardWrapper .adminDashboardContainer { margin: 0; padding: 0 52px 48px; /* shorthand for top, horizontal, bottom */ background-color: #f5f5fe; height: 100vh; /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
+.adminDashboardWrapper .adminDashboardContainer { margin: 0; padding: 0 52px 20px; /* shorthand for top, horizontal, bottom */ background-color: #f5f5fe; height: 100vh; /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
 .adminDashboardWrapper .adminDashboardContainer .adminDashboardTopbar,
 .adminProfileWrapper .adminDashboardContainer .adminDashboardTopbar,
 .adminUserlistWrapper .adminDashboardContainer .adminDashboardTopbar,
@@ -768,7 +768,7 @@
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 /* ---------------- Admin Profile -------------- */
-.adminProfileWrapper .adminDashboardContainer {padding: 0 52px 40px;}
+.adminProfileWrapper .adminDashboardContainer {padding: 0 52px 40px; /*height: 91vh;*/}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainer {padding-top: 119px;}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px; padding: 0; background-color: #0085da; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader .adminProfileHeaderCompanyTitle {padding: 0 28px; color: #fff; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px;}
@@ -939,3 +939,6 @@ border-radius: 5px; margin-right: 30px;}
 .contactPageWrapper .imageContainer { flex: 1; max-width: 45%; display: flex; justify-content: center; align-items: center; }
 .contactPageWrapper .imageContainer img { max-width: 100%; height: auto; object-fit: contain; }
 
+
+/* ---------- Footer Bar -------------  */
+.footerBottomBar {text-align: center; color: #535353; font: 500 16px "Poppins"; text-transform: uppercase; margin: 0; padding: 20px 10px;}
