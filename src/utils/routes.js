@@ -16,6 +16,9 @@ export const routes = {
   admin_user_connect: () => "/admin/connect",
   admin_merchant_list: () => "/admin/admin-merchant-list",
   admin_contact: () => "/admin/contact",
+  admin_agent: () => "/admin/admin-agent",
+  admin_iso: () => "/admin/agent-iso",
+  admin_processor: () => "/admin/agent-processor",
 
 
 
