@@ -16,14 +16,16 @@ const ConfirmModal = ({ title, message, onConfirm, onCancel }) => {
   };
   return (
     <div className="modalOverlay">
-      <div className="modalContent">
-        <h4>{title || 'Confirm'}</h4>
-        <p>{message || 'Are you sure you want to proceed?'}</p>
-        <div className="modalActions">
-          <button className="cancelBtn" onClick={onCancel} disabled={loading}>Cancel</button>
-          <button className="confirmBtn"
-            onClick={handleConfirmClick}
-            disabled={loading}> {loading ? "..." : "Ok"}</button>
+      <div className="modalContentWrap">
+        <div className="modalContent">
+          <h4>{title || 'Confirm'}</h4>
+          <p>{message || 'Are you sure you want to proceed?'}</p>
+          <div className="modalActions">
+            <button className="cancelBtn" onClick={onCancel} disabled={loading}>Cancel</button>
+            <button className="confirmBtn"
+              onClick={handleConfirmClick}
+              disabled={loading}> {loading ? "..." : "Ok"}</button>
+          </div>
         </div>
       </div>
     </div>

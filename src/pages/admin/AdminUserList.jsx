@@ -102,6 +102,7 @@ const confirmDelete = async () => {
           
 
      <div className="adminUserlIstContainer">
+      <div className="tableContainerWrap">
             <table className="tableContainer">
               <thead className="theadContainer">
                 <tr>
@@ -150,6 +151,7 @@ const confirmDelete = async () => {
               </tbody>
 
             </table>
+            </div>
           </div>
 
 
