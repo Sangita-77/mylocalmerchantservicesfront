@@ -5,6 +5,7 @@ import MerchantListComp from "../../components/MerchantListComp";
 import axios from "axios";
 import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
+import { IoStorefrontSharp } from "react-icons/io5";
 
 
 const AdminMerchantList = () => {
@@ -85,7 +86,7 @@ const AdminMerchantList = () => {
       <div className="adminDashboardContainer">
             
               <div className='adminUserlIstContainer'>
-                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant" flag="merchant services providers" onRefresh={refreshPage}/>
+                 <MerchantListComp Icon={IoStorefrontSharp} approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant" flag="merchant services providers" onRefresh={refreshPage}/>
                </div>
         </div>
     </div>

@@ -20,6 +20,7 @@ const AccordianProps = (props) => {
             </div>
             </Accordion.Header>
         <Accordion.Body>
+          <div className="accordianTableWrap">
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -34,6 +35,7 @@ const AccordianProps = (props) => {
          {props.tbody}
       </tbody>
     </Table>
+    </div>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>

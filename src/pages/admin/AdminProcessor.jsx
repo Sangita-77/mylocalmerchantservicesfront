@@ -78,8 +78,10 @@ const AdminProcessor = () => {
     };
     return (
        <div className="adminUserlistWrapper merchantListAdmin">
+        
+        <AdminDashBoardTopBar heading="Processor List" />
         <div className="adminDashboardContainer">
-              <AdminDashBoardTopBar heading="Processor List" />
+              
                 <div className='adminUserlIstContainer'>
                    <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Processors" pendingHeading="Pending Processors" flag="processors" onRefresh={refreshPage}/>
                  </div>
