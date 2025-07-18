@@ -211,15 +211,16 @@
 
 .merchantDetailsOverlay{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(255, 255, 255, 0.75); /* semi-transparent black */ z-index: 1000; overflow: hidden; }
 
-.merchantDetailsModalWrapper { margin: 0; padding: 0; width: 680px; height: 75vh; border: none; border-radius: 20px; background-color: #0085DA; position: fixed; top: 10vh; left: 20vw; overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; -ms-overflow-style: none;  z-index: 9999; transform: translateZ(0); }
-.merchantDetailsModalContainer { margin: 0; padding: 50px 40px 35px; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
-.merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 8vh; right: 19%; color: white; background-color: #FFBF61; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
+.merchantDetailsModalWrapper { margin: 0; padding: 0; width: 680px; height: 75vh; border: none; border-radius: 20px; background-color: #0085DA; position: fixed; top: 13vh; left: 50%; transform: translateX(-50%); overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; -ms-overflow-style: none;  z-index: 9999; }
+.merchantDetailsModalContainer { margin: 0; padding: 50px 40px 35px; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+.merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 11vh; right: 28%; color: white; background-color: #FFBF61; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
 .merchantDetailsModalCloseBtn{}
-.dataRowContainer { margin: 0; padding: 0; width: 100%; height: 58px; max-height: 200px; display: flex; flex-direction: row; align-items: center; column-gap: 50px; border: none; }
+.dataRowContainer { margin: 0; padding: 0; width: 100%; height: 53px; max-height: 200px; display: flex; flex-direction: row; align-items: center; column-gap: 50px; border: none; }
 .dataTitle { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 600; width: 24%; height: 100%; display: flex; align-items: center; }
-.data { margin: 0; padding: 0 24px; width: 80%; max-width: 80%; height: 58px; font-family: "Poppins"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; height: 53px;}
+.data { margin: 0; padding: 0 24px; width: 80%; max-width: 80%; font-family: "Poppins"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; height: 53px;}
 .modalConnectBtn {transition: all .5s ease-in-out; margin: 0; padding: 0; width: 180px; height: 58px; text-align: center; color: #000; background-color: #FFBF61; font: 600 19px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px; }
 .modalConnectBtn:hover {background-color: #ffffff;}
+
 
 
 /* //////////////////      REGISTRATION PAGE      //////////////// */
