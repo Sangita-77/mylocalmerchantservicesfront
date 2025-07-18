@@ -174,6 +174,8 @@ const handleEditClick = (user) => {
           <AdminApproveModal
             user={selectedUserApprove}
             onClose={() => setSelectedUserApprove(null)}
+            flag={flag}
+            onRefresh={onRefresh}
           />
         )}
       {editUserDetails && (
