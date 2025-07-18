@@ -11,12 +11,12 @@ const COLORS = ['#71cdea', '#bcbfc5']; // Add more if you have more data
 const PieChartComponent = ({ data, dataKey, nameKey, colors }) => {
   console.log(".data",data);
   return (
-    <PieChart width={319} height={270}>
+    <PieChart width={300} height={270}>
       <Pie
         data={data}
         cx="50%"
         cy="50%"
-        outerRadius={100}
+        outerRadius={80}
         fill="#8884d8"
         dataKey={dataKey}
         nameKey={nameKey}

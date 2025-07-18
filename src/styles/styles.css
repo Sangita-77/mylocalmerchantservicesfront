@@ -329,8 +329,8 @@
 .adminSidebarContainer .sidebarItem:hover .sidebarItemTitle {color: #838383;}
 
 /* /////////////////////////////         ADMIN  DASHBOARD  DESIGN      /////////////////////////////////////// */
-.adminDashboardWrapper { margin: 0; padding: 0; background-color: #f5f5fe; width: 100%; }
-.adminDashboardWrapper .adminDashboardContainer { margin: 0; padding: 0 52px 20px; /* shorthand for top, horizontal, bottom */ background-color: #f5f5fe; height: 100vh; /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
+.adminDashboardWrapper { margin: 0; padding: 0; background-color: #23b7e52b; width: 100%; }
+.adminDashboardWrapper .adminDashboardContainer { margin: 0; padding: 0 52px 20px; /* shorthand for top, horizontal, bottom */  height: 100vh; /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
 .adminDashboardWrapper .adminDashboardContainer .adminDashboardTopbar,
 .adminProfileWrapper .adminDashboardContainer .adminDashboardTopbar,
 .adminUserlistWrapper .adminDashboardContainer .adminDashboardTopbar,
@@ -344,7 +344,9 @@
 .adminDashboardWrapper .adminDashboardContainer .inputSearchIconContainer { width: 34px; height: 32px; display: flex; align-items: center; justify-content: center; background-color: #144d99; border: none; border-radius: 50%; }
 .adminDashboardWrapper .adminDashboardContainer .logoutIconContainer { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
 .adminDashboardWrapper .adminDashboardContainer .adminDashboardMain {padding-right: 40px;}
-.adminDashboardWrapper .adminDashboardCountContainer { margin-top: 100px; display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; column-gap: 40px; row-gap: 31px;}
+.adminDashboardWrapper .adminDashboardCountContainer { margin-top: 150px; display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; column-gap: 40px; row-gap: 31px;}
+.adminDashboardUserSection .userStatsSection{ margin: 0; padding: 16px 24px 12px 24px; background-color: #22a0f1; border: 1px solid #23b7e5; border-radius: 24px; position: relative;}
+
 .adminDashboardWrapper .adminDashboardCountPlate { margin: 0; padding: 16px 16px 12px; width: 31%; background-color: #bcbfc5; display: flex; flex-direction: row; align-items: flex-start; column-gap: 12px; border: none; outline: none; border-radius: 10px; }
 .adminDashboardWrapper .adminDashboardCountPlate:nth-child(1) { background-color: #bcbfc5; border-bottom: 4px solid #aeb1b7; }
 
@@ -364,7 +366,7 @@
 .adminDashboardWrapper .countPlateIconContainer { width: 64px; height: 64px; background-color: white; display: flex; align-items: center; justify-content: center; border: none; border-radius: 6px; }
 .adminDashboardWrapper .countPlateRightContainer { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 400; font-size: 14px; display: flex; flex-direction: column; gap: 4px; }
 .dashboardRow { width: 100%; margin: 62px 0; padding: 0; display: flex; flex-direction: row; align-items: stretch; gap: 30px; }
-.adminDashboardWrapper .adminDashboardUserSection { margin: 0; padding: 16px 24px 12px 24px; width: 70%; background-color: #22a0f1; border: 1px solid #23b7e5; border-radius: 24px; position: relative; }
+.adminDashboardWrapper .adminDashboardUserSection { margin: 0; padding: 12px; width: 70%; background-color: #ffffff63; border: 1px solid #fff; border-radius: 24px; position: relative; box-shadow: 0px 0px 10px #23b7e570;}
 .adminDashboardWrapper .userStatsTopContainer { width: 95%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
 .adminDashboardWrapper .userStatsTopRight { display: flex; flex-direction: row; align-items: center; gap: 12px; }
 .adminDashboardWrapper .userStatsTopLeft, .merchantStatsSection .userStatsTopLeft { display: flex; flex-direction: row; align-items: center; gap: 12px; }
@@ -389,7 +391,9 @@
 .adminDashboardWrapper .dropdown { margin: 0; padding: 0; width: 80%; color: white; font-family: "Sora"; font-weight: 400; font-size: 12px; background-color: transparent; border: none; outline: none; appearance: none; }
 .adminDashboardWrapper .dropdownOption { margin: 0; padding: 0; color: black; }
 
-.adminDashboardWrapper .adminDashboardPieChartSection { margin: 0; padding: 20px 20px; width: 30%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; background-color: #e3f1ff; border: 1px solid white; border-radius: 24px; box-shadow: 0 0 5px 0 rgb(209, 209, 209); }
+.adminDashboardWrapper .adminDashboardPieChartSection {width: 30%; background-color: #ffffffb0; border: 1px solid #fff; border-radius: 24px;
+position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px;}
+.adminDashboardWrapper .adminDashboardPieChartSection .adminDashboardPieChart{ margin: 0; padding: 20px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; background-color: #e3f1ff; border: 1px solid #d7d7d7; border-radius: 24px; box-shadow: 0 0 5px 0 rgb(209, 209, 209);}
 .adminDashboardWrapper .adminDashboardPieChartSection .pieChartTitle { color: #404040; font-family: "Sora"; font-weight: 400; font-size: 20px; line-height: 20px; margin-bottom: 5px;}
 
 .adminDashboardWrapper .adminDashboardPieChartSection .colorDefineContainer { display: flex; flex-direction: row; align-items: center; gap: 24px; }
@@ -675,7 +679,10 @@
 .merchantProfileWrapper .adminDashboardTopbar {border-top-left-radius: 42px; padding: 30px 0;}
 /* 26.06.25 */
 
-.adminDashboardTopbar {margin: 0; padding: 0px; width: 78vw; background: transparent; display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden; position: fixed; background-color: #f5f5fe; z-index: 999; top: 0;}
+.adminDashboardTopbar {width: 82vw; display: flex; flex-direction: row; align-items: center; justify-content: center; overflow: hidden; position: fixed;  z-index: 999; top: 0; margin: 0; background: #F5F5FE; border-radius: 45px 0 0 0; padding: 30px 20px 23px;     box-shadow: 10px 0px 9px #4f87bf;}
+
+.adminDashboardTopbar .adminDashboardTopbarWrap{display: flex; width: 72vw; justify-content: space-between;}
+
 .adminDashboardTopbar .adminDashboardTopbarLeft {/* 26.06.25 */padding-left: 0px;/* 26.06.25 */ display: flex; flex-direction: row; align-items: center; gap: 12px;  width: 40%;}
 .adminDashboardTopbar .adminDashboardTopbarLeft .adminDashboardTopTitle {color: #4f87bf; font-family: "Sora"; font-weight: 600; font-size: 25px;}
 .adminDashboardTopbar .adminDashboardTopbarLeft .adminDashboardTopTitle .HeadingText {font-size: 25px; font-family: "Sora"; font-weight: 600;}
