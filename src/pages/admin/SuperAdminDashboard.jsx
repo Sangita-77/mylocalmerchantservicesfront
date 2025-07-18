@@ -78,6 +78,23 @@ const SuperAdminDashboard = () => {
         return "merchant services providers";
     }
   };
+
+  const getMerchantColorClass = (type) => {
+    console.log("type",type);
+    switch (type.toLowerCase()) {
+      case "agents":
+        return "flag-agents";
+      case "processors":
+        return "flag-processor";
+      case "isos":
+        return "flag-iso";
+      case "merchant services providers":
+        return "flag-service";
+      default:
+        return "flag-default";
+    }
+  };
+  
   const [percentages, setPercentages] = useState(null);
 
 
@@ -887,7 +904,7 @@ const SuperAdminDashboard = () => {
                     <tr className="tr" key={i}>
                       <td className="td">{item.user?.merchant_name || "N/A"}</td>
                       <td className="td">{item.user?.user_id || "N/A"}</td>
-                      <td className="td">{item.merchant?.merchant_name || "N/A"}</td>
+                      <td className={`td ${getMerchantColorClass(item.user?.flag)}`}>{item.merchant?.merchant_name || "N/A"}</td>
                       <td className="td">{item.merchant?.user_id || "N/A"}</td>
                       <td className="actionTd">
                       <button
