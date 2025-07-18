@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./../styles/styles.css";
 import { IoMdClose } from "react-icons/io";
 
@@ -18,7 +18,7 @@ const AdminApproveModal = ({ user, onClose }) => {
     <div className="userDetailsOverlay">
       <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
         <div className="messagesWindowCloseBtn" onClick={onClose}>
-          <IoMdClose color="white" size={24} />
+          <IoMdClose color="#2A2626" size={24} />
         </div>
 
         <div className="userDetailsBox">
@@ -50,8 +50,8 @@ const AdminApproveModal = ({ user, onClose }) => {
             ></textarea>
           </div>
 
-            <button className="approveButton">Approve</button>
-            <button className="rejectButton">Reject</button>
+            <button className="popButton">Approve</button>
+            <button className="popButton">Reject</button>
         </div>
       </div>
     </div>

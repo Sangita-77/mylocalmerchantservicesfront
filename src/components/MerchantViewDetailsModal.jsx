@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./../styles/styles.css";
 import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import PreLoader from "../components/PreLoader";
 import { AppContext } from "../utils/context";
+import { IoMdClose } from "react-icons/io";
 
 const MerchantViewDetailsModal = ({ id, handleClose }) => {
   // console.log("Modal data===>", id);
@@ -88,17 +89,29 @@ fetchDataToggleViewDetailsModal()
     }
   };
   
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 100); 
+    return () => clearTimeout(timer);
+  }, []);
   
   
 
   return (
     <>
       <div className="merchantDetailsOverlay">
-        <div className="merchantDetailsModalCloseBtnContainer" onClick={handleClose}>
-          <div className="merchantDetailsModalCloseBtn"></div>
-          &times;
+      <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
+      <div className="merchantDetailsModalCloseBtnContainer" >
+          <div className="merchantDetailsModalCloseBtn" onClick={handleClose}>
+          <IoMdClose color="#2A2626" size={24} />
+          </div>
         </div>
         <div className="merchantDetailsModalWrapper">
+        
           {isLoading&& (<div style={{display:"flex",justifyContent:"center",alignItems:"center",minHeight: "300px"}}><PreLoader/> </div>)}
           {data && 
           <div className="merchantDetailsModalContainer">
@@ -205,6 +218,7 @@ fetchDataToggleViewDetailsModal()
           }
           
           
+        </div>
         </div>
       </div>
     </>

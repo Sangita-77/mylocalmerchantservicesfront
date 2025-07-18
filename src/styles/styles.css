@@ -205,16 +205,18 @@
 
 .tableOverlay { margin: 0; padding: 150px; width: 78%; color: black; font-family: "Poppins"; font-size: 15px; font-weight: 400; display: flex; justify-content: center; height: 480px; position: absolute; top: 0; left: 0; background-color: rgba(155, 155, 155, 0.5); z-index: 1000; }
 
-.merchantDetailsOverlay{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(255, 255, 255, 0.75); /* semi-transparent black */ z-index: 1000; overflow-y: hidden; }
+.merchantDetailsOverlay{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(255, 255, 255, 0.75); /* semi-transparent black */ z-index: 1000; overflow: hidden; }
 
-.merchantDetailsModalWrapper { margin: 0; padding: 0; width: 60vw; height: 80vh; border: none; border-radius: 20px; background-color: #71cdea; position: fixed; top: 10vh; left: 20vw; overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; /* Firefox */ -ms-overflow-style: none; /* IE and Edge */ z-index: 9999; transform: translateZ(0); }
-.merchantDetailsModalContainer { margin: 0; padding: 60px; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
-.merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 6px 18px; font-size: 34px; position: absolute; top: 8%; right: 18.5%; color: white; background-color: #6a8196; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
+.merchantDetailsModalWrapper { margin: 0; padding: 0; width: 60vw; height: 80vh; border: none; border-radius: 20px; background-color: #0085DA; position: fixed; top: 10vh; left: 20vw; overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; -ms-overflow-style: none;  z-index: 9999; transform: translateZ(0); }
+.merchantDetailsModalContainer { margin: 0; padding: 50px 60px 35px; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
+.merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 8vh; right: 19%; color: white; background-color: #FFBF61; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
 .merchantDetailsModalCloseBtn{}
-.dataRowContainer { margin: 0; padding: 0; width: 100%; height: 50px; max-height: 200px; display: flex; flex-direction: row; align-items: center; gap: 0; border: none; }
+.dataRowContainer { margin: 0; padding: 0; width: 100%; height: 58px; max-height: 200px; display: flex; flex-direction: row; align-items: center; column-gap: 50px; border: none; }
 .dataTitle { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 600; width: 24%; height: 100%; display: flex; align-items: center; }
-.data { margin: 0; padding: 0 24px; width: 80%; max-width: 80%; height: 100%; font-family: "Poppins"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; }
-.modalConnectBtn { margin: 0; padding: 0; width: 180px; height: 56px; text-align: center; color: #23b7e5; background-color: white; font-family: "Poppins"; font-weight: 600; font-size: 16px; text-transform: uppercase; border: none; outline: none; border-radius: 50px; }
+.data { margin: 0; padding: 0 24px; width: 80%; max-width: 80%; height: 58px; font-family: "Poppins"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; }
+.modalConnectBtn {transition: all .5s ease-in-out; margin: 0; padding: 0; width: 180px; height: 58px; text-align: center; color: #000; background-color: #FFBF61; font: 600 19px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px; }
+.modalConnectBtn:hover {background-color: #ffffff;}
+
 
 /* //////////////////      REGISTRATION PAGE      //////////////// */
 .mainRegistrationPageContainer { margin: 0; padding: 0; margin-top: 110px; width: 100vw; min-height: 100vh; background-color: #ffffff; position: relative; }
@@ -828,14 +830,26 @@
   transform: scale(1);
   opacity: 1;
 }
-.userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #6a8196; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -7px; right: -7px; z-index: 999999999;}
-.userDetailsBoxWrapper .userDetailsBox {background-color: #71CDEA; padding: 50px 50px 35px; border-radius: 24px; width: 950px; position: relative; }
+
+/* old modal css */
+/* .userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #6a8196; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -7px; right: -7px; z-index: 999999999;}
+.userDetailsBoxWrapper .userDetailsBox {background-color: #0085DA; padding: 50px 50px 35px; border-radius: 24px; width: 850px; position: relative; }
 .userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 20px; align-items: center; column-gap: 15px;}
 .userDetailsBoxWrapper .userDetailsBox .formGroup label {color: #fff; font: 600 17px/25px "Sora"; flex: 0 0 150px;}
 .userDetailsBoxWrapper .userDetailsBox .formGroup input, 
-.userDetailsBoxWrapper .userDetailsBox .formGroup textarea 
-{ width: 100%; padding: 8px 25px; border: 1px solid #FFFFFF; color: #fff; border-radius: 6px; background: transparent; height: 58px; outline: none; box-shadow: none; font: 300 17px/25px "Sora";}
-.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea { width: 100%; padding: 8px 25px; border: 1px solid #FFFFFF; color: #fff; border-radius: 6px; background: transparent; height: 58px; outline: none; box-shadow: none; font: 300 17px/25px "Sora";}
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
+
+.userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #FFBF61; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -7px; right: -7px; z-index: 999999999;}
+.userDetailsBoxWrapper .userDetailsBox {text-align: end; background-color: #0085DA; padding: 50px 60px 35px; border-radius: 24px; width: 850px; position: relative; }
+.userDetailsBoxWrapper .userDetailsBox::before {content: ''; width: 1px; height: 400px; position: absolute; left: 29%; top: 70px; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);}
+.userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 20px; align-items: center; column-gap: 65px; text-align: left;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup label {color: #fff; font: 600 17px/25px "Sora"; flex: 0 0 150px;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup input, 
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {align-content: center; width: 100%; padding: 8px 25px; border: none; color: #fff; border-radius: 6px; background: transparent; height: 58px; outline: none; box-shadow: none; font: 300 17px/25px "Sora";}
+.userDetailsBoxWrapper .userDetailsBox .popButton {margin-left: 17px; padding: 0; width: 170px; height: 50px; text-align: center; color: #000000; background-color: #FFBF61; font: 600 17px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px;  transition: all .5s ease-in-out;}
+.userDetailsBoxWrapper .userDetailsBox .popButton:hover {background: #ffffff;}
+/* .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
 
 @keyframes fadeIn {
   from {
@@ -846,7 +860,13 @@
   }
 }
 
-
+.updateform .userDetailsBoxWrapper .userDetailsBox::before {width: 0;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup input, 
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {border: 1px solid #fff; border-radius: 10px; background: #ffffff14; }
+.updateform .userDetailsBoxWrapper .userDetailsBox .popButton {margin: 0; padding: 0; width: 190px; height: 58px; text-align: center; color: #000000; background-color: #FFBF61; font: 600 19px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px; transition: all .5s ease-in-out;}
+.updateform .userDetailsBoxWrapper .userDetailsBox {text-align: end;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup {text-align: left;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .popButton:hover {background: #ffffff;}
 
 /* ------ Admin Contact list ------ */
 .contactlistWrapper .adminDashboardContainer {padding: 0 52px 40px;}

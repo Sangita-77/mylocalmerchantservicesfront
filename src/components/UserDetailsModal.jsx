@@ -17,7 +17,7 @@ const UserDetailsModal = ({ user, onClose }) => {
     <div className="userDetailsOverlay">
       <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
         <div className="messagesWindowCloseBtn" onClick={onClose}>
-          <IoMdClose color="white" size={24} />
+          <IoMdClose color="#2A2626" size={24} />
         </div>
 
         <div className="userDetailsBox">
