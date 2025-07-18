@@ -574,7 +574,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <MdRealEstateAgent color="#E0A54F" size={45} />
+                <MdRealEstateAgent color="#5e65b1" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Approved Agent</div>
@@ -596,7 +596,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <MdRealEstateAgent color="#EB7581" size={45} />
+                <MdRealEstateAgent color="#00b3d9" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Pending Agent</div>
@@ -640,7 +640,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <BiSolidBadgeDollar color="#3DB255" size={45} />
+                <BiSolidBadgeDollar color="#003c76" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Pending ISOs</div>
@@ -684,7 +684,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <GiDividedSquare color="#41B9C8" size={45} />
+                <GiDividedSquare color="#50c8ff" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Pending Processors</div>
