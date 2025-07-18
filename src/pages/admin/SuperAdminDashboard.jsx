@@ -413,9 +413,9 @@ const SuperAdminDashboard = () => {
       className="percentageCountItem"
       style={last ? { borderBottom: "none" } : {}}
     >
-      <div className="percentageColorBox"></div>
-      <div className="percentageCountItemContent">{label}</div>
+      {/* <div className="percentageColorBox"></div> */}
       <CircularProgressBar percentage={parseFloat(percentage.toFixed(1))} />
+      <div className="percentageCountItemContent">{label}</div>
     </div>
   );
   // const handleLogout = async () => {
@@ -960,15 +960,16 @@ const SuperAdminDashboard = () => {
           <div className="dashboardRow">
             <div className="adminDashboardMerchantSection">
               <div className="merchantSectionTopTabbar">
-                <div className={`tabbarItem ${merchantTypeActiveTab === 0 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(0)}>
+                <div className={`merchantservice tabbarItem ${merchantTypeActiveTab === 0 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(0)}>
                   Merchant Service Providers
                 </div>
-                <div className={`tabbarItem ${merchantTypeActiveTab === 1 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(1)}>Processors</div>
-                <div className={`tabbarItem ${merchantTypeActiveTab === 2 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(2)}>ISOs</div>
-                <div className={`tabbarItem ${merchantTypeActiveTab === 3 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(3)}>Agents</div>
+                <div className={`processors tabbarItem ${merchantTypeActiveTab === 1 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(1)}>Processors</div>
+                <div className={`isos tabbarItem ${merchantTypeActiveTab === 2 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(2)}>ISOs</div>
+                <div className={`agents tabbarItem ${merchantTypeActiveTab === 3 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(3)}>Agents</div>
               </div>
 
               <div className="merchantStatsSection">
+                <div className="merchantStatsWrap">
                 <div className="userStatsTopContainer">
                   <div className="userStatsTopLeft">
                     <div className="userStatsTitle">Number of {getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}</div>
@@ -1043,25 +1044,28 @@ const SuperAdminDashboard = () => {
                     </>
                   )}
                 </div>
+                </div>
               </div>
             </div>
 
             <div className="dashboardMerchantStatsRight">
-              <div className="percentageCountSection">
-                <div className="percentageCountHeader">Percentage % Of Active</div>
+            <div className="percentageCountSection">
+                <div className="percentageCountWrap">
+                <div className="percentageCountHeader">Percentage of Active</div>
 
                 {percentages && (
                   <>
-                    <PercentageItem label="% Of Users" percentage={percentages.user_percentage} />
-                    <PercentageItem label="% Of Merchants" percentage={percentages.merchant_percentage} />
-                    <PercentageItem label="% Of Processors" percentage={percentages.processors_percentage} />
-                    <PercentageItem label="% Of ISOs" percentage={percentages.iso_percentage} />
-                    <PercentageItem label="% Of Agents" percentage={percentages.agents_percentage} last />
+                    <PercentageItem label="Of Users" percentage={percentages.user_percentage} />
+                    <PercentageItem label="Of Merchants" percentage={percentages.merchant_percentage} />
+                    <PercentageItem label="Of Processors" percentage={percentages.processors_percentage} />
+                    <PercentageItem label="Of ISOs" percentage={percentages.iso_percentage} />
+                    <PercentageItem label="Of Agents" percentage={percentages.agents_percentage} last />
                   </>
                 )}
-              </div>
+                </div>
+            </div>
 
-              <div className="connectedGraphSection">
+              {/* <div className="connectedGraphSection">
                 <div className="connectedGraphSectionHeader">
                   <div>User connected</div>
                   <div>{userStats.userCount ?? "Loading..."}</div>
@@ -1075,7 +1079,7 @@ const SuperAdminDashboard = () => {
                 <div>
                   <TinyLineChartComponent />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
