@@ -1094,7 +1094,7 @@ const SuperAdminDashboard = () => {
           </div>
         </div>
 
-        <DashBoardFooter />
+        {/* <DashBoardFooter /> */}
       </div>
       {showWindow && (
       <MessagesWindow

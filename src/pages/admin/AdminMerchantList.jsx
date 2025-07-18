@@ -86,7 +86,7 @@ const AdminMerchantList = () => {
       <div className="adminDashboardContainer">
             
               <div className='adminUserlIstContainer'>
-                 <MerchantListComp Icon={IoStorefrontSharp} approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant" flag="merchant services providers" onRefresh={refreshPage}/>
+                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant" flag="merchant services providers" onRefresh={refreshPage}/>
                </div>
         </div>
     </div>
