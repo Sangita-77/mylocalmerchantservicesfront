@@ -23,7 +23,7 @@ const ConfirmModal = ({ title, message, onConfirm, onCancel }) => {
           <button className="cancelBtn" onClick={onCancel} disabled={loading}>Cancel</button>
           <button className="confirmBtn"
             onClick={handleConfirmClick}
-            disabled={loading}> {loading ? "Processing..." : "Ok"}</button>
+            disabled={loading}> {loading ? "..." : "Ok"}</button>
         </div>
       </div>
     </div>
