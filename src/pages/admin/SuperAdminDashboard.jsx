@@ -67,15 +67,15 @@ const SuperAdminDashboard = () => {
   const getCurrentMerchantCount = () => {
     switch (merchantTypeActiveTab) {
       case 0:
-        return userStats.merchant_count ?? "Loading...";
+        return userStats.merchant_count ?? "0";
       case 1:
-        return userStats.processors_count ?? "Loading...";
+        return userStats.processors_count ?? "0";
       case 2:
-        return userStats.iso_count ?? "Loading...";
+        return userStats.iso_count ?? "0";
       case 3:
-        return userStats.agents_count ?? "Loading...";
+        return userStats.agents_count ?? "0";
       default:
-        return userStats.merchant_count ?? "Loading...";
+        return userStats.merchant_count ?? "0";
     }
   };
 
