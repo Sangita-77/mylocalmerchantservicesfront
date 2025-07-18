@@ -24,6 +24,9 @@ import { useLocation } from "react-router-dom";
 import { routes } from "../utils/routes";
 import { useNavigate } from "react-router-dom";
 import { BASENAME } from "../config";
+import { MdRealEstateAgent } from "react-icons/md";
+import { BiSolidBadgeDollar } from "react-icons/bi";
+import { GiDividedSquare } from "react-icons/gi";
 
 const AdminSidebar = () => {
   const [dashboardHover, setDashboardHover] = useState(false);
@@ -92,21 +95,21 @@ const AdminSidebar = () => {
             className={`sidebarItem ${url === `${BASENAME}/admin/admin-agent` && "sidebarItemActive"}`}
             onClick={() => navigate(routes. admin_agent())}
           >
-            <LiaStoreAltSolid color={"#fff"} size={24}/>
+            <MdRealEstateAgent color={"#fff"} size={24}/>
             <div>Agents</div>
           </div>
           <div
             className={`sidebarItem ${url === `${BASENAME}/admin/agent-iso` && "sidebarItemActive"}`}
             onClick={() => navigate(routes. admin_iso())}
           >
-            <LiaStoreAltSolid color={"#fff"} size={24}/>
+            <BiSolidBadgeDollar color={"#fff"} size={24}/>
             <div>Isos</div>
           </div>
           <div
             className={`sidebarItem ${url === `${BASENAME}/admin/agent-processor` && "sidebarItemActive"}`}
             onClick={() => navigate(routes. admin_processor())}
           >
-            <LiaStoreAltSolid color={"#fff"} size={24}/>
+            <GiDividedSquare color={"#fff"} size={24}/>
             <div>Proceesors</div>
           </div>
 

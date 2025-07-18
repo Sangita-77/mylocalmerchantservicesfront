@@ -26,6 +26,8 @@ import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
 import DashBoardFooter from "../../components/DashBoardFooter";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../utils/routes";
 
 const SuperAdminDashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -51,6 +53,7 @@ const SuperAdminDashboard = () => {
   const [selectedChatInfo, setSelectedChatInfo] = useState(null); 
   const [loadingChatId, setLoadingChatId] = useState(null);
   const [userPercentageData, setUserPercentageData] = useState(null);
+  const navigate = useNavigate();
   const [userStats, setUserStats] = useState({
     userCount: 0,
     otherCount: 0,
@@ -480,7 +483,9 @@ const SuperAdminDashboard = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     gap: 4,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate(routes.admin_user_list())}
                 >
                   View All <FaLongArrowAltRight />
                 </div>
@@ -500,7 +505,9 @@ const SuperAdminDashboard = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     gap: 4,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate(routes. admin_merchant_list())}
                 >
                   View All <FaLongArrowAltRight />
                 </div>
@@ -520,7 +527,9 @@ const SuperAdminDashboard = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     gap: 4,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate(routes. admin_merchant_list())}
                 >
                   View All <FaLongArrowAltRight />
                 </div>
@@ -540,7 +549,9 @@ const SuperAdminDashboard = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     gap: 4,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate(routes. admin_agent())}
                 >
                   View All <FaLongArrowAltRight />
                 </div>
@@ -560,7 +571,9 @@ const SuperAdminDashboard = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     gap: 4,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate(routes. admin_agent())}
                 >
                   View All <FaLongArrowAltRight />
                 </div>
@@ -580,7 +593,9 @@ const SuperAdminDashboard = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     gap: 4,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate(routes. admin_iso())}
                 >
                   View All <FaLongArrowAltRight />
                 </div>
@@ -600,7 +615,9 @@ const SuperAdminDashboard = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     gap: 4,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate(routes. admin_iso())}
                 >
                   View All <FaLongArrowAltRight />
                 </div>
@@ -609,7 +626,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <BsFillPatchCheckFill color="#4F7FBE" size={42} />
+                <GiDividedSquare color="#4F7FBE" size={42} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Approved Processors</div>
@@ -620,7 +637,9 @@ const SuperAdminDashboard = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     gap: 4,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate(routes. admin_processor())}
                 >
                   View All <FaLongArrowAltRight />
                 </div>
@@ -640,7 +659,9 @@ const SuperAdminDashboard = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     gap: 4,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate(routes. admin_processor())}
                 >
                   View All <FaLongArrowAltRight />
                 </div>
