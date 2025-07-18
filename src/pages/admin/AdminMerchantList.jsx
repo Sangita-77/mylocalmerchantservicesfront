@@ -80,8 +80,10 @@ const AdminMerchantList = () => {
   };
   return (
      <div className="adminUserlistWrapper merchantListAdmin">
+      
+      <AdminDashBoardTopBar heading="Merchant List" />
       <div className="adminDashboardContainer">
-            <AdminDashBoardTopBar heading="Merchant List" />
+            
               <div className='adminUserlIstContainer'>
                  <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant" flag="merchant services providers" onRefresh={refreshPage}/>
                </div>

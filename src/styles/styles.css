@@ -806,7 +806,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainer {padding-top: 150px;}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px; padding: 0; background-color: #0085da; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader .adminProfileHeaderCompanyTitle {padding: 0 28px; color: #fff; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px;}
-.adminProfileWrapper .profileInnerDetailsContainer {margin: 0; width: 73vw; background-color: #e3f1ff; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; padding: 36px 28px 15px; border: none; border-radius: 20px; /*box-shadow: 0 0 5px 0 rgb(192, 192, 192);*/ box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0;}
+.adminProfileWrapper .profileInnerDetailsContainer {margin: 0; width: 73vw; background-color: #e3f1ff; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; padding: 36px 28px 15px; border: none; border-radius: 20px; /*box-shadow: 0 0 5px 0 rgb(192, 192, 192);*/ box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #f6fbff;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox {padding-bottom: 14px; margin-bottom: 25px;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox:first-child {border-bottom: 1px solid #0f8cdd;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileDataTitle {color: #807B7B; font: 600 15px/25px "Poppins";}
@@ -825,14 +825,14 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputColWrapper > .row > .col-lg-6 {width: calc(50% - 25px); padding: 0; border-bottom: 1px solid #0f8cdd;}
 
 /* ------ Admin Connect ------  */
-.adminUserlistWrapper .adminDashboardContainer {padding: 0 52px 40px;}
-.adminUserlistWrapper .adminDashboardContainer .adminUserlIstContainer {padding-top: 119px;}
-.adminUserlistWrapper .tableContainer {margin: 0; padding: 0; width: 73vw; background-color: #fff; border: none; box-shadow: 0 0 5px 0 rgb(192, 192, 192); border-collapse: collapse; outline: none; border-spacing: 0; overflow: hidden; border-radius: 20px;}
+.adminUserlistWrapper .adminDashboardContainer {padding: 0 52px 40px; }
+.adminUserlistWrapper .adminDashboardContainer .adminUserlIstContainer {padding-top: 150px;}
+.adminUserlistWrapper .tableContainer {margin: 0; padding: 0; width: 73vw; background-color: #edf6ff; border: none; box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0; border-collapse: collapse; outline: none; border-spacing: 0; overflow: hidden; border-radius: 20px;}
 .adminUserlistWrapper .tableContainer .theadContainer {margin: 0; padding: 0; width: 100%; height: 60px; background-color: #0085da;}
 .adminUserlistWrapper .th {padding: 0 36px; color: #fff; letter-spacing: 0.4px; text-align: left; font: 600 14px "Sora";}
 .adminUserlistWrapper .thActions {margin: 0; padding: 0 40px 0 0; color: #fff; font: 600 14px "Sora"; text-align: center;}
-.adminUserlistWrapper .tr {height: 60px; border-bottom: 1px solid #EAEAED !important;}
-.adminUserlistWrapper .td {color: #7D7D7E; font: 400 15px "Poppins"; padding: 0 36px;}
+.adminUserlistWrapper .tr {height: 60px; border-bottom: 1px solid #909091 !important;}
+.adminUserlistWrapper .td {color: #383838; font: 400 15px "Poppins"; padding: 0 36px;}
 .adminUserlistWrapper .viewButton {width: 35px; height: 35px; background-color: #0085da; border: 1px solid #23b7e5; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
 .adminUserlistWrapper .delButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none;}
 .adminUserlistWrapper .editButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #008000; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
@@ -857,6 +857,8 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
   opacity: 0;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.3s ease;
+              border: 13px solid #0085DA;
+    border-radius: 37px;
 }
 .userDetailsBoxWrapper.open {
   transform: scale(1);
@@ -872,10 +874,10 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .userDetailsBoxWrapper .userDetailsBox .formGroup textarea { width: 100%; padding: 8px 25px; border: 1px solid #FFFFFF; color: #fff; border-radius: 6px; background: transparent; height: 58px; outline: none; box-shadow: none; font: 300 17px/25px "Sora";}
 .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
 
-.userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #FFBF61; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -7px; right: -7px; z-index: 999999999;}
-.userDetailsBoxWrapper .userDetailsBox {text-align: end; background-color: #0085DA; padding: 50px 40px 28px; border-radius: 24px; width: 650px; position: relative; }
+.userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #fff; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -17px; right: -17px; z-index: 999999999;}
+.userDetailsBoxWrapper .userDetailsBox {text-align: end; background-color: #0085DA; padding: 50px 40px 28px; border-radius: 24px; width: 650px; position: relative; border: 2px solid #fff;}
 .userDetailsBoxWrapper .userDetailsBox::before {content: ''; width: 1px; height: 293px; position: absolute; left: 34%; top: 75px; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);}
-.userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 15px; align-items: center; column-gap: 65px; text-align: left;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 15px; align-items: center; column-gap: 65px; text-align: left; }
 .userDetailsBoxWrapper .userDetailsBox .formGroup label {color: #fff; font: 500 16px/25px "Sora"; flex: 0 0 150px;}
 .userDetailsBoxWrapper .userDetailsBox .formGroup input, 
 .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {align-content: center; width: 100%; padding: 8px 25px; border: none; color: #fff; border-radius: 6px; background: transparent; height: 43px; outline: none; box-shadow: none; font: 300 16px/25px "Sora";}
@@ -906,7 +908,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 
 /* ------ Admin Contact list ------ */
 .contactlistWrapper .adminDashboardContainer {padding: 0 52px 40px;}
-.contactlistWrapper .contactlistContainer  {padding-top: 119px; width: 73vw;}
+.contactlistWrapper .contactlistContainer  {padding-top: 150px; width: 73vw;}
 .contactlistWrapper .contactlistContainer .accordion {border-radius: 20px; overflow: hidden; box-shadow: 0 0 5px 0 rgb(192, 192, 192); border: none;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item {border: none; background-color: #fff;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button {column-gap: 20px; text-transform: capitalize; padding-left: 40px; outline: none; box-shadow: none; padding-right: 85px; height: 75px; color: #6A8196; font: 400 16px "Sora";}

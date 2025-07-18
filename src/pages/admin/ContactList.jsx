@@ -103,8 +103,10 @@ const ContactList = () => {
 
   return (
     <div className="contactlistWrapper">
+      
+      <AdminDashBoardTopBar heading={"Contact  List"} />
       <div className="adminDashboardContainer">
-        <AdminDashBoardTopBar heading={"Contact  List"} />
+        
 
         <div className="contactlistContainer">
           <div className="accordion" id="accordionExample">
