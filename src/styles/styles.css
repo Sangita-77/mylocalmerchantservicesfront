@@ -13,8 +13,12 @@
 .merchantFooterWrapper .merchantChildFooter { margin: 0; padding: 0; height: 60px; font-family: "Poppins"; font-size: 14px; font-weight: 400; color: white; text-align: center; align-content: center; background-color: rgb(30, 86, 169); }
 
 /* ///////////////    RESUABLE COMPONENTS    ////////////// */
-.button_large { margin: 0; padding: 18px 20px; background-color: rgb(253, 218, 102); color: #000000; font-weight: 500; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: none; border-radius: 50px; cursor: pointer; max-width: 335px; max-height: 66px; }
-.large_button_text { margin: 0; padding: 0; color: #000000; font-size: 20px; font-family: "Poppins"; font-weight: 700; letter-spacing: 0.6px; }
+.button_large {transition: all .5s ease-in-out; margin: 0; padding: 18px 20px; background-color: rgb(253, 218, 102); color: #000000; font-weight: 700; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: none; border-radius: 10px; cursor: pointer; max-width: 335px; max-height: 66px; 
+  font-size: 20px; font-family: "Poppins"; font-weight: 700; letter-spacing: 0.6px;}
+.button_large:hover {background-color: #106cb5; color: #fff;}
+.large_button_text { margin: 0; padding: 0; /*color: #000000; font-size: 20px; font-family: "Poppins"; font-weight: 700; letter-spacing: 0.6px;*/ }
+.button_large svg {transition: all .5s ease-in-out;}
+.button_large:hover svg {fill: #fff !important;}
 /* //////////////////  MERCHANT LAYOUT HEADER  ///////////////// */
 .onboardingPageHeaderWrapper { margin: 0; padding: 0; width: 100vw; height: 110px; position: fixed; top: 0; left: 0; z-index: 111; background-color: #ffffff; }
 .onboardingPageChildHeaderContainer { margin: 0; height: 42px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; background: rgb(21, 111, 172); }
@@ -29,7 +33,7 @@
 .li_item_active { color: #156fac; }
 .li_item:hover { transition: 150ms ease; cursor: pointer; color: #156fac; }
 
-.header_Btn { margin: 0; padding: 12px; width: 140px; color: #ffffff; font-size: 17px; font-weight: 700; background: #106cb5; border: none; border-radius: 50px; letter-spacing: 1px; }
+.header_Btn { margin: 0; padding: 12px; width: 140px; color: #ffffff; font-size: 17px; font-weight: 700; background: #106cb5; border: none; border-radius: 10px; letter-spacing: 1px; }
 .headerRightMobileView { display: none; }
 .headerDropdownContainer { margin: 0; padding: 12px 0 6px 0; width: 120px; background-color: white; border: none; border-radius: 4px; position: absolute; top: 35px; right: 210px; box-shadow: 0 0 10px 0 gray; }
 .dropdownItem { margin: 0; padding: 2px 8px; color: black; background-color: white; font-size: 14px; cursor: pointer; }
@@ -207,13 +211,13 @@
 
 .merchantDetailsOverlay{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(255, 255, 255, 0.75); /* semi-transparent black */ z-index: 1000; overflow: hidden; }
 
-.merchantDetailsModalWrapper { margin: 0; padding: 0; width: 60vw; height: 80vh; border: none; border-radius: 20px; background-color: #0085DA; position: fixed; top: 10vh; left: 20vw; overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; -ms-overflow-style: none;  z-index: 9999; transform: translateZ(0); }
-.merchantDetailsModalContainer { margin: 0; padding: 50px 60px 35px; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
+.merchantDetailsModalWrapper { margin: 0; padding: 0; width: 680px; height: 75vh; border: none; border-radius: 20px; background-color: #0085DA; position: fixed; top: 10vh; left: 20vw; overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; -ms-overflow-style: none;  z-index: 9999; transform: translateZ(0); }
+.merchantDetailsModalContainer { margin: 0; padding: 50px 40px 35px; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
 .merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 8vh; right: 19%; color: white; background-color: #FFBF61; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
 .merchantDetailsModalCloseBtn{}
 .dataRowContainer { margin: 0; padding: 0; width: 100%; height: 58px; max-height: 200px; display: flex; flex-direction: row; align-items: center; column-gap: 50px; border: none; }
 .dataTitle { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 600; width: 24%; height: 100%; display: flex; align-items: center; }
-.data { margin: 0; padding: 0 24px; width: 80%; max-width: 80%; height: 58px; font-family: "Poppins"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; }
+.data { margin: 0; padding: 0 24px; width: 80%; max-width: 80%; height: 58px; font-family: "Poppins"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; height: 53px;}
 .modalConnectBtn {transition: all .5s ease-in-out; margin: 0; padding: 0; width: 180px; height: 58px; text-align: center; color: #000; background-color: #FFBF61; font: 600 19px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px; }
 .modalConnectBtn:hover {background-color: #ffffff;}
 
@@ -841,13 +845,15 @@
 .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
 
 .userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #FFBF61; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -7px; right: -7px; z-index: 999999999;}
-.userDetailsBoxWrapper .userDetailsBox {text-align: end; background-color: #0085DA; padding: 50px 60px 35px; border-radius: 24px; width: 850px; position: relative; }
-.userDetailsBoxWrapper .userDetailsBox::before {content: ''; width: 1px; height: 400px; position: absolute; left: 29%; top: 70px; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);}
-.userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 20px; align-items: center; column-gap: 65px; text-align: left;}
-.userDetailsBoxWrapper .userDetailsBox .formGroup label {color: #fff; font: 600 17px/25px "Sora"; flex: 0 0 150px;}
+.userDetailsBoxWrapper .userDetailsBox {text-align: end; background-color: #0085DA; padding: 50px 40px 28px; border-radius: 24px; width: 650px; position: relative; }
+.userDetailsBoxWrapper .userDetailsBox::before {content: ''; width: 1px; height: 293px; position: absolute; left: 34%; top: 75px; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);}
+.userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 15px; align-items: center; column-gap: 65px; text-align: left;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup label {color: #fff; font: 500 16px/25px "Sora"; flex: 0 0 150px;}
 .userDetailsBoxWrapper .userDetailsBox .formGroup input, 
-.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {align-content: center; width: 100%; padding: 8px 25px; border: none; color: #fff; border-radius: 6px; background: transparent; height: 58px; outline: none; box-shadow: none; font: 300 17px/25px "Sora";}
-.userDetailsBoxWrapper .userDetailsBox .popButton {margin-left: 17px; padding: 0; width: 170px; height: 50px; text-align: center; color: #000000; background-color: #FFBF61; font: 600 17px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px;  transition: all .5s ease-in-out;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {align-content: center; width: 100%; padding: 8px 25px; border: none; color: #fff; border-radius: 6px; background: transparent; height: 43px; outline: none; box-shadow: none; font: 300 16px/25px "Sora";}
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {min-height: 43px;
+  height: auto;}
+.userDetailsBoxWrapper .userDetailsBox .popButton {margin-left: 17px; padding: 0; width: 120px; height: 42px; text-align: center; color: #000000; background-color: #FFBF61; font: 600 15px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 10px;  transition: all .5s ease-in-out;}
 .userDetailsBoxWrapper .userDetailsBox .popButton:hover {background: #ffffff;}
 /* .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
 
@@ -862,10 +868,12 @@
 
 .updateform .userDetailsBoxWrapper .userDetailsBox::before {width: 0;}
 .updateform .userDetailsBoxWrapper .userDetailsBox .formGroup input, 
-.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {border: 1px solid #fff; border-radius: 10px; background: #ffffff14; }
-.updateform .userDetailsBoxWrapper .userDetailsBox .popButton {margin: 0; padding: 0; width: 190px; height: 58px; text-align: center; color: #000000; background-color: #FFBF61; font: 600 19px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px; transition: all .5s ease-in-out;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {border: 1px solid #fff; border-radius: 10px; background: #ffffff14; height: 53px;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {min-height: 43px;
+  height: auto;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .popButton {margin: 0; padding: 0; width: 135px; height: 43px; text-align: center; color: #000000; background-color: #FFBF61; font: 600 16px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 10px; transition: all .5s ease-in-out;}
 .updateform .userDetailsBoxWrapper .userDetailsBox {text-align: end;}
-.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup {text-align: left;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup {text-align: left; column-gap: 35px;}
 .updateform .userDetailsBoxWrapper .userDetailsBox .popButton:hover {background: #ffffff;}
 
 /* ------ Admin Contact list ------ */
