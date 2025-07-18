@@ -971,7 +971,7 @@ const SuperAdminDashboard = () => {
               </div>
 
               <div className="merchantStatsSection">
-                <div className="merchantStatsWrap">
+                <div className={`merchantStatsWrap ${getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}`}>
                   <div className="userStatsTopContainer">
                     <div className="userStatsTopLeft">
                       <div className="userStatsTitle">Number of {getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}</div>
