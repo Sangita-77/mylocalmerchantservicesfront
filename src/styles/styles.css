@@ -817,7 +817,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .adminProfileWrapper .profileInnerDetailsContainer {margin: 0; width: 73vw; background-color: #e3f1ff; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; padding: 36px 28px 15px; border: none; border-radius: 20px; /*box-shadow: 0 0 5px 0 rgb(192, 192, 192);*/ box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #f6fbff;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox {padding-bottom: 14px; margin-bottom: 25px;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox:first-child {border-bottom: 1px solid #0f8cdd;}
-.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileDataTitle {color: #807B7B; font: 600 15px/25px "Poppins";}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileDataTitle {color: #807B7B; font: 600 20px/25px "Poppins";}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileData {color: #807B7B; font: 400 15px/25px "Poppins";}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .loginInputCol,
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputCol {border-bottom: 1px solid #0f8cdd; width: 45%; margin-bottom: 15px;}
