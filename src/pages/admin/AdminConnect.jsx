@@ -151,6 +151,7 @@ const AdminConnect = () => {
                 
 
                 <div className="adminUserlIstContainer">
+                <div className="tableContainerWrap">
                     <table className="tableContainer">
                         <thead className="theadContainer">
                             <tr>
@@ -209,6 +210,7 @@ const AdminConnect = () => {
                             )}
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
             {showWindow && (
