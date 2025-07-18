@@ -6,7 +6,7 @@ const data = [
   { name: "Group B", value: 300 },
 ];
 
-const COLORS = ['#71cdea', '#bcbfc5']; // Add more if you have more data
+const COLORS = ['#599CB1', '#717478']; // Add more if you have more data
 
 const PieChartComponent = ({ data, dataKey, nameKey, colors }) => {
   console.log(".data",data);

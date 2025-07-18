@@ -833,7 +833,7 @@ const SuperAdminDashboard = () => {
                     data={userStats.chartData}
                     dataKey="value"
                     nameKey="name"
-                    colors={["#71cdea", "#bcbfc5"]}
+                    colors={["#599CB1", "#717478"]}
                   />
                 </div>
               )}
