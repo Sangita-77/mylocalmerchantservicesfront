@@ -455,9 +455,9 @@ const SuperAdminDashboard = () => {
       className="adminDashboardWrapper"
       onClick={() => toggleCloseAllDropdown()}
     >
+      <AdminDashBoardTopBar heading="Super Admin Dashboard" />
       <div className="adminDashboardContainer">
         
-        <AdminDashBoardTopBar heading="Super Admin Dashboard" />
 
         <div className="adminDashboardMain">
           <div className="adminDashboardCountContainer">
@@ -740,7 +740,9 @@ const SuperAdminDashboard = () => {
               </div>
             </div>
 
+            
             <div className="adminDashboardPieChartSection">
+              <div className="adminDashboardPieChart">
               <div className="pieChartTitle">Statistics</div>
 
               <div className="colorDefineContainer">
@@ -793,6 +795,7 @@ const SuperAdminDashboard = () => {
                 </div>
               </div>
             </div>
+         </div>
           </div>
 
           <div className="adminDashboardConversationHistorySection">

@@ -60,6 +60,7 @@ function AdminDashBoardTopBar({ heading }) {
   return (
     <>
     <div className="adminDashboardTopbar">
+      <div className="adminDashboardTopbarWrap">
         <div className="adminDashboardTopbarLeft">
           <div className="adminDashboardTopTitle">
             <DashboardTopHeading text={heading} />
@@ -87,6 +88,7 @@ function AdminDashBoardTopBar({ heading }) {
             onCancel={() => setShowConfirmModal(false)}
           />
         )}
+        </div>
       </div>
     </>
   )
