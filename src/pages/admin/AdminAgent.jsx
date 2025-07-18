@@ -5,6 +5,7 @@ import MerchantListComp from "../../components/MerchantListComp";
 import axios from "axios";
 import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
+import { MdRealEstateAgent } from "react-icons/md";
 
 const AdminAgent = () => {
 
@@ -84,7 +85,7 @@ const AdminAgent = () => {
         <div className="adminDashboardContainer">
               
                 <div className='adminUserlIstContainer'>
-                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Agents" pendingHeading="Pending Agents" flag="agents" onRefresh={refreshPage}/>
+                   <MerchantListComp Icon={MdRealEstateAgent} approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Agents" pendingHeading="Pending Agents" flag="agents" onRefresh={refreshPage}/>
                  </div>
           </div>
       </div>

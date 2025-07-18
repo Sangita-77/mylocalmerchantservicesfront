@@ -78,8 +78,10 @@ const AdminIso = () => {
     };
     return (
        <div className="adminUserlistWrapper merchantListAdmin">
+
+<AdminDashBoardTopBar heading="Iso List" />
         <div className="adminDashboardContainer">
-              <AdminDashBoardTopBar heading="Iso List" />
+              
                 <div className='adminUserlIstContainer'>
                    <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Isos" pendingHeading="Pending Isos" flag="ISOs" onRefresh={refreshPage}/>
                  </div>

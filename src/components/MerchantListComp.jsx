@@ -4,6 +4,7 @@ import { MdOutlineGroup } from "react-icons/md";
 import { PiEyeLight } from "react-icons/pi";
 import { GoPencil } from "react-icons/go";
 import { AiOutlineDelete } from "react-icons/ai";
+import { IoStorefrontSharp } from "react-icons/io5";
 
 import UserDetailsModal from "./UserDetailsModal";
 
@@ -79,7 +80,7 @@ const handleEditClick = (user) => {
       <AccordianProps 
         bgColor="#71CDEA"
         borderColor="#23B7E5"
-        Icon={MdOutlineGroup}
+        Icon={IoStorefrontSharp}
         Heading={approvedHeading}
         tbody={
           <>

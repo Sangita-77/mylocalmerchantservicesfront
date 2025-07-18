@@ -354,15 +354,15 @@
 .adminDashboardWrapper .adminDashboardCountPlate:nth-child(2) { background-color: #599CB1; box-shadow: 7px 8px 0px #368197;}
 
 .adminDashboardWrapper .adminDashboardCountPlate:nth-child(3) { background-color: #4E688C; box-shadow: 7px 8px 0px #364F71;}
-.adminDashboardWrapper .adminDashboardCountPlate:nth-child(4) { background-color: #E0A54F; box-shadow: 7px 8px 0px #C7811B;}
-.adminDashboardWrapper .adminDashboardCountPlate:nth-child(5) { background-color: #EB7581; box-shadow: 7px 8px 0px #C54B57;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(4) { background-color: #5e65b1; box-shadow: 7px 8px 0px #44497e;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(5) { background-color: #00b3d9; box-shadow: 7px 8px 0px #0595b3;}
 
 .adminDashboardWrapper .adminDashboardCountPlate:nth-child(6) { background-color: #0D8BDB; box-shadow: 7px 8px 0px #156CA3;}
-.adminDashboardWrapper .adminDashboardCountPlate:nth-child(7) { background-color: #3DB255; box-shadow: 7px 8px 0px #27943E;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(7) { background-color: #003c76; box-shadow: 7px 8px 0px #032648;}
 
 .adminDashboardWrapper .adminDashboardCountPlate:nth-child(8) { background-color: #4F7FBE; box-shadow: 7px 8px 0px #3567A9;}
 
-.adminDashboardWrapper .adminDashboardCountPlate:nth-child(9) { background-color: #41B9C8; box-shadow: 7px 8px 0px #1F8E9C;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(9) { background-color: #50c8ff; box-shadow: 7px 8px 0px #29a2d9;}
 
 .adminDashboardWrapper .countPlateIconContainer { width: 64px; height: 64px; background-color: white; display: flex; align-items: center; justify-content: center; border: none; border-radius: 6px; }
 .adminDashboardWrapper .countPlateRightContainer { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 400; display: flex; flex-direction: column; gap: 4px; }
@@ -437,8 +437,8 @@ border-radius: 24px; position: relative; box-shadow: 0px 0px 10px #23b7e570;}
 .adminDashboardWrapper .tr:not(:last-child){border-bottom: 1px solid #909091 !important; }
 .adminDashboardWrapper .tr{ height: 60px;}
 .adminDashboardWrapper .td { padding: 0; color: #383838; font-family: "Poppins"; font-weight: 400; font-size: 15px; text-align: center;}
-.adminDashboardWrapper .td.flag-agents{color: #C7811B;}
-.adminDashboardWrapper .td.flag-agents div{background-color: #bf852e47; border-radius: 5px; padding: 6px;}
+.adminDashboardWrapper .td.flag-agents{color: #44497e;}
+.adminDashboardWrapper .td.flag-agents div{background-color: #5e65b152; border-radius: 5px; padding: 6px;}
 .adminDashboardWrapper .td.flag-service{color: #368197;}
 .adminDashboardWrapper .td.flag-service div{background-color: #36809745; border-radius: 5px; padding: 6px;}
 .adminDashboardWrapper .td.flag-processor{color: #3567A9;}
@@ -455,16 +455,20 @@ border-radius: 24px; position: relative; box-shadow: 0px 0px 10px #23b7e570;}
 .adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.processors { padding: 4px 16px; color: #4F7FBE; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #4F7FBE; border-radius: 6px; cursor: pointer; }
 .adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.isos { padding: 4px 16px; color: #4F7FBE; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #4F7FBE; border-radius: 6px; cursor: pointer; }
 
-.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.agents { padding: 4px 16px; color: #E0A54F; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #E0A54F; border-radius: 6px; cursor: pointer; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.agents { padding: 4px 16px; color: #5e65b1; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #5e65b1; border-radius: 6px; cursor: pointer; }
 
 .adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.merchantservice { color: white; background-color: #599CB1; border: 1px solid #599CB1; }
 .adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.processors { color: white; background-color: #4F7FBE; border: 1px solid #4F7FBE; }
 .adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.isos { color: white; background-color: #268BCC; border: 1px solid #268BCC; }
-.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.agents { color: white; background-color: #E0A54F; border: 1px solid #E0A54F; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.agents { color: white; background-color: #5e65b1; border: 1px solid #5e65b1; }
 
 .adminDashboardWrapper .merchantStatsSection {margin: 0; box-shadow: 0px 0px 10px #23b7e570; background-color: #ffffff63;
 border: 1px solid #fff; border-radius: 24px; padding: 12px;}
-.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap{padding: 24px 12px 12px 24px; width: 100%; background-color: #22a0f1; border-radius: 20px; position: relative; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap{padding: 24px 12px 12px 24px; width: 100%; border-radius: 20px; position: relative; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Merchant{background-color: #599CB1; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Processors{background-color: #4F7FBE; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.ISOs{background-color: #268BCC; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Agents{background-color: #5e65b1; }
 .adminDashboardWrapper .merchantStatsSection .userStatsTitle { margin: 0; padding: 0; color: #ffffff; font-family: "Sora"; font-weight: 400; font-size: 14px; }
 .adminDashboardWrapper .merchantStatsSection .userStatsValue { margin: 8px 0; color: #ffffff; font-family: "Sora"; font-weight: 600; font-size: 30px; }
 
@@ -835,7 +839,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 /* ------ Admin Connect ------  */
 .adminUserlistWrapper .adminDashboardContainer {padding: 0 52px 40px; }
 .adminUserlistWrapper .adminDashboardContainer .adminUserlIstContainer {padding-top: 150px;}
-.adminUserlistWrapper .tableContainerWrap {box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0; border-radius: 32px;}
+.adminUserlistWrapper .tableContainerWrap {box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0; border-radius: 32px; width: 73vw;}
 .adminUserlistWrapper .tableContainer {margin: 0; padding: 0; width: 100%; background-color: #e3f1ff; border: none; border-collapse: collapse; outline: none; border-spacing: 0; overflow: hidden; border-radius: 20px;}
 .adminUserlistWrapper .tableContainer .theadContainer {margin: 0; padding: 0; width: 100%; height: 60px; background-color: #0085da;}
 .adminUserlistWrapper .th {padding: 0 36px; color: #fff; letter-spacing: 0.4px; text-align: left; font: 600 14px "Sora";}
@@ -1001,14 +1005,15 @@ border-radius: 5px; margin-right: 30px;}
 .merchantaccordian-table .merchant-heading{color: #fff; font: 400 14px/45px 'Poppins';}
 .merchantaccordian-table .accordion-item{border: none; background: transparent;}
 .merchantListAdmin .adminDashboardContainer{width: 78.3vw;}
+.merchantaccordian-table .accordianTableWrap {box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0; border-radius: 32px;}
 .merchantaccordian-table  .accordion-body{padding: 38px 10px 0;}
 .merchantaccordian-table .accordion-body table thead,
 .merchantaccordian-table .accordion-body table tbody{border-bottom: solid 1px transparent; border-right: solid 1px transparent; border-left: solid 1px transparent; border-top: solid 1px transparent;}
 .merchantaccordian-table .accordion-body table tbody tr td{box-shadow: none;}
 .merchantaccordian-table .accordion-body table thead tr th,
 .merchantaccordian-table .accordion-body table tbody tr td{background: transparent;}
-.merchantaccordian-table .accordion-body table{background: #fff; border-radius: 30px; box-shadow: 0px 0px 10px #dbdbdb;} 
-.merchantaccordian-table .accordion-body table tbody tr td{border-top: solid 1px #E5EAEF;}
+.merchantaccordian-table .accordion-body table{background: #e3f1ff; border-radius: 16px; margin-bottom: 0;} 
+.merchantaccordian-table .accordion-body table tbody tr td{border-top: solid 1px #91909036;}
 .merchantaccordian-table .accordion-body table thead tr th{font: 600 15px/24px 'Poppins'; color: #6A8196; padding: 30px 20px 26px;}
 .merchantaccordian-table .accordion-body table tbody tr td{font: 500 14px/24px 'Poppins'; color: #6A8196; padding: 20px 20px 15px;}
 .merchantaccordian-table{padding-bottom: 30px;}
