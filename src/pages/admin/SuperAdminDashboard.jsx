@@ -809,7 +809,7 @@ const SuperAdminDashboard = () => {
             <div className="tableHeader">
               <div className="tableHeaderLeft">
                 <div className="tableTitle">Connected History</div>
-                <div className="filterBy">Day list</div>
+                {/* <div className="filterBy">Day list</div> */}
               </div>
 
               <div className="tableHeaderRight">
@@ -856,8 +856,8 @@ const SuperAdminDashboard = () => {
                     <td colSpan="5" style={{ textAlign: "center", padding: "20px" }}>
                       <div className="table-loader">
                         <div className="spinner" />
-                          <PreLoader />
-                          <div>Loading data...</div>
+                          {/* <PreLoader />
+                          <div>Loading data...</div> */}
                       </div>
                     </td>
                   </tr>
