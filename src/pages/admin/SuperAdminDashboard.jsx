@@ -64,6 +64,21 @@ const SuperAdminDashboard = () => {
   const [userChartData, setUserChartData] = useState([]);
   const [merchantGraphData, setMerchantGraphData] = useState([]);
 
+  const getCurrentMerchantCount = () => {
+    switch (merchantTypeActiveTab) {
+      case 0:
+        return userStats.merchant_count ?? "Loading...";
+      case 1:
+        return userStats.processors_count ?? "Loading...";
+      case 2:
+        return userStats.iso_count ?? "Loading...";
+      case 3:
+        return userStats.agents_count ?? "Loading...";
+      default:
+        return userStats.merchant_count ?? "Loading...";
+    }
+  };
+
   const getMerchantType = () => {
     switch (merchantTypeActiveTab) {
       case 0:
@@ -228,6 +243,10 @@ const SuperAdminDashboard = () => {
           otherCount: res.data.other_count || 0,
           userPercentage: res.data.user_percentage || 0,
           otherPercentage: res.data.other_percentage || 0,
+          merchant_count: res.data.merchant_count || 0,
+          processors_count: res.data.processors_count || 0,
+          iso_count: res.data.iso_count || 0,
+          agents_count: res.data.agents_count || 0,
           chartData: [
             {
               name: "Users",
@@ -952,8 +971,8 @@ const SuperAdminDashboard = () => {
               <div className="merchantStatsSection">
                 <div className="userStatsTopContainer">
                   <div className="userStatsTopLeft">
-                    <div className="userStatsTitle">Number of Merchant</div>
-                    <div className="userStatsValue">{userStats.otherCount ?? "Loading..."}</div>
+                    <div className="userStatsTitle">Number of {getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}</div>
+                    <div className="userStatsValue">{getCurrentMerchantCount()}</div>
                   </div>
 
                   <div className="userStatsTopRight">
