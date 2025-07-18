@@ -96,11 +96,12 @@ const confirmDelete = async () => {
   return (
     <>
       <div className='adminUserlistWrapper'>
+      <AdminDashBoardTopBar heading="User List" />
         <div className='adminDashboardContainer'>
 
-          <AdminDashBoardTopBar heading="User List" />
+          
 
-          <div className="adminUserlIstContainer">
+     <div className="adminUserlIstContainer">
             <table className="tableContainer">
               <thead className="theadContainer">
                 <tr>

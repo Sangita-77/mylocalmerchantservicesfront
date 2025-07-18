@@ -216,9 +216,9 @@
 .merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 11vh; right: 28%; color: white; background-color: #FFBF61; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
 .merchantDetailsModalCloseBtn{}
 .dataRowContainer { margin: 0; padding: 0; width: 100%; height: 53px; max-height: 200px; display: flex; flex-direction: row; align-items: center; column-gap: 50px; border: none; }
-.dataTitle { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 600; width: 24%; height: 100%; display: flex; align-items: center; }
-.data { margin: 0; padding: 0 24px; width: 80%; max-width: 80%; font-family: "Poppins"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; height: 53px;}
-.modalConnectBtn {transition: all .5s ease-in-out; margin: 0; padding: 0; width: 180px; height: 58px; text-align: center; color: #000; background-color: #FFBF61; font: 600 19px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px; }
+.dataTitle { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 500; width: 25%; height: 100%; display: flex; align-items: center; }
+.data { margin: 0; padding: 0 24px; width: 80%; max-width: 80%; font-family: "Poppins"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; min-height: 53px;}
+.modalConnectBtn {transition: all .5s ease-in-out; margin: 0; padding: 0; width: 135px; height: 43px; text-align: center; color: #000; background-color: #FFBF61; font: 600 16px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px; }
 .modalConnectBtn:hover {background-color: #ffffff;}
 
 
@@ -679,7 +679,7 @@ position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px
 .merchantProfileWrapper .adminDashboardTopbar {border-top-left-radius: 42px; padding: 30px 0;}
 /* 26.06.25 */
 
-.adminDashboardTopbar {width: 82vw; display: flex; flex-direction: row; align-items: center; justify-content: center; overflow: hidden; position: fixed;  z-index: 999; top: 0; margin: 0; background: #F5F5FE; border-radius: 45px 0 0 0; padding: 30px 20px 23px;     box-shadow: 10px 0px 9px #4f87bf;}
+.adminDashboardTopbar {width: 82vw; display: flex; flex-direction: row; align-items: center; justify-content: center; position: fixed;  z-index: 999; top: 0; margin: 0; background: #F5F5FE; border-radius: 45px 0 0 0; padding: 30px 20px 23px;     box-shadow: 10px 0px 9px #4f87bf;}
 
 .adminDashboardTopbar .adminDashboardTopbarWrap{display: flex; width: 72vw; justify-content: space-between;}
 
@@ -738,7 +738,7 @@ position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px
 .chatMessageSendingLoader{ top: 45%; left: 30%; width: 40%; height: 10%; background-color: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; align-self: center; position: absolute; border: none; color: white; font-family: 'Sora'; font-size: 14px; border: none; border-radius: 6px; }
 
 .messagesOverlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */ z-index: 1000; overflow-y: hidden; }
-.messagesWindowWrapper { margin: 0; padding: 0; width: 50vw; height: 80vh; background-color: white; position: fixed; top: 10vh; left: 25vw; z-index: 99999; border: none; border-radius: 24px; overflow: hidden; }
+.messagesWindowWrapper { margin: 0; padding: 0; width: 650px; height: 80vh; background-color: white; position: fixed; top: 10vh; left: 50%; transform: translateX(-50%); z-index: 99999; border: none; border-radius: 24px; overflow: hidden; }
 .messagesWindowWrapper .messagesWindowTop { padding: 0 0 0 24px; position: static; }
 .messagesWindowWrapper .messagesWindowContainer { margin: 0; padding: 12px 24px 24px 24px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; height: 100%; background-color: transparent; z-index: 99999999; }
 /* .eclipseImage {
@@ -750,7 +750,7 @@ position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px
   left: -500px;
 } */
 
-.messagesWindowWrapper .messagesWindowCloseBtn { width: 40px; height: 40px; color: white; font-size: 24px; background-color: rgb(73, 72, 72); display: flex; align-items: center; justify-content: center; border: 1px solid rgb(73, 72, 72); border-radius: 50%; position: absolute; top: 0; right: 0; z-index: 999999999; cursor: pointer; }
+.messagesWindowWrapper .messagesWindowCloseBtn { width: 40px; height: 40px; color: rgb(42, 38, 38); font-size: 24px; background-color: #FFBF61; display: flex; align-items: center; justify-content: center;  border-radius: 50%; position: absolute; top: 0; right: 0; z-index: 999999999; cursor: pointer; }
 .messagesWindowWrapper .messagesWindowInner { margin: 0; padding: 0; padding-bottom: 12px; max-height: 95%; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; background-color: transparent; overflow: auto; scrollbar-width: none; /* Firefox */ -ms-overflow-style: none; /* IE and Edge */ }
 .messagesWindowWrapper .messageContainerTop{ margin-bottom: 6px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
 .messagesWindowWrapper .username { margin: 0; padding: 0; color: gray; font-family: "Sora"; font-weight: 300 !important; font-size: 14px; }
@@ -782,18 +782,18 @@ position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 /* ---------------- Admin Profile -------------- */
-.adminProfileWrapper .adminDashboardContainer {padding: 0 52px 40px; /*height: 91vh;*/}
-.adminProfileWrapper .adminDashboardContainer .adminProfileContainer {padding-top: 119px;}
+.adminProfileWrapper .adminDashboardContainer {padding: 0 52px 40px; background-color: #23b7e52b;}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainer {padding-top: 150px;}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px; padding: 0; background-color: #0085da; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader .adminProfileHeaderCompanyTitle {padding: 0 28px; color: #fff; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px;}
-.adminProfileWrapper .profileInnerDetailsContainer {margin: 0; width: 73vw; background-color: #144d99; border: 1px solid #1a77b8; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; padding: 36px 28px 15px; background-color: #fff; border: none; border-radius: 20px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
+.adminProfileWrapper .profileInnerDetailsContainer {margin: 0; width: 73vw; background-color: #e3f1ff; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; padding: 36px 28px 15px; border: none; border-radius: 20px; /*box-shadow: 0 0 5px 0 rgb(192, 192, 192);*/ box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox {padding-bottom: 14px; margin-bottom: 25px;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox:first-child {border-bottom: 1px solid #0f8cdd;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileDataTitle {color: #807B7B; font: 600 15px/25px "Poppins";}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileData {color: #807B7B; font: 400 15px/25px "Poppins";}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .loginInputCol,
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputCol {border-bottom: 1px solid #0f8cdd; width: 45%; margin-bottom: 15px;}
-.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .loginFormInputField {border: none; padding: 0px 0 15px;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .loginFormInputField {border: none; padding: 0px 0 15px; background: transparent;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .checkBoxRow {margin-top: 19px; }
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .checkBoxRow .showPassword {color: #807B7B; font: 400 15px/25px "Poppins";}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .forgetPassword {color: #807B7B; font: 400 15px/25px "Poppins"; margin-top: 10px;}
@@ -823,9 +823,9 @@ position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px
 /* ----------- Confirmation Modal ---------------- */
 
 .modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: flex; align-items: center; justify-content: center; z-index: 1000; }
-.modalContent { background: white; padding: 25px; border-radius: 10px; width: 300px; text-align: center; }
-.modalActions { margin-top: 20px; display: flex; justify-content: space-around; }
-.cancelBtn { background-color: #ccc; padding: 6px 12px; border: none; border-radius: 5px; width: 72px;}
+.modalContent { background: #0085DA; color: #fff; padding: 25px; border-radius: 10px; width: 300px; text-align: center; }
+.modalActions { margin-top: 20px; display: flex; justify-content: center; column-gap: 15px;}
+.cancelBtn { background-color: #FFBF61; padding: 6px 12px; border: none; border-radius: 5px; width: 72px;}
 .confirmBtn { background-color: #e60e4e; color: white; padding: 6px 12px; border: none; border-radius: 5px; width: 72px;}
 
 
@@ -1008,4 +1008,4 @@ border-radius: 5px; margin-right: 30px;}
 
 
 /* ---------- Footer Bar -------------  */
-.footerBottomBar {text-align: center; color: #535353; font: 500 16px "Poppins"; text-transform: uppercase; margin: 0; padding: 20px 10px;}
+.footerBottomBar {background-color: #23b7e52b; text-align: center; color: #535353; font: 500 16px "Poppins"; text-transform: uppercase; margin: 0; padding: 20px 10px;}

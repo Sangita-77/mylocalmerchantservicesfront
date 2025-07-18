@@ -79,8 +79,10 @@ const AdminAgent = () => {
     };
     return (
        <div className="adminUserlistWrapper merchantListAdmin">
+        
+        <AdminDashBoardTopBar heading="Agent List" />
         <div className="adminDashboardContainer">
-              <AdminDashBoardTopBar heading="Agent List" />
+              
                 <div className='adminUserlIstContainer'>
                    <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Agents" pendingHeading="Pending Agents" flag="agents" onRefresh={refreshPage}/>
                  </div>

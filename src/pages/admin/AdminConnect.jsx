@@ -145,8 +145,10 @@ const AdminConnect = () => {
 
     return (
         <div className="adminUserlistWrapper">
+          
+          <AdminDashBoardTopBar heading={"User Connect"} />
             <div className="adminDashboardContainer">
-                <AdminDashBoardTopBar heading={"User Connect"} />
+                
 
                 <div className="adminUserlIstContainer">
                     <table className="tableContainer">

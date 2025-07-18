@@ -13,7 +13,7 @@ const MessagesWindow = ({ onClose, chatData = [], selectedInfo = {} }) => {
       <div className="messagesWindowWrapper">
         <div className="messagesWindowTop">
           <div className="messagesWindowCloseBtn" onClick={() => onClose()}>
-            <IoMdClose color="white" size={24} />
+            <IoMdClose color="rgb(42, 38, 38)" size={24} />
           </div>
         </div>
 

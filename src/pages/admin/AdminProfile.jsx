@@ -297,8 +297,10 @@ const AdminProfile = () => {
 
   return (
     <div className="adminProfileWrapper">
+      
+      <AdminDashBoardTopBar heading="Super Admin Profile" />
       <div className="adminDashboardContainer">
-        <AdminDashBoardTopBar heading="Super Admin Profile" />
+        
 
         <div className="adminProfileContainer">
           <div className="adminProfileContainerHeader">
