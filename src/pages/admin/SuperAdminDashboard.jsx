@@ -1049,21 +1049,29 @@ const SuperAdminDashboard = () => {
             </div>
 
             <div className="dashboardMerchantStatsRight">
-            <div className="percentageCountSection">
+              <div className="percentageCountSection">
                 <div className="percentageCountWrap">
-                <div className="percentageCountHeader">Percentage of Active</div>
+                  <div className="percentageCountHeader">Percentage of Active</div>
 
-                {percentages && (
-                  <>
-                    <PercentageItem label="Of Users" percentage={percentages.user_percentage} />
-                    <PercentageItem label="Of Merchants" percentage={percentages.merchant_percentage} />
-                    <PercentageItem label="Of Processors" percentage={percentages.processors_percentage} />
-                    <PercentageItem label="Of ISOs" percentage={percentages.iso_percentage} />
-                    <PercentageItem label="Of Agents" percentage={percentages.agents_percentage} last />
-                  </>
-                )}
-                </div>
-            </div>
+                  {percentages ? (
+                    <>
+                      <PercentageItem label="Of Users" percentage={percentages.user_percentage} />
+                      <PercentageItem label="Of Merchants" percentage={percentages.merchant_percentage} />
+                      <PercentageItem label="Of Processors" percentage={percentages.processors_percentage} />
+                      <PercentageItem label="Of ISOs" percentage={percentages.iso_percentage} />
+                      <PercentageItem label="Of Agents" percentage={percentages.agents_percentage} last />
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <div className="spinner" >
+                          
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  </div>
+              </div>
 
               {/* <div className="connectedGraphSection">
                 <div className="connectedGraphSectionHeader">
