@@ -3,8 +3,14 @@ import "./../../styles/styles.css";
 import { FaPowerOff } from "react-icons/fa6";
 import { FaCircleUser } from "react-icons/fa6";
 import { CiCalendar, CiCircleInfo, CiSearch } from "react-icons/ci";
-import { FiUsers } from "react-icons/fi";
+// import { FiUsers } from "react-icons/fi";
+import { HiUserGroup } from "react-icons/hi";
+import { BsFillPatchCheckFill } from "react-icons/bs";
+import { IoStorefrontSharp } from "react-icons/io5";
+import { MdRealEstateAgent } from "react-icons/md";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { BiSolidBadgeDollar } from "react-icons/bi";
+import { GiDividedSquare } from "react-icons/gi";
 import AreaChartComponent from "../../components/AreaChartComponent";
 import PreLoader from "../../components/PreLoader";
 import PieChartComponent from "../../components/PieChartComponent";
@@ -463,11 +469,11 @@ const SuperAdminDashboard = () => {
           <div className="adminDashboardCountContainer">
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <FiUsers color="gray" size={24} />
+                <HiUserGroup color="gray" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div>Number of users</div>
-                <div>{countData?.totalUsers ?? "Loading..."}</div>
+                <div className="countPlatetHeading">Number of users</div>
+                <div className="countPlateNumber">{countData?.totalUsers ?? "Loading..."}</div>
                 <div
                   style={{
                     display: "flex",
@@ -476,18 +482,18 @@ const SuperAdminDashboard = () => {
                     gap: 4,
                   }}
                 >
-                  View all <FaLongArrowAltRight />
+                  View All <FaLongArrowAltRight />
                 </div>
               </div>
             </div>
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <FiUsers color="gray" size={24} />
+                <IoStorefrontSharp  color="#599CB0" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div>Approved Merchant</div>
-                <div>{countData?.totalMerchantApproved ?? "Loading..."}</div>
+                <div className="countPlatetHeading">Approved Merchant</div>
+                <div className="countPlateNumber">{countData?.totalMerchantApproved ?? "Loading..."}</div>
                 <div
                   style={{
                     display: "flex",
@@ -496,18 +502,18 @@ const SuperAdminDashboard = () => {
                     gap: 4,
                   }}
                 >
-                  View all <FaLongArrowAltRight />
+                  View All <FaLongArrowAltRight />
                 </div>
               </div>
             </div>
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <FiUsers color="gray" size={24} />
+                <IoStorefrontSharp  color="#4E688C" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div>Pending Merchant</div>
-                <div>{countData?.totalMerchantPending ?? "Loading..."}</div>
+                <div className="countPlatetHeading">Pending Merchant</div>
+                <div className="countPlateNumber">{countData?.totalMerchantPending ?? "Loading..."}</div>
                 <div
                   style={{
                     display: "flex",
@@ -516,18 +522,18 @@ const SuperAdminDashboard = () => {
                     gap: 4,
                   }}
                 >
-                  View all <FaLongArrowAltRight />
+                  View All <FaLongArrowAltRight />
                 </div>
               </div>
             </div>
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <FiUsers color="gray" size={24} />
+                <MdRealEstateAgent color="#E0A54F" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div>Approved Agent</div>
-                <div>{countData?.totalAgentApproved ?? "Loading..."}</div>
+                <div className="countPlatetHeading">Approved Agent</div>
+                <div className="countPlateNumber">{countData?.totalAgentApproved ?? "Loading..."}</div>
                 <div
                   style={{
                     display: "flex",
@@ -536,18 +542,18 @@ const SuperAdminDashboard = () => {
                     gap: 4,
                   }}
                 >
-                  View all <FaLongArrowAltRight />
+                  View All <FaLongArrowAltRight />
                 </div>
               </div>
             </div>
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <FiUsers color="gray" size={24} />
+                <MdRealEstateAgent color="#EB7581" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div>Pending Agent</div>
-                <div>{countData?.totalAgentPending ?? "Loading..."}</div>
+                <div className="countPlatetHeading">Pending Agent</div>
+                <div className="countPlateNumber">{countData?.totalAgentPending ?? "Loading..."}</div>
                 <div
                   style={{
                     display: "flex",
@@ -556,18 +562,18 @@ const SuperAdminDashboard = () => {
                     gap: 4,
                   }}
                 >
-                  View all <FaLongArrowAltRight />
+                  View All <FaLongArrowAltRight />
                 </div>
               </div>
             </div>
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <FiUsers color="gray" size={24} />
+                <BiSolidBadgeDollar color="#268BCB" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div>Approved ISOs</div>
-                <div>{countData?.totalISOsApproved ?? "Loading..."}</div>
+                <div className="countPlatetHeading">Approved ISOs</div>
+                <div className="countPlateNumber">{countData?.totalISOsApproved ?? "Loading..."}</div>
                 <div
                   style={{
                     display: "flex",
@@ -576,18 +582,18 @@ const SuperAdminDashboard = () => {
                     gap: 4,
                   }}
                 >
-                  View all <FaLongArrowAltRight />
+                  View All <FaLongArrowAltRight />
                 </div>
               </div>
             </div>
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <FiUsers color="gray" size={24} />
+                <BiSolidBadgeDollar color="#3DB255" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div>Pending ISOs</div>
-                <div>{countData?.totalISOsPending ?? "Loading..."}</div>
+                <div className="countPlatetHeading">Pending ISOs</div>
+                <div className="countPlateNumber">{countData?.totalISOsPending ?? "Loading..."}</div>
                 <div
                   style={{
                     display: "flex",
@@ -596,18 +602,18 @@ const SuperAdminDashboard = () => {
                     gap: 4,
                   }}
                 >
-                  View all <FaLongArrowAltRight />
+                  View All <FaLongArrowAltRight />
                 </div>
               </div>
             </div>
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <FiUsers color="gray" size={24} />
+                <BsFillPatchCheckFill color="#4F7FBE" size={42} />
               </div>
               <div className="countPlateRightContainer">
-                <div>Approved Processors</div>
-                <div>{countData?.totalProcessorsApproved ?? "Loading..."}</div>
+                <div className="countPlatetHeading">Approved Processors</div>
+                <div className="countPlateNumber">{countData?.totalProcessorsApproved ?? "Loading..."}</div>
                 <div
                   style={{
                     display: "flex",
@@ -616,18 +622,18 @@ const SuperAdminDashboard = () => {
                     gap: 4,
                   }}
                 >
-                  View all <FaLongArrowAltRight />
+                  View All <FaLongArrowAltRight />
                 </div>
               </div>
             </div>
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <FiUsers color="gray" size={24} />
+                <GiDividedSquare color="#41B9C8" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div>Pending Processors</div>
-                <div>{countData?.totalProcessorsPending ?? "Loading..."}</div>
+                <div className="countPlatetHeading">Pending Processors</div>
+                <div className="countPlateNumber">{countData?.totalProcessorsPending ?? "Loading..."}</div>
                 <div
                   style={{
                     display: "flex",
@@ -636,7 +642,7 @@ const SuperAdminDashboard = () => {
                     gap: 4,
                   }}
                 >
-                  View all <FaLongArrowAltRight />
+                  View All <FaLongArrowAltRight />
                 </div>
               </div>
             </div>
@@ -799,6 +805,7 @@ const SuperAdminDashboard = () => {
           </div>
 
           <div className="adminDashboardConversationHistorySection">
+            <div className="adminDashboardConversationHistoryWrap">
             <div className="tableHeader">
               <div className="tableHeaderLeft">
                 <div className="tableTitle">Connected History</div>
@@ -889,6 +896,8 @@ const SuperAdminDashboard = () => {
 
 
             </table>
+
+          </div>
           </div>
 
           <div className="dashboardRow">
