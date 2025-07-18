@@ -67,15 +67,15 @@ const SuperAdminDashboard = () => {
   const getCurrentMerchantCount = () => {
     switch (merchantTypeActiveTab) {
       case 0:
-        return userStats.merchant_count ?? "Loading...";
+        return userStats.merchant_count ?? "0";
       case 1:
-        return userStats.processors_count ?? "Loading...";
+        return userStats.processors_count ?? "0";
       case 2:
-        return userStats.iso_count ?? "Loading...";
+        return userStats.iso_count ?? "0";
       case 3:
-        return userStats.agents_count ?? "Loading...";
+        return userStats.agents_count ?? "0";
       default:
-        return userStats.merchant_count ?? "Loading...";
+        return userStats.merchant_count ?? "0";
     }
   };
 
@@ -923,7 +923,9 @@ const SuperAdminDashboard = () => {
                     <tr className="tr" key={i}>
                       <td className="td">{item.user?.merchant_name || "N/A"}</td>
                       <td className="td">{item.user?.user_id || "N/A"}</td>
-                      <td className={`td ${getMerchantColorClass(item.user?.flag)}`}>{item.merchant?.merchant_name || "N/A"}</td>
+                      <td className={`td ${getMerchantColorClass(item.user?.flag)}`}>
+                        <div>{item.merchant?.merchant_name || "N/A"}</div>
+                        </td>
                       <td className="td">{item.merchant?.user_id || "N/A"}</td>
                       <td className="actionTd">
                       <button
@@ -1049,21 +1051,29 @@ const SuperAdminDashboard = () => {
             </div>
 
             <div className="dashboardMerchantStatsRight">
-            <div className="percentageCountSection">
+              <div className="percentageCountSection">
                 <div className="percentageCountWrap">
-                <div className="percentageCountHeader">Percentage of Active</div>
+                  <div className="percentageCountHeader">Percentage of Active</div>
 
-                {percentages && (
-                  <>
-                    <PercentageItem label="Of Users" percentage={percentages.user_percentage} />
-                    <PercentageItem label="Of Merchants" percentage={percentages.merchant_percentage} />
-                    <PercentageItem label="Of Processors" percentage={percentages.processors_percentage} />
-                    <PercentageItem label="Of ISOs" percentage={percentages.iso_percentage} />
-                    <PercentageItem label="Of Agents" percentage={percentages.agents_percentage} last />
-                  </>
-                )}
-                </div>
-            </div>
+                  {percentages ? (
+                    <>
+                      <PercentageItem label="Of Users" percentage={percentages.user_percentage} />
+                      <PercentageItem label="Of Merchants" percentage={percentages.merchant_percentage} />
+                      <PercentageItem label="Of Processors" percentage={percentages.processors_percentage} />
+                      <PercentageItem label="Of ISOs" percentage={percentages.iso_percentage} />
+                      <PercentageItem label="Of Agents" percentage={percentages.agents_percentage} last />
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <div className="spinner" >
+                          
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  </div>
+              </div>
 
               {/* <div className="connectedGraphSection">
                 <div className="connectedGraphSectionHeader">
