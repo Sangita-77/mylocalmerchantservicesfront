@@ -923,7 +923,9 @@ const SuperAdminDashboard = () => {
                     <tr className="tr" key={i}>
                       <td className="td">{item.user?.merchant_name || "N/A"}</td>
                       <td className="td">{item.user?.user_id || "N/A"}</td>
-                      <td className={`td ${getMerchantColorClass(item.user?.flag)}`}>{item.merchant?.merchant_name || "N/A"}</td>
+                      <td className={`td ${getMerchantColorClass(item.user?.flag)}`}>
+                        <div>{item.merchant?.merchant_name || "N/A"}</div>
+                        </td>
                       <td className="td">{item.merchant?.user_id || "N/A"}</td>
                       <td className="actionTd">
                       <button

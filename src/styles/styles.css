@@ -437,6 +437,14 @@ border-radius: 24px; position: relative; box-shadow: 0px 0px 10px #23b7e570;}
 .adminDashboardWrapper .tr:not(:last-child){border-bottom: 1px solid #909091 !important; }
 .adminDashboardWrapper .tr{ height: 60px;}
 .adminDashboardWrapper .td { padding: 0; color: #383838; font-family: "Poppins"; font-weight: 400; font-size: 15px; text-align: center;}
+.adminDashboardWrapper .td.flag-agents{color: #C7811B;}
+.adminDashboardWrapper .td.flag-agents div{background-color: #bf852e47; border-radius: 5px; padding: 6px;}
+.adminDashboardWrapper .td.flag-service{color: #368197;}
+.adminDashboardWrapper .td.flag-service div{background-color: #36809745; border-radius: 5px; padding: 6px;}
+.adminDashboardWrapper .td.flag-processor{color: #3567A9;}
+.adminDashboardWrapper .td.flag-processor div{background-color: #3567a95c; border-radius: 5px; padding: 6px;}
+.adminDashboardWrapper .td.flag-iso{color: #156CA3;}
+.adminDashboardWrapper .td.flag-iso div{background-color: #156ca35e; border-radius: 5px; padding: 6px;}
 .adminDashboardWrapper .actionTd { padding: 0 32px 0 0; text-align: center; }
 .adminDashboardWrapper .viewButton { padding: 4px 12px; width: 90px; color: white; font-family: "Poppins"; font-weight: 500; font-size: 17px; background-color: #4E688C; border-radius: 6px; border: none; outline: none; cursor: pointer; }
 .adminDashboardWrapper .viewButton:hover{opacity: .7; transition: .5s;}
