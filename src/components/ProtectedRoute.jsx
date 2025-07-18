@@ -83,7 +83,7 @@ const ProtectedRoute = ({ children }) => {
   }, [token, location]);
 
   if (!checking && !isAllowed) {
-    return <Navigate to="/registration" replace />;
+    return <Navigate to="/" replace />;
   }
 
   const dots = ".".repeat(dotCount);

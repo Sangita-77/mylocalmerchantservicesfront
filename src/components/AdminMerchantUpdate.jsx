@@ -9,6 +9,7 @@ const AdminMerchantUpdate = ({ user, onClose }) => {
   const [industry, setIndustry] = useState(user.industry);
   const [phone, setPhone] = useState(user.phone);
   const [serviceType, setServiceType] = useState(user.type_of_service);
+  // const [companyName, setcompanyName] = useState(user.company_name);
   const [address, setAddress] = useState(
     `${user.street}, ${user.city}, ${user.state}, ${user.zip_code}`
   );
@@ -38,8 +39,12 @@ const AdminMerchantUpdate = ({ user, onClose }) => {
           </div>
           <div className="formGroup">
             <label>Email :</label>
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} readOnly/>
           </div>
+          {/* <div className="formGroup">
+            <label>company_name:</label>
+            <input type="text" value={companyName} onChange={(e) => setIndustry(e.target.value)} />
+          </div> */}
           <div className="formGroup">
             <label>Industry:</label>
             <input type="text" value={industry} onChange={(e) => setIndustry(e.target.value)} />

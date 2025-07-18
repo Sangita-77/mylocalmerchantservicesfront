@@ -972,80 +972,80 @@ const SuperAdminDashboard = () => {
 
               <div className="merchantStatsSection">
                 <div className="merchantStatsWrap">
-                <div className="userStatsTopContainer">
-                  <div className="userStatsTopLeft">
-                    <div className="userStatsTitle">Number of {getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}</div>
-                    <div className="userStatsValue">{getCurrentMerchantCount()}</div>
+                  <div className="userStatsTopContainer">
+                    <div className="userStatsTopLeft">
+                      <div className="userStatsTitle">Number of {getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}</div>
+                      <div className="userStatsValue">{getCurrentMerchantCount()}</div>
+                    </div>
+
+                    <div className="userStatsTopRight">
+                      <div className="userGraphFilterTitle">
+                        Select Time Range:{" "}
+                      </div>
+                      <div
+                        className="chartDropdownContainer"
+                        onClick={(e) => toggleMerchantFilterDropdown(e)}
+                      >
+                        <div className="chartDropdown">
+                          <div>
+                            {merchantFilterBy
+                              ? merchantFilterBy
+                              : "Select Time ▾"}
+                          </div>
+                          <CiCalendar
+                            size={20}
+                            color="white"
+                            onClick={() => setShowMerchantFilterDropdown(true)}
+                          />
+                        </div>
+                        {showMerchantFilterDropdown === true && (
+                          <div className="dropdownOptions">
+                            <div
+                              className="dropdownOption"
+                              onClick={() => setMerchantFilterBy("month")}
+                            >
+                              Monthly
+                            </div>
+                            <div
+                              className="dropdownOption"
+                              onClick={() => setMerchantFilterBy("day")}
+                            >
+                              Daily
+                            </div>
+                            <div
+                              className="dropdownOption"
+                              onClick={() => setMerchantFilterBy("year")}
+                            >
+                              Yearly
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="userStatsTopRight">
-                    <div className="userGraphFilterTitle">
-                      Select Time Range:{" "}
-                    </div>
-                    <div
-                      className="chartDropdownContainer"
-                      onClick={(e) => toggleMerchantFilterDropdown(e)}
-                    >
-                      <div className="chartDropdown">
-                        <div>
-                          {merchantFilterBy
-                            ? merchantFilterBy
-                            : "Select Time ▾"}
-                        </div>
-                        <CiCalendar
-                          size={20}
-                          color="white"
-                          onClick={() => setShowMerchantFilterDropdown(true)}
-                        />
+                  <div className="userStatsContainer">
+                    {graphLoading ? (
+                      <div className="graphLoaderContainer">
+                        <PreLoader />
+                        <div className="graphLoadingText">Loading graph...</div>
                       </div>
-                      {showMerchantFilterDropdown === true && (
-                        <div className="dropdownOptions">
-                          <div
-                            className="dropdownOption"
-                            onClick={() => setMerchantFilterBy("month")}
-                          >
-                            Monthly
+                    ) : (
+                      <>
+                        <div className="userGraphTop">
+                          <div className="userGraphLeft">
+                            <div className="userGraphLeftTitle">Analytics</div>
+                            <CiCircleInfo size={24} color="white" />
                           </div>
-                          <div
-                            className="dropdownOption"
-                            onClick={() => setMerchantFilterBy("day")}
-                          >
-                            Daily
-                          </div>
-                          <div
-                            className="dropdownOption"
-                            onClick={() => setMerchantFilterBy("year")}
-                          >
-                            Yearly
-                          </div>
+                          <div className="userGraphRight"></div>
                         </div>
-                      )}
-                    </div>
+
+                        <div className="graphContainer">
+                          <BarChartComponent data={merchantGraphData} />
+                        </div>
+                      </>
+                    )}
                   </div>
-                </div>
-
-                <div className="userStatsContainer">
-                  {graphLoading ? (
-                    <div className="graphLoaderContainer">
-                      <PreLoader />
-                      <div className="graphLoadingText">Loading graph...</div>
-                    </div>
-                  ) : (
-                    <>
-                      <div className="userGraphTop">
-                        <div className="userGraphLeft">
-                          <div className="userGraphLeftTitle">Analytics</div>
-                          <CiCircleInfo size={24} color="white" />
-                        </div>
-                        <div className="userGraphRight"></div>
-                      </div>
-
-                      <div className="graphContainer">
-                        <BarChartComponent data={merchantGraphData} />
-                      </div>
-                    </>
-                  )}
-                </div>
                 </div>
               </div>
             </div>
