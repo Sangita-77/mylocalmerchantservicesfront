@@ -12,7 +12,7 @@ const AccordianProps = (props) => {
         <Accordion.Header style={{ backgroundColor: props.bgColor, borderBottomColor: props.borderColor}}>
             <div className="d-flex">
             <div className="merchant-icon">
-                 {props.Icon && <props.Icon  style={{ color: props.bgColor}}/>}
+                 {props.Icon && <props.Icon  style={{ color: props.iconColor || "#000" ,  backgroundColor: props.iconBgColor || "#fff",}}/>}
             </div>
              <div className="merchant-heading">
                 {props.Heading}

@@ -17,7 +17,7 @@ import AdminMerchantUpdate from "./AdminMerchantUpdate";
 
 
 
-const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , approvedHeading , pendingHeading , flag , onRefresh , approvedbackcolor , approvedborder , pendingbackcolor , pendingborder , approvedIcon}) => {
+const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , approvedHeading , pendingHeading , flag , onRefresh , approvedbackcolor , approvedborder , pendingbackcolor , pendingborder , approvedIcon , pendingIconColor , pendingIconBgColor , approvedIconColor , approvedIconBgColor}) => {
 
   const { token } = useContext(AppContext);
 
@@ -81,6 +81,8 @@ const handleEditClick = (user) => {
         bgColor={approvedbackcolor}
         borderColor={approvedborder}
         Icon={approvedIcon}
+        iconColor={approvedIconColor}
+        iconBgColor={approvedIconBgColor}
         Heading={approvedHeading}
         tbody={
           <>
@@ -127,6 +129,8 @@ const handleEditClick = (user) => {
         bgColor={pendingbackcolor}
         borderColor={pendingborder}
         Icon={approvedIcon}
+        iconColor={pendingIconColor}
+        iconBgColor={pendingIconBgColor}
         Heading={pendingHeading}
         tbody={
           <>

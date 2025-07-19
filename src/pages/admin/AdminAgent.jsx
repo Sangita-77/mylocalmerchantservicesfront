@@ -85,7 +85,7 @@ const AdminAgent = () => {
         <div className="adminDashboardContainer">
               
                 <div className='adminUserlIstContainer'>
-                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Agents" pendingHeading="Pending Agents" flag="agents" onRefresh={refreshPage} approvedbackcolor="#0c62d3" approvedborder="#003478" pendingbackcolor="#0c62d3a1" pendingborder="#003478" approvedIcon={MdRealEstateAgent}/>
+                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Agents" pendingHeading="Pending Agents" flag="agents" onRefresh={refreshPage} approvedbackcolor="#585ea1" approvedborder="#393d68" pendingbackcolor="#636bbfc2" pendingborder="#393d68" approvedIcon={MdRealEstateAgent} approvedIconColor="#585ea1" approvedIconBgColor="#fff" pendingIconColor="#fff" pendingIconBgColor="#393d68"/>
                  </div>
           </div>
       </div>

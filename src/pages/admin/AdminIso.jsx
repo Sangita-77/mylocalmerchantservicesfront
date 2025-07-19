@@ -84,7 +84,7 @@ const AdminIso = () => {
         <div className="adminDashboardContainer">
               
                 <div className='adminUserlIstContainer'>
-                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Isos" pendingHeading="Pending Isos" flag="ISOs" onRefresh={refreshPage} approvedbackcolor="#003c76" approvedborder="#032648" pendingbackcolor="#023260cf" pendingborder="#032648" approvedIcon={BiSolidBadgeDollar}/>
+                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Isos" pendingHeading="Pending Isos" flag="ISOs" onRefresh={refreshPage} approvedbackcolor="#003c76" approvedborder="#032648" pendingbackcolor="#023260cf" pendingborder="#032648" approvedIcon={BiSolidBadgeDollar} approvedIconColor="#003c76" approvedIconBgColor="#fff" pendingIconColor="#fff" pendingIconBgColor="#032648"/>
                  </div>
           </div>
       </div>
