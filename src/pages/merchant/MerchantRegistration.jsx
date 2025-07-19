@@ -727,12 +727,13 @@ const MerchantRegistration = () => {
                       className="inputField"
                     />
                
-               {otpSent && (
-                <div className="">
+               {otpSent ? (
+                <>
+                  <div>
                     <input
                       type="text"
                       name="otp"
-                      placeholder=""
+                      placeholder="Enter OTP"
                       value={otp}
                       onChange={handleOtpChange}
                       className="inputField"
@@ -745,14 +746,26 @@ const MerchantRegistration = () => {
                       </p>
                     )}
                   </div>
+
+                  <button
+                    type="button"
+                    className="sendOtpButton"
+                    onClick={sendOtpToEmail}
+                  >
+                    Resend OTP
+                  </button>
+                </>
+              ) : (
+                <button
+                  type="button"
+                  className="sendOtpButton"
+                  onClick={sendOtpToEmail}
+                >
+                  Send OTP
+                </button>
               )}
-                    <button
-                      type="button"
-                      className="sendOtpButton"
-                      onClick={sendOtpToEmail}
-                    >
-                      Send OTP
-                    </button>
+
+                    
                   </div>
                 </div>
               </div>
