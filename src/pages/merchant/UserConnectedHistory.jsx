@@ -143,6 +143,7 @@ const handleDeleteClick = async (connection) => {
           <div className="merchantHeaderTitle"><DashboardTopHeading text="User connected history Edit"/> </div>
         </div>
 
+<div className="tableContainerWrap">
         <table className="tableContainer">
           <thead className="theadContainer">
             <tr>
@@ -194,6 +195,7 @@ const handleDeleteClick = async (connection) => {
             )}
           </tbody>
         </table>
+        </div>
       </div>
 
       {showChatWindow && selectedConnection && (

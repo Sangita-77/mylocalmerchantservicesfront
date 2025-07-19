@@ -664,7 +664,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .merchantDashboardContainer .graphLoadingText { margin-top: 24px; color: white; font-family: "Sora"; font-size: 14px; font-weight: 400; }
 .merchantDashboardContainer .userGraphFilterTitle { font-family: "Poppins"; font-size: 14px; color: white; }
 
-.merchantDashboardContainer .chartDropdownContainer { margin: 0; padding: 0; position: relative; cursor: pointer; z-index: 999; user-select: none; }
+.merchantDashboardContainer .chartDropdownContainer { margin: 0; padding: 0; position: relative; cursor: pointer; z-index: 9; user-select: none; }
 .merchantDashboardContainer .chartDropdown { margin: 0; padding: 4px 10px; width: 140px; font-family: "Poppins"; font-size: 14px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid white; border-radius: 4px; outline: none; }
 .merchantDashboardContainer .dropdownOptions { margin: 0; width: 160px; padding: 6px 0; background-color: white; border: none; border-radius: 4px; position: absolute; top: 32px; left: 0; }
 .merchantDashboardContainer .dropdownOption { margin: 0; padding: 0 12px; padding-left: 12px !important; color: black; font-family: "Poppins"; font-size: 14px; background-color: white; cursor: pointer; }
@@ -719,11 +719,19 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .editIconContainer { width: 39px; height: 36px; text-align: center; align-content: center; background-color: #2d9ae1; border: none; border-radius: 50%; cursor: pointer; }
 .editIcon { width: 18px; height: 18px; object-fit: contain; }
 .merchantProfileDetailsHeading { margin: 48px 0 30px; padding: 0; color: #807B7B; font-family: "Poppins"; font-weight: 700; font-size: 20px; line-height: 25px; }
-.merchantProfileInputBox { margin: 0; padding: 0; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: none; border-bottom: 1px solid #0f8cdd; }
-.merchantInputContainer { margin: 0; width: 90%; display: flex; flex-direction: row; align-items: center; gap: 0px; }
+.merchantProfileInputBox { margin: 0; padding: 0; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: none; /*border-bottom: 1px solid #0f8cdd;*/ }
+.merchantInputContainer { margin: 0; width: 100%; display: flex; flex-direction: row; align-items: center; gap: 0px; border-bottom: 1px solid #0f8cdd;
+  padding-bottom: 11px;}
 .merchantInputLabel { margin: 0; padding: 21px 0; width: 40%; font-family: "Poppins"; font-weight: 400; font-size: 14px; color: #807B7B; background-color: transparent; }
-.merchantProfileInputField { margin: 0; padding: 22px; width: 76%; font-size: 15px; /* border: 1px solid #0f8cdd; */ border: none; outline: none; color: #807B7B; background-color: transparent; letter-spacing: 0.5px; }
-.merchantInputCloseBtn { margin: 0; padding: 0 20px; color: #807B7B; font-size: 28px; cursor: pointer; }
+.merchantProfileInputField {font-family: "Poppins"; margin: 0; padding: 22px; width: 76%; font-size: 15px; /* border: 1px solid #0f8cdd; */ border: none; outline: none; color: #807B7B; background-color: transparent; letter-spacing: 0.5px; }
+.merchantInputCloseBtn {margin: 0;
+  padding: 4px 11px;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  background-color: #2d9ae1;
+  line-height: 28px;
+  border-radius: 50%;}
 .merchantProfileUpdateButton { margin: 0; padding: 0; margin-top: 50px; width: 150px; height: 55px; background-color: #0f8cdd; font-family: "Poppins"; color: #ffffff; font-size: 17px; font-weight: 700; text-align: center; letter-spacing: 0.6px; border: none; outline: none; border-radius: 4px; cursor: pointer; }
 /* 26.06.25 */
 /* .merchantProfileWrapper .adminDashboardTopbar .adminDashboardTopbarLeft {padding-left: 52px;} */
@@ -744,13 +752,16 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 
 /* //////////////////////////  USER CONNECTED HISTORY  ///////////////////////////// */
 
-.userConnectedHistoryPageWrapper { margin: 0; padding: 50px 0; padding-bottom: 100px; width: auto; /*27.06.25*/ min-height: auto; background-color: #F5F5FE; /*27.06.25*/ position: relative; }
+.userConnectedHistoryPageWrapper {min-height: calc(100% - 65px); margin: 0; padding: 50px 0; padding-bottom: 100px; width: auto;  position: relative; }
 
 .userConnectedHistoryPageWrapper .eclipseImg { margin: 0; padding: 0; position: absolute; top: -180px; left: -180px; }
 .userConnectedHistoryPageWrapper .merchantUserConnectedTitle { margin: 0; padding: 18px 38px; color: white; width: 100%; font-family: "Sora"; border: 1px solid #3691c9; border-left: none; font-size: 20px; font-weight: 400; text-transform: uppercase; }
 
 .userConnectedHistoryPageWrapper .userConnectedHistoryContainer { margin: 0; padding: 52px; padding-top: 75px; }
-.userConnectedHistoryPageWrapper .tableContainer { margin: 0; padding: 0; width: 73vw; /* 30.06.25 */ background-color: #fff; /* 30.06.25 */ border: none; /* 30.06.25 */ box-shadow: 0 0 5px 0 rgb(192, 192, 192); /* 30.06.25 */ border-collapse: collapse; outline: none; border-spacing: 0; overflow: hidden; /* 30.06.25 */ border-radius: 20px; /* 30.06.25 */ }
+.userConnectedHistoryPageWrapper .tableContainerWrap {box-shadow: 0px 0px 10px #23b7e570;
+  border: 12px solid #ffffffb0;
+  border-radius: 32px; width: 73vw;}
+.userConnectedHistoryPageWrapper .tableContainer { margin: 0; padding: 0; width: 100%; background-color: #e3f1ff; border: none; /* 30.06.25 */ box-shadow: 0 0 5px 0 rgb(192, 192, 192); /* 30.06.25 */ border-collapse: collapse; outline: none; border-spacing: 0; overflow: hidden; /* 30.06.25 */ border-radius: 20px; /* 30.06.25 */}
 .userConnectedHistoryPageWrapper .tableContainer .theadContainer { margin: 0; padding: 0; width: 100%; height: 60px; background-color: #0085da; /* border: 1px solid #1894d4; */ }
 .userConnectedHistoryPageWrapper .th { padding: 0 36px; color: white; font-family: "Sora"; font-weight: 600; letter-spacing: 0.4px; font-size: 14px; text-align: left; }
 .userConnectedHistoryPageWrapper .thActions { margin: 0; padding: 0 40px 0 0; color: white; font-family: "Sora"; font-weight: 600; font-size: 14px; text-align: center; }
@@ -985,7 +996,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .messagesWindowWrapper .ownMessageContainer .messageText {color: #fff; font: 300 15px/24px "Sora"; }
 
 .adminDashboardWrapper .messagesWindowWrapper {overflow: visible;}
-.adminDashboardWrapper .messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px;}
+.adminDashboardWrapper .messagesWindowWrapper .messagesWindowContainer { border-radius: 24px;}
 .adminDashboardWrapper .messagesWindowWrapper .messagesWindowInner {width: 100%;}
 .adminDashboardWrapper .messagesWindowWrapper .usersMessageContainer {background-color: #3bb2ff; color: #fff;}
 .adminDashboardWrapper .messagesWindowWrapper .username {color: #fff;}
