@@ -789,7 +789,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .chatMessageSendingLoader{ top: 45%; left: 30%; width: 40%; height: 10%; background-color: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; align-self: center; position: absolute; border: none; color: white; font-family: 'Sora'; font-size: 14px; border: none; border-radius: 6px; }
 
 .messagesOverlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */ z-index: 1000; overflow-y: hidden; }
-.messagesWindowWrapper { margin: 0; padding: 0; width: 600px; height: 80vh; background-color: white; position: fixed; top: 10vh; left: 50%; transform: translateX(-50%); z-index: 99999; border: none; border-radius: 24px; overflow: hidden; border: 13px solid #0085DA; border-radius: 37px;}
+.messagesWindowWrapper { margin: 0; padding: 0; width: 400px; height: 80vh; background-color: white; position: fixed; top: 10vh; left: 50%; transform: translateX(-50%); z-index: 99999; border: none; border-radius: 24px; overflow: hidden; border: 13px solid #0085DA; border-radius: 37px;}
 .messagesWindowWrapper .messagesWindowTop { padding: 0 0 0 24px; position: static; }
 .messagesWindowWrapper .messagesWindowContainer { margin: 0; padding: 12px 24px 24px 24px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; height: 100%; background-color: transparent; z-index: 99999999; }
 /* .eclipseImage {
@@ -804,10 +804,10 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .messagesWindowWrapper .messagesWindowCloseBtn { width: 40px; height: 40px; color: rgb(42, 38, 38); font-size: 24px; background-color: #fff; display: flex; align-items: center; justify-content: center;  border-radius: 50%; position: absolute; top: 0; right: 0; z-index: 999999999; cursor: pointer; }
 .messagesWindowWrapper .messagesWindowInner { margin: 0; padding: 0; padding-bottom: 12px; max-height: 95%; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; background-color: transparent; overflow: auto; scrollbar-width: none; /* Firefox */ -ms-overflow-style: none; /* IE and Edge */ }
 .messagesWindowWrapper .messageContainerTop{ margin-bottom: 6px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
-.messagesWindowWrapper .username { margin: 0; padding: 0; color: gray; font-family: "Sora"; font-weight: 300 !important; font-size: 14px; }
-.messagesWindowWrapper .messageTime{ text-align: right; color: gray; font-size: 12px; font-family: "Sora"; font-weight: 300 !important; }
-.messagesWindowWrapper .usersMessageContainer { margin: 0; padding: 10px 16px 0px 16px; max-width: 95%; color: black; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; align-self: flex-start; background-color: #3bb2ff; border: none; border-top-left-radius: 12px; border-top-right-radius: 12px; }
-.messagesWindowWrapper .ownMessageContainer { margin: 0; padding: 10px 16px 0px 16px; max-width: 95%; color: black; background-color: #d7e9fe; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; border: 1px solid #1c79ba; border-radius: 12px; }
+.messagesWindowWrapper .username { margin: 0; padding: 0; color: gray; font-family: "Sora"; font-weight: 300 !important; font-size: 12px; }
+.messagesWindowWrapper .messageTime{ text-align: right; color: gray; font-size: 10px; font-family: "Sora"; font-weight: 300 !important; }
+.messagesWindowWrapper .usersMessageContainer { margin: 0; padding: 10px 16px 0px 16px; max-width: 95%; color: black; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; align-self: flex-start; background-color: #3bb2ff; border: none;     border-radius: 12px 12px 12px 0px; }
+.messagesWindowWrapper .ownMessageContainer { margin: 0; padding: 10px 8px 0px 16px; max-width: 95%; color: black; background-color: #d7e9fe; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; border: 1px solid #1c79ba; border-radius: 12px 12px 0px 12px; width: 80%;}
 
 .loaderContainer {width: 86vw; height: 100vh; overflow-y: hidden;}
 
@@ -982,7 +982,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .messagesOverlay {background-color: rgba(0, 0, 0, 0.4);}
 .messagesWindowWrapper .ownMessageContainer {background-color: #648cbb; font: 300 15px/24px "Sora"; border: none;}
 .messagesWindowWrapper .ownMessageContainer .messageContainerTop {color: #fff; font: 300 15px/24px "Sora"; }
-.messagesWindowWrapper .ownMessageContainer .messageText {color: #fff; font: 300 15px/24px "Sora"; }
+.messagesWindowWrapper .ownMessageContainer .messageText {color: #fff; font: 300 16px/24px "Sora"; }
 
 .adminDashboardWrapper .messagesWindowWrapper {overflow: visible;}
 .adminDashboardWrapper .messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px;}
