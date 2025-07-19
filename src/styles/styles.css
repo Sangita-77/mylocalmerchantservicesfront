@@ -407,7 +407,7 @@ position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px
 .adminDashboardWrapper .adminDashboardPieChartSection .colorDefineContainer { display: flex; flex-direction: row; align-items: center; gap: 24px; }
 .adminDashboardWrapper .adminDashboardPieChartSection .colorDefineSingleItem { display: flex; flex-direction: row; align-items: center; gap: 8px; }
 .adminDashboardWrapper .adminDashboardPieChartSection .colorDefineSingleItem .colorBoxTitle {font: 400 16px/16px "Sora"; color: #000000;}
-.adminDashboardWrapper .adminDashboardPieChartSection .colorBox:nth-child(1) { width: 20px; height: 20px; background-color: gray; border: none; border-radius: 2px; }
+.adminDashboardWrapper .adminDashboardPieChartSection .colorBox:nth-child(1) { width: 20px; height: 20px; border: none; border-radius: 2px; background: gray;}
 .adminDashboardWrapper .adminDashboardPieChartSection .bottomStatisticsCountCntainer { display: flex; flex-direction: row; align-items: center; gap: 15px; width: 100%;  justify-content: center; }
 .adminDashboardWrapper .adminDashboardPieChartSection .statisticsCountItem { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 40%;}
 .adminDashboardWrapper .adminDashboardPieChartSection .statisticsCount { color: #333335; font-family: "Sora"; font-weight: 900; font-size: 30px; letter-spacing: 1px; }
@@ -442,14 +442,14 @@ border-radius: 24px; position: relative; box-shadow: 0px 0px 10px #23b7e570;}
 .adminDashboardWrapper .tr:not(:last-child){border-bottom: 1px solid #909091 !important; }
 .adminDashboardWrapper .tr{ height: 60px;}
 .adminDashboardWrapper .td { padding: 0; color: #383838; font-family: "Poppins"; font-weight: 400; font-size: 15px; text-align: center;}
-.adminDashboardWrapper .td.flag-agents{color: #44497e;}
+.adminDashboardWrapper .td.flag-agents{color: #585ea1;}
 .adminDashboardWrapper .td.flag-agents div{background-color: #5e65b152; border-radius: 5px; padding: 6px;}
 .adminDashboardWrapper .td.flag-service{color: #368197;}
 .adminDashboardWrapper .td.flag-service div{background-color: #36809745; border-radius: 5px; padding: 6px;}
 .adminDashboardWrapper .td.flag-processor{color: #3567A9;}
 .adminDashboardWrapper .td.flag-processor div{background-color: #3567a95c; border-radius: 5px; padding: 6px;}
-.adminDashboardWrapper .td.flag-iso{color: #156CA3;}
-.adminDashboardWrapper .td.flag-iso div{background-color: #156ca35e; border-radius: 5px; padding: 6px;}
+.adminDashboardWrapper .td.flag-iso{color: #003c76}
+.adminDashboardWrapper .td.flag-iso div{background-color: #003c7663; border-radius: 5px; padding: 6px;}
 .adminDashboardWrapper .actionTd { padding: 0 32px 0 0; text-align: center; }
 .adminDashboardWrapper .viewButton { padding: 4px 12px; width: 90px; color: white; font-family: "Poppins"; font-weight: 500; font-size: 17px; background-color: #4E688C; border-radius: 6px; border: none; outline: none; cursor: pointer; }
 .adminDashboardWrapper .viewButton:hover{opacity: .7; transition: .5s;}
@@ -457,23 +457,23 @@ border-radius: 24px; position: relative; box-shadow: 0px 0px 10px #23b7e570;}
 .adminDashboardWrapper .adminDashboardMerchantSection { margin: 0; padding: 12px 0 0; width: 70%; background: transparent; position: relative; }
 .adminDashboardWrapper .adminDashboardMerchantSection .merchantSectionTopTabbar { margin-bottom: 35px; display: flex; flex-direction: row; align-items: center; gap: 12px; }
 .adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.merchantservice { padding: 4px 16px; color: #599CB1; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #599CB1; border-radius: 6px; cursor: pointer; }
-.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.processors { padding: 4px 16px; color: #4F7FBE; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #4F7FBE; border-radius: 6px; cursor: pointer; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.processors { padding: 4px 16px; color: #0c62d3; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #4F7FBE; border-radius: 6px; cursor: pointer; }
 .adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.isos { padding: 4px 16px; color: #4F7FBE; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #4F7FBE; border-radius: 6px; cursor: pointer; }
 
-.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.agents { padding: 4px 16px; color: #5e65b1; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #5e65b1; border-radius: 6px; cursor: pointer; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.agents { padding: 4px 16px; color: #585ea1; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #585ea1; border-radius: 6px; cursor: pointer; }
 
 .adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.merchantservice { color: white; background-color: #599CB1; border: 1px solid #599CB1; }
-.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.processors { color: white; background-color: #4F7FBE; border: 1px solid #4F7FBE; }
-.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.isos { color: white; background-color: #268BCC; border: 1px solid #268BCC; }
-.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.agents { color: white; background-color: #5e65b1; border: 1px solid #5e65b1; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.processors { color: white; background-color: #0c62d3; border: 1px solid #0c62d3; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.isos { color: white; background-color: #003c76; border: 1px solid #003c76; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.agents { color: white; background-color: #585ea1; border: 1px solid #585ea1; }
 
 .adminDashboardWrapper .merchantStatsSection {margin: 0; box-shadow: 0px 0px 10px #23b7e570; background-color: #ffffff63;
 border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .adminDashboardWrapper .merchantStatsSection .merchantStatsWrap{padding: 24px 12px 12px 24px; width: 100%; border-radius: 20px; position: relative; }
 .adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Merchant{background-color: #599CB1; }
-.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Processors{background-color: #4F7FBE; }
-.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.ISOs{background-color: #268BCC; }
-.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Agents{background-color: #5e65b1; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Processors{background-color: #0c62d3; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.ISOs{background-color: #003c76; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Agents{background-color: #585ea1; }
 .adminDashboardWrapper .merchantStatsSection .userStatsTitle { margin: 0; padding: 0; color: #ffffff; font-family: "Sora"; font-weight: 400; font-size: 14px; }
 .adminDashboardWrapper .merchantStatsSection .userStatsValue { margin: 8px 0; color: #ffffff; font-family: "Sora"; font-weight: 600; font-size: 30px; }
 
@@ -482,7 +482,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
  border: 1px solid #fff; border-radius: 24px; padding: 12px; margin-top: 81px;}
 .adminDashboardWrapper .percentageCountSection .percentageCountWrap{width: 100%; border: none; border-radius: 20px; display: flex; flex-direction: column; align-items: flex-start; overflow: hidden;}
 .adminDashboardWrapper .percentageCountHeader { padding: 25px; width: 100%; color: white; text-align: center; font-family: "Sora"; font-weight: 300; font-size: 20px; background-color: #6586b3; }
-.adminDashboardWrapper .percentageCountItem {padding: 23px 36px; background: #e3f1ff; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border-bottom: 1px solid #a8a8a8; }
+.adminDashboardWrapper .percentageCountItem {padding: 23px 44px; background: #e3f1ff; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border-bottom: 1px solid #a8a8a8; }
 .adminDashboardWrapper .percentageColorBox { width: 22px; height: 22px; background-color: #22a4f2; border: none; border-radius: 4px; }
 .adminDashboardWrapper .percentageCountItemContent { font-family: "Sora"; font-weight: 400; font-size: 16px; font-weight: 500; flex: 0 0 150px;}
 .adminDashboardWrapper .connectedGraphSection { padding: 32px 24px; width: 100%; background-color: white; border: none; border-radius: 24px; box-shadow: 0 0 5px 0 rgb(192, 192, 192); }

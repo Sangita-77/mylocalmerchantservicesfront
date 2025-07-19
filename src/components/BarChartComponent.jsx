@@ -86,7 +86,7 @@ const BarChartComponent = ({ data }) => {
         <Tooltip contentStyle={{ backgroundColor: 'white', border: 'none' }}
         itemStyle={{ color: 'black' }}
         labelStyle={{ color: 'black' }} />
-        <CartesianGrid strokeDasharray="0" horizontal vertical={false} stroke="#8dd7ee" />
+        <CartesianGrid strokeDasharray="0" horizontal vertical={false} stroke="#ffffffff" />
         <Bar dataKey="merchants" fill="white" radius={[12, 12, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
