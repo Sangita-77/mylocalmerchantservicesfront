@@ -455,7 +455,7 @@ const AdminProfile = () => {
 
         {/* <button className="loginBtn">Update</button> */}
       </div>
-      <DashBoardFooter />
+
     </div>
   );
 };

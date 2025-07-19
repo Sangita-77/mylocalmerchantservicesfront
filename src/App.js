@@ -45,6 +45,7 @@ import Contact from "./pages/Contact";
 import AdminAgent from "./pages/admin/AdminAgent";
 import AdminIso from "./pages/admin/AdminIso";
 import AdminProcessor from "./pages/admin/AdminProcessor";
+import DashBoardFooter from "./components/DashBoardFooter";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -88,6 +89,7 @@ function App() {
         <AdminSidebar />
         <div className="adminOutletContainer">
           <Outlet />
+          <DashBoardFooter />
         </div>
       </div>
     );
