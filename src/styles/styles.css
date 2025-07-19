@@ -712,13 +712,13 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .merchantProfileInnerDetailsContainer { margin: 0; width: 73vw; padding: 0 28px; border: 1px solid #1a77b8; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; align-content: center; border: none; border-radius: 20px; box-shadow: 0px 0px 10px #23b7e570;  border: 12px solid #f6fbff;  background-color: #e3f1ff; }
 .profileInnerDetailsHolder { margin: 0; padding: 32px 0 64px 0; width: 100%; align-content: center; }
 .merchantProfileDetailsBoxContainer { margin-top: 25px; display: flex; flex-direction: row; align-items: center; gap: 50px; }
-.merchantProfileDetailsBox { margin: 0; padding: 0 0 14px 0; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: none; border-bottom: 1px solid #0f8cdd; }
-.merchantProfileDetailsBoxLeft { margin: 0; padding: 0; gap: 8px; }
-.merchantProfileDataTitle { color: #807B7B; font-family: "Poppins"; font-weight: 600; font-size: 15px; line-height: 25px; }
+.merchantProfileDetailsBox { margin: 0; /*padding: 0 0 14px 0;*/ width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: none; /*border-bottom: 1px solid #0f8cdd;*/ }
+.merchantProfileDetailsBoxLeft { margin: 0; padding: 0; gap: 8px; border-bottom: 1px solid #0f8cdd; padding-bottom: 20px; width: 100%;}
+.merchantProfileDataTitle { color: #807B7B; font: 600 20px / 25px "Poppins"; margin-bottom: 8px;}
 .merchantProfileData { color: #807B7B; font-family: "Poppins"; font-weight: 400; font-size: 15px; line-height: 25px; }
-.editIconContainer { width: 36px; height: 36px; text-align: center; align-content: center; background-color: #2d9ae1; border: none; border-radius: 50%; cursor: pointer; }
+.editIconContainer { width: 39px; height: 36px; text-align: center; align-content: center; background-color: #2d9ae1; border: none; border-radius: 50%; cursor: pointer; }
 .editIcon { width: 18px; height: 18px; object-fit: contain; }
-.merchantProfileDetailsHeading { margin: 48px 0 30px; padding: 0; color: #807B7B; font-family: "Poppins"; font-weight: 700; font-size: 15px; line-height: 25px; }
+.merchantProfileDetailsHeading { margin: 48px 0 30px; padding: 0; color: #807B7B; font-family: "Poppins"; font-weight: 700; font-size: 20px; line-height: 25px; }
 .merchantProfileInputBox { margin: 0; padding: 0; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: none; border-bottom: 1px solid #0f8cdd; }
 .merchantInputContainer { margin: 0; width: 90%; display: flex; flex-direction: row; align-items: center; gap: 0px; }
 .merchantInputLabel { margin: 0; padding: 21px 0; width: 40%; font-family: "Poppins"; font-weight: 400; font-size: 14px; color: #807B7B; background-color: transparent; }
