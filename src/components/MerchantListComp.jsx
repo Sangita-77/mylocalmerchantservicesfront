@@ -17,7 +17,7 @@ import AdminMerchantUpdate from "./AdminMerchantUpdate";
 
 
 
-const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , approvedHeading , pendingHeading , flag , onRefresh}) => {
+const MerchantListComp = ({ approvedUsers = [], pendingUsers = [] , loading , approvedHeading , pendingHeading , flag , onRefresh , approvedbackcolor , approvedborder , pendingbackcolor , pendingborder , approvedIcon}) => {
 
   const { token } = useContext(AppContext);
 
@@ -78,9 +78,9 @@ const handleEditClick = (user) => {
   return (
     <div className="merchantaccordianWrap">
       <AccordianProps 
-        bgColor="#71CDEA"
-        borderColor="#23B7E5"
-        Icon={MdOutlineGroup}
+        bgColor={approvedbackcolor}
+        borderColor={approvedborder}
+        Icon={approvedIcon}
         Heading={approvedHeading}
         tbody={
           <>
@@ -124,9 +124,9 @@ const handleEditClick = (user) => {
       />
       
       <AccordianProps 
-        bgColor="#6586B3"
-        borderColor="#4A70A4"
-        Icon={MdOutlineGroup}
+        bgColor={pendingbackcolor}
+        borderColor={pendingborder}
+        Icon={approvedIcon}
         Heading={pendingHeading}
         tbody={
           <>

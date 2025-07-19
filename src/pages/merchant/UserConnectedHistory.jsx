@@ -13,6 +13,7 @@ import { FaPowerOff, FaCircleUser } from "react-icons/fa6";
 import { AiOutlineDelete } from "react-icons/ai";
 import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
+import ConfirmModal from "../../components/ConfirmModal";
 
 const UserConnectedHistory = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -31,43 +32,45 @@ const UserConnectedHistory = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const merchantId = localStorage.getItem("merchant_id");
 
-      if (!merchantId) {
-        console.error("No merchant_id in localStorage");
-        return;
-      }
-
-      setLoading(true);
-
-      try {
-        const response = await axios.post(
-          `${BASE_URL}/getConnectedUser`,
-          { merchant_id: merchantId },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (response.data.status) {
-          setConnectedHistory(response.data.connectedHistory || []);
-          setMerchantDetails(response.data.merchantDetails || []);
-        } else {
-          console.error(response.data.message);
-        }
-      } catch (error) {
-        console.error("API Error:", error);
-      }
-
-      setLoading(false);
-    };
 
     fetchData();
   }, [token]);
+
+  const fetchData = async () => {
+    const merchantId = localStorage.getItem("merchant_id");
+
+    if (!merchantId) {
+      console.error("No merchant_id in localStorage");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/getConnectedUser`,
+        { merchant_id: merchantId },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.data.status) {
+        setConnectedHistory(response.data.connectedHistory || []);
+        setMerchantDetails(response.data.merchantDetails || []);
+      } else {
+        console.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("API Error:", error);
+    }
+
+    setLoading(false);
+  };
 
   const getUserEmail = (merchant_id) => {
     const merchant = merchantDetails.find((m) => m.merchant_id === merchant_id);
@@ -93,9 +96,14 @@ const UserConnectedHistory = () => {
     setShowChatWindow(true);
   };
 
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
-
-const handleDeleteClick = async (connection) => { 
+  const handleDeleteClick = (user_id) => {
+    setSelectedUserId(user_id);
+    setShowConfirmModal(true);
+  };
+const handleDelete = async (connection) => { 
   const confirmed = window.confirm('Are you sure you want to delete this connection?');
   const user_id = parseInt(connection.merchant_id, 10);
   const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
@@ -117,14 +125,11 @@ const handleDeleteClick = async (connection) => {
     // console.log("dd.d,l,,,,,,,,,,,,,,,,,",response);
 
     if (response.data.status) {
-        window.location.reload();
-      } else {
-        console.error("Deletion failed:", response.data.message);
-        alert("Deletion failed: " + response.data.message);
+      fetchData();
       }
     } catch (error) {
-      console.error("Deletion error:", error);
-      alert("Something went wrong during Deletion.");
+      setShowConfirmModal(false);
+      setSelectedUserId(null);
     }
 };
 
@@ -206,6 +211,15 @@ const handleDeleteClick = async (connection) => {
           merchantDetails={merchantDetails}
         />
       )}
+
+        {showConfirmModal && (
+          <ConfirmModal
+            title="Delete User"
+            message="Are you sure you want to delete this connection?"
+            onConfirm={handleDelete}
+            onCancel={() => setShowConfirmModal(false)}
+          />
+        )}
     </div>
   );
 };

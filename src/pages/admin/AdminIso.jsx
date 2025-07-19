@@ -5,6 +5,7 @@ import MerchantListComp from "../../components/MerchantListComp";
 import axios from "axios";
 import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
+import { BiSolidBadgeDollar } from "react-icons/bi";
 
 const AdminIso = () => {
     const { token } = useContext(AppContext);
@@ -83,7 +84,7 @@ const AdminIso = () => {
         <div className="adminDashboardContainer">
               
                 <div className='adminUserlIstContainer'>
-                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Isos" pendingHeading="Pending Isos" flag="ISOs" onRefresh={refreshPage}/>
+                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Isos" pendingHeading="Pending Isos" flag="ISOs" onRefresh={refreshPage} approvedbackcolor="#003c76" approvedborder="#032648" pendingbackcolor="#023260cf" pendingborder="#032648" approvedIcon={BiSolidBadgeDollar}/>
                  </div>
           </div>
       </div>

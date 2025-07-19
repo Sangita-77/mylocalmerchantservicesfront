@@ -5,6 +5,7 @@ import MerchantListComp from "../../components/MerchantListComp";
 import axios from "axios";
 import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
+import { GiDividedSquare } from "react-icons/gi";
 
 const AdminProcessor = () => {
     const { token } = useContext(AppContext);
@@ -83,7 +84,7 @@ const AdminProcessor = () => {
         <div className="adminDashboardContainer">
               
                 <div className='adminUserlIstContainer'>
-                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Processors" pendingHeading="Pending Processors" flag="processors" onRefresh={refreshPage}/>
+                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Processors" pendingHeading="Pending Processors" flag="processors" onRefresh={refreshPage} approvedbackcolor="#585ea1" approvedborder="#393d68" pendingbackcolor="#636bbfc2" pendingborder="#393d68" approvedIcon={GiDividedSquare}/>
                  </div>
           </div>
       </div>
