@@ -552,7 +552,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <IoStorefrontSharp  color="#4E688C" size={45} />
+                <IoStorefrontSharp  color="#fff" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Pending Merchant</div>
@@ -574,7 +574,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <MdRealEstateAgent color="#5e65b1" size={45} />
+                <MdRealEstateAgent color="#585ea1" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Approved Agent</div>
@@ -596,7 +596,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <MdRealEstateAgent color="#00b3d9" size={45} />
+                <MdRealEstateAgent color="#fff" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Pending Agent</div>
@@ -618,7 +618,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <BiSolidBadgeDollar color="#268BCB" size={45} />
+                <BiSolidBadgeDollar color="#003c76" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Approved ISOs</div>
@@ -640,7 +640,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <BiSolidBadgeDollar color="#003c76" size={45} />
+                <BiSolidBadgeDollar color="#fff" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Pending ISOs</div>
@@ -662,7 +662,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <GiDividedSquare color="#4F7FBE" size={42} />
+                <GiDividedSquare color="#0c62d3" size={42} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Approved Processors</div>
@@ -684,7 +684,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <GiDividedSquare color="#50c8ff" size={45} />
+                <GiDividedSquare color="#fff" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Pending Processors</div>
