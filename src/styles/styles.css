@@ -568,7 +568,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .grayText { color: gray; font-size: 12px; }
 .dot { width: 6px; height: 6px; background-color: gray; border: none; border-radius: 50%; }
 
-.registerButton { margin: 0; padding: 0; width: 378px; height: 93px; background: linear-gradient(to right, #01d4de, #106ebc); font-family: "Poppins"; color: #ffffff; font-size: 22px; font-weight: 700; text-align: center; letter-spacing: 0.6px; border: none; outline: none; border-radius: 4px; cursor: pointer; }
+.registerButton { margin: 0; padding: 0; width: 260px; height: 70px; background: #106ebc; font-family: "Poppins"; color: #ffffff; font-size: 22px; font-weight: 700; text-align: center; letter-spacing: 0.6px; border: none; outline: none; border-radius: 4px; cursor: pointer; }
 
 .link { margin: 0; padding: 0; color: #096fc9; font-family: "Poppins"; font-weight: 500; }
 /* //////////////////////////////    MERCHANT PRODUCT LIST    ///////////////////////////////   */

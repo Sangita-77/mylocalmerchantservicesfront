@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import LoginModal from "../../components/LoginModal";
 import { routes } from "../../utils/routes";
 import check from "./../../assets/images/icons8-check.gif";
+import cross from "./../../assets/images/icons8-cross.gif";
 
 const MerchantRegistration = () => {
   const [loadingData, setLoadingData] = useState(false);
@@ -501,15 +502,27 @@ const MerchantRegistration = () => {
           setOtpMessage(
             <>
             <img src={check} alt="" className="verificationCaptchaImg" style={{width:"20px", height:"20px"}}/> 
-            <span>Verified</span>
+            <span style={{padding:"10px"}}>Verified</span>
             </>
           );
         } else {
-          setOtpMessage("❌");
+          setOtpMessage(
+             <>
+            <img src={cross} alt="" className="verificationCaptchaImg" style={{width:"20px", height:"20px"}}/> 
+            <span style={{padding:"10px"}}>Error</span>
+            <div>Re-Enter OTP</div>
+            </>
+          );
         }
       } catch (error) {
         console.error("OTP Verification Error:", error);
-        setOtpMessage("❌ Error verifying OTP.");
+        setOtpMessage(
+             <>
+            <img src={cross} alt="" className="verificationCaptchaImg" style={{width:"20px", height:"20px"}}/> 
+            <span style={{padding:"10px"}}>Error</span>
+            <div>Re-Enter OTP</div>
+            </>
+        );
       }
     } else {
       setOtpMessage(""); // Clear message if not 4 digits
@@ -713,7 +726,7 @@ const MerchantRegistration = () => {
 
             <div className="inputRowContainer">
               <div className="inputRowContainer">
-                <div className="inputContainer">
+                <div className="inputContainer" style={{ width: "80%" }}>
                   <label htmlFor="email" className="label">
                     Email <span style={{ color: "red" }}>*</span>
                   </label>
@@ -724,7 +737,7 @@ const MerchantRegistration = () => {
                       placeholder=""
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="inputField"
+                      className="inputField" 
                     />
                
                {otpSent && (
@@ -732,12 +745,12 @@ const MerchantRegistration = () => {
                     <input
                       type="text"
                       name="otp"
-                      placeholder=""
                       value={otp}
                       onChange={handleOtpChange}
                       className="inputField"
                       maxLength={4}
                       readOnly={otpVerified}
+                      placeholder="Enter OTP"
                     />
                     {otpMessage && (
                       <p style={{ marginTop: "6px", color: otpVerified ? "#0F8CDD" : "red" }}>
@@ -1043,8 +1056,13 @@ const MerchantRegistration = () => {
               </div>
             </div>
 
-            <div className="inputRowContainer">
-              <div className="inputRow">
+
+
+<div className="inputRowContainer">
+
+            <div className="inputRow">
+
+              <div className="inputContainer">
                 <label htmlFor="website" className="label">
                   Website
                 </label>
@@ -1063,8 +1081,8 @@ const MerchantRegistration = () => {
             </div>
 
 
-               <div className="inputRowContainer">
-                <div className="inputRow">
+               <div className="inputRow">
+                <div className="inputContainer">
                   <label htmlFor="companyName" className="label">
                     Company Name <span style={{ color: "red" }}>*</span>
                   </label>
@@ -1084,6 +1102,10 @@ const MerchantRegistration = () => {
                 )}
               </div>
 
+</div>
+
+
+
 
             <div className="inputRowContainer">
               <div className="inputContainer">
@@ -1097,7 +1119,6 @@ const MerchantRegistration = () => {
                   value={companyDescription}
                   onChange={(e) => setCompanyDescription(e.target.value)}
                   className="inputField"
-                  style={{ width: "92%" }}
                 />
               </div>
             </div>
@@ -1140,7 +1161,7 @@ const MerchantRegistration = () => {
               className="registerButton"
               onClick={() => handleRegisterMerchant()}
             >
-              {loading ? "Please wait..." : "Register Company"}
+              {loading ? "Please wait..." : "Register"}
             </button>
 
             <div className="grayText" style={{ marginTop: 28, fontSize: 16 }}>
