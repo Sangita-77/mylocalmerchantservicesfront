@@ -118,9 +118,9 @@ const ChatWindow = ({
         )}
         <div className="chatWindowTop">
           <div className="chatWindowCloseBtn" onClick={onClose}>
-            <IoMdClose color="white" size={24} />
+            <IoMdClose color="#000" size={24} />
           </div>
-          <div className="userName">{connection?.merchant_name || "Chat"}</div>
+          {/* <div className="userName">{connection?.merchant_name || "Chat"}</div> */}
         </div>
         <div className="chatWindowContainer">
           {loading ? (
@@ -129,6 +129,7 @@ const ChatWindow = ({
             </div>
           ) : (
             <div className="chatWindowInner" ref={chatRef}>
+              <div className="userName">{connection?.merchant_name || "Chat"}</div>
               <div className="successConnectionMessage">
                 {"Hi you are successfully connected with " +
                   connection?.merchant_name}
