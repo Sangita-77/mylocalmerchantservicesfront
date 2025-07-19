@@ -36,6 +36,14 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleClose = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      onClose(); 
+    }, 300); 
+  };
+
+
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
 
@@ -130,7 +138,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   return (
     <div className="userDetailsOverlay updateform">
       <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
-        <div className="messagesWindowCloseBtn" onClick={onClose}>
+        <div className="messagesWindowCloseBtn" onClick={handleClose}>
           <IoMdClose color="#2A2626" size={24} />
         </div>
 

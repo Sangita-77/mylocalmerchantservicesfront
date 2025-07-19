@@ -10,13 +10,21 @@ const UserDetailsModal = ({ user, onClose }) => {
     const timer = setTimeout(() => setIsOpen(true), 20);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      onClose(); 
+    }, 300); 
+  };
+
   
   if (!user) return null;
 
   return (
     <div className="userDetailsOverlay">
       <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
-        <div className="messagesWindowCloseBtn" onClick={onClose}>
+        <div className="messagesWindowCloseBtn" onClick={handleClose}>
           <IoMdClose color="#2A2626" size={24} />
         </div>
 

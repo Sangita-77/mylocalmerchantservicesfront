@@ -28,6 +28,13 @@ const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleClose = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      onClose(); 
+    }, 300); 
+  };
+
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
@@ -99,7 +106,7 @@ const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
   return (
     <div className="userDetailsOverlay">
       <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
-        <div className="messagesWindowCloseBtn" onClick={onClose}>
+        <div className="messagesWindowCloseBtn" onClick={handleClose}>
           <IoMdClose color="#2A2626" size={24} />
         </div>
 

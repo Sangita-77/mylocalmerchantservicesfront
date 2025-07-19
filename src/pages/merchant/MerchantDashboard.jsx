@@ -92,7 +92,7 @@ const MerchantDashboard = () => {
         </div>
       ) : (
         <div className="merchantDashboardContainer">
-          <div className="merchantDashboardCountContainer">
+          {/* <div className="merchantDashboardCountContainer">
             <div className="merchantDashboardCountPlate">
               <div className="countPlateIconContainer">
                 <FiUsers color="gray" size={24} />
@@ -111,7 +111,13 @@ const MerchantDashboard = () => {
                 <div className="merchant-prof">Connected</div>
               </div>
             </div>
-          </div>
+          </div> */}
+
+                <div className="merchantProfileContainerHeader">
+                  <div className="merchantHeaderCompanyTitle">
+                    Lorem ipsum dolor sit amet.
+                  </div>
+                </div>
 
           <div className="merchantStatsSection row">
             <div className="col-md-12">
