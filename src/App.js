@@ -101,6 +101,7 @@ function App() {
         <MerchantSidebar />
         <div className="adminOutletContainer">
           <Outlet />
+          <DashBoardFooter />
         </div>
       </div>
     );

@@ -494,7 +494,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .merchantSidebarWrapper { margin: 0; padding: 0; width: 20vw; min-height: 100vh; background-color: #22a0f1 !important; overflow: hidden; border-right: 1px solid #22a0f1; }
 .sidebarEclipse { margin: 0; padding: 0; position: absolute; top: -10px; left: 0; }
 .merchantSidebarWrapper .merchantSidebarContainer { margin: 0; padding: 15px 0px 24px 0px; }
-.merchantSidebarContainer .sidebarItem { margin: 19px 30px 17px 30px; padding: 10px 18px; display: flex; flex-direction: row; align-items: center; gap: 12px; width: 70%; transition: 0.2s; cursor: pointer; user-select: none; border: none; border-radius: 6px; position: relative; z-index: 1; }
+.merchantSidebarContainer .sidebarItem { margin: 19px 30px 17px 24px; padding: 10px 18px; display: flex; flex-direction: row; align-items: center; gap: 12px; width: 70%; transition: 0.2s; cursor: pointer; user-select: none; border: none; border-radius: 6px; position: relative; z-index: 1; }
 
 .sidebarItemTitle { margin: 0; padding: 0; color: #ffffff; font-family: "Sora"; font-size: 14px; font-weight: 400; }
 /* .sidebarItem:hover {
@@ -508,7 +508,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 } */
 
 .sidebarItemTitleActive { margin: 0; padding: 0; color: #ffffff; }
-.merchantSidebarWrapper .merchantSidebarTopContainer {padding: 22px 15px 18px; }
+.merchantSidebarWrapper .merchantSidebarTopContainer {padding: 30px 18px; }
 .merchantSidebarWrapper .merchantSidebarDivider {margin-top: 20px; margin-left: 8px; width: 80%; height: 1px; background-color: #d9d9d9;} 
 .merchantSidebarWrapper .adminSidebarInner {position: fixed; width: auto; max-width: 283px;}
 .merchantSidebarContainer .sidebarItem .sidebarItemActive {color: #838383; background-color: #eef5ff; }
@@ -609,8 +609,8 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .uploadFileOtherOptionsLink { margin: 0; padding: 0; color: #434343; font-family: "Poppins"; font-weight: 300; font-size: 12px; cursor: pointer; }
 .verticalDivider { margin: 0; padding: 0; width: 1px; height: 14px; background-color: #868889; }
 /* ///////////////////     MERCHANT DASHBOARD    /////////////////////    */
-.merchantDashboardWrapper { margin: 0; /*padding: 0 52px 48px;*/ background-color: #f5f5fe; height: 100vh; /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
-.merchantDashboardWrapper .adminDashboardTopbar {padding: 30px 0; width: 83vw;}
+.merchantDashboardWrapper { margin: 0; overflow-y: auto !important; }
+.merchantDashboardWrapper .adminDashboardTopbar {padding: 30px 70px 23px 52px; width: 83vw; justify-content: space-between;}
 
 
 .merchantDashboardWrapper .merchantDashboardTopbar { margin: 0; padding: 18px 0; width: 75%; background: transparent; display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden; position: fixed; background-color: #f5f5fe; z-index: 999; }
@@ -625,7 +625,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .merchantDashboardLoaderContainer{ margin: 0; padding: 0; background-color: #22a0f1; width: 100px; height: 100px; border: none; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; align-self: center; }
 .merchantDashboardLoaderContainer .loadingText { text-align: center; font-family: "Poppins"; font-size: 14px; color: white; }
 .merchantDashboardWrapper .dashboardEclipseImage { margin: 0; padding: 0; transform: rotate(90deg); position: absolute; top: -52vh; left: 34vw; }
-.merchantDashboardWrapper .merchantDashboardContainer { margin: 0; padding: 0 52px 100px; width: 100%; z-index: -111; }
+.merchantDashboardWrapper .merchantDashboardContainer { margin: 0; padding: 150px 52px 60px; width: 100%; z-index: -111; }
 .merchantDashboardWrapper .merchantDashboardTitle { margin: 0; padding: 18px 38px; color: white; width: 100%; font-family: "Sora"; border: 1px solid #3691c9; border-left: none; font-size: 20px; font-weight: 400; text-transform: uppercase; }
 .merchantDashboardContainer .merchantDashboardCountContainer { margin: 120px 0 160px 0; padding: 0; width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 64px; }
 .merchantDashboardWrapper .merchantDashboardCountPlate { margin: 0; padding: 22px 16px 22px;  /* Swati  30.06.2025*/ width: 315px;  /* Swati  30.06.2025*/ background-color: #bcbfc5; display: flex; flex-direction: row; align-items: flex-start; column-gap: 12px; border: none; outline: none; border-radius: 10px; /* Swati  30.06.2025*/ border-bottom: solid 6px #b0b3b9; /* Swati  30.06.2025*/ }
@@ -635,9 +635,10 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .merchantDashboardWrapper .countPlateRightContainer { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 400; font-size: 14px; display: flex; flex-direction: column; gap: 4px; }
 
 
-.merchantDashboardWrapper .countPlateRightContainer .merchant-prof{font-size: 22px;} /* Swati  30.06.2025*/
+.merchantDashboardWrapper .countPlateRightContainer .merchant-prof{font-size: 22px;}
 
-.merchantDashboardContainer .userStatsSection { margin: 0; padding: 36px 30px 18px 38px;   /* Swati  30.06.2025*/ width: 100%; background-color: #22a0f1; border: none; border-radius: 24px; position: relative; }
+.merchantDashboardContainer .userStatsSection { margin: 0; padding: 36px 30px 18px 38px; box-shadow: 0px 0px 10px #23b7e570;
+  border: 12px solid #f6fbff;   /* Swati  30.06.2025*/ width: 100%; background-color: #22a0f1;border-radius: 24px; position: relative; }
 .userStatsTopContainer { width: 68%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
 .merchantStatsSection .userStatsTopContainer{   /* Swati  30.06.2025*/ width: 100%; }    /* Swati  30.06.2025*/
 .merchantStatsSection .number-of-user{transform: rotate(-90deg); bottom: 117px; left: -34px; background: #F54D5E; padding: 4px 16px;
@@ -672,14 +673,27 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .merchantDashboardContainer .dropdown { margin: 0; padding: 0; width: 80%; color: white; font-family: "Sora"; font-weight: 400; font-size: 12px; background-color: transparent; border: none; outline: none; appearance: none; }
 .merchantDashboardContainer .dropdownOption { margin: 0; padding: 0; color: black; }
 
+.merchantDashboardWrapper .merchantStatsSection {margin-top: 0;}
+.merchantDashboardWrapper .merchantProfileContainerHeader {margin: 0;
+  padding: 0;
+  background-color: #0085da;
+  width: 73vw;
+  height: 65px;
+  align-content: center;
+  border-radius: 15px;
+  margin-bottom: 35px;
+  box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
+
+
+
 .graphContainer { margin: 0; padding: 0; margin-top: 25px; }
 .merchantStatsTabbarContainer { margin: 0; padding: 0; display: flex; align-items: center; gap: 12px; }
 .merchantStatsTabbarItem { margin: 0; padding: 12px 24px; min-width: 120px; height: 50px; color: white; font-family: "Sora"; font-weight: 400; font-size: 16px; align-content: center; background-color: #23b7e5; text-align: center; border: 1px solid #23b7e5; border-top-right-radius: 6px; border-top-left-radius: 6px; cursor: pointer; }
-.merchantProfileWrapper { margin: 0; padding: 40px 0; padding-bottom: 100px; /* background-color: #144d99; */ background-color: #F5F5FE; width: 100%; min-height: 100vh; position: relative; padding-top: 0px; }
+.merchantProfileWrapper { margin: 0; padding: 40px 0; padding-bottom: 60px; width: 100%; min-height: 100vh; position: relative; padding-top: 0px; }
 .merchantProfileWrapper .merchantProfileLoaderContainer { width: 100%; height: 75vh; color: white; font-family: "Poppins"; font-size: 15px; font-weight: 400; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .merchantProfileEclipseImage { margin: 0; padding: 0; transform: rotate(90deg); position: absolute; top: -52vh; left: 34vw; }
 .merchantProfileTitle { margin: 0; padding: 18px 38px; color: white; width: 100%; font-family: "Sora"; border: 1px solid #3691c9; border-left: none; font-size: 20px; font-weight: 400; text-transform: uppercase; }
-.merchantProfileContainer { margin: 0; padding: 0 52px; /* 26.06.25 */ width: 80vw; z-index: -111; padding-top: 175px; }
+.merchantProfileContainer { margin: 0; padding: 0 52px; /* 26.06.25 */ width: 80vw; z-index: -111; padding-top: 150px; }
 .merchantProfileCountContainer { margin: 80px 0 160px 0; padding: 0; width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 64px; }
 .merchantProfileCountContainer .countCardItem { margin: 0; padding: 16px; width: 16%; height: 70px; display: flex; flex-direction: row; align-items: center; gap: 16px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid #8eca02; border-radius: 8px; position: relative; }
 .merchantProfileCountContainer .cardIconContainer { margin: 0; padding: 0 8px; width: 60px !important; height: 60px !important; background-color: #8eca02; border: none; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
@@ -687,7 +701,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .merchantProfileCountContainer .cardTitle { color: white; font-family: "Poppins"; font-size: 14px; font-weight: 300 !important; }
 .merchantProfileCountContainer .cardValue { color: white; font-family: "Poppins"; font-size: 20px; font-weight: 300; }
 .circleGlowContainer { position: absolute; right: -120px; z-index: 11111111; }
-.merchantProfileForm { margin: 0; margin-top: -50px; padding: 0; }
+.merchantProfileForm { margin: 0; padding: 0; }
 .merchantProfileContainer .merchantProfileContainerHeader { margin: 0; padding: 0; background-color: #0085da; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192); }
 .merchantHeaderCompanyTitle { padding: 0 28px; color: #fff; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px; }
 .merchantProfileInnerDetailsContainer { margin: 0; width: 73vw; padding: 0 28px; /* background-color: #144d99; */ border: 1px solid #1a77b8; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; align-content: center; /* padding: 36px 0 0 36px; */ background-color: #fff; border: none; border-radius: 20px; box-shadow: 0 0 5px 0 rgb(192, 192, 192); }
