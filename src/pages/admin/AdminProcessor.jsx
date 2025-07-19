@@ -83,7 +83,7 @@ const AdminProcessor = () => {
         <div className="adminDashboardContainer">
               
                 <div className='adminUserlIstContainer'>
-                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Processors" pendingHeading="Pending Processors" flag="processors" onRefresh={refreshPage}/>
+                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Processors" pendingHeading="Pending Processors" flag="processors" onRefresh={refreshPage} approvedbackcolor="#585ea1" approvedborder="#393d68" pendingbackcolor="#636bbfc2" pendingborder="#393d68"/>
                  </div>
           </div>
       </div>
