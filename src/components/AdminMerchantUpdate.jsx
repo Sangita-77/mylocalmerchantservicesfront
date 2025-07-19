@@ -5,6 +5,7 @@ import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import { AppContext } from "../utils/context";
 import ConfirmModal from "../components/ConfirmModal";
+import { apiErrorHandler, middleware, textUppercase } from "../utils/helper";
 
 const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const { token } = useContext(AppContext);
@@ -13,7 +14,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [email, setEmail] = useState(user.user_id);
   const [industry, setIndustry] = useState(user.industry);
   const [phone, setPhone] = useState(user.phone);
-  const [serviceType, setServiceType] = useState(user.type_of_service);
+  const [typeOfServices, setTypeOfServices] = useState(user.type_of_service);
   const [companyName, setcompanyName] = useState(user.company_name);
   const [street, setstreet] = useState(user.street);
   const [city, setcity] = useState(user.city);
@@ -22,6 +23,11 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);
+  const [loadingData, setLoadingData] = useState(false);
+  const [usersType, setUsersType] = useState([]);
+  const [industriesType, setIndustriesType] = useState([]);
+  const [servicesType, setServicesType] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,6 +43,14 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
     setSelectedUserId(user_id);
     setShowConfirmModal(true);
   };
+
+  useEffect(() => {
+    if (token) {
+      fetchAllTypesData();
+      setLoadingData(false);
+    }
+  }, [token]);
+
 
   if (!user) return null;
 
@@ -57,7 +71,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           email: email,
           phone: phone,
           industry: industry,
-          type_of_service: serviceType,
+          type_of_service: typeOfServices,
           website: user.website ?? '',
           company_description: user.company_description ?? '',
         },
@@ -84,6 +98,34 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
       setShowConfirmModal(false);
     }
   };
+  const fetchAllTypesData = async () => {
+    setLoadingData(true);
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/getAllTypes`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // console.log("All type response=========>", response);
+      if (response?.status === 200) {
+        const usersType = response?.data?.userType;
+        const industriesType = response?.data?.industryType;
+        const servicesType = response?.data?.servicesType;
+
+        setUsersType(usersType);
+        setIndustriesType(industriesType);
+        setServicesType(servicesType);
+      }
+    } catch (error) {
+      const errMsg = apiErrorHandler(error);
+      setError(errMsg);
+    }
+  };
 
   return (
     <div className="userDetailsOverlay updateform">
@@ -107,7 +149,28 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Industry:</label>
-            <input type="text" value={industry} onChange={(e) => setIndustry(e.target.value)} />
+            {/* <input type="text" value={industry} onChange={(e) => setIndustry(e.target.value)} /> */}
+            <select
+              className="inputField selectField"
+              style={{
+                color: industry ? "black" : "rgb(183, 183, 183)",
+              }}
+              value={industry}
+              onChange={(e) => setIndustry(e.target.value)}
+            >
+              <option value="" style={{ color: "rgb(183, 183, 183)" }}>
+                Select industry
+              </option>
+              {industriesType?.map((industry, i) => (
+                <option
+                  key={i}
+                  value={industry?.type}
+                  style={{ color: "black" }}
+                >
+                  {textUppercase(industry?.type)}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="formGroup">
             <label>Phone:</label>
@@ -115,7 +178,28 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Type of Services:</label>
-            <input type="text" value={serviceType} onChange={(e) => setServiceType(e.target.value)} />
+            {/* <input type="text" value={serviceType} onChange={(e) => setServiceType(e.target.value)} /> */}
+            <select
+              className="inputField selectField"
+              style={{
+                color: typeOfServices ? "black" : "rgb(183, 183, 183)",
+              }}
+              value={typeOfServices}
+              onChange={(e) => setTypeOfServices(e.target.value)}
+            >
+              <option value="" style={{ color: "rgb(183, 183, 183)" }}>
+                Select type of services
+              </option>
+              {servicesType?.map((service, i) => (
+                <option
+                  key={i}
+                  value={service?.type}
+                  style={{ color: "black" }}
+                >
+                  {textUppercase(service?.type)}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="formGroup">
             <label>Street:</label>
