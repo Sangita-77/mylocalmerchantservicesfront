@@ -79,7 +79,7 @@ const AdminAgent = () => {
   
     };
     return (
-       <div className="adminUserlistWrapper agentListAdmin">
+       <div className="adminUserlistWrapper merchantListAdmin agentListAdmin">
         
         <AdminDashBoardTopBar heading="Agent List" />
         <div className="adminDashboardContainer">
