@@ -1082,3 +1082,5 @@ border-radius: 5px; margin-right: 30px;}
 /* 
 .merchantListAdmin .merchantaccordianWrap .merchantaccordian-table:first-child .accordion-header {background-color: #599CB1 !important; border-bottom-color: #368197 !important;}
 .merchantListAdmin .merchantaccordianWrap .merchantaccordian-table:last-child .accordion-header {background-color: #4E688C !important; border-bottom-color: #364F71 !important;} */
+.merchantDashboardWrapper .adminDashboardTopbar,
+.merchantProfileWrapper .adminDashboardTopbar {padding: 30px 70px 23px 52px; width: 83vw; justify-content: space-between;}
