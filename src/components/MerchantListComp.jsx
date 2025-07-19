@@ -183,6 +183,7 @@ const handleEditClick = (user) => {
           <AdminMerchantUpdate
             user={editUserDetails}
             onClose={() => setEditUserDetails(null)}
+            onRefresh={onRefresh}
           />
         )}
       {showConfirmModal && (
