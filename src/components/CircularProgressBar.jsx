@@ -55,7 +55,7 @@ const CircularProgressBar = ({ percentage, radius = 25, stroke = 3 }) => {
         dominantBaseline="central"
         textAnchor="middle"
         fill="black"
-        fontSize="14"
+        fontSize="15"
       >
         {`${animatedPercentage}%`}
       </text>

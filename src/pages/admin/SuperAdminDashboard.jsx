@@ -816,7 +816,7 @@ const SuperAdminDashboard = () => {
                 <div className="colorDefineSingleItem">
                   <div
                     className="colorBox"
-                    style={{ backgroundColor: "#71cdea" }}
+                    style={{ backgroundColor: "#4d94ab" }}
                   ></div>
                   <div className="colorBoxTitle">MERCHANT</div>
                 </div>
