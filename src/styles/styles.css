@@ -330,7 +330,7 @@
 
 /* /////////////////////////////         ADMIN  DASHBOARD  DESIGN      /////////////////////////////////////// */
 .adminDashboardWrapper { margin: 0; padding: 0; /*background-color: #23b7e52b;*/ width: 100%; }
-.adminDashboardWrapper .adminDashboardContainer { margin: 0; padding: 0 52px 20px; /* shorthand for top, horizontal, bottom */  height: 100vh; /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
+.adminDashboardWrapper .adminDashboardContainer { margin: 0; padding: 0 52px 20px; /* shorthand for top, horizontal, bottom */  /*height: 100vh;*/ /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
 .adminDashboardWrapper .adminDashboardContainer .adminDashboardTopbar,
 .adminProfileWrapper .adminDashboardContainer .adminDashboardTopbar,
 .adminUserlistWrapper .adminDashboardContainer .adminDashboardTopbar,
@@ -614,8 +614,8 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .uploadFileOtherOptionsLink { margin: 0; padding: 0; color: #434343; font-family: "Poppins"; font-weight: 300; font-size: 12px; cursor: pointer; }
 .verticalDivider { margin: 0; padding: 0; width: 1px; height: 14px; background-color: #868889; }
 /* ///////////////////     MERCHANT DASHBOARD    /////////////////////    */
-.merchantDashboardWrapper { margin: 0; padding: 0 52px 48px; /* shorthand for top, horizontal, bottom */ background-color: #f5f5fe; height: 100vh; /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
-.merchantDashboardWrapper .adminDashboardTopbar {padding: 30px 0; width: 75vw;}
+.merchantDashboardWrapper { margin: 0; /*padding: 0 52px 48px;*/ background-color: #f5f5fe; height: 100vh; /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
+.merchantDashboardWrapper .adminDashboardTopbar {padding: 30px 0; width: 83vw;}
 
 
 .merchantDashboardWrapper .merchantDashboardTopbar { margin: 0; padding: 18px 0; width: 75%; background: transparent; display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden; position: fixed; background-color: #f5f5fe; z-index: 999; }
@@ -630,7 +630,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .merchantDashboardLoaderContainer{ margin: 0; padding: 0; background-color: #22a0f1; width: 100px; height: 100px; border: none; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; align-self: center; }
 .merchantDashboardLoaderContainer .loadingText { text-align: center; font-family: "Poppins"; font-size: 14px; color: white; }
 .merchantDashboardWrapper .dashboardEclipseImage { margin: 0; padding: 0; transform: rotate(90deg); position: absolute; top: -52vh; left: 34vw; }
-.merchantDashboardWrapper .merchantDashboardContainer { margin: 0; padding-bottom: 100px; width: 100%; z-index: -111; }
+.merchantDashboardWrapper .merchantDashboardContainer { margin: 0; padding: 0 52px 100px; width: 100%; z-index: -111; }
 .merchantDashboardWrapper .merchantDashboardTitle { margin: 0; padding: 18px 38px; color: white; width: 100%; font-family: "Sora"; border: 1px solid #3691c9; border-left: none; font-size: 20px; font-weight: 400; text-transform: uppercase; }
 .merchantDashboardContainer .merchantDashboardCountContainer { margin: 120px 0 160px 0; padding: 0; width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 64px; }
 .merchantDashboardWrapper .merchantDashboardCountPlate { margin: 0; padding: 22px 16px 22px;  /* Swati  30.06.2025*/ width: 315px;  /* Swati  30.06.2025*/ background-color: #bcbfc5; display: flex; flex-direction: row; align-items: flex-start; column-gap: 12px; border: none; outline: none; border-radius: 10px; /* Swati  30.06.2025*/ border-bottom: solid 6px #b0b3b9; /* Swati  30.06.2025*/ }
@@ -716,7 +716,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .merchantProfileWrapper .adminDashboardTopbar {border-top-left-radius: 42px; padding: 30px 0;}
 /* 26.06.25 */
 
-.adminDashboardTopbar {width: 82vw; display: flex; flex-direction: row; align-items: center; justify-content: center; position: fixed;  z-index: 999; top: 0; margin: 0; background: #F5F5FE; border-radius: 45px 0 0 0; padding: 30px 20px 23px;     box-shadow: 10px 0px 9px #4f87bf;}
+.adminDashboardTopbar {width: 83vw; display: flex; flex-direction: row; align-items: center; justify-content: center; position: fixed;  z-index: 999; top: 0; margin: 0; background: #F5F5FE; border-radius: 45px 0 0 0; padding: 30px 20px 23px;     box-shadow: 10px 0px 9px #4f87bf;}
 
 .adminDashboardTopbar .adminDashboardTopbarWrap{display: flex; width: 72vw; justify-content: space-between;}
 
@@ -775,7 +775,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .chatMessageSendingLoader{ top: 45%; left: 30%; width: 40%; height: 10%; background-color: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; align-self: center; position: absolute; border: none; color: white; font-family: 'Sora'; font-size: 14px; border: none; border-radius: 6px; }
 
 .messagesOverlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */ z-index: 1000; overflow-y: hidden; }
-.messagesWindowWrapper { margin: 0; padding: 0; width: 650px; height: 80vh; background-color: white; position: fixed; top: 10vh; left: 50%; transform: translateX(-50%); z-index: 99999; border: none; border-radius: 24px; overflow: hidden; }
+.messagesWindowWrapper { margin: 0; padding: 0; width: 600px; height: 80vh; background-color: white; position: fixed; top: 10vh; left: 50%; transform: translateX(-50%); z-index: 99999; border: none; border-radius: 24px; overflow: hidden; border: 13px solid #0085DA; border-radius: 37px;}
 .messagesWindowWrapper .messagesWindowTop { padding: 0 0 0 24px; position: static; }
 .messagesWindowWrapper .messagesWindowContainer { margin: 0; padding: 12px 24px 24px 24px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; height: 100%; background-color: transparent; z-index: 99999999; }
 /* .eclipseImage {
@@ -787,13 +787,13 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
   left: -500px;
 } */
 
-.messagesWindowWrapper .messagesWindowCloseBtn { width: 40px; height: 40px; color: rgb(42, 38, 38); font-size: 24px; background-color: #FFBF61; display: flex; align-items: center; justify-content: center;  border-radius: 50%; position: absolute; top: 0; right: 0; z-index: 999999999; cursor: pointer; }
+.messagesWindowWrapper .messagesWindowCloseBtn { width: 40px; height: 40px; color: rgb(42, 38, 38); font-size: 24px; background-color: #fff; display: flex; align-items: center; justify-content: center;  border-radius: 50%; position: absolute; top: 0; right: 0; z-index: 999999999; cursor: pointer; }
 .messagesWindowWrapper .messagesWindowInner { margin: 0; padding: 0; padding-bottom: 12px; max-height: 95%; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; background-color: transparent; overflow: auto; scrollbar-width: none; /* Firefox */ -ms-overflow-style: none; /* IE and Edge */ }
 .messagesWindowWrapper .messageContainerTop{ margin-bottom: 6px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
 .messagesWindowWrapper .username { margin: 0; padding: 0; color: gray; font-family: "Sora"; font-weight: 300 !important; font-size: 14px; }
 .messagesWindowWrapper .messageTime{ text-align: right; color: gray; font-size: 12px; font-family: "Sora"; font-weight: 300 !important; }
-.messagesWindowWrapper .usersMessageContainer { margin: 0; padding: 10px 16px 0px 16px; max-width: 75%; color: black; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; align-self: flex-start; background-color: #3bb2ff; border: none; border-top-left-radius: 12px; border-top-right-radius: 12px; }
-.messagesWindowWrapper .ownMessageContainer { margin: 0; padding: 10px 16px 0px 16px; max-width: 75%; color: black; background-color: #d7e9fe; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; border: 1px solid #1c79ba; border-radius: 12px; }
+.messagesWindowWrapper .usersMessageContainer { margin: 0; padding: 10px 16px 0px 16px; max-width: 95%; color: black; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; align-self: flex-start; background-color: #3bb2ff; border: none; border-top-left-radius: 12px; border-top-right-radius: 12px; }
+.messagesWindowWrapper .ownMessageContainer { margin: 0; padding: 10px 16px 0px 16px; max-width: 95%; color: black; background-color: #d7e9fe; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; border: 1px solid #1c79ba; border-radius: 12px; }
 
 .loaderContainer {width: 86vw; height: 100vh; overflow-y: hidden;}
 
@@ -819,6 +819,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 /* ---------------- Admin Profile -------------- */
+.adminProfileWrapper {min-height: calc(100% - 65px);}
 .adminProfileWrapper .adminDashboardContainer {padding: 0 52px 40px;}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainer {padding-top: 150px;}
 .adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px; padding: 0; background-color: #0085da; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
@@ -842,6 +843,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputColWrapper > .row > .col-lg-6 {width: calc(50% - 25px); padding: 0; border-bottom: 1px solid #0f8cdd;}
 
 /* ------ Admin Connect ------  */
+.adminUserlistWrapper {min-height: calc(100% - 65px);}
 .adminUserlistWrapper .adminDashboardContainer {padding: 0 52px 40px; }
 .adminUserlistWrapper .adminDashboardContainer .adminUserlIstContainer {padding-top: 150px;}
 .adminUserlistWrapper .tableContainerWrap {box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0; border-radius: 32px; width: 73vw;}
@@ -927,14 +929,16 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .updateform .userDetailsBoxWrapper .userDetailsBox .popButton:hover {background: #ffffff;}
 
 /* ------ Admin Contact list ------ */
+.contactlistWrapper {min-height: calc(100% - 65px);}
 .contactlistWrapper .adminDashboardContainer {padding: 0 52px 40px;}
 .contactlistWrapper .contactlistContainer  {padding-top: 150px; width: 73vw;}
-.contactlistWrapper .contactlistContainer .accordion {border-radius: 20px; overflow: hidden; box-shadow: 0 0 5px 0 rgb(192, 192, 192); border: none;}
+.contactlistWrapper .contactlistContainer .accordionWrap {box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0; border-radius: 32px;}
+.contactlistWrapper .contactlistContainer .accordion {border-radius: 20px; overflow: hidden; border: none;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item {border: none; background-color: #fff;}
-.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button {column-gap: 20px; text-transform: capitalize; padding-left: 40px; outline: none; box-shadow: none; padding-right: 85px; height: 75px; color: #6A8196; font: 400 16px "Sora";}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button {column-gap: 20px; text-transform: capitalize; padding-left: 40px; outline: none; box-shadow: none; padding-right: 85px; height: 75px; color: #6A8196; font: 400 16px "Sora"; background: #e3f1ff;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-header {display: flex; background-color: #fff;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-header .delButton {margin-left: -70px; z-index: 9; width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none; margin-top: 20px; display: flex; justify-content: center; align-items: center;}
-.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button[aria-expanded="true"] {background-color: #F5F5FE; box-shadow: 0px 3px 7px -6px rgb(192, 192, 192);}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button[aria-expanded="true"] { box-shadow: 0px 3px 7px -6px rgb(192, 192, 192); background: #e3f1ff;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body {row-gap: 20px; background-color: #F5F5FE; padding: 40px 42px;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body > .col-lg-3 {font: 600 16px/24px "Sora"; color: #6A8196;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body > .col-lg-9 {font: 300 16px/24px "Sora"; color: #6A8196;}
@@ -944,12 +948,12 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 /* --------- connect popup ---------- */
 
 .messagesWindowWrapper {overflow: visible;}
-.messagesWindowWrapper .messagesWindowContainer {background-color: #71cdea; border-radius: 24px; padding: 25px 24px;}
+.messagesWindowWrapper .messagesWindowContainer {background-color: #0085DA; border-radius: 24px; padding: 25px 24px; border: 2px solid #fff;}
 .messagesWindowWrapper .messagesWindowInner {width: 100%;}
 .messagesWindowWrapper .usersMessageContainer {background-color: #3bb2ff; color: #fff;}
 .messagesWindowWrapper .username {color: #fff;}
 .messagesWindowWrapper .messageTime {color: #fff; margin-top: 5px;}
-.messagesWindowWrapper .messagesWindowCloseBtn {top: -10px; right: -7px;}
+.messagesWindowWrapper .messagesWindowCloseBtn {top: -17px; right: -17px;}
 .messagesWindowWrapper .messageText {font: 300 16px/25px "Sora";}
 .messagesOverlay {background-color: rgba(0, 0, 0, 0.4);}
 .messagesWindowWrapper .ownMessageContainer {background-color: #648cbb; font: 300 15px/24px "Sora"; border: none;}
@@ -1052,3 +1056,6 @@ border-radius: 5px; margin-right: 30px;}
 
 /* ---------- Footer Bar -------------  */
 .footerBottomBar {background-color: #d1eafa; text-align: center; color: #535353; font: 500 16px "Poppins"; text-transform: uppercase; margin: 0; padding: 20px 10px;} 
+/* 
+.merchantListAdmin .merchantaccordianWrap .merchantaccordian-table:first-child .accordion-header {background-color: #599CB1 !important; border-bottom-color: #368197 !important;}
+.merchantListAdmin .merchantaccordianWrap .merchantaccordian-table:last-child .accordion-header {background-color: #4E688C !important; border-bottom-color: #364F71 !important;} */

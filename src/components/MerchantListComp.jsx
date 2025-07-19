@@ -76,11 +76,11 @@ const handleEditClick = (user) => {
 
 
   return (
-    <div>
+    <div className="merchantaccordianWrap">
       <AccordianProps 
         bgColor="#71CDEA"
         borderColor="#23B7E5"
-        Icon={IoStorefrontSharp}
+        Icon={MdOutlineGroup}
         Heading={approvedHeading}
         tbody={
           <>
@@ -183,6 +183,7 @@ const handleEditClick = (user) => {
           <AdminMerchantUpdate
             user={editUserDetails}
             onClose={() => setEditUserDetails(null)}
+            onRefresh={onRefresh}
           />
         )}
       {showConfirmModal && (

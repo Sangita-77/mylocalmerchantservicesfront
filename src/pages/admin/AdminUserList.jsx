@@ -11,6 +11,7 @@ import PreLoader from "../../components/PreLoader";
 import ConfirmModal from "../../components/ConfirmModal";
 import UserDetailsModal from "../../components/UserDetailsModal"; 
 import Tooltip from "../../components/Tooltip";
+import DashBoardFooter from "../../components/DashBoardFooter";
 
 const AdminUserList = () => {
 
@@ -173,6 +174,7 @@ const confirmDelete = async () => {
           />
         )}
       </div>
+      
 
     </>
   )

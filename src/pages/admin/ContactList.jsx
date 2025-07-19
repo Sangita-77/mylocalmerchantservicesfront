@@ -109,6 +109,7 @@ const ContactList = () => {
         
 
         <div className="contactlistContainer">
+          <div className="accordionWrap">
           <div className="accordion" id="accordionExample">
             {loading ? (
               <div>
@@ -177,6 +178,7 @@ const ContactList = () => {
                 </td>
               </tr>
             )}
+          </div>
           </div>
         </div>
 

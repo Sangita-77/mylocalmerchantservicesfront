@@ -109,7 +109,7 @@ const MerchantRegistration = () => {
           },
         }
       );
-      console.log("All type response=========>", response);
+      // console.log("All type response=========>", response);
       if (response?.status === 200) {
         const usersType = response?.data?.userType;
         const industriesType = response?.data?.industryType;

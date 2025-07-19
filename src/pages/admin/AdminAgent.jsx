@@ -79,13 +79,13 @@ const AdminAgent = () => {
   
     };
     return (
-       <div className="adminUserlistWrapper merchantListAdmin">
+       <div className="adminUserlistWrapper merchantListAdmin agentListAdmin">
         
         <AdminDashBoardTopBar heading="Agent List" />
         <div className="adminDashboardContainer">
               
                 <div className='adminUserlIstContainer'>
-                   <MerchantListComp Icon={MdRealEstateAgent} approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Agents" pendingHeading="Pending Agents" flag="agents" onRefresh={refreshPage}/>
+                   <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Agents" pendingHeading="Pending Agents" flag="agents" onRefresh={refreshPage}/>
                  </div>
           </div>
       </div>
