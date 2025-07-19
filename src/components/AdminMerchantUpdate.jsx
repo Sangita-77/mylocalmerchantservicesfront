@@ -160,9 +160,9 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
             {/* <input type="text" value={industry} onChange={(e) => setIndustry(e.target.value)} /> */}
             <select
               className="inputField selectField"
-              style={{
-                color: industry ? "black" : "rgb(183, 183, 183)",
-              }}
+              // style={{
+              //   color: industry ? "black" : "rgb(183, 183, 183)",
+              // }}
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
             >
@@ -189,9 +189,9 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
             {/* <input type="text" value={serviceType} onChange={(e) => setServiceType(e.target.value)} /> */}
             <select
               className="inputField selectField"
-              style={{
-                color: typeOfServices ? "black" : "rgb(183, 183, 183)",
-              }}
+              // style={{
+              //   color: typeOfServices ? "black" : "rgb(183, 183, 183)",
+              // }}
               value={typeOfServices}
               onChange={(e) => setTypeOfServices(e.target.value)}
             >
