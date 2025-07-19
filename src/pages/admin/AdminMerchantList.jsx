@@ -6,7 +6,7 @@ import axios from "axios";
 import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
 import { IoStorefrontSharp } from "react-icons/io5";
-
+import { LiaStoreAltSolid } from "react-icons/lia";
 
 const AdminMerchantList = () => {
 
@@ -86,7 +86,7 @@ const AdminMerchantList = () => {
       <div className="adminDashboardContainer">
             
               <div className='adminUserlIstContainer'>
-                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant" flag="merchant services providers" onRefresh={refreshPage} approvedbackcolor="#4d94ab" approvedborder="#2d6e81" pendingbackcolor="#64b4cd" pendingborder="#368197" approvedIcon="LiaStoreAltSolid"/>
+                 <MerchantListComp approvedUsers={approvedUsers} pendingUsers={pendingUsers} loading={loading} approvedHeading="Approved Merchant" pendingHeading="Pending Merchant" flag="merchant services providers" onRefresh={refreshPage} approvedbackcolor="#4d94ab" approvedborder="#2d6e81" pendingbackcolor="#64b4cd" pendingborder="#368197" approvedIcon={LiaStoreAltSolid}/>
                </div>
         </div>
     </div>

@@ -80,7 +80,7 @@ const handleEditClick = (user) => {
       <AccordianProps 
         bgColor={approvedbackcolor}
         borderColor={approvedborder}
-        Icon={MdOutlineGroup}
+        Icon={approvedIcon}
         Heading={approvedHeading}
         tbody={
           <>
@@ -126,7 +126,7 @@ const handleEditClick = (user) => {
       <AccordianProps 
         bgColor={pendingbackcolor}
         borderColor={pendingborder}
-        Icon={MdOutlineGroup}
+        Icon={approvedIcon}
         Heading={pendingHeading}
         tbody={
           <>
