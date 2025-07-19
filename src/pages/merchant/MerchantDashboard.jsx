@@ -115,7 +115,7 @@ const MerchantDashboard = () => {
 
                 <div className="merchantProfileContainerHeader">
                   <div className="merchantHeaderCompanyTitle">
-                    Lorem ipsum dolor sit amet.
+                    Number of user connected
                   </div>
                 </div>
 
