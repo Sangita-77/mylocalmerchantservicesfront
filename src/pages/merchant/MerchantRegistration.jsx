@@ -9,6 +9,7 @@ import { FaCheck } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import LoginModal from "../../components/LoginModal";
 import { routes } from "../../utils/routes";
+import check from "./../../assets/images/icons8-check.gif";
 
 const MerchantRegistration = () => {
   const [loadingData, setLoadingData] = useState(false);
@@ -497,7 +498,12 @@ const MerchantRegistration = () => {
   
         if (data.status) {
           setOtpVerified(true);
-          setOtpMessage("✅");
+          setOtpMessage(
+            <>
+            <img src={check} alt="" className="verificationCaptchaImg" style={{width:"20px", height:"20px"}}/> 
+            <span>Verified</span>
+            </>
+          );
         } else {
           setOtpMessage("❌");
         }
@@ -651,7 +657,7 @@ const MerchantRegistration = () => {
   return (
     <div className="merchantRegistrationWrapper">
       <div className="merchantRegistrationTop">
-        <p className="merchantTopTitle">Merchant Company Registration</p>
+        <p className="merchantTopTitle">Merchant Company Registration </p>
       </div>
 
       <div className="merchantRegsitrationInnerContainer">
@@ -706,7 +712,7 @@ const MerchantRegistration = () => {
             </div>
 
             <div className="inputRowContainer">
-              <div className="inputRow">
+              <div className="inputRowContainer">
                 <div className="inputContainer">
                   <label htmlFor="email" className="label">
                     Email <span style={{ color: "red" }}>*</span>
@@ -715,11 +721,31 @@ const MerchantRegistration = () => {
                     <input
                       type="text"
                       name="email"
-                      placeholder="Enter email"
+                      placeholder=""
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="inputField"
                     />
+               
+               {otpSent && (
+                <div className="">
+                    <input
+                      type="text"
+                      name="otp"
+                      placeholder=""
+                      value={otp}
+                      onChange={handleOtpChange}
+                      className="inputField"
+                      maxLength={4}
+                      readOnly={otpVerified}
+                    />
+                    {otpMessage && (
+                      <p style={{ marginTop: "6px", color: otpVerified ? "#0F8CDD" : "red" }}>
+                        {otpMessage}
+                      </p>
+                    )}
+                  </div>
+              )}
                     <button
                       type="button"
                       className="sendOtpButton"
@@ -730,7 +756,7 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-              {otpSent && (
+              {/* {otpSent && (
                 <div className="inputRow">
                   <div className="inputContainer">
                     <label htmlFor="otp" className="label">
@@ -739,7 +765,7 @@ const MerchantRegistration = () => {
                     <input
                       type="text"
                       name="otp"
-                      placeholder="Enter OTP"
+                      placeholder=""
                       value={otp}
                       onChange={handleOtpChange}
                       className="inputField"
@@ -753,31 +779,7 @@ const MerchantRegistration = () => {
                     )}
                   </div>
                 </div>
-              )}
-
-
-
-
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="companyName" className="label">
-                    Company Name <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="companyName"
-                    placeholder="Enter company name"
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.conpanyNameError && (
-                  <div className="errorText">
-                    {validationError?.conpanyNameError}
-                  </div>
-                )}
-              </div>
+              )} */}
             </div>
           </div>
 
@@ -795,7 +797,7 @@ const MerchantRegistration = () => {
                   <input
                     type="text"
                     name="merchantName"
-                    placeholder="Enter Merchant Name"
+                    placeholder=""
                     value={merchantName}
                     onChange={(e) => setMerchantName(e.target.value)}
                     className="inputField"
@@ -816,7 +818,7 @@ const MerchantRegistration = () => {
                   <input
                     type="text"
                     name="street"
-                    placeholder="Enter street name"
+                    placeholder=""
                     value={street}
                     onChange={(e) => setStreet(e.target.value)}
                     className="inputField"
@@ -839,7 +841,7 @@ const MerchantRegistration = () => {
                   <input
                     type="number"
                     name="zipCode"
-                    placeholder="Enter Zip code"
+                    placeholder=""
                     value={zipCode}
                     onChange={(e) => handleChangeZipCode(e.target.value)}
                     className="inputField"
@@ -870,7 +872,7 @@ const MerchantRegistration = () => {
                   <input
                     type="text"
                     name="city"
-                    placeholder="Enter city"
+                    placeholder=""
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     className="inputField"
@@ -891,7 +893,7 @@ const MerchantRegistration = () => {
                   <input
                     type="text"
                     name="state"
-                    placeholder="Enter state name"
+                    placeholder=""
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     className="inputField"
@@ -910,7 +912,7 @@ const MerchantRegistration = () => {
                   <input
                     type="text"
                     name="country"
-                    placeholder="Enter country"
+                    placeholder=""
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                     className="inputField"
@@ -933,7 +935,7 @@ const MerchantRegistration = () => {
                   <input
                     type="number"
                     name="phone"
-                    placeholder="Enter phone"
+                    placeholder=""
                     value={phone}
                     onChange={(e) => handleChangePhone(e.target.value)}
                     className="inputField"
@@ -957,7 +959,7 @@ const MerchantRegistration = () => {
                   <input
                     type="text"
                     name="alternateEmail"
-                    placeholder="Enter Alternate Email"
+                    placeholder=""
                     value={alternateEmail}
                     onChange={(e) => setAlternateEmail(e.target.value)}
                     className="inputField"
@@ -1042,24 +1044,46 @@ const MerchantRegistration = () => {
             </div>
 
             <div className="inputRowContainer">
-              <div className="inputContainer">
+              <div className="inputRow">
                 <label htmlFor="website" className="label">
                   Website
                 </label>
                 <input
                   type="text"
                   name="website"
-                  placeholder="Enter website"
+                  placeholder=""
                   value={website}
                   onChange={(e) => setWebsite(e.target.value)}
                   className="inputField"
-                  style={{ width: "92%" }}
                 />
               </div>
               {validationError.websiteError && (
                 <div className="errorText">{validationError?.websiteError}</div>
               )}
             </div>
+
+
+               <div className="inputRowContainer">
+                <div className="inputRow">
+                  <label htmlFor="companyName" className="label">
+                    Company Name <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="companyName"
+                    placeholder=""
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
+                {validationError.conpanyNameError && (
+                  <div className="errorText">
+                    {validationError?.conpanyNameError}
+                  </div>
+                )}
+              </div>
+
 
             <div className="inputRowContainer">
               <div className="inputContainer">
@@ -1069,7 +1093,7 @@ const MerchantRegistration = () => {
                 <textarea
                   type="text"
                   name="companyDescription"
-                  placeholder="Enter Company Description"
+                  placeholder=""
                   value={companyDescription}
                   onChange={(e) => setCompanyDescription(e.target.value)}
                   className="inputField"
