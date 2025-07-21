@@ -418,34 +418,7 @@ const SuperAdminDashboard = () => {
       <div className="percentageCountItemContent">{label}</div>
     </div>
   );
-  // const handleLogout = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       `${BASE_URL}/logoutM`,
-  //       {
-  //         user_id: localStorage.getItem("user_id"),
-  //       },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-  
-  //     if (response.data.status) {
-  //       // Logout successful, reload the page
-  //       window.location.reload();
-  //     } else {
-  //       console.error("Logout failed:", response.data.message);
-  //       alert("Logout failed: " + response.data.message);
-  //     }
-  //   } catch (error) {
-  //     console.error("Logout error:", error);
-  //     alert("Something went wrong during logout.");
-  //   }
-  // };
-  
+
   
   
   

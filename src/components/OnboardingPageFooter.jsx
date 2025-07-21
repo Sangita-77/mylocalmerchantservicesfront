@@ -37,7 +37,9 @@ const OnboardingPageFooter = () => {
         <div className="divider"></div>
 
         <div className="footerCol">
-          <p className="footerColTitle">Quick line</p>
+          <p className="footerColTitle">
+            Quick line
+          </p>
           <div className="footerRow">
             <IoIosArrowForward size={16} color="#ffffff"/>
             <p className="footerColDesc">Merchant Registration</p>
@@ -70,11 +72,11 @@ const OnboardingPageFooter = () => {
           </div>
           <div className="footerRow">
             <IoMail size={22} color="#ffffff"/>
-            <p className="footerColDesc">support@mylocalmerchantservices.com</p>
+            <p className="footerColDesc"><a href="mailto:support@mylocalmerchantservices.com">support@mylocalmerchantservices.com</a></p>
           </div>
           <div className="footerRow">
             <IoIosCall size={24} color="#ffffff"/>
-            <p className="footerColDesc">+1-302-451-9144</p>
+            <p className="footerColDesc"><a href="tel:13024519144">+1-302-451-9144</a></p>
           </div>
 
           <div className="footerRow">
