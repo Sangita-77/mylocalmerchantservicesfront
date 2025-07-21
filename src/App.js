@@ -155,7 +155,7 @@ function App() {
             element: <ResetPassword />,
           },
           {
-            path: "/merchant-list",
+            path: "/merchant-service-providers",
             element: <MerchantList />,
           },
           {

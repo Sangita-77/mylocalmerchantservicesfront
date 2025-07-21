@@ -1,72 +1,40 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./../styles/styles.css";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
-import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import { PiEyeLight } from "react-icons/pi";
 import {
-  apiErrorHandler,
-  calculateTableDataLength,
-  prepareTableData,
-  textUppercase,
-} from "../utils/helper";
+  MdOutlineKeyboardDoubleArrowLeft,
+  MdOutlineKeyboardDoubleArrowRight,
+} from "react-icons/md";
+import { PiEyeLight } from "react-icons/pi";
 import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import MerchantViewDetailsModal from "../components/MerchantViewDetailsModal";
 import { AppContext } from "../utils/context";
-import bgEclipse from "./../assets/images/merchant_list_bg_eclipse.png";
 import PreLoader from "../components/PreLoader";
 
 const MerchantList = () => {
+  const { token } = useContext(AppContext);
+
   const [loading, setLoading] = useState(false);
-  const [merchantTypes, setMerchantTypes] = useState();
-  const [merchantTypeError, setMerchantTypeError] = useState(null);
-  const [searched, setSearched] = useState(false);
   const [tableData, setTableData] = useState([]);
-  const [searchTableData, setSearchTableData] = useState([]);
+  const [pageCount, setPageCount] = useState(1);
+  const [activePage, setActivePage] = useState(1);
   const [modalData, setModalData] = useState(null);
   const [showViewDetailsModal, setShowViewDetailsModal] = useState(false);
-  const [tableIndex, setTableIndex] = useState(null);
-  const [tableLoading, setTableLoading] = useState(false);
+
   const [searchByName, setSearchName] = useState("");
   const [searchByState, setSearchByState] = useState("");
   const [searchByZip, setSearchByZip] = useState("");
-  const [searchByType, setSearchByType] = useState("");
-  const [searchResults, setSearchResults] = useState(0);
+  const [searched, setSearched] = useState(false);
 
-  let searchParams = [];
-  let searchParamsValue = [];
-  let searchResultsNumber=0 
-  const { token } = useContext(AppContext);
-  //  console.log("Context token from list===>", token);
+  const limit = 5;
 
-  useEffect(() => {
-    fetchTableData();
-    fetchAllMerchantTypes();
-  }, []);
-
-
-  const createArray = (value) => {
-    let arr = [];
-    for (let i = 1; i < value + 1; i++) {
-      arr.push(i);
-    }
-    return arr;
-  };
-
-  const handlePaginate = async (type, offset, index) => {
-    setTableLoading(true);
+  const fetchTableData = async (offset = 0) => {
     try {
-      setTableIndex(index);
-
-      // console.log("pagination offset===>", offset);
-      const body = {
-        flag: type,
-        offset: offset,
-      };
+      setLoading(true);
+      const body = { offset };
       const response = await axios.post(
-        `${BASE_URL}/paginationMerchantOneInAll`,
+        `${BASE_URL}/getMerchantServicesOneInAll`,
         JSON.stringify(body),
         {
           headers: {
@@ -76,82 +44,64 @@ const MerchantList = () => {
         }
       );
 
-      // console.log(`Paginate table response===>`, response);
-
-      if (response?.status === 200) {
-        const newData = response?.data;
-        const newTableData = [...tableData];
-        newTableData[index] = newData;
-        setTableData(newTableData);
-      }
+      const { users, pageCount, activePage } = response?.data?.data;
+      setTableData(users || []);
+      setPageCount(pageCount || 1);
+      setActivePage(activePage || 1);
     } catch (error) {
       console.log(error);
-      // const errMsg = apiErrorHandler(error)
-    } finally {
-      setTableLoading(false);
-      setTableIndex(null);
-    }
-  };
-
-  const fetchTableData = async () => {
-    try {
-      setLoading(true);
-
-      const response = await axios.post(
-        `${BASE_URL}/getMerchantServicesOneInAll`,
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      // console.log(`Table data new response===>`, response?.data?.data);
-
-      if (response?.status === 200) {
-        const data = response?.data?.data;
-        setTableData(data);
-      }
-    } catch (error) {
-      console.log(error);
-      // const errMsg = apiErrorHandler(error)
     } finally {
       setLoading(false);
     }
   };
 
-  const toggleViewDetailsModal = (data) => {
-
-    // console.log("........data",typeof(data));
-
-    if(typeof(data) == 'object'){
-      setModalData(data.merchant_id);
-    }else{
-      setModalData(data);
+  const handlePaginate = (pageNo) => {
+    const offsetPage = Math.max(0, pageNo); // ensure non-negative
+    if (searched) {
+      handleSearchTableData(offsetPage);
+    } else {
+      fetchTableData(offsetPage);
     }
+  };
+  
+  
   
 
-  
-   setShowViewDetailsModal(true)
-   };
+  const toggleViewDetailsModal = (merchantId) => {
+    setModalData(merchantId);
+    setShowViewDetailsModal(true);
+  };
 
-  const handleSearchTableData = async () => {
-    if (!searchByName && !searchByState && !searchByType && !searchByZip) {
-      return alert("Please enter something in the search field!!");
- 
+  const handleSearchTableData = async (page = 1) => {
+    if (!searchByName && !searchByState && !searchByZip) {
+      return alert("Please enter something in the search fields!");
     }
-   
+  
     try {
       setLoading(true);
       setSearched(true);
-      const body = {
-        searchType: searchParams,
-        text: searchParamsValue,
-        offset: 1,
-      };
-      console.log("data",body)
+  
+      const searchType = [];
+      const text = [];
+  
+      if (searchByName) {
+        searchType.push("name");
+        text.push(searchByName);
+      }
+      if (searchByState) {
+        searchType.push("state");
+        text.push(searchByState);
+      }
+      if (searchByZip) {
+        searchType.push("zipcode");
+        text.push(searchByZip);
+      }
+  
+      const pageNumber = Number.isInteger(page) && page > 0 ? page : 1;
+      const offset = (pageNumber - 1) * limit;
+  
+      const body = { searchType, text, offset };
+  
       const response = await axios.post(
         `${BASE_URL}/searchingData`,
         JSON.stringify(body),
@@ -162,152 +112,51 @@ const MerchantList = () => {
           },
         }
       );
-      //  console.log("Search response=====>", response?.data?.users);
-      const data = response?.data?.users;
-
-      const tableData = prepareTableData(data);
-      setSearchTableData(tableData);
-
-      // console.log("Searched table data===>", tableData);
-
-       searchResultsNumber = calculateTableDataLength(tableData);
-   
-        if (tableData.length === 0) {
-          // console.log("No data found, setting searchResultsNumber to 0.");
-          setSearchResults(0);
-        }
-      setSearchResults(searchResultsNumber);
-     
+  
+      const { users, pageCount, activePage } = response?.data;
+  
+      setTableData(users || []);
+      setPageCount(pageCount || 1);
+      setActivePage(pageNumber); // use the same page we passed
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
     }
   };
-
-  // console.log("TableData========>", tableData);
-
-  const fetchAllMerchantTypes = async () => {
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/getUserTypes`,
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (response?.status === 200) {
-        const data = response?.data?.userTypes || [];
-        setMerchantTypes(data);
-      }
-
-      // console.log("Type response===>", response);
-    } catch (error) {
-      const errMsg = apiErrorHandler(error);
-      setMerchantTypeError(errMsg);
-    }
-  };
+  
+  
+  
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (!searchByName && !searchByState && !searchByZip) {
+      setSearched(false);
+      fetchTableData(0);
+    }
+  }, [searchByName, searchByState, searchByZip]);
+
+  useEffect(() => {
+    fetchTableData();
   }, []);
 
-  // useEffect(() => {
-  //   if (token) {
-  //     fetchTableData();
-  //     fetchAllMerchantTypes();
-  //   }
-  // }, [token]);
+  const createArray = (value) => {
+    return Array.from({ length: value }, (_, i) => i + 1);
+  };
 
-  useEffect(() => {
-    // console.log("CONSOLE=========>", searchByName, searchParams);
-    // if (searchParams.includes("name") === true) {
-    //   console.log(" exists in the array");
-    // } else {
-    //   console.log(" does not exist in the array");
-    // }
+  const createArray2 = (count) => Array.from({ length: count }, (_, i) => i + 1);
 
-    if (searchByName) {
-      if (searchParams.includes("name") === false) {
-        searchParams.push("name");
-      }
-      searchParamsValue.push(searchByName);
-    } else {
-      if (searchParams.includes("name") === true);
-      searchParams.splice(0, 1);
-      searchParamsValue.splice(0, 1);
-    }
-
-    if (searchByState) {
-      if (searchParams.includes("state") === false) {
-        searchParams.push("state");
-      }
-      searchParamsValue.push(searchByState);
-    } else {
-      if (searchParams.includes("state") === true);
-      searchParams.splice(1, 1);
-      searchParamsValue.splice(1, 1);
-    }
-
-    if (searchByZip) {
-      if (searchParams.includes("zipcode") === false) {
-        searchParams.push("zipcode");
-      }
-      searchParamsValue.push(searchByZip);
-    } else {
-      if (searchParams.includes("zipcode") === true);
-      searchParams.splice(2, 1);
-      searchParamsValue.splice(2, 1);
-    }
-
-    if (searchByType) {
-      if (searchParams.includes("type") === false) {
-        searchParams.push("type");
-      }
-      searchParamsValue.push(searchByType);
-    } else {
-      if (searchParams.includes("type") === true);
-      searchParams.splice(3, 1);
-      searchParamsValue.splice(3, 1);
-    }
-  }, [searchByName, searchByState, searchByZip, searchByType]);
-useEffect(() => {
-  
-  if (
-    searchByName === "" &&
-    searchByState === "" &&
-    searchByType === "" &&
-    searchByZip === ""
-  ) {
-    setSearched(false)
-   
-    fetchTableData();
-  }
-}, [searchByName, searchByState, searchByZip, searchByType]);
-const getHeaderColor = (index) => {
-  const colors = ["#71cdea", "#FFBF61", "#98fb98", "#71cdea"];
-  return colors[index % colors.length]; 
-};
 
   return (
     <>
       {loading ? (
         <div className="merchantListLoaderWrapper">
-          <PreLoader text={"Loading.."} />
-          {searched === true ? (
-            <div className="merchantListLoadingText">
-              Searching for results...
-            </div>
-          ) : (
-            <div className="merchantListLoadingText">Fetching data...</div>
-          )}
+          <PreLoader
+            text={searched ? "Searching for results..." : "Fetching data..."}
+          />
         </div>
       ) : (
         <div className="merchantListPageWrapper">
+          {/* Search Section */}
           <div className="merchantListTopSearchSection">
             <div className="merchantTopSearchSingleItem">
               <div className="searchTitle">Search by name</div>
@@ -318,11 +167,13 @@ const getHeaderColor = (index) => {
                   placeholder="Search by name"
                   value={searchByName}
                   onChange={(e) => {
-                    const inputValue = e.target.value;
-                    if (/^[A-Za-z\s]*$/.test(inputValue)) {
-                      setSearchName(inputValue);
+                    const val = e.target.value;
+                    if (/^[A-Za-z\s]*$/.test(val)) {
+                      setSearchName(val);
+                      setActivePage(1); // reset to first page
                     }
                   }}
+                  
                 />
               </div>
             </div>
@@ -349,254 +200,122 @@ const getHeaderColor = (index) => {
                   placeholder="Search by zipcode"
                   value={searchByZip}
                   onChange={(e) => {
-                    const inputValue = e.target.value;
-                    if (inputValue.length <= 6 && /^\d*$/.test(inputValue)) {
-                      setSearchByZip(inputValue);
-                    }
+                    const val = e.target.value;
+                    if (val.length <= 6 && /^\d*$/.test(val)) setSearchByZip(val);
                   }}
                 />
               </div>
             </div>
 
-            <div className="merchantTopSearchSingleItem">
-              <div className="searchTitle">Search by type</div>
-              <div className="searchInputDropdownContainer">
-                <select
-                  className="searchInputDropdown"
-                  value={searchByType}
-                  onChange={(e) => setSearchByType(e.target.value)}
-                >
-                  <option value="" style={{ color: "#b7cce4" }}>
-                    -- Search by type --
-                  </option>
-                  {merchantTypes?.map((type, i) => (
-                    <option
-                      value={type?.type}
-                      key={i}
-                      style={{ color: "black" }}
-                    >
-                      {textUppercase(type?.type)}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <button
-              className="searchBtn"
-              onClick={() => handleSearchTableData()}
-            >
-              <IoSearch size={24} color="white" />
-              Search
+            <button className="searchBtn" onClick={() => handleSearchTableData(0)}>
+                <IoSearch size={24} color="white" />
+                Search
             </button>
           </div>
 
-          {searched === true && (
-            <div className="searchResultsText" style={{ color: '#0d64a9' }}>
-              Showing {searchResults} results
-            </div>
-          )}
-
+          {/* Table Section */}
           <div className="merchantListTableSection">
-            {searched === false ? (
-              tableData?.map((table, index) => (
-                <div key={table?.type || index}>
-                  <div className="merchantListSingleTablePart" key={index}>
-                    <div className="tableTitle">
-                      {textUppercase(table?.type)}
-                    </div>
+            {tableData.length === 0 ? (
+              <div className="noResultFound">No Entries Found</div>
+            ) : (
+              <div className="merchantListSingleTablePart">
+                <div className="tableTitle">
+                  {searched ? "Search Results" : "Merchant Service Providers"}
+                </div>
+                <div className="tableWrapper">
+                  <table className="tableContainer">
+                    <thead className="theadContainer" style={{ backgroundColor: "#71cdea" }}>
+                      <tr>
+                        <th className="th">Name</th>
+                        <th className="th">Email</th>
+                        <th className="th">Industry</th>
+                        <th className="thActions">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="tbodyContainer">
+                      {tableData.map((row, i) => (
+                        <tr className="tr" key={i}>
+                          <td className="td">{row?.merchant_name}</td>
+                          <td className="td">{row?.user_id}</td>
+                          <td className="td">{row?.industry}</td>
+                          <td className="actionTd">
+                            <button
+                              className="viewButton"
+                              onClick={() => toggleViewDetailsModal(row?.merchant_id)}
+                            >
+                              <PiEyeLight size={22} color="#23b7e5" />
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
 
-                    <div className="tableWrapper">
-                      {index === tableIndex && (
-                        <div className="merchantTableSearchLoaderContainer">
-                          <PreLoader />
-                          <div>Changing page..</div>
+
+
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+            )}
+          </div>
+                {searched && tableData.length > 0 && (
+                    <div className="merchantTablePaginationContainer">
+                        <button
+                        className={`pageChangeBtns ${activePage === 1 && "pageChangeDisabledBtn"}`}
+                        onClick={() => handlePaginate(activePage)}
+                        disabled={activePage === 1}
+                        >
+                        <MdOutlineKeyboardDoubleArrowLeft size={24} color="white" />
+                        </button>
+
+                        {createArray(pageCount).map((pageNo) => (
+                        <div
+                            key={pageNo}
+                            className={`pageNo ${activePage === pageNo && "activePage"}`}
+                            onClick={() => handlePaginate(pageNo)}
+                        >
+                            {pageNo}
                         </div>
-                      )}
-                      <table className="tableContainer">
-                        <thead className="theadContainer" style={{ backgroundColor: getHeaderColor(index) }}>
-                          <tr>
-                            <th className="th">Name</th>
-                            <th className="th">Email</th>
-                            <th className="th">Industry</th>
-                            <th className="thActions">Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody className="tbodyContainer">
-                          {table?.users?.map((row, i) => (
-                            <tr className="tr" key={i}>
-                              <td className="td">{row?.merchant_name}</td>
-                              <td className="td">{row?.user_id}</td>
-                              <td className="td">{row?.industry}</td>
-                              <td className="actionTd">
-                                <button
-                                  className="viewButton"
-                                  onClick={() => toggleViewDetailsModal(row?.merchant_id)}
-                                >
-                                  <PiEyeLight size={22} color="#23b7e5" />
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                        ))}
+
+                        <button
+                        className={`pageChangeBtns ${activePage === pageCount && "pageChangeDisabledBtn"}`}
+                        onClick={() => handlePaginate(activePage)}
+                        disabled={activePage === pageCount}
+                        >
+                        <MdOutlineKeyboardDoubleArrowRight size={22} color="white" />
+                        </button>
                     </div>
-                  </div>
+                )}
+                {!searched && (
                   <div className="merchantTablePaginationContainer">
                     <button
-                      className={`pageChangeBtns ${
-                        (createArray(table?.pageCount)?.length === 1 ||
-                          table?.activePage === 1) &&
-                        "pageChangeDisabledBtn"
-                      }`}
-                      onClick={() =>
-                        handlePaginate(
-                          table?.type,
-                          table?.activePage - 2,
-                          index
-                        )
-                      }
-                      disabled={table?.activePage === 1 ? true : false}
+                      className={`pageChangeBtns ${activePage === 1 && "pageChangeDisabledBtn"}`}
+                      onClick={() => handlePaginate(activePage - 2)}
+                      disabled={activePage === 1}
                     >
-                      <MdOutlineKeyboardDoubleArrowLeft
-                        size={24}
-                        color="white"
-                      />
+                      <MdOutlineKeyboardDoubleArrowLeft size={24} color="white" />
                     </button>
 
-                    {createArray(table?.pageCount).map((pageNo, ind) => (
+                    {createArray(pageCount).map((pageNo) => (
                       <div
-                        className={`pageNo ${
-                          table?.activePage === pageNo && "activePage"
-                        }`}
-                        key={ind}
-                        onClick={() => handlePaginate(table?.type, ind, index)}
+                        key={pageNo}
+                        className={`pageNo ${activePage === pageNo && "activePage"}`}
+                        onClick={() => handlePaginate(pageNo - 1)}
                       >
                         {pageNo}
                       </div>
                     ))}
 
                     <button
-                      className={`pageChangeBtns ${
-                        (createArray(table?.pageCount).length === 1 ||
-                          table?.pageCount === table?.activePage) &&
-                        "pageChangeDisabledBtn"
-                      }`}
-                      onClick={() =>
-                        handlePaginate(table?.type, table?.activePage, index)
-                      }
-                      disabled={
-                        table?.pageCount === table?.activePage ? true : false
-                      }
+                      className={`pageChangeBtns ${activePage === pageCount && "pageChangeDisabledBtn"}`}
+                      onClick={() => handlePaginate(activePage)}
+                      disabled={activePage === pageCount}
                     >
-                      <MdOutlineKeyboardDoubleArrowRight
-                        size={22}
-                        color="white"
-                      />
+                      <MdOutlineKeyboardDoubleArrowRight size={22} color="white" />
                     </button>
                   </div>
-                </div>
-              ))
-            ) : searchResults=== 0 ? (
-              <div className="noResultFound">No Entries Found</div>
-            ) : (
-              searchTableData?.map((table, index) => (
-                <div key={table?.type || index}>
-                  <div className="merchantListSingleTablePart" key={index}>
-                    <div className="tableTitle">
-                      {textUppercase(table?.tableTitle)}
-                    </div>
-
-                    <div className="tableWrapper">
-                      <table className="tableContainer">
-                        <thead className="theadContainer" style={{ backgroundColor: getHeaderColor(index) }} >
-                          <tr>
-                            <th className="th">Name</th>
-                            <th className="th">Email</th>
-                            <th className="th">Industry</th>
-                            <th className="thActions">Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody className="tbodyContainer">
-                          {table?.data?.map((row, i) => (
-                            <tr className="tr" key={i}>
-                              <td className="td">{row?.merchant_name}</td>
-                              <td className="td">{row?.user_id}</td>
-                              <td className="td">{row?.industry}</td>
-                              <td className="actionTd">
-                                <button
-                                  className="viewButton"
-                                  onClick={() => toggleViewDetailsModal(row)}
-                                >
-                                  <PiEyeLight size={22} color="#23b7e5" />
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-
-                    {/* <div className="merchantTablePaginationContainer">
-                      <button
-                        className={`pageChangeBtns ${
-                          (createArray(table?.pageCount)?.length === 1 ||
-                            table?.activePage === 1) &&
-                          "pageChangeDisabledBtn"
-                        }`}
-                        onClick={() =>
-                          handlePaginate(
-                            table?.type,
-                            table?.activePage - 2,
-                            index
-                          )
-                        }
-                        disabled={table?.activePage === 1 ? true : false}
-                      >
-                        <MdOutlineKeyboardDoubleArrowLeft
-                          size={24}
-                          color="white"
-                        />
-                      </button>
-
-                      {createArray(table?.pageCount).map((pageNo, ind) => (
-                        <div
-                          className={`pageNo ${
-                            table?.activePage === pageNo && "activePage"
-                          }`}
-                          key={ind}
-                          onClick={() =>
-                            handlePaginate(table?.type, pageNo, index)
-                          }
-                        >
-                          {pageNo}
-                        </div>
-                      ))}
-
-                      <button
-                        className={`pageChangeBtns ${
-                          (createArray(table?.pageCount).length === 1 ||
-                            table?.pageCount === table?.activePage) &&
-                          "pageChangeDisabledBtn"
-                        }`}
-                        onClick={() =>
-                          handlePaginate(table?.type, table?.activePage, index)
-                        }
-                        disabled={
-                          table?.pageCount === table?.activePage ? true : false
-                        }
-                      >
-                        <MdOutlineKeyboardDoubleArrowRight
-                          size={22}
-                          color="white"
-                        />
-                      </button>
-                    </div> */}
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+                )}
         </div>
       )}
 
