@@ -208,7 +208,7 @@ const MerchantProfile = () => {
   return (
     <div className="merchantProfileWrapper">
 
-      <DashBoardTopBar heading="Merchant Profile" />
+      <DashBoardTopBar heading="Profile" />
 
       {loading ? (
         // 26.06.25

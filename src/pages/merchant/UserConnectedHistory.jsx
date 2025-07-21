@@ -140,12 +140,12 @@ const handleDelete = async (connection) => {
   return (
     <div className="userConnectedHistoryPageWrapper">
 
-      <DashBoardTopBar heading="User Connected History"/>
+      <DashBoardTopBar heading="Merchant Connected History"/>
 
       <div className="userConnectedHistoryContainer">
 
         <div className="merchantContainerHeader">
-          <div className="merchantHeaderTitle"><DashboardTopHeading text="User connected history Edit"/> </div>
+          <div className="merchantHeaderTitle"><DashboardTopHeading text="Merchant connected history"/> </div>
         </div>
 
 <div className="tableContainerWrap">

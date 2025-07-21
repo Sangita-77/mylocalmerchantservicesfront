@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./../styles/styles.css";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { LiaStoreAltSolid } from "react-icons/lia";
@@ -40,6 +40,10 @@ const AdminSidebar = () => {
 
   const navigate = useNavigate();
   const url = window.location.pathname;
+
+  useEffect(() => {
+    setIsMerchantOpen(true); 
+  }, []);
 
   return (
     <div className="adminSidebarWrapper">

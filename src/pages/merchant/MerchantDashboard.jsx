@@ -81,7 +81,7 @@ const MerchantDashboard = () => {
   return (
     <div className="merchantDashboardWrapper" onClick={() => setShowDropdown(false)}>
 
-      <DashBoardTopBar heading="Merchant Dashboard" />
+      <DashBoardTopBar heading="Dashboard" />
 
       {loading ? (
         <div className="merchantDashboardLoaderWrapper">
