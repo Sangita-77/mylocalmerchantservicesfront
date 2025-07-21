@@ -27,12 +27,14 @@ import { BASENAME } from "../config";
 import { MdRealEstateAgent } from "react-icons/md";
 import { BiSolidBadgeDollar } from "react-icons/bi";
 import { GiDividedSquare } from "react-icons/gi";
+import Tooltip from "../components/Tooltip";
 
 const AdminSidebar = () => {
   const [dashboardHover, setDashboardHover] = useState(false);
   const [profileHover, setProfileHover] = useState(false);
   const [merchantHover, setMerchantHover] = useState(false);
   const [connectHover, setConnectHover] = useState(false);
+  const [isMerchantOpen, setIsMerchantOpen] = useState(false);
 
   const location = useLocation();
 
@@ -81,37 +83,65 @@ const AdminSidebar = () => {
             <PiUsersThree
               color={"#ffffff"} size={24}
             />
-            <div>User List</div>
+            <div>Merchant List</div>
           </div>
 
-          <div
-            className={`sidebarItem ${url === `${BASENAME}/admin/admin-merchant-list` && "sidebarItemActive"}`}
-            onClick={() => navigate(routes. admin_merchant_list())}
-          >
-            <LiaStoreAltSolid color={"#fff"} size={24}/>
-            <div>Merchant</div>
-          </div>
-          <div
-            className={`sidebarItem ${url === `${BASENAME}/admin/admin-agent` && "sidebarItemActive"}`}
-            onClick={() => navigate(routes. admin_agent())}
-          >
-            <MdRealEstateAgent color={"#fff"} size={24}/>
-            <div>Agents</div>
-          </div>
-          <div
-            className={`sidebarItem ${url === `${BASENAME}/admin/agent-iso` && "sidebarItemActive"}`}
-            onClick={() => navigate(routes. admin_iso())}
-          >
-            <BiSolidBadgeDollar color={"#fff"} size={24}/>
-            <div>Isos</div>
-          </div>
-          <div
-            className={`sidebarItem ${url === `${BASENAME}/admin/agent-processor` && "sidebarItemActive"}`}
-            onClick={() => navigate(routes. admin_processor())}
-          >
-            <GiDividedSquare color={"#fff"} size={24}/>
-            <div>Proceesors</div>
-          </div>
+        {/* Merchant Collapsible */}
+        <div
+          className="sidebarItem"
+          onClick={() => setIsMerchantOpen(!isMerchantOpen)}
+        >
+          <LiaStoreAltSolid color={"#fff"} size={24} />
+          <Tooltip text="Merchant Services Providers">
+            <div>Merchant ...</div>
+          </Tooltip>
+          <IoIosArrowDown
+            style={{
+              marginLeft: "auto",
+              transition: "transform 0.3s",
+              transform: isMerchantOpen ? "rotate(180deg)" : "rotate(0deg)",
+            }}
+            color="#fff"
+            size={18}
+          />
+        </div>
+
+        {isMerchantOpen && (
+          <>
+            {/* <div
+              className={`sidebarItem subSidebarItem ${url === `${BASENAME}/admin/admin-merchant-list` && "sidebarItemActive"}`}
+              onClick={() => navigate(routes.admin_merchant_list())}
+            >
+              <MdOutlineStorefront color={"#fff"} size={22} />
+              <div>Merchant</div>
+            </div> */}
+
+            <div
+              className={`sidebarItem subSidebarItem ${url === `${BASENAME}/admin/admin-agent` && "sidebarItemActive"}`}
+              onClick={() => navigate(routes.admin_agent())}
+            >
+              <MdRealEstateAgent color={"#fff"} size={22} />
+              <div>Agents</div>
+            </div>
+
+            <div
+              className={`sidebarItem subSidebarItem ${url === `${BASENAME}/admin/agent-iso` && "sidebarItemActive"}`}
+              onClick={() => navigate(routes.admin_iso())}
+            >
+              <BiSolidBadgeDollar color={"#fff"} size={22} />
+              <div>Isos</div>
+            </div>
+
+            <div
+              className={`sidebarItem subSidebarItem ${url === `${BASENAME}/admin/agent-processor` && "sidebarItemActive"}`}
+              onClick={() => navigate(routes.admin_processor())}
+            >
+              <GiDividedSquare color={"#fff"} size={22} />
+              <div>Processors</div>
+            </div>
+          </>
+        )}
+
 
           <div
             className={`sidebarItem ${url === `${BASENAME}/admin/connect` && "sidebarItemActive"}`}
