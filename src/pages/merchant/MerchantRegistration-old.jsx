@@ -11,7 +11,6 @@ import LoginModal from "../../components/LoginModal";
 import { routes } from "../../utils/routes";
 import check from "./../../assets/images/icons8-check.gif";
 import cross from "./../../assets/images/icons8-cross.gif";
-import ImageUploader from "../../components/ImageUploader";
 
 const MerchantRegistration = () => {
   const [loadingData, setLoadingData] = useState(false);
@@ -22,12 +21,8 @@ const MerchantRegistration = () => {
   const [type, setType] = useState("");
   const [email, setEmail] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [merchantName, setMerchantName] = useState("");
-  const [DWtoTravel, setDWtoTravel] = useState("");
-  const [addressone, setAddressOne] = useState("");
-  const [addresstwo, setAddressTwo] = useState("");
+  const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
@@ -56,10 +51,7 @@ const MerchantRegistration = () => {
     alternateEmailError: "",
     conpanyNameError: "",
     merchantNameError: "",
-    DWtoTravelError: "",
-    firstNameError: "",
-    lastNameError: "",
-    addressoneError: "",
+    streetError: "",
     cityError: "",
     stateError: "",
     zipCodeError: "",
@@ -92,7 +84,7 @@ const MerchantRegistration = () => {
   };
 
   const handleChangeZipCode = (value) => {
-    if (zipCode?.length === 5) return;
+    if (zipCode?.length === 7) return;
     setZipCode(value);
   };
 
@@ -160,11 +152,8 @@ const MerchantRegistration = () => {
         !type ||
         !email ||
         !companyName ||
-        !firstName ||
-        !lastName ||
         !merchantName ||
-        !DWtoTravel ||
-        !addressone ||
+        !street ||
         !city ||
         !state ||
         !zipCode ||
@@ -193,19 +182,7 @@ const MerchantRegistration = () => {
         if (!companyName) {
           setValidationError((prev) => ({
             ...prev,
-            conpanyNameError: "Company Name is required!",
-          }));
-        }
-        if (!firstName) {
-          setValidationError((prev) => ({
-            ...prev,
-            firstNameError: "First Name is required!",
-          }));
-        }
-        if (!lastName) {
-          setValidationError((prev) => ({
-            ...prev,
-            lastNameError: "Last Name is required!",
+            conpanyNameError: "Company name is required!",
           }));
         }
         if (!merchantName) {
@@ -214,16 +191,10 @@ const MerchantRegistration = () => {
             merchantNameError: "Merchant name is required!",
           }));
         }
-        if (!DWtoTravel) {
+        if (!street) {
           setValidationError((prev) => ({
             ...prev,
-            DWtoTravelError: "Distance Willing to Travel is required!",
-          }));
-        }
-        if (!addressone) {
-          setValidationError((prev) => ({
-            ...prev,
-            addressoneError: "addressone name is required!",
+            streetError: "Street name is required!",
           }));
         }
         if (!city) {
@@ -301,12 +272,8 @@ const MerchantRegistration = () => {
         flag: type,
         user_id: email,
         company_name: companyName,
-        first_name: firstName,
-        last_name: lastName,
         merchant_name: merchantName,
-        dw_to_travel: DWtoTravel,
-        address_one: addressone,
-        address_two: addresstwo,
+        street: street,
         city: city,
         state: state,
         zip_code: zipCode,
@@ -640,17 +607,17 @@ const MerchantRegistration = () => {
       setValidationError((prev) => ({ ...prev, alternateEmailError: "" }));
     }
     if (website) setValidationError((prev) => ({ ...prev, websiteError: "" }));
-    if (companyName) setValidationError((prev) => ({ ...prev, conpanyNameError: "" }));
-    if (firstName) setValidationError((prev) => ({ ...prev, firstNameError: "" }));
-    if (lastName) setValidationError((prev) => ({ ...prev, lastNameError: "" }));
-    if (merchantName) setValidationError((prev) => ({ ...prev, merchantNameError: "" }));
-    if (DWtoTravel) setValidationError((prev) => ({ ...prev, DWtoTravelError: "" }));
+    if (companyName)
+      setValidationError((prev) => ({ ...prev, conpanyNameError: "" }));
+    if (merchantName)
+      setValidationError((prev) => ({ ...prev, merchantNameError: "" }));
     if (phone) setValidationError((prev) => ({ ...prev, phoneError: "" }));
-    if (addressone) setValidationError((prev) => ({ ...prev, addressoneError: "" }));
+    if (street) setValidationError((prev) => ({ ...prev, streetError: "" }));
     if (city) setValidationError((prev) => ({ ...prev, cityError: "" }));
     if (state) setValidationError((prev) => ({ ...prev, stateError: "" }));
     if (country) setValidationError((prev) => ({ ...prev, countryError: "" }));
-    if (zipCode && !rejectRegistration)setValidationError((prev) => ({ ...prev, zipCodeError: "" }));
+    if (zipCode && !rejectRegistration)
+      setValidationError((prev) => ({ ...prev, zipCodeError: "" }));
     if (zipCode) {
       if (zipCode?.length < 5) {
         setValidationError((prev) => ({
@@ -672,18 +639,17 @@ const MerchantRegistration = () => {
       setCountry("");
       setRejectRegistration(true);
     }
-    if (industry)setValidationError((prev) => ({ ...prev, industryError: "" }));
-    if (typeOfServices)setValidationError((prev) => ({ ...prev, serviceError: "" }));
+    if (industry)
+      setValidationError((prev) => ({ ...prev, industryError: "" }));
+    if (typeOfServices)
+      setValidationError((prev) => ({ ...prev, serviceError: "" }));
   }, [
     type,
     email,
     alternateEmail,
     companyName,
-    firstName,
-    lastName,
     merchantName,
-    DWtoTravel,
-    addressone,
+    street,
     city,
     state,
     zipCode,
@@ -704,8 +670,7 @@ const MerchantRegistration = () => {
   return (
     <div className="merchantRegistrationWrapper">
       <div className="merchantRegistrationTop">
-        <h1 className="merchantTopTitle">Merchant Services Providers Registration</h1>
-        <p>Please complete the form below to become a registered Merchant Services Provider in our system.</p>
+        <p className="merchantTopTitle">Merchant Company Registration </p>
       </div>
 
       <div className="merchantRegsitrationInnerContainer">
@@ -721,105 +686,47 @@ const MerchantRegistration = () => {
         {/* /////////   FORM STARTS    ////////// */}
         <div className="merchantRegistrationForm">
           <div className="merchantRegistrationFormTop">
-            <p className="registrationFormTitle">General Info</p>
-
-    <div className="inputRowContainer">
-
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="companyName" className="label">
-                    Company Name <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="companyName"
-                    placeholder="Company Name"
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.conpanyNameError && (
-                  <div className="errorText">
-                    {validationError?.conpanyNameError}
-                  </div>
-                )}
-              </div>
-
+            <p className="registrationFormTitle">Registration Detail</p>
 
             <div className="inputRow">
-
               <div className="inputContainer">
-                <label htmlFor="website" className="label">
-                  Website
+                <label className="label">
+                  Select type <span style={{ color: "red" }}>*</span>
                 </label>
-                <input
-                  type="text"
-                  name="website"
-                  placeholder="Contact Website"
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                  className="inputField"
-                />
+                <select
+                  className="inputField selectField"
+                  style={{
+                    color: type ? "black" : "rgb(183, 183, 183)",
+                  }}
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                >
+                  {loading ? (
+                    <>Loading..</>
+                  ) : (
+                    <>
+                      <option value="">Please select type</option>
+                      {usersType?.map((user, index) => (
+                        <option
+                          value={user.type}
+                          key={index}
+                          style={{ color: "black" }}
+                        >
+                          {textUppercase(user?.type)}
+                        </option>
+                      ))}
+                    </>
+                  )}
+                </select>
               </div>
-              {validationError.websiteError && (
-                <div className="errorText">{validationError?.websiteError}</div>
+              {validationError.typeError && (
+                <div className="errorText">{validationError?.typeError}</div>
               )}
             </div>
 
-          </div>
-
-
-    <div className="inputRowContainer">
-
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="firstName" className="label">
-                    First Name<span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.firstNameError && (
-                  <div className="errorText">
-                    {validationError?.firstNameError}
-                  </div>
-                )}
-              </div>
-
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="lastName" className="label">
-                    Last Name<span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.lastNameError && (
-                  <div className="errorText">
-                    {validationError?.lastNameError}
-                  </div>
-                )}
-              </div>
-
-          </div>
-
-    <div className="inputRowContainer">
-
-              <div className="inputRow">
-                <div className="inputContainer" >
+            <div className="inputRowContainer">
+              <div className="inputRowContainer">
+                <div className="inputContainer" style={{ width: "80%" }}>
                   <label htmlFor="email" className="label">
                     Email <span style={{ color: "red" }}>*</span>
                   </label>
@@ -827,7 +734,7 @@ const MerchantRegistration = () => {
                     <input
                       type="text"
                       name="email"
-                      placeholder="Email"
+                      placeholder=""
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="inputField" 
@@ -875,230 +782,36 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-
-         <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="phone" className="label">
-                    Phone <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="number"
-                    name="phone"
-                    placeholder="Phone"
-                    value={phone}
-                    onChange={(e) => handleChangePhone(e.target.value)}
-                    className="inputField"
-                    onKeyDown={(e) => {
-                      if (e.key === "Backspace") {
-                        handleClickPhoneBackspace(e);
-                      }
-                    }}
-                  />
-                </div>
-                {validationError.phoneError && (
-                  <div className="errorText">{validationError?.phoneError}</div>
-                )}
-           </div>
-       </div>   
-
-     <div className="inputRowContainer">  
-     <div className="inputRow">
-         <div className="inputContainer">
-         <input 
-         type="checkbox"
-         name=""
-         value=""
-         >    
-         </input>
-         <label className="label" for="vehicle2"  style={{ paddingLeft: "8px" }}> Do you wish to upload a logo for your agency?</label>
-         <ImageUploader />
-      </div>
-    </div>
- </div>    
-      <div>
-         
-      </div>
-
- </div>     
-
-
- 
-          <div className="merchantRegistrationFormTop">
-            <p className="registrationFormTitle" style={{ marginTop: 36 }}>
-              Address Details
-            </p>    
-              
-              <div className="inputRowContainer">
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="DWtoTravel" className="label">
-                    Distance Willing to Travel <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <select name="cars" id="cars" className="inputField selectField">
-                      <option value="5">   &lt; 5 miles  </option>
-                      <option value="10">  &lt; 10 miles </option>
-                      <option value="25">  &lt; 25 miles </option>
-                      <option value="50">  &lt; 50 miles </option>
-                      <option value="100"> &lt; 100 miles </option>
-
-                  </select>
-                </div>
-                {validationError.DWtoTravelError && (
-                  <div className="errorText">
-                    {validationError?.DWtoTravelError}
-                  </div>
-                )}
-              </div>
-
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="addressone" className="label">
-                    Address 1: <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="addressone"
-                    placeholder=""
-                    value={addressone}
-                    onChange={(e) => setAddressOne(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.addressoneError && (
-                  <div className="errorText">
-                    {validationError?.addressoneError}
-                  </div>
-                )}
-              </div>
-            </div>
-
-              <div className="inputRowContainer">
-                <div className="inputContainer">
-                 <label htmlFor="addresstwo" className="label">
-                  Address 2
-                 </label>
-                 <input
-                  type="text"
-                  name="addresstwo"
-                  placeholder=""
-                  value={addresstwo}
-                  onChange={(e) => setAddressTwo(e.target.value)}
-                  className="inputField"
-                 />
-                </div>
-                {validationError.DWtoTravelError && (
-                  <div className="errorText">
-                    {validationError?.DWtoTravelError}
-                  </div>
-                )}
-              </div>
-
-
-           <div className="inputRowContainer">
-            
-             <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="city" className="label">
-                    City <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="city"
-                    placeholder=""
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.cityError && (
-                  <div className="errorText">{validationError?.cityError}</div>
-                )}
-              </div>
-
-               <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="state" className="label">
-                    State <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="state"
-                    placeholder=""
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.stateError && (
-                  <div className="errorText">{validationError?.stateError}</div>
-                )}
-              </div>
-            </div>
-
-
-               <div className="inputRowContainer">
+              {/* {otpSent && (
                 <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="country" className="label">
-                    Country <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="country"
-                    placeholder=""
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    className="inputField"
-                  />
+                  <div className="inputContainer">
+                    <label htmlFor="otp" className="label">
+                      Enter OTP <span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="otp"
+                      placeholder=""
+                      value={otp}
+                      onChange={handleOtpChange}
+                      className="inputField"
+                      maxLength={4}
+                      readOnly={otpVerified}
+                    />
+                    {otpMessage && (
+                      <p style={{ marginTop: "6px", color: otpVerified ? "green" : "red" }}>
+                        {otpMessage}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                {validationError.countryError && (
-                  <div className="errorText">
-                    {validationError?.countryError}
-                  </div>
-                )}
-              </div>
-
-              
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="zipCode" className="label">
-                    Zip <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="number"
-                    name="zipCode"
-                    max="5"
-                    placeholder="Zip Code"
-                    value={zipCode}
-                    onChange={(e) => handleChangeZipCode(e.target.value)}
-                    className="inputField"
-                    onKeyDown={(e) => {
-                      if (e.key === "Backspace") {
-                        handleClickZipBackspace(e);
-                      }
-                    }}
-                  />
-                </div>
-                {fetchingAddress && (
-                  <div style={{ fontSize: 12 }}>
-                    Please wait, while we fetch your address...
-                  </div>
-                )}
-                {validationError.zipCodeError && (
-                  <div className="errorText">
-                    {validationError?.zipCodeError}
-                  </div>
-                )}
-              </div>
-         </div>
-
-
-
+              )} */}
             </div>
+          </div>
 
           <div className="merchantRegistrationFormTop">
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
-              Marketing Details
+              Merchant Mailing Address
             </p>
 
             <div className="inputRowContainer">
@@ -1125,66 +838,144 @@ const MerchantRegistration = () => {
 
               <div className="inputRow">
                 <div className="inputContainer">
-                  <label htmlFor="addressone" className="label">
-                    addressone <span style={{ color: "red" }}>*</span>
+                  <label htmlFor="street" className="label">
+                    Street <span style={{ color: "red" }}>*</span>
                   </label>
                   <input
                     type="text"
-                    name="addressone"
+                    name="street"
                     placeholder=""
-                    value={addressone}
-                    onChange={(e) => setAddressOne(e.target.value)}
+                    value={street}
+                    onChange={(e) => setStreet(e.target.value)}
                     className="inputField"
                   />
                 </div>
-                {validationError.addressoneError && (
+                {validationError.streetError && (
                   <div className="errorText">
-                    {validationError?.addressoneError}
+                    {validationError?.streetError}
                   </div>
                 )}
               </div>
             </div>
 
             <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="zipCode" className="label">
+                    Zip code <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="zipCode"
+                    placeholder=""
+                    value={zipCode}
+                    onChange={(e) => handleChangeZipCode(e.target.value)}
+                    className="inputField"
+                    onKeyDown={(e) => {
+                      if (e.key === "Backspace") {
+                        handleClickZipBackspace(e);
+                      }
+                    }}
+                  />
+                </div>
+                {fetchingAddress && (
+                  <div style={{ fontSize: 12 }}>
+                    Please wait, while we fetch your address...
+                  </div>
+                )}
+                {validationError.zipCodeError && (
+                  <div className="errorText">
+                    {validationError?.zipCodeError}
+                  </div>
+                )}
+              </div>
 
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="city" className="label">
+                    City <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder=""
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
+                {validationError.cityError && (
+                  <div className="errorText">{validationError?.cityError}</div>
+                )}
+              </div>
             </div>
 
             <div className="inputRowContainer">
-        <div className="inputRow">
-              <div className="inputContainer">
-                <label className="label">
-                  Select type <span style={{ color: "red" }}>*</span>
-                </label>
-                <select
-                  className="inputField selectField"
-                  style={{
-                    color: type ? "black" : "rgb(183, 183, 183)",
-                  }}
-                  value={type}
-                  onChange={(e) => setType(e.target.value)}
-                >
-                  {loading ? (
-                    <>Loading..</>
-                  ) : (
-                    <>
-                      <option value="">Please select type</option>
-                      {usersType?.map((user, index) => (
-                        <option
-                          value={user.type}
-                          key={index}
-                          style={{ color: "black" }}
-                        >
-                          {textUppercase(user?.type)}
-                        </option>
-                      ))}
-                    </>
-                  )}
-                </select>
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="state" className="label">
+                    State <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="state"
+                    placeholder=""
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
+                {validationError.stateError && (
+                  <div className="errorText">{validationError?.stateError}</div>
+                )}
               </div>
-              {validationError.typeError && (
-                <div className="errorText">{validationError?.typeError}</div>
-              )}
+
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="country" className="label">
+                    Country <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="country"
+                    placeholder=""
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
+                {validationError.countryError && (
+                  <div className="errorText">
+                    {validationError?.countryError}
+                  </div>
+                )}
+              </div>
             </div>
+
+            <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="phone" className="label">
+                    Phone <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="phone"
+                    placeholder=""
+                    value={phone}
+                    onChange={(e) => handleChangePhone(e.target.value)}
+                    className="inputField"
+                    onKeyDown={(e) => {
+                      if (e.key === "Backspace") {
+                        handleClickPhoneBackspace(e);
+                      }
+                    }}
+                  />
+                </div>
+                {validationError.phoneError && (
+                  <div className="errorText">{validationError?.phoneError}</div>
+                )}
+              </div>
 
               <div className="inputRow">
                 <div className="inputContainer">
@@ -1277,6 +1068,57 @@ const MerchantRegistration = () => {
                 )}
               </div>
             </div>
+
+
+
+<div className="inputRowContainer">
+
+            <div className="inputRow">
+
+              <div className="inputContainer">
+                <label htmlFor="website" className="label">
+                  Website
+                </label>
+                <input
+                  type="text"
+                  name="website"
+                  placeholder=""
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  className="inputField"
+                />
+              </div>
+              {validationError.websiteError && (
+                <div className="errorText">{validationError?.websiteError}</div>
+              )}
+            </div>
+
+
+               <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="companyName" className="label">
+                    Company Name <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="companyName"
+                    placeholder=""
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
+                {validationError.conpanyNameError && (
+                  <div className="errorText">
+                    {validationError?.conpanyNameError}
+                  </div>
+                )}
+              </div>
+
+</div>
+
+
+
 
             <div className="inputRowContainer">
               <div className="inputContainer">
