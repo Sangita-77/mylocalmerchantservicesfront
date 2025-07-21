@@ -1100,8 +1100,101 @@ const MerchantRegistration = () => {
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Marketing Details
             </p>
-            <p>Please enter up to three bullet points you want potential customers to see about you. These are limited to 50 characters.</p>
+            <p >Please enter up to three bullet points you want potential customers to see about you. These are limited to 50 characters.</p>
 
+            <div className="inputRowContainer">
+              <div className="inputContainer">
+                  <label htmlFor="merchantName" className="label">
+                    Bullet Point 1: <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="merchantName"
+                    placeholder="Bullet 1"
+                    value={merchantName}
+                    onChange={(e) => setMerchantName(e.target.value)}
+                    className="inputField"
+                  />
+
+                {validationError.merchantNameError && (
+                  <div className="errorText">
+                    {validationError?.merchantNameError}
+                  </div>
+                )}
+              </div>
+            </div>
+             <div className="inputRowContainer">
+              <div className="inputContainer">
+                  <label htmlFor="merchantName" className="label">
+                    Bullet Point 2: <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="merchantName"
+                    placeholder="Bullet 2"
+                    value={merchantName}
+                    onChange={(e) => setMerchantName(e.target.value)}
+                    className="inputField"
+                  />
+
+                {validationError.merchantNameError && (
+                  <div className="errorText">
+                    {validationError?.merchantNameError}
+                  </div>
+                )}
+              </div>
+            </div>
+             <div className="inputRowContainer">
+              <div className="inputContainer">
+                  <label htmlFor="merchantName" className="label">
+                    Bullet Point 3: <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="merchantName"
+                    placeholder="Bullet 3"
+                    value={merchantName}
+                    onChange={(e) => setMerchantName(e.target.value)}
+                    className="inputField"
+                  />
+
+                {validationError.merchantNameError && (
+                  <div className="errorText">
+                    {validationError?.merchantNameError}
+                  </div>
+                )}
+              </div>
+            </div>
+             <div className="inputRowContainer">
+              <div className="inputContainer">
+                  <label htmlFor="merchantName" className="label">
+                    Summary <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <textarea
+                    type="textarea"
+                    name="merchantName"
+                    placeholder="Summary"
+                    value={merchantName}
+                    onChange={(e) => setMerchantName(e.target.value)}
+                    className="inputField"
+                  />
+                  <p className="infoText"></p>
+
+                {validationError.merchantNameError && (
+                  <div className="errorText">
+                    {validationError?.merchantNameError}
+                  </div>
+                )}
+              </div>
+            </div>
+
+         </div>
+
+
+          <div className="merchantRegistrationFormTop">
+             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
+              Merchant Processing Features
+            </p>
             <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
