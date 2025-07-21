@@ -1100,6 +1100,7 @@ const MerchantRegistration = () => {
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Marketing Details
             </p>
+            <p>Please enter up to three bullet points you want potential customers to see about you. These are limited to 50 characters.</p>
 
             <div className="inputRowContainer">
               <div className="inputRow">
