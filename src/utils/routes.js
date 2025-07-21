@@ -3,7 +3,7 @@ export const routes = {
   forget_password: () => "/forget-password",
   reset_password: () => "/reset-password",
   registration: () => "/registration",
-  merchant_list: () => "/merchant-list",
+  merchant_list: () => "/merchant-service-providers",
   contact: () => "/contact",
 
 
