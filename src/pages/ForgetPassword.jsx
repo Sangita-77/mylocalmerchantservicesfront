@@ -179,28 +179,30 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
     setEnteredOtp(concatOtp);
   }, [otp]);
 
-  // useEffect(() => {
-  //   if (minute === 0 && second === 0) return;
+  useEffect(() => {
+    if (minute === 0 && second === 0) return;
 
-  //   if (second < 0) {
-  //     setMinute((prev) => prev - 1);
-  //     setSecond(9);
-  //   }
+    if (second < 0) {
+      setMinute((prev) => prev - 1);
+      setSecond(9);
+    }
 
-  //   const secondsTimer = setInterval(() => {
-  //     setSecond((prev) => prev - 1);
-  //   }, 1000);
+    const secondsTimer = setInterval(() => {
+      setSecond((prev) => prev - 1);
+    }, 1000);
 
-  //   return () => clearInterval(secondsTimer);
-  // }, [second]);
+    return () => clearInterval(secondsTimer);
+  }, [second]);
 
   console.log("OTP==========>", otp);
 
   return (
     <div className="forgetPasswordPageWrapper">
-      <p>Forget password</p>
+        <div className="forgetPasswordWrapper">
+        <div className="PasswordWrapper">
+      <h1>Forget Password</h1>
 
-      <p>Enter your registered email for otp verification</p>
+      <p className="forgetPasswordText">Enter your registered email for otp verification</p>
       <div>
         <label htmlFor="">Email</label>
         <input
@@ -220,6 +222,7 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
         <>
           <div className="overlay" />
           <div className="otpVerificationModalContainer">
+          <div className="otpVerificationModalWrap">
             <button
               className="otpModalCloseBtn"
               onClick={() => toggleOtpVerificationModal()}
@@ -254,7 +257,7 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
 
             {emailError && <div className="errorText">{otpError}</div>}
 
-            <div style={{ fontSize: 24, fontWeight: 500 }}>{receivedOtp}</div>
+            {/* <div style={{ fontSize: 24, fontWeight: 500 }}>{receivedOtp}</div> */}
 
             {(minute === 0) & (second === 0) ? (
               <div className="grayText">Resend Otp</div>
@@ -268,8 +271,11 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
               {otpLoading ? "Loading..." : "Submit"}
             </button>
           </div>
+       </div>
         </>
       )}
+    </div>
+    </div>
     </div>
   );
 };
