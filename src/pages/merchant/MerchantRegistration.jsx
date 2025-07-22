@@ -49,6 +49,15 @@ const MerchantRegistration = () => {
   const [serverOtp, setServerOtp] = useState(null);
   const [otpMessage, setOtpMessage] = useState("");
   const [otpVerified, setOtpVerified] = useState(false);
+  const [primaryPP, setPrimaryPP] = useState("");
+  const [secondaryPP, setSecondaryPP] = useState("");
+  const [other, setOther] = useState("");
+  const [clientPublicly, setclientPublicly] = useState("");
+  const [volumePublicly, setvolumePublicly] = useState("");
+  const [highRisk, sethighRisk] = useState("");
+  const [pointOfSale, setpointOfSale] = useState("");
+  const [financing, setfinancing] = useState("");
+  const [sponsorBank, setsponsorBank] = useState("");
 
   const [validationError, setValidationError] = useState({
     typeError: "",
@@ -1174,7 +1183,7 @@ const MerchantRegistration = () => {
                     type="textarea"
                     name="merchantName"
                     placeholder="Summary"
-                    value={merchantName}
+                    value={primaryPP}
                     onChange={(e) => setMerchantName(e.target.value)}
                     className="inputField"
                   />
@@ -1196,17 +1205,173 @@ const MerchantRegistration = () => {
               Merchant Processing Features
             </p>
             <div className="inputRowContainer">
+
+
+
+            </div>
+
+            <div className="inputRowContainer">
+
+            </div>
+
+            <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label className="label">
+                    Select type <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <select
+                    className="inputField selectField"
+                    style={{
+                      color: type ? "black" : "rgb(183, 183, 183)",
+                    }}
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                  >
+                    {loading ? (
+                      <>Loading..</>
+                    ) : (
+                      <>
+                        <option value="">Please select type</option>
+                        {usersType
+                          ?.filter(
+                            (user) =>
+                              user.type !== "user" &&
+                              user.type !== "merchant services providers"
+                          )
+                          .map((user, index) => (
+                            <option value={user.type} key={index} style={{ color: "black" }}>
+                              {textUppercase(user?.type)}
+                            </option>
+                        ))}
+
+                      </>
+                    )}
+                  </select>
+                </div>
+                {validationError.typeError && (
+                  <div className="errorText">{validationError?.typeError}</div>
+                )}
+              </div>
+
+            </div>
+
+            <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
-                    Merchant Name <span style={{ color: "red" }}>*</span>
+                  What is your Sponsor Bank <span style={{ color: "red" }}>*</span>
                   </label>
                   <input
                     type="text"
                     name="merchantName"
                     placeholder=""
-                    value={merchantName}
-                    onChange={(e) => setMerchantName(e.target.value)}
+                    value={sponsorBank}
+                    onChange={(e) => setsponsorBank(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
+                {validationError.merchantNameError && (
+                  <div className="errorText">
+                    {validationError?.merchantNameError}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="merchantName" className="label">
+                  Primary Processing Platform / Partner <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="merchantName"
+                    placeholder="Primary"
+                    value={primaryPP}
+                    onChange={(e) => setPrimaryPP(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
+                {validationError.merchantNameError && (
+                  <div className="errorText">
+                    {validationError?.merchantNameError}
+                  </div>
+                )}
+              </div>
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="merchantName" className="label">
+                  Secondary Processing Platform / Partner
+                  </label>
+                  <input
+                    type="text"
+                    name="merchantName"
+                    placeholder="Secondary"
+                    value={secondaryPP}
+                    onChange={(e) => setSecondaryPP(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
+                {validationError.merchantNameError && (
+                  <div className="errorText">
+                    {validationError?.merchantNameError}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="inputRowContainer">
+              <div className="inputContainer">
+                <label htmlFor="companyDescription" className="label">
+                  Other
+                </label>
+                <textarea
+                  type="text"
+                  name="companyDescription"
+                  placeholder="Other"
+                  value={other}
+                  onChange={(e) => setOther(e.target.value)}
+                  className="inputField"
+                />
+              </div>
+            </div>
+
+            <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="merchantName" className="label">
+                  How many merchant services sales represenatives are in your office ? <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <select name="cars" id="" className="inputField selectField">
+                    <option value="1">   1  </option>
+                    <option value="2-5">  2-5 </option>
+                    <option value="6-10">  6-10 </option>
+                    <option value="11-25">  11-25 </option>
+                    <option value="25+"> 25+ </option>
+
+                  </select>
+                </div>
+                {validationError.merchantNameError && (
+                  <div className="errorText">
+                    {validationError?.merchantNameError}
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="merchantName" className="label">
+                  How many clients do you service? <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="number"
+                    name="merchantName"
+                    placeholder="Clients"
+                    value={secondaryPP}
+                    onChange={(e) => setSecondaryPP(e.target.value)}
                     className="inputField"
                   />
                 </div>
@@ -1219,172 +1384,209 @@ const MerchantRegistration = () => {
 
               <div className="inputRow">
                 <div className="inputContainer">
-                  <label htmlFor="addressone" className="label">
-                    addressone <span style={{ color: "red" }}>*</span>
+                  <label className="label">
+                    Share publicly? <span style={{ color: "red" }}>*</span>
                   </label>
-                  <input
-                    type="text"
-                    name="addressone"
-                    placeholder=""
-                    value={addressone}
-                    onChange={(e) => setAddressOne(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.addressoneError && (
-                  <div className="errorText">
-                    {validationError?.addressoneError}
+                  <div className="radioGroup">
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="yes"
+                        checked={clientPublicly === "yes"}
+                        onChange={(e) => setclientPublicly(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>Yes</span>
+                    </label>
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="no"
+                        checked={clientPublicly === "no"}
+                        onChange={(e) => setclientPublicly(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>No</span>
+                    </label>
                   </div>
+                </div>
+                {validationError.merchantNameError && (
+                  <div className="errorText">{validationError?.merchantNameError}</div>
                 )}
               </div>
-            </div>
 
-            <div className="inputRowContainer">
-
-            </div>
-
-            <div className="inputRowContainer">
-        <div className="inputRow">
-              <div className="inputContainer">
-                <label className="label">
-                  Select type <span style={{ color: "red" }}>*</span>
-                </label>
-                <select
-                  className="inputField selectField"
-                  style={{
-                    color: type ? "black" : "rgb(183, 183, 183)",
-                  }}
-                  value={type}
-                  onChange={(e) => setType(e.target.value)}
-                >
-                  {loading ? (
-                    <>Loading..</>
-                  ) : (
-                    <>
-                      <option value="">Please select type</option>
-                      {usersType?.map((user, index) => (
-                        <option
-                          value={user.type}
-                          key={index}
-                          style={{ color: "black" }}
-                        >
-                          {textUppercase(user?.type)}
-                        </option>
-                      ))}
-                    </>
-                  )}
-                </select>
-              </div>
-              {validationError.typeError && (
-                <div className="errorText">{validationError?.typeError}</div>
-              )}
-            </div>
-
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="alternateEmail" className="label">
-                    Alternate email
-                  </label>
-                  <input
-                    type="text"
-                    name="alternateEmail"
-                    placeholder=""
-                    value={alternateEmail}
-                    onChange={(e) => setAlternateEmail(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.alternateEmailError && (
-                  <div className="errorText">
-                    {validationError?.alternateEmailError}
-                  </div>
-                )}
-              </div>
             </div>
 
             <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
-                  <label className="label" style={{ width: 205 }}>
-                    Industry <span style={{ color: "red" }}>*</span>
+                  <label htmlFor="merchantName" className="label">
+                  Monthly Volume Processed by your merchants <span style={{ color: "red" }}>*</span>
                   </label>
-                  <select
-                    className="inputField selectField"
-                    style={{
-                      color: industry ? "black" : "rgb(183, 183, 183)",
-                    }}
-                    value={industry}
-                    onChange={(e) => setIndustry(e.target.value)}
-                  >
-                    <option value="" style={{ color: "rgb(183, 183, 183)" }}>
-                      Select industry
-                    </option>
-                    {industriesType?.map((industry, i) => (
-                      <option
-                        key={i}
-                        value={industry?.type}
-                        style={{ color: "black" }}
-                      >
-                        {textUppercase(industry?.type)}
-                      </option>
-                    ))}
+                  <select name="cars" id="" className="inputField selectField">
+                      <option value="100K">   &lt; $100K  </option>
+                      <option value="100K<250K"> 100K &lt; 250K </option>
+                      <option value="250K<1MM"> 250k &lt; 1MM </option>
+                      <option value="1MM<5MM">  1MM &lt; 5MM </option>
+                      <option value="5MM<10MM"> 5MM &lt; 10MM </option>
+                      <option value="10MM<25MM"> 10MM &lt; 25MM </option>
+                      <option value="25MM+"> 25MM+ </option>
+
                   </select>
                 </div>
-                {validationError.industryError && (
+                {validationError.merchantNameError && (
                   <div className="errorText">
-                    {validationError?.industryError}
+                    {validationError?.merchantNameError}
                   </div>
                 )}
               </div>
 
               <div className="inputRow">
                 <div className="inputContainer">
-                  <label className="label" style={{ width: 205 }}>
-                    Type of services <span style={{ color: "red" }}>*</span>
+                  <label className="label">
+                    Share publicly? <span style={{ color: "red" }}>*</span>
                   </label>
-                  <select
-                    className="inputField selectField"
-                    style={{
-                      color: typeOfServices ? "black" : "rgb(183, 183, 183)",
-                    }}
-                    value={typeOfServices}
-                    onChange={(e) => setTypeOfServices(e.target.value)}
-                  >
-                    <option value="" style={{ color: "rgb(183, 183, 183)" }}>
-                      Select type of services
-                    </option>
-                    {servicesType?.map((service, i) => (
-                      <option
-                        key={i}
-                        value={service?.type}
-                        style={{ color: "black" }}
-                      >
-                        {textUppercase(service?.type)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                {validationError.serviceError && (
-                  <div className="errorText">
-                    {validationError?.serviceError}
+                  <div className="radioGroup">
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="yes"
+                        checked={volumePublicly === "yes"}
+                        onChange={(e) => setvolumePublicly(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>Yes</span>
+                    </label>
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="no"
+                        checked={volumePublicly === "no"}
+                        onChange={(e) => setvolumePublicly(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>No</span>
+                    </label>
                   </div>
+                </div>
+                {validationError.merchantNameError && (
+                  <div className="errorText">{validationError?.merchantNameError}</div>
+                )}
+              </div>
+
+            </div>
+            <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label className="label">
+                  Do you offer High Risk? <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <div className="radioGroup">
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="yes"
+                        checked={highRisk === "yes"}
+                        onChange={(e) => sethighRisk(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>Yes</span>
+                    </label>
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="no"
+                        checked={highRisk === "no"}
+                        onChange={(e) => sethighRisk(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>No</span>
+                    </label>
+                  </div>
+                </div>
+                {validationError.merchantNameError && (
+                  <div className="errorText">{validationError?.merchantNameError}</div>
                 )}
               </div>
             </div>
 
             <div className="inputRowContainer">
-              <div className="inputContainer">
-                <label htmlFor="companyDescription" className="label">
-                  Company Description
-                </label>
-                <textarea
-                  type="text"
-                  name="companyDescription"
-                  placeholder=""
-                  value={companyDescription}
-                  onChange={(e) => setCompanyDescription(e.target.value)}
-                  className="inputField"
-                />
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label className="label">
+                  Do you offer Point of Sale? <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <div className="radioGroup">
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="yes"
+                        checked={pointOfSale === "yes"}
+                        onChange={(e) => setpointOfSale(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>Yes</span>
+                    </label>
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="no"
+                        checked={pointOfSale === "no"}
+                        onChange={(e) => setpointOfSale(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>No</span>
+                    </label>
+                  </div>
+                </div>
+                {validationError.merchantNameError && (
+                  <div className="errorText">{validationError?.merchantNameError}</div>
+                )}
+              </div>
+            </div>
+
+            <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label className="label">
+                  Do you offer Merchant Cash Advance or Financing? <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <div className="radioGroup">
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="yes"
+                        checked={financing === "yes"}
+                        onChange={(e) => setfinancing(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>Yes</span>
+                    </label>
+                    <label className="radioLabel">
+                      <input
+                        type="radio"
+                        name="sharePublicly"
+                        value="no"
+                        checked={financing === "no"}
+                        onChange={(e) => setfinancing(e.target.value)}
+                        className="radioInput"
+                      />
+                      <span>No</span>
+                    </label>
+                  </div>
+                </div>
+                {validationError.merchantNameError && (
+                  <div className="errorText">{validationError?.merchantNameError}</div>
+                )}
               </div>
             </div>
 
