@@ -5,8 +5,10 @@ import { apiErrorHandler } from "../utils/helper";
 import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import { useLocation } from "react-router-dom";
-import { routes } from "../utils/routes";
-import { div } from "framer-motion/client";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
+
+
+
 
 const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
@@ -99,8 +101,10 @@ const ResetPassword = () => {
   }, [newPassword, confirmPassword]);
 
   return (
-    <div className="resetPasswordPageContainer" style={{ padding: 24 }}>
-      <p className="resetPasswordPageTitle">Reset Password</p>
+    <div className="forgetPasswordPageWrapper resetPasswordPageContainer">
+      <div className="forgetPasswordWrapper">
+      <div className="PasswordWrapper">
+      <h1 className="forgetPasswordWrapper">Reset Password</h1>
       <div className="resetPasswordInner">
         <div className="inputRow">
           <label htmlFor="" className="inputLabel">
@@ -119,12 +123,13 @@ const ResetPassword = () => {
             )}
           </div>
           <div className="checkBoxRow">
-            <input
-              type="checkbox"
-              className="loginCheckbox"
+           <div
+              type="button"
+              className="eyeButton"
               onClick={() => setShowPassword(!showPassword)}
-            />
-            <div className="showPassword">Show Password</div>
+            >
+              {showPassword ? (<> <FaEyeSlash /> </>) : ( <>  <FaEye /> </>)}
+            </div>
           </div>
         </div>
 
@@ -150,12 +155,13 @@ const ResetPassword = () => {
             </div>
           </div>
           <div className="checkBoxRow">
-            <input
-              type="checkbox"
-              className="loginCheckbox"
+           <div
+              type="button"
+              className="eyeButton"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            />
-            <div className="showPassword">Show Password</div>
+            >
+              {showConfirmPassword ? (<>  <FaEye /> </>) : ( <><FaEyeSlash /> </>)}
+            </div>
           </div>
         </div>
 
@@ -165,6 +171,8 @@ const ResetPassword = () => {
         >
           {loading ? "Loading..." : "Submit"}
         </button>
+      </div>
+      </div>
       </div>
     </div>
   );
