@@ -12,6 +12,7 @@ import { routes } from "../../utils/routes";
 import check from "./../../assets/images/icons8-check.gif";
 import cross from "./../../assets/images/icons8-cross.gif";
 import ImageUploader from "../../components/ImageUploader";
+import ModalPopup from "../../components/ModalPopup";
 
 const MerchantRegistration = () => {
   const [loadingData, setLoadingData] = useState(false);
@@ -25,7 +26,7 @@ const MerchantRegistration = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [merchantName, setMerchantName] = useState("");
-  const [DWtoTravel, setDWtoTravel] = useState("");
+  const [DWtoTravel, setDWtoTravel] = useState("5");
   const [addressone, setAddressOne] = useState("");
   const [addresstwo, setAddressTwo] = useState("");
   const [city, setCity] = useState("");
@@ -52,12 +53,24 @@ const MerchantRegistration = () => {
   const [primaryPP, setPrimaryPP] = useState("");
   const [secondaryPP, setSecondaryPP] = useState("");
   const [other, setOther] = useState("");
-  const [clientPublicly, setclientPublicly] = useState("");
-  const [volumePublicly, setvolumePublicly] = useState("");
-  const [highRisk, sethighRisk] = useState("");
-  const [pointOfSale, setpointOfSale] = useState("");
-  const [financing, setfinancing] = useState("");
+  const [clientPublicly, setclientPublicly] = useState("yes");
+  const [volumePublicly, setvolumePublicly] = useState("yes");
+  const [highRisk, sethighRisk] = useState("yes");
+  const [pointOfSale, setpointOfSale] = useState("yes");
+  const [financing, setfinancing] = useState("yes");
   const [sponsorBank, setsponsorBank] = useState("");
+  const [bulletOne, setbulletOne] = useState("");
+  const [bulletTwo, setbulletTwo] = useState("");
+  const [bulletThree, setbulletThree] = useState("");
+  const [summary, setsummary] = useState("");
+  const [websiteTouched, setWebsiteTouched] = useState(false);
+  const [showUploader, setShowUploader] = useState(false);
+  const [clientCount, setclientCount] = useState("");
+  const [salesRep, setSalesRep] = useState("1");
+  const [volumeProcessed, setVolumeProcessed] = useState("100K");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+
 
   const [validationError, setValidationError] = useState({
     typeError: "",
@@ -77,6 +90,25 @@ const MerchantRegistration = () => {
     industryError: "",
     serviceError: "",
     websiteError: "",
+    companyNameError: "",
+    websiteNameError: "",
+    autoFirstNameError: "",
+    autoLastNameError: "",
+    autoEmailError: "",
+    autophoneError: "",
+    autoaddressoneError: "",
+    bulletOneError: "",
+    bulletTwoError: "",
+    bulletThreeError: "",
+    summaryError: "",
+    clientCountError: "",
+    salesRepError:"",
+    clientPubliclyError : "",
+    volumeProcessedError : "",
+    volumePubliclyError : "",
+    highRiskError : "",
+    pointOfSaleError : "",
+    financingError : "",
   });
 
   const {
@@ -90,15 +122,25 @@ const MerchantRegistration = () => {
     setIsAuthenticated,
   } = useContext(AppContext);
 
+  const isAgent = type === "agents";
+  const isISO = type === "ISOs";
+  const isProcessor = type === "processors";
+
   const navigate = useNavigate();
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const intRegex = /^-?\d+$/;
 
   const handleChangePhone = (value) => {
-    if (phone?.length === 10) return;
     setPhone(value);
+    const error = validateUSPhoneNumber(value);
+    setValidationError((prev) => ({
+      ...prev,
+      autophoneError: error,
+    }));
   };
+  
+  
 
   const handleChangeZipCode = (value) => {
     if (zipCode?.length === 5) return;
@@ -145,167 +187,76 @@ const MerchantRegistration = () => {
   };
 
   const handleRegisterMerchant = async () => {
-    if (rejectRegistration === true) {
-      setShowToast(true);
-      setSeverity("error");
-      setMessageTitle("Invalid zipcode!");
-      setMessage("Please check the zipcode!!");
-      return;
-    }
-
+    // if (rejectRegistration === true) {
+    //   setShowToast(true);
+    //   setSeverity("error");
+    //   setMessageTitle("Invalid zipcode!");
+    //   setMessage("Please check the zipcode!!");
+    //   return;
+    // }
+  
     if (!otpVerified) {
-      console.log("OTP not verified, blocking registration.");
       setShowToast(true);
       setSeverity("error");
       setMessageTitle("OTP Required");
       setMessage("Please verify your email with the OTP before registering.");
       return;
     }
+  
     try {
       setLoading(true);
       setError("");
-
-      if (
-        !type ||
-        !email ||
-        !companyName ||
-        !firstName ||
-        !lastName ||
-        !merchantName ||
-        !DWtoTravel ||
-        !addressone ||
-        !city ||
-        !state ||
-        !zipCode ||
-        !country ||
-        !phone ||
-        !industry ||
-        !typeOfServices
-      ) {
-        if (!type) {
-          setValidationError((prev) => ({
-            ...prev,
-            typeError: "Please select type!",
-          }));
-        } else {
-          setValidationError((prev) => ({
-            ...prev,
-            typeError: "",
-          }));
-        }
-        if (!email) {
-          setValidationError((prev) => ({
-            ...prev,
-            emailError: "Email is required!",
-          }));
-        }
-        if (!companyName) {
-          setValidationError((prev) => ({
-            ...prev,
-            conpanyNameError: "Company Name is required!",
-          }));
-        }
-        if (!firstName) {
-          setValidationError((prev) => ({
-            ...prev,
-            firstNameError: "First Name is required!",
-          }));
-        }
-        if (!lastName) {
-          setValidationError((prev) => ({
-            ...prev,
-            lastNameError: "Last Name is required!",
-          }));
-        }
-        if (!merchantName) {
-          setValidationError((prev) => ({
-            ...prev,
-            merchantNameError: "Merchant name is required!",
-          }));
-        }
-        if (!DWtoTravel) {
-          setValidationError((prev) => ({
-            ...prev,
-            DWtoTravelError: "Distance Willing to Travel is required!",
-          }));
-        }
-        if (!addressone) {
-          setValidationError((prev) => ({
-            ...prev,
-            addressoneError: "addressone name is required!",
-          }));
-        }
-        if (!city) {
-          setValidationError((prev) => ({
-            ...prev,
-            cityError: "City name is required!",
-          }));
-        }
-        if (!state) {
-          setValidationError((prev) => ({
-            ...prev,
-            stateError: "State name is required!",
-          }));
-        }
-        if (zipCode) {
-          if (zipCode?.length < 5 || zipCode?.length > 9) {
-            setValidationError((prev) => ({
-              ...prev,
-              zipCodeError: "Invalid zip code!",
-            }));
-          }
-        } else {
-          setValidationError((prev) => ({
-            ...prev,
-            zipCodeError: "Zip code is required!",
-          }));
-        }
-        if (!country) {
-          setValidationError((prev) => ({
-            ...prev,
-            countryError: "Country is required!",
-          }));
-        }
-        if (phone) {
-          if (phone?.length < 10 || phone?.length > 10) {
-            setValidationError((prev) => ({
-              ...prev,
-              phoneError: "Invalid phone number!",
-            }));
-          }
-        } else {
-          setValidationError((prev) => ({
-            ...prev,
-            phoneError: "Phone number is required!",
-          }));
-        }
-        if (!industry) {
-          setValidationError((prev) => ({
-            ...prev,
-            industryError: "Type of Industry is required!",
-          }));
-        }
-        if (!typeOfServices) {
-          setValidationError((prev) => ({
-            ...prev,
-            serviceError: "Type of service is required!",
-          }));
-        }
-        if (isChecked === false) {
-          return setError(
-            "Please verify that you are a human (check the checkbox)!"
-          );
-        }
-        return;
-      }
-
+  
+      // Check for required fields
+      // if (
+      //   !email ||
+      //   !companyName ||
+      //   !firstName ||
+      //   !lastName ||
+      //   !merchantName ||
+      //   !DWtoTravel ||
+      //   !addressone ||
+      //   !city ||
+      //   !state ||
+      //   !zipCode ||
+      //   !country ||
+      //   !phone ||
+      //   !bulletOne ||
+      //   !bulletTwo ||
+      //   !bulletThree ||
+      //   !summary ||
+      //   !salesRep ||
+      //   !clientCount ||
+      //   !clientPublicly ||
+      //   !volumeProcessed ||
+      //   !volumePublicly ||
+      //   !highRisk ||
+      //   !pointOfSale ||
+      //   !financing
+      // ) {
+      //   // handle individual errors like before
+      //   if (!bulletOne) setValidationError(prev => ({ ...prev, bulletOneError: "Bullet point 1 is required!" }));
+      //   if (!bulletTwo) setValidationError(prev => ({ ...prev, bulletTwoError: "Bullet point 2 is required!" }));
+      //   if (!bulletThree) setValidationError(prev => ({ ...prev, bulletThreeError: "Bullet point 3 is required!" }));
+      //   if (!summary) setValidationError(prev => ({ ...prev, summaryError: "Summary is required!" }));
+      //   if (!salesRep) setValidationError(prev => ({ ...prev, salesRepError: "Sales representative is required!" }));
+      //   if (!clientCount) setValidationError(prev => ({ ...prev, clientCountError: "How many clients is required!" }));
+      //   if (!clientPublicly) setValidationError(prev => ({ ...prev, clientPubliclyError: "Clients status is required!" }));
+      //   if (!volumeProcessed) setValidationError(prev => ({ ...prev, volumeProcessedError: "Volume processed is required!" }));
+      //   if (!volumePublicly) setValidationError(prev => ({ ...prev, volumePubliclyError: "Volume processed status is required!" }));
+      //   if (!highRisk) setValidationError(prev => ({ ...prev, highRiskError: "High Risk is required!" }));
+      //   if (!pointOfSale) setValidationError(prev => ({ ...prev, pointOfSaleError: "Point of Sale is required!" }));
+      //   if (!financing) setValidationError(prev => ({ ...prev, financingError: "Financing is required!" }));
+      //   return;
+      // }
+  
       if (email === alternateEmail) {
         return setValidationError((prev) => ({
           ...prev,
           alternateEmailError: "Email and Alternate email cannot be same!!",
         }));
       }
-
+  
       const body = {
         flag: type,
         user_id: email,
@@ -313,21 +264,34 @@ const MerchantRegistration = () => {
         first_name: firstName,
         last_name: lastName,
         merchant_name: merchantName,
-        dw_to_travel: DWtoTravel,
-        address_one: addressone,
-        address_two: addresstwo,
+        DistanceWilling: DWtoTravel,
+        address1: addressone,
+        address2: addresstwo,
         city: city,
         state: state,
         zip_code: zipCode,
-        county: country,
+        country: country,
         email: alternateEmail,
         phone: phone,
-        industry: industry,
-        type_of_service: typeOfServices,
         website: website,
-        company_description: companyDescription,
-      };
 
+        SponsorBank : sponsorBank,
+  
+        // New required fields
+        bulletOne: bulletOne,
+        bulletTwo: bulletTwo,
+        bulletThree: bulletThree,
+        summary: summary,
+        salesrepresenatives: salesRep,
+        clientCount: clientCount,
+        clientPublicly: clientPublicly,
+        VolumeProcessed: volumeProcessed,
+        volumePublicly: volumePublicly,
+        HighRisk: highRisk,
+        PointofSale: pointOfSale,
+        Financing: financing,
+      };
+  
       const response = await axios.post(
         `${BASE_URL}/registration`,
         JSON.stringify(body),
@@ -338,39 +302,28 @@ const MerchantRegistration = () => {
           },
         }
       );
-      console.log("Registration response====>", response);
-
+  
       if (response?.status === 200) {
-        const flag = response?.data?.flag;
-        const userId = response?.data?.data?.user_id;
-        const message = response?.data?.message;
-        const merchantToken = response?.data?.data?.merchant_token;
-
+        const { flag, data, message } = response?.data;
+        const userId = data?.user_id;
+        const merchantToken = data?.merchant_token;
+  
         setLoggedInUserId(userId);
         setMerchantToken(merchantToken);
-
         setShowToast(true);
         setSeverity("success");
         setMessageTitle("Success");
         setMessage(message);
-
-        if (flag === "merchant") {
-          localStorage.setItem("is_authenticated", JSON.stringify(true));
-          localStorage.setItem("person_type", JSON.stringify(flag));
-          localStorage.setItem("user_id", JSON.stringify(userId));
-          navigate(routes.merchant_dashboard());
-        }
+        setShowSuccessModal(true);
+  
+        // if (flag === "merchant") {
+        //   localStorage.setItem("is_authenticated", JSON.stringify(true));
+        //   localStorage.setItem("person_type", JSON.stringify(flag));
+        //   localStorage.setItem("user_id", JSON.stringify(userId));
+        //   navigate(routes.merchant_dashboard());
+        // }
       }
     } catch (error) {
-      console.log(error);
-      if (error?.response?.data?.errors?.website) {
-        setValidationError((prev) => ({
-          ...prev,
-          websiteError: error?.response?.data?.errors?.website[0],
-        }));
-        return;
-      }
-      // console.log(error);
       const errMsg = apiErrorHandler(error);
       setError(errMsg);
       setShowToast(true);
@@ -381,6 +334,7 @@ const MerchantRegistration = () => {
       setLoading(false);
     }
   };
+  
 
   const searchAddressByZipcode = async () => {
     try {
@@ -710,6 +664,120 @@ const MerchantRegistration = () => {
     }
   }, [token]);
 
+  useEffect(() => {
+    if (isAgent) {
+      setsponsorBank("");
+    }
+    if (isISO || isProcessor) {
+      setPrimaryPP("");
+      setSecondaryPP("");
+      setOther("");
+    }
+    if (isProcessor) {
+      setsponsorBank("");
+    }
+  }, [type]);
+
+  const validateCompanyName = (name) => {
+    if (!name.trim()) {
+      return "Company Name is required";
+    }
+    if (name.length < 3) {
+      return "Company Name must be at least 3 characters long";
+    }
+    return "";
+  };
+
+  const validateWebsite = (url) => {
+    const pattern = /^(www\.)[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+    if (url.trim() !== "" && !pattern.test(url)) {
+      return "Enter a valid website (e.g., www.abc.com)";
+    }
+    return "";
+  };
+
+  const validateFirstName = (value) => {
+    if (!value.trim()) {
+      return "First Name is required";
+    }
+    if (!/^[A-Za-z]+$/.test(value)){ 
+      return "Only letters allowed"; 
+    }
+    return "";
+  };
+  
+  const validateLastName = (value) => {
+    if (!value.trim()) {
+      return "Last Name is required";
+    }
+    if (!/^[A-Za-z]+$/.test(value)) {
+      return "Only letters allowed";
+    }
+    return "";
+  };
+
+  const validateEmail = (value) => {
+    if (!value.trim()) return "Email is required";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) return "Email format abc@gmail.com / abc@domainname.com";
+    return "";
+  };
+
+  const validateUSPhoneNumber = (value) => {
+    const pattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (!value) return "Phone number is required.";
+    if (!pattern.test(value)) return "Invalid US phone number format.";
+    return "";
+  };
+
+  const handleCheckboxChange = (e) => {
+    setShowUploader(e.target.checked);
+  };
+
+  const validateAddressOne = (value) => {
+    if (!value.trim()) return "Address is required.";
+    if (value.trim().length < 3) return "Address must be at least 3 characters.";
+    return "";
+  };
+
+  const handleAddressOneChange = (e) => {
+    const value = e.target.value;
+    setAddressOne(value);
+  
+    const error = validateAddressOne(value);
+    setValidationError((prev) => ({
+      ...prev,
+      autoaddressoneError: error,
+    }));
+  };
+
+  const handleClientCountChange = (e) => {
+    const value = e.target.value;
+    setclientCount(value);
+  
+    // Validation logic
+    if (!value) {
+      setValidationError(prev => ({
+        ...prev,
+        clientCountError: "This field is required."
+      }));
+    } else if (parseInt(value) <= 0 || isNaN(value)) {
+      setValidationError(prev => ({
+        ...prev,
+        clientCountError: "Please enter a number greater than 0."
+      }));
+    } else {
+      setValidationError(prev => ({
+        ...prev,
+        clientCountError: ''
+      }));
+    }
+  };
+  
+  
+  
+  
+
   return (
     <div className="merchantRegistrationWrapper">
       <div className="merchantRegistrationTop">
@@ -732,8 +800,7 @@ const MerchantRegistration = () => {
           <div className="merchantRegistrationFormTop">
             <p className="registrationFormTitle">General Info</p>
 
-    <div className="inputRowContainer">
-
+            <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label htmlFor="companyName" className="label">
@@ -744,43 +811,49 @@ const MerchantRegistration = () => {
                     name="companyName"
                     placeholder="Company Name"
                     value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCompanyName(value);
+                      const error = validateCompanyName(value);
+                      setValidationError((prev) => ({ ...prev, companyNameError: error }));
+                    }}
                     className="inputField"
                   />
                 </div>
-                {validationError.conpanyNameError && (
-                  <div className="errorText">
-                    {validationError?.conpanyNameError}
-                  </div>
+                {validationError.companyNameError && (
+                    <div className="errorText">
+                      {validationError.companyNameError}
+                    </div>
+                  )}
+              </div>
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="website" className="label">
+                    Website
+                  </label>
+                  <input
+                    type="text"
+                    name="website"
+                    placeholder="Contact Website"
+                    value={website}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setWebsite(value);
+                      const error = validateWebsite(value);
+                      setValidationError((prev) => ({ ...prev, websiteNameError: error }));
+                    }}
+                    className="inputField"
+                  />
+
+                </div>
+                {validationError.websiteNameError && (
+                  <div className="errorText">{validationError.websiteNameError}</div>
                 )}
+
               </div>
-
-
-            <div className="inputRow">
-
-              <div className="inputContainer">
-                <label htmlFor="website" className="label">
-                  Website
-                </label>
-                <input
-                  type="text"
-                  name="website"
-                  placeholder="Contact Website"
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                  className="inputField"
-                />
-              </div>
-              {validationError.websiteError && (
-                <div className="errorText">{validationError?.websiteError}</div>
-              )}
             </div>
 
-          </div>
-
-
-    <div className="inputRowContainer">
-
+            <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label htmlFor="firstName" className="label">
@@ -791,15 +864,21 @@ const MerchantRegistration = () => {
                     name="firstName"
                     placeholder="First Name"
                     value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setFirstName(value);
+                      const error = validateFirstName(value);
+                      setValidationError((prev) => ({
+                        ...prev,
+                        autoFirstNameError: error,
+                      }));
+                    }}
                     className="inputField"
                   />
+                  {validationError.autoFirstNameError && (
+                    <div className="errorText">{validationError.autoFirstNameError}</div>
+                  )}
                 </div>
-                {validationError.firstNameError && (
-                  <div className="errorText">
-                    {validationError?.firstNameError}
-                  </div>
-                )}
               </div>
 
               <div className="inputRow">
@@ -812,123 +891,144 @@ const MerchantRegistration = () => {
                     name="lastName"
                     placeholder="Last Name"
                     value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.lastNameError && (
-                  <div className="errorText">
-                    {validationError?.lastNameError}
-                  </div>
-                )}
-              </div>
-
-          </div>
-
-    <div className="inputRowContainer">
-
-              <div className="inputRow">
-                <div className="inputContainer" >
-                  <label htmlFor="email" className="label">
-                    Email <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <div style={{ display: "flex", gap: "8px" }}>
-                    <input
-                      type="text"
-                      name="email"
-                      placeholder="Email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="inputField" 
-                    />
-               
-               {otpSent ? (
-                <>
-                  <div>
-                    <input
-                      type="text"
-                      name="otp"
-                      value={otp}
-                      onChange={handleOtpChange}
-                      className="inputField"
-                      maxLength={4}
-                      readOnly={otpVerified}
-                      placeholder="Enter OTP"
-                    />
-                    {otpMessage && (
-                      <p style={{ marginTop: "6px", color: otpVerified ? "#0F8CDD" : "red" }}>
-                        {otpMessage}
-                      </p>
-                    )}
-                  </div>
-
-                  <button
-                    type="button"
-                    className="sendOtpButton"
-                    onClick={sendOtpToEmail}
-                  >
-                    Resend OTP
-                  </button>
-                </>
-              ) : (
-                <button
-                  type="button"
-                  className="sendOtpButton"
-                  onClick={sendOtpToEmail}
-                >
-                  Send OTP
-                </button>
-              )}
-
-                    
-                  </div>
-                </div>
-              </div>
-
-         <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="phone" className="label">
-                    Phone <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="number"
-                    name="phone"
-                    placeholder="Phone"
-                    value={phone}
-                    onChange={(e) => handleChangePhone(e.target.value)}
-                    className="inputField"
-                    onKeyDown={(e) => {
-                      if (e.key === "Backspace") {
-                        handleClickPhoneBackspace(e);
-                      }
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setLastName(value);
+                      const error = validateLastName(value);
+                      setValidationError((prev) => ({
+                        ...prev,
+                        autoLastNameError: error,
+                      }));
                     }}
+                    className="inputField"
                   />
+                  {validationError.autoLastNameError && (
+                    <div className="errorText">{validationError.autoLastNameError}</div>
+                  )}
                 </div>
-                {validationError.phoneError && (
-                  <div className="errorText">{validationError?.phoneError}</div>
-                )}
-           </div>
-       </div>   
+              </div>
+            </div>
 
-     <div className="inputRowContainer">  
-     <div className="inputRow">
-         <div className="inputContainer">
-         <input 
-         type="checkbox"
-         name=""
-         value=""
-         >    
-         </input>
-         <label className="label" for="vehicle2"  style={{ paddingLeft: "8px" }}> Do you wish to upload a logo for your agency?</label>
-         <ImageUploader />
-      </div>
-    </div>
- </div>    
-      <div>
+
+
+            <div className="inputRowContainer">
+
+                    <div className="inputRow">
+                      <div className="inputContainer" >
+                        <label htmlFor="email" className="label">
+                          Email <span style={{ color: "red" }}>*</span>
+                        </label>
+                        <div style={{ display: "flex", gap: "8px" }}>
+                        <input
+                          type="text"
+                          name="email"
+                          placeholder="Email"
+                          value={email}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            setEmail(value);
+
+                            // validate on typing
+                            const error = validateEmail(value);
+                            setValidationError((prev) => ({
+                              ...prev,
+                              autoEmailError: error,
+                            }));
+                          }}
+                          className="inputField"
+                        />
+                    
+                    {otpSent ? (
+                      <>
+                        <div>
+                          <input
+                            type="text"
+                            name="otp"
+                            value={otp}
+                            onChange={handleOtpChange}
+                            className="inputField"
+                            maxLength={4}
+                            readOnly={otpVerified}
+                            placeholder="Enter OTP"
+                          />
+                          {otpMessage && (
+                            <p style={{ marginTop: "6px", color: otpVerified ? "#0F8CDD" : "red" }}>
+                              {otpMessage}
+                            </p>
+                          )}
+                        </div>
+
+                        <button
+                          type="button"
+                          className="sendOtpButton"
+                          onClick={sendOtpToEmail}
+                        >
+                          Resend OTP
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        type="button"
+                        className="sendOtpButton"
+                        onClick={sendOtpToEmail}
+                      >
+                        Send OTP
+                      </button>
+                    )}
+
+                          
+                        </div>
+                        {validationError.autoEmailError && (
+                          <div className="errorText">{validationError.autoEmailError}</div>
+                        )}
+
+                      </div>
+                    </div>
+
+                    <div className="inputRow">
+                      <div className="inputContainer">
+                        <label htmlFor="phone" className="label">
+                          Phone <span style={{ color: "red" }}>*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="phone"
+                          placeholder="Phone"
+                          value={phone}
+                          onChange={(e) => handleChangePhone(e.target.value)}
+                          className="inputField"
+                        />
+                      </div>
+                      {validationError.autophoneError && (
+                        <div className="errorText">{validationError.autophoneError}</div>
+                      )}
+                    </div>
+            </div>  
+
+            <div className="inputRowContainer">  
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <input 
+                    type="checkbox"
+                    id="uploadLogo"
+                    name="uploadLogo"
+                    value="yes"
+                    checked={showUploader}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label className="label" htmlFor="uploadLogo" style={{ paddingLeft: "4px" }}>
+                    Do you wish to upload a logo for your agency?
+                  </label>
+                  {showUploader && <ImageUploader />}
+                </div>
+              </div>
+            </div>
+
+          <div>
          
-      </div>
+        </div>
 
- </div>     
+      </div>     
 
 
  
@@ -943,7 +1043,7 @@ const MerchantRegistration = () => {
                   <label htmlFor="DWtoTravel" className="label">
                     Distance Willing to Travel <span style={{ color: "red" }}>*</span>
                   </label>
-                  <select name="cars" id="cars" className="inputField selectField">
+                  <select name="cars" id="cars" className="inputField selectField" value={DWtoTravel} onChange={(e) => setDWtoTravel(e.target.value)}>
                       <option value="5">   &lt; 5 miles  </option>
                       <option value="10">  &lt; 10 miles </option>
                       <option value="25">  &lt; 25 miles </option>
@@ -969,16 +1069,15 @@ const MerchantRegistration = () => {
                     name="addressone"
                     placeholder=""
                     value={addressone}
-                    onChange={(e) => setAddressOne(e.target.value)}
+                    onChange={handleAddressOneChange}
                     className="inputField"
                   />
                 </div>
-                {validationError.addressoneError && (
-                  <div className="errorText">
-                    {validationError?.addressoneError}
-                  </div>
+                {validationError.autoaddressoneError && (
+                  <div className="errorText">{validationError.autoaddressoneError}</div>
                 )}
               </div>
+
             </div>
 
               <div className="inputRowContainer">
@@ -1017,6 +1116,7 @@ const MerchantRegistration = () => {
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     className="inputField"
+                    disabled
                   />
                 </div>
                 {validationError.cityError && (
@@ -1036,6 +1136,7 @@ const MerchantRegistration = () => {
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     className="inputField"
+                    disabled
                   />
                 </div>
                 {validationError.stateError && (
@@ -1045,71 +1146,70 @@ const MerchantRegistration = () => {
             </div>
 
 
-               <div className="inputRowContainer">
+              <div className="inputRowContainer">
                 <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="country" className="label">
+                  <div className="inputContainer">
+                    <label htmlFor="zipCode" className="label">
+                      Zip <span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="number"
+                      name="zipCode"
+                      max="5"
+                      placeholder="Zip Code"
+                      value={zipCode}
+                      onChange={(e) => handleChangeZipCode(e.target.value)}
+                      className="inputField"
+                      onKeyDown={(e) => {
+                        if (e.key === "Backspace") {
+                          handleClickZipBackspace(e);
+                        }
+                      }}
+                    />
+                  </div>
+                  {fetchingAddress && (
+                    <div style={{ fontSize: 12 }}>
+                      Please wait, while we fetch your address...
+                    </div>
+                  )}
+                  {validationError.zipCodeError && (
+                    <div className="errorText">
+                      {validationError?.zipCodeError}
+                    </div>
+                  )}
+                </div>
+                <div className="inputRow">
+                  <div className="inputContainer">
+                    <label htmlFor="country" className="label">
                     Country <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="country"
-                    placeholder=""
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.countryError && (
-                  <div className="errorText">
-                    {validationError?.countryError}
+                    </label>
+                    <input
+                      type="text"
+                      name="country"
+                      placeholder="US"
+                      value="US"
+                      onChange={(e) => setCountry("US")}
+                      className="inputField"
+                      disabled
+                    />
                   </div>
-                )}
+                  {validationError.countryError && (
+                    <div className="errorText">
+                      {validationError?.countryError}
+                    </div>
+                  )}
+                </div>
               </div>
 
-              
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="zipCode" className="label">
-                    Zip <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="number"
-                    name="zipCode"
-                    max="5"
-                    placeholder="Zip Code"
-                    value={zipCode}
-                    onChange={(e) => handleChangeZipCode(e.target.value)}
-                    className="inputField"
-                    onKeyDown={(e) => {
-                      if (e.key === "Backspace") {
-                        handleClickZipBackspace(e);
-                      }
-                    }}
-                  />
-                </div>
-                {fetchingAddress && (
-                  <div style={{ fontSize: 12 }}>
-                    Please wait, while we fetch your address...
-                  </div>
-                )}
-                {validationError.zipCodeError && (
-                  <div className="errorText">
-                    {validationError?.zipCodeError}
-                  </div>
-                )}
-              </div>
-         </div>
 
 
-
-            </div>
+          </div>
 
           <div className="merchantRegistrationFormTop">
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Marketing Details
             </p>
-            <p >Please enter up to three bullet points you want potential customers to see about you. These are limited to 50 characters.</p>
+            <p style={{ color: "#4d627b" }}>Please enter up to three bullet points you want potential customers to see about you. These are limited to 50 characters.</p>
 
             <div className="inputRowContainer">
               <div className="inputContainer">
@@ -1118,18 +1218,23 @@ const MerchantRegistration = () => {
                   </label>
                   <input
                     type="text"
-                    name="merchantName"
+                    name="bulletOne"
                     placeholder="Bullet 1"
-                    value={merchantName}
-                    onChange={(e) => setMerchantName(e.target.value)}
+                    value={bulletOne}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setbulletOne(value);
+                      setValidationError((prev) => ({
+                        ...prev,
+                        bulletOneError: value.length > 50 ? "Maximum 50 characters allowed." : ""
+                      }));
+                    }}
                     className="inputField"
                   />
 
-                {validationError.merchantNameError && (
-                  <div className="errorText">
-                    {validationError?.merchantNameError}
-                  </div>
-                )}
+                  {validationError.bulletOneError && (
+                    <div className="errorText">{validationError.bulletOneError}</div>
+                  )}
               </div>
             </div>
              <div className="inputRowContainer">
@@ -1139,18 +1244,23 @@ const MerchantRegistration = () => {
                   </label>
                   <input
                     type="text"
-                    name="merchantName"
+                    name="bulletTwo"
                     placeholder="Bullet 2"
-                    value={merchantName}
-                    onChange={(e) => setMerchantName(e.target.value)}
+                    value={bulletTwo}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setbulletTwo(value);
+                      setValidationError((prev) => ({
+                        ...prev,
+                        bulletTwoError: value.length > 50 ? "Maximum 50 characters allowed." : ""
+                      }));
+                    }}
                     className="inputField"
                   />
+                  {validationError.bulletTwoError && (
+                    <div className="errorText">{validationError.bulletTwoError}</div>
+                  )}
 
-                {validationError.merchantNameError && (
-                  <div className="errorText">
-                    {validationError?.merchantNameError}
-                  </div>
-                )}
               </div>
             </div>
              <div className="inputRowContainer">
@@ -1160,59 +1270,59 @@ const MerchantRegistration = () => {
                   </label>
                   <input
                     type="text"
-                    name="merchantName"
+                    name="bulletThree"
                     placeholder="Bullet 3"
-                    value={merchantName}
-                    onChange={(e) => setMerchantName(e.target.value)}
+                    value={bulletThree}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setbulletThree(value);
+                      setValidationError((prev) => ({
+                        ...prev,
+                        bulletThreeError: value.length > 50 ? "Maximum 50 characters allowed." : ""
+                      }));
+                    }}
                     className="inputField"
                   />
+                  {validationError.bulletThreeError && (
+                    <div className="errorText">{validationError.bulletThreeError}</div>
+                  )}
 
-                {validationError.merchantNameError && (
-                  <div className="errorText">
-                    {validationError?.merchantNameError}
-                  </div>
-                )}
+
               </div>
             </div>
+            <p style={{ color: "#4d627b" }}>Please enter a 500 character or less summary about your business and services provided.</p>
              <div className="inputRowContainer">
               <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
                     Summary <span style={{ color: "red" }}>*</span>
                   </label>
                   <textarea
-                    type="textarea"
-                    name="merchantName"
+                    name="summary"
                     placeholder="Summary"
-                    value={primaryPP}
-                    onChange={(e) => setMerchantName(e.target.value)}
+                    value={summary}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setsummary(value);
+                      setValidationError((prev) => ({
+                        ...prev,
+                        summaryError: value.length > 500 ? "Maximum 500 characters allowed." : ""
+                      }));
+                    }}
                     className="inputField"
                   />
-                  <p className="infoText"></p>
+                  {validationError.summaryError && (
+                    <div className="errorText">{validationError.summaryError}</div>
+                  )}
 
-                {validationError.merchantNameError && (
-                  <div className="errorText">
-                    {validationError?.merchantNameError}
-                  </div>
-                )}
               </div>
             </div>
-
-         </div>
+          </div>
 
 
           <div className="merchantRegistrationFormTop">
              <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Merchant Processing Features
             </p>
-            <div className="inputRowContainer">
-
-
-
-            </div>
-
-            <div className="inputRowContainer">
-
-            </div>
 
             <div className="inputRowContainer">
               <div className="inputRow">
@@ -1256,87 +1366,96 @@ const MerchantRegistration = () => {
 
             </div>
 
-            <div className="inputRowContainer">
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="merchantName" className="label">
-                  What is your Sponsor Bank <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="merchantName"
-                    placeholder=""
-                    value={sponsorBank}
-                    onChange={(e) => setsponsorBank(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">
-                    {validationError?.merchantNameError}
+            {/* Sponsor Bank: only show if not agent or processor */}
+            {!isAgent && !isProcessor && (
+              <div className="inputRowContainer">
+                <div className="inputRow">
+                  <div className="inputContainer">
+                    <label htmlFor="sponsorBank" className="label">
+                      What is your Sponsor Bank <span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="sponsorBank"
+                      placeholder=""
+                      value={sponsorBank}
+                      onChange={(e) => setsponsorBank(e.target.value)}
+                      className="inputField"
+                    />
                   </div>
-                )}
+                  {validationError.merchantNameError && (
+                    <div className="errorText">
+                      {validationError?.merchantNameError}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
 
-            <div className="inputRowContainer">
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="merchantName" className="label">
-                  Primary Processing Platform / Partner <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="merchantName"
-                    placeholder="Primary"
-                    value={primaryPP}
-                    onChange={(e) => setPrimaryPP(e.target.value)}
-                    className="inputField"
-                  />
-                </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">
-                    {validationError?.merchantNameError}
+            {/* Primary + Secondary PP: only show if not ISO or processor */}
+            {!isISO && !isProcessor && (
+              <div className="inputRowContainer">
+                <div className="inputRow">
+                  <div className="inputContainer">
+                    <label htmlFor="primaryPP" className="label">
+                      Primary Processing Platform / Partner <span style={{ color: "red" }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="primaryPP"
+                      placeholder="Primary"
+                      value={primaryPP}
+                      onChange={(e) => setPrimaryPP(e.target.value)}
+                      className="inputField"
+                    />
                   </div>
-                )}
-              </div>
-              <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="merchantName" className="label">
-                  Secondary Processing Platform / Partner
-                  </label>
-                  <input
-                    type="text"
-                    name="merchantName"
-                    placeholder="Secondary"
-                    value={secondaryPP}
-                    onChange={(e) => setSecondaryPP(e.target.value)}
-                    className="inputField"
-                  />
+                  {validationError.merchantNameError && (
+                    <div className="errorText">
+                      {validationError?.merchantNameError}
+                    </div>
+                  )}
                 </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">
-                    {validationError?.merchantNameError}
+                <div className="inputRow">
+                  <div className="inputContainer">
+                    <label htmlFor="secondaryPP" className="label">
+                      Secondary Processing Platform / Partner
+                    </label>
+                    <input
+                      type="text"
+                      name="secondaryPP"
+                      placeholder="Secondary"
+                      value={secondaryPP}
+                      onChange={(e) => setSecondaryPP(e.target.value)}
+                      className="inputField"
+                    />
                   </div>
-                )}
+                  {validationError.merchantNameError && (
+                    <div className="errorText">
+                      {validationError?.merchantNameError}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
 
-            <div className="inputRowContainer">
-              <div className="inputContainer">
-                <label htmlFor="companyDescription" className="label">
-                  Other
-                </label>
-                <textarea
-                  type="text"
-                  name="companyDescription"
-                  placeholder="Other"
-                  value={other}
-                  onChange={(e) => setOther(e.target.value)}
-                  className="inputField"
-                />
+            {/* Other: only show if not ISO or processor */}
+            {!isISO && !isProcessor && (
+              <div className="inputRowContainer">
+                <div className="inputContainer">
+                  <label htmlFor="companyDescription" className="label">
+                    Other
+                  </label>
+                  <textarea
+                    name="companyDescription"
+                    placeholder="Other"
+                    value={other}
+                    onChange={(e) => setOther(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
               </div>
-            </div>
+            )}
+
 
             <div className="inputRowContainer">
               <div className="inputRow">
@@ -1344,7 +1463,7 @@ const MerchantRegistration = () => {
                   <label htmlFor="merchantName" className="label">
                   How many merchant services sales represenatives are in your office ? <span style={{ color: "red" }}>*</span>
                   </label>
-                  <select name="cars" id="" className="inputField selectField">
+                  <select name="cars" id="" className="inputField selectField" value={salesRep} onChange={(e) => setSalesRep(e.target.value)}>
                     <option value="1">   1  </option>
                     <option value="2-5">  2-5 </option>
                     <option value="6-10">  6-10 </option>
@@ -1353,11 +1472,6 @@ const MerchantRegistration = () => {
 
                   </select>
                 </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">
-                    {validationError?.merchantNameError}
-                  </div>
-                )}
               </div>
             </div>
             <div className="inputRowContainer">
@@ -1370,14 +1484,14 @@ const MerchantRegistration = () => {
                     type="number"
                     name="merchantName"
                     placeholder="Clients"
-                    value={secondaryPP}
-                    onChange={(e) => setSecondaryPP(e.target.value)}
+                    value={clientCount}
+                    onChange={handleClientCountChange}
                     className="inputField"
                   />
                 </div>
-                {validationError.merchantNameError && (
+                {validationError.clientCountError && (
                   <div className="errorText">
-                    {validationError?.merchantNameError}
+                    {validationError.clientCountError}
                   </div>
                 )}
               </div>
@@ -1412,9 +1526,6 @@ const MerchantRegistration = () => {
                     </label>
                   </div>
                 </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">{validationError?.merchantNameError}</div>
-                )}
               </div>
 
             </div>
@@ -1425,7 +1536,7 @@ const MerchantRegistration = () => {
                   <label htmlFor="merchantName" className="label">
                   Monthly Volume Processed by your merchants <span style={{ color: "red" }}>*</span>
                   </label>
-                  <select name="cars" id="" className="inputField selectField">
+                  <select name="cars" id="" className="inputField selectField" value={volumeProcessed} onChange={(e) => setVolumeProcessed(e.target.value)}>
                       <option value="100K">   &lt; $100K  </option>
                       <option value="100K<250K"> 100K &lt; 250K </option>
                       <option value="250K<1MM"> 250k &lt; 1MM </option>
@@ -1436,11 +1547,6 @@ const MerchantRegistration = () => {
 
                   </select>
                 </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">
-                    {validationError?.merchantNameError}
-                  </div>
-                )}
               </div>
 
               <div className="inputRow">
@@ -1452,7 +1558,7 @@ const MerchantRegistration = () => {
                     <label className="radioLabel">
                       <input
                         type="radio"
-                        name="sharePublicly"
+                        name="clientPublicly"
                         value="yes"
                         checked={volumePublicly === "yes"}
                         onChange={(e) => setvolumePublicly(e.target.value)}
@@ -1463,7 +1569,7 @@ const MerchantRegistration = () => {
                     <label className="radioLabel">
                       <input
                         type="radio"
-                        name="sharePublicly"
+                        name="clientPublicly"
                         value="no"
                         checked={volumePublicly === "no"}
                         onChange={(e) => setvolumePublicly(e.target.value)}
@@ -1473,9 +1579,6 @@ const MerchantRegistration = () => {
                     </label>
                   </div>
                 </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">{validationError?.merchantNameError}</div>
-                )}
               </div>
 
             </div>
@@ -1489,7 +1592,7 @@ const MerchantRegistration = () => {
                     <label className="radioLabel">
                       <input
                         type="radio"
-                        name="sharePublicly"
+                        name="volumePublicly"
                         value="yes"
                         checked={highRisk === "yes"}
                         onChange={(e) => sethighRisk(e.target.value)}
@@ -1500,7 +1603,7 @@ const MerchantRegistration = () => {
                     <label className="radioLabel">
                       <input
                         type="radio"
-                        name="sharePublicly"
+                        name="volumePublicly"
                         value="no"
                         checked={highRisk === "no"}
                         onChange={(e) => sethighRisk(e.target.value)}
@@ -1510,9 +1613,6 @@ const MerchantRegistration = () => {
                     </label>
                   </div>
                 </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">{validationError?.merchantNameError}</div>
-                )}
               </div>
             </div>
 
@@ -1526,7 +1626,7 @@ const MerchantRegistration = () => {
                     <label className="radioLabel">
                       <input
                         type="radio"
-                        name="sharePublicly"
+                        name="highRisk"
                         value="yes"
                         checked={pointOfSale === "yes"}
                         onChange={(e) => setpointOfSale(e.target.value)}
@@ -1537,7 +1637,7 @@ const MerchantRegistration = () => {
                     <label className="radioLabel">
                       <input
                         type="radio"
-                        name="sharePublicly"
+                        name="highRisk"
                         value="no"
                         checked={pointOfSale === "no"}
                         onChange={(e) => setpointOfSale(e.target.value)}
@@ -1547,9 +1647,6 @@ const MerchantRegistration = () => {
                     </label>
                   </div>
                 </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">{validationError?.merchantNameError}</div>
-                )}
               </div>
             </div>
 
@@ -1563,7 +1660,7 @@ const MerchantRegistration = () => {
                     <label className="radioLabel">
                       <input
                         type="radio"
-                        name="sharePublicly"
+                        name="financing"
                         value="yes"
                         checked={financing === "yes"}
                         onChange={(e) => setfinancing(e.target.value)}
@@ -1574,7 +1671,7 @@ const MerchantRegistration = () => {
                     <label className="radioLabel">
                       <input
                         type="radio"
-                        name="sharePublicly"
+                        name="financing"
                         value="no"
                         checked={financing === "no"}
                         onChange={(e) => setfinancing(e.target.value)}
@@ -1584,9 +1681,6 @@ const MerchantRegistration = () => {
                     </label>
                   </div>
                 </div>
-                {validationError.merchantNameError && (
-                  <div className="errorText">{validationError?.merchantNameError}</div>
-                )}
               </div>
             </div>
 
@@ -1644,6 +1738,17 @@ const MerchantRegistration = () => {
           </div>
         </div>
       </div>
+      {showSuccessModal && (
+        <ModalPopup
+          title="Registration Successful!"
+          message="Your merchant account has been created successfully."
+          buttonText="Go to Dashboard"
+          onClose={() => {
+            setShowSuccessModal(false);
+            navigate(routes.home_page());
+          }}
+        />
+      )}
     </div>
   );
 };
