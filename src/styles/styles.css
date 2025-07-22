@@ -23,7 +23,7 @@
 .onboardingPageHeaderWrapper { margin: 0; padding: 0; width: 100vw; height: 110px; position: fixed; top: 0; left: 0; z-index: 111; background-color: #ffffff; }
 .onboardingPageChildHeaderContainer { margin: 0; height: 42px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; background: rgb(21, 111, 172); }
 .childHeaderText { margin: 0; padding: 0; color: #ffffff; font-size: 16px; font-weight: 500; font-family: "Poppins"; vertical-align: middle; text-transform: uppercase; letter-spacing: 2px; }
-.onboardingPageHeaderMainContainer { margin: 0; padding: 12px 4%; width: auto; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: #ffffff; }
+.onboardingPageHeaderMainContainer { margin: 0; padding: 12px 4%; width: auto; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: #ffffff; cursor: pointer;}
 .headerLeft { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 4px; }
 .locationIcon { width: 60px; height: 60px; object-fit: contain; }
 .headerWebsiteTitleLight { margin: 0; padding: 0; font-size: 26px; color: rgb(4, 48, 121); }
@@ -253,7 +253,7 @@
 .otpInput { margin: 0; padding: 0; width: 52px; height: 52px; font-size: 24px; outline: none; border: 1.5px solid rgb(219, 219, 219); border-radius: 8px; text-align: center; }
 .otpModalCloseBtn { padding: 6px 14px; position: absolute; top: -5%; right: -2%; font-size: 32px; border: none; outline: none; border-radius: 50%; background-color: white; box-shadow: 0 0 10px 0 gray; cursor: pointer; }
 .verifyBtn { margin: 12px 0 0 0; padding: 12px 48px; font-family: "Poppins"; color: #ffffff; background-color: #1788d8; border: none; border-radius: 8px; text-align: center; font-size: 16px; font-weight: 500; }
-.grayText { margin: 0; padding: 0; color: gray; font-size: 12px; font-family: "Poppins"; cursor: pointer; }
+.grayText { margin: 0; padding: 0; font-size: 12px; font-family: "Poppins"; cursor: pointer; }
 
 /* ////////////////    LOGIN MODAL    //////////////// */
 
@@ -288,11 +288,6 @@
 .toastMessage { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-size: 14px; font-weight: 400; }
 .toastCloseBtn { margin: 0; padding: 0; margin-top: -8px; color: #ffffff; font-family: "Poppins"; font-size: 24px; font-weight: 500; cursor: pointer; }
 /* ///////////////////    RESET PASSWORD    ///////////////////// */
-.resetPasswordPageContainer { margin: 0; padding: 24px 0; margin-top: 150px; background-color: white; }
-.resetPasswordPageTitle { }
-.resetPasswordInner { }
-.inputRow { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 0; background-color: #ffffff; }
-.resetPasswordSubmitBtn { }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////        SUPER  ADMIN  PART  DESIGN       ////////////////////////////////////
@@ -571,7 +566,7 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .verificationCaptchaImg { width: 50px; height: 50px; object-fit: contain; }
 .verificationHeading { margin: 36px 0 20px 0; padding: 0; color: #acacac; font-family: "Poppins"; font-size: 15px; font-weight: 400; }
 .verificationBoxRightBottom { display: flex; flex-direction: row; align-items: center; gap: 8px; }
-.grayText { color: gray; font-size: 12px; }
+.grayText { color: #fff; font-size: 12px; }
 .dot { width: 6px; height: 6px; background-color: gray; border: none; border-radius: 50%; }
 
 .registerButton{ margin: 0; padding: 0; width: 260px; height: 70px; background: #106ebc; font-family: "Poppins"; color: #ffffff; font-size: 22px; font-weight: 700; text-align: center; letter-spacing: 0.6px; border: none; outline: none; border-radius: 4px; cursor: pointer; }
@@ -704,15 +699,23 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .forgetPasswordPageWrapper .PasswordWrapper h1{font-family: "Sora"; font-size: 30px; text-align: center; font-weight: bold; color: #fff; padding: 20px 0 0px;}
 .forgetPasswordPageWrapper .PasswordWrapper .errorText{color: #fff; padding: 0px 0 20px;}
 .forgetPasswordPageWrapper .PasswordWrapper p{width: 100%;}
-.forgetPasswordPageWrapper .PasswordWrapper input{width: 100%; border: none; border-radius: 10px; height: 56px; padding: 20px;
+.forgetPasswordPageWrapper .PasswordWrapper input{width: 100%; border: none; border-radius: 10px; height: 100%; padding: 20px;
   margin: 5px 0 20px;}
+.forgetPasswordPageWrapper .PasswordWrapper input[type="checkbox"]{margin: 0;}
  .forgetPasswordPageWrapper .PasswordWrapper p.forgetPasswordText{text-align: center; font-size: 14px; font-weight: 400; font-family: "Poppins"; color: #fff;}
  .forgetPasswordPageWrapper .PasswordWrapper label{color: #fff; font-family: "Poppins"; font-weight: 400; font-size: 15px;}
  .forgetPasswordPageWrapper .PasswordWrapper button{border: none; background-color: #FFBF61; color: #000; font-family: "Poppins"; font-weight: 600; font-size: 18px; text-transform: uppercase; border-radius: 10px; padding: 8px 20px}
   .forgetPasswordPageWrapper .PasswordWrapper button:hover{background: #fff; transition: .5s;}
+ .forgetPasswordWrapper .checkBoxRow{margin-bottom: 20px;}
+ .forgetPasswordWrapper .showPassword{color: #fff;}
+ .forgetPasswordWrapper .inputRow{position: relative;}
+ .forgetPasswordWrapper .checkBoxRow{position: absolute; top: 49px; right: 18px; font-size: 20px; color: #0085DA;}
+ .resetPasswordPageContainer {padding: 90px 0 150px;}
 
-.otpVerificationModalContainer{background-color: #0085DA; padding: 0 20px; border-radius: 10px;}
-.otpVerificationModalContainer .otpVerificationModalWrap{border: solid 3px #fff; border-radius: 10px;}
+.otpVerificationModalContainer{background-color: #0085DA; padding: 20px; border-radius: 10px; text-align: center;}
+.otpVerificationModalContainer .otpVerificationModalWrap{border: solid 3px #fff; border-radius: 10px; width: 100%;  height: 100%; }
+.otpVerificationModalContainer p.lightText{color: #fff;}
+.otpModalHeader{padding-top: 20px; color: #fff;}
 
 
 

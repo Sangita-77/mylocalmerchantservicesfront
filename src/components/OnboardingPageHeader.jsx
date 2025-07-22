@@ -87,7 +87,7 @@ const OnboardingPageHeader = () => {
         </p>
       </div>
 
-      <div className="onboardingPageHeaderMainContainer">
+      <div className="onboardingPageHeaderMainContainer" >
         <div className="headerLeft">
           <img
             src={locationIcon}

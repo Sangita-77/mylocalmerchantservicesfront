@@ -194,6 +194,15 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
     return () => clearInterval(secondsTimer);
   }, [second]);
 
+    const handleResend = () => {
+    if (minute === 0 && second === 0) {
+      setMinute(1);   // Reset values
+      setSecond(30);  // or whatever your countdown is
+      // Call your resend OTP logic here
+      console.log("OTP resent!");
+    }
+  };
+
   console.log("OTP==========>", otp);
 
   return (
@@ -259,14 +268,15 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
 
             {/* <div style={{ fontSize: 24, fontWeight: 500 }}>{receivedOtp}</div> */}
 
-            {(minute === 0) & (second === 0) ? (
-              <div className="grayText">Resend Otp</div>
-            ) : (
-              <div className="grayText">
-                Resend OTP in {`0${minute}`} :{" "}
-                {second < 10 ? `0${second}` : second}
-              </div>
-            )}
+             {(minute === 0 && second === 0) ? (
+                <div className="grayText" onClick={handleResend} style={{ cursor: "pointer", color: "blue" }}>
+                  Resend Otp
+                </div>
+              ) : (
+                <div className="grayText">
+                  Resend OTP in {`0${minute}`}:{second < 10 ? `0${second}` : second}
+                </div>
+              )}
             <button className="verifyBtn" onClick={() => handleVerifyOtp()}>
               {otpLoading ? "Loading..." : "Submit"}
             </button>
