@@ -1103,51 +1103,8 @@ const MerchantRegistration = () => {
 
 
            <div className="inputRowContainer">
-            
-             <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="city" className="label">
-                    City <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="city"
-                    placeholder=""
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    className="inputField"
-                    disabled
-                  />
-                </div>
-                {validationError.cityError && (
-                  <div className="errorText">{validationError?.cityError}</div>
-                )}
-              </div>
 
-               <div className="inputRow">
-                <div className="inputContainer">
-                  <label htmlFor="state" className="label">
-                    State <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="state"
-                    placeholder=""
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                    className="inputField"
-                    disabled
-                  />
-                </div>
-                {validationError.stateError && (
-                  <div className="errorText">{validationError?.stateError}</div>
-                )}
-              </div>
-            </div>
-
-
-              <div className="inputRowContainer">
-                <div className="inputRow">
+           <div className="inputRow">
                   <div className="inputContainer">
                     <label htmlFor="zipCode" className="label">
                       Zip <span style={{ color: "red" }}>*</span>
@@ -1178,6 +1135,53 @@ const MerchantRegistration = () => {
                     </div>
                   )}
                 </div>
+            
+             <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="city" className="label">
+                    City <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder=""
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    className="inputField"
+                    disabled
+                  />
+                </div>
+                {validationError.cityError && (
+                  <div className="errorText">{validationError?.cityError}</div>
+                )}
+              </div>
+
+
+            </div>
+
+
+              <div className="inputRowContainer">
+
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="state" className="label">
+                    State <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="state"
+                    placeholder=""
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    className="inputField"
+                    disabled
+                  />
+                </div>
+                {validationError.stateError && (
+                  <div className="errorText">{validationError?.stateError}</div>
+                )}
+              </div>
+
                 <div className="inputRow">
                   <div className="inputContainer">
                     <label htmlFor="country" className="label">
