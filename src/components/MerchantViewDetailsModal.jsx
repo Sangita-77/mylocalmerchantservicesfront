@@ -112,7 +112,7 @@ fetchDataToggleViewDetailsModal()
         </div>
         <div className="merchantDetailsModalWrapper">
         
-          {isLoading&& (<div style={{display:"flex",justifyContent:"center",alignItems:"center",minHeight: "300px"}}><PreLoader/> </div>)}
+          {isLoading&& (<div><PreLoader/> </div>)}
           {data && 
           <div className="merchantDetailsModalContainer">
             

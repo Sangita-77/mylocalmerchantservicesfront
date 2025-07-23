@@ -242,9 +242,10 @@ const OnboardingPage = () => {
           </div>
         </div>
 
-        <button className="findAgentButton">
+        <button className="findAgentButton" onClick={() => navigate(routes.merchant_list())}>
           Find Agents Now
           <GoArrowRight size={32} />
+          
         </button>
       </div>
 
