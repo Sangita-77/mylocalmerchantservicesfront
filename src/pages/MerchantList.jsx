@@ -74,7 +74,7 @@ const MerchantList = () => {
   };
 
   const handleSearchTableData = async (page = 1) => {
-    if (!searchByName && !searchByState && !searchByZip) {
+    if (!searchByName && !searchByState && !searchByZip && !DWtoTravel) {
       return alert("Please enter something in the search fields!");
     }
   
@@ -96,6 +96,10 @@ const MerchantList = () => {
       if (searchByZip) {
         searchType.push("zipcode");
         text.push(searchByZip);
+      }
+      if (DWtoTravel) {
+        searchType.push("distance");
+        text.push(DWtoTravel);
       }
   
       const pageNumber = Number.isInteger(page) && page > 0 ? page : 1;

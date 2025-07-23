@@ -413,6 +413,7 @@ const MerchantRegistration = () => {
         website: website,
 
         SponsorBank : sponsorBank,
+        PPP : primaryPP,
   
         // New required fields
         bulletOne: bulletOne,

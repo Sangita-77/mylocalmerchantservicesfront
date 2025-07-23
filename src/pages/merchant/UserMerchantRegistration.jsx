@@ -128,16 +128,24 @@ const UserMerchantRegistration = () => {
   };
 
   const handleRegisterMerchant = async () => {
-    if (rejectRegistration === true) {
-      setShowToast(true);
-      setSeverity("error");
-      setMessageTitle("Invalid zipcode!");
-      setMessage("Please check the zipcode!!");
-      return;
-    }
+    // if (rejectRegistration === true) {
+    //   setShowToast(true);
+    //   setSeverity("error");
+    //   setMessageTitle("Invalid zipcode!");
+    //   setMessage("Please check the zipcode!!");
+    //   return;
+    // }
+
+    // if (!otpVerified) {
+    //   console.log("OTP not verified, blocking registration.");
+    //   setShowToast(true);
+    //   setSeverity("error");
+    //   setMessageTitle("OTP Required");
+    //   setMessage("Please verify your email with the OTP before registering.");
+    //   return;
+    // }
 
     if (!otpVerified) {
-      console.log("OTP not verified, blocking registration.");
       setShowToast(true);
       setSeverity("error");
       setMessageTitle("OTP Required");
@@ -149,7 +157,6 @@ const UserMerchantRegistration = () => {
       setError("");
 
       if (
-        !type ||
         !email ||
         !companyName ||
         !merchantName ||
@@ -157,22 +164,10 @@ const UserMerchantRegistration = () => {
         !city ||
         !state ||
         !zipCode ||
-        !country ||
         !phone ||
         !industry ||
         !typeOfServices
       ) {
-        if (!type) {
-          setValidationError((prev) => ({
-            ...prev,
-            typeError: "Please select type!",
-          }));
-        } else {
-          setValidationError((prev) => ({
-            ...prev,
-            typeError: "",
-          }));
-        }
         if (!email) {
           setValidationError((prev) => ({
             ...prev,
@@ -222,12 +217,7 @@ const UserMerchantRegistration = () => {
             zipCodeError: "Zip code is required!",
           }));
         }
-        if (!country) {
-          setValidationError((prev) => ({
-            ...prev,
-            countryError: "Country is required!",
-          }));
-        }
+
         if (phone) {
           if (phone?.length < 10 || phone?.length > 10) {
             setValidationError((prev) => ({
@@ -269,7 +259,7 @@ const UserMerchantRegistration = () => {
       }
 
       const body = {
-        flag: type,
+        flag: "user",
         user_id: email,
         company_name: companyName,
         merchant_name: merchantName,
@@ -277,7 +267,7 @@ const UserMerchantRegistration = () => {
         city: city,
         state: state,
         zip_code: zipCode,
-        county: country,
+        country: "US",
         email: alternateEmail,
         phone: phone,
         industry: industry,
@@ -688,42 +678,6 @@ const UserMerchantRegistration = () => {
           <div className="merchantRegistrationFormTop">
             <p className="registrationFormTitle">Registration Detail</p>
 
-            <div className="inputRow">
-              <div className="inputContainer">
-                <label className="label">
-                  Select type <span style={{ color: "red" }}>*</span>
-                </label>
-                <select
-                  className="inputField selectField"
-                  style={{
-                    color: type ? "black" : "rgb(183, 183, 183)",
-                  }}
-                  value={type}
-                  onChange={(e) => setType(e.target.value)}
-                >
-                  {loading ? (
-                    <>Loading..</>
-                  ) : (
-                    <>
-                      <option value="">Please select type</option>
-                      {usersType?.map((user, index) => (
-                        <option
-                          value={user.type}
-                          key={index}
-                          style={{ color: "black" }}
-                        >
-                          {textUppercase(user?.type)}
-                        </option>
-                      ))}
-                    </>
-                  )}
-                </select>
-              </div>
-              {validationError.typeError && (
-                <div className="errorText">{validationError?.typeError}</div>
-              )}
-            </div>
-
             <div className="inputRowContainer">
               <div className="inputRowContainer">
                 <div className="inputContainer" style={{ width: "80%" }}>
@@ -939,8 +893,8 @@ const UserMerchantRegistration = () => {
                     type="text"
                     name="country"
                     placeholder=""
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
+                    value="US"
+                    onChange={(e) => setCountry("US")}
                     className="inputField"
                   />
                 </div>
