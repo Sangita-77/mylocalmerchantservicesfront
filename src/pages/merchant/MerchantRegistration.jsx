@@ -109,6 +109,8 @@ const MerchantRegistration = () => {
     highRiskError : "",
     pointOfSaleError : "",
     financingError : "",
+    primaryPPError : "",
+    sponsorBankError : "",
   });
 
   const {
@@ -186,7 +188,171 @@ const MerchantRegistration = () => {
     }
   };
 
+  // const validateForm = () => {
+  //   const errors = {};
+  //   const typeLower = type.toLowerCase();
+  
+  //   // Basic required field validation
+  //   if (!type) errors.typeError = "Please select a user type";
+  //   if (!email) errors.autoEmailError = "Email is required {format - abc@gmail.com / abc@domainname.com} ";
+  //   if (!companyName) errors.companyNameError = "Company name is required";
+  //   if (!firstName) errors.autoFirstNameError = "First name is required";
+  //   if (!lastName) errors.autoLastNameError = "Last name is required";
+  //   if (!merchantName) errors.merchantNameError = "Merchant name is required";
+  //   if (!DWtoTravel) errors.DWtoTravelError = "Distance is required";
+  //   if (!addressone) errors.autoaddressoneError = "Address is required";
+  //   if (!city) errors.cityError = "City is required";
+  //   if (!state) errors.stateError = "State is required";
+  //   if (!zipCode) errors.zipCodeError = "Zip Code is required";
+  //   if (!country) errors.countryError = "Country is required";
+  //   if (!phone) errors.autophoneError = "Phone is required {format - 1234567890}";
+  //   if (!industry) errors.industryError = "Industry is required";
+  //   if (!typeOfServices) errors.serviceError = "Type of Service is required";
+  
+  //   if (!website) errors.websiteError = "Website is required";
+  //   else {
+  //     const websiteErr = validateWebsite(website);
+  //     if (websiteErr) errors.websiteError = websiteErr;
+  //   }
+  
+  //   if (!alternateEmail) {
+  //     errors.alternateEmailError = "Alternate email is required";
+  //   } else if (alternateEmail === email) {
+  //     errors.alternateEmailError = "Email and Alternate email cannot be the same";
+  //   }
+  
+  //   if (!bulletOne) errors.bulletOneError = "Bullet point 1 is required";
+  //   if (!bulletTwo) errors.bulletTwoError = "Bullet point 2 is required";
+  //   if (!bulletThree) errors.bulletThreeError = "Bullet point 3 is required";
+  //   if (!summary) errors.summaryError = "Summary is required";
+  //   if (!salesRep) errors.salesRepError = "Sales representative is required";
+  //   if (!clientCount) errors.clientCountError = "Client count is required";
+  //   if (!clientPublicly) errors.clientPubliclyError = "Client publicity is required";
+  //   if (!volumeProcessed) errors.volumeProcessedError = "Volume processed is required";
+  //   if (!volumePublicly) errors.volumePubliclyError = "Volume publicity is required";
+  //   if (!highRisk) errors.highRiskError = "High risk selection is required";
+  //   if (!pointOfSale) errors.pointOfSaleError = "Point of sale selection is required";
+  //   if (!financing) errors.financingError = "Financing selection is required";
+
+  //   // if (typeLower === "ISOs") {
+  //   //   if (!sponsorBank) errors.sponsorBankError = "Sponsor bank is required for ISOs";
+  //   // } else if (typeLower === "agents") {
+  //   //   if (!primaryPP) errors.primaryPPError = "Primary processing platform is required for agents";
+  //   // } else if (typeLower === "processors") {
+  //   // } else {
+  //   //   // if (!sponsorBank) errors.sponsorBankError = "Sponsor bank is required";
+  //   //   // if (!primaryPP) errors.primaryPPError = "Primary processing platform is required";
+  //   // }
+  
+  //   setValidationError((prev) => ({
+  //     ...prev,
+  //     ...errors,
+  //   }));
+  
+  //   return Object.keys(errors).length === 0;
+  // };
+  
+
+  const validateForm = () => {
+    const errors = {};
+  
+    const requiredFields = [
+      { field: type, key: "typeError", message: "Please select a user type" },
+      { field: email, key: "autoEmailError", message: "Email is required {format - abc@gmail.com / abc@domainname.com}" },
+      { field: companyName, key: "companyNameError", message: "Company name is required" },
+      { field: firstName, key: "autoFirstNameError", message: "First name is required" },
+      { field: lastName, key: "autoLastNameError", message: "Last name is required" },
+      // { field: merchantName, key: "merchantNameError", message: "Merchant name is required" },
+      { field: addressone, key: "autoaddressoneError", message: "Address is required" },
+      // { field: city, key: "cityError", message: "City is required" },
+      // { field: state, key: "stateError", message: "State is required" },
+      { field: zipCode, key: "zipCodeError", message: "Zip Code is required" },
+      { field: phone, key: "autophoneError", message: "Phone is required {format - 1234567890}" },
+      { field: bulletOne, key: "bulletOneError", message: "Bullet point 1 is required" },
+      { field: bulletTwo, key: "bulletTwoError", message: "Bullet point 2 is required" },
+      { field: bulletThree, key: "bulletThreeError", message: "Bullet point 3 is required" },
+      { field: summary, key: "summaryError", message: "Summary is required" },
+      { field: salesRep, key: "salesRepError", message: "Sales representative is required" },
+      { field: clientCount, key: "clientCountError", message: "Client count is required" },
+      { field: clientPublicly, key: "clientPubliclyError", message: "Client publicity is required" },
+      { field: volumeProcessed, key: "volumeProcessedError", message: "Volume processed is required" },
+      { field: volumePublicly, key: "volumePubliclyError", message: "Volume publicity is required" },
+      { field: highRisk, key: "highRiskError", message: "High risk selection is required" },
+      { field: pointOfSale, key: "pointOfSaleError", message: "Point of sale selection is required" },
+      { field: financing, key: "financingError", message: "Financing selection is required" }
+    ];
+  
+    // Run generic validations
+    requiredFields.forEach(({ field, key, message }) => {
+      if (!field) errors[key] = message;
+    });
+  
+    // Conditional type-specific validation
+    const typeLower = type?.toLowerCase();
+    switch (typeLower) {
+      case "agents":
+        if (!primaryPP) errors.primaryPPError = "Primary Processing Platform is required for agents";
+        break;
+      case "isos":
+        if (!sponsorBank) errors.sponsorBankError = "Sponsor Bank is required for ISOs";
+        break;
+      case "processors":
+        // No additional required fields
+        break;
+      default:
+        errors.typeError = "Invalid user type selected";
+    }
+  
+    setValidationError((prev) => ({
+      ...prev,
+      ...errors,
+    }));
+  
+    // console.log("Validation Errors:", errors);
+    return Object.keys(errors).length === 0;
+  };
+  
+  
+
   const handleRegisterMerchant = async () => {
+
+    // const body = {
+    //   flag: type,
+    //   user_id: email,
+    //   company_name: companyName,
+    //   first_name: firstName,
+    //   last_name: lastName,
+    //   merchant_name: merchantName,
+    //   DistanceWilling: DWtoTravel,
+    //   address1: addressone,
+    //   address2: addresstwo,
+    //   city: city,
+    //   state: state,
+    //   zip_code: zipCode,
+    //   country: country,
+    //   email: alternateEmail,
+    //   phone: phone,
+    //   website: website,
+
+    //   SponsorBank : sponsorBank,
+
+    //   // New required fields
+    //   bulletOne: bulletOne,
+    //   bulletTwo: bulletTwo,
+    //   bulletThree: bulletThree,
+    //   summary: summary,
+    //   salesrepresenatives: salesRep,
+    //   clientCount: clientCount,
+    //   clientPublicly: clientPublicly,
+    //   VolumeProcessed: volumeProcessed,
+    //   volumePublicly: volumePublicly,
+    //   HighRisk: highRisk,
+    //   PointofSale: pointOfSale,
+    //   Financing: financing,
+    // };
+
+    // console.log("body",body);
+    // return false;
     // if (rejectRegistration === true) {
     //   setShowToast(true);
     //   setSeverity("error");
@@ -202,60 +368,29 @@ const MerchantRegistration = () => {
       setMessage("Please verify your email with the OTP before registering.");
       return;
     }
+
+    if (!validateForm()) {
+      setShowToast(true);
+      setSeverity("error");
+      setMessageTitle("Validation Error");
+      setMessage("Please fill the required field in the form.");
+      return;
+    }
+
+    if (!validateForm()) {
+      setShowToast(true);
+      setSeverity("error");
+      setMessageTitle("Validation Error");
+    
+      const allErrors = Object.values(validationError).join(", ");
+      setMessage(allErrors || "Please fill the required field in the form.");
+      return;
+    }
+  
   
     try {
       setLoading(true);
       setError("");
-  
-      // Check for required fields
-      // if (
-      //   !email ||
-      //   !companyName ||
-      //   !firstName ||
-      //   !lastName ||
-      //   !merchantName ||
-      //   !DWtoTravel ||
-      //   !addressone ||
-      //   !city ||
-      //   !state ||
-      //   !zipCode ||
-      //   !country ||
-      //   !phone ||
-      //   !bulletOne ||
-      //   !bulletTwo ||
-      //   !bulletThree ||
-      //   !summary ||
-      //   !salesRep ||
-      //   !clientCount ||
-      //   !clientPublicly ||
-      //   !volumeProcessed ||
-      //   !volumePublicly ||
-      //   !highRisk ||
-      //   !pointOfSale ||
-      //   !financing
-      // ) {
-      //   // handle individual errors like before
-      //   if (!bulletOne) setValidationError(prev => ({ ...prev, bulletOneError: "Bullet point 1 is required!" }));
-      //   if (!bulletTwo) setValidationError(prev => ({ ...prev, bulletTwoError: "Bullet point 2 is required!" }));
-      //   if (!bulletThree) setValidationError(prev => ({ ...prev, bulletThreeError: "Bullet point 3 is required!" }));
-      //   if (!summary) setValidationError(prev => ({ ...prev, summaryError: "Summary is required!" }));
-      //   if (!salesRep) setValidationError(prev => ({ ...prev, salesRepError: "Sales representative is required!" }));
-      //   if (!clientCount) setValidationError(prev => ({ ...prev, clientCountError: "How many clients is required!" }));
-      //   if (!clientPublicly) setValidationError(prev => ({ ...prev, clientPubliclyError: "Clients status is required!" }));
-      //   if (!volumeProcessed) setValidationError(prev => ({ ...prev, volumeProcessedError: "Volume processed is required!" }));
-      //   if (!volumePublicly) setValidationError(prev => ({ ...prev, volumePubliclyError: "Volume processed status is required!" }));
-      //   if (!highRisk) setValidationError(prev => ({ ...prev, highRiskError: "High Risk is required!" }));
-      //   if (!pointOfSale) setValidationError(prev => ({ ...prev, pointOfSaleError: "Point of Sale is required!" }));
-      //   if (!financing) setValidationError(prev => ({ ...prev, financingError: "Financing is required!" }));
-      //   return;
-      // }
-  
-      if (email === alternateEmail) {
-        return setValidationError((prev) => ({
-          ...prev,
-          alternateEmailError: "Email and Alternate email cannot be same!!",
-        }));
-      }
   
       const body = {
         flag: type,
@@ -567,53 +702,53 @@ const MerchantRegistration = () => {
       }
     }
 
-    if (alternateEmail) {
-      if (
-        emailRegex.test(alternateEmail) === false ||
-        intRegex.test(alternateEmail.split("@").reverse()[0].split(".")[0]) ===
-          true
-      ) {
-        setValidationError((prev) => ({
-          ...prev,
-          alternateEmailError: "Invalid email!!",
-        }));
-      } else {
-        setValidationError((prev) => ({
-          ...prev,
-          alternateEmailError: "",
-        }));
-      }
-    } else {
-      setValidationError((prev) => ({
-        ...prev,
-        alternateEmailError: "",
-      }));
-    }
+    // if (alternateEmail) {
+    //   if (
+    //     emailRegex.test(alternateEmail) === false ||
+    //     intRegex.test(alternateEmail.split("@").reverse()[0].split(".")[0]) ===
+    //       true
+    //   ) {
+    //     setValidationError((prev) => ({
+    //       ...prev,
+    //       alternateEmailError: "Invalid email!!",
+    //     }));
+    //   } else {
+    //     setValidationError((prev) => ({
+    //       ...prev,
+    //       alternateEmailError: "",
+    //     }));
+    //   }
+    // } else {
+    //   setValidationError((prev) => ({
+    //     ...prev,
+    //     alternateEmailError: "",
+    //   }));
+    // }
 
-    if (email || alternateEmail) {
-      if (email === alternateEmail) {
-        setValidationError((prev) => ({
-          ...prev,
-          alternateEmailError: "Email and Alternate email cannot be same!!",
-        }));
-      } else {
-        setValidationError((prev) => ({ ...prev, alternateEmailError: "" }));
-      }
-    } else {
-      setValidationError((prev) => ({ ...prev, alternateEmailError: "" }));
-    }
-    if (website) setValidationError((prev) => ({ ...prev, websiteError: "" }));
-    if (companyName) setValidationError((prev) => ({ ...prev, conpanyNameError: "" }));
-    if (firstName) setValidationError((prev) => ({ ...prev, firstNameError: "" }));
-    if (lastName) setValidationError((prev) => ({ ...prev, lastNameError: "" }));
-    if (merchantName) setValidationError((prev) => ({ ...prev, merchantNameError: "" }));
-    if (DWtoTravel) setValidationError((prev) => ({ ...prev, DWtoTravelError: "" }));
-    if (phone) setValidationError((prev) => ({ ...prev, phoneError: "" }));
-    if (addressone) setValidationError((prev) => ({ ...prev, addressoneError: "" }));
-    if (city) setValidationError((prev) => ({ ...prev, cityError: "" }));
-    if (state) setValidationError((prev) => ({ ...prev, stateError: "" }));
-    if (country) setValidationError((prev) => ({ ...prev, countryError: "" }));
-    if (zipCode && !rejectRegistration)setValidationError((prev) => ({ ...prev, zipCodeError: "" }));
+    // if (email || alternateEmail) {
+    //   if (email === alternateEmail) {
+    //     setValidationError((prev) => ({
+    //       ...prev,
+    //       alternateEmailError: "Email and Alternate email cannot be same!!",
+    //     }));
+    //   } else {
+    //     setValidationError((prev) => ({ ...prev, alternateEmailError: "" }));
+    //   }
+    // } else {
+    //   setValidationError((prev) => ({ ...prev, alternateEmailError: "" }));
+    // }
+    // if (website) setValidationError((prev) => ({ ...prev, websiteError: "" }));
+    // if (companyName) setValidationError((prev) => ({ ...prev, conpanyNameError: "" }));
+    // if (firstName) setValidationError((prev) => ({ ...prev, firstNameError: "" }));
+    // if (lastName) setValidationError((prev) => ({ ...prev, lastNameError: "" }));
+    // if (merchantName) setValidationError((prev) => ({ ...prev, merchantNameError: "" }));
+    // if (DWtoTravel) setValidationError((prev) => ({ ...prev, DWtoTravelError: "" }));
+    // if (phone) setValidationError((prev) => ({ ...prev, phoneError: "" }));
+    // if (addressone) setValidationError((prev) => ({ ...prev, addressoneError: "" }));
+    // if (city) setValidationError((prev) => ({ ...prev, cityError: "" }));
+    // if (state) setValidationError((prev) => ({ ...prev, stateError: "" }));
+    // if (country) setValidationError((prev) => ({ ...prev, countryError: "" }));
+    // if (zipCode && !rejectRegistration)setValidationError((prev) => ({ ...prev, zipCodeError: "" }));
     if (zipCode) {
       if (zipCode?.length < 5) {
         setValidationError((prev) => ({
@@ -1197,11 +1332,11 @@ const MerchantRegistration = () => {
                       disabled
                     />
                   </div>
-                  {validationError.countryError && (
+                  {/* {validationError.countryError && (
                     <div className="errorText">
                       {validationError?.countryError}
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
 
@@ -1387,9 +1522,9 @@ const MerchantRegistration = () => {
                       className="inputField"
                     />
                   </div>
-                  {validationError.merchantNameError && (
+                  {validationError.sponsorBankError && (
                     <div className="errorText">
-                      {validationError?.merchantNameError}
+                      {validationError.sponsorBankError}
                     </div>
                   )}
                 </div>
@@ -1413,9 +1548,9 @@ const MerchantRegistration = () => {
                       className="inputField"
                     />
                   </div>
-                  {validationError.merchantNameError && (
+                  {validationError.primaryPPError && (
                     <div className="errorText">
-                      {validationError?.merchantNameError}
+                      {validationError.primaryPPError}
                     </div>
                   )}
                 </div>
@@ -1433,11 +1568,6 @@ const MerchantRegistration = () => {
                       className="inputField"
                     />
                   </div>
-                  {validationError.merchantNameError && (
-                    <div className="errorText">
-                      {validationError?.merchantNameError}
-                    </div>
-                  )}
                 </div>
               </div>
             )}
