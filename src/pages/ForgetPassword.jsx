@@ -212,7 +212,7 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
         <div className="PasswordWrapper">
       <h1>Forget Password</h1>
 
-      <p className="forgetPasswordText">Enter your registered email for otp verification</p>
+      <p className="forgetPasswordText">Enter Your Registered E-mail for OTP Verification</p>
       <div>
         <label htmlFor="">Email</label>
         <input

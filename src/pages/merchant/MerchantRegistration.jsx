@@ -1100,7 +1100,7 @@ const MerchantRegistration = () => {
 
                         <button
                           type="button"
-                          className="sendOtpButton"
+                          className={`sendOtpButton disable ${otpVerified ? "d-none" : ""}`}
                           onClick={sendOtpToEmail}
                         >
                           Resend OTP

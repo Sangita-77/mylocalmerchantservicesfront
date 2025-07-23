@@ -156,8 +156,8 @@ const AdminConnect = () => {
                         <thead className="theadContainer">
                             <tr>
                                 <th className="th">Created</th>
-                                <th className="th">Merchant Email</th>
-                                <th className="th">User Email</th>
+                                <th className="th">Merchant Services Providers E-mail</th>
+                                <th className="th">Merchant E-mail</th>
                                 <th className="thActions">Actions</th>
                             </tr>
                         </thead>

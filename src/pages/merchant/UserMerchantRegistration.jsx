@@ -805,6 +805,20 @@ const UserMerchantRegistration = () => {
                       placeholder=""
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+<<<<<<< HEAD
+                      className="inputField" 
+                    />
+               
+               {otpSent ? (
+                <>
+                  <div className="otp-feild">
+                    <input
+                      type="text"
+                      name="otp"
+                      value={otp}
+                      onChange={handleOtpChange}
+=======
+>>>>>>> 4af1588b42427e183c12c45d14ccff7796ecdc59
                       className="inputField"
                     />
 
@@ -851,6 +865,30 @@ const UserMerchantRegistration = () => {
                       </button>
                     )}
                   </div>
+<<<<<<< HEAD
+
+                  <button
+                    type="button"
+                    className={`sendOtpButton disable ${otpVerified ? "d-none" : ""}`}
+                    onClick={sendOtpToEmail}
+                  >
+                    Resend OTP
+                  </button>
+                </>
+              ) : (
+                <button
+                  type="button"
+                  className="sendOtpButton"
+                  onClick={sendOtpToEmail}
+                >
+                  Send OTP
+                </button>
+              )}
+
+                    
+                  </div>
+=======
+>>>>>>> 4af1588b42427e183c12c45d14ccff7796ecdc59
                 </div>
               </div>
               {/* {otpSent && (
