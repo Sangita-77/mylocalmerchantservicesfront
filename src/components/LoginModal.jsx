@@ -247,7 +247,7 @@ const LoginModal = ({ handleClose }) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   onFocus={() => setShowPasswordRules(true)}
-                  onBlur={() => setTimeout(() => setShowPasswordRules(false), 200)} // delay to allow click on rules
+                  onBlur={() => setTimeout(() => setShowPasswordRules(false), 200)}
                 />
                         {showPasswordRules && (
   <div className="passwordRulesContainer">
