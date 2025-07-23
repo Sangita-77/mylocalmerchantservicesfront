@@ -22,7 +22,7 @@
 /* //////////////////  MERCHANT LAYOUT HEADER  ///////////////// */
 .onboardingPageHeaderWrapper { margin: 0; padding: 0; width: 100vw; height: 110px; position: fixed; top: 0; left: 0; z-index: 111; background-color: #ffffff; }
 .onboardingPageChildHeaderContainer { margin: 0; height: 42px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; background: rgb(21, 111, 172); }
-.childHeaderText { margin: 0; padding: 0; color: #ffffff; font-size: 16px; font-weight: 500; font-family: "Poppins"; vertical-align: middle; text-transform: uppercase; letter-spacing: 2px; }
+.childHeaderText { margin: 0; padding: 0; color: #ffffff; font-size: 16px; font-weight: 500; font-family: "Poppins"; vertical-align: middle; text-transform: capitalize; letter-spacing: 2px; }
 .onboardingPageHeaderMainContainer { margin: 0; padding: 12px 4%; width: auto; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: #ffffff; cursor: pointer;}
 .headerLeft { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 4px; }
 .locationIcon { width: 60px; height: 60px; object-fit: contain; }
@@ -59,16 +59,16 @@
 .footerInnerContainer { margin: 0px; padding: 155px 100px 85px; display: flex; flex-direction: row; align-items: start; gap: 32px; }
 .footerCol { margin: 0; padding: 0; padding-left: 18px; width: 30%; display: flex; flex-direction: column; align-items: flex-start; gap: 17px; }
 .footerRow { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 12px; }
-.footerColTitle {line-height: 30px; margin: 0; padding: 0; color: #ffffff; font-size: 30px; text-transform: uppercase; font-family: "Poppins"; font-weight: 700; }
+.footerColTitle {line-height: 30px; margin: 0; padding: 0; color: #ffffff; font-size: 30px; font-family: "Poppins"; font-weight: 700; text-transform: capitalize;}
 .footerColDesc { margin: 0; padding: 0; font-size: 20px; color: #eff5fa; font-family: "Poppins"; font-weight: 400; }
 .footerColDesc a {color: #eff5fa; text-decoration: none;}
 .divider { margin: 0; padding: 0; width: 1px; height: 200px; background-color: #ffffff; }
 .footerChild { margin: 0; padding: 30px 0; background-color: #156FAC; width: 100%; text-align: center; }
-.footerChildContent { margin: 0; padding: 0; font-family: "Poppins"; font-size: 18px; line-height: 23px; color: #fff; text-transform: uppercase; }
+.footerChildContent { margin: 0; padding: 0; font-family: "Poppins"; font-size: 18px; line-height: 23px; color: #fff; text-transform: capitalize; }
 .footerInnerContainer .footerCol:nth-child(1) {width: 34%; margin-top: 32px;}
 .footerInnerContainer .footerCol:nth-child(3) {width: 22%;}
 .footerInnerContainer .footerCol:nth-child(5) {width: 33%;}
-.footerInnerContainer .footerCol:first-child .footerColDesc {font: 400 16px/30px "Poppins";}
+.footerInnerContainer .footerCol:first-child .footerColDesc {font: 400 16px/30px "Poppins"; text-transform: capitalize;}
 
 .footerInnerContainer .footerCol .footerLocation {align-items: start;}
 
@@ -82,9 +82,9 @@
 .blueShadeUpward { position: absolute; top: 100px; right: 300px; }
 .blueShadeLeftWard { position: absolute; top: 200px; left: -180px; transform: rotate(-90deg); }
 
-.bannerTitleLarge { margin: 0; padding: 0; font-size: 100px; letter-spacing: -2px; font-weight: 800; font-family: "Poppins"; background: #1C94E4; text-transform: uppercase; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.bannerTitleMedium { margin: -32px 0 0 6px; padding: 0; font-size: 34px; font-family: "Poppins"; font-weight: 600; color: #0c64aa; text-transform: uppercase; }
-.bannerTitleSmall { margin: 14px 0 36px 8px; padding: 0; color: rgb(70, 70, 70); font-size: 24px; font-weight: 500; font-family: 'Poppins'; }
+.bannerTitleLarge { margin: 0; padding: 0; font-size: 100px; letter-spacing: -2px; font-weight: 800; font-family: "Poppins"; background: #1C94E4; text-transform: capitalize; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.bannerTitleMedium { margin: -32px 0 0 6px; padding: 0; font-size: 34px; font-family: "Poppins"; font-weight: 600; color: #0c64aa; text-transform: capitalize; }
+.bannerTitleSmall { margin: 14px 0 36px 8px; padding: 0; color: rgb(70, 70, 70); font-size: 24px; font-weight: 500; font-family: 'Poppins'; text-transform: capitalize;}
 .bannerButton { margin: 0; margin-top: 24px; padding: 12px 36px; background-color: rgb(253, 218, 102); color: #000000; display: flex; outline: none; flex-direction: row; align-items: center; justify-content: center; gap: 4px; border: none; border-radius: 50px; cursor: pointer; }
 .bannerButtonTitle { margin: 0; padding: 0; font-size: 14px; font-weight: 700; }
 .sticker { position: absolute; }
@@ -93,7 +93,7 @@
 .bannerLeafletItem { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0px; }
 .leafletItemImg { margin: 0; padding: 0; width: 100px; height: auto; }
 .leafletItemTitle { margin: 0; padding: 0; margin-top: 8px; font-family: "Poppins"; font-size: 28px; font-weight: 500; color: #ffffff; }
-.leafletItemSubTitle { margin: 0; padding: 0; font-family: "Poppins"; font-size: 19px; font-weight: 500; color: #ffffff; }
+.leafletItemSubTitle { margin: 0; padding: 0; font-family: "Poppins"; font-size: 19px; font-weight: 500; color: #ffffff; text-transform: capitalize;}
 
 .findAgentsSection { margin: 100px 0; padding: 20px 72px; background-color: #ffffff; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; position: relative; }
 .topYellowShade { position: absolute; top: 0px; left: -50px; border: none; border-radius: 50%; }
@@ -107,15 +107,15 @@
 .agentBottomYellowShade { width: 280px; height: 280px; position: absolute; bottom: 30px; right: 40px; border: none; border-radius: 100%; transform: rotate(90deg); }
 
 .findAgentsSectionTop { text-align: center; align-self: center; }
-.findAgentsSectionTitle { margin: 0; margin-bottom: 20px; padding: 0; color: #141414; font-size: 50px; line-height: 50px; font-weight: 600; font-family: "Poppins"; }
-.findAgentsSectionSubtitle { margin: 0; margin-bottom: 72px; padding: 0; font-size: 30px; line-height: 47px; color: #141414; font-weight: 400; font-family: "Poppins"; }
+.findAgentsSectionTitle { margin: 0; margin-bottom: 20px; padding: 0; color: #141414; font-size: 50px; line-height: 50px; font-weight: 600; font-family: "Poppins"; text-transform: capitalize;}
+.findAgentsSectionSubtitle { margin: 0; margin-bottom: 72px; padding: 0; font-size: 30px; line-height: 47px; color: #141414; font-weight: 400; font-family: "Poppins"; text-transform: capitalize;}
 
 .findAgentsSectionBottom {align-self: center; margin: 0; padding: 48px 100px; left: 0; min-height: 500px; background-color: #ffffff; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; }
 .findAgentsSectionBottomItem { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 #findAgentsSectionBottomItemMiddle { align-self: end; margin-top: 100px;}
 .findAgentsSectionBottomItemImg { width: 170px; height: 170px; object-fit: contain; }
 .findAgentsSectionBottomItemTitle { margin: 0; padding: 0; margin-bottom: 12px; font-size: 30px; font-weight: 600; font-family: "Poppins"; color: rgb(54, 54, 54); text-align: center; }
-.findAgentsSectionBottomItemSubtitle { margin: 0px; padding: 0; font-size: 25px; font-family: "Poppins"; font-weight: 400; color: #adadad; text-align: center; width: 270px; }
+.findAgentsSectionBottomItemSubtitle { margin: 0px; padding: 0; font-size: 25px; font-family: "Poppins"; font-weight: 400; color: #adadad; text-align: center; width: 270px; text-transform: capitalize;}
 
 .arrow { margin-top: 50px; width: 240px; z-index: 9; overflow: auto; }
 
@@ -131,46 +131,46 @@
 .merchantRegisterSectionRight { margin: 0; padding: 0px 40px; width: 50vw; height: 100%; background: #1C94E4; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 30px; border-radius: 20px 0px 0px 20px; overflow: hidden;}
 .merchantRegisterSection .merchantRegisterSectionRight .button_large {margin-top: 45px;}
 
-.registerSectionTitle { margin: 0; padding: 0; font-family: "Poppins"; font-size: 79px; font-weight: 700; line-height: 90px; text-transform: uppercase; letter-spacing: 0.4px; color: #ffffff; line-height: 80px; }
-.registerSectionSubtitle { margin: 0; padding: 0; font-family: "Poppins"; font-weight: 700; line-height: 48px; font-size: 40px; text-transform: uppercase; color: #ffffff; }
+.registerSectionTitle { margin: 0; padding: 0; font-family: "Poppins"; font-size: 79px; font-weight: 700; line-height: 90px; text-transform: uppercase; letter-spacing: 0.4px; color: #ffffff; line-height: 80px; text-transform: capitalize;}
+.registerSectionSubtitle { margin: 0; padding: 0; font-family: "Poppins"; font-weight: 700; line-height: 48px; font-size: 40px; text-transform: uppercase; color: #ffffff; text-transform: capitalize;}
 
-.registerSectionContent { margin: 0; margin-bottom: 20px; padding: 0; color: #fdda66; font-size: 40px; font-family: "Poppins"; font-weight: 400; line-height: 47px; }
+.registerSectionContent { margin: 0; margin-bottom: 20px; padding: 0; color: #fdda66; font-size: 40px; font-family: "Poppins"; font-weight: 400; line-height: 47px; text-transform: capitalize;}
 
 .registerPoints { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
 
 .registerPointsItem { display: flex; flex-direction: row; align-items: center; gap: 18px; }
 
 .checkBoxContainer { width: 18px; height: 18px; border: none; border-radius: 2px; background-color: #fdda66; display: flex; align-items: center; gap: 18px; }
-.registerPointsParticular { margin: 0; padding: 0; color: #f0f9fd; font-size: 20px; font-family: "Poppins"; font-weight: 500; }
+.registerPointsParticular { margin: 0; padding: 0; color: #f0f9fd; font-size: 20px; font-family: "Poppins"; font-weight: 500; text-transform: capitalize;}
 .registerMerchantButton { margin: 0; margin-top: 42px; padding: 18px 36px; background-color: rgb(253, 218, 102); color: #000000; font-weight: 500; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 4px; border: none; border-radius: 50px; cursor: pointer; }
 .registerMerchantText { margin: 0; padding: 0; color: #000000; font-size: 20px; font-family: "Poppins"; font-weight: 500; letter-spacing: 0.6px; }
 
 .agentSearchSection { margin: 0; padding: 120px 0; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 0px; position: relative; }
 .agentSearchSectionLeftContainer { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; width: 50%; }
-.agentSearchSectionTitle { margin: 0; padding: 0; font-size: 70px; line-height: 70px; font-family: "Poppins"; font-weight: 700; text-transform: uppercase; color: #1C94E4;}
-.agentSearchSectionTitle2 { margin: 0; padding: 0; font-size: 70px; line-height: 70px; font-family: "Poppins"; font-weight: 700; text-transform: uppercase; color: #1C94E4; }
-.agentSearchSectionSubtitle { margin: 0; padding: 0; font-family: "Poppins"; font-weight: 500; font-size: 40px; color: #3f3f3f; line-height: 44px; }
-.findAgentsPointsTitle { margin: 0; padding: 0; margin-bottom: 24px; font-size: 28px; color: #0052a4; font-family: "Poppins"; font-weight: 700; }
+.agentSearchSectionTitle { margin: 0; padding: 0; font-size: 70px; line-height: 70px; font-family: "Poppins"; font-weight: 700; color: #1C94E4; text-transform: capitalize;}
+.agentSearchSectionTitle2 { margin: 0; padding: 0; font-size: 70px; line-height: 70px; font-family: "Poppins"; font-weight: 700; text-transform: capitalize; color: #1C94E4; }
+.agentSearchSectionSubtitle { margin: 0; padding: 0; font-family: "Poppins"; font-weight: 500; font-size: 40px; color: #3f3f3f; line-height: 44px; text-transform: capitalize;}
+.findAgentsPointsTitle { margin: 0; padding: 0; margin-bottom: 24px; font-size: 28px; color: #0052a4; font-family: "Poppins"; font-weight: 700; text-transform: capitalize;}
 .findAgentsPoints { margin: 0; padding: 0; margin-left: 4px; margin-bottom: 42px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
 .findAgentsPointsItem { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 16px; }
 .checkboxContainer { margin: 0; padding: 0; border: none; border-radius: 2px; background-color: #1876c0; display: flex; align-items: center; }
-.findAgentsParticulars { margin: 0; padding: 0; font-family: "Poppins"; font-size: 21px; color: #595959; }
+.findAgentsParticulars { margin: 0; padding: 0; font-family: "Poppins"; font-size: 21px; color: #595959; text-transform: capitalize;}
 .agentSearchSectionRightContainer { margin: 0; padding: 0; width: 40%; height: 40%; }
 .agentSearchSectionImg { width: 100%; height: 100%; height: unset; }
 .merchantRegisterLeaflet { margin: 0 auto; padding: 50px 0 40px 0; font-family: "Poppins"; font-weight: 400; width: 100%; max-width: 1440px; background: #1C94E4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 25px; border: none; border-radius: 45px; }
-.merchantRegisterLeafletTitle { margin: 0; padding: 0; font-family: "Poppins"; font-size: 55px; line-height: 70px; font-weight: 700; color: #ffffff; text-align: center; }
+.merchantRegisterLeafletTitle { margin: 0; padding: 0; font-family: "Poppins"; font-size: 55px; line-height: 70px; font-weight: 700; color: #ffffff; text-align: center; text-transform: capitalize;}
 .merchantRegisterLeaflet .button_large {width: 302px;}
 
 .articleSection { /*margin: 75px 0;*/ padding: 120px 100px 50px; margin-bottom: 165px; background-color: #ffffff; display: flex; flex-direction: column; gap: 80px; align-items: center; width: auto; }
 .articleSectionInner { display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
-.articleSectionTitle { margin: 0; padding: 0; font-size: 70px; line-height: 85px; font-family: "Poppins"; font-weight: 600; width: 50%; text-align: center; color: #055eb0; }
+.articleSectionTitle { margin: 0; padding: 0; font-size: 70px; line-height: 85px; font-family: "Poppins"; font-weight: 600; width: 50%; text-align: center; color: #055eb0; text-transform: capitalize;}
 .articleItem { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 32%; }
 .articleImgContainer { margin: 0; padding: 0; width: 100%; max-height: 300px; border: none; border-radius: 12px; overflow: hidden; }
 .articleImg { margin: 0; padding: 0; width: 100%; height: 100%; object-fit: cover; }
 .articleItemContent { margin: 0; /*padding: 0 24px;*/ display: flex; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
-.articleTitle { margin: 0; padding: 0; font-family: "Poppins"; font-weight: 500; font-size: 30px; line-height: 35px; color: #393939; }
-.articleDesc { margin: 0; padding: 0; font-size: 18px; line-height: 28px; font-family: "Poppins"; font-weight: 400; color: #393939; }
-.articleButton { margin: 0; padding: 0; background: transparent; color: #22a1f1; border: none; display: flex; flex-direction: row; align-items: center; gap: 8px; font-family: "Poppins"; font-weight: 700; font-size: 18px; text-transform: uppercase; font-weight: 600; }
+.articleTitle { margin: 0; padding: 0; font-family: "Poppins"; font-weight: 500; font-size: 30px; line-height: 35px; color: #393939; text-transform: capitalize;}
+.articleDesc { margin: 0; padding: 0; font-size: 18px; line-height: 28px; font-family: "Poppins"; font-weight: 400; color: #393939; text-transform: capitalize;}
+.articleButton { margin: 0; padding: 0; background: transparent; color: #22a1f1; border: none; display: flex; flex-direction: row; align-items: center; gap: 8px; font-family: "Poppins"; font-weight: 700; font-size: 18px; text-transform: uppercase; font-weight: 600; text-transform: capitalize;}
 
 /* /////////////////////    MERCHANT LIST    //////////////////////// */
 .merchantListLoaderWrapper { margin: 0; padding: 0; width: 100vw; height: 120vh; background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -1226,3 +1226,4 @@ border-radius: 5px; margin-right: 30px;}
 
 .passwordRulesContainer ul.passwordRulesList {padding-left: 17px; margin-bottom: 4px;}
 .passwordRulesContainer ul.passwordRulesList li {font-size: 13px;}
+
