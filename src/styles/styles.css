@@ -326,6 +326,7 @@
 .adminSidebarWrapper .adminSidebarDivider { margin-top: 20px; margin-left: 8px; width: 90%; height: 1px; background-color: #d9d9d9; }
 .adminSidebarWrapper .adminSidebarContainer { margin: 18px 24px; padding: 12px 0px 12px 0px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
 .adminSidebarWrapper .sidebarItem { margin: 0; padding: 10px 18px; width: 80%; display: flex; align-items: center; gap: 12px; color: white; font-family: "Sora"; font-size: 14px; font-weight: 300; border: none; border-radius: 8px; transition: 0.4s; cursor: pointer; z-index: 999; }
+.adminSidebarWrapper .sidebarItem.subSidebarItem {padding:5px 38px 5px;}
 
 .sidebarItemSubmenu { margin: 0; padding: 12px; display: flex; flex-direction: row; align-items: center; gap: 6px; cursor: pointer; }
 .sidebarItemSubmenu:hover { background-color: #eef5ff; }
@@ -420,10 +421,10 @@
 
 .adminDashboardWrapper .adminDashboardPieChartSection {width: 30%; background-color: #ffffffb0; border: 1px solid #fff; border-radius: 24px;
 position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px;}
-.adminDashboardWrapper .adminDashboardPieChartSection .adminDashboardPieChart{ margin: 0; padding: 34px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; background-color: #e3f1ff; border-radius: 20px; }
+.adminDashboardWrapper .adminDashboardPieChartSection .adminDashboardPieChart{ margin: 0; padding: 37px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; background-color: #e3f1ff; border-radius: 20px; }
 .adminDashboardWrapper .adminDashboardPieChartSection .pieChartTitle { color: #404040; font-family: "Sora"; font-weight: 400; font-size: 20px; line-height: 20px; margin-bottom: 5px;}
 
-.adminDashboardWrapper .adminDashboardPieChartSection .colorDefineContainer { display: flex; flex-direction: row; align-items: center; gap: 24px; }
+.adminDashboardWrapper .adminDashboardPieChartSection .colorDefineContainer { display: grid; flex-direction: row; align-items: center; gap: 12px; }
 .adminDashboardWrapper .adminDashboardPieChartSection .colorDefineSingleItem { display: flex; flex-direction: row; align-items: center; gap: 8px; }
 .adminDashboardWrapper .adminDashboardPieChartSection .colorDefineSingleItem .colorBoxTitle {font: 400 16px/16px "Sora"; color: #000000;}
 .adminDashboardWrapper .adminDashboardPieChartSection .colorBox:nth-child(1) { width: 20px; height: 20px; border: none; border-radius: 2px; background: gray;}
@@ -431,7 +432,7 @@ position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px
 .adminDashboardWrapper .adminDashboardPieChartSection .statisticsCountItem { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 40%;}
 .adminDashboardWrapper .adminDashboardPieChartSection .statisticsCount { color: #333335; font-family: "Sora"; font-weight: 900; font-size: 30px; letter-spacing: 1px; }
 
-.adminDashboardWrapper .adminDashboardPieChartSection .statisticsCountTitle { color: #838383; font-family: "Sora"; font-size: 14px; font-weight: 300; }
+.adminDashboardWrapper .adminDashboardPieChartSection .statisticsCountTitle { color: #838383; font-family: "Sora"; font-size: 12px; font-weight: 300; text-align: center; height: 50px;}
 /* .adminDashboardWrapper .adminDashboardPieChartSection .recharts-wrapper .recharts-pie > .recharts-layer:first-child .recharts-pie-sector:first-child path[name="user"]{stroke-width: 3px; stroke: #fff;} */
 .adminDashboardWrapper .adminDashboardPieChartSection .recharts-wrapper .recharts-pie > .recharts-layer .recharts-pie-sector path[name="Users"]{stroke: #e3f1ff; stroke-width: 4px;}
 .adminDashboardWrapper .statisticsPercentage { color: #25c95f; font-family: "Sora"; font-weight: 400; font-size: 14px; }

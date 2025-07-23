@@ -118,7 +118,7 @@ const OnboardingPageHeader = () => {
             }`}
             onClick={() => navigate(routes.merchant_list())}
           >
-            Merchant List
+            Merchant Services Provides
           </div>
 
           {localStorage.getItem("is_authenticated") && localStorage.getItem("user_id") ? (

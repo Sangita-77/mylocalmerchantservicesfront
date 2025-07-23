@@ -81,7 +81,7 @@ const MerchantDashboard = () => {
   return (
     <div className="merchantDashboardWrapper" onClick={() => setShowDropdown(false)}>
 
-      <DashBoardTopBar heading="Dashboard" />
+      <DashBoardTopBar heading="Merchant Dashboard" />
 
       {loading ? (
         <div className="merchantDashboardLoaderWrapper">
@@ -115,7 +115,7 @@ const MerchantDashboard = () => {
 
                 <div className="merchantProfileContainerHeader">
                   <div className="merchantHeaderCompanyTitle">
-                    Number of user connected
+                    Number of Merchant Services Providers connected
                   </div>
                 </div>
 

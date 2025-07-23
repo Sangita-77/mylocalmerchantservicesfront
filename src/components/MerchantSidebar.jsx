@@ -55,7 +55,7 @@ const MerchantSidebar = () => {
         >
           {/* <img src={connectedIcon} alt="" className="sidebarIcon" /> */}
           <GoLink color={"#ffffff"} size={24} />
-          <div className="sidebarItemTitle">User Connected History</div>
+          <div className="sidebarItemTitle">Merchant Services Providers Connected History</div>
         </div>
       </div>
     </div>
