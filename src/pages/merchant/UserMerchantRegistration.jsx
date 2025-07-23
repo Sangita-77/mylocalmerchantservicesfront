@@ -49,7 +49,7 @@ const UserMerchantRegistration = () => {
     typeError: "",
     emailError: "",
     alternateEmailError: "",
-    conpanyNameError: "",
+    companyNameError: "",
     merchantNameError: "",
     streetError: "",
     cityError: "",
@@ -79,8 +79,12 @@ const UserMerchantRegistration = () => {
   const intRegex = /^-?\d+$/;
 
   const handleChangePhone = (value) => {
-    if (phone?.length === 10) return;
     setPhone(value);
+    const error = validateUSPhoneNumber(value);
+    setValidationError((prev) => ({
+      ...prev,
+      phoneError: error,
+    }));
   };
 
   const handleChangeZipCode = (value) => {
@@ -127,6 +131,88 @@ const UserMerchantRegistration = () => {
     }
   };
 
+  // validation
+  const validateForm = () => {
+    let isValid = true;
+    let errors = {};
+
+    if (!type) {
+      errors.typeError = "User type is required!";
+      isValid = false;
+    }
+    if (!email) {
+      errors.emailError = "Email is required!";
+      isValid = false;
+    } else if (!emailRegex.test(email)) {
+      errors.emailError = "Invalid email format!";
+      isValid = false;
+    }
+    if (alternateEmail) {
+      if (!emailRegex.test(alternateEmail)) {
+        errors.alternateEmailError = "Invalid alternate email!";
+        isValid = false;
+      }
+      if (alternateEmail === email) {
+        errors.alternateEmailError =
+          "Email and Alternate email cannot be same!";
+        isValid = false;
+      }
+    }
+    if (!companyName) {
+      errors.companyNameError = "Company name is required!";
+      isValid = false;
+    }
+    if (!merchantName) {
+      errors.merchantNameError = "Merchant name is required!";
+      isValid = false;
+    }
+    if (!street) {
+      errors.streetError = "Street name is required!";
+      isValid = false;
+    }
+    if (!city) {
+      errors.cityError = "City is required!";
+      isValid = false;
+    }
+    if (!state) {
+      errors.stateError = "State is required!";
+      isValid = false;
+    }
+    if (!zipCode) {
+      errors.zipCodeError = "Zip code is required!";
+      isValid = false;
+    } else if (zipCode.length < 5 || zipCode.length > 9) {
+      errors.zipCodeError = "Invalid zip code!";
+      isValid = false;
+    }
+    if (!phone) {
+      errors.phoneError = "Phone number is required!";
+      isValid = false;
+    } else if (phone.length !== 10) {
+      errors.phoneError = "Invalid phone number!";
+      isValid = false;
+    }
+    if (!industry) {
+      errors.industryError = "Industry is required!";
+      isValid = false;
+    }
+    if (!typeOfServices) {
+      errors.serviceError = "Type of service is required!";
+      isValid = false;
+    }
+    if (website && !website.startsWith("http")) {
+      errors.websiteError = "Website must start with http:// or https://";
+      isValid = false;
+    }
+    if (!isChecked) {
+      setError("Please verify that you are a human (check the checkbox)!");
+      isValid = false;
+    }
+
+    setValidationError((prev) => ({ ...prev, ...errors }));
+    return isValid;
+  };
+
   const handleRegisterMerchant = async () => {
     // if (rejectRegistration === true) {
     //   setShowToast(true);
@@ -152,112 +238,119 @@ const UserMerchantRegistration = () => {
       setMessage("Please verify your email with the OTP before registering.");
       return;
     }
+    if (!validateForm()) {
+      setShowToast(true);
+      setSeverity("error");
+      setMessageTitle("Validation Error");
+      setMessage("Please fill the required field in the form.");
+      return;
+    }
     try {
       setLoading(true);
       setError("");
 
       // --------
-      if (
-        !email ||
-        !companyName ||
-        !merchantName ||
-        !street ||
-        !city ||
-        !state ||
-        !zipCode ||
-        !phone ||
-        !industry ||
-        !typeOfServices
-      ) {
-        if (!email) {
-          setValidationError((prev) => ({
-            ...prev,
-            emailError: "Email is required!",
-          }));
-        }
-        if (!companyName) {
-          setValidationError((prev) => ({
-            ...prev,
-            conpanyNameError: "Company name is required!",
-          }));
-        }
-        if (!merchantName) {
-          setValidationError((prev) => ({
-            ...prev,
-            merchantNameError: "Merchant name is required!",
-          }));
-        }
-        if (!street) {
-          setValidationError((prev) => ({
-            ...prev,
-            streetError: "Street name is required!",
-          }));
-        }
-        if (!city) {
-          setValidationError((prev) => ({
-            ...prev,
-            cityError: "City name is required!",
-          }));
-        }
-        if (!state) {
-          setValidationError((prev) => ({
-            ...prev,
-            stateError: "State name is required!",
-          }));
-        }
-        if (zipCode) {
-          if (zipCode?.length < 5 || zipCode?.length > 9) {
-            setValidationError((prev) => ({
-              ...prev,
-              zipCodeError: "Invalid zip code!",
-            }));
-          }
-        } else {
-          setValidationError((prev) => ({
-            ...prev,
-            zipCodeError: "Zip code is required!",
-          }));
-        }
+      // if (
+      //   !email ||
+      //   !companyName ||
+      //   !merchantName ||
+      //   !street ||
+      //   !city ||
+      //   !state ||
+      //   !zipCode ||
+      //   !phone ||
+      //   !industry ||
+      //   !typeOfServices
+      // ) {
+      //   if (!email) {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       emailError: "Email is required!",
+      //     }));
+      //   }
+      //   if (!companyName) {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       conpanyNameError: "Company name is required!",
+      //     }));
+      //   }
+      //   if (!merchantName) {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       merchantNameError: "Merchant name is required!",
+      //     }));
+      //   }
+      //   if (!street) {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       streetError: "Street name is required!",
+      //     }));
+      //   }
+      //   if (!city) {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       cityError: "City name is required!",
+      //     }));
+      //   }
+      //   if (!state) {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       stateError: "State name is required!",
+      //     }));
+      //   }
+      //   if (zipCode) {
+      //     if (zipCode?.length < 5 || zipCode?.length > 9) {
+      //       setValidationError((prev) => ({
+      //         ...prev,
+      //         zipCodeError: "Invalid zip code!",
+      //       }));
+      //     }
+      //   } else {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       zipCodeError: "Zip code is required!",
+      //     }));
+      //   }
 
-        if (phone) {
-          if (phone?.length < 10 || phone?.length > 10) {
-            setValidationError((prev) => ({
-              ...prev,
-              phoneError: "Invalid phone number!",
-            }));
-          }
-        } else {
-          setValidationError((prev) => ({
-            ...prev,
-            phoneError: "Phone number is required!",
-          }));
-        }
-        if (!industry) {
-          setValidationError((prev) => ({
-            ...prev,
-            industryError: "Type of Industry is required!",
-          }));
-        }
-        if (!typeOfServices) {
-          setValidationError((prev) => ({
-            ...prev,
-            serviceError: "Type of service is required!",
-          }));
-        }
-        if (isChecked === false) {
-          return setError(
-            "Please verify that you are a human (check the checkbox)!"
-          );
-        }
-        return;
-      }
+      //   if (phone) {
+      //     if (phone?.length < 10 || phone?.length > 10) {
+      //       setValidationError((prev) => ({
+      //         ...prev,
+      //         phoneError: "Invalid phone number!",
+      //       }));
+      //     }
+      //   } else {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       phoneError: "Phone number is required!",
+      //     }));
+      //   }
+      //   if (!industry) {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       industryError: "Type of Industry is required!",
+      //     }));
+      //   }
+      //   if (!typeOfServices) {
+      //     setValidationError((prev) => ({
+      //       ...prev,
+      //       serviceError: "Type of service is required!",
+      //     }));
+      //   }
+      //   if (isChecked === false) {
+      //     return setError(
+      //       "Please verify that you are a human (check the checkbox)!"
+      //     );
+      //   }
+      //   return;
+      // }
 
-      if (email === alternateEmail) {
-        return setValidationError((prev) => ({
-          ...prev,
-          alternateEmailError: "Email and Alternate email cannot be same!!",
-        }));
-      }
+      // if (email === alternateEmail) {
+      //   return setValidationError((prev) => ({
+      //     ...prev,
+      //     alternateEmailError: "Email and Alternate email cannot be same!!",
+      //   }));
+      // }
       // ------
 
       const body = {
@@ -291,9 +384,9 @@ const UserMerchantRegistration = () => {
       console.log("Registration response====>", response);
 
       if (response?.status === 200) {
-        const flag = response?.data?.flag;
+        const { flag, data, message } = response.data;
         const userId = response?.data?.data?.user_id;
-        const message = response?.data?.message;
+        // const message = response?.data?.message;
         const merchantToken = response?.data?.data?.merchant_token;
 
         setLoggedInUserId(userId);
@@ -391,7 +484,7 @@ const UserMerchantRegistration = () => {
 
       return;
     }
-  
+
     try {
       const response = await axios.post(
         `${BASE_URL}/sendOtpToMail`,
@@ -403,9 +496,9 @@ const UserMerchantRegistration = () => {
           },
         }
       );
-  
+
       const data = response.data;
-  
+
       if (data.status) {
         setOtpSent(true);
         setServerOtp(data.otp); // Store OTP if needed
@@ -429,7 +522,6 @@ const UserMerchantRegistration = () => {
         ...prev,
         emailError: "Error sending OTP.",
       }));
-
     }
   };
 
@@ -438,7 +530,7 @@ const UserMerchantRegistration = () => {
       alert("Please enter the OTP.");
       return;
     }
-  
+
     try {
       const response = await axios.post(
         `${BASE_URL}/verifyOtpFrpmMail`,
@@ -453,9 +545,9 @@ const UserMerchantRegistration = () => {
           },
         }
       );
-  
+
       const data = response.data;
-  
+
       if (data.status) {
         alert("OTP verified successfully!");
         // You can proceed with the next step here
@@ -470,7 +562,7 @@ const UserMerchantRegistration = () => {
   const handleOtpChange = async (e) => {
     const value = e.target.value;
     setOtp(value);
-  
+
     if (value.length === 4) {
       try {
         const response = await axios.post(
@@ -486,44 +578,55 @@ const UserMerchantRegistration = () => {
             },
           }
         );
-  
+
         const data = response.data;
-  
+
         if (data.status) {
           setOtpVerified(true);
           setOtpMessage(
             <>
-            <img src={check} alt="" className="verificationCaptchaImg" style={{width:"20px", height:"20px"}}/> 
-            <span style={{padding:"10px"}}>Verified</span>
+              <img
+                src={check}
+                alt=""
+                className="verificationCaptchaImg"
+                style={{ width: "20px", height: "20px" }}
+              />
+              <span style={{ padding: "10px" }}>Verified</span>
             </>
           );
         } else {
           setOtpMessage(
-             <>
-            <img src={cross} alt="" className="verificationCaptchaImg" style={{width:"20px", height:"20px"}}/> 
-            <span style={{padding:"10px"}}>Error</span>
-            <div>Re-Enter OTP</div>
+            <>
+              <img
+                src={cross}
+                alt=""
+                className="verificationCaptchaImg"
+                style={{ width: "20px", height: "20px" }}
+              />
+              <span style={{ padding: "10px" }}>Error</span>
+              <div>Re-Enter OTP</div>
             </>
           );
         }
       } catch (error) {
         console.error("OTP Verification Error:", error);
         setOtpMessage(
-             <>
-            <img src={cross} alt="" className="verificationCaptchaImg" style={{width:"20px", height:"20px"}}/> 
-            <span style={{padding:"10px"}}>Error</span>
+          <>
+            <img
+              src={cross}
+              alt=""
+              className="verificationCaptchaImg"
+              style={{ width: "20px", height: "20px" }}
+            />
+            <span style={{ padding: "10px" }}>Error</span>
             <div>Re-Enter OTP</div>
-            </>
+          </>
         );
       }
     } else {
       setOtpMessage(""); // Clear message if not 4 digits
     }
   };
-  
-  
-  
-  
 
   useEffect(() => {
     let timeout;
@@ -659,6 +762,14 @@ const UserMerchantRegistration = () => {
     }
   }, [token]);
 
+  const validateUSPhoneNumber = (value) => {
+    const pattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (!value) return "Phone number is required.";
+    if (!pattern.test(value)) return "Invalid US phone number format.";
+    return "";
+  };
+
+
   return (
     <div className="merchantRegistrationWrapper">
       <div className="merchantRegistrationTop">
@@ -693,48 +804,51 @@ const UserMerchantRegistration = () => {
                       placeholder=""
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="inputField" 
-                    />
-               
-               {otpSent ? (
-                <>
-                  <div>
-                    <input
-                      type="text"
-                      name="otp"
-                      value={otp}
-                      onChange={handleOtpChange}
                       className="inputField"
-                      maxLength={4}
-                      readOnly={otpVerified}
-                      placeholder="Enter OTP"
                     />
-                    {otpMessage && (
-                      <p style={{ marginTop: "6px", color: otpVerified ? "#0F8CDD" : "red" }}>
-                        {otpMessage}
-                      </p>
+
+                    {otpSent ? (
+                      <>
+                        <div>
+                          <input
+                            type="text"
+                            name="otp"
+                            value={otp}
+                            onChange={handleOtpChange}
+                            className="inputField"
+                            maxLength={4}
+                            readOnly={otpVerified}
+                            placeholder="Enter OTP"
+                          />
+                          {otpMessage && (
+                            <p
+                              style={{
+                                marginTop: "6px",
+                                color: otpVerified ? "#0F8CDD" : "red",
+                              }}
+                            >
+                              {otpMessage}
+                            </p>
+                          )}
+                        </div>
+
+                        <button
+                          type="button"
+                          className="sendOtpButton"
+                          onClick={sendOtpToEmail}
+                        >
+                          Resend OTP
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        type="button"
+                        className="sendOtpButton"
+                        onClick={sendOtpToEmail}
+                      >
+                        Send OTP
+                      </button>
                     )}
-                  </div>
-
-                  <button
-                    type="button"
-                    className="sendOtpButton"
-                    onClick={sendOtpToEmail}
-                  >
-                    Resend OTP
-                  </button>
-                </>
-              ) : (
-                <button
-                  type="button"
-                  className="sendOtpButton"
-                  onClick={sendOtpToEmail}
-                >
-                  Send OTP
-                </button>
-              )}
-
-                    
                   </div>
                 </div>
               </div>
@@ -765,7 +879,11 @@ const UserMerchantRegistration = () => {
             </div>
           </div>
 
-          <div className={`merchantRegistrationFormTop disable ${otpVerified ? "enablewrapper" : ""}`}>
+          <div
+            className={`merchantRegistrationFormTop disable ${
+              otpVerified ? "enablewrapper" : ""
+            }`}
+          >
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Merchant Mailing Address
             </p>
@@ -915,17 +1033,17 @@ const UserMerchantRegistration = () => {
                     Phone <span style={{ color: "red" }}>*</span>
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     name="phone"
                     placeholder=""
                     value={phone}
                     onChange={(e) => handleChangePhone(e.target.value)}
                     className="inputField"
-                    onKeyDown={(e) => {
-                      if (e.key === "Backspace") {
-                        handleClickPhoneBackspace(e);
-                      }
-                    }}
+                    // onKeyDown={(e) => {
+                    //   if (e.key === "Backspace") {
+                    //     handleClickPhoneBackspace(e);
+                    //   }
+                    // }}
                   />
                 </div>
                 {validationError.phoneError && (
@@ -1025,32 +1143,29 @@ const UserMerchantRegistration = () => {
               </div>
             </div>
 
-
-
-<div className="inputRowContainer">
-
-            <div className="inputRow">
-
-              <div className="inputContainer">
-                <label htmlFor="website" className="label">
-                  Website
-                </label>
-                <input
-                  type="text"
-                  name="website"
-                  placeholder=""
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                  className="inputField"
-                />
+            <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="website" className="label">
+                    Website
+                  </label>
+                  <input
+                    type="text"
+                    name="website"
+                    placeholder=""
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                    className="inputField"
+                  />
+                </div>
+                {validationError.websiteError && (
+                  <div className="errorText">
+                    {validationError?.websiteError}
+                  </div>
+                )}
               </div>
-              {validationError.websiteError && (
-                <div className="errorText">{validationError?.websiteError}</div>
-              )}
-            </div>
 
-
-               <div className="inputRow">
+              <div className="inputRow">
                 <div className="inputContainer">
                   <label htmlFor="companyName" className="label">
                     Company Name <span style={{ color: "red" }}>*</span>
@@ -1070,11 +1185,7 @@ const UserMerchantRegistration = () => {
                   </div>
                 )}
               </div>
-
-</div>
-
-
-
+            </div>
 
             <div className="inputRowContainer">
               <div className="inputContainer">
