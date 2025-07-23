@@ -154,7 +154,7 @@ const handleDelete = async (connection) => {
             <tr>
               <th className="th">Created</th>
               <th className="th">Name</th>
-              <th className="th">User email</th>
+              <th className="th">E-mails</th>
               <th className="thActions">Actions</th>
             </tr>
           </thead>
