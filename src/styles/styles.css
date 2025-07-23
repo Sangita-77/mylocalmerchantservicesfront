@@ -35,8 +35,10 @@
 .onboardingPageHeaderMainContainer .dropdown button{border: none;}
 .onboardingPageHeaderMainContainer .dropdown button:hover,
 .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{background: transparent; color: #156fac; }
-.onboardingPageHeaderMainContainer .dropdown-menu{background: rgb(21, 111, 172); width: 270px;}
-.onboardingPageHeaderMainContainer .dropdown-item{background: rgb(21, 111, 172);  color: #fff; white-space: normal;}
+.onboardingPageHeaderMainContainer .dropdown-menu{background: rgb(21, 111, 172); width: 270px; padding: 0; border: none;   box-shadow: 0px 0px 7px #6e6e6e;}
+.onboardingPageHeaderMainContainer .dropdown-item{background: rgb(21, 111, 172);  color: #fff; white-space: normal; font-size: 18px;  padding: 17px 15px 13px;}
+.onboardingPageHeaderMainContainer .dropdown-item:hover{color: rgb(21, 111, 172); background: #d8eeff; transition: .5s;}
+.onboardingPageHeaderMainContainer .dropdown-item:not(:last-child){border-bottom: solid 1px #fff;}
 
 .header_Btn {transition: all .5s ease-in-out; margin: 0; padding: 12px; width: 140px; color: #ffffff; font-size: 17px; font-weight: 700; background: #106cb5; border: none; border-radius: 10px; letter-spacing: 1px; }
 .header_Btn:hover {background: #1C94E4;}
