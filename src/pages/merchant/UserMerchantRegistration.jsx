@@ -696,7 +696,7 @@ const UserMerchantRegistration = () => {
                
                {otpSent ? (
                 <>
-                  <div>
+                  <div className="otp-feild">
                     <input
                       type="text"
                       name="otp"
@@ -716,7 +716,7 @@ const UserMerchantRegistration = () => {
 
                   <button
                     type="button"
-                    className="sendOtpButton"
+                    className={`sendOtpButton disable ${otpVerified ? "d-none" : ""}`}
                     onClick={sendOtpToEmail}
                   >
                     Resend OTP

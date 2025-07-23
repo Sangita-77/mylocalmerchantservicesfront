@@ -66,33 +66,35 @@ const SuperAdminDashboard = () => {
 
   const getCurrentMerchantCount = () => {
     switch (merchantTypeActiveTab) {
+      // case 0:
+      //   return userStats.merchant_count ?? "0";
       case 0:
-        return userStats.merchant_count ?? "0";
-      case 1:
         return userStats.processors_count ?? "0";
-      case 2:
+      case 1:
         return userStats.iso_count ?? "0";
-      case 3:
+      case 2:
         return userStats.agents_count ?? "0";
       default:
-        return userStats.merchant_count ?? "0";
+        return userStats.processors_count ?? "0";
     }
   };
 
   const getMerchantType = () => {
     switch (merchantTypeActiveTab) {
+      // case 0:
+      //   return "merchant services providers";
       case 0:
-        return "merchant services providers";
-      case 1:
         return "processors";
-      case 2:
+      case 1:
         return "ISOs";
-      case 3:
+      case 2:
         return "agents";
       default:
-        return "merchant services providers";
+        return "processors";
     }
   };
+
+
 
   const getMerchantColorClass = (type) => {
     console.log("type",type);
@@ -249,11 +251,11 @@ const SuperAdminDashboard = () => {
           agents_count: res.data.agents_count || 0,
           chartData: [
             {
-              name: "Users",
+              name: "Merchants",
               value: parseFloat((res.data.user_percentage || 0).toFixed(2)),
             },
             {
-              name: "Others",
+              name: "Merchant Services Providers",
               value: parseFloat((res.data.other_percentage || 0).toFixed(2)),
             },
           ],
@@ -484,7 +486,7 @@ const SuperAdminDashboard = () => {
                 <HiUserGroup color="gray" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div className="countPlatetHeading">Number of users</div>
+                <div className="countPlatetHeading">Merchant List</div>
                 <div className="countPlateNumber">{countData?.totalUsers ?? "Loading..."}</div>
                 <div
                   style={{
@@ -523,7 +525,7 @@ const SuperAdminDashboard = () => {
               </div>
             </div>
 
-            <div className="adminDashboardCountPlate">
+            {/* <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
                 <IoStorefrontSharp  color="#fff" size={45} />
               </div>
@@ -543,8 +545,8 @@ const SuperAdminDashboard = () => {
                   View All <FaLongArrowAltRight />
                 </div>
               </div>
-            </div>
-
+            </div> */}
+{/* 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
                 <MdRealEstateAgent color="#585ea1" size={45} />
@@ -565,7 +567,7 @@ const SuperAdminDashboard = () => {
                   View All <FaLongArrowAltRight />
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
@@ -635,7 +637,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <GiDividedSquare color="#0c62d3" size={42} />
+                <GiDividedSquare color="#003c76" size={42} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Approved Processors</div>
@@ -683,7 +685,7 @@ const SuperAdminDashboard = () => {
               <div className="userStatsSection">
                 <div className="userStatsTopContainer">
                   <div className="userStatsTopLeft">
-                    <div className="userStatsTitle">Number of Users</div>
+                    <div className="userStatsTitle">Merchant List</div>
                     <div className="userStatsValue">{userStats.userCount ?? "Loading..."}</div>
                   </div>
 
@@ -781,25 +783,22 @@ const SuperAdminDashboard = () => {
               <div className="adminDashboardPieChart">
               <div className="pieChartTitle">Statistics</div>
 
-              <div className="colorDefineContainer">
+              {/* <div className="colorDefineContainer">
                 <div className="colorDefineSingleItem">
                   <div className="colorBox"></div>
-                  <div className="colorBoxTitle">USER</div>
+                  <div className="colorBoxTitle">Merchant</div>
                 </div>
                 <div className="colorDefineSingleItem">
                   <div
                     className="colorBox"
                     style={{ backgroundColor: "#4d94ab" }}
                   ></div>
-                  <div className="colorBoxTitle">MERCHANT</div>
+                  <div className="colorBoxTitle">Merchant Services Providers</div>
                 </div>
-              </div>
+              </div> */}
 
 
-
-
-
-              {userStats.chartData && (
+          {userStats.chartData && (
                 <div className="userPieChartContainer">
                   <h3 className="chartTitle">User Distribution</h3>
                   <PieChartComponent
@@ -814,7 +813,7 @@ const SuperAdminDashboard = () => {
               <div className="bottomStatisticsCountCntainer">
                 <div className="statisticsCountItem">
                   <div className="statisticsCount">{userStats.otherCount ?? "Loading..."}</div>
-                  <div className="statisticsCountTitle">Total Merchant</div>
+                  <div className="statisticsCountTitle">Merchant Services Providers</div>
                   <div className="statisticsPercentage">
                     <TbArrowBigUpLineFilled size={12} color="#25C95F" /> {" "}
                     +{userStats.otherPercentage.toFixed(1)}%
@@ -823,7 +822,7 @@ const SuperAdminDashboard = () => {
                 <div className="divider"></div>
                 <div className="statisticsCountItem">
                   <div className="statisticsCount">{userStats.userCount ?? "Loading..."}</div>
-                  <div className="statisticsCountTitle">Total User</div>
+                  <div className="statisticsCountTitle">Merchants</div>
                   <div className="statisticsPercentage">
                     <TbArrowBigUpLineFilled size={12} color="#25C95F" /> {" "}
                     +{userStats.userPercentage.toFixed(1)}%
@@ -873,10 +872,10 @@ const SuperAdminDashboard = () => {
             <table className="tableContainer">
               <thead className="theadContainer">
                 <tr>
-                  <th className="th">User name</th>
-                  <th className="th">User email</th>
-                  <th className="th">Connected Merchant</th>
-                  <th className="th">Merchant Email</th>
+                  <th className="th">Merchant name</th>
+                  <th className="th">Merchant email</th>
+                  <th className="th">Connected <br/>Merchant Services Provider</th>
+                  <th className="th">Merchant Services Provider <br/> Email</th>
                   <th className="thActions">Actions</th>
                 </tr>
               </thead>
@@ -935,12 +934,12 @@ const SuperAdminDashboard = () => {
           <div className="dashboardRow">
             <div className="adminDashboardMerchantSection">
               <div className="merchantSectionTopTabbar">
-                <div className={`merchantservice tabbarItem ${merchantTypeActiveTab === 0 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(0)}>
+                {/* <div className={`merchantservice tabbarItem ${merchantTypeActiveTab === 0 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(0)}>
                   Merchant Service Providers
-                </div>
-                <div className={`processors tabbarItem ${merchantTypeActiveTab === 1 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(1)}>Processors</div>
-                <div className={`isos tabbarItem ${merchantTypeActiveTab === 2 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(2)}>ISOs</div>
-                <div className={`agents tabbarItem ${merchantTypeActiveTab === 3 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(3)}>Agents</div>
+                </div> */}
+                <div className={`processors tabbarItem ${merchantTypeActiveTab === 0 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(0)}>Processors</div>
+                <div className={`isos tabbarItem ${merchantTypeActiveTab === 1 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(1)}>ISOs</div>
+                <div className={`agents tabbarItem ${merchantTypeActiveTab === 2 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(2)}>Agents</div>
               </div>
 
               <div className="merchantStatsSection">
@@ -1030,11 +1029,11 @@ const SuperAdminDashboard = () => {
 
                   {percentages ? (
                     <>
-                      <PercentageItem label="Of Users" percentage={percentages.user_percentage} />
-                      <PercentageItem label="Of Merchants" percentage={percentages.merchant_percentage} />
-                      <PercentageItem label="Of Processors" percentage={percentages.processors_percentage} />
-                      <PercentageItem label="Of ISOs" percentage={percentages.iso_percentage} />
-                      <PercentageItem label="Of Agents" percentage={percentages.agents_percentage} last />
+                      <PercentageItem label="of Merchants" percentage={percentages.user_percentage} />
+                      {/* <PercentageItem label="Of Merchants" percentage={percentages.merchant_percentage} /> */}
+                      <PercentageItem label="of Processors" percentage={percentages.processors_percentage} />
+                      <PercentageItem label="of ISOs" percentage={percentages.iso_percentage} />
+                      <PercentageItem label="of Agents" percentage={percentages.agents_percentage} last />
                     </>
                   ) : (
                     <>
