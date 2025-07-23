@@ -537,7 +537,10 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 /* 26.06.25 */
 
 /* //////////////////    MERCHANT REGISTRATION    ////////////////// */
-
+.merchantRegistrationFormTop.disable {opacity: .5; }
+.merchantRegistrationFormTop.disable {pointer-events: none;}
+.merchantRegistrationFormTop.disable.enablewrapper {opacity: 1; }
+.merchantRegistrationFormTop.disable.enablewrapper {pointer-events: auto;}
 .merchantRegistrationWrapper { margin: 0; padding: 0; margin-top: 120px; background-color: white; align-items: center; width: 100vw; }
 .merchantRegistrationTop { margin: 0; padding: 24px; text-align: center; }
 .merchantTopTitle { margin: 0; padding: 0; color: #545454; font-size: 28px; font-weight: 600; font-family: "Poppins"; }
@@ -553,13 +556,14 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .merchantDesignTextureBottom { margin: 0; padding: 0; width: 1308px; height: 254px; background: #1C94E4; }
 .merchantRegistrationForm { margin: 70px auto 200px auto; padding: 50px; background-color: white; width: 70%; position: relative; z-index: 1; }
 .merchantRegistrationForm .registrationFormTitle { margin: 0; padding: 0; margin-bottom: 24px; color: #0052a4; font-size: 24px; font-weight: 500; font-family: "Poppins"; }
-.merchantRegistrationForm .sendOtpButton{border: none; width: 26%; background: #003478; color: #fff; border-radius: 5px;     height: 58px;}
+.merchantRegistrationForm .sendOtpButton{border: none; width: 48%; background: #003478; color: #fff; border-radius: 5px;     height: 58px;}
 .merchantRegistrationForm .merchantRegistrationFormTop { margin: 0; }
 .merchantRegistrationForm .inputRowContainer { margin: 18px 0; padding: 0; width: 100%; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; border: none; border-bottom: 1px; border-color: #dadada; }
 .merchantRegistrationForm .inputRow { display: flex; flex-direction: column; align-items: flex-start; width: 48%;}
 .merchantRegistrationForm .inputContainer { margin: 0; padding: 0; width: 100%;  align-items: center; gap: 0; background-color: #ffffff; border: none; overflow: hidden; border-radius: 6px;}
 .merchantRegistrationForm .inputContainer .label { margin: 0;  padding: 12px 0; color: gray; font-size: 15px; background-color: #ffffff; }
 .merchantRegistrationForm .inputField { margin: 0; padding: 0 24px; width: 100%; font-size: 14px; letter-spacing: 0.5px; border: none; outline: none; height: 58px; border-radius: 6px; border: solid 1px #9b9898;}
+.merchantRegistrationForm .otp-feild .inputField{padding: 0 7px; text-align: center;} 
 .merchantRegistrationForm input[type=number]::-webkit-inner-spin-button, 
 .merchantRegistrationForm input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 .merchantRegistrationForm textarea.inputField{height: 155px; padding: 25px;}
