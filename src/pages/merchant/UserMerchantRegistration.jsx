@@ -156,6 +156,7 @@ const UserMerchantRegistration = () => {
       setLoading(true);
       setError("");
 
+      // --------
       if (
         !email ||
         !companyName ||
@@ -257,6 +258,7 @@ const UserMerchantRegistration = () => {
           alternateEmailError: "Email and Alternate email cannot be same!!",
         }));
       }
+      // ------
 
       const body = {
         flag: "user",
@@ -660,7 +662,7 @@ const UserMerchantRegistration = () => {
   return (
     <div className="merchantRegistrationWrapper">
       <div className="merchantRegistrationTop">
-        <p className="merchantTopTitle">Merchant Company Registration </p>
+        <h1 className="merchantTopTitle">Merchant Company Registration </h1>
       </div>
 
       <div className="merchantRegsitrationInnerContainer">
