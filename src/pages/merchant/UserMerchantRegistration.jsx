@@ -805,7 +805,6 @@ const UserMerchantRegistration = () => {
                       placeholder=""
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-<<<<<<< HEAD
                       className="inputField" 
                     />
                
@@ -817,8 +816,6 @@ const UserMerchantRegistration = () => {
                       name="otp"
                       value={otp}
                       onChange={handleOtpChange}
-=======
->>>>>>> 4af1588b42427e183c12c45d14ccff7796ecdc59
                       className="inputField"
                     />
 
@@ -865,7 +862,6 @@ const UserMerchantRegistration = () => {
                       </button>
                     )}
                   </div>
-<<<<<<< HEAD
 
                   <button
                     type="button"
@@ -887,8 +883,6 @@ const UserMerchantRegistration = () => {
 
                     
                   </div>
-=======
->>>>>>> 4af1588b42427e183c12c45d14ccff7796ecdc59
                 </div>
               </div>
               {/* {otpSent && (
