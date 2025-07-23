@@ -22,6 +22,29 @@ const LoginModal = ({ handleClose }) => {
     passwordError: "",
     flagError: "",
   });
+  const [showPasswordRules, setShowPasswordRules] = useState(false);
+  const [passwordValidationStatus, setPasswordValidationStatus] = useState({
+    length: false,
+    lowercase: false,
+    uppercase: false,
+    number: false,
+    specialChar: false,
+  });
+
+  const validatePasswordRules = (password) => {
+    return {
+      length: password.length >= 8 && password.length <= 12,
+      lowercase: /[a-z]/.test(password),
+      uppercase: /[A-Z]/.test(password),
+      number: /[0-9]/.test(password),
+      specialChar: /[^A-Za-z0-9]/.test(password),
+    };
+  };
+
+  useEffect(() => {
+    setPasswordValidationStatus(validatePasswordRules(password));
+  }, [password]);
+  
 
   const navigate = useNavigate();
 
@@ -62,13 +85,15 @@ const LoginModal = ({ handleClose }) => {
       // return;
     }
 
+    // console.log("passwordddddddddddddddddddddd",password);
+
     try {
       setLoading(true);
       setError("");
 
       const body = {
         user_id: email,
-        password: parseInt(password),
+        password: password,
         // flag: "merchant",
       };
 
@@ -221,7 +246,30 @@ const LoginModal = ({ handleClose }) => {
                   className="loginFormInputField"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  onFocus={() => setShowPasswordRules(true)}
+                  onBlur={() => setTimeout(() => setShowPasswordRules(false), 200)} // delay to allow click on rules
                 />
+                        {showPasswordRules && (
+  <div className="passwordRulesContainer">
+    <ul className="passwordRulesList">
+      <li style={{ color: passwordValidationStatus.length ? "green" : "red" }}>
+        Minimum 8 & maximum 12 characters
+      </li>
+      <li style={{ color: passwordValidationStatus.lowercase ? "green" : "red" }}>
+        At least one lowercase letter
+      </li>
+      <li style={{ color: passwordValidationStatus.uppercase ? "green" : "red" }}>
+        At least one uppercase letter
+      </li>
+      <li style={{ color: passwordValidationStatus.number ? "green" : "red" }}>
+        At least one number
+      </li>
+      <li style={{ color: passwordValidationStatus.specialChar ? "green" : "red" }}>
+        At least one special character
+      </li>
+    </ul>
+  </div>
+)}
               </div>
 
               {validationError.passwordError && (

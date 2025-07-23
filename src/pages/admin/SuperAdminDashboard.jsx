@@ -103,8 +103,6 @@ const SuperAdminDashboard = () => {
         return "flag-processor";
       case "isos":
         return "flag-iso";
-      case "merchant services providers":
-        return "flag-service";
       default:
         return "flag-default";
     }

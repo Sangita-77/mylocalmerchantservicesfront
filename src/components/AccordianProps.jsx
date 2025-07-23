@@ -27,7 +27,7 @@ const AccordianProps = (props) => {
           <th>Merchant Id</th>
           <th>Merchant Name</th>
           <th>Location</th>
-          <th>Category</th>
+          <th>E-mail</th>
           <th>Action</th>
         </tr>
       </thead>

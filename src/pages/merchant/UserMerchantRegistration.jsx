@@ -86,6 +86,7 @@ const UserMerchantRegistration = () => {
       phoneError: error,
     }));
   };
+  
 
   const handleChangeZipCode = (value) => {
     if (zipCode?.length === 7) return;
@@ -132,86 +133,75 @@ const UserMerchantRegistration = () => {
   };
 
   // validation
-  const validateForm = () => {
-    let isValid = true;
-    let errors = {};
+  // const validateForm = () => {
+  //   let isValid = true;
+  //   let errors = {};
 
-    if (!type) {
-      errors.typeError = "User type is required!";
-      isValid = false;
-    }
-    if (!email) {
-      errors.emailError = "Email is required!";
-      isValid = false;
-    } else if (!emailRegex.test(email)) {
-      errors.emailError = "Invalid email format!";
-      isValid = false;
-    }
-    if (alternateEmail) {
-      if (!emailRegex.test(alternateEmail)) {
-        errors.alternateEmailError = "Invalid alternate email!";
-        isValid = false;
-      }
-      if (alternateEmail === email) {
-        errors.alternateEmailError =
-          "Email and Alternate email cannot be same!";
-        isValid = false;
-      }
-    }
-    if (!companyName) {
-      errors.companyNameError = "Company name is required!";
-      isValid = false;
-    }
-    if (!merchantName) {
-      errors.merchantNameError = "Merchant name is required!";
-      isValid = false;
-    }
-    if (!street) {
-      errors.streetError = "Street name is required!";
-      isValid = false;
-    }
-    if (!city) {
-      errors.cityError = "City is required!";
-      isValid = false;
-    }
-    if (!state) {
-      errors.stateError = "State is required!";
-      isValid = false;
-    }
-    if (!zipCode) {
-      errors.zipCodeError = "Zip code is required!";
-      isValid = false;
-    } else if (zipCode.length < 5 || zipCode.length > 9) {
-      errors.zipCodeError = "Invalid zip code!";
-      isValid = false;
-    }
-    if (!phone) {
-      errors.phoneError = "Phone number is required!";
-      isValid = false;
-    } else if (phone.length !== 10) {
-      errors.phoneError = "Invalid phone number!";
-      isValid = false;
-    }
-    if (!industry) {
-      errors.industryError = "Industry is required!";
-      isValid = false;
-    }
-    if (!typeOfServices) {
-      errors.serviceError = "Type of service is required!";
-      isValid = false;
-    }
-    if (website && !website.startsWith("http")) {
-      errors.websiteError = "Website must start with http:// or https://";
-      isValid = false;
-    }
-    if (!isChecked) {
-      setError("Please verify that you are a human (check the checkbox)!");
-      isValid = false;
-    }
+  //   if (!type) {
+  //     errors.typeError = "User type is required!";
+  //     isValid = false;
+  //   }
+  //   if (!email) {
+  //     errors.emailError = "Email is required!";
+  //     isValid = false;
+  //   } else if (!emailRegex.test(email)) {
+  //     errors.emailError = "Invalid email format!";
+  //     isValid = false;
+  //   }
+  //   if (!companyName) {
+  //     errors.companyNameError = "Company name is required!";
+  //     isValid = false;
+  //   }
+  //   if (!merchantName) {
+  //     errors.merchantNameError = "Merchant name is required!";
+  //     isValid = false;
+  //   }
+  //   if (!street) {
+  //     errors.streetError = "Street name is required!";
+  //     isValid = false;
+  //   }
+  //   if (!city) {
+  //     errors.cityError = "City is required!";
+  //     isValid = false;
+  //   }
+  //   if (!state) {
+  //     errors.stateError = "State is required!";
+  //     isValid = false;
+  //   }
+  //   if (!zipCode) {
+  //     errors.zipCodeError = "Zip code is required!";
+  //     isValid = false;
+  //   } else if (zipCode.length < 5 || zipCode.length > 9) {
+  //     errors.zipCodeError = "Invalid zip code!";
+  //     isValid = false;
+  //   }
+  //   if (!phone) {
+  //     errors.phoneError = "Phone number is required!";
+  //     isValid = false;
+  //   } else if (phone.length !== 10) {
+  //     errors.phoneError = "Invalid phone number!";
+  //     isValid = false;
+  //   }
+  //   if (!industry) {
+  //     errors.industryError = "Industry is required!";
+  //     isValid = false;
+  //   }
+  //   if (!typeOfServices) {
+  //     errors.serviceError = "Type of service is required!";
+  //     isValid = false;
+  //   }
+  //   if (website && !website.startsWith("http")) {
+  //     errors.websiteError = "Website must start with http:// or https://";
+  //     isValid = false;
+  //   }
+  //   if (!isChecked) {
+  //     setError("Please verify that you are a human (check the checkbox)!");
+  //     isValid = false;
+  //   }
 
-    setValidationError((prev) => ({ ...prev, ...errors }));
-    return isValid;
-  };
+  //   setValidationError((prev) => ({ ...prev, ...errors }));
+  //   return isValid;
+  // };
 
   const handleRegisterMerchant = async () => {
     // if (rejectRegistration === true) {
@@ -238,120 +228,127 @@ const UserMerchantRegistration = () => {
       setMessage("Please verify your email with the OTP before registering.");
       return;
     }
-    if (!validateForm()) {
-      setShowToast(true);
-      setSeverity("error");
-      setMessageTitle("Validation Error");
-      setMessage("Please fill the required field in the form.");
-      return;
-    }
+    // if (!validateForm()) {
+    //   setShowToast(true);
+    //   setSeverity("error");
+    //   setMessageTitle("Validation Error");
+    //   setMessage("Please fill the required field in the form.");
+    //   return;
+    // }
     try {
       setLoading(true);
       setError("");
 
-      // --------
-      // if (
-      //   !email ||
-      //   !companyName ||
-      //   !merchantName ||
-      //   !street ||
-      //   !city ||
-      //   !state ||
-      //   !zipCode ||
-      //   !phone ||
-      //   !industry ||
-      //   !typeOfServices
-      // ) {
-      //   if (!email) {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       emailError: "Email is required!",
-      //     }));
-      //   }
-      //   if (!companyName) {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       conpanyNameError: "Company name is required!",
-      //     }));
-      //   }
-      //   if (!merchantName) {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       merchantNameError: "Merchant name is required!",
-      //     }));
-      //   }
-      //   if (!street) {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       streetError: "Street name is required!",
-      //     }));
-      //   }
-      //   if (!city) {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       cityError: "City name is required!",
-      //     }));
-      //   }
-      //   if (!state) {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       stateError: "State name is required!",
-      //     }));
-      //   }
-      //   if (zipCode) {
-      //     if (zipCode?.length < 5 || zipCode?.length > 9) {
-      //       setValidationError((prev) => ({
-      //         ...prev,
-      //         zipCodeError: "Invalid zip code!",
-      //       }));
-      //     }
-      //   } else {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       zipCodeError: "Zip code is required!",
-      //     }));
-      //   }
+      if (
+        !email ||
+        !companyName ||
+        !merchantName ||
+        !street ||
+        !city ||
+        !state ||
+        !zipCode ||
+        !phone ||
+        !industry ||
+        !typeOfServices
+      ) {
+        if (!email) {
+          setValidationError((prev) => ({
+            ...prev,
+            emailError: "Email is required!",
+          }));
+        }
+        if (!companyName) {
+          setValidationError((prev) => ({
+            ...prev,
+            conpanyNameError: "Company name is required!",
+          }));
+        }
+        if (!merchantName) {
+          setValidationError((prev) => ({
+            ...prev,
+            merchantNameError: "Merchant name is required!",
+          }));
+        }
+        if (!street) {
+          setValidationError((prev) => ({
+            ...prev,
+            streetError: "Street name is required!",
+          }));
+        }
+        if (!city) {
+          setValidationError((prev) => ({
+            ...prev,
+            cityError: "City name is required!",
+          }));
+        }
+        if (!state) {
+          setValidationError((prev) => ({
+            ...prev,
+            stateError: "State name is required!",
+          }));
+        }
+        if (zipCode) {
+          if (zipCode?.length < 5 || zipCode?.length > 9) {
+            setValidationError((prev) => ({
+              ...prev,
+              zipCodeError: "Invalid zip code!",
+            }));
+          }
+        } else {
+          setValidationError((prev) => ({
+            ...prev,
+            zipCodeError: "Zip code is required!",
+          }));
+        }
 
-      //   if (phone) {
-      //     if (phone?.length < 10 || phone?.length > 10) {
-      //       setValidationError((prev) => ({
-      //         ...prev,
-      //         phoneError: "Invalid phone number!",
-      //       }));
-      //     }
-      //   } else {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       phoneError: "Phone number is required!",
-      //     }));
-      //   }
-      //   if (!industry) {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       industryError: "Type of Industry is required!",
-      //     }));
-      //   }
-      //   if (!typeOfServices) {
-      //     setValidationError((prev) => ({
-      //       ...prev,
-      //       serviceError: "Type of service is required!",
-      //     }));
-      //   }
-      //   if (isChecked === false) {
-      //     return setError(
-      //       "Please verify that you are a human (check the checkbox)!"
-      //     );
-      //   }
-      //   return;
-      // }
+        if (phone) {
+          // Remove all non-digit characters (e.g., spaces, dashes, parentheses)
+          const cleanedPhone = phone.replace(/\D/g, "");
+        
+          if (cleanedPhone.length !== 10) {
+            setValidationError((prev) => ({
+              ...prev,
+              phoneError: "Phone is required {format - 1234567890}",
+            }));
+          } else {
+            setValidationError((prev) => ({
+              ...prev,
+              phoneError: "",
+            }));
+          }
+        } else {
+          setValidationError((prev) => ({
+            ...prev,
+            phoneError: "Phone number is required!",
+          }));
+        }
+        
+        if (!industry) {
+          setValidationError((prev) => ({
+            ...prev,
+            industryError: "Type of Industry is required!",
+          }));
+        }
+        if (!typeOfServices) {
+          setValidationError((prev) => ({
+            ...prev,
+            serviceError: "Type of service is required!",
+          }));
+        }
+        if (isChecked === false) {
+          return setError(
+            "Please verify that you are a human (check the checkbox)!"
+          );
+        }
+        return;
+      }
 
-      // if (email === alternateEmail) {
-      //   return setValidationError((prev) => ({
-      //     ...prev,
-      //     alternateEmailError: "Email and Alternate email cannot be same!!",
-      //   }));
-      // }
-      // ------
+      if (email === alternateEmail) {
+        return setValidationError((prev) => ({
+          ...prev,
+          alternateEmailError: "Email and Alternate email cannot be same!!",
+        }));
+      }
 
       const body = {
         flag: "user",
@@ -424,6 +421,7 @@ const UserMerchantRegistration = () => {
       setLoading(false);
     }
   };
+
 
   const searchAddressByZipcode = async () => {
     try {
@@ -763,11 +761,14 @@ const UserMerchantRegistration = () => {
   }, [token]);
 
   const validateUSPhoneNumber = (value) => {
-    const pattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     if (!value) return "Phone number is required.";
-    if (!pattern.test(value)) return "Invalid US phone number format.";
+  
+    const cleaned = value.replace(/\D/g, ""); // Remove all non-digits
+    if (cleaned.length !== 10) return "Monthly Volume Processed by your merchants";
+  
     return "";
   };
+  
 
 
   return (
@@ -1037,13 +1038,12 @@ const UserMerchantRegistration = () => {
                     name="phone"
                     placeholder=""
                     value={phone}
-                    onChange={(e) => handleChangePhone(e.target.value)}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, ""); // digits only
+                      handleChangePhone(val);
+                    }}
+                    maxLength={10}
                     className="inputField"
-                    // onKeyDown={(e) => {
-                    //   if (e.key === "Backspace") {
-                    //     handleClickPhoneBackspace(e);
-                    //   }
-                    // }}
                   />
                 </div>
                 {validationError.phoneError && (
