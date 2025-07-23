@@ -16,7 +16,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [phone, setPhone] = useState(user.phone);
   const [typeOfServices, setTypeOfServices] = useState(user.type_of_service);
   const [companyName, setcompanyName] = useState(user.company_name);
-  const [street, setstreet] = useState(user.street);
+  const [street, setstreet] = useState(user.city);
   const [city, setcity] = useState(user.city);
   const [state, setstate] = useState(user.state);
   const [zip_code, setzip_code] = useState(user.zip_code);
@@ -210,7 +210,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
             </select>
           </div>
           <div className="formGroup">
-            <label>Street:</label>
+            <label>City:</label>
             <input type="text" value={street} onChange={(e) => setstreet(e.target.value)} />
           </div>
           <div className="formGroup">

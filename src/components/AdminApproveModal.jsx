@@ -120,21 +120,21 @@ const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
             <input type="text" value={user.user_id} readOnly />
           </div>
           <div className="formGroup">
-            <label>Industry:</label>
-            <input type="text" value={user.industry} readOnly />
+            <label>Company Name:</label>
+            <input type="text" value={user.company_name} readOnly />
           </div>
           <div className="formGroup">
             <label>Phone:</label>
             <input type="text" value={user.phone} readOnly />
           </div>
-          <div className="formGroup">
+          {/* <div className="formGroup">
             <label>Typ of services:</label>
             <input type="text" value={user.type_of_service} readOnly />
-          </div>
+          </div> */}
           <div className="formGroup">
             <label>Address:</label>
             <textarea
-              value={`${user.street}, ${user.city}, ${user.state}, ${user.zip_code}`}
+              value={`${user.city}, ${user.city}, ${user.state}, ${user.zip_code}`}
               readOnly
             ></textarea>
           </div>
