@@ -79,7 +79,7 @@ const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
     try {
       const body = { user_id: selectedUserId, flag: flag };
       const res = await axios.post(
-        `${BASE_URL}/deleteUser`,
+        `${BASE_URL}/sendMailToReject`,
         JSON.stringify(body),
         {
           headers: {
