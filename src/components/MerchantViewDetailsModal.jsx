@@ -52,7 +52,7 @@ fetchDataToggleViewDetailsModal()
     const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
   
     if (!user_id || !isAuthenticated) {
-      navigate("/registration");
+      navigate("/merchant-registration");
       setIsLoading(false);
       return;
     }
@@ -118,7 +118,7 @@ fetchDataToggleViewDetailsModal()
             
             <div className="dataRowContainer">
               <div className="dataTitle">Name : </div>
-              <div className="data">{data?.merchant_name}</div>
+              <div className="data">{data?.first_name} {data?.last_name}</div>
             </div>
 
             <div className="dataRowContainer">
@@ -127,57 +127,20 @@ fetchDataToggleViewDetailsModal()
             </div>
 
             <div className="dataRowContainer">
-              <div className="dataTitle">Industry : </div>
-              <div className="data">{data?.industry}</div>
-            </div>
-
-            <div className="dataRowContainer">
               <div className="dataTitle">Phone : </div>
               <div className="data">{data?.phone}</div>
             </div>
 
             <div className="dataRowContainer">
-              <div className="dataTitle">Type of service : </div>
-              <div className="data">{data?.type_of_service}</div>
-            </div>
-
-            <div className="dataRowContainer">
-              <div className="dataTitle">Street : </div>
-              <div className="data">{data?.street}</div>
-            </div>
-
-            <div className="dataRowContainer">
-              <div className="dataTitle">City : </div>
-              <div className="data">{data?.city}</div>
-            </div>
-
-            <div className="dataRowContainer">
-              <div className="dataTitle">State : </div>
-              <div className="data">{data?.state}</div>
-            </div>
-
-            <div className="dataRowContainer">
-              <div className="dataTitle">Zip code : </div>
-              <div className="data">{data?.zip_code}</div>
-            </div>
-
-            <div className="dataRowContainer">
-              <div className="dataTitle">Country : </div>
-              <div className="data">{data?.county}</div>
-            </div>
-
-            <div className="dataRowContainer">
               <div className="dataTitle">Full Address : </div>
               <div className="data">
-                {data?.street +
-                  ", " +
-                  data?.city +
+                { data?.city +
                   " - " +
                   data?.zip_code +
                   ", " +
                   data?.state +
                   ", " +
-                  data?.county}
+                  "US"}
               </div>
             </div>
 
@@ -192,19 +155,28 @@ fetchDataToggleViewDetailsModal()
             </div>
 
             <div className="dataRowContainer">
-              <div className="dataTitle">Email : </div>
-              <div className="data">{data?.email}</div>
-            </div>
-
-            <div className="dataRowContainer">
               <div className="dataTitle">Website : </div>
-              <div className="data">{data?.website}</div>
+              <div className="data">{data?.website || "NA"}</div>
             </div>
 
             <div className="dataRowContainer">
-              <div className="dataTitle">Company description : </div>
-              <div className="data">{data?.company_description}</div>
+              <div className="dataTitle">Distance Willing to Travel : </div>
+              <div className="data">{data?.DistanceWilling}</div>
             </div>
+            {data?.clientPublicly === "yes" && (
+              <div className="dataRowContainer">
+                <div className="dataTitle">Serviced Clients :</div>
+                <div className="data">{data?.clientCount}</div>
+              </div>
+            )}
+
+            {data?.volumePublicly === "yes" && (
+              <div className="dataRowContainer">
+                <div className="dataTitle">Monthly Volume Processed by your merchants :</div>
+                <div className="data">{data?.VolumeProcessed}</div>
+              </div>
+            )}
+                      
 
             <button
               className="modalConnectBtn"
