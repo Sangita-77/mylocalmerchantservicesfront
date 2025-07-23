@@ -108,7 +108,7 @@ const confirmDelete = async () => {
               <thead className="theadContainer">
                 <tr>
                   <th className="th">Name</th>
-                  <th className="th">Email</th>
+                  <th className="th">E-mail</th>
                   <th className="th">Industry</th>
                   <th className="thActions">Actions</th>
                 </tr>

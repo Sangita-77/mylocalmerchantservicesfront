@@ -169,7 +169,7 @@ const MerchantList = () => {
                 <input
                   type="text"
                   className="searchInput"
-                  placeholder="Search by name"
+                  placeholder="Search By Name"
                   value={searchByName}
                   onChange={(e) => {
                     const val = e.target.value;
@@ -189,7 +189,7 @@ const MerchantList = () => {
                 <input
                   type="text"
                   className="searchInput"
-                  placeholder="Search by state"
+                  placeholder="Search By State"
                   value={searchByState}
                   onChange={(e) => setSearchByState(e.target.value)}
                 />
@@ -202,7 +202,7 @@ const MerchantList = () => {
                 <input
                   type="text"
                   className="searchInput"
-                  placeholder="Search by zipcode"
+                  placeholder="Search By Zipcode"
                   value={searchByZip}
                   onChange={(e) => {
                     const val = e.target.value;
@@ -246,7 +246,7 @@ const MerchantList = () => {
                     <thead className="theadContainer" style={{ backgroundColor: "#71cdea" }}>
                       <tr>
                         <th className="th">Name</th>
-                        <th className="th">Email</th>
+                        <th className="th">E-mail</th>
                         <th className="th">State</th>
                         <th className="thActions">Actions</th>
                       </tr>
