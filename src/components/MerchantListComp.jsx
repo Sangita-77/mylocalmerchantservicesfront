@@ -97,8 +97,8 @@ const handleEditClick = (user) => {
               <tr key={user.id || index}>
                 <td>{user.merchant_id}</td>
                 <td>{user.merchant_name}</td>
-                <td>{user.street} , {user.city} , Zip - {user.zip_code}</td>
-                <td>{user.type_of_service}</td>
+                <td>{user.city} , {user.city} , Zip - {user.zip_code}</td>
+                <td>{user.user_id}</td>
                 <td>
                   <button className="viewButton" onClick={() => handleViewClick(user)} data-bs-toggle="tooltip" data-bs-placement="auto" title="View Details">
                     <PiEyeLight size={22} color="white" />
@@ -145,8 +145,8 @@ const handleEditClick = (user) => {
                 <tr key={user.id || index}>
                   <td>{user.merchant_id}</td>
                   <td>{user.merchant_name}</td>
-                  <td>{user.street} , {user.city} , Zip - {user.zip_code}</td>
-                  <td>{user.type_of_service}</td>
+                  <td>{user.city} , {user.city} , Zip - {user.zip_code}</td>
+                  <td>{user.user_id}</td>
                   <td>
                     <button className="viewButton" onClick={() => handleApproveClick(user)} data-bs-toggle="tooltip" data-bs-placement="auto" title="View Details">
                       <PiEyeLight size={22} color="white" />

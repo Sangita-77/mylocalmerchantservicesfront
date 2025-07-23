@@ -247,16 +247,16 @@ const MerchantList = () => {
                       <tr>
                         <th className="th">Name</th>
                         <th className="th">Email</th>
-                        <th className="th">Industry</th>
+                        <th className="th">State</th>
                         <th className="thActions">Actions</th>
                       </tr>
                     </thead>
                     <tbody className="tbodyContainer">
                       {tableData.map((row, i) => (
                         <tr className="tr" key={i}>
-                          <td className="td">{row?.merchant_name}</td>
+                          <td className="td">{row?.first_name || ''} {row?.last_name || ''} {row?.merchant_name || ''}</td>
                           <td className="td">{row?.user_id}</td>
-                          <td className="td">{row?.industry}</td>
+                          <td className="td">{row?.state}</td>
                           <td className="actionTd">
                             <button
                               className="viewButton"
