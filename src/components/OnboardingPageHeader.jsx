@@ -135,16 +135,19 @@ const OnboardingPageHeader = () => {
             </div>
           ) : (
             <>
-              <div
+              {/* <div
                 className={`li_item ${
                   location.pathname === routes.msr_registration() && `li_item_active`
                 }`}
                 onClick={() => navigate(routes.msr_registration())}
               >
                 Registration
-              </div>
+              </div> */}
       <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic"  >
+      <Dropdown.Toggle id="dropdown-basic"  
+      className={`li_item ${ location.pathname === routes.msr_registration() && `li_item_active` }
+      ${ location.pathname === routes.user_registration() && `li_item_active` }`}
+      >
         Registration
       </Dropdown.Toggle>
 
@@ -154,7 +157,9 @@ const OnboardingPageHeader = () => {
                 onClick={() => navigate(routes.msr_registration())}>
                   Merchant Service providers Registration
         </Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Merchant Registration</Dropdown.Item>
+          <Dropdown.Item 
+         className={`li_item ${ location.pathname === routes.user_registration() && `li_item_active` }`}
+                onClick={() => navigate(routes.user_registration())}>Merchant Registration</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
 

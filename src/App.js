@@ -148,7 +148,7 @@ function App() {
             element: <MerchantRegistration />,
           },
           {
-            path: "/registration",
+            path: "/merchant-registration",
             element: <UserMerchantRegistration />,
           },
           {

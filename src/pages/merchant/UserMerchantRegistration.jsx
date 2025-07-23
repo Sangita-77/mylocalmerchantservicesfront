@@ -287,7 +287,7 @@ const UserMerchantRegistration = () => {
       };
 
       const response = await axios.post(
-        `${BASE_URL}/registration`,
+        `${BASE_URL}/registration_merchant`,
         JSON.stringify(body),
         {
           headers: {
@@ -668,8 +668,8 @@ const UserMerchantRegistration = () => {
   }, [token]);
 
   return (
-    <div className="UserMerchantRegistrationWrapper">
-      <div className="UserMerchantRegistrationTop">
+    <div className="merchantRegistrationWrapper">
+      <div className="merchantRegistrationTop">
         <p className="merchantTopTitle">Merchant Company Registration </p>
       </div>
 
@@ -684,8 +684,8 @@ const UserMerchantRegistration = () => {
         </div>
 
         {/* /////////   FORM STARTS    ////////// */}
-        <div className="UserMerchantRegistrationForm">
-          <div className="UserMerchantRegistrationFormTop">
+        <div className="merchantRegistrationForm">
+          <div className="merchantRegistrationFormTop">
             <p className="registrationFormTitle">Registration Detail</p>
 
             <div className="inputRow">
@@ -809,7 +809,7 @@ const UserMerchantRegistration = () => {
             </div>
           </div>
 
-          <div className="UserMerchantRegistrationFormTop">
+          <div className="merchantRegistrationFormTop">
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Merchant Mailing Address
             </p>

@@ -32,6 +32,11 @@
 .li_item { margin: 0; padding: 0; color: #000000; background-color: white; font-size: 20px; line-height: 22px; letter-spacing: 0.5px; font-weight: 500; font-family: "Josefin Sans"; user-select: none; -moz-user-select: none; }
 .li_item_active { color: #156fac; }
 .li_item:hover { transition: 150ms ease; cursor: pointer; color: #156fac; }
+.onboardingPageHeaderMainContainer .dropdown button{border: none;}
+.onboardingPageHeaderMainContainer .dropdown button:hover,
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{background: transparent; color: #156fac; }
+.onboardingPageHeaderMainContainer .dropdown-menu{background: rgb(21, 111, 172); width: 270px;}
+.onboardingPageHeaderMainContainer .dropdown-item{background: rgb(21, 111, 172);  color: #fff; white-space: normal;}
 
 .header_Btn {transition: all .5s ease-in-out; margin: 0; padding: 12px; width: 140px; color: #ffffff; font-size: 17px; font-weight: 700; background: #106cb5; border: none; border-radius: 10px; letter-spacing: 1px; }
 .header_Btn:hover {background: #1C94E4;}
@@ -566,11 +571,10 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .verificationCaptchaImg { width: 50px; height: 50px; object-fit: contain; }
 .verificationHeading { margin: 36px 0 20px 0; padding: 0; color: #acacac; font-family: "Poppins"; font-size: 15px; font-weight: 400; }
 .verificationBoxRightBottom { display: flex; flex-direction: row; align-items: center; gap: 8px; }
-<<<<<<< HEAD
+
 /* .grayText { color: #fff; font-size: 12px; } */
-=======
 .grayText { color: gray; font-size: 12px; }
->>>>>>> befdc6d23a36688f0204db0ca79e742e6dc54e3d
+
 .dot { width: 6px; height: 6px; background-color: gray; border: none; border-radius: 50%; }
 
 .registerButton{ margin: 0; padding: 0; width: 260px; height: 70px; background: #106ebc; font-family: "Poppins"; color: #ffffff; font-size: 22px; font-weight: 700; text-align: center; letter-spacing: 0.6px; border: none; outline: none; border-radius: 4px; cursor: pointer; }
