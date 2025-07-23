@@ -22,6 +22,7 @@ import ForgetPassword from "./pages/ForgetPassword";
 import "./styles/styles.css";
 import ResetPassword from "./pages/ResetPassword";
 import MerchantRegistration from "./pages/merchant/MerchantRegistration";
+import UserMerchantRegistration from "./pages/merchant/UserMerchantRegistration";
 import AdminSidebar from "./components/AdminSidebar";
 import SuperAdminDashboard from "./pages/admin/SuperAdminDashboard";
 import AdminMerchantList from "./pages/admin/AdminMerchantList";
@@ -143,8 +144,12 @@ function App() {
             element: <OnboardingPage />,
           },
           {
-            path: "/registration",
+            path: "/merchant-service-providers-registration",
             element: <MerchantRegistration />,
+          },
+          {
+            path: "/registration",
+            element: <UserMerchantRegistration />,
           },
           {
             path: "/forget-password",

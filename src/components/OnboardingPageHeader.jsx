@@ -11,6 +11,7 @@ import { apiErrorHandler } from "../utils/helper";
 import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import LoginModal from "../components/LoginModal";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const OnboardingPageHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -50,7 +51,7 @@ const OnboardingPageHeader = () => {
       // Clear session
       localStorage.removeItem("is_authenticated");
       localStorage.removeItem("user_id");
-      window.location.href = routes.registration(); // or navigate()
+      window.location.href = routes.msr_registration(); // or navigate()
     } catch (error) {
       console.log(error);
       const errMsg = apiErrorHandler(error);
@@ -127,7 +128,7 @@ const OnboardingPageHeader = () => {
                 handleLogout();
                 localStorage.removeItem("is_authenticated");
                 localStorage.removeItem("user_id");
-                navigate(routes.registration()); // Redirect after logout
+                navigate(routes.msr_registration()); // Redirect after logout
               }}
             >
               Logout
@@ -136,16 +137,30 @@ const OnboardingPageHeader = () => {
             <>
               <div
                 className={`li_item ${
-                  location.pathname === routes.registration() && `li_item_active`
+                  location.pathname === routes.msr_registration() && `li_item_active`
                 }`}
-                onClick={() => navigate(routes.registration())}
+                onClick={() => navigate(routes.msr_registration())}
               >
                 Registration
               </div>
+      <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic"  >
+        Registration
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item 
+         className={`li_item ${ location.pathname === routes.msr_registration() && `li_item_active` }`}
+                onClick={() => navigate(routes.msr_registration())}>
+                  Merchant Service providers Registration
+        </Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Merchant Registration</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
 
                 <div
                 className={`li_item ${
-                  location.pathname === routes.registration() && `li_item_active`
+                  location.pathname === routes.msr_registration() && `li_item_active`
                 }`}
                 onClick={() => setShowLogin(true)}
                 >

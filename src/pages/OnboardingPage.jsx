@@ -300,7 +300,7 @@ const OnboardingPage = () => {
             <ButtonLarge
               title={"Register Your Merchant"}
               icon={<GoArrowRight size={32} />}
-              onClick={() => navigate(routes.registration())}
+              onClick={() => navigate(routes.msr_registration())}
             />
         </div>
       </div>
@@ -358,7 +358,7 @@ const OnboardingPage = () => {
             <ButtonLarge
               title={"Register Your Merchant"}
               icon={<GoArrowRight size={32} color="#000000" />}
-              onClick={() => navigate(routes.registration())}
+              onClick={() => navigate(routes.msr_registration())}
             />
           </div>
         </div>
@@ -380,7 +380,7 @@ const OnboardingPage = () => {
           <ButtonLarge
             title={"Register Now"}
             icon={<GoArrowRight size={32} color="#000000" />}
-            onClick={() => navigate(routes.registration())}
+            onClick={() => navigate(routes.msr_registration())}
           />
       </div>
 

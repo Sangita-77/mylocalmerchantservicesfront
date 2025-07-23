@@ -12,7 +12,7 @@ import { routes } from "../../utils/routes";
 import check from "./../../assets/images/icons8-check.gif";
 import cross from "./../../assets/images/icons8-cross.gif";
 
-const MerchantRegistration = () => {
+const UserMerchantRegistration = () => {
   const [loadingData, setLoadingData] = useState(false);
   const [usersType, setUsersType] = useState([]);
   const [industriesType, setIndustriesType] = useState([]);
@@ -668,8 +668,8 @@ const MerchantRegistration = () => {
   }, [token]);
 
   return (
-    <div className="merchantRegistrationWrapper">
-      <div className="merchantRegistrationTop">
+    <div className="UserMerchantRegistrationWrapper">
+      <div className="UserMerchantRegistrationTop">
         <p className="merchantTopTitle">Merchant Company Registration </p>
       </div>
 
@@ -684,8 +684,8 @@ const MerchantRegistration = () => {
         </div>
 
         {/* /////////   FORM STARTS    ////////// */}
-        <div className="merchantRegistrationForm">
-          <div className="merchantRegistrationFormTop">
+        <div className="UserMerchantRegistrationForm">
+          <div className="UserMerchantRegistrationFormTop">
             <p className="registrationFormTitle">Registration Detail</p>
 
             <div className="inputRow">
@@ -809,7 +809,7 @@ const MerchantRegistration = () => {
             </div>
           </div>
 
-          <div className="merchantRegistrationFormTop">
+          <div className="UserMerchantRegistrationFormTop">
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Merchant Mailing Address
             </p>
@@ -1194,4 +1194,4 @@ const MerchantRegistration = () => {
   );
 };
 
-export default MerchantRegistration;
+export default UserMerchantRegistration;
