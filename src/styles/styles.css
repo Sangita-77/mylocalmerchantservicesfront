@@ -246,10 +246,10 @@
 .passwordContainer { margin: 0; padding: 0 12px; width: 200px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid #000000; }
 .passwordInput { border: none; outline: none; background-color: #ffffff; }
 /* ///////////////    FORGET PASSWORD    ///////////////// */
-.otpVerificationModalContainer { margin: 0; width: 42vw; height: 54vh; background-color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; position: absolute; top: 7vh; left: 29vw; z-index: 999999; border: none; border-radius: 12px; box-shadow: 0 0 20px 0 gray; }
+.otpVerificationModalContainer { margin: 0; background-color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; position: absolute; top: 7vh; left: 29vw; z-index: 999999; border: none; border-radius: 12px; box-shadow: 0 0 20px 0 gray; }
 .otpModalHeader { margin: 0; padding: 0; margin-bottom: 14px; font-family: "Poppins"; }
 .lightText { margin: 0; padding: 0; color: gray; font-size: 12px; font-family: "Poppins"; }
-.otpInputContainer { margin: 40px; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 16px; }
+.otpInputContainer { margin: 40px; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 16px; max-width: 350px;     margin: 0 auto; padding-top: 20px;}
 .otpInput { margin: 0; padding: 0; width: 52px; height: 52px; font-size: 24px; outline: none; border: 1.5px solid rgb(219, 219, 219); border-radius: 8px; text-align: center; }
 .otpModalCloseBtn { padding: 6px 14px; position: absolute; top: -5%; right: -2%; font-size: 32px; border: none; outline: none; border-radius: 50%; background-color: white; box-shadow: 0 0 10px 0 gray; cursor: pointer; }
 .verifyBtn { margin: 12px 0 0 0; padding: 12px 48px; font-family: "Poppins"; color: #ffffff; background-color: #1788d8; border: none; border-radius: 8px; text-align: center; font-size: 16px; font-weight: 500; }
@@ -552,12 +552,12 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .merchantRegistrationForm .inputRow { display: flex; flex-direction: column; align-items: flex-start; width: 48%;}
 .merchantRegistrationForm .inputContainer { margin: 0; padding: 0; width: 100%;  align-items: center; gap: 0; background-color: #ffffff; border: none; overflow: hidden; border-radius: 6px;}
 .merchantRegistrationForm .inputContainer .label { margin: 0;  padding: 12px 0; color: gray; font-size: 15px; background-color: #ffffff; }
-.merchantRegistrationForm .inputField { margin: 0; padding: 0 24px; width: 100%; font-size: 14px; letter-spacing: 0.5px; border: none; outline: none; height: 58px; border-radius: 6px; border: solid 1px #E4E4E4;}
+.merchantRegistrationForm .inputField { margin: 0; padding: 0 24px; width: 100%; font-size: 14px; letter-spacing: 0.5px; border: none; outline: none; height: 58px; border-radius: 6px; border: solid 1px #9b9898;}
 .merchantRegistrationForm input[type=number]::-webkit-inner-spin-button, 
 .merchantRegistrationForm input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 .merchantRegistrationForm textarea.inputField{height: 155px; padding: 25px;}
 .inputField::placeholder { color: rgb(183, 183, 183);}
-.merchantRegistrationForm .selectField { appearance: none; -webkit-appearance: none; -moz-appearance: none; background: url("./../assets/images/arrow_down.png") no-repeat right 10px center; padding-right: 30px; }
+.merchantRegistrationForm .selectField { appearance: none; -webkit-appearance: none; -moz-appearance: none; background: url("./../assets/images/arrow_down.png") no-repeat right 10px center; padding-right: 30px;  }
 
 .verificationBox { margin: 0; padding: 5px 20px; margin-bottom: 36px; width: 350px; max-height: 103px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: #f9f9f9; border: 1px solid #d7d7d7; border-radius: 4px; }
 .verificationBoxLeft { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 12px; }
@@ -566,7 +566,11 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .verificationCaptchaImg { width: 50px; height: 50px; object-fit: contain; }
 .verificationHeading { margin: 36px 0 20px 0; padding: 0; color: #acacac; font-family: "Poppins"; font-size: 15px; font-weight: 400; }
 .verificationBoxRightBottom { display: flex; flex-direction: row; align-items: center; gap: 8px; }
+<<<<<<< HEAD
 /* .grayText { color: #fff; font-size: 12px; } */
+=======
+.grayText { color: gray; font-size: 12px; }
+>>>>>>> befdc6d23a36688f0204db0ca79e742e6dc54e3d
 .dot { width: 6px; height: 6px; background-color: gray; border: none; border-radius: 50%; }
 
 .registerButton{ margin: 0; padding: 0; width: 260px; height: 70px; background: #106ebc; font-family: "Poppins"; color: #ffffff; font-size: 22px; font-weight: 700; text-align: center; letter-spacing: 0.6px; border: none; outline: none; border-radius: 4px; cursor: pointer; }
@@ -713,8 +717,9 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
  .resetPasswordPageContainer {padding: 90px 0 150px;}
 
 .otpVerificationModalContainer{background-color: #0085DA; padding: 20px; border-radius: 10px; text-align: center;}
-.otpVerificationModalContainer .otpVerificationModalWrap{border: solid 3px #fff; border-radius: 10px; width: 100%;  height: 100%; }
+.otpVerificationModalContainer .otpVerificationModalWrap{border: solid 3px #fff; border-radius: 10px; padding: 25px 25px 40px;}
 .otpVerificationModalContainer p.lightText{color: #fff;}
+.otpVerificationModalWrap .lightText strong{font-size: 16px; font-weight: 400; color: #b7f4ff;}
 .otpModalHeader{padding-top: 20px; color: #fff;}
 
 

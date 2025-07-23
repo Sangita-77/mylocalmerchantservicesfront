@@ -7,6 +7,7 @@ import { apiErrorHandler } from "../utils/helper";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../utils/routes";
 
+
 const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState(["", "", "", ""]);
@@ -184,7 +185,7 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
 
     if (second < 0) {
       setMinute((prev) => prev - 1);
-      setSecond(9);
+      setSecond(59);
     }
 
     const secondsTimer = setInterval(() => {
@@ -196,14 +197,14 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
 
     const handleResend = () => {
     if (minute === 0 && second === 0) {
-      setMinute(1);   // Reset values
-      setSecond(30);  // or whatever your countdown is
-      // Call your resend OTP logic here
+      setMinute(1); 
+      setSecond(0); 
       console.log("OTP resent!");
     }
   };
 
   console.log("OTP==========>", otp);
+
 
   return (
     <div className="forgetPasswordPageWrapper">
@@ -241,9 +242,10 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
 
             <h2 className="otpModalHeader">Enter OTP</h2>
             <p className="lightText">
-              Enter the 4-digit otp sent to test@gmail.com
+              Enter the 4-digit otp sent to 
+              <strong> {email}</strong>
             </p>
-            <p className="lightText">The otp will be valid 5 miutes only.</p>
+            <p className="lightText">The otp will be valid 2 miutes only.</p>
 
             <div className="otpInputContainer">
               {otp.map((digit, index) => (
@@ -269,12 +271,12 @@ const ForgetPassword = ({ initialMin = 1, initialSec = 60 }) => {
             {/* <div style={{ fontSize: 24, fontWeight: 500 }}>{receivedOtp}</div> */}
 
              {(minute === 0 && second === 0) ? (
-                <div className="grayText" onClick={handleResend} style={{ cursor: "pointer", color: "blue" }}>
-                  Resend Otp
+                <div className="text-white" onClick={handleResend} style={{ cursor: "pointer", color: "blue" }}>
+                  Resend OTP
                 </div>
               ) : (
-                <div className="grayText">
-                  Resend OTP in {`0${minute}`}:{second < 10 ? `0${second}` : second}
+                <div className="text-white">
+                  Resend OTP in <span>{`0${minute}`}:{second < 10 ? `0${second}` : second}</span> 
                 </div>
               )}
             <button className="verifyBtn" onClick={() => handleVerifyOtp()}>
