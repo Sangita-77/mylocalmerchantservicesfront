@@ -70,6 +70,8 @@ const MerchantRegistration = () => {
   const [volumeProcessed, setVolumeProcessed] = useState("100K");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
+  const messageBody=`Please Check Your Registered E-mail: ${email}`;
+
 
 
   const [validationError, setValidationError] = useState({
@@ -1875,7 +1877,7 @@ const MerchantRegistration = () => {
       {showSuccessModal && (
         <ModalPopup
           title="Registration Successful!"
-          message="Your merchant account has been created successfully."
+          message={messageBody}
           buttonText="Go to Dashboard"
           onClose={() => {
             setShowSuccessModal(false);

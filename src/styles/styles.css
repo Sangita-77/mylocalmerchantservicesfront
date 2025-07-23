@@ -222,13 +222,13 @@
 
 .merchantDetailsOverlay{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(4, 4, 4, 0.4); /* semi-transparent black */ z-index: 1000; overflow: hidden; }
 
-.merchantDetailsModalWrapper { margin: 0; padding: 0; width: 680px; height: 75vh; border: none; border-radius: 20px; background-color: #0085DA; position: fixed; top: 13vh; left: 50%; transform: translateX(-50%); overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; -ms-overflow-style: none;  z-index: 9999; }
+.merchantDetailsModalWrapper { margin: 0; padding: 0; width: 697px; height: 85vh; border: none; border-radius: 20px; background-color: #0085DA; position: fixed; top: 5vh; left: 50%; transform: translateX(-50%); overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; -ms-overflow-style: none;  z-index: 9999; }
 .merchantDetailsModalContainer { margin: 0; padding: 50px 40px 35px; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
-.merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 12vh; right: -7px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
+.merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 4vh; right: -15px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
 .merchantDetailsModalCloseBtn{}
 .dataRowContainer { margin: 0; padding: 0; width: 100%; height: 53px; max-height: 200px; display: flex; flex-direction: row; align-items: center; column-gap: 50px; border: none; }
-.dataTitle { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 500; width: 25%; height: 100%; display: flex; align-items: center; }
-.data { margin: 0; padding: 0 24px; width: 80%; max-width: 80%; font-family: "Poppins"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; min-height: 53px;}
+.dataTitle { margin: 0; padding: 0; color: white; font: 500 16px/25px "Sora"; width: 28%; height: 100%; display: flex; align-items: center; }
+.data { margin: 0; padding: 5px 16px; width: 80%; max-width: 80%; font-family: "Sora"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; min-height: 40px;}
 .modalConnectBtn {transition: all .5s ease-in-out; margin: 0; padding: 0; width: 135px; height: 43px; text-align: center; color: #000; background-color: #FFBF61; font: 600 16px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 50px; }
 .modalConnectBtn:hover {background-color: #ffffff;}
 
@@ -1157,7 +1157,7 @@ border-radius: 5px; margin-right: 30px;}
   left: 50%;
   transform: translateX(-50%);}
 .mainLayoutContainer .merchantDetailsModalWrapper {border: 13px solid #0085DA;  border-radius: 37px; height: auto;}
-.mainLayoutContainer .merchantDetailsModalWrapper .merchantDetailsModalContainer {padding: 50px 27px 35px; border: 2px solid #fff;  border-radius: 24px; height: 75vh; overflow: auto; scrollbar-width: none;}
+.mainLayoutContainer .merchantDetailsModalWrapper .merchantDetailsModalContainer {padding: 35px 35px 35px; border: 2px solid #fff;  border-radius: 24px; height: 86vh; overflow: auto; scrollbar-width: none;}
 .mainLayoutContainer .merchantDetailsModalWrapper .modalConnectBtn {padding: 10px;}
 
 /* ---------- radio button ------------ */
