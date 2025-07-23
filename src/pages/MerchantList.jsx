@@ -26,6 +26,7 @@ const MerchantList = () => {
   const [searchByState, setSearchByState] = useState("");
   const [searchByZip, setSearchByZip] = useState("");
   const [searched, setSearched] = useState(false);
+  const [DWtoTravel, setDWtoTravel] = useState("5");
 
   const limit = 5;
 
@@ -204,6 +205,20 @@ const MerchantList = () => {
                     if (val.length <= 6 && /^\d*$/.test(val)) setSearchByZip(val);
                   }}
                 />
+              </div>
+            </div>
+
+            <div className="merchantTopSearchSingleItem">
+              <div className="searchTitle">Search by Distance</div>
+              <div className="searchInputContainer">
+                <select name="cars" id="cars" className="inputField selectField searchInput" value={DWtoTravel} onChange={(e) => setDWtoTravel(e.target.value)}>
+                      <option value="5">   &lt; 5 miles  </option>
+                      <option value="10">  &lt; 10 miles </option>
+                      <option value="25">  &lt; 25 miles </option>
+                      <option value="50">  &lt; 50 miles </option>
+                      <option value="100"> &lt; 100 miles </option>
+
+                  </select>
               </div>
             </div>
 
