@@ -765,7 +765,7 @@ const UserMerchantRegistration = () => {
             </div>
           </div>
 
-          <div className="merchantRegistrationFormTop">
+          <div className={`merchantRegistrationFormTop disable ${otpVerified ? "enablewrapper" : ""}`}>
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Merchant Mailing Address
             </p>

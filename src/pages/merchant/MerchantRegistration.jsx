@@ -946,6 +946,8 @@ const MerchantRegistration = () => {
                   </label>
                   <input
                     type="text"
+                    
+
                     name="companyName"
                     placeholder="Company Name"
                     value={companyName}
@@ -985,7 +987,7 @@ const MerchantRegistration = () => {
 
                 </div>
                 {validationError.websiteNameError && (
-                  <div className="errorText">{validationError.websiteNameError}</div>
+                  <div className="errorText">{validationError.websiteNameError}</div> 
                 )}
 
               </div>
@@ -1078,7 +1080,7 @@ const MerchantRegistration = () => {
                     
                     {otpSent ? (
                       <>
-                        <div>
+                        <div className="otp-feild">
                           <input
                             type="text"
                             name="otp"
@@ -1169,8 +1171,8 @@ const MerchantRegistration = () => {
       </div>     
 
 
- 
-          <div className="merchantRegistrationFormTop">
+         
+          <div  className={`merchantRegistrationFormTop disable ${otpVerified ? "enablewrapper" : ""}`} >
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Address Details
             </p>    
@@ -1347,7 +1349,7 @@ const MerchantRegistration = () => {
 
           </div>
 
-          <div className="merchantRegistrationFormTop">
+          <div className={`merchantRegistrationFormTop disable ${otpVerified ? "enablewrapper" : ""}`}>
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Marketing Details
             </p>
@@ -1461,7 +1463,7 @@ const MerchantRegistration = () => {
           </div>
 
 
-          <div className="merchantRegistrationFormTop">
+          <div className={`merchantRegistrationFormTop disable ${otpVerified ? "enablewrapper" : ""}`}>
              <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Merchant Processing Features
             </p>
