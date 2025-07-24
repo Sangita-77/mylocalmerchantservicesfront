@@ -154,7 +154,7 @@ const OnboardingPageHeader = () => {
       <Dropdown.Menu>
         <Dropdown.Item 
          className={`li_item ${ location.pathname === routes.msr_registration() && `li_item_active` }`}
-                onClick={() => navigate(routes.msr_registration())}>
+                onClick={() => navigate(routes.msr_registration())} href="">
                   Merchant Services Providers Registration
         </Dropdown.Item>
           <Dropdown.Item 

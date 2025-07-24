@@ -311,7 +311,7 @@ const AdminProfile = () => {
           <div className="profileInnerDetailsContainer">
             <div className="profileDetailsBoxContainer">
               <div className="profileDetailsBox">
-                <div className="profileDataTitle">User Id</div>
+              <div className="profileDataTitle">User Id</div>
                 <div className="profileData">{profileData.user_id ?? "Loading..."}</div>
               </div>
 
