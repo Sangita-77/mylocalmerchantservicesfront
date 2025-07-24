@@ -155,14 +155,10 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
             <label>Company Name:</label>
             <input type="text" value={companyName} onChange={(e) => setcompanyName(e.target.value)} />
           </div>
-          <div className="formGroup">
+          {/* <div className="formGroup">
             <label>Industry:</label>
-            {/* <input type="text" value={industry} onChange={(e) => setIndustry(e.target.value)} /> */}
             <select
               className="inputField selectField"
-              // style={{
-              //   color: industry ? "black" : "rgb(183, 183, 183)",
-              // }}
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
             >
@@ -179,19 +175,15 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
           <div className="formGroup">
             <label>Phone:</label>
             <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
           </div>
-          <div className="formGroup">
+          {/* <div className="formGroup">
             <label>Type of Services:</label>
-            {/* <input type="text" value={serviceType} onChange={(e) => setServiceType(e.target.value)} /> */}
             <select
               className="inputField selectField"
-              // style={{
-              //   color: typeOfServices ? "black" : "rgb(183, 183, 183)",
-              // }}
               value={typeOfServices}
               onChange={(e) => setTypeOfServices(e.target.value)}
             >
@@ -208,11 +200,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
                 </option>
               ))}
             </select>
-          </div>
-          <div className="formGroup">
-            <label>City:</label>
-            <input type="text" value={street} onChange={(e) => setstreet(e.target.value)} />
-          </div>
+          </div> */}
           <div className="formGroup">
             <label>City:</label>
             <input type="text" value={city} onChange={(e) => setcity(e.target.value)} />
