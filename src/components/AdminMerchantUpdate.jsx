@@ -22,6 +22,29 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [city, setcity] = useState(user.city);
   const [state, setstate] = useState(user.state);
   const [zip_code, setzip_code] = useState(user.zip_code);
+  const [country, setCountry] = useState(user.country);
+  const [website, setWebsite] = useState(user.website);
+  const [company_description, setCompany_description] = useState(user.company_description);
+  const [status, setStatus] = useState(user.status);
+  const [flag, setFlag] = useState(user.flag);
+  const [SponsorBank, setSponsorBank] = useState(user.SponsorBank);
+  const [PPP, setPPP] = useState(user.PPP);
+  const [SPP, setSPP] = useState(user.SPP);
+  const [Other, setOther] = useState(user.Other);
+  const [DistanceWilling, setDistanceWilling] = useState(user.DistanceWilling);
+  const [bulletOne, setBulletOne] = useState(user.bulletOne);
+  const [bulletTwo, setBulletTwo] = useState(user.bulletTwo);
+  const [bulletThree, setBulletThree] = useState(user.bulletThree);
+  const [summary, setSummary] = useState(user.summary);
+  const [salesrepresenatives, setSalesrepresenatives] = useState(user.salesrepresenatives);
+  const [VolumeProcessed, setVolumeProcessed] = useState(user.VolumeProcessed);
+  const [volumePublicly, setvolumePublicly] = useState(user.volumePublicly);
+  const [HighRisk, setHighRisk] = useState(user.HighRisk);
+  const [PointofSale, setPointofSale] = useState(user.PointofSale);
+  const [Financing, setFinancing] = useState(user.Financing);
+  
+
+  
 
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -29,6 +52,8 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [usersType, setUsersType] = useState([]);
   const [industriesType, setIndustriesType] = useState([]);
   const [servicesType, setServicesType] = useState([]);
+  const [flagType, setFlagsType] = useState([]);
+
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -77,13 +102,17 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           city: city,
           state: state,
           zip_code: zip_code,
-          county: user.county ?? '',
+          country: country,
           email: email,
           phone: phone,
           industry: industry,
           type_of_service: typeOfServices,
-          website: user.website ?? '',
-          company_description: user.company_description ?? '',
+          website: website,
+          company_description: company_description,
+          status: status,
+          flag: flag,
+          SponsorBank: SponsorBank,
+          DistanceWilling: DistanceWilling,
         },
         {
           headers: {
@@ -126,10 +155,12 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
         const usersType = response?.data?.userType;
         const industriesType = response?.data?.industryType;
         const servicesType = response?.data?.servicesType;
+        
 
         setUsersType(usersType);
         setIndustriesType(industriesType);
         setServicesType(servicesType);
+        
       }
     } catch (error) {
       const errMsg = apiErrorHandler(error);
@@ -159,7 +190,8 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
             <label>Company Name:</label>
             <input type="text" value={companyName} onChange={(e) => setcompanyName(e.target.value)} />
           </div>
-          {/* <div className="formGroup">
+
+          <div className="formGroup">
             <label>Industry:</label>
             <select
               className="inputField selectField"
@@ -179,12 +211,29 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
                 </option>
               ))}
             </select>
-          </div> */}
+          </div>
           <div className="formGroup">
             <label>Phone:</label>
             <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
           </div>
-          {/* <div className="formGroup">
+          <div className="formGroup">
+            <label>City:</label>
+            <input type="text" value={city} onChange={(e) => setcity(e.target.value)} />
+          </div>
+          <div className="formGroup">
+            <label>State:</label>
+            <input type="text" value={state} onChange={(e) => setstate(e.target.value)} />
+          </div>
+          <div className="formGroup">
+            <label>Zip Code:</label>
+            <input type="text" value={zip_code} onChange={(e) => setzip_code(e.target.value)} />
+          </div>
+
+          <div className="formGroup">
+            <label>Country:</label>
+            <input type="text" value={country} onChange={(e) => setCountry(e.target.value)}/>
+          </div>
+          <div className="formGroup">
             <label>Type of Services:</label>
             <select
               className="inputField selectField"
@@ -204,19 +253,164 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
                 </option>
               ))}
             </select>
-          </div> */}
-          <div className="formGroup">
-            <label>City:</label>
-            <input type="text" value={city} onChange={(e) => setcity(e.target.value)} />
           </div>
           <div className="formGroup">
-            <label>State:</label>
-            <input type="text" value={state} onChange={(e) => setstate(e.target.value)} />
+            <label>Website</label>
+            <input type="text" value={website} onChange={(e) => setWebsite(e.target.value)}/>
           </div>
           <div className="formGroup">
-            <label>Zip Code:</label>
-            <input type="text" value={zip_code} onChange={(e) => setzip_code(e.target.value)} />
+            <label>Company Description</label>
+            <input type="text" value={company_description} onChange={(e) => setCompany_description(e.target.value)} />
           </div>
+          <div className="formGroup">
+            <label>Status</label>
+            <input type="text" value={status} onChange={(e) => setStatus(e.target.value)} />
+          </div>
+
+          <div className="formGroup">
+            <label>SponsorBank</label>
+            <input type="text" value={SponsorBank} onChange={(e) => setSponsorBank(e.target.value)} />
+          </div>
+          <div className="formGroup">
+            <label>Primary Processing Platform</label>
+            <input type="text" value={PPP} onChange={(e) => setPPP(e.target.value)} />
+          </div>
+          <div className="formGroup">
+            <label>Secondary Processing Platform</label>
+            <input type="text" value={SPP} onChange={(e) => setSPP(e.target.value)} />
+          </div>
+          <div className="formGroup">
+            <label>Other</label>
+            <input type="text" value={Other} onChange={(e) => setOther(e.target.value)} />
+          </div>
+          <div className="formGroup">
+            <label>Distance Willing</label>
+            {/* <input type="text" value={DistanceWilling} onChange={(e) => setDistanceWilling(e.target.value)} /> */}
+
+            <select
+              className="inputField selectField"
+              value={DistanceWilling}
+              onChange={(e) => setDistanceWilling(e.target.value)}
+            >
+              <option value="5">   &lt; 5 miles  </option>
+              <option value="10">  &lt; 10 miles </option>
+              <option value="25">  &lt; 25 miles </option>
+              <option value="50">  &lt; 50 miles </option>
+              <option value="100"> &lt; 100 miles </option>
+            </select>
+          </div>
+          <div className="formGroup">
+            <label>Bullet One</label>
+            <input type="text" value={bulletOne} onChange={(e) => setBulletOne(e.target.value)} />
+          </div>
+          <div className="formGroup">
+            <label>Bullet Two</label>
+            <input type="text" value={bulletTwo} onChange={(e) => setBulletTwo(e.target.value)} />
+          </div>
+          <div className="formGroup">
+            <label>Bullet Three</label>
+            <input type="text" value={bulletThree} onChange={(e) => setBulletThree(e.target.value)} />
+          </div>
+          <div className="formGroup">
+            <label>Summary</label>
+            <textarea type="text" value={summary} onChange={(e) => setSummary(e.target.value)} ></textarea>
+          </div>
+          
+          <div className="formGroup">
+            <label>Sales Represenatives</label>
+            {/* <input type="text" value={salesrepresenatives}  /> */}
+            <select
+              className="inputField selectField"
+              value={salesrepresenatives}
+              onChange={(e) => setSalesrepresenatives(e.target.value)}
+            >
+               <option value="100K">   &lt; $100K  </option>
+                <option value="100K<250K"> 100K &lt; 250K </option>
+                <option value="250K<1MM"> 250k &lt; 1MM </option>
+                <option value="1MM<5MM">  1MM &lt; 5MM </option>
+                <option value="5MM<10MM"> 5MM &lt; 10MM </option>
+                <option value="10MM<25MM"> 10MM &lt; 25MM </option>
+                <option value="25MM+"> 25MM+ </option>
+            </select>
+          </div>
+          <div className="formGroup">
+            <label>Client Count</label>
+            <input type="text" value={user.clientCount} readOnly />
+          </div>
+          <div className="formGroup">
+            <label>Client Publicly</label>
+            <input type="text" value={user.clientPublicly} readOnly />
+          </div>
+          <div className="formGroup">
+            <label>Volume Processed</label>
+            {/* <input type="text" value={user.VolumeProcessed} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={VolumeProcessed}
+              onChange={(e) => setVolumeProcessed(e.target.value)}
+            >
+              <option value="100K">   &lt; $100K  </option>
+              <option value="100K<250K"> 100K &lt; 250K </option>
+              <option value="250K<1MM"> 250k &lt; 1MM </option>
+              <option value="1MM<5MM">  1MM &lt; 5MM </option>
+              <option value="5MM<10MM"> 5MM &lt; 10MM </option>
+              <option value="10MM<25MM"> 10MM &lt; 25MM </option>
+              <option value="25MM+"> 25MM+ </option>
+            </select>
+          </div>
+          <div className="formGroup">
+            <label>Volume Publicly</label>
+            {/* <input type="text" value={user.volumePublicly} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={volumePublicly}
+              onChange={(e) => setvolumePublicly(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
+          </div>
+          <div className="formGroup">
+            <label>High Risk</label>
+            {/* <input type="text" value={user.HighRisk} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={HighRisk}
+              onChange={(e) => setHighRisk(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
+          </div>
+          <div className="formGroup">
+            <label>Point of Sale</label>
+            {/* <input type="text" value={user.PointofSale} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={PointofSale}
+              onChange={(e) => setPointofSale(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
+          </div>
+          <div className="formGroup">
+            <label>Financing</label>
+            {/* <input type="text" value={user.Financing} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={Financing}
+              onChange={(e) => setFinancing(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
+          </div>
+
+
+
+
+
 
           <button className="popButton" onClick={handleUpdateClick}>Update</button>
         </div>
