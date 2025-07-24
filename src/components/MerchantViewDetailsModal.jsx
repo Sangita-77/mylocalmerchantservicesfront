@@ -150,7 +150,7 @@ fetchDataToggleViewDetailsModal()
             </div>
 
             <div className="dataRowContainer">
-              <div className="dataTitle">Merchant Type : </div>
+              <div className="dataTitle">Merchant Services Provides Type: </div>
               {data?.flag === "isos" && (
                 <div className="data">ISO's</div>
               )}

@@ -126,6 +126,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           bulletTwo : bulletTwo,
           bulletOne : bulletOne,
           PPP : PPP,
+          clientCount : clientCount,
 
         },
         {

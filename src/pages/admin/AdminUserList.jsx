@@ -97,7 +97,7 @@ const confirmDelete = async () => {
   return (
     <>
       <div className='adminUserlistWrapper'>
-      <AdminDashBoardTopBar heading="Merchant List" />
+      <AdminDashBoardTopBar heading="Merchants List" />
         <div className='adminDashboardContainer'>
 
           
