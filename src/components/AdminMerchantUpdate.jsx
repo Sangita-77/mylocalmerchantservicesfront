@@ -170,7 +170,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
 
   return (
     <div className="userDetailsOverlay updateform">
-      <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
+      <div className={`userDetailsBoxWrapper userUpdateBoxWrapper ${isOpen ? "open" : ""}`}>
         <div className="messagesWindowCloseBtn" onClick={handleClose}>
           <IoMdClose color="#2A2626" size={24} />
         </div>
