@@ -485,7 +485,7 @@ const SuperAdminDashboard = () => {
                 <HiUserGroup color="gray" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div className="countPlatetHeading">Merchant List</div>
+                <div className="countPlatetHeading">Merchants List</div>
                 <div className="countPlateNumber">{countData?.totalUsers ?? "Loading..."}</div>
                 <div
                   style={{
@@ -551,7 +551,7 @@ const SuperAdminDashboard = () => {
                 <MdRealEstateAgent color="#2d6e81" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div className="countPlatetHeading">Approved Agent</div>
+                <div className="countPlatetHeading">Approved Agents</div>
                 <div className="countPlateNumber">{countData?.totalAgentApproved ?? "Loading..."}</div>
                 <div
                   style={{
@@ -573,7 +573,7 @@ const SuperAdminDashboard = () => {
                 <MdRealEstateAgent color="#fff" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div className="countPlatetHeading">Pending Agent</div>
+                <div className="countPlatetHeading">Pending Agents</div>
                 <div className="countPlateNumber">{countData?.totalAgentPending ?? "Loading..."}</div>
                 <div
                   style={{
@@ -684,7 +684,7 @@ const SuperAdminDashboard = () => {
               <div className="userStatsSection">
                 <div className="userStatsTopContainer">
                   <div className="userStatsTopLeft">
-                    <div className="userStatsTitle">Merchant List</div>
+                    <div className="userStatsTitle">Merchants List</div>
                     <div className="userStatsValue">{userStats.userCount ?? "Loading..."}</div>
                   </div>
 

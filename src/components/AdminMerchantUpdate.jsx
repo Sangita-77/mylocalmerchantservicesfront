@@ -42,6 +42,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [HighRisk, setHighRisk] = useState(user.HighRisk);
   const [PointofSale, setPointofSale] = useState(user.PointofSale);
   const [Financing, setFinancing] = useState(user.Financing);
+  const [clientPublicly, setclientPublicly] = useState(user.clientPublicly);
   
 
   

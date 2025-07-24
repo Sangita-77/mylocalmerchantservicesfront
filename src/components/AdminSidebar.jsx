@@ -87,7 +87,7 @@ const AdminSidebar = () => {
             <PiUsersThree
               color={"#ffffff"} size={24}
             />
-            <div>Merchant List</div>
+            <div>Merchants List</div>
           </div>
 
         {/* Merchant Collapsible */}

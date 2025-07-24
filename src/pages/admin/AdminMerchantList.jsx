@@ -82,7 +82,7 @@ const AdminMerchantList = () => {
   return (
      <div className="adminUserlistWrapper merchantListAdmin">
       
-      <AdminDashBoardTopBar heading="Merchant List" />
+      <AdminDashBoardTopBar heading="Merchants List" />
       <div className="adminDashboardContainer">
             
               <div className='adminUserlIstContainer'>
