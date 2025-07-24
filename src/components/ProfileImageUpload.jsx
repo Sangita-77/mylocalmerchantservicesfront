@@ -39,7 +39,7 @@ const ProfileImageUpload = (props) => {
           <img
                 src={imageUrl && imageUrl.trim() !== '' ? `${IMAGE_BASE_URL}/${imageUrl}` : preview}
                 alt="User Logo"
-              />
+          />
         </div>
       </div>
     </div>
