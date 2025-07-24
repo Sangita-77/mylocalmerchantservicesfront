@@ -1006,7 +1006,7 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
 
 .userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #fff; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -17px; right: -17px; z-index: 999999999;}
-.userDetailsBoxWrapper .userDetailsBox {text-align: end; background-color: #0085DA; padding: 40px 40px 28px; border-radius: 24px; width: 650px; position: relative; border: 2px solid #fff;}
+.userDetailsBoxWrapper .userDetailsBox {text-align: end; background-color: #0085DA; padding: 35px 40px 28px; border-radius: 24px; width: 650px; position: relative; border: 2px solid #fff;}
 .userDetailsBoxWrapper .userDetailsBox::before {content: ''; width: 1px; height: 45%; position: absolute; left: 34%; top: 173px; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);}
 .userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 15px; align-items: center; column-gap: 65px; text-align: left; }
 .userDetailsBoxWrapper .userDetailsBox .formGroup label {color: #fff; font: 500 16px/25px "Sora"; flex: 0 0 150px;}
@@ -1017,11 +1017,11 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .userDetailsBoxWrapper .userDetailsBox .popButton {margin-left: 17px; padding: 0; width: 120px; height: 42px; text-align: center; color: #000000; background-color: #FFBF61; font: 600 15px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 10px;  transition: all .5s ease-in-out;}
 .userDetailsBoxWrapper .userDetailsBox .popButton:hover {background: #ffffff;}
 /* .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
-.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo {margin-bottom: 23px;  display: flex; justify-content: center; align-items: center; column-gap: 8px;}
-.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo .userImgWrapper {flex: 0 0 41%; width: 41%; min-width: 41%;}
-.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo .formGroup {margin-bottom: 0px; flex: 0 0 59%; width: 59%; max-width: 59%;}
-.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo .formGroup input.userName {font-size: 20px; font-weight: 600 !important; text-transform: capitalize;}
-.userDetailsBoxWrapper .userDetailsBox .userImg {text-align: left; width: 90px; height: 90px; border-radius: 20px; overflow: hidden; margin: 0 auto; margin-right: 0; box-shadow: 2px 2px 11px #00000082;}
+.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo {margin-bottom: 30px;  display: flex; justify-content: center; align-items: center; column-gap: 8px;}
+.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo .userImgWrapper {flex: 0 0 40%; width: 40%; min-width: 40%;}
+.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo .formGroup {margin-bottom: 0px; flex: 0 0 60%; width: 60%; max-width: 60%;}
+.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo .formGroup input.userName {font-size: 25px; font-weight: 600 !important; text-transform: uppercase; padding-left: 5px;}
+.userDetailsBoxWrapper .userDetailsBox .userImg {text-align: left; width: 90px; height: 90px; border-radius: 20px; overflow: hidden; margin: 0 auto; box-shadow: 2px 2px 11px #00000082;}
 .userDetailsBoxWrapper .userDetailsBox .userImg img {width: 100%; height: 100%; object-fit: cover; border: 2px solid #fff; padding: 4px; border-radius: 20px;}
 
 
