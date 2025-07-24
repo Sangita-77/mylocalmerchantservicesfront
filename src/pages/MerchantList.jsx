@@ -26,7 +26,7 @@ const MerchantList = () => {
   const [searchByState, setSearchByState] = useState("");
   const [searchByZip, setSearchByZip] = useState("");
   const [searched, setSearched] = useState(false);
-  const [DWtoTravel, setDWtoTravel] = useState("5");
+  const [DWtoTravel, setDWtoTravel] = useState("");
 
   const limit = 5;
 
@@ -216,6 +216,7 @@ const MerchantList = () => {
               <div className="searchTitle">Search by Distance</div>
               <div className="searchInputContainer">
                 <select name="cars" id="cars" className="inputField selectField searchInput" value={DWtoTravel} onChange={(e) => setDWtoTravel(e.target.value)}>
+                      <option value="">   Select Any Type  </option>
                       <option value="5">   &lt; 5 miles  </option>
                       <option value="10">  &lt; 10 miles </option>
                       <option value="25">  &lt; 25 miles </option>
@@ -254,7 +255,7 @@ const MerchantList = () => {
                     <tbody className="tbodyContainer">
                       {tableData.map((row, i) => (
                         <tr className="tr" key={i}>
-                          <td className="td">{row?.first_name || ''} {row?.last_name || ''} {row?.merchant_name || ''}</td>
+                          <td className="td">{row?.merchant_name || ''}</td>
                           <td className="td">{row?.user_id}</td>
                           <td className="td">{row?.state}</td>
                           <td className="actionTd">
