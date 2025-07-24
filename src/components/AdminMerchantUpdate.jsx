@@ -43,6 +43,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [PointofSale, setPointofSale] = useState(user.PointofSale);
   const [Financing, setFinancing] = useState(user.Financing);
   const [clientPublicly, setclientPublicly] = useState(user.clientPublicly);
+  const [clientCount, setclientCount] = useState(user.clientCount);
   
 
   
@@ -348,11 +349,19 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Client Count</label>
-            <input type="text" value={user.clientCount} />
+            <input type="text" value={clientCount}  onChange={(e) => setclientCount(e.target.value)} />
           </div>
           <div className="formGroup">
             <label>Client Publicly</label>
-            <input type="text" value={clientPublicly}  onChange={(e) => setclientPublicly(e.target.value)} />
+            {/* <input type="text" value={clientPublicly}  onChange={(e) => setclientPublicly(e.target.value)} /> */}
+            <select
+              className="inputField selectField"
+              value={clientPublicly}
+              onChange={(e) => setclientPublicly(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
           </div>
           <div className="formGroup">
             <label>Volume Processed</label>
