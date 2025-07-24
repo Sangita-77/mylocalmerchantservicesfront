@@ -112,13 +112,18 @@ const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
         </div>
 
         <div className="userDetailsBox">
-        <div className="userImg">
-            <img src={placeholderimg} alt="" />
+          <div className="userHeaderInfo">
+            <div className="userImg">
+              <img src={placeholderimg} alt="" />
+            </div>
+            <div className="formGroup">
+              <input type="text" value={user.merchant_name} className="userName" readOnly />
+            </div>
           </div>
-          <div className="formGroup">
+          {/* <div className="formGroup">
             <label>Name :</label>
             <input type="text" value={user.merchant_name} readOnly />
-          </div>
+          </div> */}
           <div className="formGroup">
             <label>Email :</label>
             <input type="text" value={user.user_id} readOnly />

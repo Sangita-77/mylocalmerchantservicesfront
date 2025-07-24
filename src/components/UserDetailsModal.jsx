@@ -31,12 +31,14 @@ const UserDetailsModal = ({ user, onClose }) => {
 
         <div className="userDetailsBox">
           <div className="userHeaderInfo">
-          <div className="userImg">
-            <img src={placeholderimg} alt="" />
-          </div>
-          <div className="formGroup">
-            <input type="text" value={user.merchant_name} className="userName" readOnly />
-          </div>
+          <div className="userImgWrapper">
+            <div className="userImg">
+              <img src={placeholderimg} alt="" />
+            </div>
+            </div>
+            <div className="formGroup">
+              <input type="text" value={user.merchant_name} className="userName" readOnly />
+            </div>
           </div>
 
           {/* <div className="formGroup">
