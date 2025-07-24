@@ -86,7 +86,7 @@ const SuperAdminDashboard = () => {
       case 0:
         return "processors";
       case 1:
-        return "ISOs";
+        return "isos";
       case 2:
         return "agents";
       default:
@@ -398,6 +398,7 @@ const SuperAdminDashboard = () => {
           }
         );
         if (response.data.status) {
+          // console.log("......................",response.data);
           setPercentages(response.data);
         }
       } catch (error) {
@@ -501,7 +502,7 @@ const SuperAdminDashboard = () => {
               </div>
             </div>
 
-            <div className="adminDashboardCountPlate">
+            {/* <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
                 <IoStorefrontSharp  color="#599CB0" size={45} />
               </div>
@@ -521,7 +522,7 @@ const SuperAdminDashboard = () => {
                   View All <FaLongArrowAltRight />
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
@@ -544,10 +545,10 @@ const SuperAdminDashboard = () => {
                 </div>
               </div>
             </div> */}
-{/* 
+
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <MdRealEstateAgent color="#585ea1" size={45} />
+                <MdRealEstateAgent color="#2d6e81" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Approved Agent</div>
@@ -565,7 +566,7 @@ const SuperAdminDashboard = () => {
                   View All <FaLongArrowAltRight />
                 </div>
               </div>
-            </div> */}
+            </div>
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
@@ -591,7 +592,7 @@ const SuperAdminDashboard = () => {
 
             <div className="adminDashboardCountPlate">
               <div className="countPlateIconContainer">
-                <BiSolidBadgeDollar color="#003c76" size={45} />
+                <BiSolidBadgeDollar color="#393d68" size={45} />
               </div>
               <div className="countPlateRightContainer">
                 <div className="countPlatetHeading">Approved ISOs</div>
@@ -891,12 +892,12 @@ const SuperAdminDashboard = () => {
                 ) : Array.isArray(ConnectData.connect) && ConnectData.connect.length > 0 ? (
                   ConnectData.connect.map((item, i) => (
                     <tr className="tr" key={i}>
-                      <td className="td">{item.user?.merchant_name || "N/A"}</td>
-                      <td className="td">{item.user?.user_id || "N/A"}</td>
-                      <td className={`td ${getMerchantColorClass(item.user?.flag)}`}>
-                        <div>{item.merchant?.merchant_name || "N/A"}</div>
-                        </td>
+                      <td className="td">
+                        {item.merchant?.merchant_name || "N/A"}
+                      </td>
                       <td className="td">{item.merchant?.user_id || "N/A"}</td>
+                      <td className={`td ${getMerchantColorClass(item.user?.flag)}`}><div>{item.user?.merchant_name || "N/A"}</div></td>
+                      <td className="td">{item.user?.user_id || "N/A"}</td>
                       <td className="actionTd">
                       <button
                           className="viewButton"
@@ -1030,7 +1031,7 @@ const SuperAdminDashboard = () => {
                       <PercentageItem label="of Merchants" percentage={percentages.user_percentage} />
                       {/* <PercentageItem label="Of Merchants" percentage={percentages.merchant_percentage} /> */}
                       <PercentageItem label="of Processors" percentage={percentages.processors_percentage} />
-                      <PercentageItem label="of ISOs" percentage={percentages.iso_percentage} />
+                      <PercentageItem label="of Isos" percentage={percentages.iso_percentage} />
                       <PercentageItem label="of Agents" percentage={percentages.agents_percentage} last />
                     </>
                   ) : (

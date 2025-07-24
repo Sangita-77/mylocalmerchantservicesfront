@@ -492,7 +492,7 @@ border: 1px solid #fff; border-radius: 24px; padding: 12px;}
 .adminDashboardWrapper .merchantStatsSection .merchantStatsWrap{padding: 24px 12px 12px 24px; width: 100%; border-radius: 20px; position: relative; }
 .adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Merchant{background-color: #599CB1; }
 .adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Processors{background-color: #0c62d3; }
-.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.ISOs{background-color: #003c76; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Isos{background-color: #003c76; }
 .adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Agents{background-color: #585ea1; }
 .adminDashboardWrapper .merchantStatsSection .userStatsTitle { margin: 0; padding: 0; color: #ffffff; font-family: "Sora"; font-weight: 400; font-size: 14px; }
 .adminDashboardWrapper .merchantStatsSection .userStatsValue { margin: 8px 0; color: #ffffff; font-family: "Sora"; font-weight: 600; font-size: 30px; }

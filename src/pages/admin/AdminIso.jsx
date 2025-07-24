@@ -27,7 +27,7 @@ const AdminIso = () => {
       try {
           const response = await axios.post(
               `${BASE_URL}/getMerchantsList`,
-              { status: 1 , flag: "ISOs" },
+              { status: 1 , flag: "isos" },
               {
                   headers: {
                       "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const AdminIso = () => {
       try {
           const response = await axios.post(
               `${BASE_URL}/getMerchantsList`,
-              { status: 0 , flag: "ISOs" },
+              { status: 0 , flag: "isos" },
               {
                   headers: {
                       "Content-Type": "application/json",
