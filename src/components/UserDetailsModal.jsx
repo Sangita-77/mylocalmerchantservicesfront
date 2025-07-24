@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "./../styles/styles.css";
 import { IoMdClose } from "react-icons/io";
+import placeholderimg from "./../assets/images/placeholderimg.jpg";
 
 const UserDetailsModal = ({ user, onClose }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,10 +30,21 @@ const UserDetailsModal = ({ user, onClose }) => {
         </div>
 
         <div className="userDetailsBox">
-          <div className="formGroup">
+          <div className="userHeaderInfo">
+          <div className="userImgWrapper">
+            <div className="userImg">
+              <img src={placeholderimg} alt="" />
+            </div>
+            </div>
+            <div className="formGroup">
+              <input type="text" value={user.merchant_name} className="userName" readOnly />
+            </div>
+          </div>
+
+          {/* <div className="formGroup">
             <label>Name :</label>
             <input type="text" value={user.merchant_name} readOnly />
-          </div>
+          </div> */}
           <div className="formGroup">
             <label>Email :</label>
             <input type="text" value={user.user_id} readOnly />

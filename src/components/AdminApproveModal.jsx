@@ -14,6 +14,7 @@ import { BASE_URL } from "../utils/apiManager";
 import { AppContext } from "../utils/context";
 import ConfirmModal from "../components/ConfirmModal";
 import AdminMerchantUpdate from "./AdminMerchantUpdate";
+import placeholderimg from "./../assets/images/placeholderimg.jpg";
 
 const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -111,10 +112,18 @@ const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
         </div>
 
         <div className="userDetailsBox">
-          <div className="formGroup">
+          <div className="userHeaderInfo">
+            <div className="userImg">
+              <img src={placeholderimg} alt="" />
+            </div>
+            <div className="formGroup">
+              <input type="text" value={user.merchant_name} className="userName" readOnly />
+            </div>
+          </div>
+          {/* <div className="formGroup">
             <label>Name :</label>
             <input type="text" value={user.merchant_name} readOnly />
-          </div>
+          </div> */}
           <div className="formGroup">
             <label>Email :</label>
             <input type="text" value={user.user_id} readOnly />
