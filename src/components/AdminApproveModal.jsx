@@ -16,6 +16,7 @@ import { AppContext } from "../utils/context";
 import ConfirmModal from "../components/ConfirmModal";
 import AdminMerchantUpdate from "./AdminMerchantUpdate";
 import placeholderimg from "./../assets/images/placeholderimg.jpg";
+import Tooltip from "../components/Tooltip";
 
 const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -195,10 +196,10 @@ const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
             <label>Status</label>
             <input type="text" value={user.status ? user.status : "No data"} readOnly />
           </div>
-          <div className="formGroup">
+          {/* <div className="formGroup">
             <label>Flag</label>
             <input type="text" value={user.flag ? user.flag : "No data"} readOnly />
-          </div>
+          </div> */}
           <div className="formGroup">
             <label>SponsorBank</label>
             <input type="text" value={user.SponsorBank ? user.SponsorBank : "No data"} readOnly />

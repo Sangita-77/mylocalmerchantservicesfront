@@ -115,10 +115,10 @@ const UserDetailsModal = ({ user, onClose }) => {
             <label>Status</label>
             <input type="text" value={user.status ? user.status : "No data"} readOnly />
           </div>
-          <div className="formGroup">
+          {/* <div className="formGroup">
             <label>Flag</label>
             <input type="text" value={user.flag ? user.flag : "No data"} readOnly />
-          </div>
+          </div> */}
           <div className="formGroup">
             <label>SponsorBank</label>
             <input type="text" value={user.SponsorBank ? user.SponsorBank : "No data"} readOnly />
