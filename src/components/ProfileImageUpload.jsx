@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { MdCameraEnhance } from "react-icons/md";
+import { IoCameraSharp } from "react-icons/io5";
 import placeholderimg from "./../assets/images/placeholderimg.jpg";
 
-const ProfileImageUpload = () => {
+const ProfileImageUpload = (props) => {
   const [preview, setPreview] = useState(placeholderimg);
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -20,17 +20,19 @@ const ProfileImageUpload = () => {
   });
 
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className='profphoto'>
       <div {...getRootProps()} style={styles.dropzone}>
         <input {...getInputProps()} />
         {
           isDragActive ?
             <p>Drop the image here ...</p> :
-            <div className='company-logo'><MdCameraEnhance size={30} /></div>
+            <div className='camera'><IoCameraSharp size={30}  style={{ color: '#063f63ff' }}/></div>
         }
       </div>
       <div style={styles.previewContainer}>
-        <img src={preview} alt="Preview" style={styles.previewImage} />
+        <div className='companyLogo'>
+          <img src={preview} alt="Preview" style={styles.previewImage} />
+        </div>
       </div>
     </div>
   );
@@ -43,17 +45,12 @@ const styles = {
   },
   dropzone: {
     cursor: 'pointer',
-    borderRadius: '8px',
     display: 'inline-block'
   },
-  previewContainer: {
-    marginTop: '15px'
-  },
 previewImage: {
-  maxWidth: '95px',
+  maxWidth: '90px',
   objectFit: 'cover',
-  height: '95px',
-  borderRadius: '8px'
+  height: '90px',
 }
 };
 
