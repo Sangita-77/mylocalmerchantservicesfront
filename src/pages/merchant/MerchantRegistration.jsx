@@ -128,7 +128,7 @@ const MerchantRegistration = () => {
   } = useContext(AppContext);
 
   const isAgent = type === "agents";
-  const isISO = type === "ISOs";
+  const isISO = type === "isos";
   const isProcessor = type === "processors";
 
   const navigate = useNavigate();
