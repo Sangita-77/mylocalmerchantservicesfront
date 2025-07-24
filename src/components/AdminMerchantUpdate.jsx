@@ -38,6 +38,10 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [summary, setSummary] = useState(user.summary);
   const [salesrepresenatives, setSalesrepresenatives] = useState(user.salesrepresenatives);
   const [VolumeProcessed, setVolumeProcessed] = useState(user.VolumeProcessed);
+  const [volumePublicly, setvolumePublicly] = useState(user.volumePublicly);
+  const [HighRisk, setHighRisk] = useState(user.HighRisk);
+  const [PointofSale, setPointofSale] = useState(user.PointofSale);
+  const [Financing, setFinancing] = useState(user.Financing);
   
 
   
@@ -356,19 +360,51 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Volume Publicly</label>
-            <input type="text" value={user.volumePublicly} readOnly />
+            {/* <input type="text" value={user.volumePublicly} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={volumePublicly}
+              onChange={(e) => setvolumePublicly(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
           </div>
           <div className="formGroup">
             <label>High Risk</label>
-            <input type="text" value={user.HighRisk} readOnly />
+            {/* <input type="text" value={user.HighRisk} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={HighRisk}
+              onChange={(e) => setHighRisk(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
           </div>
           <div className="formGroup">
             <label>Point of Sale</label>
-            <input type="text" value={user.PointofSale} readOnly />
+            {/* <input type="text" value={user.PointofSale} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={PointofSale}
+              onChange={(e) => setPointofSale(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
           </div>
           <div className="formGroup">
             <label>Financing</label>
-            <input type="text" value={user.Financing} readOnly />
+            {/* <input type="text" value={user.Financing} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={Financing}
+              onChange={(e) => setFinancing(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
           </div>
 
 
