@@ -2,15 +2,16 @@ import { hover } from 'framer-motion';
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-const ImageUploader = () => {
+const ImageUploader = ( {onImageSelect} ) => {
   const [preview, setPreview] = useState(null);
 
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     if (file) {
       setPreview(URL.createObjectURL(file));
+      onImageSelect(file);
     }
-  }, []);
+  }, [onImageSelect]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
