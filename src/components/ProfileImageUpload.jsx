@@ -2,9 +2,13 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { IoCameraSharp } from "react-icons/io5";
 import placeholderimg from "./../assets/images/placeholderimg.jpg";
+import { IMAGE_BASE_URL } from "../utils/apiManager";
+
 
 const ProfileImageUpload = (props) => {
   const [preview, setPreview] = useState(placeholderimg);
+
+  const imageUrl = props.props.logo;
 
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -31,7 +35,11 @@ const ProfileImageUpload = (props) => {
       </div>
       <div style={styles.previewContainer}>
         <div className='companyLogo'>
-          <img src={preview} alt="Preview" style={styles.previewImage} />
+          {/* <img src={preview} alt="Preview" style={styles.previewImage} /> */}
+          <img
+                src={imageUrl && imageUrl.trim() !== '' ? `${IMAGE_BASE_URL}/${imageUrl}` : preview}
+                alt="User Logo"
+              />
         </div>
       </div>
     </div>

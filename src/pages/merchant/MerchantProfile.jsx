@@ -269,7 +269,7 @@ const MerchantProfile = () => {
                         </div>
                       </div>
                        <div className="merchantProfileDetailsRight">
-                        <ProfileImageUpload/>
+                        <ProfileImageUpload props={merchantProfileData}/>
                         <div className="merchantProfileData" preview= "">
                         </div>
                       </div>
