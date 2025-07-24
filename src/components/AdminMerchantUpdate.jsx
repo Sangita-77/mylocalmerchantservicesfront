@@ -36,6 +36,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [bulletTwo, setBulletTwo] = useState(user.bulletTwo);
   const [bulletThree, setBulletThree] = useState(user.bulletThree);
   const [summary, setSummary] = useState(user.summary);
+  const [salesrepresenatives, setSalesrepresenatives] = useState(user.salesrepresenatives);
 
   
 
