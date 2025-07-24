@@ -37,6 +37,8 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [bulletThree, setBulletThree] = useState(user.bulletThree);
   const [summary, setSummary] = useState(user.summary);
   const [salesrepresenatives, setSalesrepresenatives] = useState(user.salesrepresenatives);
+  const [VolumeProcessed, setVolumeProcessed] = useState(user.VolumeProcessed);
+  
 
   
 
@@ -260,27 +262,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
             <label>Status</label>
             <input type="text" value={status} onChange={(e) => setStatus(e.target.value)} />
           </div>
-          <div className="formGroup">
-            <label>Flag:</label>
-            <select
-              className="inputField selectField"
-              value={flag}
-              onChange={(e) => setFlag(e.target.value)}
-            >
-              {/* <option value="" style={{ color: "rgb(183, 183, 183)" }}>
-                Select Flag
-              </option> */}
-              {usersType?.map((flag, i) => (
-                <option
-                  key={i}
-                  value={flag?.type}
-                  style={{ color: "black" }}
-                >
-                  {textUppercase(flag?.type)}
-                </option>
-              ))}
-            </select>
-          </div>
+
           <div className="formGroup">
             <label>SponsorBank</label>
             <input type="text" value={SponsorBank} onChange={(e) => setSponsorBank(e.target.value)} />
@@ -299,7 +281,19 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Distance Willing</label>
-            <input type="text" value={DistanceWilling} onChange={(e) => setDistanceWilling(e.target.value)} />
+            {/* <input type="text" value={DistanceWilling} onChange={(e) => setDistanceWilling(e.target.value)} /> */}
+
+            <select
+              className="inputField selectField"
+              value={DistanceWilling}
+              onChange={(e) => setDistanceWilling(e.target.value)}
+            >
+              <option value="5">   &lt; 5 miles  </option>
+              <option value="10">  &lt; 10 miles </option>
+              <option value="25">  &lt; 25 miles </option>
+              <option value="50">  &lt; 50 miles </option>
+              <option value="100"> &lt; 100 miles </option>
+            </select>
           </div>
           <div className="formGroup">
             <label>Bullet One</label>
@@ -320,7 +314,20 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           
           <div className="formGroup">
             <label>Sales Represenatives</label>
-            <input type="text" value={salesrepresenatives}  />
+            {/* <input type="text" value={salesrepresenatives}  /> */}
+            <select
+              className="inputField selectField"
+              value={salesrepresenatives}
+              onChange={(e) => setSalesrepresenatives(e.target.value)}
+            >
+               <option value="100K">   &lt; $100K  </option>
+                <option value="100K<250K"> 100K &lt; 250K </option>
+                <option value="250K<1MM"> 250k &lt; 1MM </option>
+                <option value="1MM<5MM">  1MM &lt; 5MM </option>
+                <option value="5MM<10MM"> 5MM &lt; 10MM </option>
+                <option value="10MM<25MM"> 10MM &lt; 25MM </option>
+                <option value="25MM+"> 25MM+ </option>
+            </select>
           </div>
           <div className="formGroup">
             <label>Client Count</label>
@@ -332,7 +339,20 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Volume Processed</label>
-            <input type="text" value={user.VolumeProcessed} readOnly />
+            {/* <input type="text" value={user.VolumeProcessed} readOnly /> */}
+            <select
+              className="inputField selectField"
+              value={VolumeProcessed}
+              onChange={(e) => setVolumeProcessed(e.target.value)}
+            >
+              <option value="100K">   &lt; $100K  </option>
+              <option value="100K<250K"> 100K &lt; 250K </option>
+              <option value="250K<1MM"> 250k &lt; 1MM </option>
+              <option value="1MM<5MM">  1MM &lt; 5MM </option>
+              <option value="5MM<10MM"> 5MM &lt; 10MM </option>
+              <option value="10MM<25MM"> 10MM &lt; 25MM </option>
+              <option value="25MM+"> 25MM+ </option>
+            </select>
           </div>
           <div className="formGroup">
             <label>Volume Publicly</label>
