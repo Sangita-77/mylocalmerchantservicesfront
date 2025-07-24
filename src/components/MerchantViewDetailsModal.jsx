@@ -118,7 +118,7 @@ fetchDataToggleViewDetailsModal()
             
             <div className="dataRowContainer">
               <div className="dataTitle">Name : </div>
-              <div className="data">{data?.first_name} {data?.last_name}</div>
+              <div className="data">{data?.first_name} {data?.merchant_name ?? data?.merchant_name}</div>
             </div>
 
             <div className="dataRowContainer">
