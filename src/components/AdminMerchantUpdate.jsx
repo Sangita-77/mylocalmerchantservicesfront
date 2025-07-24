@@ -145,7 +145,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
         </div>
         <div className="userDetailsBox">
           <div className="d-flex imageProf">
-          <div className="pb-5"><ProfileImageUpload /></div>
+          <div className="pb-5"><ProfileImageUpload data={user}/></div>
           <div className="formGroup">
             <label>Name :</label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
