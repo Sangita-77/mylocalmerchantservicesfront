@@ -1,9 +1,10 @@
-import { hover } from 'framer-motion';
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { MdCameraEnhance } from "react-icons/md";
+import placeholderimg from "./../assets/images/placeholderimg.jpg";
 
 const ProfileImageUpload = () => {
-  const [preview, setPreview] = useState(null);
+  const [preview, setPreview] = useState(placeholderimg);
 
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -13,9 +14,7 @@ const ProfileImageUpload = () => {
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: {
-      'image/*': []
-    },
+    accept: { 'image/*': [] },
     multiple: false,
     onDrop
   });
@@ -27,14 +26,12 @@ const ProfileImageUpload = () => {
         {
           isDragActive ?
             <p>Drop the image here ...</p> :
-            <p>Drag 'n' drop an image here, or click to select one</p>
+            <div className='company-logo'><MdCameraEnhance size={30} /></div>
         }
       </div>
-      {preview && (
-        <div style={styles.previewContainer}>
-          <img src={preview} alt="Preview" style={styles.previewImage} />
-        </div>
-      )}
+      <div style={styles.previewContainer}>
+        <img src={preview} alt="Preview" style={styles.previewImage} />
+      </div>
     </div>
   );
 };
@@ -45,20 +42,19 @@ const styles = {
     fontFamily: 'Arial, sans-serif'
   },
   dropzone: {
-    border: '2px dashed #aaa',
-    padding: '40px 20px 20px 20px',
-    borderRadius: '8px',
     cursor: 'pointer',
-    background: '#dff2ff'
+    borderRadius: '8px',
+    display: 'inline-block'
   },
   previewContainer: {
     marginTop: '15px'
   },
-  previewImage: {
-    maxWidth: '100%',
-    height: 'auto',
-    borderRadius: '8px'
-  }
+previewImage: {
+  maxWidth: '95px',
+  objectFit: 'cover',
+  height: '95px',
+  borderRadius: '8px'
+}
 };
 
 export default ProfileImageUpload;
