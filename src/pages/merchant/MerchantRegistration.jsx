@@ -69,6 +69,7 @@ const MerchantRegistration = () => {
   const [salesRep, setSalesRep] = useState("1");
   const [volumeProcessed, setVolumeProcessed] = useState("100K");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [logoFile, setLogoFile] = useState(null);
 
   const messageBody=`Please Check Your Registered E-mail: ${email}`;
 
@@ -317,52 +318,6 @@ const MerchantRegistration = () => {
   
 
   const handleRegisterMerchant = async () => {
-
-    // const body = {
-    //   flag: type,
-    //   user_id: email,
-    //   company_name: companyName,
-    //   first_name: firstName,
-    //   last_name: lastName,
-    //   merchant_name: merchantName,
-    //   DistanceWilling: DWtoTravel,
-    //   address1: addressone,
-    //   address2: addresstwo,
-    //   city: city,
-    //   state: state,
-    //   zip_code: zipCode,
-    //   country: country,
-    //   email: alternateEmail,
-    //   phone: phone,
-    //   website: website,
-
-    //   SponsorBank : sponsorBank,
-
-    //   // New required fields
-    //   bulletOne: bulletOne,
-    //   bulletTwo: bulletTwo,
-    //   bulletThree: bulletThree,
-    //   summary: summary,
-    //   salesrepresenatives: salesRep,
-    //   clientCount: clientCount,
-    //   clientPublicly: clientPublicly,
-    //   VolumeProcessed: volumeProcessed,
-    //   volumePublicly: volumePublicly,
-    //   HighRisk: highRisk,
-    //   PointofSale: pointOfSale,
-    //   Financing: financing,
-    // };
-
-    // console.log("body",body);
-    // return false;
-    // if (rejectRegistration === true) {
-    //   setShowToast(true);
-    //   setSeverity("error");
-    //   setMessageTitle("Invalid zipcode!");
-    //   setMessage("Please check the zipcode!!");
-    //   return;
-    // }
-  
     if (!otpVerified) {
       setShowToast(true);
       setSeverity("error");
@@ -370,96 +325,76 @@ const MerchantRegistration = () => {
       setMessage("Please verify your email with the OTP before registering.");
       return;
     }
-
+  
     if (!validateForm()) {
       setShowToast(true);
       setSeverity("error");
       setMessageTitle("Validation Error");
-      setMessage("Please fill the required field in the form.");
-      return;
-    }
-
-    if (!validateForm()) {
-      setShowToast(true);
-      setSeverity("error");
-      setMessageTitle("Validation Error");
-    
       const allErrors = Object.values(validationError).join(", ");
       setMessage(allErrors || "Please fill the required field in the form.");
       return;
     }
-  
+
+    // console.log("logoFile.............",logoFile);
+
+    // return false;
   
     try {
       setLoading(true);
       setError("");
   
-      const body = {
-        flag: type,
-        user_id: email,
-        company_name: companyName,
-        first_name: firstName,
-        last_name: lastName,
-        merchant_name: merchantName,
-        DistanceWilling: DWtoTravel,
-        address1: addressone,
-        address2: addresstwo,
-        city: city,
-        state: state,
-        zip_code: zipCode,
-        country: country,
-        email: alternateEmail,
-        phone: phone,
-        website: website,
-
-        SponsorBank : sponsorBank,
-        PPP : primaryPP,
+      const formData = new FormData();
+      formData.append("flag", type);
+      formData.append("user_id", email);
+      formData.append("company_name", companyName);
+      formData.append("first_name", firstName);
+      formData.append("last_name", lastName);
+      formData.append("merchant_name", merchantName);
+      formData.append("DistanceWilling", DWtoTravel);
+      formData.append("address1", addressone);
+      formData.append("address2", addresstwo);
+      formData.append("city", city);
+      formData.append("state", state);
+      formData.append("zip_code", zipCode);
+      formData.append("country", country);
+      formData.append("email", alternateEmail);
+      formData.append("phone", phone);
+      formData.append("website", website);
+      formData.append("SponsorBank", sponsorBank);
+      formData.append("PPP", primaryPP);
+      formData.append("bulletOne", bulletOne);
+      formData.append("bulletTwo", bulletTwo);
+      formData.append("bulletThree", bulletThree);
+      formData.append("summary", summary);
+      formData.append("salesrepresenatives", salesRep);
+      formData.append("clientCount", clientCount);
+      formData.append("clientPublicly", clientPublicly);
+      formData.append("VolumeProcessed", volumeProcessed);
+      formData.append("volumePublicly", volumePublicly);
+      formData.append("HighRisk", highRisk);
+      formData.append("PointofSale", pointOfSale);
+      formData.append("Financing", financing);
   
-        // New required fields
-        bulletOne: bulletOne,
-        bulletTwo: bulletTwo,
-        bulletThree: bulletThree,
-        summary: summary,
-        salesrepresenatives: salesRep,
-        clientCount: clientCount,
-        clientPublicly: clientPublicly,
-        VolumeProcessed: volumeProcessed,
-        volumePublicly: volumePublicly,
-        HighRisk: highRisk,
-        PointofSale: pointOfSale,
-        Financing: financing,
-      };
+      if (logoFile) {
+        formData.append("logo", logoFile);
+      }
   
-      const response = await axios.post(
-        `${BASE_URL}/registration`,
-        JSON.stringify(body),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/registration`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
   
       if (response?.status === 200) {
-        const { flag, data, message } = response?.data;
-        const userId = data?.user_id;
-        const merchantToken = data?.merchant_token;
-  
-        setLoggedInUserId(userId);
-        setMerchantToken(merchantToken);
+        const { flag, data, message } = response.data;
+        setLoggedInUserId(data?.user_id);
+        setMerchantToken(data?.merchant_token);
         setShowToast(true);
         setSeverity("success");
         setMessageTitle("Success");
         setMessage(message);
         setShowSuccessModal(true);
-  
-        // if (flag === "merchant") {
-        //   localStorage.setItem("is_authenticated", JSON.stringify(true));
-        //   localStorage.setItem("person_type", JSON.stringify(flag));
-        //   localStorage.setItem("user_id", JSON.stringify(userId));
-        //   navigate(routes.merchant_dashboard());
-        // }
       }
     } catch (error) {
       const errMsg = apiErrorHandler(error);
@@ -472,6 +407,7 @@ const MerchantRegistration = () => {
       setLoading(false);
     }
   };
+  
   
 
   const searchAddressByZipcode = async () => {
@@ -1159,7 +1095,7 @@ const MerchantRegistration = () => {
                   <label className="label" htmlFor="uploadLogo" style={{ paddingLeft: "4px" }}>
                     Do you wish to upload a logo for your agency?
                   </label>
-                  {showUploader && <ImageUploader />}
+                  {showUploader && <ImageUploader onImageSelect={(file) => setLogoFile(file)} />}
                 </div>
               </div>
             </div>

@@ -15,6 +15,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { CiCalendar, CiCircleInfo, CiSearch } from "react-icons/ci";
 import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
+import ProfileImageUpload from "../../components/ProfileImageUpload";
 
 const MerchantProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -261,10 +262,15 @@ const MerchantProfile = () => {
                 <div className="merchantProfileInnerDetailsContainer">
                   <div className="profileInnerDetailsHolder">
                     <div className="merchantProfileDetailsBox">
-                      <div className="merchantProfileDetailsBoxLeft">
+                      <div className="merchantProfileDetailsLeft">
                         <div className="merchantProfileDataTitle">User Id</div>
                         <div className="merchantProfileData">
                           {merchantProfileData?.user_id}
+                        </div>
+                      </div>
+                       <div className="merchantProfileDetailsRight">
+                        <ProfileImageUpload/>
+                        <div className="merchantProfileData">
                         </div>
                       </div>
                     </div>
