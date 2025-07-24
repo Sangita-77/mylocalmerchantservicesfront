@@ -71,7 +71,11 @@ const ProfileImageUpload = ({ data }) => {
 
       <div style={styles.previewContainer}>
         <div className='companyLogo'>
-          <img src={preview} alt="User Logo" style={styles.previewImage} />
+          {/* <img src={preview} alt="Preview" style={styles.previewImage} /> */}
+          <img
+                src={imageUrl && imageUrl.trim() !== '' ? `${IMAGE_BASE_URL}/${imageUrl}` : preview}
+                alt="User Logo"
+              />
         </div>
       </div>
     </div>
