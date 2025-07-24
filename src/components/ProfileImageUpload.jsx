@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState ,useCallback } from "react";
 import { useDropzone } from 'react-dropzone';
 import { IoCameraSharp } from "react-icons/io5";
@@ -26,7 +27,6 @@ const ProfileImageUpload = ({ data }) => {
       setPreview(url); // Show immediately
 
       console.log("........file",file);
-      console.log("........data",data.merchant_id);
 
       // Create FormData and send to API
       const formData = new FormData();
@@ -71,11 +71,7 @@ const ProfileImageUpload = ({ data }) => {
 
       <div style={styles.previewContainer}>
         <div className='companyLogo'>
-          {/* <img src={preview} alt="Preview" style={styles.previewImage} /> */}
-          <img
-                src={imageUrl && imageUrl.trim() !== '' ? `${IMAGE_BASE_URL}/${imageUrl}` : preview}
-                alt="User Logo"
-              />
+          <img src={preview} alt="User Logo" style={styles.previewImage} />
         </div>
       </div>
     </div>
