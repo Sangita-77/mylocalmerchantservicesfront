@@ -5,10 +5,12 @@ import placeholderimg from "./../assets/images/placeholderimg.jpg";
 import { IMAGE_BASE_URL } from "../utils/apiManager";
 
 
-const ProfileImageUpload = (props) => {
+const ProfileImageUpload = (data) => {
   const [preview, setPreview] = useState(placeholderimg);
 
-  const imageUrl = props.props.logo;
+  // console.log("propggggggggggggggggggs",data?.data?.logo);
+
+  const imageUrl = data?.data?.logo;
 
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
