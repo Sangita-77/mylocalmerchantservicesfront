@@ -6,6 +6,8 @@ import { BASE_URL } from "../utils/apiManager";
 import { AppContext } from "../utils/context";
 import ConfirmModal from "../components/ConfirmModal";
 import { apiErrorHandler, middleware, textUppercase } from "../utils/helper";
+import ProfileImageUpload from "../components/ProfileImageUpload";
+
 
 const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const { token } = useContext(AppContext);
@@ -165,11 +167,13 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
         <div className="messagesWindowCloseBtn" onClick={handleClose}>
           <IoMdClose color="#2A2626" size={24} />
         </div>
-
         <div className="userDetailsBox">
+          <div className="d-flex imageProf">
+          <div className="pb-5"><ProfileImageUpload data={user}/></div>
           <div className="formGroup">
             <label>Name :</label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
           </div>
           <div className="formGroup">
             <label>Email :</label>

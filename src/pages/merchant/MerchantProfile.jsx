@@ -269,8 +269,8 @@ const MerchantProfile = () => {
                         </div>
                       </div>
                        <div className="merchantProfileDetailsRight">
-                        <ProfileImageUpload/>
-                        <div className="merchantProfileData">
+                        <ProfileImageUpload data={merchantProfileData}/>
+                        <div className="merchantProfileData" preview= "">
                         </div>
                       </div>
                     </div>

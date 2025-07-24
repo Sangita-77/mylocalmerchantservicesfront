@@ -11,6 +11,7 @@ import UserDetailsModal from "./UserDetailsModal";
 
 import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
+import { IMAGE_BASE_URL } from "../utils/apiManager";
 import { AppContext } from "../utils/context";
 import ConfirmModal from "../components/ConfirmModal";
 import AdminMerchantUpdate from "./AdminMerchantUpdate";
@@ -21,6 +22,9 @@ const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
     // const wrapperRef = useRef(null);
     const { token } = useContext(AppContext);
     const [loading, setLoading] = useState(false);
+
+  // console.log("user..............................",user.logo);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -114,7 +118,11 @@ const AdminApproveModal = ({ user, onClose , flag , onRefresh}) => {
         <div className="userDetailsBox">
           <div className="userHeaderInfo">
             <div className="userImg">
-              <img src={placeholderimg} alt="" />
+              {/* <img src={placeholderimg} alt="" /> */}
+              <img
+                src={user.logo && user.logo.trim() !== '' ? `${IMAGE_BASE_URL}/${user.logo}` : placeholderimg}
+                alt="User Logo"
+              />
             </div>
             <div className="formGroup">
               <input type="text" value={user.merchant_name} className="userName" readOnly />

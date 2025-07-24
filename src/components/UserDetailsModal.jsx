@@ -2,10 +2,13 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import "./../styles/styles.css";
 import { IoMdClose } from "react-icons/io";
 import placeholderimg from "./../assets/images/placeholderimg.jpg";
+import { IMAGE_BASE_URL } from "../utils/apiManager";
 
 const UserDetailsModal = ({ user, onClose }) => {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);
+
+  // console.log("user..............................",user);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsOpen(true), 20);
@@ -33,7 +36,11 @@ const UserDetailsModal = ({ user, onClose }) => {
           <div className="userHeaderInfo">
           <div className="userImgWrapper">
             <div className="userImg">
-              <img src={placeholderimg} alt="" />
+              {/* <img src={placeholderimg} alt="" /> */}
+              <img
+                src={user.logo && user.logo.trim() !== '' ? `${IMAGE_BASE_URL}/${user.logo}` : placeholderimg}
+                alt="User Logo"
+              />
             </div>
             </div>
             <div className="formGroup">
