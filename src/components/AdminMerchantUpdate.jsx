@@ -113,6 +113,18 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           flag: flag,
           SponsorBank: SponsorBank,
           DistanceWilling: DistanceWilling,
+          summary:summary,
+          clientPublicly : clientPublicly,
+          VolumeProcessed : VolumeProcessed,
+          volumePublicly : volumePublicly,
+          HighRisk : HighRisk,
+          PointofSale : PointofSale,
+          Financing : Financing,
+          bulletThree : bulletThree,
+          bulletTwo : bulletTwo,
+          bulletOne : bulletOne,
+          PPP : PPP,
+
         },
         {
           headers: {
