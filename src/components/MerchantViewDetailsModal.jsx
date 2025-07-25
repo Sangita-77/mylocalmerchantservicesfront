@@ -138,7 +138,9 @@ fetchDataToggleViewDetailsModal()
                 </div>
               </div>
               <div className="formGroup">
-                <div className="msf_name data">{data?.first_name} {data?.merchant_name ?? data?.merchant_name}</div>
+                <div className="msf_name data">{data?.first_name && data?.last_name
+                  ? `${data.first_name} ${data.last_name}`
+                  : data?.merchant_name}</div>
               </div>
             </div>
 {/*             
