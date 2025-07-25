@@ -114,11 +114,11 @@ fetchDataToggleViewDetailsModal()
         </div>
         <div className="merchantDetailsModalWrapper">
         
-          {isLoading&& (<div><PreLoader/> </div>)}
           {data && 
           <div className="merchantDetailsModalContainer">
             <div className="userHeaderInfo">
               <div className="userImgWrapper">
+
                 <div className="userImg">
                   {/* <img src={placeholderimg} alt="" /> */}
                   <img
@@ -128,14 +128,14 @@ fetchDataToggleViewDetailsModal()
                 </div>
               </div>
               <div className="formGroup">
-                <input type="text" value={data?.merchant_name} className="userName" readOnly />
+                <div className="msf_name data">{data?.first_name} {data?.merchant_name ?? data?.merchant_name}</div>
               </div>
             </div>
-            
+{/*             
             <div className="dataRowContainer">
               <div className="dataTitle">Name : </div>
               <div className="data">{data?.first_name} {data?.merchant_name ?? data?.merchant_name}</div>
-            </div>
+            </div> */}
 
             <div className="dataRowContainer">
               <div className="dataTitle">Email : </div>
