@@ -19,7 +19,9 @@ const MerchantSidebar = () => {
     <div className="merchantSidebarWrapper">
       <div className="merchantSidebarTopContainer">
         <div className="merchantSidebarLogoContainer">
-          <img src={logo} alt="" className="merchantSidebarLogo" />
+          <a onClick={() => navigate(routes.home_page())} style={{"cursor": "pointer"}}>
+            <img src={logo} alt="" className="merchantSidebarLogo" />
+          </a>
         </div>
         <div className="merchantSidebarDivider"></div>
       </div>

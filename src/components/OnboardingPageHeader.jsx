@@ -88,8 +88,9 @@ const OnboardingPageHeader = () => {
       </div>
 
       <div className="onboardingPageHeaderMainContainer" >
+        <a onClick={() => navigate(routes.home_page())} style={{"cursor": "pointer"}}>
         <div className="headerLeft">
-          <img
+        <img
             src={locationIcon}
             alt=""
             crossOrigin="anonymous"
@@ -100,6 +101,7 @@ const OnboardingPageHeader = () => {
             <p className="headerWebsiteTitleDark">Merchant Services</p>
           </div>
         </div>
+        </a>
 
         <div className="headerRight">
           <div

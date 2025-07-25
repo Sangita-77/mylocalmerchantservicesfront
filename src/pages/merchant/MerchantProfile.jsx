@@ -131,6 +131,7 @@ const MerchantProfile = () => {
         website: website,
         company_description: companyDescription,
         merchant_id : merchant_id,
+        flag : "user"
       };
 
       const response = await axios.post(
