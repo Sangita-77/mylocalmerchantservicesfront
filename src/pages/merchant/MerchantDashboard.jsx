@@ -36,7 +36,7 @@ const MerchantDashboard = () => {
     try {
       setGraphLoading(true);
 
-      // const merchantId = localStorage.getItem("merchant_id");
+      const person_type = localStorage.getItem("person_type");
 
 
       const merchantId = parseInt(localStorage.getItem("merchant_id"), 10);
@@ -47,6 +47,7 @@ const MerchantDashboard = () => {
       const body = {
         filter: filterBy,
         merchant_id: merchantId,
+        person_type: person_type,
       };
 
       const response = await axios.post(
