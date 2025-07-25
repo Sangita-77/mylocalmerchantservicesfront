@@ -45,20 +45,20 @@ const OnboardingPageFooter = () => {
             Quick links
           </p>
 
-          <div className="footerRow">
+          <div className="footerRow hoverStyle">
             <div>
               <IoIosArrowForward size={16} color="#ffffff"/>
             </div>
             <a onClick={() => navigate(routes.merchant_list())} style={{"cursor": "pointer"}}><p className="footerColDesc">Merchant Services Providers List</p></a>
           </div>
 
-          <div className="footerRow">
+          <div className="footerRow hoverStyle">
             <div>
               <IoIosArrowForward size={16} color="#ffffff"/>
             </div>
             <a onClick={() => navigate(routes.msr_registration())} style={{"cursor": "pointer"}}><p className="footerColDesc">Merchant Services Providers Registration</p></a>
           </div>
-          <div className="footerRow">
+          <div className="footerRow hoverStyle">
             <div>
               <IoIosArrowForward size={16} color="#ffffff"/>
             </div>
@@ -76,7 +76,7 @@ const OnboardingPageFooter = () => {
             </div>
             <p className="footerColDesc">Privacy Policy</p>
           </div> */}
-          <div className="footerRow">
+          <div className="footerRow hoverStyle">
             <div>
               <IoIosArrowForward size={16} color="#ffffff"/>
             </div>

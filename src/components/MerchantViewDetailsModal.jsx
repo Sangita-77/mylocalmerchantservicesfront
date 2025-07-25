@@ -107,7 +107,7 @@ fetchDataToggleViewDetailsModal()
     <>
       <div className="merchantDetailsOverlay">
       <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
-      <div className="merchantDetailsModalCloseBtnContainer" >
+      <div className=" " >
           <div className="merchantDetailsModalCloseBtn" onClick={handleClose}>
           <IoMdClose color="#2A2626" size={24} />
           </div>
