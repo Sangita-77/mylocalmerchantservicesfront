@@ -50,7 +50,9 @@ const AdminSidebar = () => {
       <div className="adminSidebarInner">
         <div className="adminSidebarTopContainer">
           <div className="adminSidebarLogoContainer">
-            <img src={logo} alt="" className="adminSidebarLogo" />
+            <a onClick={() => navigate(routes.home_page())} style={{"cursor": "pointer"}}>
+              <img src={logo} alt="" className="adminSidebarLogo" />
+            </a>
           </div>
           <div className="adminSidebarDivider"></div>
         </div>
