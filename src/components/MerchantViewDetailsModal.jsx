@@ -114,7 +114,17 @@ fetchDataToggleViewDetailsModal()
         </div>
         <div className="merchantDetailsModalWrapper">
         
-          {data && 
+        {isLoading ? (
+        // 26.06.25
+        <div className="merchantDashboardLoaderWrapper">
+          <div className="merchantDashboardLoaderContainer">
+            <PreLoader />
+            <div>Loading...</div>
+          </div>
+        </div>
+        // 26.06.25
+      ) : (
+          data && 
           <div className="merchantDetailsModalContainer">
             <div className="userHeaderInfo">
               <div className="userImgWrapper">
@@ -128,7 +138,9 @@ fetchDataToggleViewDetailsModal()
                 </div>
               </div>
               <div className="formGroup">
-                <div className="msf_name data">{data?.first_name} {data?.merchant_name ?? data?.merchant_name}</div>
+                <div className="msf_name data">{data?.first_name && data?.last_name
+                  ? `${data.first_name} ${data.last_name}`
+                  : data?.merchant_name}</div>
               </div>
             </div>
 {/*             
@@ -211,8 +223,8 @@ fetchDataToggleViewDetailsModal()
               {isLoading ? "Connecting..." : "Connect"}
             </button>
           </div>
-          }
           
+        )}
           
         </div>
         </div>

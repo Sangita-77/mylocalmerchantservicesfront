@@ -255,7 +255,9 @@ const MerchantList = () => {
                     <tbody className="tbodyContainer">
                       {tableData.map((row, i) => (
                         <tr className="tr" key={i}>
-                          <td className="td">{row?.merchant_name || ''}</td>
+                          <td className="td">{row?.first_name && row?.last_name
+                  ? `${row.first_name} ${row.last_name}`
+                  : row?.merchant_name}</td>
                           <td className="td">{row?.user_id}</td>
                           <td className="td">{row?.state}</td>
                           <td className="actionTd">
