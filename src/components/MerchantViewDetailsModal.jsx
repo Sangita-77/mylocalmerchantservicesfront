@@ -114,7 +114,17 @@ fetchDataToggleViewDetailsModal()
         </div>
         <div className="merchantDetailsModalWrapper">
         
-          {data && 
+        {isLoading ? (
+        // 26.06.25
+        <div className="merchantDashboardLoaderWrapper">
+          <div className="merchantDashboardLoaderContainer">
+            <PreLoader />
+            <div>Loading...</div>
+          </div>
+        </div>
+        // 26.06.25
+      ) : (
+          data && 
           <div className="merchantDetailsModalContainer">
             <div className="userHeaderInfo">
               <div className="userImgWrapper">
@@ -211,8 +221,8 @@ fetchDataToggleViewDetailsModal()
               {isLoading ? "Connecting..." : "Connect"}
             </button>
           </div>
-          }
           
+        )}
           
         </div>
         </div>
