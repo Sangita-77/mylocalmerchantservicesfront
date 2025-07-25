@@ -381,7 +381,7 @@ const OnboardingPage = () => {
           <ButtonLarge
             title={"Register Now"}
             icon={<GoArrowRight size={32} color="#000000" />}
-            onClick={() => navigate(routes.msr_registration())}
+            onClick={() => navigate(routes.user_registration())}
           />
       </div>
 
