@@ -42,19 +42,19 @@ const Contact = () => {
             }));
         }
 
-        if (!phone) {
-            setValidationError((prev) => ({
-                ...prev,
-                phoneError: "Phone is required!",
-            }));
-        }
+        // if (!phone) {
+        //     setValidationError((prev) => ({
+        //         ...prev,
+        //         phoneError: "Phone is required!",
+        //     }));
+        // }
 
-        if (!message) {
-            setValidationError((prev) => ({
-                ...prev,
-                messageError: "Message is required!",
-            }));
-        }
+        // if (!message) {
+        //     setValidationError((prev) => ({
+        //         ...prev,
+        //         messageError: "Message is required!",
+        //     }));
+        // }
 
         try {   
             setLoading(true); 
@@ -131,11 +131,11 @@ const Contact = () => {
             <div className="inputGroup">
               <label htmlFor="phone">Phone</label>
               <input type="text" placeholder="" name="phone" onChange={(e) => setPhone(e.target.value)} />
-                {validationError?.phoneError && (
+                {/* {validationError?.phoneError && (
                   <div className="errorText" style={{ marginTop: -4 }}>
                     {validationError?.phoneError}
                   </div>
-                )}
+                )} */}
             </div>
           </div>
 
@@ -143,11 +143,11 @@ const Contact = () => {
             <div className="inputGroup">
               <label htmlFor="message">Message</label>
               <textarea placeholder="" name="message" onChange={(e) => setUserMessage(e.target.value)} />
-                {validationError?.messageError && (
+                {/* {validationError?.messageError && (
                   <div className="errorText" style={{ marginTop: -4 }}>
                     {validationError?.messageError}
                   </div>
-                )}
+                )} */}
             </div>
           </div>
 
