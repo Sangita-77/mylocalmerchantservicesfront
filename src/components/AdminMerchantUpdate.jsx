@@ -13,6 +13,8 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const { token } = useContext(AppContext);
 
   const [name, setName] = useState(user.merchant_name);
+  const [first_name, setfirst_name] = useState(user.first_name);
+  const [last_name, setlast_name] = useState(user.last_name);
   const [email, setEmail] = useState(user.user_id);
   const [industry, setIndustry] = useState(user.industry);
   const [phone, setPhone] = useState(user.phone);
@@ -127,6 +129,8 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           bulletOne : bulletOne,
           PPP : PPP,
           clientCount : clientCount,
+          first_name : first_name,
+          last_name : last_name,
 
         },
         {
@@ -383,16 +387,16 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Volume Publicly</label>
-            {/* <input type="text" value={user.volumePublicly} readOnly /> */}
             <select
               className="inputField selectField"
               value={volumePublicly}
               onChange={(e) => setvolumePublicly(e.target.value)}
             >
-              <option value="yes">  Yes  </option>
-              <option value="no"> No </option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
             </select>
           </div>
+
           <div className="formGroup">
             <label>High Risk</label>
             {/* <input type="text" value={user.HighRisk} readOnly /> */}
