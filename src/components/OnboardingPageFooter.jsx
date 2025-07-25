@@ -10,8 +10,12 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaYoutube } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../utils/routes";
 
 const OnboardingPageFooter = () => {
+
+  const navigate = useNavigate();
   return (
     <div className="onboardingPageFooterContainer">
       <div className="footerLabel">
@@ -40,17 +44,25 @@ const OnboardingPageFooter = () => {
           <p className="footerColTitle">
             Quick links
           </p>
+
           <div className="footerRow">
             <div>
               <IoIosArrowForward size={16} color="#ffffff"/>
             </div>
-            <p className="footerColDesc">Merchant Services Providers Registration</p>
+            <a onClick={() => navigate(routes.merchant_list())} style={{"cursor": "pointer"}}><p className="footerColDesc">Merchant Services Providers List</p></a>
+          </div>
+
+          <div className="footerRow">
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
+            <a onClick={() => navigate(routes.msr_registration())} style={{"cursor": "pointer"}}><p className="footerColDesc">Merchant Services Providers Registration</p></a>
           </div>
           <div className="footerRow">
             <div>
               <IoIosArrowForward size={16} color="#ffffff"/>
             </div>
-            <p className="footerColDesc">Merchant Registration</p>
+            <a onClick={() => navigate(routes.user_registration())} style={{"cursor": "pointer"}}><p className="footerColDesc">Merchant Registration</p></a>
           </div>
           {/* <div className="footerRow">
             <div>
@@ -68,7 +80,7 @@ const OnboardingPageFooter = () => {
             <div>
               <IoIosArrowForward size={16} color="#ffffff"/>
             </div>
-            <p className="footerColDesc">Contact</p>
+            <a onClick={() => navigate(routes.contact())} style={{"cursor": "pointer"}}><p className="footerColDesc">Contact</p></a>
           </div>
         </div>
 
