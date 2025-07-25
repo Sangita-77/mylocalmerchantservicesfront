@@ -56,16 +56,17 @@
 .footerLabelImg { margin: 0; padding: 0; width: 80px; height: 80px; object-fit: contain; }
 .footerLabelTitle { margin: 0; padding: 0; color: #194385; font-size: 32px; font-family: "Poppins"; font-weight: 400; }
 .footerLabelSubtitle { margin: 0; padding: 0; margin-top: -16px; color: #4c8ac7; font-size: 32px; font-family: "Poppins"; font-weight: 700; }
-.footerInnerContainer { margin: 0px; padding: 155px 100px 85px; display: flex; flex-direction: row; align-items: start; gap: 32px; }
+.footerInnerContainer { margin: 0px; padding: 155px 100px 50px; display: flex; flex-direction: row; align-items: start; gap: 32px; }
 .footerCol { margin: 0; padding: 0; padding-left: 18px; width: 30%; display: flex; flex-direction: column; align-items: flex-start; gap: 17px; }
 .footerRow { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 12px; }
 .footerColTitle {line-height: 30px; margin: 0; padding: 0; color: #ffffff; font-size: 30px; font-family: "Poppins"; font-weight: 700; text-transform: capitalize;}
-.footerColDesc { margin: 0; padding: 0; font-size: 20px; color: #eff5fa; font-family: "Poppins"; font-weight: 400; }
+.footerColDesc { margin: 0; padding: 0; font-size: 16px; color: #eff5fa; font-family: "Poppins"; font-weight: 400; }
 .footerColDesc a {color: #eff5fa; text-decoration: none;}
 .divider { margin: 0; padding: 0; width: 1px; height: 200px; background-color: #ffffff; }
 .footerChild { margin: 0; padding: 30px 0; background-color: #156FAC; width: 100%; text-align: center; }
 .footerChildContent { margin: 0; padding: 0; font-family: "Poppins"; font-size: 18px; line-height: 23px; color: #fff; text-transform: capitalize; }
-.footerInnerContainer .footerCol:nth-child(1) {width: 34%; margin-top: 32px;}
+.onboardingPageHeaderMainContainer .show.dropdown a.li_item_active{color: rgb(21, 111, 172); background: #d8eeff;}
+.footerInnerContainer .footerCol:nth-child(1) {width: 34%;}
 .footerInnerContainer .footerCol:nth-child(3) {width: 22%;}
 .footerInnerContainer .footerCol:nth-child(5) {width: 33%;}
 .footerInnerContainer .footerCol:first-child .footerColDesc {font: 400 16px/30px "Poppins"; text-transform: capitalize;}
@@ -227,16 +228,7 @@
 
 .merchantDetailsModalWrapper {position: relative;  margin: 0; padding: 0; width: 697px; height: 85vh; border: none; border-radius: 20px; background-color: #0085DA; position: fixed; top: 5vh; left: 50%; transform: translateX(-50%); overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; -ms-overflow-style: none;  z-index: 9999; }
 .merchantDetailsModalContainer {position: relative; margin: 0; padding: 50px 40px 35px; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
-.merchantDetailsModalWrapper::before {
-  content: '';
-    width: 1px;
-    height: 78%;
-    position: absolute;
-    left: 35%;
-    top: 50%;
-    background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);
-    transform: translateY(-50%);
-}
+.merchantDetailsModalWrapper::before { content: ''; width: 1px; height: 78%; position: absolute; left: 35%; top: 50%; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f); transform: translateY(-50%);}
 .merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 4vh; right: -15px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
 .merchantDetailsModalCloseBtn{margin: 0; padding: 8px 8px; position: absolute; top: 0vh; right: 3px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer;}
 .dataRowContainer { margin: 0; padding: 0; width: 100%; height: 53px; max-height: 200px; display: flex; flex-direction: row; align-items: center; column-gap: 50px; border: none; }

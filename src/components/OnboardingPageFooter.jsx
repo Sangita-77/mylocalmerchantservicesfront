@@ -25,10 +25,10 @@ const OnboardingPageFooter = () => {
 
       <div className="footerInnerContainer">
         <div className="footerCol">
-          <p className="footerColTitle">Agents and ISOs</p>
+          <p className="footerColTitle">Agents and ISO's</p>
           <p className="footerColDesc">
             Register your merchant services company and increase your leads 100%
-            FREE! Both ISOs and independent agents can register using the link
+            FREE! Both ISO's and independent agents can register using the link
             below. Complete your profile and start bringing in REAL local leads
             for free.
           </p>
@@ -38,26 +38,36 @@ const OnboardingPageFooter = () => {
 
         <div className="footerCol">
           <p className="footerColTitle">
-            Quick line
+            Quick links
           </p>
           <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
+            <p className="footerColDesc">Merchant Services Providers Registration</p>
+          </div>
+          <div className="footerRow">
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
             <p className="footerColDesc">Merchant Registration</p>
           </div>
-          <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
-            <p className="footerColDesc">Agent / ISO Registration</p>
-          </div>
-          <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
+          {/* <div className="footerRow">
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
             <p className="footerColDesc">Terms and Conditions</p>
           </div>
           <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
             <p className="footerColDesc">Privacy Policy</p>
-          </div>
+          </div> */}
           <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
             <p className="footerColDesc">Contact</p>
           </div>
         </div>

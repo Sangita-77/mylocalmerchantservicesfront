@@ -12,7 +12,6 @@ import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import LoginModal from "../components/LoginModal";
 import Dropdown from 'react-bootstrap/Dropdown';
-
 const OnboardingPageHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [personType, setPersonType] = useState("");
