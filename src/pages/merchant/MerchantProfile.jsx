@@ -766,7 +766,7 @@ const MerchantProfile = () => {
                         <div className="merchantProfileDetailsBox">
                           <div className="merchantProfileDetailsBoxLeft">
                             <div className="merchantProfileDataTitle grayLabel">
-                              Type of services
+                              Type of Services
                             </div>
                             <div className="merchantProfileData">
                               {merchantProfileData?.type_of_service}
