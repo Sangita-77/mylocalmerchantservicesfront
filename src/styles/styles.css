@@ -13,7 +13,7 @@
 .merchantFooterWrapper .merchantChildFooter { margin: 0; padding: 0; height: 60px; font-family: "Poppins"; font-size: 14px; font-weight: 400; color: white; text-align: center; align-content: center; background-color: rgb(30, 86, 169); }
 
 /* ///////////////    RESUABLE COMPONENTS    ////////////// */
-.button_large {transition: all .5s ease-in-out; margin: 0; padding: 18px 20px; background-color: rgb(253, 218, 102); color: #000000; font-weight: 700; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: none; border-radius: 10px; cursor: pointer; max-width: 335px; max-height: 66px; 
+.button_large {transition: all .5s ease-in-out; margin: 0; padding: 18px 20px; background-color: rgb(253, 218, 102); color: #000000; font-weight: 700; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: none; border-radius: 10px; cursor: pointer; max-width: 432px; max-height: 66px; 
   font-size: 20px; font-family: "Poppins"; font-weight: 700; letter-spacing: 0.6px;}
 .button_large:hover {background-color: #106cb5; color: #fff;}
 .large_button_text { margin: 0; padding: 0; /*color: #000000; font-size: 20px; font-family: "Poppins"; font-weight: 700; letter-spacing: 0.6px;*/ }
@@ -22,7 +22,7 @@
 /* //////////////////  MERCHANT LAYOUT HEADER  ///////////////// */
 .onboardingPageHeaderWrapper { margin: 0; padding: 0; width: 100vw; height: 110px; position: fixed; top: 0; left: 0; z-index: 111; background-color: #ffffff; }
 .onboardingPageChildHeaderContainer { margin: 0; height: 42px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; background: rgb(21, 111, 172); }
-.childHeaderText { margin: 0; padding: 0; color: #ffffff; font-size: 16px; font-weight: 500; font-family: "Poppins"; vertical-align: middle; text-transform: capitalize; letter-spacing: 2px; }
+.childHeaderText { margin: 0; padding: 0; color: #ffffff; font-size: 16px; font-weight: 500; font-family: "Poppins"; vertical-align: middle;  letter-spacing: 2px; }
 .onboardingPageHeaderMainContainer { margin: 0; padding: 12px 4%; width: auto; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: #ffffff; cursor: pointer;}
 .headerLeft { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 4px; }
 .locationIcon { width: 60px; height: 60px; object-fit: contain; }
@@ -85,7 +85,7 @@
 
 .bannerTitleLarge { margin: 0; padding: 0; font-size: 100px; letter-spacing: -2px; font-weight: 800; font-family: "Poppins"; background: #1C94E4; text-transform: capitalize; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .bannerTitleMedium { margin: -32px 0 0 6px; padding: 0; font-size: 34px; font-family: "Poppins"; font-weight: 600; color: #0c64aa; text-transform: capitalize; }
-.bannerTitleSmall { margin: 14px 0 36px 8px; padding: 0; color: rgb(70, 70, 70); font-size: 24px; font-weight: 500; font-family: 'Poppins'; text-transform: capitalize;}
+.bannerTitleSmall { margin: 14px 0 36px 8px; padding: 0; color: rgb(70, 70, 70); font-size: 24px; font-weight: 500; font-family: 'Poppins';}
 .bannerButton { margin: 0; margin-top: 24px; padding: 12px 36px; background-color: rgb(253, 218, 102); color: #000000; display: flex; outline: none; flex-direction: row; align-items: center; justify-content: center; gap: 4px; border: none; border-radius: 50px; cursor: pointer; }
 .bannerButtonTitle { margin: 0; padding: 0; font-size: 14px; font-weight: 700; }
 .sticker { position: absolute; }
@@ -108,8 +108,8 @@
 .agentBottomYellowShade { width: 280px; height: 280px; position: absolute; bottom: 30px; right: 40px; border: none; border-radius: 100%; transform: rotate(90deg); }
 
 .findAgentsSectionTop { text-align: center; align-self: center; }
-.findAgentsSectionTitle { margin: 0; margin-bottom: 20px; padding: 0; color: #141414; font-size: 50px; line-height: 50px; font-weight: 600; font-family: "Poppins"; text-transform: capitalize;}
-.findAgentsSectionSubtitle { margin: 0; margin-bottom: 72px; padding: 0; font-size: 30px; line-height: 47px; color: #141414; font-weight: 400; font-family: "Poppins"; text-transform: capitalize;}
+.findAgentsSectionTitle { margin: 0; margin-bottom: 20px; padding: 0; color: #141414; font-size: 50px; line-height: 50px; font-weight: 600; font-family: "Poppins"; }
+.findAgentsSectionSubtitle { margin: 0; margin-bottom: 72px; padding: 0; font-size: 30px; line-height: 47px; color: #141414; font-weight: 400; font-family: "Poppins"; }
 
 .findAgentsSectionBottom {align-self: center; margin: 0; padding: 48px 100px; left: 0; min-height: 500px; background-color: #ffffff; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; }
 .findAgentsSectionBottomItem { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }

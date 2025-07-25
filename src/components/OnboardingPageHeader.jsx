@@ -83,7 +83,7 @@ const OnboardingPageHeader = () => {
     <div className="onboardingPageHeaderWrapper">
       <div className="onboardingPageChildHeaderContainer">
         <p className="childHeaderText">
-          Get discovered by real local businesses
+          Get Discovered by Real Local Businesses
         </p>
       </div>
 
