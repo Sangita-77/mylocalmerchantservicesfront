@@ -6,6 +6,8 @@ import { BASE_URL } from "../utils/apiManager";
 import PreLoader from "../components/PreLoader";
 import { AppContext } from "../utils/context";
 import { IoMdClose } from "react-icons/io";
+import placeholderimg from "./../assets/images/placeholderimg.jpg";
+import { IMAGE_BASE_URL } from "../utils/apiManager";
 
 const MerchantViewDetailsModal = ({ id, handleClose }) => {
   // console.log("Modal data===>", id);
@@ -115,6 +117,20 @@ fetchDataToggleViewDetailsModal()
           {isLoading&& (<div><PreLoader/> </div>)}
           {data && 
           <div className="merchantDetailsModalContainer">
+            <div className="userHeaderInfo">
+              <div className="userImgWrapper">
+                <div className="userImg">
+                  {/* <img src={placeholderimg} alt="" /> */}
+                  <img
+                    src={data.logo && data.logo.trim() !== '' ? `${IMAGE_BASE_URL}/${data.logo}` : placeholderimg}
+                    alt="User Logo"
+                  />
+                </div>
+              </div>
+              <div className="formGroup">
+                <input type="text" value={data?.merchant_name} className="userName" readOnly />
+              </div>
+            </div>
             
             <div className="dataRowContainer">
               <div className="dataTitle">Name : </div>

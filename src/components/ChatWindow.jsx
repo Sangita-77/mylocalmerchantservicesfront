@@ -161,7 +161,9 @@ const ChatWindow = ({
                 if (e.key === "Enter") handleSendMessage();
               }}
             />
-            <button className="sendMessageButton" onClick={handleSendMessage}>
+            <button className="sendMessageButton" onClick={handleSendMessage} data-bs-toggle="tooltip"
+                        data-bs-placement="auto"
+                        title="Send Message to The Merchant Services Providers">
               <BsSendFill color="white" size={24} />
             </button>
           </div>

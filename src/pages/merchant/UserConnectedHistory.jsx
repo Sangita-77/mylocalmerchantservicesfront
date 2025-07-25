@@ -214,7 +214,7 @@ const handleDelete = async (connection) => {
 
         {showConfirmModal && (
           <ConfirmModal
-            title="Delete User"
+            title="Delete Connection"
             message="Are you sure you want to delete this connection?"
             onConfirm={handleDelete}
             onCancel={() => setShowConfirmModal(false)}

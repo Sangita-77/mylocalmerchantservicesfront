@@ -87,7 +87,7 @@ const BarChartComponent = ({ data }) => {
         itemStyle={{ color: 'black' }}
         labelStyle={{ color: 'black' }} />
         <CartesianGrid strokeDasharray="0" horizontal vertical={false} stroke="#ffffffff" />
-        <Bar dataKey="merchants" fill="white" radius={[12, 12, 0, 0]} />
+        <Bar dataKey="Merchant_Services_Providers" fill="white" radius={[12, 12, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
