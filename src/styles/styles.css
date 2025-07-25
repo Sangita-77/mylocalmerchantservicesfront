@@ -682,7 +682,7 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
   border: 12px solid #f6fbff;   /* Swati  30.06.2025*/ width: 100%; background-color: #22a0f1;border-radius: 24px; position: relative; }
 .userStatsTopContainer { width: 68%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
 .merchantStatsSection .userStatsTopContainer{   /* Swati  30.06.2025*/ width: 100%; }    /* Swati  30.06.2025*/
-.merchantStatsSection .number-of-user{transform: rotate(-90deg); bottom: 117px; left: -34px; background: #F54D5E; padding: 4px 16px;
+.merchantStatsSection .number-of-user{transform: rotate(-90deg); bottom: 172px; left: -90px; background: #F54D5E; padding: 4px 16px;
  color: #fff; font-family: 'Sora'; text-transform: uppercase; position: absolute; border-radius: 3px;font-size: 12px;} /* Swati  30.06.2025*/
 .merchantStatsSection .UserStatistics{background: #E3F1FF; text-align: center; border-radius: 20px; border: solid 2px #fff; box-shadow: 0 0 8px 0 #c9c9c9; padding: 0 20px;}  /* Swati  30.06.2025 */
 .merchantStatsSection .UserStatistics .chartTitle{color: #404040; font:400 20px/22px 'Sora'; padding-top: 30px;} /* Swati  30.06.2025 */

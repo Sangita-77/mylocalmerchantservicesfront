@@ -28,7 +28,7 @@ const MerchantDashboard = () => {
     return Object.entries(data).map(([key, value]) => ({
 
       month: key,
-      merchants: value,
+      Merchant_Services_Providers : value,
     }));
   };
 
@@ -125,7 +125,7 @@ const MerchantDashboard = () => {
               <div className="userStatsSection">
                 <div className="userStatsTopContainer">
                   <div className="userStatsTopLeft">
-                    <div className="userStatsTitle">Number of Merchant</div>
+                    <div className="userStatsTitle">Number of Merchant Services Providers</div>
                     <div className="userStatsValue">{totalCount}</div>
                   </div>
                   <div className="userGraphRight">
@@ -160,7 +160,7 @@ const MerchantDashboard = () => {
                           <CiCircleInfo size={24} color="white" />
                         </div>
                       </div>
-                      <div className="number-of-user">Number of users</div>
+                      <div className="number-of-user">Number of Merchant Services Providers</div>
                       <div className="graphContainer">
                         <BarChartComponent data={graphData} />
                       </div>

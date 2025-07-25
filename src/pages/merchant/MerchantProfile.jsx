@@ -25,6 +25,7 @@ const MerchantProfile = () => {
   const [merchantProfileData, setMerchantProfileData] = useState(null);
   const [companyName, setCompanyName] = useState();
   const [merchantName, setMerchantName] = useState("");
+  const [merchant_id, setmerchant_id] = useState("");
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -122,17 +123,18 @@ const MerchantProfile = () => {
         city: city,
         state: state,
         zip_code: zipCode,
-        county: country,
+        country: "US",
         email: alternateEmail,
         phone: phone,
         industry: industry,
         type_of_service: typeOfServices,
         website: website,
         company_description: companyDescription,
+        merchant_id : merchant_id,
       };
 
       const response = await axios.post(
-        `${BASE_URL}/editMerchantProfile`,
+        `${BASE_URL}/updateMerchantDetails`,
         body,
         {
           headers: {
@@ -202,6 +204,9 @@ const MerchantProfile = () => {
     setTypeOfServices(merchantProfileData?.type_of_service);
     setWebsite(merchantProfileData?.website);
     setZipCode(merchantProfileData?.zip_code);
+    setmerchant_id(merchantProfileData?.merchant_id);
+
+    // setStreet(merchantProfileData?.street);
   }, [merchantProfileData]);
 
 
@@ -571,7 +576,7 @@ const MerchantProfile = () => {
                               Country Name
                             </div>
                             <div className="merchantProfileData">
-                              {merchantProfileData?.county}
+                              {merchantProfileData?.country}
                             </div>
                           </div>
 
