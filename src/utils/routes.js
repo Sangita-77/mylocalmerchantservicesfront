@@ -28,5 +28,14 @@ export const routes = {
   merchant_dashboard: () => "/merchant/dashboard",
   merchant_products: () => "/merchant/products",
   merchant_profile: () => "/merchant/profile",
-  merchant_user_history: () => "/merchant/user_connected_history"
+  merchant_user_history: () => "/merchant/user_connected_history",
+
+
+  ///////////   PROVIDERS ADMIN  ///////////////  
+
+  provider_dashboard: () => "/provider/dashboard",
+  provider_profile: () => "/provider/profile",
+  provider_connectec_history: () => "/provider/connected_history"
+
+  
 };

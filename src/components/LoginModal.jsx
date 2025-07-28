@@ -141,13 +141,13 @@ const LoginModal = ({ handleClose }) => {
         // console.log("Navigating toaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa: ", flag);
 
         if (flag === "merchant services providers") {
-          navigate(routes?.merchant_dashboard());
+          navigate(routes?.provider_dashboard());
         }else if(flag === "processors"){
-          navigate(routes?.merchant_dashboard());
-        }else if(flag === "ISOs"){
-          navigate(routes?.merchant_dashboard());
+          navigate(routes?.provider_dashboard());
+        }else if(flag === "isos"){
+          navigate(routes?.provider_dashboard());
         }else if(flag === "agents"){
-          navigate(routes?.merchant_dashboard());
+          navigate(routes?.provider_dashboard());
         }else if(flag === "user"){
           navigate(routes?.merchant_dashboard());
         }else if(flag === "admin"){

@@ -684,6 +684,9 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .merchantStatsSection .UserStatistics .totalUserCount{color: #333335; font:600 30px/40px 'Sora';}
 .merchantStatsSection .UserStatistics .totalUsertxt{color: #838383; font:400 16px/22px 'Sora';}
 
+.merchantStatsSection .number-of-provider{transform: rotate(-90deg); bottom: 172px; left: -58px; background: #F54D5E; padding: 4px 16px;
+  color: #fff; font-family: 'Sora'; text-transform: uppercase; position: absolute; border-radius: 3px;font-size: 12px;} 
+
 .merchantStatsSection .userStatsContainer .time-user span{background: #FFBF61; padding: 4px 8px; border-radius: 2px;     text-transform: uppercase; font:400 15px/40px 'Sora'; margin-left: 60px;}
 
 .userStatsTopRight { display: flex; flex-direction: row; align-items: center; gap: 64px; }
