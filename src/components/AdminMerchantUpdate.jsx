@@ -90,6 +90,10 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
     }
   }, [token]);
 
+  useEffect(() => {
+    setFlag(user.flag);
+  }, [user.flag]);
+
 
   if (!user) return null;
 
@@ -131,6 +135,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           clientCount : clientCount,
           first_name : first_name,
           last_name : last_name,
+          salesrepresenatives : salesrepresenatives,
 
         },
         {
@@ -186,6 +191,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
       setError(errMsg);
     }
   };
+
 
   return (
     <div className="userDetailsOverlay updateform">
@@ -286,22 +292,74 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
             <input type="text" value={status} onChange={(e) => setStatus(e.target.value)} />
           </div>
 
-          <div className="formGroup">
+          {/* <div className="formGroup">
             <label>SponsorBank</label>
             <input type="text" value={SponsorBank} onChange={(e) => setSponsorBank(e.target.value)} />
-          </div>
-          <div className="formGroup">
+          </div> */}
+
+          {flag !== "processors" && flag !== "agents" && (
+            <div className="formGroup">
+              <label>SponsorBank</label>
+              <input
+                type="text"
+                value={SponsorBank}
+                onChange={(e) => setSponsorBank(e.target.value)}
+              />
+            </div>
+          )}
+
+
+          {/* <div className="formGroup">
             <label>Primary Processing Platform</label>
             <input type="text" value={PPP} onChange={(e) => setPPP(e.target.value)} />
-          </div>
-          <div className="formGroup">
+          </div> */}
+
+          {flag !== "processors" && flag !== "isos" && (
+            <div className="formGroup">
+              <label>Primary Processing Platform</label>
+              <input
+                type="text"
+                value={PPP}
+                onChange={(e) => setPPP(e.target.value)}
+              />
+            </div>
+          )}
+
+          {/* <div className="formGroup">
             <label>Secondary Processing Platform</label>
             <input type="text" value={SPP} onChange={(e) => setSPP(e.target.value)} />
-          </div>
-          <div className="formGroup">
+          </div> */}
+
+          {flag !== "processors" && flag !== "isos" && (
+            <div className="formGroup">
+              <label>Secondary Processing Platform</label>
+              <input
+                type="text"
+                value={SPP}
+                onChange={(e) => setSPP(e.target.value)}
+              />
+            </div>
+          )}
+
+
+          {/* <div className="formGroup">
             <label>Other</label>
             <input type="text" value={Other} onChange={(e) => setOther(e.target.value)} />
-          </div>
+          </div> */}
+
+          {flag !== "processors" && flag !== "isos" && (
+            <div className="formGroup">
+              <label>Other</label>
+              <input
+                type="text"
+                value={Other}
+                onChange={(e) => setOther(e.target.value)}
+              />
+            </div>
+          )}
+
+
+
           <div className="formGroup">
             <label>Distance Willing</label>
             {/* <input type="text" value={DistanceWilling} onChange={(e) => setDistanceWilling(e.target.value)} /> */}
@@ -354,7 +412,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Client Count</label>
-            <input type="text" value={clientCount}  onChange={(e) => setclientCount(e.target.value)} />
+            <input type="number" value={clientCount}  onChange={(e) => setclientCount(e.target.value)} />
           </div>
           <div className="formGroup">
             <label>Client Publicly</label>
@@ -433,11 +491,6 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
               <option value="no"> No </option>
             </select>
           </div>
-
-
-
-
-
 
           <button className="popButton" onClick={handleUpdateClick}>Update</button>
         </div>
