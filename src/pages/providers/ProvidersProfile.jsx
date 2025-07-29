@@ -364,7 +364,7 @@ const ProvidersProfile = () => {
   return (
     <div className="merchantProfileWrapper providerProfileWrapper">
 
-      <ProviderDashboardTopBar heading={`${formatPersonType(personType)} Dashboard`} />
+      <ProviderDashboardTopBar heading={`${formatPersonType(personType)} Profile`} />
 
       {loading ? (
         // 26.06.25
