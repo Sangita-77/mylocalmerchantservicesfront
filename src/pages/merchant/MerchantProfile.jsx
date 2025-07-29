@@ -16,6 +16,8 @@ import { CiCalendar, CiCircleInfo, CiSearch } from "react-icons/ci";
 import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
 import ProfileImageUpload from "../../components/ProfileImageUpload";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../utils/routes";
 
 const MerchantProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -51,6 +53,8 @@ const MerchantProfile = () => {
   const [editTypeOfService, setEditTypeOfService] = useState(false);
   const [editWebsite, setEditWebsite] = useState(false);
   const [editCompanyDescription, setEditCompanyDescription] = useState(false);
+
+  const navigate = useNavigate();
 
   const {
     setShowToast,
@@ -933,6 +937,18 @@ const MerchantProfile = () => {
                     ) : (
                       ""
                     )}
+
+                    <div className="merchantProfileDetailsBoxContainer">
+                      <div className="forgetPassword">
+                        Reset Password?{" "}
+                        <span
+                          className="forgetPasswordLink"
+                          onClick={() => navigate(routes.forget_password())}
+                        >
+                          Click here
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

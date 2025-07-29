@@ -17,6 +17,9 @@ import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
 import ProviderDashboardTopBar from "../../components/ProviderDashboardTopBar";
 import ProfileImageUpload from "../../components/ProfileImageUpload";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../utils/routes";
+
 
 const ProvidersProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -132,6 +135,8 @@ const ProvidersProfile = () => {
     token,
     loggedInUserId
   } = useContext(AppContext);
+
+  const navigate = useNavigate();
 
   const fetchMerchantProfileData = async () => {
     try {
@@ -626,52 +631,6 @@ const ProvidersProfile = () => {
                       )}
                     </div>
                     <div className="merchantProfileDetailsBoxContainer">
-                      {!editPhone ? (
-                        <div className="merchantProfileDetailsBox">
-                          <div className="merchantProfileDetailsBoxLeft">
-                            <div className="merchantProfileDataTitle grayLabel">
-                              Phone
-                            </div>
-                            <div className="merchantProfileData">
-                              {merchantProfileData?.phone ?? 'NA'}
-                            </div>
-                          </div>
-
-                          <div
-                            className="editIconContainer"
-                            onClick={() => setEditPhone(true)}
-                          >
-                            <img src={editIcon} alt="" className="editIcon" />
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="merchantProfileInputBox">
-                          <div className="merchantInputContainer">
-                            <label
-                              htmlFor="phone"
-                              className="merchantInputLabel"
-                            >
-                              Phone <span style={{ color: "red" }}>*</span>
-                            </label>
-                            <input
-                              type="text"
-                              name="phone"
-                              placeholder="Enter phone"
-                              value={phone}
-                              onChange={(e) => setPhone(e.target.value)}
-                              className="merchantProfileInputField"
-                              required
-                            />
-                          </div>
-
-                          <div
-                            className="merchantInputCloseBtn"
-                            onClick={() => setEditPhone(false)}
-                          >
-                            &times;
-                          </div>
-                        </div>
-                      )}
 
                       {!editWebsite ? (
                         <div className="merchantProfileDetailsBox">
@@ -718,9 +677,7 @@ const ProvidersProfile = () => {
                           </div>
                         </div>
                       )}
-                    </div>
 
-                    <div className="merchantProfileDetailsBoxContainer">
                       {!editCompanyDescription ? (
                         <div className="merchantProfileDetailsBox">
                           <div className="merchantProfileDetailsBoxLeft">
@@ -1888,6 +1845,17 @@ const ProvidersProfile = () => {
                     ) : (
                       ""
                     )}
+                    <div className="merchantProfileDetailsBoxContainer">
+                      <div className="forgetPassword">
+                        Reset Password?{" "}
+                        <span
+                          className="forgetPasswordLink"
+                          onClick={() => navigate(routes.forget_password())}
+                        >
+                          Click here
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
