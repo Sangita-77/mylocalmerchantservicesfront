@@ -17,10 +17,34 @@ const ResetPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  // const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState({
     newPasswordError: "",
     confirmPasswordError: "",
   });
+  const [showPasswordRules, setShowPasswordRules] = useState(false);
+  const [passwordValidationStatus, setPasswordValidationStatus] = useState({
+    length: false,
+    lowercase: false,
+    uppercase: false,
+    number: false,
+    specialChar: false,
+  });
+
+  const validatePasswordRules = (newPassword) => {
+    return {
+      length: newPassword.length >= 8 && newPassword.length <= 12,
+      lowercase: /[a-z]/.test(newPassword),
+      uppercase: /[A-Z]/.test(newPassword),
+      number: /[0-9]/.test(newPassword),
+      specialChar: /[^A-Za-z0-9]/.test(newPassword),
+    };
+  };
+
+  useEffect(() => {
+    setPasswordValidationStatus(validatePasswordRules(newPassword));
+  }, [newPassword]);
+  
 
   const { setShowToast, setMessageTitle, setMessage, setSeverity } =
     useContext(AppContext);
@@ -117,9 +141,33 @@ const ResetPassword = () => {
               value={newPassword}
               placeholder="Enter new password"
               onChange={(e) => setNewPassword(e.target.value)}
+              onFocus={() => setShowPasswordRules(true)}
+              onBlur={() => setTimeout(() => setShowPasswordRules(false), 200)}
             />
             {passwordError.newPasswordError && (
               <div className="errorText">{passwordError.newPasswordError}</div>
+            )}
+
+            {showPasswordRules && (
+              <div className="passwordRulesContainer">
+                <ul className="passwordRulesList">
+                  <li style={{ color: passwordValidationStatus.length ? "green" : "red" }}>
+                    Minimum 8 & maximum 12 characters
+                  </li>
+                  <li style={{ color: passwordValidationStatus.lowercase ? "green" : "red" }}>
+                    At least one lowercase letter
+                  </li>
+                  <li style={{ color: passwordValidationStatus.uppercase ? "green" : "red" }}>
+                    At least one uppercase letter
+                  </li>
+                  <li style={{ color: passwordValidationStatus.number ? "green" : "red" }}>
+                    At least one number
+                  </li>
+                  <li style={{ color: passwordValidationStatus.specialChar ? "green" : "red" }}>
+                    At least one special character
+                  </li>
+                </ul>
+              </div>
             )}
           </div>
           <div className="checkBoxRow">

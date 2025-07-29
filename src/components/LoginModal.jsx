@@ -249,27 +249,27 @@ const LoginModal = ({ handleClose }) => {
                   onFocus={() => setShowPasswordRules(true)}
                   onBlur={() => setTimeout(() => setShowPasswordRules(false), 200)}
                 />
-                        {showPasswordRules && (
-  <div className="passwordRulesContainer">
-    <ul className="passwordRulesList">
-      <li style={{ color: passwordValidationStatus.length ? "green" : "red" }}>
-        Minimum 8 & maximum 12 characters
-      </li>
-      <li style={{ color: passwordValidationStatus.lowercase ? "green" : "red" }}>
-        At least one lowercase letter
-      </li>
-      <li style={{ color: passwordValidationStatus.uppercase ? "green" : "red" }}>
-        At least one uppercase letter
-      </li>
-      <li style={{ color: passwordValidationStatus.number ? "green" : "red" }}>
-        At least one number
-      </li>
-      <li style={{ color: passwordValidationStatus.specialChar ? "green" : "red" }}>
-        At least one special character
-      </li>
-    </ul>
-  </div>
-)}
+                {showPasswordRules && (
+                  <div className="passwordRulesContainer">
+                    <ul className="passwordRulesList">
+                      <li style={{ color: passwordValidationStatus.length ? "green" : "red" }}>
+                        Minimum 8 & maximum 12 characters
+                      </li>
+                      <li style={{ color: passwordValidationStatus.lowercase ? "green" : "red" }}>
+                        At least one lowercase letter
+                      </li>
+                      <li style={{ color: passwordValidationStatus.uppercase ? "green" : "red" }}>
+                        At least one uppercase letter
+                      </li>
+                      <li style={{ color: passwordValidationStatus.number ? "green" : "red" }}>
+                        At least one number
+                      </li>
+                      <li style={{ color: passwordValidationStatus.specialChar ? "green" : "red" }}>
+                        At least one special character
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </div>
 
               {validationError.passwordError && (
