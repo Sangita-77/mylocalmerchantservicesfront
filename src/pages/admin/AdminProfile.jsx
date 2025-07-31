@@ -28,6 +28,28 @@ const AdminProfile = () => {
   const [profileData, setProfileData] = useState({});
 
   const [loading, setLoading] = useState(false);
+  const [showPasswordRules, setShowPasswordRules] = useState(false);
+  const [passwordValidationStatus, setPasswordValidationStatus] = useState({
+    length: false,
+    lowercase: false,
+    uppercase: false,
+    number: false,
+    specialChar: false,
+  });
+
+  const validatePasswordRules = (oldPassword) => {
+    return {
+      length: oldPassword.length >= 8 && oldPassword.length <= 12,
+      lowercase: /[a-z]/.test(oldPassword),
+      uppercase: /[A-Z]/.test(oldPassword),
+      number: /[0-9]/.test(oldPassword),
+      specialChar: /[^A-Za-z0-9]/.test(oldPassword),
+    };
+  };
+
+  useEffect(() => {
+    setPasswordValidationStatus(validatePasswordRules(oldPassword));
+  }, [oldPassword]);
   const {
     setPageLoading,
     token,
@@ -412,9 +434,12 @@ const AdminProfile = () => {
                               className="loginFormInputField"
                               value={oldPassword}
                               onChange={(e) => setOldPassword(e.target.value)}
+                              onFocus={() => setShowPasswordRules(true)}
+                              onBlur={() => setTimeout(() => setShowPasswordRules(false), 200)}
                               placeholder="Password"
                             />
                           </div>
+
                           {validationError?.passwordError && (
                             <div className="errorText" style={{ marginTop: -4 }}>
                               {validationError?.passwordError}
@@ -436,6 +461,27 @@ const AdminProfile = () => {
                             </div>
                           )}
                         </div>
+                        {showPasswordRules && (
+                            <div className="passwordRulesContainer">
+                              <ul className="passwordRulesList">
+                                <li style={{ color: passwordValidationStatus.length ? "green" : "red" }}>
+                                  Minimum 8 & maximum 12 characters
+                                </li>
+                                <li style={{ color: passwordValidationStatus.lowercase ? "green" : "red" }}>
+                                  At least one lowercase letter
+                                </li>
+                                <li style={{ color: passwordValidationStatus.uppercase ? "green" : "red" }}>
+                                  At least one uppercase letter
+                                </li>
+                                <li style={{ color: passwordValidationStatus.number ? "green" : "red" }}>
+                                  At least one number
+                                </li>
+                                <li style={{ color: passwordValidationStatus.specialChar ? "green" : "red" }}>
+                                  At least one special character
+                                </li>
+                              </ul>
+                            </div>
+                          )}
                         <div>
                           <button
                             className="loginBtn"
