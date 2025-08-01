@@ -1259,3 +1259,12 @@ border-radius: 5px; margin-right: 30px;}
 .providerProfileWrapper .inputField { margin: 0; padding: 0 24px; width: 50%; font-size: 14px; letter-spacing: 0.5px; border: none; outline: none; height: 58px; border-radius: 6px; border: solid 1px #9b9898;}
 
 
+/* cookieConsent.css */
+.cookie-consent { position: fixed; bottom: 20px; left: 20px; background-color: #d1eafa; color: #000; padding: 16px 24px; border-radius: 8px; z-index: 1000; max-width: 300px; box-shadow: 0px 0px 10px #00000066; text-align: center; }
+.cookie-buttons { margin-top: 10px; display: flex; gap: 10px; margin-left: 36px; }
+
+.cookie-buttons button { padding: 8px 16px; border: none; cursor: pointer; border-radius: 4px; }
+
+.cookie-buttons button:first-child { background-color: #003478; color: white; border-radius: 10px; }
+
+.cookie-buttons button:last-child { background-color: #f44336; color: white; border-radius: 10px; }

@@ -12,6 +12,9 @@ import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import LoginModal from "../components/LoginModal";
 import Dropdown from 'react-bootstrap/Dropdown';
+import CookieConsent from '../components/CookieConsent';
+
+
 const OnboardingPageHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [personType, setPersonType] = useState("");
@@ -213,6 +216,14 @@ const OnboardingPageHeader = () => {
       {showLogin && (
         <LoginModal handleClose={() => setShowLogin(false)} />
       )}
+
+    <div className="App">
+      {/* Your landing page content */}
+      {/* <h1>Welcome to My Website</h1> */}
+
+      {/* Cookie consent */}
+      <CookieConsent />
+    </div>
     </div>
   );
 };
