@@ -28,6 +28,10 @@ const MerchantList = () => {
   const [searched, setSearched] = useState(false);
   const [DWtoTravel, setDWtoTravel] = useState("");
 
+  const [validationError, setValidationError] = useState({
+    searchFieldError : "",
+  });
+
   const limit = 5;
 
   const fetchTableData = async (offset = 0) => {
@@ -74,9 +78,15 @@ const MerchantList = () => {
   };
 
   const handleSearchTableData = async (page = 1) => {
+
+    const errors = {};
     if (!searchByName && !searchByState && !searchByZip && !DWtoTravel) {
-      return alert("Please enter something in the search fields!");
+      errors.searchFieldError = "Please enter something in the search fields!";
+      setValidationError(errors);
+      return;
     }
+  
+    setValidationError({ searchFieldError: "" });
   
     try {
       setLoading(true);
@@ -232,6 +242,10 @@ const MerchantList = () => {
                 Search
             </button>
           </div>
+
+          {validationError.searchFieldError && (
+            <div className="errorText">{validationError.searchFieldError}</div>
+          )}
 
           {/* Table Section */}
           <div className="merchantListTableSection">
