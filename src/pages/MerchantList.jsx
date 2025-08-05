@@ -206,7 +206,7 @@ const MerchantList = () => {
               </div>
             </div>
 
-            <div className="merchantTopSearchSingleItem">
+            {/* <div className="merchantTopSearchSingleItem">
               <div className="searchTitle">Search by zipcode</div>
               <div className="searchInputContainer">
                 <input
@@ -235,7 +235,45 @@ const MerchantList = () => {
 
                   </select>
               </div>
+            </div> */}
+
+            <div className="merchantTopSearchSingleItem">
+              <div className="searchTitle">Search by zipcode</div>
+              <div className="searchInputContainer">
+                <input
+                  type="text"
+                  className="searchInput"
+                  placeholder="Search By Zipcode"
+                  value={searchByZip}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val.length <= 6 && /^\d*$/.test(val)) setSearchByZip(val);
+                  }}
+                />
+              </div>
             </div>
+
+            <div className="merchantTopSearchSingleItem">
+              <div className="searchTitle">Search by Distance</div>
+              <div className="searchInputContainer">
+                <select
+                  name="cars"
+                  id="cars"
+                  className="inputField selectField searchInput"
+                  value={DWtoTravel}
+                  onChange={(e) => setDWtoTravel(e.target.value)}
+                  disabled={!searchByZip} // Disable if searchByZip is empty
+                >
+                  <option value="">   Select Any Type  </option>
+                  <option value="5">   &lt; 5 miles  </option>
+                  <option value="10">  &lt; 10 miles </option>
+                  <option value="25">  &lt; 25 miles </option>
+                  <option value="50">  &lt; 50 miles </option>
+                  <option value="100"> &lt; 100 miles </option>
+                </select>
+              </div>
+            </div>
+
 
             <button className="searchBtn" onClick={() => handleSearchTableData(0)}>
                 <IoSearch size={24} color="white" />
