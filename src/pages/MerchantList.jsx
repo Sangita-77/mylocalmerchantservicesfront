@@ -51,6 +51,8 @@ const MerchantList = () => {
       );
 
       const { users, pageCount, activePage } = response?.data?.data;
+
+      console.log("..............users.....................",users);
       setTableData(users || []);
       setPageCount(pageCount || 1);
       setActivePage(activePage || 1);
@@ -318,7 +320,7 @@ const MerchantList = () => {
                       <tr>
                         <th className="th">Name</th>
                         <th className="th">Company Name</th>
-                        <th className="th">Rating</th>
+                        <th className="th">Average Rating</th>
                         <th className="thActions">Actions</th>
                       </tr>
                     </thead>
@@ -330,7 +332,36 @@ const MerchantList = () => {
                         : row?.merchant_name}</td>
                                 {/* <td className="td">{row?.user_id}</td> */}
                                 <td className="td">{row?.company_name}</td>
-                                <td className="td">4.5</td>
+                                <td className="td">
+                                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                                    {/* Show stars */}
+                                    {[...Array(5)].map((_, index) => {
+                                      const filled = index < Math.round(row?.average_rating || 0);
+                                      return (
+                                        <span
+                                          key={index}
+                                          style={{
+                                            color: filled ? "#FFD700" : "#ccc",
+                                            fontSize: "18px",
+                                          }}
+                                        >
+                                          ★
+                                        </span>
+                                      );
+                                    })}
+
+                                    {/* Show numeric rating */}
+                                    <span style={{ fontWeight: "500" }}>
+                                      {row?.average_rating ? row.average_rating.toFixed(1) : "0.0"}
+                                    </span>
+                                  </div>
+
+                                  {/* Always show review count (even if 0) */}
+                                  <div style={{ fontSize: "12px", color: "#666" }}>
+                                    ({row?.review_count || 0} review{(row?.review_count || 0) !== 1 ? "s" : ""})
+                                  </div>
+                                </td>
+
                                 <td className="actionTd">
                                   <button
                                     className="viewButton"
