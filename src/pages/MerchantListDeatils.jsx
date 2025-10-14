@@ -50,7 +50,7 @@ const MerchantListDetails = () => {
     const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
 
     if (!id || !isAuthenticated || !merchant_id) {
-      navigate("/merchant-registration");
+      navigate("/merchant-service-providers-registration");
     } else {
       setShowModal(true);
     }
