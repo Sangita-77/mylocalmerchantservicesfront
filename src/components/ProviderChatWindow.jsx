@@ -8,7 +8,7 @@ import { BASE_URL } from "../utils/apiManager";
 import { AppContext } from "../utils/context";
 import PreLoader from "../components/PreLoader";
 
-const ChatWindow = ({
+const ProviderChatWindow = ({
   onClose,
   connection,
   connectedHistory,
@@ -23,21 +23,23 @@ const ChatWindow = ({
   const chatRef = useRef();
   const { token, loggedInUserId } = useContext(AppContext);
 
-  const merchant_id = parseInt(localStorage.getItem("merchant_id"));
-  const user_id = connection.merchant_id;
+  const merchant_id = connection.merchant_id;
+  const user_id = parseInt(localStorage.getItem("merchant_id"));
   const connected_id = connection.connected_id;
+
+//   console.log(".........connection..................",connection);
 
   const handleSendMessage = () => {
     if (!message.trim()) return;
     setSendingMessage(true);
     axios
       .post(
-        `${BASE_URL}/adminChatting`,
+        `${BASE_URL}/userChatting`,
         {
           connected_id,
           user_id,
           merchant_id,
-          merchant_chat: message,
+          user_chat: message,
         },
         {
           headers: {
@@ -88,7 +90,7 @@ const ChatWindow = ({
         }
       )
       .then((response) => {
-        console.log("chatResponse===>", response);
+        // console.log("chatResponse===>", response);
         if (response.data.status) {
           setChatList(response.data.chat);
         }
@@ -173,4 +175,4 @@ const ChatWindow = ({
   );
 };
 
-export default ChatWindow;
+export default ProviderChatWindow;

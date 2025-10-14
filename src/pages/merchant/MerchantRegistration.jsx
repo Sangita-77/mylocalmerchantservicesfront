@@ -471,6 +471,7 @@ const MerchantRegistration = () => {
     }
   
     try {
+      setLoading(true);
       const response = await axios.post(
         `${BASE_URL}/sendOtpToMail`,
         { email: email },
@@ -508,6 +509,9 @@ const MerchantRegistration = () => {
         emailError: "Error sending OTP.",
       }));
 
+    }finally{
+      
+      setLoading(false);
     }
   };
 
@@ -1039,7 +1043,7 @@ const MerchantRegistration = () => {
                           className={`sendOtpButton disable ${otpVerified ? "d-none" : ""}`}
                           onClick={sendOtpToEmail}
                         >
-                          Resend OTP
+                          {loading ? "Sending OTP..." : "Resend OTP"}
                         </button>
                       </>
                     ) : (
@@ -1048,7 +1052,8 @@ const MerchantRegistration = () => {
                         className="sendOtpButton"
                         onClick={sendOtpToEmail}
                       >
-                        Send OTP
+                        
+                        {loading ? "Sending OTP..." : "Send OTP"}
                       </button>
                     )}
 

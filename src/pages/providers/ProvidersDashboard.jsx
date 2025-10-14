@@ -9,8 +9,10 @@ import { AppContext } from "../../utils/context.js";
 import PreLoader from "../../components/PreLoader.jsx";
 import BarChartComponent from "../../components/BarChartComponent";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
+import ProviderDashboardTopBar from "../../components/ProviderDashboardTopBar";
+import AreaChartComponent from "../../components/AreaChartComponent";
 
-const MerchantDashboard = () => {
+const ProvidersDashboard = () => {
   const [loading, setLoading] = useState(false);
   const [graphLoading, setGraphLoading] = useState(false);
   const [graphData, setGraphData] = useState([]);
@@ -18,10 +20,22 @@ const MerchantDashboard = () => {
   const [filterBy, setFilterBy] = useState("year");
   const [showDropdown, setShowDropdown] = useState(false);
   const { token } = useContext(AppContext);
+  const [personType, setPersonType] = useState("");
+  const [userChartData, setUserChartData] = useState([]);
 
   const toggleDropdown = (e) => {
     e.stopPropagation();
     setShowDropdown(!showDropdown);
+  };
+
+  const userChartProps = {
+    id: "userColorUsers",
+    xAXisDatakey: filterBy === "day" ? "day" : filterBy === "month" ? "month" : "year",
+    areaDatakey: "Merchants",  // adjust this if API uses a different key
+    data: graphData,
+    primaryColor: "white",
+    secondaryColor: "white",
+    strokeColor: "#23b7e5",
   };
 
   const formatGraphData = (data, filter) => {
@@ -51,7 +65,7 @@ const MerchantDashboard = () => {
       };
 
       const response = await axios.post(
-        `${BASE_URL}/merchantUsersGraph`,
+        `${BASE_URL}/providerUsersGraph`,
         body,
         {
           headers: {
@@ -64,8 +78,43 @@ const MerchantDashboard = () => {
       if (response?.data?.status) {
         const rawGraphData = response?.data?.data;
         setTotalCount(response?.data?.total_count || 0);
-        const formattedData = formatGraphData(rawGraphData, filterBy);
-        setGraphData(formattedData);
+        // const formattedData = formatGraphData(rawGraphData, filterBy);
+        // setGraphData(formattedData);
+        let transformedData = [];
+
+        const rawData = response.data.data || {};
+
+              
+        if (filterBy === "month") {
+          // Sort the dates like "01 May", "02 May", ...
+          const sortedDates = Object.keys(rawData).sort((a, b) => {
+            const dayA = parseInt(a.split(" ")[0], 10);
+            const dayB = parseInt(b.split(" ")[0], 10);
+            return dayA - dayB;
+          });
+        
+          transformedData = sortedDates.map(date => ({
+            month: date,   // still use "month" key because xAXisDatakey is "month"
+            Merchants: rawData[date] ?? 0
+          }));
+        } else if (filterBy === "day") {
+          // Keep hours sorted (00:00 - 23:00)
+          transformedData = Array.from({ length: 24 }, (_, i) => {
+            const hour = String(i).padStart(2, "0") + ":00";
+            return {
+              day: hour,
+              Merchants: rawData[hour] ?? 0,
+            };
+          });
+        } else if (filterBy === "year") {
+          // Convert years (e.g., {2020: x, 2021: y})
+          transformedData = Object.entries(rawData).map(([year, Merchants]) => ({
+            year,
+            Merchants,
+          }));
+        }
+      
+        setGraphData(transformedData);
       }
     } catch (error) {
       console.error("Error fetching graph data:", error);
@@ -79,10 +128,24 @@ const MerchantDashboard = () => {
   }, [filterBy]);
 
 
+  useEffect(() => {
+    const localPersonType = localStorage.getItem("person_type");
+    if (localPersonType) {
+      setPersonType(localPersonType);
+    }
+  }, []);
+  const formatPersonType = (type) => {
+    if (!type) return "Merchant";
+    if (type.toLowerCase() === "isos") return "ISO's";
+    return type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
+  };
+  
+
+
   return (
     <div className="merchantDashboardWrapper" onClick={() => setShowDropdown(false)}>
 
-      <DashBoardTopBar heading="Merchant Dashboard" />
+      <ProviderDashboardTopBar heading={`${formatPersonType(personType)} Dashboard`} />
 
       {loading ? (
         <div className="merchantDashboardLoaderWrapper">
@@ -116,7 +179,7 @@ const MerchantDashboard = () => {
 
                 <div className="merchantProfileContainerHeader">
                   <div className="merchantHeaderCompanyTitle">
-                    Number of Merchant Services Providers connected
+                    Number of Merchants connected
                   </div>
                 </div>
 
@@ -125,7 +188,7 @@ const MerchantDashboard = () => {
               <div className="userStatsSection">
                 <div className="userStatsTopContainer">
                   <div className="userStatsTopLeft">
-                    <div className="userStatsTitle">Number of Merchant Services Providers</div>
+                    <div className="userStatsTitle">Number of Merchants</div>
                     <div className="userStatsValue">{totalCount}</div>
                   </div>
                   <div className="userGraphRight">
@@ -160,9 +223,9 @@ const MerchantDashboard = () => {
                           <CiCircleInfo size={24} color="white" />
                         </div>
                       </div>
-                      <div className="number-of-user">Number of Merchant Services Providers</div>
+                      <div className="number-of-provider">Number of Merchants</div>
                       <div className="graphContainer">
-                        <BarChartComponent data={graphData} />
+                        <AreaChartComponent data={graphData} {...userChartProps}/>
                       </div>
                       <div className="time-user"><span>Time</span></div>
                     </>
@@ -177,4 +240,4 @@ const MerchantDashboard = () => {
   );
 };
 
-export default MerchantDashboard;
+export default ProvidersDashboard;

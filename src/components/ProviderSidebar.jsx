@@ -11,7 +11,7 @@ import { BiUser } from "react-icons/bi";
 import { GoLink } from "react-icons/go";
 import { BASENAME } from "../config";
 
-const MerchantSidebar = () => {
+const ProviderSidebar = () => {
   const navigate = useNavigate();
   const url = window.location.pathname;
 
@@ -28,9 +28,9 @@ const MerchantSidebar = () => {
       <div className="merchantSidebarContainer">
         <div
           className={`sidebarItem ${
-            url === `${BASENAME}/merchant/dashboard` && "sidebarItemActive"
+            url === `${BASENAME}/provider/dashboard` && "sidebarItemActive"
           }`}
-          onClick={() => navigate(routes.merchant_dashboard())}
+          onClick={() => navigate(routes.provider_dashboard())}
         >
           {/* <img src={dashboardIcon} alt="" className="sidebarIcon" /> */}
           <LuLayoutDashboard color={"#ffffff"} size={24} />
@@ -39,9 +39,9 @@ const MerchantSidebar = () => {
 
         <div
           className={`sidebarItem ${
-            url === `${BASENAME}/merchant/profile` && "sidebarItemActive"
+            url === `${BASENAME}/provider/profile` && "sidebarItemActive"
           }`}
-          onClick={() => navigate(routes.merchant_profile())}
+          onClick={() => navigate(routes.provider_profile())}
         >
           {/* <img src={profileIcon} alt="" className="sidebarIcon" /> */}
           <BiUser color={"#ffffff"} size={24} />
@@ -50,18 +50,18 @@ const MerchantSidebar = () => {
 
         <div
           className={`sidebarItem ${
-            url === `${BASENAME}/merchant/user_connected_history` &&
+            url === `${BASENAME}/provider/connected_history` &&
             "sidebarItemActive"
           }`}
-          onClick={() => navigate(routes.merchant_user_history())}
+          onClick={() => navigate(routes.provider_connectec_history())}
         >
           {/* <img src={connectedIcon} alt="" className="sidebarIcon" /> */}
           <GoLink color={"#ffffff"} size={24} />
-          <div className="sidebarItemTitle">Merchant Services Providers Connected History</div>
+          <div className="sidebarItemTitle">Merchant  Connected History</div>
         </div>
       </div>
     </div>
   );
 };
 
-export default MerchantSidebar;
+export default ProviderSidebar;

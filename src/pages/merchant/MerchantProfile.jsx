@@ -16,6 +16,8 @@ import { CiCalendar, CiCircleInfo, CiSearch } from "react-icons/ci";
 import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
 import ProfileImageUpload from "../../components/ProfileImageUpload";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../utils/routes";
 
 const MerchantProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -25,6 +27,7 @@ const MerchantProfile = () => {
   const [merchantProfileData, setMerchantProfileData] = useState(null);
   const [companyName, setCompanyName] = useState();
   const [merchantName, setMerchantName] = useState("");
+  const [merchant_id, setmerchant_id] = useState("");
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -50,6 +53,8 @@ const MerchantProfile = () => {
   const [editTypeOfService, setEditTypeOfService] = useState(false);
   const [editWebsite, setEditWebsite] = useState(false);
   const [editCompanyDescription, setEditCompanyDescription] = useState(false);
+
+  const navigate = useNavigate();
 
   const {
     setShowToast,
@@ -122,17 +127,19 @@ const MerchantProfile = () => {
         city: city,
         state: state,
         zip_code: zipCode,
-        county: country,
+        country: "US",
         email: alternateEmail,
         phone: phone,
         industry: industry,
         type_of_service: typeOfServices,
         website: website,
         company_description: companyDescription,
+        merchant_id : merchant_id,
+        flag : "user"
       };
 
       const response = await axios.post(
-        `${BASE_URL}/editMerchantProfile`,
+        `${BASE_URL}/updateMerchantDetails`,
         body,
         {
           headers: {
@@ -202,6 +209,9 @@ const MerchantProfile = () => {
     setTypeOfServices(merchantProfileData?.type_of_service);
     setWebsite(merchantProfileData?.website);
     setZipCode(merchantProfileData?.zip_code);
+    setmerchant_id(merchantProfileData?.merchant_id);
+
+    // setStreet(merchantProfileData?.street);
   }, [merchantProfileData]);
 
 
@@ -571,7 +581,7 @@ const MerchantProfile = () => {
                               Country Name
                             </div>
                             <div className="merchantProfileData">
-                              {merchantProfileData?.county}
+                              {merchantProfileData?.country}
                             </div>
                           </div>
 
@@ -761,7 +771,7 @@ const MerchantProfile = () => {
                         <div className="merchantProfileDetailsBox">
                           <div className="merchantProfileDetailsBoxLeft">
                             <div className="merchantProfileDataTitle grayLabel">
-                              Type of services
+                              Type of Services
                             </div>
                             <div className="merchantProfileData">
                               {merchantProfileData?.type_of_service}
@@ -927,6 +937,18 @@ const MerchantProfile = () => {
                     ) : (
                       ""
                     )}
+
+                    <div className="merchantProfileDetailsBoxContainer">
+                      <div className="forgetPassword">
+                        Reset Password?{" "}
+                        <span
+                          className="forgetPasswordLink"
+                          onClick={() => navigate(routes.forget_password())}
+                        >
+                          Click here
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

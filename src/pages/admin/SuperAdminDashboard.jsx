@@ -295,7 +295,7 @@ const SuperAdminDashboard = () => {
         
           transformedData = sortedDates.map(date => ({
             month: date,   // still use "month" key because xAXisDatakey is "month"
-            users: rawData[date] ?? 0
+            Merchants: rawData[date] ?? 0
           }));
         } else if (filterType === "day") {
           // Keep hours sorted (00:00 - 23:00)
@@ -303,14 +303,14 @@ const SuperAdminDashboard = () => {
             const hour = String(i).padStart(2, "0") + ":00";
             return {
               day: hour,
-              users: rawData[hour] ?? 0,
+              Merchants: rawData[hour] ?? 0,
             };
           });
         } else if (filterType === "year") {
           // Convert years (e.g., {2020: x, 2021: y})
-          transformedData = Object.entries(rawData).map(([year, users]) => ({
+          transformedData = Object.entries(rawData).map(([year, Merchants]) => ({
             year,
-            users,
+            Merchants,
           }));
         }
       
@@ -361,12 +361,12 @@ const SuperAdminDashboard = () => {
     
           formatted = sortedKeys.map((key) => ({
             month: key,
-            merchants: rawData[key] ?? 0,
+            Merchant_Services_Providers: rawData[key] ?? 0,
           }));
         } else {
           formatted = Object.entries(rawData).map(([key, val]) => ({
             month: key,
-            merchants: val ?? 0,
+            Merchant_Services_Providers: val ?? 0,
           }));
         }
     
@@ -446,7 +446,7 @@ const SuperAdminDashboard = () => {
   const userChartProps = {
     id: "userColorUsers",
     xAXisDatakey: userFilterBy === "day" ? "day" : userFilterBy === "month" ? "month" : "year",
-    areaDatakey: "users",  // adjust this if API uses a different key
+    areaDatakey: "Merchants",  // adjust this if API uses a different key
     data: userChartData,
     primaryColor: "white",
     secondaryColor: "white",
@@ -485,7 +485,7 @@ const SuperAdminDashboard = () => {
                 <HiUserGroup color="gray" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div className="countPlatetHeading">Merchant List</div>
+                <div className="countPlatetHeading">Merchants List</div>
                 <div className="countPlateNumber">{countData?.totalUsers ?? "Loading..."}</div>
                 <div
                   style={{
@@ -551,7 +551,7 @@ const SuperAdminDashboard = () => {
                 <MdRealEstateAgent color="#2d6e81" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div className="countPlatetHeading">Approved Agent</div>
+                <div className="countPlatetHeading">Approved Agents</div>
                 <div className="countPlateNumber">{countData?.totalAgentApproved ?? "Loading..."}</div>
                 <div
                   style={{
@@ -573,7 +573,7 @@ const SuperAdminDashboard = () => {
                 <MdRealEstateAgent color="#fff" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div className="countPlatetHeading">Pending Agent</div>
+                <div className="countPlatetHeading">Pending Agents</div>
                 <div className="countPlateNumber">{countData?.totalAgentPending ?? "Loading..."}</div>
                 <div
                   style={{
@@ -684,7 +684,7 @@ const SuperAdminDashboard = () => {
               <div className="userStatsSection">
                 <div className="userStatsTopContainer">
                   <div className="userStatsTopLeft">
-                    <div className="userStatsTitle">Merchant List</div>
+                    <div className="userStatsTitle">Merchants List</div>
                     <div className="userStatsValue">{userStats.userCount ?? "Loading..."}</div>
                   </div>
 
@@ -945,7 +945,12 @@ const SuperAdminDashboard = () => {
                 <div className={`merchantStatsWrap ${getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}`}>
                   <div className="userStatsTopContainer">
                     <div className="userStatsTopLeft">
-                      <div className="userStatsTitle">Number of {getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}</div>
+                      {/* <div className="userStatsTitle">Number of {getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}</div> */}
+                      <div className="userStatsTitle">
+                        Number of {getMerchantType().toLowerCase() === "isos" 
+                          ? "ISO's" 
+                          : getMerchantType().replace(/\b\w/g, (c) => c.toUpperCase())}
+                      </div>
                       <div className="userStatsValue">{getCurrentMerchantCount()}</div>
                     </div>
 

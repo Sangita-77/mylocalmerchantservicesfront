@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import "./../../styles/styles.css";
 // import axios from "axios";
 // import bgEclipseImg from "./../../assets/images/merchant_list_bg_eclipse.png";
-import ChatWindow from "../../components/ChatWindow";
+import ProviderChatWindow from "../../components/ProviderChatWindow";
 import { PiEyeLight } from "react-icons/pi";
 import axios from "axios";
 import { BASE_URL } from "../../utils/apiManager";
@@ -14,14 +14,16 @@ import { AiOutlineDelete } from "react-icons/ai";
 import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
 import ConfirmModal from "../../components/ConfirmModal";
+import ProviderDashboardTopBar from "../../components/ProviderDashboardTopBar";
 
-const UserConnectedHistory = () => {
+const ProvidersConnectedHistory = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
   const [connectedHistory, setConnectedHistory] = useState([]);
   const [merchantDetails, setMerchantDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedConnection, setSelectedConnection] = useState(null);
   const [connections, setConnections] = useState([]);
+  const [personType, setPersonType] = useState("");
 
   const {
     token,
@@ -49,7 +51,7 @@ const UserConnectedHistory = () => {
 
     try {
       const response = await axios.post(
-        `${BASE_URL}/getConnectedUser`,
+        `${BASE_URL}/getConnectedProvider`,
         { merchant_id: merchantId },
         {
           headers: {
@@ -83,13 +85,17 @@ const UserConnectedHistory = () => {
   };
 
   const getConnectedId = (merchant_id) => {
+
+    // console.log(".connectedHistoryconnectedHistoryconnectedHistoryconnectedHistory",connectedHistory);
     const record = connectedHistory.find(
-      (conn) => conn.user_id === merchant_id
+      (conn) => conn.merchant_id === merchant_id
     );
     return record ? record.connected_id : "N/A";
   };
 
   const handleViewClick = (connection) => {
+
+    // console.log("connection",connection);
     const connected_id = getConnectedId(connection.merchant_id);
     const enrichedConnection = { ...connection, connected_id };
     setSelectedConnection(enrichedConnection);
@@ -134,18 +140,24 @@ const handleDelete = async (connection) => {
 };
 
 
-
+  useEffect(() => {
+    const localPersonType = localStorage.getItem("person_type");
+    if (localPersonType) {
+      setPersonType(localPersonType);
+    }
+  }, []);
 
 
   return (
     <div className="userConnectedHistoryPageWrapper">
 
-      <DashBoardTopBar heading="Connected History"/>
+      <ProviderDashboardTopBar heading="Connected History" />
+      {/* <ProviderDashboardTopBar heading={`${personType} Connected History`} /> */}
 
       <div className="userConnectedHistoryContainer">
 
         <div className="merchantContainerHeader">
-          <div className="merchantHeaderTitle"><DashboardTopHeading text="Merchant Services Providers Connected History"/> </div>
+          <div className="merchantHeaderTitle"><DashboardTopHeading text="Merchants Connected History"/> </div>
         </div>
 
 <div className="tableContainerWrap">
@@ -204,7 +216,7 @@ const handleDelete = async (connection) => {
       </div>
 
       {showChatWindow && selectedConnection && (
-        <ChatWindow
+        <ProviderChatWindow
           onClose={toggleChatWindow}
           connection={selectedConnection}
           connectedHistory={connectedHistory}
@@ -224,4 +236,4 @@ const handleDelete = async (connection) => {
   );
 };
 
-export default UserConnectedHistory;
+export default ProvidersConnectedHistory;

@@ -28,6 +28,10 @@ const MerchantList = () => {
   const [searched, setSearched] = useState(false);
   const [DWtoTravel, setDWtoTravel] = useState("");
 
+  const [validationError, setValidationError] = useState({
+    searchFieldError : "",
+  });
+
   const limit = 5;
 
   const fetchTableData = async (offset = 0) => {
@@ -74,9 +78,15 @@ const MerchantList = () => {
   };
 
   const handleSearchTableData = async (page = 1) => {
+
+    const errors = {};
     if (!searchByName && !searchByState && !searchByZip && !DWtoTravel) {
-      return alert("Please enter something in the search fields!");
+      errors.searchFieldError = "Please enter something in the search fields!";
+      setValidationError(errors);
+      return;
     }
+  
+    setValidationError({ searchFieldError: "" });
   
     try {
       setLoading(true);
@@ -196,7 +206,7 @@ const MerchantList = () => {
               </div>
             </div>
 
-            <div className="merchantTopSearchSingleItem">
+            {/* <div className="merchantTopSearchSingleItem">
               <div className="searchTitle">Search by zipcode</div>
               <div className="searchInputContainer">
                 <input
@@ -225,13 +235,55 @@ const MerchantList = () => {
 
                   </select>
               </div>
+            </div> */}
+
+            <div className="merchantTopSearchSingleItem">
+              <div className="searchTitle">Search by zipcode</div>
+              <div className="searchInputContainer">
+                <input
+                  type="text"
+                  className="searchInput"
+                  placeholder="Search By Zipcode"
+                  value={searchByZip}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val.length <= 6 && /^\d*$/.test(val)) setSearchByZip(val);
+                  }}
+                />
+              </div>
             </div>
+
+            <div className="merchantTopSearchSingleItem">
+              <div className="searchTitle">Search by Distance</div>
+              <div className="searchInputContainer">
+                <select
+                  name="cars"
+                  id="cars"
+                  className="inputField selectField searchInput"
+                  value={DWtoTravel}
+                  onChange={(e) => setDWtoTravel(e.target.value)}
+                  disabled={!searchByZip} // Disable if searchByZip is empty
+                >
+                  <option value="">   Select Any Type  </option>
+                  <option value="5">   &lt; 5 miles  </option>
+                  <option value="10">  &lt; 10 miles </option>
+                  <option value="25">  &lt; 25 miles </option>
+                  <option value="50">  &lt; 50 miles </option>
+                  <option value="100"> &lt; 100 miles </option>
+                </select>
+              </div>
+            </div>
+
 
             <button className="searchBtn" onClick={() => handleSearchTableData(0)}>
                 <IoSearch size={24} color="white" />
                 Search
             </button>
           </div>
+
+          {validationError.searchFieldError && (
+            <div className="errorText">{validationError.searchFieldError}</div>
+          )}
 
           {/* Table Section */}
           <div className="merchantListTableSection">
@@ -255,7 +307,9 @@ const MerchantList = () => {
                     <tbody className="tbodyContainer">
                       {tableData.map((row, i) => (
                         <tr className="tr" key={i}>
-                          <td className="td">{row?.merchant_name || ''}</td>
+                          <td className="td">{row?.first_name && row?.last_name
+                  ? `${row.first_name} ${row.last_name}`
+                  : row?.merchant_name}</td>
                           <td className="td">{row?.user_id}</td>
                           <td className="td">{row?.state}</td>
                           <td className="actionTd">

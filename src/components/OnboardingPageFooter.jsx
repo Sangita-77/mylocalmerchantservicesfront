@@ -10,8 +10,12 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { FaYoutube } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../utils/routes";
 
 const OnboardingPageFooter = () => {
+
+  const navigate = useNavigate();
   return (
     <div className="onboardingPageFooterContainer">
       <div className="footerLabel">
@@ -25,10 +29,10 @@ const OnboardingPageFooter = () => {
 
       <div className="footerInnerContainer">
         <div className="footerCol">
-          <p className="footerColTitle">Agents and ISOs</p>
+          <p className="footerColTitle">Agents and ISO's</p>
           <p className="footerColDesc">
             Register your merchant services company and increase your leads 100%
-            FREE! Both ISOs and independent agents can register using the link
+            FREE! Both ISO's and independent agents can register using the link
             below. Complete your profile and start bringing in REAL local leads
             for free.
           </p>
@@ -38,27 +42,45 @@ const OnboardingPageFooter = () => {
 
         <div className="footerCol">
           <p className="footerColTitle">
-            Quick line
+            Quick links
           </p>
-          <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
-            <p className="footerColDesc">Merchant Registration</p>
+
+          <div className="footerRow hoverStyle">
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
+            <a onClick={() => navigate(routes.merchant_list())} style={{"cursor": "pointer"}}><p className="footerColDesc">Merchant Services Providers List</p></a>
           </div>
-          <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
-            <p className="footerColDesc">Agent / ISO Registration</p>
+
+          <div className="footerRow hoverStyle">
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
+            <a onClick={() => navigate(routes.msr_registration())} style={{"cursor": "pointer"}}><p className="footerColDesc">Merchant Services Providers Registration</p></a>
           </div>
-          <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
+          <div className="footerRow hoverStyle">
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
+            <a onClick={() => navigate(routes.user_registration())} style={{"cursor": "pointer"}}><p className="footerColDesc">Merchant Registration</p></a>
+          </div>
+          {/* <div className="footerRow">
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
             <p className="footerColDesc">Terms and Conditions</p>
           </div>
           <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
             <p className="footerColDesc">Privacy Policy</p>
-          </div>
-          <div className="footerRow">
-            <IoIosArrowForward size={16} color="#ffffff"/>
-            <p className="footerColDesc">Contact</p>
+          </div> */}
+          <div className="footerRow hoverStyle">
+            <div>
+              <IoIosArrowForward size={16} color="#ffffff"/>
+            </div>
+            <a onClick={() => navigate(routes.contact())} style={{"cursor": "pointer"}}><p className="footerColDesc">Contact</p></a>
           </div>
         </div>
 

@@ -24,8 +24,8 @@ const AccordianProps = (props) => {
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Merchant Id</th>
-          <th>Merchant Name</th>
+          <th>Id</th>
+          <th>Name</th>
           <th>Location</th>
           <th>E-mail</th>
           <th>Action</th>

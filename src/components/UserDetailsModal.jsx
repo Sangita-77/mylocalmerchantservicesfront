@@ -169,7 +169,7 @@ const UserDetailsModal = ({ user, onClose }) => {
               readOnly
             />
           </div>
-          <div className="formGroup">
+          {/* <div className="formGroup">
             <label>Flag</label>
             <input
               type="text"
@@ -177,6 +177,8 @@ const UserDetailsModal = ({ user, onClose }) => {
               readOnly
             />
           </div>
+            <input type="text" value={user.flag ? user.flag : "No data"} readOnly />
+          </div> */}
           <div className="formGroup">
             <label>SponsorBank</label>
             <input

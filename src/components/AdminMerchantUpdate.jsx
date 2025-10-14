@@ -13,6 +13,8 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const { token } = useContext(AppContext);
 
   const [name, setName] = useState(user.merchant_name);
+  const [first_name, setfirst_name] = useState(user.first_name);
+  const [last_name, setlast_name] = useState(user.last_name);
   const [email, setEmail] = useState(user.user_id);
   const [industry, setIndustry] = useState(user.industry);
   const [phone, setPhone] = useState(user.phone);
@@ -42,6 +44,8 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
   const [HighRisk, setHighRisk] = useState(user.HighRisk);
   const [PointofSale, setPointofSale] = useState(user.PointofSale);
   const [Financing, setFinancing] = useState(user.Financing);
+  const [clientPublicly, setclientPublicly] = useState(user.clientPublicly);
+  const [clientCount, setclientCount] = useState(user.clientCount);
   
 
   
@@ -86,6 +90,10 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
     }
   }, [token]);
 
+  useEffect(() => {
+    setFlag(user.flag);
+  }, [user.flag]);
+
 
   if (!user) return null;
 
@@ -113,6 +121,22 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           flag: flag,
           SponsorBank: SponsorBank,
           DistanceWilling: DistanceWilling,
+          summary:summary,
+          clientPublicly : clientPublicly,
+          VolumeProcessed : VolumeProcessed,
+          volumePublicly : volumePublicly,
+          HighRisk : HighRisk,
+          PointofSale : PointofSale,
+          Financing : Financing,
+          bulletThree : bulletThree,
+          bulletTwo : bulletTwo,
+          bulletOne : bulletOne,
+          PPP : PPP,
+          clientCount : clientCount,
+          first_name : first_name,
+          last_name : last_name,
+          salesrepresenatives : salesrepresenatives,
+
         },
         {
           headers: {
@@ -167,6 +191,7 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
       setError(errMsg);
     }
   };
+
 
   return (
     <div className="userDetailsOverlay updateform">
@@ -267,22 +292,74 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
             <input type="text" value={status} onChange={(e) => setStatus(e.target.value)} />
           </div>
 
-          <div className="formGroup">
+          {/* <div className="formGroup">
             <label>SponsorBank</label>
             <input type="text" value={SponsorBank} onChange={(e) => setSponsorBank(e.target.value)} />
-          </div>
-          <div className="formGroup">
+          </div> */}
+
+          {flag !== "processors" && flag !== "agents" && (
+            <div className="formGroup">
+              <label>SponsorBank</label>
+              <input
+                type="text"
+                value={SponsorBank}
+                onChange={(e) => setSponsorBank(e.target.value)}
+              />
+            </div>
+          )}
+
+
+          {/* <div className="formGroup">
             <label>Primary Processing Platform</label>
             <input type="text" value={PPP} onChange={(e) => setPPP(e.target.value)} />
-          </div>
-          <div className="formGroup">
+          </div> */}
+
+          {flag !== "processors" && flag !== "isos" && (
+            <div className="formGroup">
+              <label>Primary Processing Platform</label>
+              <input
+                type="text"
+                value={PPP}
+                onChange={(e) => setPPP(e.target.value)}
+              />
+            </div>
+          )}
+
+          {/* <div className="formGroup">
             <label>Secondary Processing Platform</label>
             <input type="text" value={SPP} onChange={(e) => setSPP(e.target.value)} />
-          </div>
-          <div className="formGroup">
+          </div> */}
+
+          {flag !== "processors" && flag !== "isos" && (
+            <div className="formGroup">
+              <label>Secondary Processing Platform</label>
+              <input
+                type="text"
+                value={SPP}
+                onChange={(e) => setSPP(e.target.value)}
+              />
+            </div>
+          )}
+
+
+          {/* <div className="formGroup">
             <label>Other</label>
             <input type="text" value={Other} onChange={(e) => setOther(e.target.value)} />
-          </div>
+          </div> */}
+
+          {flag !== "processors" && flag !== "isos" && (
+            <div className="formGroup">
+              <label>Other</label>
+              <input
+                type="text"
+                value={Other}
+                onChange={(e) => setOther(e.target.value)}
+              />
+            </div>
+          )}
+
+
+
           <div className="formGroup">
             <label>Distance Willing</label>
             {/* <input type="text" value={DistanceWilling} onChange={(e) => setDistanceWilling(e.target.value)} /> */}
@@ -335,11 +412,19 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Client Count</label>
-            <input type="text" value={user.clientCount} readOnly />
+            <input type="number" value={clientCount}  onChange={(e) => setclientCount(e.target.value)} />
           </div>
           <div className="formGroup">
             <label>Client Publicly</label>
-            <input type="text" value={user.clientPublicly} readOnly />
+            {/* <input type="text" value={clientPublicly}  onChange={(e) => setclientPublicly(e.target.value)} /> */}
+            <select
+              className="inputField selectField"
+              value={clientPublicly}
+              onChange={(e) => setclientPublicly(e.target.value)}
+            >
+              <option value="yes">  Yes  </option>
+              <option value="no"> No </option>
+            </select>
           </div>
           <div className="formGroup">
             <label>Volume Processed</label>
@@ -360,16 +445,16 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
           </div>
           <div className="formGroup">
             <label>Volume Publicly</label>
-            {/* <input type="text" value={user.volumePublicly} readOnly /> */}
             <select
               className="inputField selectField"
               value={volumePublicly}
               onChange={(e) => setvolumePublicly(e.target.value)}
             >
-              <option value="yes">  Yes  </option>
-              <option value="no"> No </option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
             </select>
           </div>
+
           <div className="formGroup">
             <label>High Risk</label>
             {/* <input type="text" value={user.HighRisk} readOnly /> */}
@@ -406,11 +491,6 @@ const AdminMerchantUpdate = ({ user, onClose , onRefresh }) => {
               <option value="no"> No </option>
             </select>
           </div>
-
-
-
-
-
 
           <button className="popButton" onClick={handleUpdateClick}>Update</button>
         </div>

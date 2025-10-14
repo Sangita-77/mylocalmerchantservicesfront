@@ -28,6 +28,7 @@ import SuperAdminDashboard from "./pages/admin/SuperAdminDashboard";
 import AdminMerchantList from "./pages/admin/AdminMerchantList";
 import MerchantDashboard from "./pages/merchant/MerchantDashboard";
 import MerchantSidebar from "./components/MerchantSidebar";
+import ProviderSidebar from "./components/ProviderSidebar";
 import MerchantProfile from "./pages/merchant/MerchantProfile";
 import MerchantList from "./pages/MerchantList";
 import InitialLoader from "./components/InitialLoader";
@@ -47,6 +48,10 @@ import AdminAgent from "./pages/admin/AdminAgent";
 import AdminIso from "./pages/admin/AdminIso";
 import AdminProcessor from "./pages/admin/AdminProcessor";
 import DashBoardFooter from "./components/DashBoardFooter";
+
+import ProvidersConnectedHistory from "./pages/providers/ProvidersConnectedHistory";
+import ProvidersDashboard from "./pages/providers/ProvidersDashboard";
+import ProvidersProfile from "./pages/providers/ProvidersProfile";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -100,6 +105,18 @@ function App() {
     return (
       <div className="adminLayoutContainer">
         <MerchantSidebar />
+        <div className="adminOutletContainer">
+          <Outlet />
+          <DashBoardFooter />
+        </div>
+      </div>
+    );
+  };
+
+  const ProviderAdminLayout = () => {
+    return (
+      <div className="adminLayoutContainer">
+        <ProviderSidebar />
         <div className="adminOutletContainer">
           <Outlet />
           <DashBoardFooter />
@@ -172,9 +189,9 @@ function App() {
       {
         path: "/admin",
         element: (
-          // <ProtectedRoute>
+          <ProtectedRoute>
             <SuperAdminLayout />
-          // </ProtectedRoute>
+          </ProtectedRoute>
         ),
         children: [
           {
@@ -238,6 +255,28 @@ function App() {
           {
             path: "/merchant/user_connected_history",
             element: <UserConnectedHistory />,
+          },
+        ],
+      },
+      {
+        path: "/provider",
+        element: (
+          <ProtectedRoute>
+            <ProviderAdminLayout />
+          </ProtectedRoute>
+        ),
+        children: [
+          {
+            path: "/provider/dashboard",
+            element: <ProvidersDashboard />,
+          },
+          {
+            path: "/provider/profile",
+            element: <ProvidersProfile />,
+          },
+          {
+            path: "/provider/connected_history",
+            element: <ProvidersConnectedHistory />,
           },
         ],
       },

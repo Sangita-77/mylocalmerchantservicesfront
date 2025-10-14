@@ -113,7 +113,7 @@ const OnboardingPage = () => {
           <p className="bannerTitleLarge">Find Local</p>
           <p className="bannerTitleMedium">Credit Card Processing Agents</p>
           <p className="bannerTitleSmall">
-            Save time and money while improving service
+            Save Time and Money while Improving Service
           </p>
           <ButtonLarge
             title={"Find Local Agents"}
@@ -299,7 +299,7 @@ const OnboardingPage = () => {
             </div>
           </div>
             <ButtonLarge
-              title={"Register Your Merchant"}
+              title={"Register Now"}
               icon={<GoArrowRight size={32} />}
               onClick={() => navigate(routes.msr_registration())}
             />
@@ -357,9 +357,9 @@ const OnboardingPage = () => {
               </div>
             </div>
             <ButtonLarge
-              title={"Register Your Merchant"}
+              title={"Register Your Merchant Account"}
               icon={<GoArrowRight size={32} color="#000000" />}
-              onClick={() => navigate(routes.msr_registration())}
+              onClick={() => navigate(routes.user_registration())}
             />
           </div>
         </div>
@@ -381,7 +381,7 @@ const OnboardingPage = () => {
           <ButtonLarge
             title={"Register Now"}
             icon={<GoArrowRight size={32} color="#000000" />}
-            onClick={() => navigate(routes.msr_registration())}
+            onClick={() => navigate(routes.user_registration())}
           />
       </div>
 

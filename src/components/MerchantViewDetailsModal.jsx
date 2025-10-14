@@ -8,6 +8,8 @@ import { AppContext } from "../utils/context";
 import { IoMdClose } from "react-icons/io";
 import { IMAGE_BASE_URL } from "../utils/apiManager";
 import placeholderimg from "./../assets/images/placeholderimg.jpg";
+// import placeholderimg from "./../assets/images/placeholderimg.jpg";
+// import { IMAGE_BASE_URL } from "../utils/apiManager";
 
 const MerchantViewDetailsModal = ({ id, handleClose }) => {
   // console.log("Modal data===>", id);
@@ -118,6 +120,103 @@ const MerchantViewDetailsModal = ({ id, handleClose }) => {
             {isLoading && (
               <div>
                 <PreLoader />{" "}
+      <div className={`userDetailsBoxWrapper ${isOpen ? "open" : ""}`}>
+      <div className=" " >
+          <div className="merchantDetailsModalCloseBtn" onClick={handleClose}>
+          <IoMdClose color="#2A2626" size={24} />
+          </div>
+        </div>
+        <div className="merchantDetailsModalWrapper">
+        
+        {isLoading ? (
+        // 26.06.25
+        <div className="merchantDashboardLoaderWrapper">
+          <div className="merchantDashboardLoaderContainer">
+            <PreLoader />
+            <div>Loading...</div>
+          </div>
+        </div>
+        // 26.06.25
+      ) : (
+          data && 
+          <div className="merchantDetailsModalContainer">
+            <div className="userHeaderInfo">
+              <div className="userImgWrapper">
+
+                <div className="userImg">
+                  {/* <img src={placeholderimg} alt="" /> */}
+                  <img
+                    src={data.logo && data.logo.trim() !== '' ? `${IMAGE_BASE_URL}/${data.logo}` : placeholderimg}
+                    alt="User Logo"
+                  />
+                </div>
+              </div>
+              <div className="formGroup">
+                <div className="msf_name data">{data?.first_name && data?.last_name
+                  ? `${data.first_name} ${data.last_name}`
+                  : data?.merchant_name}</div>
+              </div>
+            </div>
+            {/*             
+            <div className="dataRowContainer">
+              <div className="dataTitle">Name : </div>
+              <div className="data">{data?.first_name} {data?.merchant_name ?? data?.merchant_name}</div>
+            </div> */}
+
+            {/* <div className="dataRowContainer">
+              <div className="dataTitle">Email : </div>
+              <div className="data">{data?.user_id}</div>
+            </div> */}
+
+            {/* <div className="dataRowContainer">
+              <div className="dataTitle">Phone : </div>
+              <div className="data">{data?.phone}</div>
+            </div> */}
+
+            <div className="dataRowContainer">
+              <div className="dataTitle">Full Address : </div>
+              <div className="data">
+                { data?.city +
+                  " - " +
+                  data?.zip_code +
+                  ", " +
+                  data?.state +
+                  ", " +
+                  "US"}
+              </div>
+            </div>
+
+            <div className="dataRowContainer">
+              <div className="dataTitle">Company Name : </div>
+              <div className="data">{data?.company_name}</div>
+            </div>
+
+            <div className="dataRowContainer">
+              <div className="dataTitle">Merchant Services Provides Type: </div>
+              {data?.flag === "isos" && (
+                <div className="data">ISO's</div>
+              )}
+              {data?.flag === "processors" && (
+                <div className="data">Processors</div>
+              )}
+              {data?.flag === "agents" && (
+                <div className="data">Agents</div>
+              )}
+            </div>
+
+            <div className="dataRowContainer">
+              <div className="dataTitle">Website : </div>
+              <div className="data">{data?.website || "NA"}</div>
+            </div>
+
+            <div className="dataRowContainer">
+              <div className="dataTitle">Distance Willing to Travel : </div>
+              <div className="data">{data?.DistanceWilling}</div>
+            </div>
+            {data?.clientPublicly === "yes" && (
+              <div className="dataRowContainer">
+                <div className="dataTitle">Serviced Clients :</div>
+                <div className="data">{data?.clientCount}</div>
               </div>
             )}
             {data && (
@@ -216,6 +315,10 @@ const MerchantViewDetailsModal = ({ id, handleClose }) => {
               </div>
             )}
           </div>
+          
+        )}
+          
+        </div>
         </div>
       </div>
     </>

@@ -12,6 +12,8 @@ import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import LoginModal from "../components/LoginModal";
 import Dropdown from 'react-bootstrap/Dropdown';
+import CookieConsent from '../components/CookieConsent';
+
 
 const OnboardingPageHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -84,13 +86,14 @@ const OnboardingPageHeader = () => {
     <div className="onboardingPageHeaderWrapper">
       <div className="onboardingPageChildHeaderContainer">
         <p className="childHeaderText">
-          Get discovered by real local businesses
+          Get Discovered by Real Local Businesses
         </p>
       </div>
 
       <div className="onboardingPageHeaderMainContainer" >
+        <a onClick={() => navigate(routes.home_page())} style={{"cursor": "pointer"}}>
         <div className="headerLeft">
-          <img
+        <img
             src={locationIcon}
             alt=""
             crossOrigin="anonymous"
@@ -101,6 +104,7 @@ const OnboardingPageHeader = () => {
             <p className="headerWebsiteTitleDark">Merchant Services</p>
           </div>
         </div>
+        </a>
 
         <div className="headerRight">
           <div
@@ -212,6 +216,14 @@ const OnboardingPageHeader = () => {
       {showLogin && (
         <LoginModal handleClose={() => setShowLogin(false)} />
       )}
+
+    <div className="App">
+      {/* Your landing page content */}
+      {/* <h1>Welcome to My Website</h1> */}
+
+      {/* Cookie consent */}
+      <CookieConsent />
+    </div>
     </div>
   );
 };
