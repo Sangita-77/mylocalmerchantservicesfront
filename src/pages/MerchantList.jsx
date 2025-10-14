@@ -27,6 +27,7 @@ const MerchantList = () => {
   const [searchByZip, setSearchByZip] = useState("");
   const [searched, setSearched] = useState(false);
   const [DWtoTravel, setDWtoTravel] = useState("");
+  const [searchByService, setSearchByService] = useState("");
 
   const [validationError, setValidationError] = useState({
     searchFieldError : "",
@@ -80,7 +81,7 @@ const MerchantList = () => {
   const handleSearchTableData = async (page = 1) => {
 
     const errors = {};
-    if (!searchByName && !searchByState && !searchByZip && !DWtoTravel) {
+    if (!searchByName && !searchByState && !searchByZip && !DWtoTravel && !searchByService) {
       errors.searchFieldError = "Please enter something in the search fields!";
       setValidationError(errors);
       return;
@@ -110,6 +111,10 @@ const MerchantList = () => {
       if (DWtoTravel) {
         searchType.push("distance");
         text.push(DWtoTravel);
+      }
+      if (searchByService) {
+        searchType.push("service");
+        text.push(searchByService);
       }
   
       const pageNumber = Number.isInteger(page) && page > 0 ? page : 1;
@@ -144,11 +149,11 @@ const MerchantList = () => {
   
 
   useEffect(() => {
-    if (!searchByName && !searchByState && !searchByZip) {
+    if (!searchByName && !searchByState && !searchByZip && !searchByService) {
       setSearched(false);
       fetchTableData(0);
     }
-  }, [searchByName, searchByState, searchByZip]);
+  }, [searchByName, searchByState, searchByZip, searchByService]);
 
   useEffect(() => {
     fetchTableData();
@@ -274,6 +279,19 @@ const MerchantList = () => {
               </div>
             </div>
 
+            <div className="merchantTopSearchSingleItem">
+              <div className="searchTitle">Search by Service</div>
+              <div className="searchInputContainer">
+                <input
+                  type="text"
+                  className="searchInput"
+                  placeholder="Search By Service"
+                  value={searchByService}
+                  onChange={(e) => setSearchByService(e.target.value)}
+                />
+              </div>
+            </div>
+
 
             <button className="searchBtn" onClick={() => handleSearchTableData(0)}>
                 <IoSearch size={24} color="white" />
@@ -292,15 +310,15 @@ const MerchantList = () => {
             ) : (
               <div className="merchantListSingleTablePart">
                 <div className="tableTitle">
-                  {searched ? "Search Results" : "Merchant Service Providers"}
+                  {searched ? "Search Results" : "Agents"}
                 </div>
                 <div className="tableWrapper">
                   <table className="tableContainer">
                     <thead className="theadContainer" style={{ backgroundColor: "#71cdea" }}>
                       <tr>
                         <th className="th">Name</th>
-                        <th className="th">E-mail</th>
-                        <th className="th">State</th>
+                        <th className="th">Company Name</th>
+                        <th className="th">Rating</th>
                         <th className="thActions">Actions</th>
                       </tr>
                     </thead>
@@ -308,20 +326,21 @@ const MerchantList = () => {
                       {tableData.map((row, i) => (
                         <tr className="tr" key={i}>
                           <td className="td">{row?.first_name && row?.last_name
-                  ? `${row.first_name} ${row.last_name}`
-                  : row?.merchant_name}</td>
-                          <td className="td">{row?.user_id}</td>
-                          <td className="td">{row?.state}</td>
-                          <td className="actionTd">
-                            <button
-                              className="viewButton"
-                              onClick={() => toggleViewDetailsModal(row?.merchant_id)}
-                            >
-                              <PiEyeLight size={22} color="#23b7e5" />
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
+                        ? `${row.first_name} ${row.last_name}`
+                        : row?.merchant_name}</td>
+                                {/* <td className="td">{row?.user_id}</td> */}
+                                <td className="td">{row?.company_name}</td>
+                                <td className="td">4.5</td>
+                                <td className="actionTd">
+                                  <button
+                                    className="viewButton"
+                                    onClick={() => toggleViewDetailsModal(row?.merchant_id)}
+                                  >
+                                    <PiEyeLight size={22} color="#23b7e5" />
+                                  </button>
+                                </td>
+                              </tr>
+                            ))}
 
 
 
