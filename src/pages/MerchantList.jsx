@@ -11,9 +11,14 @@ import { BASE_URL } from "../utils/apiManager";
 import MerchantViewDetailsModal from "../components/MerchantViewDetailsModal";
 import { AppContext } from "../utils/context";
 import PreLoader from "../components/PreLoader";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+
 
 const MerchantList = () => {
   const { token } = useContext(AppContext);
+  const [userData, setUserData] = useState([]);
+  // const [sortConfig, setSortConfig] = useState({ field: null, order: null });
+    const [sortConfig, setSortConfig] = useState({ field: "", order: "" });
 
   const [loading, setLoading] = useState(false);
   const [tableData, setTableData] = useState([]);
@@ -52,7 +57,7 @@ const MerchantList = () => {
 
       const { users, pageCount, activePage } = response?.data?.data;
 
-      console.log("..............users.....................",users);
+      // console.log("..............users.....................",users);
       setTableData(users || []);
       setPageCount(pageCount || 1);
       setActivePage(activePage || 1);
@@ -166,6 +171,73 @@ const MerchantList = () => {
   };
 
   const createArray2 = (count) => Array.from({ length: count }, (_, i) => i + 1);
+
+
+  const handleFilterClick = async (field) => {
+    let newOrder = "asc";
+    if (sortConfig.field === field && sortConfig.order === "asc") {
+      newOrder = "desc";
+    }
+  
+    setSortConfig({ field, order: newOrder });
+  
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/filterMerchantData`,
+        {
+          offset: 0,
+          sortField: field,
+          sortOrder: newOrder,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (response.data.status) {
+        setTableData(response.data.users);
+      }
+    } catch (error) {
+      console.error("Error filtering data:", error);
+    }
+  };
+  
+
+  const fetchData = async (sortField, sortOrder) => {
+    // const response = await axios.post("/searchingData", {
+    //   searchType: [],  // keep empty if not searching text
+    //   text: [],
+    //   offset: 0,
+    //   sortField,
+    //   sortOrder
+    // });
+
+
+    const response = await axios.post(
+      `${BASE_URL}/searchingData`,
+      JSON.stringify({
+        searchType: [], // keep empty if not searching text
+        text: [],
+        offset: 0,
+        sortField,
+        sortOrder,
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    
+
+  
+    setUserData(response.data.users);
+  };
+  
 
 
   return (
@@ -318,9 +390,33 @@ const MerchantList = () => {
                   <table className="tableContainer">
                     <thead className="theadContainer" style={{ backgroundColor: "#71cdea" }}>
                       <tr>
-                        <th className="th">Name</th>
-                        <th className="th">Company Name</th>
-                        <th className="th">Average Rating</th>
+                        <th className="th">Name
+                        <AiFillCaretDown
+                          size={14}
+                          color="#fff"
+                          style={{ cursor: "pointer" }}
+                          title="Filter by Name"
+                          onClick={() => handleFilterClick("name")}
+                        />
+                        </th>
+                        <th className="th">Company Name
+                        <AiFillCaretDown
+                          size={14}
+                          color="#fff"
+                          style={{ cursor: "pointer" }}
+                          title="Filter by Company Name"
+                          onClick={() => handleFilterClick("company_name")}
+                        />
+                        </th>
+                        <th className="th">Average Rating
+                        <AiFillCaretDown
+                          size={14}
+                          color="#fff"
+                          style={{ cursor: "pointer" }}
+                          title="Filter by Rating"
+                          onClick={() => handleFilterClick("average_rating")}
+                        />
+                        </th>
                         <th className="thActions">Actions</th>
                       </tr>
                     </thead>
