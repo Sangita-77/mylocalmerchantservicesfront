@@ -52,6 +52,7 @@ import DashBoardFooter from "./components/DashBoardFooter";
 import ProvidersConnectedHistory from "./pages/providers/ProvidersConnectedHistory";
 import ProvidersDashboard from "./pages/providers/ProvidersDashboard";
 import ProvidersProfile from "./pages/providers/ProvidersProfile";
+import MerchantListDeatils from "./pages/MerchantListDeatils";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -184,6 +185,11 @@ function App() {
             path: "/contact",
             element: <Contact />,
           },
+          {
+            path: "/agent-details/:id", 
+            element: <MerchantListDeatils />,
+          },
+          
         ],
       },
       {

@@ -6,6 +6,7 @@ export const routes = {
   user_registration: () => "/merchant-registration",
   merchant_list: () => "/merchant-service-providers",
   contact: () => "/contact",
+  agent_details: (id) => `/agent-details/${id}`,
 
 
 

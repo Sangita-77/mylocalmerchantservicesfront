@@ -12,6 +12,9 @@ import MerchantViewDetailsModal from "../components/MerchantViewDetailsModal";
 import { AppContext } from "../utils/context";
 import PreLoader from "../components/PreLoader";
 
+import { routes } from "../utils/routes";
+import { useNavigate } from "react-router-dom";
+
 const MerchantList = () => {
   const { token } = useContext(AppContext);
 
@@ -32,6 +35,8 @@ const MerchantList = () => {
   const [validationError, setValidationError] = useState({
     searchFieldError : "",
   });
+
+  const navigate = useNavigate();
 
   const limit = 5;
 
@@ -334,7 +339,8 @@ const MerchantList = () => {
                                 <td className="actionTd">
                                   <button
                                     className="viewButton"
-                                    onClick={() => toggleViewDetailsModal(row?.merchant_id)}
+                                    // onClick={() => toggleViewDetailsModal(row?.merchant_id)}
+                                    onClick={() => navigate(routes.agent_details(row?.merchant_id))}
                                   >
                                     <PiEyeLight size={22} color="#23b7e5" />
                                   </button>
