@@ -133,7 +133,7 @@ const AdminSidebar = () => {
               onClick={() => navigate(routes.admin_iso())}
             >
               <BiSolidBadgeDollar color={"#fff"} size={22} />
-              <div>ISOs</div>
+              <div>ISO's</div>
             </div>
 
             <div

@@ -122,9 +122,8 @@ const MerchantViewDetailsModal = ({ id, handleClose }) => {
             )}
             {data && (
               <div className="merchantDetailsModalContainer">
-                <div className="userHeaderInfo">
+                {/* <div className="userHeaderInfo">
                   <div className="userImg">
-                    {/* <img src={placeholderimg} alt="" /> */}
                     <img
                       src={
                         data.logo && data.logo.trim() !== ""
@@ -139,7 +138,7 @@ const MerchantViewDetailsModal = ({ id, handleClose }) => {
                       {data?.first_name} {data?.last_name}
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="dataRowContainer">
                   <div className="dataTitle">Name : </div>

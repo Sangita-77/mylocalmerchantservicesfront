@@ -80,7 +80,7 @@ const AdminIso = () => {
     return (
        <div className="adminUserlistWrapper merchantListAdmin">
 
-<AdminDashBoardTopBar heading="Iso List" />
+<AdminDashBoardTopBar heading="ISO's List" />
         <div className="adminDashboardContainer">
               
                 <div className='adminUserlIstContainer'>

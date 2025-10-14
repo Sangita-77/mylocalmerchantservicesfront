@@ -237,8 +237,8 @@
     background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);
     transform: translateY(-50%);
 }
-.merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 4vh; right: -15px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
-.merchantDetailsModalCloseBtn{}
+/* .merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 4vh; right: -15px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; } */
+.merchantDetailsModalCloseBtn{margin: 0; padding: 8px 8px; position: absolute; top: 4vh; right: -15px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer;}
 .dataRowContainer { margin: 0; padding: 0; width: 100%; height: 53px; max-height: 200px; display: flex; flex-direction: row; align-items: center; column-gap: 50px; border: none; }
 .dataTitle { margin: 0; padding: 0; color: white; font: 500 16px/25px "Sora"; width: 38%; height: 100%; display: flex; align-items: center; }
 .data { margin: 0; padding: 5px 16px; width: 80%; max-width: 80%; font-family: "Sora"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; min-height: 40px; border: none; background: transparent;}
@@ -778,6 +778,7 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
  margin: 0 0 0 auto; box-shadow: 2px 2px 11px #00000082;}
 .companyLogo img{width: 100%; height: 100%; object-fit: cover; border: 2px solid #ffffff; padding: 4px;
  border-radius: 20px;}
+ .imageProf .camera{left: 18px;}
  .imageProf .formGroup{display: grid !important; padding-left: 17%; width: 100%;}
   .imageProf .formGroup label{padding-top: 70px;}
 .camera{position: absolute; left: 55px; top: -1px;}
@@ -1007,8 +1008,11 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .userDetailsBoxWrapper .userDetailsBox .formGroup textarea { width: 100%; padding: 8px 25px; border: 1px solid #FFFFFF; color: #fff; border-radius: 6px; background: transparent; height: 58px; outline: none; box-shadow: none; font: 300 17px/25px "Sora";}
 .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
 
+
+.userUpdateBoxWrapper .userDetailsBox {padding: 0px 40px 28px !important;}
 /* .userDetailsBoxWrapper {position: relative;}
 .userDetailsBoxWrapper::before {content: ''; width: 1px; height: 100%; position: absolute; left: 34%; top: 173px; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);} */
+
 .userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #fff; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -17px; right: -17px; z-index: 999999999;}
 .userDetailsBoxWrapper .userDetailsBox {text-align: end; background-color: #0085DA; padding: 35px 40px 28px; border-radius: 24px; width: 650px; position: relative; border: 2px solid #fff; height: 80vh;  overflow-y: scroll;
 scrollbar-width: none;}
@@ -1246,7 +1250,7 @@ border-radius: 5px; margin-right: 30px;}
 
 .selectField option {color: #000;}
 
-.merchantDetailsModalContainer .userHeaderInfo {
+/* .merchantDetailsModalContainer .userHeaderInfo {
   width: 100%;
   margin-bottom: 30px;
     display: flex;
@@ -1270,5 +1274,5 @@ border-radius: 5px; margin-right: 30px;}
   left: 35%;
   top: 64%;
 }
-.merchantDetailsModalWrapper .merchantDetailsModalContainer {}
+.merchantDetailsModalWrapper .merchantDetailsModalContainer {} */
 

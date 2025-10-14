@@ -595,7 +595,7 @@ const SuperAdminDashboard = () => {
                 <BiSolidBadgeDollar color="#393d68" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div className="countPlatetHeading">Approved ISOs</div>
+                <div className="countPlatetHeading">Approved ISO's</div>
                 <div className="countPlateNumber">{countData?.totalISOsApproved ?? "Loading..."}</div>
                 <div
                   style={{
@@ -617,7 +617,7 @@ const SuperAdminDashboard = () => {
                 <BiSolidBadgeDollar color="#fff" size={45} />
               </div>
               <div className="countPlateRightContainer">
-                <div className="countPlatetHeading">Pending ISOs</div>
+                <div className="countPlatetHeading">Pending ISO's</div>
                 <div className="countPlateNumber">{countData?.totalISOsPending ?? "Loading..."}</div>
                 <div
                   style={{
@@ -937,7 +937,7 @@ const SuperAdminDashboard = () => {
                   Merchant Service Providers
                 </div> */}
                 <div className={`processors tabbarItem ${merchantTypeActiveTab === 0 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(0)}>Processors</div>
-                <div className={`isos tabbarItem ${merchantTypeActiveTab === 1 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(1)}>ISOs</div>
+                <div className={`isos tabbarItem ${merchantTypeActiveTab === 1 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(1)}>ISO's</div>
                 <div className={`agents tabbarItem ${merchantTypeActiveTab === 2 && "tabbarItemActive"}`} onClick={() => setMerchantTypeActiveTab(2)}>Agents</div>
               </div>
 
@@ -1031,7 +1031,7 @@ const SuperAdminDashboard = () => {
                       <PercentageItem label="of Merchants" percentage={percentages.user_percentage} />
                       {/* <PercentageItem label="Of Merchants" percentage={percentages.merchant_percentage} /> */}
                       <PercentageItem label="of Processors" percentage={percentages.processors_percentage} />
-                      <PercentageItem label="of Isos" percentage={percentages.iso_percentage} />
+                      <PercentageItem label="of ISO's" percentage={percentages.iso_percentage} />
                       <PercentageItem label="of Agents" percentage={percentages.agents_percentage} last />
                     </>
                   ) : (
