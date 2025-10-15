@@ -225,6 +225,10 @@
 .merchantListPageWrapper .searchInputDropdownContainer { margin: 0; padding: 8px; width: 100%; background-color: white; border: none; border-radius: 10px; display: flex; flex-direction: row; align-items: center; gap: 6px; }
 .merchantListPageWrapper .searchInputDropdown { margin: 0; padding: 6px; width: 100%; background-color: transparent; font-family: "Poppins"; font-weight: 300; font-size: 14px; border: none; outline: none; color: #afafaf; }
 
+.merchantListPageWrapper .merchantListTableSection .merchantListSingleTablePart .tableContainer .ratingColWrap .ratingCol {max-width: 115px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 7px 0px;}
+.merchantListPageWrapper .merchantListTableSection .merchantListSingleTablePart .tableContainer .companyHeadWrap {width: 290px; text-align: center; padding-left: 17px;}
+.merchantListPageWrapper .merchantListTableSection .merchantListSingleTablePart .tableContainer .companyNameWrap {width: 290px; text-align: center;}
+
 .tableOverlay { margin: 0; padding: 150px; width: 78%; color: black; font-family: "Poppins"; font-size: 15px; font-weight: 400; display: flex; justify-content: center; height: 480px; position: absolute; top: 0; left: 0; background-color: rgba(155, 155, 155, 0.5); z-index: 1000; }
 
 .merchantDetailsOverlay{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(4, 4, 4, 0.4); /* semi-transparent black */ z-index: 1000; overflow: hidden; }

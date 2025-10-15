@@ -184,6 +184,7 @@ const MerchantList = () => {
     }
   
     setSortConfig({ field, order: newOrder });
+    setLoading(true);
   
     try {
       const response = await axios.post(
@@ -206,6 +207,8 @@ const MerchantList = () => {
       }
     } catch (error) {
       console.error("Error filtering data:", error);
+    } finally {
+      setLoading(false);
     }
   };
   
@@ -272,6 +275,32 @@ const MerchantList = () => {
                   }}
                   
                 />
+              </div>
+            </div>
+
+            <div className="merchantTopSearchSingleItem">
+              <div className="searchTitle">Search by Service</div>
+              <div className="searchInputContainer">
+                {/* <input
+                  type="text"
+                  className="searchInput"
+                  placeholder="Search By Service"
+                  value={searchByService}
+                  onChange={(e) => setSearchByService(e.target.value)}
+                /> */}
+                <select
+                  name="services"
+                  id="services"
+                  className="inputField selectField searchInput"
+                  value={searchByService}
+                  onChange={(e) => setSearchByService(e.target.value)}
+                >
+                  <option value=""> Select Any Services </option>
+                  <option value="service1"> Service 1 </option>
+                  <option value="service2"> Service 2 </option>
+                  <option value="service3"> Service 3 </option>
+                  <option value="service4"> Service 4 </option>
+                </select>
               </div>
             </div>
 
@@ -356,20 +385,6 @@ const MerchantList = () => {
               </div>
             </div>
 
-            <div className="merchantTopSearchSingleItem">
-              <div className="searchTitle">Search by Service</div>
-              <div className="searchInputContainer">
-                <input
-                  type="text"
-                  className="searchInput"
-                  placeholder="Search By Service"
-                  value={searchByService}
-                  onChange={(e) => setSearchByService(e.target.value)}
-                />
-              </div>
-            </div>
-
-
             <button className="searchBtn" onClick={() => handleSearchTableData(0)}>
                 <IoSearch size={24} color="white" />
                 Search
@@ -414,24 +429,26 @@ const MerchantList = () => {
                           )}
                         </th>
                         <th className="th">
-                          Company Name{" "}
-                          {sortConfig.field === "company_name" && sortConfig.order === "asc" ? (
-                            <AiFillCaretUp
-                              size={14}
-                              color="#fff"
-                              style={{ cursor: "pointer" }}
-                              title="Sort by Company Name"
-                              onClick={() => handleFilterClick("company_name")}
-                            />
-                          ) : (
-                            <AiFillCaretDown
-                              size={14}
-                              color="#fff"
-                              style={{ cursor: "pointer" }}
-                              title="Sort by Company Name"
-                              onClick={() => handleFilterClick("company_name")}
-                            />
-                          )}
+                          <div className="companyHeadWrap">
+                            Company Name{" "}
+                            {sortConfig.field === "company_name" && sortConfig.order === "asc" ? (
+                              <AiFillCaretUp
+                                size={14}
+                                color="#fff"
+                                style={{ cursor: "pointer" }}
+                                title="Sort by Company Name"
+                                onClick={() => handleFilterClick("company_name")}
+                              />
+                            ) : (
+                              <AiFillCaretDown
+                                size={14}
+                                color="#fff"
+                                style={{ cursor: "pointer" }}
+                                title="Sort by Company Name"
+                                onClick={() => handleFilterClick("company_name")}
+                              />
+                            )}
+                          </div>
                         </th>
                         <th className="th">
                           Average Rating{" "}
@@ -463,10 +480,16 @@ const MerchantList = () => {
                         ? `${row.first_name} ${row.last_name}`
                         : row?.merchant_name}</td>
                                 {/* <td className="td">{row?.user_id}</td> */}
-                                <td className="td">{row?.company_name}</td>
-                                <td className="td">
-                                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                                <td className="td"><div className="companyNameWrap">{row?.company_name}</div></td>
+                                <td className="td ratingColWrap">
+                                  <div className="ratingCol">
+                                    {/* Show numeric rating */}
+                                    <span style={{ fontWeight: "500" }}>
+                                      {row?.average_rating ? row.average_rating.toFixed(1) : "0.0"}
+                                    </span>
+
                                     {/* Show stars */}
+                                    <div className="starWrap">
                                     {[...Array(5)].map((_, index) => {
                                       const filled = index < Math.round(row?.average_rating || 0);
                                       return (
@@ -481,17 +504,15 @@ const MerchantList = () => {
                                         </span>
                                       );
                                     })}
+                                    </div>
 
-                                    {/* Show numeric rating */}
-                                    <span style={{ fontWeight: "500" }}>
-                                      {row?.average_rating ? row.average_rating.toFixed(1) : "0.0"}
-                                    </span>
+                                    {/* Always show review count (even if 0) */}
+                                    <div style={{ fontSize: "12px", color: "#666" }}>
+                                      ({row?.review_count || 0} review{(row?.review_count || 0) !== 1 ? "s" : ""})
+                                    </div>
+                                    
                                   </div>
 
-                                  {/* Always show review count (even if 0) */}
-                                  <div style={{ fontSize: "12px", color: "#666" }}>
-                                    ({row?.review_count || 0} review{(row?.review_count || 0) !== 1 ? "s" : ""})
-                                  </div>
                                 </td>
 
                                 <td className="actionTd">
