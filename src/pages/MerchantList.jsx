@@ -390,21 +390,22 @@ const MerchantList = () => {
           <div className="errorText">{validationError.searchFieldError}</div>
         )}
 
-        {/* Table Section */}
         <div className="merchantListTableSection">
-          
-            <div className="merchantListSingleTablePart">
-              <div className="tableTitle">
-                {searched ? "Search Results" : "Agents"}
-              </div>
-              {loading ? (
-            <div style={{ textAlign: "center", padding: "20px" }}>
-              <PreLoader text="Fetching data..." />
+          <div className="merchantListSingleTablePart">
+            <div className="tableTitle">
+              {searched ? "Search Results" : "Agents"}
             </div>
-          ) : tableData.length === 0 ? (
-            <div className="noResultFound">No Entries Found</div>
-          ) : (
-              <div className="tableWrapper">
+
+            {tableData.length === 0 ? (
+              <div className="noResultFound">No Entries Found</div>
+            ) : (
+              <div className="tableWrapper" style={{ position: "relative" }}>
+                {loading && (
+                  <div className="tableOverlayLoader">
+                    <PreLoader text="Fetching data..." />
+                  </div>
+                )}
+
                 <table className="tableContainer">
                   <thead
                     className="theadContainer"
@@ -413,8 +414,7 @@ const MerchantList = () => {
                     <tr>
                       <th className="th">
                         Name{" "}
-                        {sortConfig.field === "name" &&
-                        sortConfig.order === "asc" ? (
+                        {sortConfig.field === "name" && sortConfig.order === "asc" ? (
                           <AiFillCaretUp
                             size={14}
                             color="#fff"
@@ -479,6 +479,7 @@ const MerchantList = () => {
                       <th className="thActions">Actions</th>
                     </tr>
                   </thead>
+
                   <tbody className="tbodyContainer">
                     {tableData.map((row, i) => (
                       <tr className="tr" key={i}>
@@ -487,22 +488,16 @@ const MerchantList = () => {
                             ? `${row.first_name} ${row.last_name}`
                             : row?.merchant_name}
                         </td>
-                        {/* <td className="td">{row?.user_id}</td> */}
                         <td className="td">
-                          <div className="companyNameWrap">
-                            {row?.company_name}
-                          </div>
+                          <div className="companyNameWrap">{row?.company_name}</div>
                         </td>
                         <td className="td ratingColWrap">
                           <div className="ratingCol">
-                            {/* Show numeric rating */}
                             <span style={{ fontWeight: "500" }}>
                               {row?.average_rating
                                 ? row.average_rating.toFixed(1)
                                 : "0.0"}
                             </span>
-
-                            {/* Show stars */}
                             <div className="starWrap">
                               {[...Array(5)].map((_, index) => {
                                 const filled =
@@ -520,19 +515,15 @@ const MerchantList = () => {
                                 );
                               })}
                             </div>
-
-                            {/* Always show review count (even if 0) */}
                             <div style={{ fontSize: "12px", color: "#666" }}>
                               ({row?.review_count || 0} review
                               {(row?.review_count || 0) !== 1 ? "s" : ""})
                             </div>
                           </div>
                         </td>
-
                         <td className="actionTd">
                           <button
                             className="viewButton"
-                            // onClick={() => toggleViewDetailsModal(row?.merchant_id)}
                             onClick={() =>
                               navigate(routes.agent_details(row?.merchant_id))
                             }
@@ -545,11 +536,10 @@ const MerchantList = () => {
                   </tbody>
                 </table>
               </div>
-
             )}
-            </div>
-          
+          </div>
         </div>
+
         {searched && tableData.length > 0 && (
           <div className="merchantTablePaginationContainer">
             <button
