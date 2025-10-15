@@ -24,7 +24,7 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel, isLoading }) => {
 
           <form className="connectForm" onSubmit={handleSubmit}>
             <div className="connectInput">
-            <div className="connectInputTitle">Why you are want to connect with this merchant?</div>
+            <div className="connectInputTitle">Why you do you want to connect with this agent?</div>
               <select
                 className="inputField"
                 value={selectedOption}
