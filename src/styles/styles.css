@@ -1340,7 +1340,6 @@ border-radius: 5px; margin-right: 30px;}
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .confirmBtn {width: auto; font-family: "Poppins"; font-weight: 600; font-size: 18px; text-transform: uppercase; border-radius: 10px; padding: 8px 20px;}
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .confirmBtn:hover {background: #FFBF61; transition: .5s; color: #000;}
 
-
 /* ------ new agent details design  */
 .agentDetailsBoxWrapper .agentDetailsWrapper {margin: 0 auto; padding: 73px 75px 150px 75px; margin-top: 120px; background-color: #d1eafa; min-height: 100vh; align-items: center; position: relative;} 
 .agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsContainer {margin: 0; padding: 28px 28px 65px 28px; background-color: #e3f1ff; border: 12px solid #f6fbff; border-radius: 20px; box-shadow: 0px 0px 10px #23b7e570;}
@@ -1359,3 +1358,17 @@ border-radius: 5px; margin-right: 30px;}
 .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon .titleData {color: #000; font: 500 19px / 25px "Poppins";}
 /* .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviews {padding-bottom: 50px;} */
 .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviews .titleField {color: #565656; font: 400 16px / 25px "Poppins"; margin-bottom: 8px;}
+.tableWrapper {
+  position: relative;
+}
+
+.tableOverlayLoader {
+  position: absolute;
+  inset: 0; /* top: 0; right: 0; bottom: 0; left: 0 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 5;
+  backdrop-filter: blur(2px);
+}
