@@ -13,7 +13,6 @@ import { AppContext } from "../utils/context";
 import PreLoader from "../components/PreLoader";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
-
 import { routes } from "../utils/routes";
 import { useNavigate } from "react-router-dom";
 
@@ -37,7 +36,7 @@ const MerchantList = () => {
   const [searchByService, setSearchByService] = useState("");
 
   const [validationError, setValidationError] = useState({
-    searchFieldError : "",
+    searchFieldError: "",
   });
 
   const navigate = useNavigate();
@@ -80,9 +79,6 @@ const MerchantList = () => {
       fetchTableData(offsetPage);
     }
   };
-  
-  
-  
 
   const toggleViewDetailsModal = (merchantId) => {
     setModalData(merchantId);
@@ -90,23 +86,28 @@ const MerchantList = () => {
   };
 
   const handleSearchTableData = async (page = 1) => {
-
     const errors = {};
-    if (!searchByName && !searchByState && !searchByZip && !DWtoTravel && !searchByService) {
+    if (
+      !searchByName &&
+      !searchByState &&
+      !searchByZip &&
+      !DWtoTravel &&
+      !searchByService
+    ) {
       errors.searchFieldError = "Please enter something in the search fields!";
       setValidationError(errors);
       return;
     }
-  
+
     setValidationError({ searchFieldError: "" });
-  
+
     try {
       setLoading(true);
       setSearched(true);
-  
+
       const searchType = [];
       const text = [];
-  
+
       if (searchByName) {
         searchType.push("name");
         text.push(searchByName);
@@ -127,12 +128,12 @@ const MerchantList = () => {
         searchType.push("service");
         text.push(searchByService);
       }
-  
+
       const pageNumber = Number.isInteger(page) && page > 0 ? page : 1;
       const offset = (pageNumber - 1) * limit;
-  
+
       const body = { searchType, text, offset };
-  
+
       const response = await axios.post(
         `${BASE_URL}/searchingData`,
         JSON.stringify(body),
@@ -143,9 +144,9 @@ const MerchantList = () => {
           },
         }
       );
-  
+
       const { users, pageCount, activePage } = response?.data;
-  
+
       setTableData(users || []);
       setPageCount(pageCount || 1);
       setActivePage(pageNumber); // use the same page we passed
@@ -155,9 +156,6 @@ const MerchantList = () => {
       setLoading(false);
     }
   };
-  
-  
-  
 
   useEffect(() => {
     if (!searchByName && !searchByState && !searchByZip && !searchByService) {
@@ -174,18 +172,18 @@ const MerchantList = () => {
     return Array.from({ length: value }, (_, i) => i + 1);
   };
 
-  const createArray2 = (count) => Array.from({ length: count }, (_, i) => i + 1);
-
+  const createArray2 = (count) =>
+    Array.from({ length: count }, (_, i) => i + 1);
 
   const handleFilterClick = async (field) => {
     let newOrder = "asc";
     if (sortConfig.field === field && sortConfig.order === "asc") {
       newOrder = "desc";
     }
-  
+
     setSortConfig({ field, order: newOrder });
     setLoading(true);
-  
+
     try {
       const response = await axios.post(
         `${BASE_URL}/filterMerchantData`,
@@ -201,7 +199,7 @@ const MerchantList = () => {
           },
         }
       );
-  
+
       if (response.data.status) {
         setTableData(response.data.users);
       }
@@ -211,7 +209,7 @@ const MerchantList = () => {
       setLoading(false);
     }
   };
-  
+
   const fetchData = async (sortField, sortOrder) => {
     // const response = await axios.post("/searchingData", {
     //   searchType: [],  // keep empty if not searching text
@@ -220,7 +218,6 @@ const MerchantList = () => {
     //   sortField,
     //   sortOrder
     // });
-
 
     const response = await axios.post(
       `${BASE_URL}/searchingData`,
@@ -238,86 +235,81 @@ const MerchantList = () => {
         },
       }
     );
-    
 
-  
     setUserData(response.data.users);
   };
-  
-
 
   return (
     <>
-      {loading ? (
+      {/* {loading ? (
         <div className="merchantListLoaderWrapper">
           <PreLoader
             text={searched ? "Searching for results..." : "Fetching data..."}
           />
         </div>
-      ) : (
-        <div className="merchantListPageWrapper">
-          {/* Search Section */}
-          <div className="merchantListTopSearchSection">
-            <div className="merchantTopSearchSingleItem">
-              <div className="searchTitle">Search by name</div>
-              <div className="searchInputContainer">
-                <input
-                  type="text"
-                  className="searchInput"
-                  placeholder="Search By Name"
-                  value={searchByName}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    if (/^[A-Za-z\s]*$/.test(val)) {
-                      setSearchName(val);
-                      setActivePage(1); // reset to first page
-                    }
-                  }}
-                  
-                />
-              </div>
+      ) : ( */}
+      <div className="merchantListPageWrapper">
+        {/* Search Section */}
+        <div className="merchantListTopSearchSection">
+          <div className="merchantTopSearchSingleItem">
+            <div className="searchTitle">Search by name</div>
+            <div className="searchInputContainer">
+              <input
+                type="text"
+                className="searchInput"
+                placeholder="Search By Name"
+                value={searchByName}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (/^[A-Za-z\s]*$/.test(val)) {
+                    setSearchName(val);
+                    setActivePage(1); // reset to first page
+                  }
+                }}
+              />
             </div>
+          </div>
 
-            <div className="merchantTopSearchSingleItem">
-              <div className="searchTitle">Search by Service</div>
-              <div className="searchInputContainer">
-                {/* <input
+          <div className="merchantTopSearchSingleItem">
+            <div className="searchTitle">Search by Service</div>
+            <div className="searchInputContainer">
+              {/* <input
                   type="text"
                   className="searchInput"
                   placeholder="Search By Service"
                   value={searchByService}
                   onChange={(e) => setSearchByService(e.target.value)}
                 /> */}
-                <select
-                  name="services"
-                  id="services"
-                  className="inputField selectField searchInput"
-                  value={searchByService}
-                  onChange={(e) => setSearchByService(e.target.value)}
-                >
-                  <option value=""> Select Any Services </option>
-                  <option value="service1"> Service 1 </option>
-                  <option value="service2"> Service 2 </option>
-                  <option value="service3"> Service 3 </option>
-                  <option value="service4"> Service 4 </option>
-                </select>
-              </div>
+              <select
+                name="services"
+                id="services"
+                className="inputField selectField searchInput"
+                value={searchByService}
+                onChange={(e) => setSearchByService(e.target.value)}
+              >
+                <option value=""> Select Any Services </option>
+                <option value="service1"> Service 1 </option>
+                <option value="service2"> Service 2 </option>
+                <option value="service3"> Service 3 </option>
+                <option value="service4"> Service 4 </option>
+              </select>
             </div>
+          </div>
 
-            <div className="merchantTopSearchSingleItem">
-              <div className="searchTitle">Search by state</div>
-              <div className="searchInputContainer">
-                <input
-                  type="text"
-                  className="searchInput"
-                  placeholder="Search By State"
-                  value={searchByState}
-                  onChange={(e) => setSearchByState(e.target.value)}
-                />
-              </div>
+          <div className="merchantTopSearchSingleItem">
+            <div className="searchTitle">Search by state</div>
+            <div className="searchInputContainer">
+              <input
+                type="text"
+                className="searchInput"
+                placeholder="Search By State"
+                value={searchByState}
+                onChange={(e) => setSearchByState(e.target.value)}
+              />
             </div>
+          </div>
 
-            {/* <div className="merchantTopSearchSingleItem">
+          {/* <div className="merchantTopSearchSingleItem">
               <div className="searchTitle">Search by zipcode</div>
               <div className="searchInputContainer">
                 <input
@@ -348,254 +340,282 @@ const MerchantList = () => {
               </div>
             </div> */}
 
-            <div className="merchantTopSearchSingleItem">
-              <div className="searchTitle">Search by zipcode</div>
-              <div className="searchInputContainer">
-                <input
-                  type="text"
-                  className="searchInput"
-                  placeholder="Search By Zipcode"
-                  value={searchByZip}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    if (val.length <= 6 && /^\d*$/.test(val)) setSearchByZip(val);
-                  }}
-                />
+          <div className="merchantTopSearchSingleItem">
+            <div className="searchTitle">Search by zipcode</div>
+            <div className="searchInputContainer">
+              <input
+                type="text"
+                className="searchInput"
+                placeholder="Search By Zipcode"
+                value={searchByZip}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val.length <= 6 && /^\d*$/.test(val)) setSearchByZip(val);
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="merchantTopSearchSingleItem">
+            <div className="searchTitle">Search by Distance</div>
+            <div className="searchInputContainer">
+              <select
+                name="cars"
+                id="cars"
+                className="inputField selectField searchInput"
+                value={DWtoTravel}
+                onChange={(e) => setDWtoTravel(e.target.value)}
+                disabled={!searchByZip} // Disable if searchByZip is empty
+              >
+                <option value=""> Select Any Type </option>
+                <option value="5"> &lt; 5 miles </option>
+                <option value="10"> &lt; 10 miles </option>
+                <option value="25"> &lt; 25 miles </option>
+                <option value="50"> &lt; 50 miles </option>
+                <option value="100"> &lt; 100 miles </option>
+              </select>
+            </div>
+          </div>
+
+          <button
+            className="searchBtn"
+            onClick={() => handleSearchTableData(0)}
+          >
+            <IoSearch size={24} color="white" />
+            Search
+          </button>
+        </div>
+
+        {validationError.searchFieldError && (
+          <div className="errorText">{validationError.searchFieldError}</div>
+        )}
+
+        {/* Table Section */}
+        <div className="merchantListTableSection">
+          {loading ? (
+            <div style={{ textAlign: "center", padding: "20px" }}>
+              <PreLoader text="Fetching data..." />
+            </div>
+          ) : tableData.length === 0 ? (
+            <div className="noResultFound">No Entries Found</div>
+          ) : (
+            <div className="merchantListSingleTablePart">
+              <div className="tableTitle">
+                {searched ? "Search Results" : "Agents"}
+              </div>
+
+              <div className="tableWrapper">
+                <table className="tableContainer">
+                  <thead
+                    className="theadContainer"
+                    style={{ backgroundColor: "#71cdea" }}
+                  >
+                    <tr>
+                      <th className="th">
+                        Name{" "}
+                        {sortConfig.field === "name" &&
+                        sortConfig.order === "asc" ? (
+                          <AiFillCaretUp
+                            size={14}
+                            color="#fff"
+                            style={{ cursor: "pointer" }}
+                            title="Sort by Name"
+                            onClick={() => handleFilterClick("name")}
+                          />
+                        ) : (
+                          <AiFillCaretDown
+                            size={14}
+                            color="#fff"
+                            style={{ cursor: "pointer" }}
+                            title="Sort by Name"
+                            onClick={() => handleFilterClick("name")}
+                          />
+                        )}
+                      </th>
+                      <th className="th">
+                        <div className="companyHeadWrap">
+                          Company Name{" "}
+                          {sortConfig.field === "company_name" &&
+                          sortConfig.order === "asc" ? (
+                            <AiFillCaretUp
+                              size={14}
+                              color="#fff"
+                              style={{ cursor: "pointer" }}
+                              title="Sort by Company Name"
+                              onClick={() => handleFilterClick("company_name")}
+                            />
+                          ) : (
+                            <AiFillCaretDown
+                              size={14}
+                              color="#fff"
+                              style={{ cursor: "pointer" }}
+                              title="Sort by Company Name"
+                              onClick={() => handleFilterClick("company_name")}
+                            />
+                          )}
+                        </div>
+                      </th>
+                      <th className="th">
+                        Average Rating{" "}
+                        {sortConfig.field === "average_rating" &&
+                        sortConfig.order === "asc" ? (
+                          <AiFillCaretUp
+                            size={14}
+                            color="#fff"
+                            style={{ cursor: "pointer" }}
+                            title="Sort by Rating"
+                            onClick={() => handleFilterClick("average_rating")}
+                          />
+                        ) : (
+                          <AiFillCaretDown
+                            size={14}
+                            color="#fff"
+                            style={{ cursor: "pointer" }}
+                            title="Sort by Rating"
+                            onClick={() => handleFilterClick("average_rating")}
+                          />
+                        )}
+                      </th>
+                      <th className="thActions">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="tbodyContainer">
+                    {tableData.map((row, i) => (
+                      <tr className="tr" key={i}>
+                        <td className="td">
+                          {row?.first_name && row?.last_name
+                            ? `${row.first_name} ${row.last_name}`
+                            : row?.merchant_name}
+                        </td>
+                        {/* <td className="td">{row?.user_id}</td> */}
+                        <td className="td">
+                          <div className="companyNameWrap">
+                            {row?.company_name}
+                          </div>
+                        </td>
+                        <td className="td ratingColWrap">
+                          <div className="ratingCol">
+                            {/* Show numeric rating */}
+                            <span style={{ fontWeight: "500" }}>
+                              {row?.average_rating
+                                ? row.average_rating.toFixed(1)
+                                : "0.0"}
+                            </span>
+
+                            {/* Show stars */}
+                            <div className="starWrap">
+                              {[...Array(5)].map((_, index) => {
+                                const filled =
+                                  index < Math.round(row?.average_rating || 0);
+                                return (
+                                  <span
+                                    key={index}
+                                    style={{
+                                      color: filled ? "#FFD700" : "#ccc",
+                                      fontSize: "18px",
+                                    }}
+                                  >
+                                    ★
+                                  </span>
+                                );
+                              })}
+                            </div>
+
+                            {/* Always show review count (even if 0) */}
+                            <div style={{ fontSize: "12px", color: "#666" }}>
+                              ({row?.review_count || 0} review
+                              {(row?.review_count || 0) !== 1 ? "s" : ""})
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="actionTd">
+                          <button
+                            className="viewButton"
+                            // onClick={() => toggleViewDetailsModal(row?.merchant_id)}
+                            onClick={() =>
+                              navigate(routes.agent_details(row?.merchant_id))
+                            }
+                          >
+                            <PiEyeLight size={22} color="#23b7e5" />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
+          )}
+        </div>
+        {searched && tableData.length > 0 && (
+          <div className="merchantTablePaginationContainer">
+            <button
+              className={`pageChangeBtns ${
+                activePage === 1 && "pageChangeDisabledBtn"
+              }`}
+              onClick={() => handlePaginate(activePage)}
+              disabled={activePage === 1}
+            >
+              <MdOutlineKeyboardDoubleArrowLeft size={24} color="white" />
+            </button>
 
-            <div className="merchantTopSearchSingleItem">
-              <div className="searchTitle">Search by Distance</div>
-              <div className="searchInputContainer">
-                <select
-                  name="cars"
-                  id="cars"
-                  className="inputField selectField searchInput"
-                  value={DWtoTravel}
-                  onChange={(e) => setDWtoTravel(e.target.value)}
-                  disabled={!searchByZip} // Disable if searchByZip is empty
-                >
-                  <option value="">   Select Any Type  </option>
-                  <option value="5">   &lt; 5 miles  </option>
-                  <option value="10">  &lt; 10 miles </option>
-                  <option value="25">  &lt; 25 miles </option>
-                  <option value="50">  &lt; 50 miles </option>
-                  <option value="100"> &lt; 100 miles </option>
-                </select>
+            {createArray(pageCount).map((pageNo) => (
+              <div
+                key={pageNo}
+                className={`pageNo ${activePage === pageNo && "activePage"}`}
+                onClick={() => handlePaginate(pageNo)}
+              >
+                {pageNo}
               </div>
-            </div>
+            ))}
 
-            <button className="searchBtn" onClick={() => handleSearchTableData(0)}>
-                <IoSearch size={24} color="white" />
-                Search
+            <button
+              className={`pageChangeBtns ${
+                activePage === pageCount && "pageChangeDisabledBtn"
+              }`}
+              onClick={() => handlePaginate(activePage)}
+              disabled={activePage === pageCount}
+            >
+              <MdOutlineKeyboardDoubleArrowRight size={22} color="white" />
             </button>
           </div>
+        )}
+        {!searched && (
+          <div className="merchantTablePaginationContainer">
+            <button
+              className={`pageChangeBtns ${
+                activePage === 1 && "pageChangeDisabledBtn"
+              }`}
+              onClick={() => handlePaginate(activePage - 2)}
+              disabled={activePage === 1}
+            >
+              <MdOutlineKeyboardDoubleArrowLeft size={24} color="white" />
+            </button>
 
-          {validationError.searchFieldError && (
-            <div className="errorText">{validationError.searchFieldError}</div>
-          )}
-
-          {/* Table Section */}
-          <div className="merchantListTableSection">
-            {tableData.length === 0 ? (
-              <div className="noResultFound">No Entries Found</div>
-            ) : (
-              <div className="merchantListSingleTablePart">
-                <div className="tableTitle">
-                  {searched ? "Search Results" : "Agents"}
-                </div>
-                <div className="tableWrapper">
-                  <table className="tableContainer">
-                    <thead className="theadContainer" style={{ backgroundColor: "#71cdea" }}>
-                      <tr>
-                        <th className="th">
-                          Name{" "}
-                          {sortConfig.field === "name" && sortConfig.order === "asc" ? (
-                            <AiFillCaretUp
-                              size={14}
-                              color="#fff"
-                              style={{ cursor: "pointer" }}
-                              title="Sort by Name"
-                              onClick={() => handleFilterClick("name")}
-                            />
-                          ) : (
-                            <AiFillCaretDown
-                              size={14}
-                              color="#fff"
-                              style={{ cursor: "pointer" }}
-                              title="Sort by Name"
-                              onClick={() => handleFilterClick("name")}
-                            />
-                          )}
-                        </th>
-                        <th className="th">
-                          <div className="companyHeadWrap">
-                            Company Name{" "}
-                            {sortConfig.field === "company_name" && sortConfig.order === "asc" ? (
-                              <AiFillCaretUp
-                                size={14}
-                                color="#fff"
-                                style={{ cursor: "pointer" }}
-                                title="Sort by Company Name"
-                                onClick={() => handleFilterClick("company_name")}
-                              />
-                            ) : (
-                              <AiFillCaretDown
-                                size={14}
-                                color="#fff"
-                                style={{ cursor: "pointer" }}
-                                title="Sort by Company Name"
-                                onClick={() => handleFilterClick("company_name")}
-                              />
-                            )}
-                          </div>
-                        </th>
-                        <th className="th">
-                          Average Rating{" "}
-                          {sortConfig.field === "average_rating" && sortConfig.order === "asc" ? (
-                            <AiFillCaretUp
-                              size={14}
-                              color="#fff"
-                              style={{ cursor: "pointer" }}
-                              title="Sort by Rating"
-                              onClick={() => handleFilterClick("average_rating")}
-                            />
-                          ) : (
-                            <AiFillCaretDown
-                              size={14}
-                              color="#fff"
-                              style={{ cursor: "pointer" }}
-                              title="Sort by Rating"
-                              onClick={() => handleFilterClick("average_rating")}
-                            />
-                          )}
-                        </th>
-                        <th className="thActions">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody className="tbodyContainer">
-                      {tableData.map((row, i) => (
-                        <tr className="tr" key={i}>
-                          <td className="td">{row?.first_name && row?.last_name
-                        ? `${row.first_name} ${row.last_name}`
-                        : row?.merchant_name}</td>
-                                {/* <td className="td">{row?.user_id}</td> */}
-                                <td className="td"><div className="companyNameWrap">{row?.company_name}</div></td>
-                                <td className="td ratingColWrap">
-                                  <div className="ratingCol">
-                                    {/* Show numeric rating */}
-                                    <span style={{ fontWeight: "500" }}>
-                                      {row?.average_rating ? row.average_rating.toFixed(1) : "0.0"}
-                                    </span>
-
-                                    {/* Show stars */}
-                                    <div className="starWrap">
-                                    {[...Array(5)].map((_, index) => {
-                                      const filled = index < Math.round(row?.average_rating || 0);
-                                      return (
-                                        <span
-                                          key={index}
-                                          style={{
-                                            color: filled ? "#FFD700" : "#ccc",
-                                            fontSize: "18px",
-                                          }}
-                                        >
-                                          ★
-                                        </span>
-                                      );
-                                    })}
-                                    </div>
-
-                                    {/* Always show review count (even if 0) */}
-                                    <div style={{ fontSize: "12px", color: "#666" }}>
-                                      ({row?.review_count || 0} review{(row?.review_count || 0) !== 1 ? "s" : ""})
-                                    </div>
-                                    
-                                  </div>
-
-                                </td>
-
-                                <td className="actionTd">
-                                  <button
-                                    className="viewButton"
-                                    // onClick={() => toggleViewDetailsModal(row?.merchant_id)}
-                                    onClick={() => navigate(routes.agent_details(row?.merchant_id))}
-                                  >
-                                    <PiEyeLight size={22} color="#23b7e5" />
-                                  </button>
-                                </td>
-                              </tr>
-                            ))}
-
-
-
-                    </tbody>
-                  </table>
-                </div>
-
+            {createArray(pageCount).map((pageNo) => (
+              <div
+                key={pageNo}
+                className={`pageNo ${activePage === pageNo && "activePage"}`}
+                onClick={() => handlePaginate(pageNo - 1)}
+              >
+                {pageNo}
               </div>
-            )}
+            ))}
+
+            <button
+              className={`pageChangeBtns ${
+                activePage === pageCount && "pageChangeDisabledBtn"
+              }`}
+              onClick={() => handlePaginate(activePage)}
+              disabled={activePage === pageCount}
+            >
+              <MdOutlineKeyboardDoubleArrowRight size={22} color="white" />
+            </button>
           </div>
-                {searched && tableData.length > 0 && (
-                    <div className="merchantTablePaginationContainer">
-                        <button
-                        className={`pageChangeBtns ${activePage === 1 && "pageChangeDisabledBtn"}`}
-                        onClick={() => handlePaginate(activePage)}
-                        disabled={activePage === 1}
-                        >
-                        <MdOutlineKeyboardDoubleArrowLeft size={24} color="white" />
-                        </button>
-
-                        {createArray(pageCount).map((pageNo) => (
-                        <div
-                            key={pageNo}
-                            className={`pageNo ${activePage === pageNo && "activePage"}`}
-                            onClick={() => handlePaginate(pageNo)}
-                        >
-                            {pageNo}
-                        </div>
-                        ))}
-
-                        <button
-                        className={`pageChangeBtns ${activePage === pageCount && "pageChangeDisabledBtn"}`}
-                        onClick={() => handlePaginate(activePage)}
-                        disabled={activePage === pageCount}
-                        >
-                        <MdOutlineKeyboardDoubleArrowRight size={22} color="white" />
-                        </button>
-                    </div>
-                )}
-                {!searched && (
-                  <div className="merchantTablePaginationContainer">
-                    <button
-                      className={`pageChangeBtns ${activePage === 1 && "pageChangeDisabledBtn"}`}
-                      onClick={() => handlePaginate(activePage - 2)}
-                      disabled={activePage === 1}
-                    >
-                      <MdOutlineKeyboardDoubleArrowLeft size={24} color="white" />
-                    </button>
-
-                    {createArray(pageCount).map((pageNo) => (
-                      <div
-                        key={pageNo}
-                        className={`pageNo ${activePage === pageNo && "activePage"}`}
-                        onClick={() => handlePaginate(pageNo - 1)}
-                      >
-                        {pageNo}
-                      </div>
-                    ))}
-
-                    <button
-                      className={`pageChangeBtns ${activePage === pageCount && "pageChangeDisabledBtn"}`}
-                      onClick={() => handlePaginate(activePage)}
-                      disabled={activePage === pageCount}
-                    >
-                      <MdOutlineKeyboardDoubleArrowRight size={22} color="white" />
-                    </button>
-                  </div>
-                )}
-        </div>
-      )}
+        )}
+      </div>
+      {/* )} */}
 
       {showViewDetailsModal && (
         <MerchantViewDetailsModal
