@@ -392,18 +392,18 @@ const MerchantList = () => {
 
         {/* Table Section */}
         <div className="merchantListTableSection">
-          {loading ? (
+          
+            <div className="merchantListSingleTablePart">
+              <div className="tableTitle">
+                {searched ? "Search Results" : "Agents"}
+              </div>
+              {loading ? (
             <div style={{ textAlign: "center", padding: "20px" }}>
               <PreLoader text="Fetching data..." />
             </div>
           ) : tableData.length === 0 ? (
             <div className="noResultFound">No Entries Found</div>
           ) : (
-            <div className="merchantListSingleTablePart">
-              <div className="tableTitle">
-                {searched ? "Search Results" : "Agents"}
-              </div>
-
               <div className="tableWrapper">
                 <table className="tableContainer">
                   <thead
@@ -545,8 +545,10 @@ const MerchantList = () => {
                   </tbody>
                 </table>
               </div>
+
+            )}
             </div>
-          )}
+          
         </div>
         {searched && tableData.length > 0 && (
           <div className="merchantTablePaginationContainer">
