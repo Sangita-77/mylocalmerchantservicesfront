@@ -449,7 +449,27 @@ const MerchantList = () => {
                         />
                       )}
                     </th>
-                    <th className="th">Average Rating</th>
+                    <th className="th">
+                      Average Rating{" "}
+                      {sortConfig.field === "average_rating" &&
+                      sortConfig.order === "asc" ? (
+                        <AiFillCaretUp
+                          size={14}
+                          color="#fff"
+                          style={{ cursor: "pointer" }}
+                          title="Sort by Rating"
+                          onClick={() => handleFilterClick("average_rating")}
+                        />
+                      ) : (
+                        <AiFillCaretDown
+                          size={14}
+                          color="#fff"
+                          style={{ cursor: "pointer" }}
+                          title="Sort by Rating"
+                          onClick={() => handleFilterClick("average_rating")}
+                        />
+                      )}
+                    </th>
                     <th className="thActions">Actions</th>
                   </tr>
                 </thead>
