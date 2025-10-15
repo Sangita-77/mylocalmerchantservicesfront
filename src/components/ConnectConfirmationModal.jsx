@@ -1,19 +1,86 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "./../styles/styles.css";
+import { AppContext } from "../utils/context";
+import axios from "axios";
+import { BASE_URL } from "../utils/apiManager";
 
-const ConnectConfirmationModal = ({ onConfirm, onCancel, isLoading }) => {
+const ConnectConfirmationModal = ({ onConfirm, onCancel }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [otherText, setOtherText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const { token } = useContext(AppContext);
 
-  const handleSubmit = (e) => {
+
+  const { id } = useParams();
+
+  const connectFun = async (user_id, merchant_id,reason) => {
+    try {
+      setIsLoading(true);
+      // const token = localStorage.getItem("token");
+
+      const response = await axios.post(
+        `${BASE_URL}/connectMerchantAgent`,
+        { user_id, merchant_id,reason },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.status) {
+        console.log("Connection successful:", response.data);
+        setErrors({ success: "Connection request sent successfully!" });
+      } else {
+        setErrors({ api: response.data.message || "Failed to connect." });
+      }
+    } catch (error) {
+      console.error("Error calling connectFun:", error);
+      setErrors({ api: "Something went wrong while connecting." });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors({}); // clear old errors
+
+    const agent_id = parseInt(id, 10);;
+    const isAuthenticated = localStorage.getItem("is_authenticated");
+    const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+
+    let newErrors = {};
+
+    if (!selectedOption) {
+      newErrors.option = "Please choose an option.";
+    }
 
     if (selectedOption === "others" && !otherText.trim()) {
-      alert("Please enter a value for 'Others'");
+      newErrors.otherText = "Please enter a value for 'Others'.";
+    }
+
+    if (!isAuthenticated || !merchant_id || !agent_id) {
+      newErrors.auth = "Please log in before connecting.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
-    // onConfirm({ selectedOption, otherText });
+
+    const reason =
+    selectedOption === "others"
+      ? `other: ${otherText.trim()}`
+      : selectedOption;
+
+
+    await connectFun(agent_id, merchant_id , reason);
   };
+  
 
   return (
     <div className="modalOverlay">
@@ -24,7 +91,6 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel, isLoading }) => {
 
           <form className="connectForm" onSubmit={handleSubmit}>
             <div className="connectInput">
-            {/* <div className="connectInputTitle">Why do you want to connect with this agent?</div> */}
               <select
                 className="inputField"
                 value={selectedOption}
@@ -37,6 +103,7 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel, isLoading }) => {
                 <option value="option4">Option 4</option>
                 <option value="others">Others</option>
               </select>
+              {errors.option && <p className="errorText">{errors.option}</p>}
             </div>
 
             {selectedOption === "others" && (
@@ -50,8 +117,13 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel, isLoading }) => {
                     onChange={(e) => setOtherText(e.target.value)}
                   />
                 </div>
+                {errors.otherText && <p className="errorText">{errors.otherText}</p>}
               </div>
             )}
+
+            {errors.api && <p className="errorText">{errors.api}</p>}
+            {errors.auth && <p className="errorText">{errors.auth}</p>}
+            {errors.success && <p className="successText">{errors.success}</p>}
 
             <div className="modalButtons">
               <button type="button" onClick={onCancel} className="cancelBtn">
