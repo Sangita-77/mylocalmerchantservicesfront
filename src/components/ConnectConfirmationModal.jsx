@@ -19,18 +19,18 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel, isLoading }) => {
     <div className="modalOverlay">
       <div className="modalContent">
         <div className="modalContentInnerWrap">
-          <h2>Confirm Connection</h2>
+          <h2>Reason for Connection</h2>
           {/* <p>Why you are want to connect with this merchant?</p> */}
 
           <form className="connectForm" onSubmit={handleSubmit}>
             <div className="connectInput">
-            <div className="connectInputTitle">Why you do you want to connect with this agent?</div>
+            {/* <div className="connectInputTitle">Why do you want to connect with this agent?</div> */}
               <select
                 className="inputField"
                 value={selectedOption}
                 onChange={(e) => setSelectedOption(e.target.value)}
               >
-                <option value="">Select Any Type</option>
+                <option value="">Choose an option</option>
                 <option value="option1">Option 1</option>
                 <option value="option2">Option 2</option>
                 <option value="option3">Option 3</option>
@@ -41,7 +41,7 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel, isLoading }) => {
 
             {selectedOption === "others" && (
               <div className="connectInput connectOthersInput">
-                <div className="connectInputTitle">Others</div>
+                <div className="connectInputTitle">Enter Your Reason</div>
                 <div className="connectInputContainer">
                   <input
                     type="text"
