@@ -17,8 +17,7 @@ import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 const MerchantList = () => {
   const { token } = useContext(AppContext);
   const [userData, setUserData] = useState([]);
-  // const [sortConfig, setSortConfig] = useState({ field: null, order: null });
-    const [sortConfig, setSortConfig] = useState({ field: "", order: "" });
+  const [sortConfig, setSortConfig] = useState({ field: null, order: null });
 
   const [loading, setLoading] = useState(false);
   const [tableData, setTableData] = useState([]);
@@ -173,6 +172,38 @@ const MerchantList = () => {
   const createArray2 = (count) => Array.from({ length: count }, (_, i) => i + 1);
 
 
+  // const handleFilterClick = async (field) => {
+  //   let newOrder = "asc";
+  //   if (sortConfig.field === field && sortConfig.order === "asc") {
+  //     newOrder = "desc";
+  //   }
+  
+  //   setSortConfig({ field, order: newOrder });
+  
+  //   try {
+  //     const response = await axios.post(
+  //       `${BASE_URL}/filterMerchantData`,
+  //       {
+  //         offset: 0,
+  //         sortField: field,
+  //         sortOrder: newOrder,
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+  
+  //     if (response.data.status) {
+  //       setTableData(response.data.users);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error filtering data:", error);
+  //   }
+  // };
+  
   const handleFilterClick = async (field) => {
     let newOrder = "asc";
     if (sortConfig.field === field && sortConfig.order === "asc") {
@@ -205,7 +236,6 @@ const MerchantList = () => {
     }
   };
   
-
   const fetchData = async (sortField, sortOrder) => {
     // const response = await axios.post("/searchingData", {
     //   searchType: [],  // keep empty if not searching text
