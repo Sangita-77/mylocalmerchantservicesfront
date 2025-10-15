@@ -1340,3 +1340,22 @@ border-radius: 5px; margin-right: 30px;}
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .confirmBtn {width: auto; font-family: "Poppins"; font-weight: 600; font-size: 18px; text-transform: uppercase; border-radius: 10px; padding: 8px 20px;}
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .confirmBtn:hover {background: #FFBF61; transition: .5s; color: #000;}
 
+
+/* ------ new agent details design  */
+.agentDetailsBoxWrapper .agentDetailsWrapper {margin: 0 auto; padding: 73px 75px 150px 75px; margin-top: 120px; background-color: #d1eafa; min-height: 100vh; align-items: center; position: relative;} 
+.agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsContainer {margin: 0; padding: 28px 28px 65px 28px; background-color: #e3f1ff; border: 12px solid #f6fbff; border-radius: 20px; box-shadow: 0px 0px 10px #23b7e570;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap {display: flex; padding-bottom: 50px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userImgWrapper {flex: 0 0 25%; width: 25%;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userImg {width: 100%; max-width: 342px; height: 100%; max-height: 450px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon {flex: 0 0 75%; width: 75%; padding-left: 50px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .agentNameWrap {display: flex; justify-content: space-between;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .agentName {color: #000000; font: 500 25px/35px "Poppins"; margin: 10px 0px 18px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .inputWrapCon {padding-bottom: 20px; border-bottom: 1px dashed #cdcdcd; margin-bottom: 20px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .inputWrapCon .titleField {color: #565656; font: 400 16px / 25px "Poppins"; margin-bottom: 8px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .inputWrapCon .titleData {color: #000; font: 500 19px / 25px "Poppins";}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap {padding-bottom: 50px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon {background: #f7fbfe; border-radius: 20px; min-height: 130px; padding: 20px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon .titleField {color: #565656; font: 400 16px / 25px "Poppins"; margin-bottom: 8px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon .titleData {color: #000; font: 500 19px / 25px "Poppins";}
+/* .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviews {padding-bottom: 50px;} */
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviews .titleField {color: #565656; font: 400 16px / 25px "Poppins"; margin-bottom: 8px;}

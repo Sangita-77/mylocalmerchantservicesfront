@@ -94,35 +94,35 @@ const MerchantListDetails = () => {
     }
   };
 
-//   const confirmConnect = async () => {
-//     try {
-//       setIsLoading(true);
-//       const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+  //   const confirmConnect = async () => {
+  //     try {
+  //       setIsLoading(true);
+  //       const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
 
-//       const response = await axios.post(
-//         `${BASE_URL}/connectFun`,
-//         { user_id: id, merchant_id },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       );
+  //       const response = await axios.post(
+  //         `${BASE_URL}/connectFun`,
+  //         { user_id: id, merchant_id },
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //             "Content-Type": "application/json",
+  //           },
+  //         }
+  //       );
 
-//       if (response.status === 200) {
-//         navigate("/merchant/user_connected_history");
-//       } else {
-//         throw new Error("Connection failed");
-//       }
-//     } catch (error) {
-//       console.error("Connection error:", error);
-//       alert("Something went wrong. Please try again.");
-//     } finally {
-//       setIsLoading(false);
-//       setShowModal(false);
-//     }
-//   };
+  //       if (response.status === 200) {
+  //         navigate("/merchant/user_connected_history");
+  //       } else {
+  //         throw new Error("Connection failed");
+  //       }
+  //     } catch (error) {
+  //       console.error("Connection error:", error);
+  //       alert("Something went wrong. Please try again.");
+  //     } finally {
+  //       setIsLoading(false);
+  //       setShowModal(false);
+  //     }
+  //   };
 
   return (
     <div className="agentDetailsBoxWrapper">
@@ -136,7 +136,166 @@ const MerchantListDetails = () => {
           </div>
         ) : data ? (
           <div className="agentDetailsContainer">
-            <div className="userHeaderInfo">
+            {/* -------- new design */}
+
+            <div className="userHeaderInfoTopWrap">
+              <div className="userImgWrapper">
+                <div className="userImg">
+                  <img
+                    src={
+                      data.logo && data.logo.trim() !== ""
+                        ? `${IMAGE_BASE_URL}/${data.logo}`
+                        : placeholderimg
+                    }
+                    alt="User Logo"
+                    onError={(e) => (e.target.src = placeholderimg)}
+                  />
+                </div>
+              </div>
+
+              <div className="userHeaderInfoTopCon">
+                <div className="agentNameWrap">
+                  <div className="agentName">
+                    {data.first_name && data.last_name
+                      ? `${data.first_name} ${data.last_name}`
+                      : data.merchant_name}
+                  </div>
+                  <button
+                    className={`modalConnectBtn ${
+                      buttonText === "Requested"
+                        ? "btnRequested"
+                        : buttonText === "Connected"
+                        ? "btnConnected"
+                        : ""
+                    }`}
+                    onClick={
+                      buttonText === "Connect" ? handleConnect : undefined
+                    } // only clickable if "Connect"
+                    disabled={isLoading || buttonText !== "Connect"} // disable if not "Connect"
+                  >
+                    {isLoading ? "Checking..." : buttonText}
+                  </button>
+                </div>
+
+                <div className="inputWrapCon">
+                  <div className="titleField">Address:</div>
+                  <div className="titleData">
+                    {`${data.city ?? ""} - ${data.zip_code ?? ""}, ${
+                      data.state ?? ""
+                    }, US`}
+                  </div>
+                </div>
+                <div className="inputWrapCon">
+                  <div className="titleField">Merchant Services Type:</div>
+                  <div className="titleData">
+                    {data.flag === "isos"
+                      ? "ISO's"
+                      : data.flag === "processors"
+                      ? "Processors"
+                      : data.flag === "agents"
+                      ? "Agents"
+                      : "N/A"}
+                  </div>
+                </div>
+
+                <div className="inputWrapCon">
+                  <div className="titleField">Distance Willing to Travel:</div>
+                  <div className="titleData">
+                    {data.DistanceWilling || "N/A"}
+                  </div>
+                </div>
+
+                <div className="inputWrapCon">
+                  <div className="titleField">
+                    Monthly Volume Processed by your merchants:
+                  </div>
+                  <div className="titleData">
+                    {data.VolumeProcessed || "N/A"}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="userInfoBottomWrap">
+              <div className="row">
+                <div className="col-lg-3">
+                  <div className="inputWrapCon">
+                    <div className="titleField">Company Name:</div>
+                    <div className="titleData">
+                      {data.company_name || "N/A"}
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-3">
+                  <div className="inputWrapCon">
+                    <div className="titleField">Website:</div>
+                    <div className="titleData">
+                      {data.website ? (
+                        <a href={data.website} target="_blank" rel="noreferrer">
+                          {data.website}
+                        </a>
+                      ) : (
+                        "N/A"
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-3">
+                  <div className="inputWrapCon">
+                    <div className="titleField">Serviced Clients:</div>
+                    <div className="titleData">{data.clientCount || "N/A"}</div>
+                  </div>
+                </div>
+                <div className="col-lg-3">
+                  <div className="inputWrapCon">
+                    <div className="titleField">Average Rating:</div>
+                    {/* <div className="titleData">4.5</div> */}
+                    <div className="titleData">
+                      <div className="ratingCol">
+                        {/* Show numeric rating */}
+                        <span style={{ fontWeight: "500" }}>
+                          {data.average_rating
+                            ? data.average_rating.toFixed(1)
+                            : "0.0"}
+                        </span>
+
+                        {/* Show stars */}
+                        <div className="starWrap">
+                          {[...Array(5)].map((_, index) => {
+                            const filled =
+                              index < Math.round(data.average_rating || 0);
+                            return (
+                              <span
+                                key={index}
+                                style={{
+                                  color: filled ? "#FFD700" : "#ccc",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                ★
+                              </span>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="userInfoReviews">
+              <div className="inputWrapCon">
+                <div className="titleField">Review and rating</div>
+                <div className="titleData">
+                  ....
+                </div>
+              </div>
+            </div>
+
+            {/* -------- new design end*/}
+
+            {/* <div className="userHeaderInfo">
               <div className="userImgWrapper">
                 <div className="userImg">
                   <img
@@ -160,12 +319,12 @@ const MerchantListDetails = () => {
             </div>
             <div className="agentDetailsInfo">
                 <div className="dataRowContainer">
-                <div className="dataTitle">Full Address:</div>
-                <div className="data">
-                    {`${data.city ?? ""} - ${data.zip_code ?? ""}, ${
-                    data.state ?? ""
-                    }, US`}
-                </div>
+                  <div className="dataTitle">Full Address:</div>
+                  <div className="data">
+                      {`${data.city ?? ""} - ${data.zip_code ?? ""}, ${
+                      data.state ?? ""
+                      }, US`}
+                  </div>
                 </div>
 
                 <div className="dataRowContainer">
@@ -219,13 +378,13 @@ const MerchantListDetails = () => {
                     <div className="data">{data.VolumeProcessed || "N/A"}</div>
                 </div>
                 )}
-            </div>
+            </div> */}
 
             {/* <button className="modalConnectBtn" onClick={handleConnect} disabled={isLoading || buttonText === "Requested" || buttonText === "Connected"}>
               {isLoading ? "Checking..." : buttonText}
             </button> */}
 
-            <button
+            {/* <button
               className={`modalConnectBtn ${
                 buttonText === "Requested"
                   ? "btnRequested"
@@ -237,8 +396,7 @@ const MerchantListDetails = () => {
               disabled={isLoading || buttonText !== "Connect"} // disable if not "Connect"
             >
               {isLoading ? "Checking..." : buttonText}
-            </button>
-
+            </button> */}
           </div>
         ) : (
           <div className="noResultFound">No Merchant Details Found</div>
@@ -248,7 +406,7 @@ const MerchantListDetails = () => {
       {showModal && (
         <ConnectConfirmationModal
           onCancel={() => setShowModal(false)}
-        //   onConfirm={confirmConnect}
+          //   onConfirm={confirmConnect}
           isLoading={isLoading}
         />
       )}
