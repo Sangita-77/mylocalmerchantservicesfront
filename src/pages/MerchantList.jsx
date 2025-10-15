@@ -177,38 +177,6 @@ const MerchantList = () => {
   const createArray2 = (count) => Array.from({ length: count }, (_, i) => i + 1);
 
 
-  // const handleFilterClick = async (field) => {
-  //   let newOrder = "asc";
-  //   if (sortConfig.field === field && sortConfig.order === "asc") {
-  //     newOrder = "desc";
-  //   }
-  
-  //   setSortConfig({ field, order: newOrder });
-  
-  //   try {
-  //     const response = await axios.post(
-  //       `${BASE_URL}/filterMerchantData`,
-  //       {
-  //         offset: 0,
-  //         sortField: field,
-  //         sortOrder: newOrder,
-  //       },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-  
-  //     if (response.data.status) {
-  //       setTableData(response.data.users);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error filtering data:", error);
-  //   }
-  // };
-  
   const handleFilterClick = async (field) => {
     let newOrder = "asc";
     if (sortConfig.field === field && sortConfig.order === "asc") {
@@ -425,32 +393,65 @@ const MerchantList = () => {
                   <table className="tableContainer">
                     <thead className="theadContainer" style={{ backgroundColor: "#71cdea" }}>
                       <tr>
-                        <th className="th">Name
-                        <AiFillCaretDown
-                          size={14}
-                          color="#fff"
-                          style={{ cursor: "pointer" }}
-                          title="Filter by Name"
-                          onClick={() => handleFilterClick("name")}
-                        />
+                        <th className="th">
+                          Name{" "}
+                          {sortConfig.field === "name" && sortConfig.order === "asc" ? (
+                            <AiFillCaretUp
+                              size={14}
+                              color="#fff"
+                              style={{ cursor: "pointer" }}
+                              title="Sort by Name"
+                              onClick={() => handleFilterClick("name")}
+                            />
+                          ) : (
+                            <AiFillCaretDown
+                              size={14}
+                              color="#fff"
+                              style={{ cursor: "pointer" }}
+                              title="Sort by Name"
+                              onClick={() => handleFilterClick("name")}
+                            />
+                          )}
                         </th>
-                        <th className="th">Company Name
-                        <AiFillCaretDown
-                          size={14}
-                          color="#fff"
-                          style={{ cursor: "pointer" }}
-                          title="Filter by Company Name"
-                          onClick={() => handleFilterClick("company_name")}
-                        />
+                        <th className="th">
+                          Company Name{" "}
+                          {sortConfig.field === "company_name" && sortConfig.order === "asc" ? (
+                            <AiFillCaretUp
+                              size={14}
+                              color="#fff"
+                              style={{ cursor: "pointer" }}
+                              title="Sort by Company Name"
+                              onClick={() => handleFilterClick("company_name")}
+                            />
+                          ) : (
+                            <AiFillCaretDown
+                              size={14}
+                              color="#fff"
+                              style={{ cursor: "pointer" }}
+                              title="Sort by Company Name"
+                              onClick={() => handleFilterClick("company_name")}
+                            />
+                          )}
                         </th>
-                        <th className="th">Average Rating
-                        <AiFillCaretDown
-                          size={14}
-                          color="#fff"
-                          style={{ cursor: "pointer" }}
-                          title="Filter by Rating"
-                          onClick={() => handleFilterClick("average_rating")}
-                        />
+                        <th className="th">
+                          Average Rating{" "}
+                          {sortConfig.field === "average_rating" && sortConfig.order === "asc" ? (
+                            <AiFillCaretUp
+                              size={14}
+                              color="#fff"
+                              style={{ cursor: "pointer" }}
+                              title="Sort by Rating"
+                              onClick={() => handleFilterClick("average_rating")}
+                            />
+                          ) : (
+                            <AiFillCaretDown
+                              size={14}
+                              color="#fff"
+                              style={{ cursor: "pointer" }}
+                              title="Sort by Rating"
+                              onClick={() => handleFilterClick("average_rating")}
+                            />
+                          )}
                         </th>
                         <th className="thActions">Actions</th>
                       </tr>
