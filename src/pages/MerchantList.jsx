@@ -396,101 +396,74 @@ const MerchantList = () => {
               {searched ? "Search Results" : "Agents"}
             </div>
 
-            {tableData.length === 0 ? (
-              <div className="noResultFound">No Entries Found</div>
-            ) : (
-              <div className="tableWrapper" style={{ position: "relative" }}>
-                {loading && (
-                  <div className="tableOverlayLoader">
-                    <PreLoader text="Fetching data..." />
-                  </div>
-                )}
+            <div className="tableWrapper" style={{ position: "relative" }}>
+              {loading && (
+                <div className="tableOverlayLoader">
+                  <PreLoader text="Fetching data..." />
+                </div>
+              )}
 
-                <table className="tableContainer">
-                  <thead
-                    className="theadContainer"
-                    style={{ backgroundColor: "#71cdea" }}
-                  >
-                    <tr>
-                      <th className="th">
-                        Name{" "}
-                        {sortConfig.field === "name" && sortConfig.order === "asc" ? (
-                          <AiFillCaretUp
-                            size={14}
-                            color="#fff"
-                            style={{ cursor: "pointer" }}
-                            title="Sort by Name"
-                            onClick={() => handleFilterClick("name")}
-                          />
-                        ) : (
-                          <AiFillCaretDown
-                            size={14}
-                            color="#fff"
-                            style={{ cursor: "pointer" }}
-                            title="Sort by Name"
-                            onClick={() => handleFilterClick("name")}
-                          />
-                        )}
-                      </th>
-                      <th className="th">
-                        <div className="companyHeadWrap">
-                          Company Name{" "}
-                          {sortConfig.field === "company_name" &&
-                          sortConfig.order === "asc" ? (
-                            <AiFillCaretUp
-                              size={14}
-                              color="#fff"
-                              style={{ cursor: "pointer" }}
-                              title="Sort by Company Name"
-                              onClick={() => handleFilterClick("company_name")}
-                            />
-                          ) : (
-                            <AiFillCaretDown
-                              size={14}
-                              color="#fff"
-                              style={{ cursor: "pointer" }}
-                              title="Sort by Company Name"
-                              onClick={() => handleFilterClick("company_name")}
-                            />
-                          )}
-                        </div>
-                      </th>
-                      <th className="th">
-                        Average Rating{" "}
-                        {sortConfig.field === "average_rating" &&
-                        sortConfig.order === "asc" ? (
-                          <AiFillCaretUp
-                            size={14}
-                            color="#fff"
-                            style={{ cursor: "pointer" }}
-                            title="Sort by Rating"
-                            onClick={() => handleFilterClick("average_rating")}
-                          />
-                        ) : (
-                          <AiFillCaretDown
-                            size={14}
-                            color="#fff"
-                            style={{ cursor: "pointer" }}
-                            title="Sort by Rating"
-                            onClick={() => handleFilterClick("average_rating")}
-                          />
-                        )}
-                      </th>
-                      <th className="thActions">Actions</th>
-                    </tr>
-                  </thead>
+              <table className="tableContainer">
+                <thead
+                  className="theadContainer"
+                  style={{ backgroundColor: "#71cdea" }}
+                >
+                  <tr>
+                    <th className="th">
+                      Name{" "}
+                      {sortConfig.field === "name" && sortConfig.order === "asc" ? (
+                        <AiFillCaretUp
+                          size={14}
+                          color="#fff"
+                          style={{ cursor: "pointer" }}
+                          title="Sort by Name"
+                          onClick={() => handleFilterClick("name")}
+                        />
+                      ) : (
+                        <AiFillCaretDown
+                          size={14}
+                          color="#fff"
+                          style={{ cursor: "pointer" }}
+                          title="Sort by Name"
+                          onClick={() => handleFilterClick("name")}
+                        />
+                      )}
+                    </th>
+                    <th className="th">
+                      Company Name{" "}
+                      {sortConfig.field === "company_name" && sortConfig.order === "asc" ? (
+                        <AiFillCaretUp
+                          size={14}
+                          color="#fff"
+                          style={{ cursor: "pointer" }}
+                          title="Sort by Company Name"
+                          onClick={() => handleFilterClick("company_name")}
+                        />
+                      ) : (
+                        <AiFillCaretDown
+                          size={14}
+                          color="#fff"
+                          style={{ cursor: "pointer" }}
+                          title="Sort by Company Name"
+                          onClick={() => handleFilterClick("company_name")}
+                        />
+                      )}
+                    </th>
+                    <th className="th">Average Rating</th>
+                    <th className="thActions">Actions</th>
+                  </tr>
+                </thead>
 
-                  <tbody className="tbodyContainer">
-                    {tableData.map((row, i) => (
+                <tbody className="tbodyContainer">
+                  {tableData.length > 0 ? (
+                    tableData.map((row, i) => (
                       <tr className="tr" key={i}>
                         <td className="td">
                           {row?.first_name && row?.last_name
                             ? `${row.first_name} ${row.last_name}`
                             : row?.merchant_name}
                         </td>
-                        <td className="td">
-                          <div className="companyNameWrap">{row?.company_name}</div>
-                        </td>
+                        <td className="td">{row?.company_name}</td>
                         <td className="td ratingColWrap">
                           <div className="ratingCol">
                             <span style={{ fontWeight: "500" }}>
@@ -532,11 +505,20 @@ const MerchantList = () => {
                           </button>
                         </td>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+                    ))
+                  ) : (
+                    !loading && (
+                      <tr>
+                        <td colSpan="4" className="noResultFound">
+                          No Entries Found
+                        </td>
+                      </tr>
+                    )
+                  )}
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
 
