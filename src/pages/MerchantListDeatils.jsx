@@ -16,6 +16,7 @@ const MerchantListDetails = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [buttonText, setButtonText] = useState("Connect");
 
   const fetchMerchantDetails = async () => {
     try {
@@ -42,6 +43,7 @@ const MerchantListDetails = () => {
   };
 
   useEffect(() => {
+    getConnectStatus();
     if (id) fetchMerchantDetails();
   }, [id]);
 
@@ -53,6 +55,42 @@ const MerchantListDetails = () => {
       navigate("/merchant-service-providers-registration");
     } else {
       setShowModal(true);
+    }
+  };
+
+  const getConnectStatus = async () => {
+    try {
+      setIsLoading(true);
+      const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+      const agent_id = parseInt(id, 10);
+
+      const response = await axios.post(
+        `${BASE_URL}/getConnectStatus`,
+        { user_id: agent_id, merchant_id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      // console.log(".response.......",response.data);
+      if (response.data.connect != null) {
+        // console.log("ifffffffffffffffffffffffffff");
+        setButtonText(response.data.connect.state || "Connect");
+      } else {
+        // console.log("elseeeeeeeeeeeeeeeeeeeeeeee");
+        // throw new Error("Connection failed");
+        setButtonText("Connect");
+      }
+    } catch (error) {
+      console.error("Connection error:", error);
+      setButtonText("Connect");
+      // alert("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+      setShowModal(false);
     }
   };
 
@@ -183,9 +221,24 @@ const MerchantListDetails = () => {
                 )}
             </div>
 
-            <button className="modalConnectBtn" onClick={handleConnect} disabled={isLoading}>
-              Connect
+            {/* <button className="modalConnectBtn" onClick={handleConnect} disabled={isLoading || buttonText === "Requested" || buttonText === "Connected"}>
+              {isLoading ? "Checking..." : buttonText}
+            </button> */}
+
+            <button
+              className={`modalConnectBtn ${
+                buttonText === "Requested"
+                  ? "btnRequested"
+                  : buttonText === "Connected"
+                  ? "btnConnected"
+                  : ""
+              }`}
+              onClick={buttonText === "Connect" ? handleConnect : undefined} // only clickable if "Connect"
+              disabled={isLoading || buttonText !== "Connect"} // disable if not "Connect"
+            >
+              {isLoading ? "Checking..." : buttonText}
             </button>
+
           </div>
         ) : (
           <div className="noResultFound">No Merchant Details Found</div>
