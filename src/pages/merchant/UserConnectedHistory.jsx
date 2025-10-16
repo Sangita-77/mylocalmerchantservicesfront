@@ -60,6 +60,7 @@ const UserConnectedHistory = () => {
       );
 
       if (response.data.status) {
+        console.log("........response.data.connectedHistory............",response.data.connectedHistory);
         setConnectedHistory(response.data.connectedHistory || []);
         setMerchantDetails(response.data.merchantDetails || []);
       } else {
@@ -148,58 +149,91 @@ const handleDelete = async (connection) => {
           <div className="merchantHeaderTitle"><DashboardTopHeading text="Merchant Services Providers Connected History"/> </div>
         </div>
 
-<div className="tableContainerWrap">
-        <table className="tableContainer">
-          <thead className="theadContainer">
-            <tr>
-              <th className="th">Created</th>
-              <th className="th">Name</th>
-              <th className="th">E-mails</th>
-              <th className="thActions">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="tbodyContainer">
-            {loading ? (
+        <div className="tableContainerWrap">
+          <table className="tableContainer">
+            <thead className="theadContainer">
               <tr>
-                <td colSpan="4" className="td" style={{ textAlign: "center", padding: "20px 0px", }}>
-                  <PreLoader />
-                </td>
+                <th className="th">Created</th>
+                <th className="th">Name</th>
+                <th className="th">E-mails</th>
+                <th className="th">Actions</th>
               </tr>
-            ) : merchantDetails.length === 0 ? (
-              <tr>
-                <td colSpan="4" className="td">
-                  No connections found
-                </td>
-              </tr>
-            ) : (
-              merchantDetails.map((connection, index) => (
-                <tr className="tr" key={index}>
-                  <td className="td">
-                    {new Date(connection.created_at).toLocaleString()}
-                  </td>
-                  <td className="td">
-                    {getUserName(connection.merchant_id)}
-                  </td>
-                  <td className="td">
-                    {getUserEmail(connection.merchant_id)}
-                  </td>
-                  <td className="actionTd">
-                    <button className="viewButton" onClick={() => handleViewClick(connection)} data-bs-toggle="tooltip"
-                        data-bs-placement="auto"
-                        title="View Details">
-                      <PiEyeLight size={22} color="white" />
-                    </button>
-                    <button  className="delButton" onClick={() => handleDeleteClick(connection)} data-bs-toggle="tooltip"
-                        data-bs-placement="auto"
-                        title="Delete">
-                      <AiOutlineDelete size={22}  color="#E60E4E" style={{ cursor: "pointer" }}/>
-                    </button>
+            </thead>
+            <tbody className="tbodyContainer">
+              {loading ? (
+                <tr>
+                  <td colSpan="4" className="td" style={{ textAlign: "center", padding: "20px 0px" }}>
+                    <PreLoader />
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : merchantDetails.length === 0 ? (
+                <tr>
+                  <td colSpan="4" className="td">
+                    No connections found
+                  </td>
+                </tr>
+              ) : (
+                merchantDetails.map((connection, index) => {
+                  const history = connectedHistory[index];
+                  const state = history?.state;
+
+                  return (
+                    <tr className="tr" key={index}>
+                      {/* Created Date */}
+                      <td className="td">
+                        {history?.created_at
+                          ? new Date(history.created_at).toLocaleString()
+                          : "—"}
+                      </td>
+
+                      {/* Name */}
+                      <td className="td">{getUserName(connection.merchant_id)}</td>
+
+                      {/* Email */}
+                      <td className="td">{getUserEmail(connection.merchant_id)}</td>
+
+                      {/* Actions */}
+                      <td className="actionTd">
+                        {state === "accepted" ? (
+                          <>
+                            <button
+                              className="viewButton"
+                              onClick={() => handleViewClick(connection)}
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="auto"
+                              title="View Details"
+                            >
+                              <PiEyeLight size={22} color="white" />
+                            </button>
+                            <button
+                              className="delButton"
+                              onClick={() => handleDeleteClick(connection)}
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="auto"
+                              title="Delete"
+                            >
+                              <AiOutlineDelete
+                                size={22}
+                                color="#E60E4E"
+                                style={{ cursor: "pointer" }}
+                              />
+                            </button>
+                          </>
+                        ) : (
+                          <span className={`statusText status-${state}`}>
+                            {state
+                              ? state.charAt(0).toUpperCase() + state.slice(1)
+                              : "—"}
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+
+          </table>
         </div>
       </div>
 
