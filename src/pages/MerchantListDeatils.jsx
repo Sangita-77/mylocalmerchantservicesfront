@@ -6,6 +6,7 @@ import PreLoader from "../components/PreLoader";
 import { AppContext } from "../utils/context";
 import placeholderimg from "./../assets/images/placeholderimg.jpg";
 import ConnectConfirmationModal from "../components/ConnectConfirmationModal";
+import contactlisticon from "../assets/images/contactlisticon.png";
 import "./../styles/styles.css";
 
 const MerchantListDetails = () => {
@@ -123,6 +124,8 @@ const MerchantListDetails = () => {
   //       setShowModal(false);
   //     }
   //   };
+
+  const dataArray = [1, 2];
 
   return (
     <div className="agentDetailsBoxWrapper">
@@ -249,7 +252,7 @@ const MerchantListDetails = () => {
                 <div className="col-lg-3">
                   <div className="inputWrapCon">
                     <div className="titleField">Average Rating:</div>
-                    <div className="titleData">4.5</div>
+                    <div className="titleData"><span>4.5</span></div>
                     {/* <div className="titleData">
                       <div className="ratingCol">
                           
@@ -277,19 +280,130 @@ const MerchantListDetails = () => {
 
                       </div>
                     </div> */}
-                    
                   </div>
                 </div>
-                
               </div>
             </div>
 
-            <div className="userInfoReviews">
-              <div className="inputWrapCon">
-                <div className="titleField">Review and rating</div>
-                <div className="titleData">
-                  ....
+            <div className="userInfoReviewsWrap">
+              <div className="userInfoReviewsCon">
+                <h2 className="sectionTitle">Review</h2>
+
+                <div className="ratingTopSection">
+                  <div className="row">
+                    <div className="col-lg-2">
+                      <div className="ratingCol">
+                        <span>
+                          {data.average_rating
+                            ? data.average_rating.toFixed(1)
+                            : "0.0"}
+                        </span>
+                        <div className="starWrap">
+                          {[...Array(5)].map((_, index) => {
+                            const filled =
+                              index < Math.round(data.average_rating || 0);
+                            return (
+                              <span
+                                key={index}
+                                style={{
+                                  color: filled ? "#FFD700" : "#ccc",
+                                }}
+                              >
+                                ★
+                              </span>
+                            );
+                          })}
+                        </div>
+                        <div style={{ fontSize: "12px", color: "#666" }}>
+                          ({data.review_count || 0} review
+                          {(data.review_count || 0) !== 1 ? "s" : ""})
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="col-lg-10">
+                      <div className="progressBarWrap">
+                        <progress value="75" max="100">
+                          75%
+                        </progress>
+                        <div className="reviewCount">
+                          <span>5.0</span> 14k Reviews
+                        </div>
+                      </div>
+                      <div className="progressBarWrap">
+                        <progress value="55" max="100">
+                          55%
+                        </progress>
+                        <div className="reviewCount">
+                          <span>5.0</span> 5k Reviews
+                        </div>
+                      </div>
+                      <div className="progressBarWrap">
+                        <progress value="65" max="100">
+                          65%
+                        </progress>
+                        <div className="reviewCount">
+                          <span>5.0</span> 10k Reviews
+                        </div>
+                      </div>
+                      <div className="progressBarWrap">
+                        <progress value="80" max="100">
+                          80%
+                        </progress>
+                        <div className="reviewCount">
+                          <span>5.0</span> 3k Reviews
+                        </div>
+                      </div>
+                      <div className="progressBarWrap">
+                        <progress value="40" max="100">
+                          40%
+                        </progress>
+                        <div className="reviewCount">
+                          <span>5.0</span> 1k Reviews
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                {dataArray.map((item) => (
+                  <div className="ratingBottomSection" key={item}>
+                    <div className="ratingHeaderInfo">
+                      <div className="ratingheaderInfoLeft">
+                        <div className="ratingUserImg">
+                          <img src={contactlisticon} alt="User Logo" />
+                        </div>
+                        <h3 className="ratingUserName">Alexander Rity</h3>
+                        <h4 className="ratingUserTime">2 Days Ago</h4>
+                      </div>
+                      <div className="ratingheaderInforight">
+                        <span className="avgRating">5.0</span> 
+                        <div className="startWrap">
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="ratingConInfo">
+                      <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Sunt quis, veniam blanditiis sequi distinctio
+                        consectetur quod repudiandae culpa cumque architecto
+                        repellendus! Nesciunt ex eius laborum quidem aut omnis,
+                        voluptatibus ipsa dolorem unde, ab repudiandae?
+                        Quibusdam culpa cupiditate itaque. Et totam neque
+                        repellendus quia. Quam accusantium eveniet aliquam quo
+                        dolores maxime!
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                <a href="#" className="allReviews">Read All Reviews</a>
               </div>
             </div>
 
