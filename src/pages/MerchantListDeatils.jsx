@@ -249,17 +249,14 @@ const MerchantListDetails = () => {
                 <div className="col-lg-3">
                   <div className="inputWrapCon">
                     <div className="titleField">Average Rating:</div>
-                    {/* <div className="titleData">4.5</div> */}
-                    <div className="titleData">
+                    <div className="titleData">4.5</div>
+                    {/* <div className="titleData">
                       <div className="ratingCol">
-                        {/* Show numeric rating */}
+                          
                         <span style={{ fontWeight: "500" }}>
-                          {data.average_rating
-                            ? data.average_rating.toFixed(1)
-                            : "0.0"}
+                          {data.average_rating ? data.average_rating.toFixed(1) : "0.0"}
                         </span>
 
-                        {/* Show stars */}
                         <div className="starWrap">
                           {[...Array(5)].map((_, index) => {
                             const filled =
@@ -277,10 +274,13 @@ const MerchantListDetails = () => {
                             );
                           })}
                         </div>
+
                       </div>
-                    </div>
+                    </div> */}
+                    
                   </div>
                 </div>
+                
               </div>
             </div>
 

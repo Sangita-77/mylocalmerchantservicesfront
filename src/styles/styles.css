@@ -1334,7 +1334,7 @@ border-radius: 5px; margin-right: 30px;}
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap {border: solid 3px #fff; border-radius: 15px; padding: 40px;}
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .connectInput .connectInputTitle {color: #fff; font-family: "Poppins"; font-weight: 400; font-size: 15px; text-align: start;}
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .connectInput .inputField {width: 100%; border: none; border-radius: 10px; height: 100%; padding: 20px; margin: 5px 0 20px;}
-.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons {}
+/* .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons {} */
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .cancelBtn {margin-right: 20px; border: none; background-color: #FFBF61; color: #000; font-family: "Poppins"; font-weight: 600; font-size: 18px; text-transform: uppercase; border-radius: 10px; padding: 8px 20px; width: auto;}
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .cancelBtn:hover {background: #fff; transition: .5s;}
 .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .confirmBtn {width: auto; font-family: "Poppins"; font-weight: 600; font-size: 18px; text-transform: uppercase; border-radius: 10px; padding: 8px 20px;}
