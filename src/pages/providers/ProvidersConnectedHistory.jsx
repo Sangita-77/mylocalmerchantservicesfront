@@ -15,6 +15,7 @@ import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
 import ConfirmModal from "../../components/ConfirmModal";
 import ProviderDashboardTopBar from "../../components/ProviderDashboardTopBar";
+import ConnectionRejectModal from "../../components/ConnectionRejectModal";
 
 const ProvidersConnectedHistory = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -24,6 +25,9 @@ const ProvidersConnectedHistory = () => {
   const [selectedConnection, setSelectedConnection] = useState(null);
   const [connections, setConnections] = useState([]);
   const [personType, setPersonType] = useState("");
+
+  const [showRejectModal, setShowRejectModal] = useState(false);
+  const [selectedState, setSelectedState] = useState("");
 
   const {
     token,
@@ -148,6 +152,66 @@ const handleDelete = async (connection) => {
   }, []);
 
 
+  const statusChange = async (connection, state) => {
+    try {
+      setLoading(true);
+  
+      // console.log("...........connection", connection.connected_id);
+  
+      let reason = null;
+  
+      // if (state === "declined") {
+      //   reason = prompt("Please enter a reason for declining this connection:");
+  
+      //   // If user cancels or leaves empty, stop the function
+      //   if (!reason) {
+      //     alert("Decline reason is required.");
+      //     setLoading(false);
+      //     return;
+      //   }
+      // }
+  
+      if (state === "accepted") {
+        reason = null;
+      }
+  
+      const response = await axios.post(
+        `${BASE_URL}/connectionStateChange`,
+        {
+          connected_id: connection.connected_id,
+          state: state,
+          reason: reason, 
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (response.data.status) {
+        console.log("Status updated successfully:", response.data);
+        // optionally refresh data
+        fetchData();
+      } else {
+        console.error("Failed to update state:", response.data.message);
+      }
+    } catch (err) {
+      console.error("Error changing status:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRejectClick = (connection, state) => {
+    setSelectedConnection(connection);
+    setSelectedState(state);
+    setShowRejectModal(true);
+  };
+  
+
+
   return (
     <div className="userConnectedHistoryPageWrapper">
 
@@ -160,7 +224,7 @@ const handleDelete = async (connection) => {
           <div className="merchantHeaderTitle"><DashboardTopHeading text="Merchants Connected History"/> </div>
         </div>
 
-<div className="tableContainerWrap">
+        <div className="tableContainerWrap">
         <table className="tableContainer">
           <thead className="theadContainer">
             <tr>
@@ -173,7 +237,11 @@ const handleDelete = async (connection) => {
           <tbody className="tbodyContainer">
             {loading ? (
               <tr>
-                <td colSpan="4" className="td" style={{ textAlign: "center", padding: "20px 0px", }}>
+                <td
+                  colSpan="4"
+                  className="td"
+                  style={{ textAlign: "center", padding: "20px 0px" }}
+                >
                   <PreLoader />
                 </td>
               </tr>
@@ -184,34 +252,82 @@ const handleDelete = async (connection) => {
                 </td>
               </tr>
             ) : (
-              merchantDetails.map((connection, index) => (
-                <tr className="tr" key={index}>
-                  <td className="td">
-                    {new Date(connection.created_at).toLocaleString()}
-                  </td>
-                  <td className="td">
-                    {getUserName(connection.merchant_id)}
-                  </td>
-                  <td className="td">
-                    {getUserEmail(connection.merchant_id)}
-                  </td>
-                  <td className="actionTd">
-                    <button className="viewButton" onClick={() => handleViewClick(connection)} data-bs-toggle="tooltip"
-                        data-bs-placement="auto"
-                        title="View Details">
-                      <PiEyeLight size={22} color="white" />
-                    </button>
-                    <button  className="delButton" onClick={() => handleDeleteClick(connection)} data-bs-toggle="tooltip"
-                        data-bs-placement="auto"
-                        title="Delete">
-                      <AiOutlineDelete size={22}  color="#E60E4E" style={{ cursor: "pointer" }}/>
-                    </button>
-                  </td>
-                </tr>
-              ))
+              merchantDetails.map((connection, index) => {
+                const history = connectedHistory[index];
+                const state = history?.state;
+
+                return (
+                  <tr className="tr" key={index}>
+                    {/* Created Date */}
+                    <td className="td">
+                      {history?.created_at
+                        ? new Date(history.created_at).toLocaleString()
+                        : "—"}
+                    </td>
+
+                    {/* Name */}
+                    <td className="td">{getUserName(connection.merchant_id)}</td>
+
+                    {/* Email */}
+                    <td className="td">{getUserEmail(connection.merchant_id)}</td>
+
+                    {/* Actions */}
+                    <td className="actionTd">
+                      {state === "accepted" ? (
+                        <>
+                          <button
+                            className="viewButton"
+                            onClick={() => handleViewClick(connection)}
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="auto"
+                            title="View Details"
+                          >
+                            <PiEyeLight size={22} color="white" />
+                          </button>
+                          <button
+                            className="delButton"
+                            onClick={() => handleDeleteClick(connection)}
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="auto"
+                            title="Delete"
+                          >
+                            <AiOutlineDelete
+                              size={22}
+                              color="#E60E4E"
+                              style={{ cursor: "pointer" }}
+                            />
+                          </button>
+                        </>
+                      ) : state === "declined" ? (
+                        <span className="declinedText">Declined</span>
+                      ) : (
+                        <>
+                          <button
+                            className="cancelBtn"
+                            disabled={loading}
+                            onClick={() => statusChange(connectedHistory[index], "accepted")}
+                          >
+                            {loading ? "..." : "Approve"}
+                          </button>
+
+                          <button
+                            className="confirmBtn"
+                            disabled={loading}
+                            onClick={() => handleRejectClick(connectedHistory[index], "declined")}
+                          >
+                            {loading ? "..." : "Reject"}
+                          </button>
+                        </>
+                      )}
+                    </td>
+
+                  </tr>
+                );
+              })
             )}
           </tbody>
         </table>
+
         </div>
       </div>
 
@@ -232,6 +348,18 @@ const handleDelete = async (connection) => {
             onCancel={() => setShowConfirmModal(false)}
           />
         )}
+
+        {showRejectModal && (
+          <ConnectionRejectModal
+            connection={selectedConnection} // ✅ pass object with connected_id
+
+              // statusChange(selectedConnection, "declined"); // ✅ send reason here
+            onCancel={() => setShowRejectModal(false)}
+          />
+        )}
+
+
+
     </div>
   );
 };

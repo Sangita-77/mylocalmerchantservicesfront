@@ -60,7 +60,7 @@ const UserConnectedHistory = () => {
       );
 
       if (response.data.status) {
-        console.log("........response.data.connectedHistory............",response.data.connectedHistory);
+        // console.log("........response.data.connectedHistory............",response.data.connectedHistory);
         setConnectedHistory(response.data.connectedHistory || []);
         setMerchantDetails(response.data.merchantDetails || []);
       } else {
