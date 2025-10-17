@@ -1296,7 +1296,7 @@ const MerchantRegistration = () => {
             </p>
             <p style={{ color: "#4d627b" }}>Please enter up to three bullet points you want potential customers to see about you. These are limited to 50 characters.</p>
 
-            <div className="inputRowContainer">
+            {/* <div className="inputRowContainer">
               <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
                     Bullet Point 1: <span style={{ color: "red" }}>*</span>
@@ -1321,8 +1321,8 @@ const MerchantRegistration = () => {
                     <div className="errorText">{validationError.bulletOneError}</div>
                   )}
               </div>
-            </div>
-             <div className="inputRowContainer">
+            </div> */}
+             {/* <div className="inputRowContainer">
               <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
                     Bullet Point 2: <span style={{ color: "red" }}>*</span>
@@ -1347,8 +1347,8 @@ const MerchantRegistration = () => {
                   )}
 
               </div>
-            </div>
-             <div className="inputRowContainer">
+            </div> */}
+             {/* <div className="inputRowContainer">
               <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
                     Bullet Point 3: <span style={{ color: "red" }}>*</span>
@@ -1374,7 +1374,7 @@ const MerchantRegistration = () => {
 
 
               </div>
-            </div>
+            </div> */}
             <p style={{ color: "#4d627b" }}>Please enter a 500 character or less summary about your business and services provided.</p>
              <div className="inputRowContainer">
               <div className="inputContainer">
@@ -1409,7 +1409,7 @@ const MerchantRegistration = () => {
               Merchant Processing Features
             </p>
 
-            <div className="inputRowContainer">
+            {/* <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label className="label">
@@ -1449,10 +1449,10 @@ const MerchantRegistration = () => {
                 )}
               </div>
 
-            </div>
+            </div> */}
 
             {/* Sponsor Bank: only show if not agent or processor */}
-            {!isAgent && !isProcessor && (
+            {/* {!isAgent && !isProcessor && (
               <div className="inputRowContainer">
                 <div className="inputRow">
                   <div className="inputContainer">
@@ -1475,10 +1475,10 @@ const MerchantRegistration = () => {
                   )}
                 </div>
               </div>
-            )}
+            )} */}
 
             {/* Primary + Secondary PP: only show if not ISO or processor */}
-            {!isISO && !isProcessor && (
+            {/* {!isISO && !isProcessor && (
               <div className="inputRowContainer">
                 <div className="inputRow">
                   <div className="inputContainer">
@@ -1516,10 +1516,10 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
 
             {/* Other: only show if not ISO or processor */}
-            {!isISO && !isProcessor && (
+            {/* {!isISO && !isProcessor && (
               <div className="inputRowContainer">
                 <div className="inputContainer">
                   <label htmlFor="companyDescription" className="label">
@@ -1534,10 +1534,10 @@ const MerchantRegistration = () => {
                   />
                 </div>
               </div>
-            )}
+            )} */}
 
 
-            <div className="inputRowContainer">
+            {/* <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
@@ -1661,8 +1661,8 @@ const MerchantRegistration = () => {
                 </div>
               </div>
 
-            </div>
-            <div className="inputRowContainer">
+            </div> */}
+            {/* <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label className="label">
@@ -1694,9 +1694,9 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="inputRowContainer">
+            {/* <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label className="label">
@@ -1728,9 +1728,9 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="inputRowContainer">
+            {/* <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label className="label">
@@ -1762,7 +1762,7 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="verificationHeading">Verification</div>
 
