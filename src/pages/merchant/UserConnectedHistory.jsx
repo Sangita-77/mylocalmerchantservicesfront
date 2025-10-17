@@ -14,6 +14,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
 import ConfirmModal from "../../components/ConfirmModal";
+import placeholderimg from "../../assets/images/placeholderimg.jpg";
 
 const UserConnectedHistory = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -23,17 +24,13 @@ const UserConnectedHistory = () => {
   const [selectedConnection, setSelectedConnection] = useState(null);
   const [connections, setConnections] = useState([]);
 
-  const {
-    token,
-  } = useContext(AppContext);
+  const { token } = useContext(AppContext);
 
   const toggleChatWindow = () => {
     setShowChatWindow(false);
   };
 
   useEffect(() => {
-
-
     fetchData();
   }, [token]);
 
@@ -83,6 +80,11 @@ const UserConnectedHistory = () => {
     return merchant ? merchant.merchant_name : "N/A";
   };
 
+  // const getUserCompanyname = (merchant_id) => {
+  //   const merchant = merchantDetails.find((m) => m.merchant_id == merchant_id); // use == here
+  //   return merchant ? merchant.company_name : "N/A";
+  // };
+
   const getConnectedId = (merchant_id) => {
     const record = connectedHistory.find(
       (conn) => conn.user_id === merchant_id
@@ -104,53 +106,51 @@ const UserConnectedHistory = () => {
     setSelectedUserId(user_id);
     setShowConfirmModal(true);
   };
-const handleDelete = async (connection) => { 
-  const confirmed = window.confirm('Are you sure you want to delete this connection?');
-  const user_id = parseInt(connection.merchant_id, 10);
-  const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
-  if (!confirmed) return;
-  try {
-    const response = await axios.post(
-      `${BASE_URL}/merchantDeleteConnectedHistory`,
-      {
-        user_id: user_id,
-        merchant_id: merchant_id, 
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
+  const handleDelete = async (connection) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this connection?"
     );
-    // console.log("dd.d,l,,,,,,,,,,,,,,,,,",response);
+    const user_id = parseInt(connection.merchant_id, 10);
+    const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+    if (!confirmed) return;
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/merchantDeleteConnectedHistory`,
+        {
+          user_id: user_id,
+          merchant_id: merchant_id,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // console.log("dd.d,l,,,,,,,,,,,,,,,,,",response);
 
-    if (response.data.status) {
-      fetchData();
+      if (response.data.status) {
+        fetchData();
       }
     } catch (error) {
       setShowConfirmModal(false);
       setSelectedUserId(null);
     }
-};
-
-
-
-
+  };
 
   return (
     <div className="userConnectedHistoryPageWrapper">
-
-      <DashBoardTopBar heading="Connected History"/>
+      <DashBoardTopBar heading="Connected History" />
 
       <div className="userConnectedHistoryContainer">
-
         <div className="merchantContainerHeader">
-          <div className="merchantHeaderTitle"><DashboardTopHeading text="Merchant Services Providers Connected History"/> </div>
+          <div className="merchantHeaderTitle">
+            <DashboardTopHeading text="Merchant Services Providers Connected History" />{" "}
+          </div>
         </div>
 
         {/* --------- old design  */}
-        <div className="tableContainerWrap">
+        {/* <div className="tableContainerWrap">
           <table className="tableContainer">
             <thead className="theadContainer">
               <tr>
@@ -163,7 +163,11 @@ const handleDelete = async (connection) => {
             <tbody className="tbodyContainer">
               {loading ? (
                 <tr>
-                  <td colSpan="4" className="td" style={{ textAlign: "center", padding: "20px 0px" }}>
+                  <td
+                    colSpan="4"
+                    className="td"
+                    style={{ textAlign: "center", padding: "20px 0px" }}
+                  >
                     <PreLoader />
                   </td>
                 </tr>
@@ -180,20 +184,20 @@ const handleDelete = async (connection) => {
 
                   return (
                     <tr className="tr" key={index}>
-                      {/* Created Date */}
                       <td className="td">
                         {history?.created_at
                           ? new Date(history.created_at).toLocaleString()
                           : "—"}
                       </td>
 
-                      {/* Name */}
-                      <td className="td">{getUserName(connection.merchant_id)}</td>
+                      <td className="td">
+                        {getUserName(connection.merchant_id)}
+                      </td>
 
-                      {/* Email */}
-                      <td className="td">{getUserEmail(connection.merchant_id)}</td>
+                      <td className="td">
+                        {getUserEmail(connection.merchant_id)}
+                      </td>
 
-                      {/* Actions */}
                       <td className="actionTd">
                         {state === "accepted" ? (
                           <>
@@ -233,9 +237,8 @@ const handleDelete = async (connection) => {
                 })
               )}
             </tbody>
-
           </table>
-        </div>
+        </div> */}
         {/* --------- old design  */}
 
         {/* --------- New design  */}
@@ -249,8 +252,8 @@ const handleDelete = async (connection) => {
                 <th className="th">Actions</th>
               </tr>
             </thead>
-            </table>
-            <div className="tbodyContainer">
+          </table>
+          <div className="tbodyContainer">
             <div className="accordion" id="accordionExample">
               {loading ? (
                 <div>
@@ -260,9 +263,7 @@ const handleDelete = async (connection) => {
                 </div>
               ) : merchantDetails.length === 0 ? (
                 <div>
-                  <div>
-                    No connections found
-                  </div>
+                  <div>No connections found</div>
                 </div>
               ) : (
                 merchantDetails.map((connection, index) => {
@@ -270,94 +271,322 @@ const handleDelete = async (connection) => {
                   const state = history?.state;
 
                   return (
-                    
-                    
-                    // <tr className="tr" key={index}>
-                      
-                    //   <td className="td">
-                    //     {history?.created_at
-                    //       ? new Date(history.created_at).toLocaleString()
-                    //       : "—"}
-                    //   </td>
-
-                      
-                    //   <td className="td">{getUserName(connection.merchant_id)}</td>
-
-                      
-                    //   <td className="td">{getUserEmail(connection.merchant_id)}</td>
-
-
-                    //   <td className="actionTd">
-                    //     {state === "accepted" ? (
-                    //       <>
-                    //         <button
-                    //           className="viewButton"
-                    //           onClick={() => handleViewClick(connection)}
-                    //           data-bs-toggle="tooltip"
-                    //           data-bs-placement="auto"
-                    //           title="View Details"
-                    //         >
-                    //           <PiEyeLight size={22} color="white" />
-                    //         </button>
-                    //         <button
-                    //           className="delButton"
-                    //           onClick={() => handleDeleteClick(connection)}
-                    //           data-bs-toggle="tooltip"
-                    //           data-bs-placement="auto"
-                    //           title="Delete"
-                    //         >
-                    //           <AiOutlineDelete
-                    //             size={22}
-                    //             color="#E60E4E"
-                    //             style={{ cursor: "pointer" }}
-                    //           />
-                    //         </button>
-                    //       </>
-                    //     ) : (
-                    //       <span className={`statusText status-${state}`}>
-                    //         {state
-                    //           ? state.charAt(0).toUpperCase() + state.slice(1)
-                    //           : "—"}
-                    //       </span>
-                    //     )}
-                    //   </td>
-                    // </tr>
-
-                    // <div className="accordion" id="accordionExample">
-                    <div className="accordion-item">
+                    <div className="accordion-item" key={index}>
                       <h2 className="accordion-header" id={`heading${index}`}>
-                        <button className={`accordion-button ${index !== 0 ? 'collapsed' : ''}`}
+                        <button
+                          className={`accordion-button ${
+                            index !== 0 ? "collapsed" : ""
+                          }`}
                           type="button"
                           data-bs-toggle="collapse"
                           data-bs-target={`#collapse${index}`}
                           aria-expanded={index === 0 ? "true" : "false"}
-                          aria-controls={`collapse${index}`}>
-                          
+                          aria-controls={`collapse${index}`}
+                        >
                           <div className="td">
                             {history?.created_at
                               ? new Date(history.created_at).toLocaleString()
                               : "—"}
                           </div>
-                          <div className="td">{getUserName(connection.merchant_id)}</div>
-                          <div className="td">{getUserEmail(connection.merchant_id)}</div>
+                          <div className="td">
+                            {getUserName(connection.merchant_id)}
+                          </div>
+                          <div className="td">
+                            {getUserEmail(connection.merchant_id)}
+                          </div>
+
+                          <div className="userBtn">
+                            {state === "accepted" ? (
+                              <>
+                                <button
+                                  className="viewButton"
+                                  onClick={() => handleViewClick(connection)}
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="auto"
+                                  title="View Details"
+                                >
+                                  <PiEyeLight size={22} color="white" />
+                                </button>
+                                <button
+                                  className="delButton"
+                                  onClick={() => handleDeleteClick(connection)}
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="auto"
+                                  title="Delete"
+                                >
+                                  <AiOutlineDelete
+                                    size={22}
+                                    color="#E60E4E"
+                                    style={{ cursor: "pointer" }}
+                                  />
+                                </button>
+                              </>
+                            ) : (
+                              <span className={`statusText status-${state}`}>
+                                {state
+                                  ? state.charAt(0).toUpperCase() +
+                                    state.slice(1)
+                                  : "—"}
+                              </span>
+                            )}
+                          </div>
                         </button>
                       </h2>
-                      <div id={`collapse${index}`}
-                        className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
+                      <div
+                        id={`collapse${index}`}
+                        className={`accordion-collapse collapse ${
+                          index === 0 ? "show" : ""
+                        }`}
                         aria-labelledby={`heading${index}`}
-                        data-bs-parent="#accordionExample">
-                        <div className="accordion-body"> 
-                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div className="accordion-body">
+                          <div className="profileDetailsCon">
+                            <div className="profileDetailsConHead">
+                              <div className="userHeaderInfoTopWrap d-flex">
+                                <div className="userImgWrapper">
+                                  <div className="userImg">
+                                    <img src={placeholderimg} />
+                                  </div>
+                                </div>
+
+                                <div className="userHeaderInfoTopCon">
+                                  <div className="inputWrapCon">
+                                    <div className="titleDataUserName">
+                                      Demo1
+                                    </div>
+                                  </div>
+
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Company Name:
+                                    </div>
+                                    <div className="titleData">Abc</div>
+                                  </div>
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">Phone:</div>
+                                    <div className="titleData">
+                                      580-658-5178
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="inputWrapCon">
+                                <div className="titleField">Email:</div>
+                                <div className="titleData">
+                                  {getUserEmail(connection.merchant_id)}
+                                </div>
+                              </div>
+
+                              <div className="inputWrapCon">
+                                <div className="titleField">Website</div>
+                                <div className="titleData">www.abc.com</div>
+                              </div>
+                              <div className="inputWrapCon">
+                                <div className="titleField">
+                                  Company Description
+                                </div>
+                                <div className="titleData">demo</div>
+                              </div>
+                            </div>
+
+                            <div className="userInfoCenterSec">
+                              <h2>Company Mailing Address</h2>
+
+                              <div className="row">
+                                <div className="col-lg-3">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Distance Willing to Travel:
+                                    </div>
+                                    <div className="titleData">10</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-3">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">Street:</div>
+                                    <div className="titleData">Marlow</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-3">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">City:</div>
+                                    <div className="titleData">Marlow</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-3">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">State:</div>
+                                    <div className="titleData">Oklahoma</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-3">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">Zip Code</div>
+                                    <div className="titleData">73055</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-3">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Country Name:
+                                    </div>
+                                    <div className="titleData">US</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="userInfoCenterSec">
+                              <h2>Marketing Details</h2>
+
+                              <div className="row">
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Bullet Point 1
+                                    </div>
+                                    <div className="titleData">demo 1</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Bullet Point 2
+                                    </div>
+                                    <div className="titleData">demo 1</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Bullet Point 3
+                                    </div>
+                                    <div className="titleData">demo 1</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">Summary</div>
+                                    <div className="titleData">summary</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="userInfoCenterSec">
+                              <h2>Merchant Processing Features</h2>
+
+                              <div className="row">
+                                <div className="col-lg-12">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Select type
+                                    </div>
+                                    <div className="titleData">agents</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Primary Processing Platform / Partner
+                                    </div>
+                                    <div className="titleData">demo</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Secondary Processing Platform / Partner
+                                    </div>
+                                    <div className="titleData">NA</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-12">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">Other</div>
+                                    <div className="titleData">NA</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-12">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      How many merchant services sales
+                                      represenatives are in your office ?
+                                    </div>
+                                    <div className="titleData"> 100K 250K </div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      How many clients do you service?
+                                    </div>
+                                    <div className="titleData">2</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Share publicly?
+                                    </div>
+                                    <div className="titleData">no</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Monthly Volume Processed by your merchants
+                                    </div>
+                                    <div className="titleData">250K 1MM</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Share publicly?
+                                    </div>
+                                    <div className="titleData">Yes</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Do you offer High Risk?
+                                    </div>
+                                    <div className="titleData">No</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Do you offer Point of Sale?
+                                    </div>
+                                    <div className="titleData">Yes</div>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6">
+                                  <div className="inputWrapCon">
+                                    <div className="titleField">
+                                      Do you offer Merchant Cash Advance or
+                                      Financing?
+                                    </div>
+                                    <div className="titleData">Yes</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                      
+
                     // </div> //gg
-                  
                   );
                 })
               )}
-            </div></div>
+            </div>
+          </div>
 
           {/* </table> */}
         </div>
@@ -373,14 +602,14 @@ const handleDelete = async (connection) => {
         />
       )}
 
-        {showConfirmModal && (
-          <ConfirmModal
-            title="Delete Connection"
-            message="Are you sure you want to delete this connection?"
-            onConfirm={handleDelete}
-            onCancel={() => setShowConfirmModal(false)}
-          />
-        )}
+      {showConfirmModal && (
+        <ConfirmModal
+          title="Delete Connection"
+          message="Are you sure you want to delete this connection?"
+          onConfirm={handleDelete}
+          onCancel={() => setShowConfirmModal(false)}
+        />
+      )}
     </div>
   );
 };
