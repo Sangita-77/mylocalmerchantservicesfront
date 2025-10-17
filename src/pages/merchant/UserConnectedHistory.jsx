@@ -149,6 +149,7 @@ const handleDelete = async (connection) => {
           <div className="merchantHeaderTitle"><DashboardTopHeading text="Merchant Services Providers Connected History"/> </div>
         </div>
 
+        {/* --------- old design  */}
         <div className="tableContainerWrap">
           <table className="tableContainer">
             <thead className="theadContainer">
@@ -235,6 +236,132 @@ const handleDelete = async (connection) => {
 
           </table>
         </div>
+        {/* --------- old design  */}
+
+        {/* --------- New design  */}
+        <div className="tableContainerWrap">
+          <table className="tableContainer">
+            <thead className="theadContainer">
+              <tr>
+                <th className="th">Created</th>
+                <th className="th">Name</th>
+                <th className="th">E-mails</th>
+                <th className="th">Actions</th>
+              </tr>
+            </thead>
+            </table>
+            <div className="tbodyContainer">
+            <div className="accordion" id="accordionExample">
+              {loading ? (
+                <div>
+                  <div style={{ textAlign: "center", padding: "20px 0px" }}>
+                    <PreLoader />
+                  </div>
+                </div>
+              ) : merchantDetails.length === 0 ? (
+                <div>
+                  <div>
+                    No connections found
+                  </div>
+                </div>
+              ) : (
+                merchantDetails.map((connection, index) => {
+                  const history = connectedHistory[index];
+                  const state = history?.state;
+
+                  return (
+                    
+                    
+                    // <tr className="tr" key={index}>
+                      
+                    //   <td className="td">
+                    //     {history?.created_at
+                    //       ? new Date(history.created_at).toLocaleString()
+                    //       : "—"}
+                    //   </td>
+
+                      
+                    //   <td className="td">{getUserName(connection.merchant_id)}</td>
+
+                      
+                    //   <td className="td">{getUserEmail(connection.merchant_id)}</td>
+
+
+                    //   <td className="actionTd">
+                    //     {state === "accepted" ? (
+                    //       <>
+                    //         <button
+                    //           className="viewButton"
+                    //           onClick={() => handleViewClick(connection)}
+                    //           data-bs-toggle="tooltip"
+                    //           data-bs-placement="auto"
+                    //           title="View Details"
+                    //         >
+                    //           <PiEyeLight size={22} color="white" />
+                    //         </button>
+                    //         <button
+                    //           className="delButton"
+                    //           onClick={() => handleDeleteClick(connection)}
+                    //           data-bs-toggle="tooltip"
+                    //           data-bs-placement="auto"
+                    //           title="Delete"
+                    //         >
+                    //           <AiOutlineDelete
+                    //             size={22}
+                    //             color="#E60E4E"
+                    //             style={{ cursor: "pointer" }}
+                    //           />
+                    //         </button>
+                    //       </>
+                    //     ) : (
+                    //       <span className={`statusText status-${state}`}>
+                    //         {state
+                    //           ? state.charAt(0).toUpperCase() + state.slice(1)
+                    //           : "—"}
+                    //       </span>
+                    //     )}
+                    //   </td>
+                    // </tr>
+
+                    // <div className="accordion" id="accordionExample">
+                    <div className="accordion-item">
+                      <h2 className="accordion-header" id={`heading${index}`}>
+                        <button className={`accordion-button ${index !== 0 ? 'collapsed' : ''}`}
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target={`#collapse${index}`}
+                          aria-expanded={index === 0 ? "true" : "false"}
+                          aria-controls={`collapse${index}`}>
+                          
+                          <div className="td">
+                            {history?.created_at
+                              ? new Date(history.created_at).toLocaleString()
+                              : "—"}
+                          </div>
+                          <div className="td">{getUserName(connection.merchant_id)}</div>
+                          <div className="td">{getUserEmail(connection.merchant_id)}</div>
+                        </button>
+                      </h2>
+                      <div id={`collapse${index}`}
+                        className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
+                        aria-labelledby={`heading${index}`}
+                        data-bs-parent="#accordionExample">
+                        <div className="accordion-body"> 
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                      
+                    // </div> //gg
+                  
+                  );
+                })
+              )}
+            </div></div>
+
+          {/* </table> */}
+        </div>
+        {/* --------- New design  */}
       </div>
 
       {showChatWindow && selectedConnection && (
