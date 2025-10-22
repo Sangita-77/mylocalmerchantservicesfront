@@ -474,7 +474,7 @@ const UserConnectedHistory = () => {
                               </div>
                             </div>
 
-                            <div className="userInfoCenterSec">
+                            {/* <div className="userInfoCenterSec">
                               <h2>Merchant Processing Features</h2>
 
                               <div className="row">
@@ -575,7 +575,7 @@ const UserConnectedHistory = () => {
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>
