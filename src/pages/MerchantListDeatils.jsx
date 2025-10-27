@@ -485,9 +485,9 @@ const MerchantListDetails = () => {
                   <p>No reviews yet.</p>
                 )}
 
-                <a href="#" className="allReviews">
+                {/* <a href="#" className="allReviews">
                   Read All Reviews
-                </a>
+                </a> */}
               </div>
             </div>
 
