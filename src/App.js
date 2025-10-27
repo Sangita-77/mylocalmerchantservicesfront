@@ -245,9 +245,9 @@ function App() {
       {
         path: "/merchant",
         element: (
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <MerchantAdminLayout />
-          </ProtectedRoute>
+          // </ProtectedRoute>
         ),
         children: [
           {
