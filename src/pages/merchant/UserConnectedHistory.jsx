@@ -276,10 +276,10 @@ const UserConnectedHistory = () => {
 
                                   <div className="inputWrapCon company_area">
                                     <div className="userImg order-2"><img src={
-                    connection.logo && connection.logo.trim() !== ""
-                      ? `${IMAGE_BASE_URL}/${connection.logo}`
-                      : placeholderimg
-                  } /></div>
+                                      connection.logo && connection.logo.trim() !== ""
+                                        ? `${IMAGE_BASE_URL}/${connection.logo}`
+                                        : placeholderimg
+                                    } /></div>
                                     <div className="usercompany order-1">
                                       <div className="titleField">Company Name *</div>
                                       <div className="titleData" title={connection?.company_name}>{connection?.company_name}</div>
