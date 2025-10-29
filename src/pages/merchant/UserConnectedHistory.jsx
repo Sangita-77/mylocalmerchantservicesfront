@@ -290,16 +290,16 @@ const UserConnectedHistory = () => {
                                     <h3 className="titleField">Company Mailing Address *</h3>
                                     <div className="company_details_row">
                                       <h5>Street Details</h5>
-                                      <div className="companydata">{connection?.city}</div>
+                                      <div className="companydata" title={connection?.city}>{connection?.city}</div>
                                     </div>
                                     <div className="company_details_row cell_format">
                                       <div className="company_cell">
                                         <h5>City:</h5>
-                                        <div className="companydata">{connection?.city}</div>
+                                        <div className="companydata" title={connection?.city}>{connection?.city}</div>
                                       </div>
                                       <div className="company_cell">
                                         <h5>State:</h5>
-                                        <div className="companydata">{connection?.state}</div>
+                                        <div className="companydata" title={connection?.state}>{connection?.state}</div>
                                       </div>                                      
                                       <div className="company_cell companycountry">
                                         <h5>Country:</h5>
@@ -307,11 +307,11 @@ const UserConnectedHistory = () => {
                                       </div>                                      
                                       <div className="company_cell companyzip">
                                         <h5>Zip:</h5>
-                                        <div className="companydata">{connection?.zip_code}</div>
+                                        <div className="companydata" title={connection?.zip_code}>{connection?.zip_code}</div>
                                       </div>                                      
                                       <div className="company_cell companyphone">
                                         <h5>Phone:</h5>
-                                        <div className="companydata">{connection?.phone}</div>
+                                        <div className="companydata" title={connection?.phone}>{connection?.phone}</div>
                                       </div>                                      
                                       <div className="company_cell companyemail">
                                         <h5>Email:</h5>
@@ -319,7 +319,7 @@ const UserConnectedHistory = () => {
                                       </div>                                      
                                       <div className="company_cell companyweb">
                                         <h5>Website:</h5>
-                                        <div className="companydata">{connection?.website}</div>
+                                        <div className="companydata" title={connection?.website}>{connection?.website}</div>
                                       </div>
                                     </div>
                                   </div>
@@ -329,7 +329,7 @@ const UserConnectedHistory = () => {
 
                               <div className="inputWrapCon company_description">
                                 <div className="titleField">Company Description</div>
-                                <div className="titleData">{connection?.company_description}</div>
+                                <div className="titleData" title={connection?.company_description}>{connection?.company_description}</div>
                               </div>
 
                               <div className="inputWrapCon marketing_details">
@@ -337,15 +337,15 @@ const UserConnectedHistory = () => {
                                 <div className="marketing_block d-flex">
                                   <div className="marketing_cell">
                                       <h5>Bullet Point 1</h5>
-                                      <div className="companydata">{connection?.bulletOne}</div>
+                                      <div className="companydata" title={connection?.bulletOne}>{connection?.bulletOne}</div>
                                   </div>
                                   <div className="marketing_cell">
                                       <h5>Bullet Point 2</h5>
-                                      <div className="companydata">{connection?.bulletTwo}</div>
+                                      <div className="companydata" title={connection?.bulletTwo}>{connection?.bulletTwo}</div>
                                   </div>
                                   <div className="marketing_cell">
                                       <h5>Bullet Point 3</h5>
-                                      <div className="companydata">{connection?.bulletThree}</div>
+                                      <div className="companydata" title={connection?.bulletThree}>{connection?.bulletThree}</div>
                                   </div>
                                   {/* <div className="marketing_cell">
                                       <h5>Bullet Point 4</h5>
