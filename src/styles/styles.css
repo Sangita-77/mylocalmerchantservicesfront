@@ -1358,20 +1358,9 @@ border-radius: 5px; margin-right: 30px;}
 .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon .titleData {color: #000; font: 500 19px / 25px "Poppins";}
 /* .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviews {padding-bottom: 50px;} */
 .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviews .titleField {color: #565656; font: 400 16px / 25px "Poppins"; margin-bottom: 8px;}
-.tableWrapper {
-  position: relative;
-}
+.tableWrapper { position: relative; }
 
-.tableOverlayLoader {
-  position: absolute;
-  inset: 0; /* top: 0; right: 0; bottom: 0; left: 0 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.6);
-  z-index: 5;
-  backdrop-filter: blur(2px);
-}
+.tableOverlayLoader { position: absolute; inset: 0; /* top: 0; right: 0; bottom: 0; left: 0 */ display: flex; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.6); z-index: 5; backdrop-filter: blur(2px); }
 
 .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap {background: #f7fbfe; border-radius: 20px; padding: 20px;}
 .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .sectionTitle {color: #000000; font: 600 25px / 35px "Poppins"; margin-bottom: 25px; padding-bottom: 15px;}
@@ -1465,3 +1454,9 @@ border-radius: 5px; margin-right: 30px;}
 .merchantAgentList .merchantListPageWrapper .tableContainer .ratingColWrap .ratingCol {max-width: 100% !important; width: 100%;}
 .merchantAgentList .merchantListPageWrapper .tableContainer .tbodyContainer .tr {background-color: #fff;}
 .merchantAgentList .merchantListPageWrapper .tableContainer .tbodyContainer .viewButton {background-color: #fff; margin: 0;}
+/* ............. Notification .................. */
+.notificationDropdown { position: absolute; top: 35px; right: 0; background: white; border: 1px solid #ddd; border-radius: 8px; width: 300px; max-height: 300px; overflow-y: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.15); z-index: 100; padding: 10px; }
+.notificationItem { padding: 8px; border-bottom: 1px solid #f1f1f1; }
+.notificationItem p { margin: 0; font-size: 14px; color: #333; }
+.notificationItem small { font-size: 12px; color: gray; }
+.noNotification { padding: 10px; text-align: center; color: gray; }

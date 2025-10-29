@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { routes } from "./../utils/routes";
 import ConfirmModal from "../components/ConfirmModal";
 import Tooltip from "../components/Tooltip";
+import { FaBell } from "react-icons/fa6";
 
 
 
@@ -18,6 +19,11 @@ function ProviderDashboardTopBar({ heading }) {
 
   const navigate = useNavigate();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+
+  const [notifications, setNotifications] = useState([]);
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const [hoverTimeout, setHoverTimeout] = useState(null);
 
   const handleDeleteClick = () => {
     setShowConfirmModal(true);
@@ -27,6 +33,17 @@ function ProviderDashboardTopBar({ heading }) {
   const {
     token,
   } = useContext(AppContext);
+
+
+  const handleMouseEnter = () => {
+    clearTimeout(hoverTimeout);
+    handleNotification(); // fetch + show
+  };
+  
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => setShowNotifications(false), 200);
+    setHoverTimeout(timeout);
+  };
 
   const handleLogout = async () => {
     try {
@@ -58,6 +75,36 @@ function ProviderDashboardTopBar({ heading }) {
     }
   };
 
+  const handleNotification = async () => {
+    try {
+      const agent_id = parseInt(localStorage.getItem("merchant_id"), 10);
+      const response = await axios.post(
+        `${BASE_URL}/getAgentNotifications`,
+        { agent_id },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (response.data.status) {
+        const data = response.data.data.notification;
+        // only show notifications where merchant_notification is not null
+        const merchantNotifications = data.filter(
+          (item) => item.agent_notification
+        );
+        setNotifications(merchantNotifications);
+        setShowNotifications(true);
+      } else {
+        console.error("Failed to load notifications:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Error loading notifications:", error);
+    }
+  };
+
 
 
   return (
@@ -79,6 +126,32 @@ function ProviderDashboardTopBar({ heading }) {
             <Tooltip text="Profile">
               <FaCircleUser size={24} color={"#0d64a9"} />
             </Tooltip>
+          </div>
+
+          <div
+            className="profileIconContainer"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{ cursor: "pointer", position: "relative" }}
+          >
+            <Tooltip text="Notification">
+              <FaBell size={24} color="#0d64a9" />
+            </Tooltip>
+
+            {showNotifications && (
+              <div className="notificationDropdown">
+                {notifications.length > 0 ? (
+                  notifications.map((item, index) => (
+                    <div key={index} className="notificationItem">
+                      <p>{item.merchant_notification}</p>
+                      <small>{new Date(item.created_at).toLocaleString()}</small>
+                    </div>
+                  ))
+                ) : (
+                  <p className="noNotification">No notifications found</p>
+                )}
+              </div>
+            )}
           </div>
           
         </div>

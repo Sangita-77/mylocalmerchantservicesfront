@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaPowerOff } from "react-icons/fa6";
 import { FaCircleUser } from "react-icons/fa6";
+import { FaBell } from "react-icons/fa6";
 import { CiSearch } from "react-icons/ci";
 import axios from "axios";
 import { BASE_URL } from "./../utils/apiManager.js"; 
@@ -19,6 +20,11 @@ function DashBoardTopBar({ heading }) {
   const navigate = useNavigate();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
+  const [notifications, setNotifications] = useState([]);
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const [hoverTimeout, setHoverTimeout] = useState(null);
+
   const handleDeleteClick = () => {
     setShowConfirmModal(true);
   };
@@ -27,6 +33,18 @@ function DashBoardTopBar({ heading }) {
   const {
     token,
   } = useContext(AppContext);
+
+
+  const handleMouseEnter = () => {
+    clearTimeout(hoverTimeout);
+    handleNotification(); // fetch + show
+  };
+  
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => setShowNotifications(false), 200);
+    setHoverTimeout(timeout);
+  };
+  
 
   const handleLogout = async () => {
     try {
@@ -59,6 +77,41 @@ function DashBoardTopBar({ heading }) {
   };
 
 
+  const handleNotification = async () => {
+    try {
+      const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+      const response = await axios.post(
+        `${BASE_URL}/getMerchantNotification`,
+        { merchant_id },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (response.data.status) {
+        const data = response.data.data.notification;
+        // only show notifications where merchant_notification is not null
+        const merchantNotifications = data.filter(
+          (item) => item.merchant_notification
+        );
+        setNotifications(merchantNotifications);
+        setShowNotifications(true);
+      } else {
+        console.error("Failed to load notifications:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Error loading notifications:", error);
+    }
+  };
+
+
+  // useEffect(() => {
+  //   // handleNotification();
+  // });
+
 
   return (
     <>
@@ -80,8 +133,42 @@ function DashBoardTopBar({ heading }) {
               <FaCircleUser size={24} color={"#0d64a9"} />
             </Tooltip>
           </div>
+
+          {/* <div className="profileIconContainer" onClick={() => setShowNotifications((prev) => !prev)} style={{ cursor: "pointer" }}>
+            <Tooltip text="Notification">
+              <FaBell size={24} color={"#0d64a9"} />
+            </Tooltip>
+          </div> */}
           
+
+          <div
+            className="profileIconContainer"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{ cursor: "pointer", position: "relative" }}
+          >
+            <Tooltip text="Notification">
+              <FaBell size={24} color="#0d64a9" />
+            </Tooltip>
+
+            {showNotifications && (
+              <div className="notificationDropdown">
+                {notifications.length > 0 ? (
+                  notifications.map((item, index) => (
+                    <div key={index} className="notificationItem">
+                      <p>{item.merchant_notification}</p>
+                      <small>{new Date(item.created_at).toLocaleString()}</small>
+                    </div>
+                  ))
+                ) : (
+                  <p className="noNotification">No notifications found</p>
+                )}
+              </div>
+            )}
+          </div>
+
         </div>
+
           {showConfirmModal && (
             <ConfirmModal
               title="Logout"
