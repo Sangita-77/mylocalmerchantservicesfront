@@ -68,7 +68,7 @@ const MerchantSidebar = () => {
           onClick={() => navigate(routes.merchant_agent_list())}
         >
           <GoLink color={"#ffffff"} size={24} />
-          <div className="sidebarItemTitle">Saved Agents</div>
+          <div className="sidebarItemTitle">Find Agents</div>
         </div>
 
       </div>

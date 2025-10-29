@@ -233,7 +233,7 @@ const MerchantAgentList = () => {
   return (
     <>
     <div className="userConnectedHistoryPageWrapper merchantAgentList">
-      <DashBoardTopBar heading="Saved Agents" />
+      <DashBoardTopBar heading="Find Agents" />
 
       <div className="userConnectedHistoryContainer">
         <div className="merchantContainerHeader">
