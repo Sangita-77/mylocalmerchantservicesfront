@@ -15,6 +15,7 @@ import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
 import ConfirmModal from "../../components/ConfirmModal";
 import placeholderimg from "../../assets/images/placeholderimg.jpg";
+import { FaChevronCircleRight } from "react-icons/fa";
 
 const UserConnectedHistory = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -145,7 +146,7 @@ const UserConnectedHistory = () => {
       <div className="userConnectedHistoryContainer">
         <div className="merchantContainerHeader">
           <div className="merchantHeaderTitle">
-            <DashboardTopHeading text="Merchant Services Providers Connected History" />{" "}
+            <DashboardTopHeading text="Agent Connected History" />
           </div>
         </div>
 
@@ -340,7 +341,7 @@ const UserConnectedHistory = () => {
                         aria-labelledby={`heading${index}`}
                         data-bs-parent="#accordionExample"
                       >
-                        <div className="accordion-body">
+                        {/* <div className="accordion-body">
                           <div className="profileDetailsCon">
                             <div className="profileDetailsConHead">
                               <div className="userHeaderInfoTopWrap d-flex">
@@ -351,227 +352,176 @@ const UserConnectedHistory = () => {
                                 </div>
 
                                 <div className="userHeaderInfoTopCon">
-                                  <div className="inputWrapCon">
+                                  <div className="inputWrapCon1">
                                     <div className="titleDataUserName">
                                       Demo1
                                     </div>
+                                    <div className="titleDataEmail">
+                                      {getUserEmail(connection.merchant_id)}
+                                    </div>
                                   </div>
 
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Company Name:
+                                  <div className="userinfoinner d-flex align-items-center">
+                                    <div className="inputWrapCon">
+                                      <div className="titleField">Phone:</div>
+                                      <div className="titleData">
+                                        580-658-5178
+                                      </div>
                                     </div>
-                                    <div className="titleData">Abc</div>
-                                  </div>
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">Phone:</div>
-                                    <div className="titleData">
-                                      580-658-5178
+                                    <div className="inputWrapCon">
+                                      <div className="titleField">Website:</div>
+                                      <div className="titleData">
+                                        <a href="#" target="_blank">
+                                          www.abc.com
+                                        </a>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                               <div className="inputWrapCon">
-                                <div className="titleField">Email:</div>
-                                <div className="titleData">
-                                  {getUserEmail(connection.merchant_id)}
-                                </div>
-                              </div>
-
-                              <div className="inputWrapCon">
-                                <div className="titleField">Website</div>
-                                <div className="titleData">www.abc.com</div>
+                                <div className="titleField">Company Name:</div>
+                                <div className="titleData">Abc</div>
                               </div>
                               <div className="inputWrapCon">
                                 <div className="titleField">
-                                  Company Description
+                                  Company Description:
                                 </div>
                                 <div className="titleData">demo</div>
                               </div>
+                              <div className="inputWrapCon">
+                                <div className="titleField">
+                                Company Mailing Address: 
+                                </div>
+                                <div className="titleData">
+                                <span>10</span> <span>Marlow</span> <span>Marlow</span> <span>Oklahoma</span> <span>73055</span>, <span>US</span>
+                                </div>
+                              </div>
+                              <div className="inputWrapCon inputWrapConCol">
+                                <div className="titleField">
+                                Marketing Details:
+                                </div>
+                                <div className="titleData">
+                                  <ul>
+                                    <li><FaChevronCircleRight size={15} color={"#0d64a9"} /> demo1</li>
+                                    <li><FaChevronCircleRight size={15} color={"#0d64a9"} /> demo2</li>
+                                    <li><FaChevronCircleRight size={15} color={"#0d64a9"} /> demo3</li>
+                                  </ul>
+                                  <div className="titleDataSummary">summary</div>
+                                </div>
+                              </div>
                             </div>
+                          </div>
 
-                            <div className="userInfoCenterSec">
+                        </div> */}
+                        <div class="accordion-body">
+                          <div class="profileDetailsCon">
+                            <div class="profileDetailsConHead">
+                              <div class="userHeaderInfoTopWrap d-flex">
+                                <div class="userImgWrapper">
+                                  <div class="userImg">
+                                    <img src={placeholderimg} />
+                                  </div>
+                                </div>
+                                <div class="userHeaderInfoTopCon">
+                                  <div class="inputWrapCon">
+                                    <div class="titleDataUserName">Demo1</div>
+                                  </div>
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">Company Name:</div>
+                                    <div class="titleData">Abc</div>
+                                  </div>
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">Phone:</div>
+                                    <div class="titleData">580-658-5178</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="inputWrapCon">
+                                <div class="titleField">Email:</div>
+                                <div class="titleData">
+                                  demo2@dreamlogodesign.net
+                                </div>
+                              </div>
+                              <div class="inputWrapCon">
+                                <div class="titleField">Website</div>
+                                <div class="titleData">www.abc.com</div>
+                              </div>
+                              <div class="inputWrapCon">
+                                <div class="titleField">
+                                  Company Description
+                                </div>
+                                <div class="titleData">demo</div>
+                              </div>
+                            </div>
+                            <div class="userInfoCenterSec">
                               <h2>Company Mailing Address</h2>
-
-                              <div className="row">
-                                <div className="col-lg-3">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
+                              <div class="row">
+                                <div class="col-lg-3">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">
                                       Distance Willing to Travel:
                                     </div>
-                                    <div className="titleData">10</div>
+                                    <div class="titleData">10</div>
                                   </div>
                                 </div>
-                                <div className="col-lg-3">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">Street:</div>
-                                    <div className="titleData">Marlow</div>
+                                <div class="col-lg-3">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">Street:</div>
+                                    <div class="titleData">Marlow</div>
                                   </div>
                                 </div>
-                                <div className="col-lg-3">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">City:</div>
-                                    <div className="titleData">Marlow</div>
+                                <div class="col-lg-3">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">City:</div>
+                                    <div class="titleData">Marlow</div>
                                   </div>
                                 </div>
-                                <div className="col-lg-3">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">State:</div>
-                                    <div className="titleData">Oklahoma</div>
+                                <div class="col-lg-3">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">State:</div>
+                                    <div class="titleData">Oklahoma</div>
                                   </div>
                                 </div>
-                                <div className="col-lg-3">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">Zip Code</div>
-                                    <div className="titleData">73055</div>
+                                <div class="col-lg-3">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">Zip Code</div>
+                                    <div class="titleData">73055</div>
                                   </div>
                                 </div>
-                                <div className="col-lg-3">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Country Name:
-                                    </div>
-                                    <div className="titleData">US</div>
+                                <div class="col-lg-3">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">Country Name:</div>
+                                    <div class="titleData">US</div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-
-                            <div className="userInfoCenterSec">
+                            <div class="userInfoCenterSec">
                               <h2>Marketing Details</h2>
-
-                              <div className="row">
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Bullet Point 1
-                                    </div>
-                                    <div className="titleData">demo 1</div>
+                              <div class="row">
+                                <div class="col-lg-6">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">Bullet Point 1</div>
+                                    <div class="titleData">demo 1</div>
                                   </div>
                                 </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Bullet Point 2
-                                    </div>
-                                    <div className="titleData">demo 1</div>
+                                <div class="col-lg-6">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">Bullet Point 2</div>
+                                    <div class="titleData">demo 1</div>
                                   </div>
                                 </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Bullet Point 3
-                                    </div>
-                                    <div className="titleData">demo 1</div>
+                                <div class="col-lg-6">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">Bullet Point 3</div>
+                                    <div class="titleData">demo 1</div>
                                   </div>
                                 </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">Summary</div>
-                                    <div className="titleData">summary</div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="userInfoCenterSec">
-                              <h2>Merchant Processing Features</h2>
-
-                              <div className="row">
-                                <div className="col-lg-12">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Select type
-                                    </div>
-                                    <div className="titleData">agents</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Primary Processing Platform / Partner
-                                    </div>
-                                    <div className="titleData">demo</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Secondary Processing Platform / Partner
-                                    </div>
-                                    <div className="titleData">NA</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-12">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">Other</div>
-                                    <div className="titleData">NA</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-12">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      How many merchant services sales
-                                      represenatives are in your office ?
-                                    </div>
-                                    <div className="titleData"> 100K 250K </div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      How many clients do you service?
-                                    </div>
-                                    <div className="titleData">2</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Share publicly?
-                                    </div>
-                                    <div className="titleData">no</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Monthly Volume Processed by your merchants
-                                    </div>
-                                    <div className="titleData">250K 1MM</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Share publicly?
-                                    </div>
-                                    <div className="titleData">Yes</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Do you offer High Risk?
-                                    </div>
-                                    <div className="titleData">No</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Do you offer Point of Sale?
-                                    </div>
-                                    <div className="titleData">Yes</div>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6">
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Do you offer Merchant Cash Advance or
-                                      Financing?
-                                    </div>
-                                    <div className="titleData">Yes</div>
+                                <div class="col-lg-6">
+                                  <div class="inputWrapCon">
+                                    <div class="titleField">Summary</div>
+                                    <div class="titleData">summary</div>
                                   </div>
                                 </div>
                               </div>

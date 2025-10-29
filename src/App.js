@@ -53,6 +53,7 @@ import ProvidersConnectedHistory from "./pages/providers/ProvidersConnectedHisto
 import ProvidersDashboard from "./pages/providers/ProvidersDashboard";
 import ProvidersProfile from "./pages/providers/ProvidersProfile";
 import MerchantListDeatils from "./pages/MerchantListDeatils";
+import MerchantAgentList from "./pages/merchant/MerchantAgentList";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -261,6 +262,10 @@ function App() {
           {
             path: "/merchant/user_connected_history",
             element: <UserConnectedHistory />,
+          },
+          {
+            path: "/merchant/agent_list",
+            element: <MerchantAgentList />,
           },
         ],
       },
