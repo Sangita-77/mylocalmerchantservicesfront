@@ -57,8 +57,20 @@ const MerchantSidebar = () => {
         >
           {/* <img src={connectedIcon} alt="" className="sidebarIcon" /> */}
           <GoLink color={"#ffffff"} size={24} />
-          <div className="sidebarItemTitle">Merchant Services Providers Connected History</div>
+          <div className="sidebarItemTitle">Agent Connected History</div>
         </div>
+
+        <div
+          className={`sidebarItem ${
+            url === `${BASENAME}/merchant/agent_list` &&
+            "sidebarItemActive"
+          }`}
+          onClick={() => navigate(routes.merchant_agent_list())}
+        >
+          <GoLink color={"#ffffff"} size={24} />
+          <div className="sidebarItemTitle">Find Agents</div>
+        </div>
+
       </div>
     </div>
   );

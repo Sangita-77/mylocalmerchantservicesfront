@@ -111,7 +111,7 @@ const MerchantListDetails = () => {
       setIsLoading(true);
       const agent_id = parseInt(id, 10);
   
-      // 1️⃣ Fetch all reviews for this agent
+      //  Fetch all reviews for this agent
       const response = await axios.post(
         `${BASE_URL}/getReviewRating`,
         { agent_id },
@@ -125,18 +125,18 @@ const MerchantListDetails = () => {
   
       if (response.data.status && response.data.data) {
         const data = response.data.data;
-        console.log("get review............response.......", data.review);
+        // console.log("get review............response.......", data.review);
   
-        // 2️⃣ Basic stats
+        // Basic stats
         setAverageRating(data.average_rating || 0);
         setTotalReviews(data.total_reviews || 0);
   
         const reviews = data.review || [];
   
-        // 3️⃣ Get unique merchant_ids (avoid duplicate calls)
+        //  Get unique merchant_ids (avoid duplicate calls)
         const merchantIds = [...new Set(reviews.map((r) => r.merchant_id))];
   
-        // 4️⃣ Fetch merchant details for each merchant_id in parallel
+        // Fetch merchant details for each merchant_id in parallel
         const merchantPromises = merchantIds.map(async (merchant_id) => {
           try {
             const res = await axios.post(
@@ -158,7 +158,7 @@ const MerchantListDetails = () => {
   
         const merchantResults = await Promise.all(merchantPromises);
   
-        // 5️⃣ Map merchant details into the reviews
+        //  Map merchant details into the reviews
         const reviewsWithMerchant = reviews.map((review) => {
           const match = merchantResults.find(
             (m) => m.merchant_id === review.merchant_id
@@ -169,12 +169,12 @@ const MerchantListDetails = () => {
           };
         });
 
-        console.log(".........reviewsWithMerchant..........",reviewsWithMerchant);
+        // console.log(".........reviewsWithMerchant..........",reviewsWithMerchant);
   
-        // 6️⃣ Set reviews with merchant info
+        //  Set reviews with merchant info
         setReviews(reviewsWithMerchant);
   
-        // 7️⃣ Calculate star distribution
+        //  Calculate star distribution
         const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
         reviews.forEach((r) => {
           const star = Math.round(r.rating);

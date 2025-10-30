@@ -1,0 +1,1462 @@
+/* ///////////////  LAYOUT STYLES  /////////////// */
+
+/* ////////////////  MERCHANT LAYOUT /////////////// */
+.merchantLayoutContainer { margin: 0; padding: 0; width: 100vw; display: flex; flex-direction: column; }
+.merchantOutletWrapper { margin: 0; padding: 0; /* display: flex; flex-direction: row; align-items: flex-start; gap: 0; */ display: grid; grid-template-columns: 20vw 80vw; }
+.merchantOutletContainer { margin: 0; padding: 0; /* margin-left: 20vw; */ /* margin-top: 16vh; */ background-color: #F5F5FE; margin-left: -36px; }
+/* ////////////////// MERCHANT FOOTER //////////////////////// */
+.merchantFooterWrapper { margin: 0; padding: 0; width: 80vw; margin-left: 20vw; overflow: hidden; }
+.merchantFooterWrapper .merchantFooterInner { margin: 0; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 24px; width: 100%; height: 45px; background-color: rgb(10, 106, 187); }
+.merchantFooterWrapper .merchantFooterRow { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.merchantFooterWrapper .merchantFooterText { color: white; font-family: "Poppins"; font-size: 14px; font-weight: 400; }
+.merchantFooterWrapper .footerRowDivider { width: 1px; height: 18px; background-color: rgb(166, 166, 166); }
+.merchantFooterWrapper .merchantChildFooter { margin: 0; padding: 0; height: 60px; font-family: "Poppins"; font-size: 14px; font-weight: 400; color: white; text-align: center; align-content: center; background-color: rgb(30, 86, 169); }
+
+/* ///////////////    RESUABLE COMPONENTS    ////////////// */
+.button_large {transition: all .5s ease-in-out; margin: 0; padding: 18px 20px; background-color: rgb(253, 218, 102); color: #000000; font-weight: 700; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: none; border-radius: 10px; cursor: pointer; max-width: 432px; max-height: 66px; 
+  font-size: 20px; font-family: "Poppins"; font-weight: 700; letter-spacing: 0.6px;}
+.button_large:hover {background-color: #106cb5; color: #fff;}
+.large_button_text { margin: 0; padding: 0; /*color: #000000; font-size: 20px; font-family: "Poppins"; font-weight: 700; letter-spacing: 0.6px;*/ }
+.button_large svg {transition: all .5s ease-in-out;}
+.button_large:hover svg {fill: #fff !important;}
+/* //////////////////  MERCHANT LAYOUT HEADER  ///////////////// */
+.onboardingPageHeaderWrapper { margin: 0; padding: 0; width: 100vw; height: 110px; position: fixed; top: 0; left: 0; z-index: 111; background-color: #ffffff; }
+.onboardingPageChildHeaderContainer { margin: 0; height: 42px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; background: rgb(21, 111, 172); }
+.childHeaderText { margin: 0; padding: 0; color: #ffffff; font-size: 16px; font-weight: 500; font-family: "Poppins"; vertical-align: middle;  letter-spacing: 2px; }
+.onboardingPageHeaderMainContainer { margin: 0; padding: 12px 4%; width: auto; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: #ffffff; cursor: pointer;}
+.headerLeft { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 4px; }
+.locationIcon { width: 60px; height: 60px; object-fit: contain; }
+.headerWebsiteTitleLight { margin: 0; padding: 0; font-size: 26px; color: rgb(4, 48, 121); }
+.headerWebsiteTitleDark { margin: 0; margin-top: -6px; padding: 0; font-size: 24px; color: rgb(76, 139, 198); font-weight: 700; }
+.headerRight { margin: 0; padding: 0 24px; display: flex; flex-direction: row; align-items: center; gap: 52px; position: relative; }
+.li_item { margin: 0; padding: 0; color: #000000; background-color: white; font-size: 20px; line-height: 22px; letter-spacing: 0.5px; font-weight: 500; font-family: "Josefin Sans"; user-select: none; -moz-user-select: none; }
+.li_item_active { color: #156fac; }
+.li_item:hover { transition: 150ms ease; cursor: pointer; color: #156fac; }
+.onboardingPageHeaderMainContainer .dropdown button{border: none;}
+.onboardingPageHeaderMainContainer .dropdown button:hover,
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{background: transparent; color: #156fac; }
+.onboardingPageHeaderMainContainer .dropdown-menu{background: rgb(21, 111, 172); width: 270px; padding: 0; border: none;   box-shadow: 0px 0px 7px #6e6e6e;}
+.onboardingPageHeaderMainContainer .dropdown-item{background: rgb(21, 111, 172);  color: #fff; white-space: normal; font-size: 18px;  padding: 17px 15px 13px;}
+.onboardingPageHeaderMainContainer .dropdown-item:hover{color: rgb(21, 111, 172); background: #d8eeff; transition: .5s;}
+.onboardingPageHeaderMainContainer .dropdown-item:not(:last-child){border-bottom: solid 1px #fff;}
+
+.header_Btn {transition: all .5s ease-in-out; margin: 0; padding: 12px; width: 140px; color: #ffffff; font-size: 17px; font-weight: 700; background: #106cb5; border: none; border-radius: 10px; letter-spacing: 1px; }
+.header_Btn:hover {background: #1C94E4;}
+.headerRightMobileView { display: none; }
+.headerDropdownContainer { margin: 0; padding: 12px 0 6px 0; width: 120px; background-color: white; border: none; border-radius: 4px; position: absolute; top: 35px; right: 210px; box-shadow: 0 0 10px 0 gray; }
+.dropdownItem { margin: 0; padding: 2px 8px; color: black; background-color: white; font-size: 14px; cursor: pointer; }
+.dropdownItem:hover { color: white; background-color: #3490e0; }
+.mobileViewMenuModalWrapper { display: none; }
+
+
+
+/* ////////////////  FOOTER  ///////////// */
+.onboardingPageFooterContainer { margin: 0; padding: 0; /* margin-top: 200px; */ width: 100%; background: #1C94E4; position: relative; display: flex; flex-direction: column; align-items: center; }
+.footerLabel { padding: 24px 0 40px 0; width: 600px; display: flex; flex-direction: row; align-items: center; justify-content: center; border: none; border-radius: 20px; background-color: #ffffff; position: absolute; top: -75px; }
+.footerLabelImg { margin: 0; padding: 0; width: 80px; height: 80px; object-fit: contain; }
+.footerLabelTitle { margin: 0; padding: 0; color: #194385; font-size: 32px; font-family: "Poppins"; font-weight: 400; }
+.footerLabelSubtitle { margin: 0; padding: 0; margin-top: -16px; color: #4c8ac7; font-size: 32px; font-family: "Poppins"; font-weight: 700; }
+.footerInnerContainer { margin: 0px; padding: 155px 100px 50px; display: flex; flex-direction: row; align-items: start; gap: 32px; }
+.footerCol { margin: 0; padding: 0; padding-left: 18px; width: 30%; display: flex; flex-direction: column; align-items: flex-start; gap: 17px; }
+.footerRow { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.footerRow.hoverStyle:hover a p{color: #003478; transition: .5s;}
+.footerRow.hoverStyle:hover svg{color: #003478 !important; transition: .5s;}
+.footerRow.hoverStyle{align-items: start;}
+.footerColTitle {line-height: 30px; margin: 0; padding: 0; color: #ffffff; font-size: 30px; font-family: "Poppins"; font-weight: 700; text-transform: capitalize;}
+.footerColDesc { margin: 0; padding: 0; font-size: 16px; color: #eff5fa; font-family: "Poppins"; font-weight: 400; }
+.footerColDesc a {color: #eff5fa; text-decoration: none;}
+.divider { margin: 0; padding: 0; width: 1px; height: 200px; background-color: #ffffff; }
+.footerChild { margin: 0; padding: 30px 0; background-color: #156FAC; width: 100%; text-align: center; }
+.footerChildContent { margin: 0; padding: 0; font-family: "Poppins"; font-size: 18px; line-height: 23px; color: #fff; text-transform: capitalize; }
+.onboardingPageHeaderMainContainer .show.dropdown a.li_item_active{color: rgb(21, 111, 172); background: #d8eeff;}
+.footerInnerContainer .footerCol:nth-child(1) {width: 34%;}
+.footerInnerContainer .footerCol:nth-child(3) {width: 22%;}
+.footerInnerContainer .footerCol:nth-child(5) {width: 33%;}
+.footerInnerContainer .footerCol:first-child .footerColDesc {font: 400 16px/30px "Poppins"; text-transform: capitalize;}
+
+.footerInnerContainer .footerCol .footerLocation {align-items: start;}
+
+/* ////////////  ONBOARDING PAGE  //////////// */
+.onboardingPageMainContainer { padding: 0; width: 100vw; background-color: #ffffff; }
+.onboardingBannerContainer { margin: 0; width: 100%; position: relative; }
+.bannerBgContainer { margin: 0; padding: 0; width: 100%; height: 750px; }
+.onboardingBannerImage { margin-top: 100px; width: 100%; height: 100%; object-fit: contain; }
+.onboardingPageBannerContentContainer { position: absolute; top: 300px; left: 70px; }
+
+.blueShadeUpward { position: absolute; top: 100px; right: 300px; }
+.blueShadeLeftWard { position: absolute; top: 200px; left: -180px; transform: rotate(-90deg); }
+
+.bannerTitleLarge { margin: 0; padding: 0; font-size: 100px; letter-spacing: -2px; font-weight: 800; font-family: "Poppins"; background: #1C94E4; text-transform: capitalize; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.bannerTitleMedium { margin: -32px 0 0 6px; padding: 0; font-size: 34px; font-family: "Poppins"; font-weight: 600; color: #0c64aa; text-transform: capitalize; }
+.bannerTitleSmall { margin: 14px 0 36px 8px; padding: 0; color: rgb(70, 70, 70); font-size: 24px; font-weight: 500; font-family: 'Poppins';}
+.bannerButton { margin: 0; margin-top: 24px; padding: 12px 36px; background-color: rgb(253, 218, 102); color: #000000; display: flex; outline: none; flex-direction: row; align-items: center; justify-content: center; gap: 4px; border: none; border-radius: 50px; cursor: pointer; }
+.bannerButtonTitle { margin: 0; padding: 0; font-size: 14px; font-weight: 700; }
+.sticker { position: absolute; }
+.onboardingBannerLeaflet { margin: 6.2% auto; padding: 45px 120px; width: 100%; max-width: 1440px; background: #1C94E4; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: none; border-radius: 45px; overflow: hidden;
+}
+.bannerLeafletItem { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0px; }
+.leafletItemImg { margin: 0; padding: 0; width: 100px; height: auto; }
+.leafletItemTitle { margin: 0; padding: 0; margin-top: 8px; font-family: "Poppins"; font-size: 28px; font-weight: 500; color: #ffffff; }
+.leafletItemSubTitle { margin: 0; padding: 0; font-family: "Poppins"; font-size: 19px; font-weight: 500; color: #ffffff; text-transform: capitalize;}
+
+.findAgentsSection { margin: 100px 0; padding: 20px 72px; background-color: #ffffff; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; position: relative; }
+.topYellowShade { position: absolute; top: 0px; left: -50px; border: none; border-radius: 50%; }
+.bottomBlueShade { position: absolute; bottom: 100px; left: -10px; }
+.topBlueShade { position: absolute; top: 100px; right: -160px; transform: rotate(90deg); }
+.bottomYellowShade { position: absolute; bottom: 40px; right: -100px; transform: rotate(180deg); }
+
+.agentTopYellowShade { position: absolute; top: -5px; left: -10px; display: none;}
+.agentBottomBlueShade { position: absolute; bottom: 50px; left: -180px; transform: rotate(270deg); }
+.agentTopBlueShade { position: absolute; top: 60px; right: -160px; transform: rotate(90deg); }
+.agentBottomYellowShade { width: 280px; height: 280px; position: absolute; bottom: 30px; right: 40px; border: none; border-radius: 100%; transform: rotate(90deg); }
+
+.findAgentsSectionTop { text-align: center; align-self: center; }
+.findAgentsSectionTitle { margin: 0; margin-bottom: 20px; padding: 0; color: #141414; font-size: 50px; line-height: 50px; font-weight: 600; font-family: "Poppins"; }
+.findAgentsSectionSubtitle { margin: 0; margin-bottom: 72px; padding: 0; font-size: 30px; line-height: 47px; color: #141414; font-weight: 400; font-family: "Poppins"; }
+
+.findAgentsSectionBottom {align-self: center; margin: 0; padding: 48px 100px; left: 0; min-height: 500px; background-color: #ffffff; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; }
+.findAgentsSectionBottomItem { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#findAgentsSectionBottomItemMiddle { align-self: end; margin-top: 100px;}
+.findAgentsSectionBottomItemImg { width: 170px; height: 170px; object-fit: contain; }
+.findAgentsSectionBottomItemTitle { margin: 0; padding: 0; margin-bottom: 12px; font-size: 30px; font-weight: 600; font-family: "Poppins"; color: rgb(54, 54, 54); text-align: center; }
+.findAgentsSectionBottomItemSubtitle { margin: 0px; padding: 0; font-size: 25px; font-family: "Poppins"; font-weight: 400; color: #adadad; text-align: center; width: 270px; text-transform: capitalize;}
+
+.arrow { margin-top: 50px; width: 240px; z-index: 9; overflow: auto; }
+
+.findAgentButton {transition: all .5s ease-in-out; margin: 0; margin-top: 50px; padding: 15px 18px; display: flex; flex-direction: row; align-items: center; align-self: center; gap: 18px; width: 300px; background: #0c64ab; font-size: 20px; font-family: "Poppins"; font-weight: 700; color: #ffffff; align-items: center; justify-content: center; border: none; border-radius: 10px; }
+/* .findAgentButton svg {transition: all .5s ease-in-out;}
+.findAgentButton:hover svg {fill: #fff !important;} */
+.findAgentButton:hover {background: #1C94E4;}
+
+
+.merchantRegisterSection {height: 820px; margin: 0; padding: 0; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; }
+.merchantRegisterSectionLeft { margin: 0; padding: 0; width: 50vw; height: 100%; border-radius: 0 20px 20px 0;  overflow: hidden;}
+.creditCardMachineAdImg { width: 100%; height: 100%; object-fit: cover; }
+.merchantRegisterSectionRight { margin: 0; padding: 0px 40px; width: 50vw; height: 100%; background: #1C94E4; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 30px; border-radius: 20px 0px 0px 20px; overflow: hidden;}
+.merchantRegisterSection .merchantRegisterSectionRight .button_large {margin-top: 45px;}
+
+.registerSectionTitle { margin: 0; padding: 0; font-family: "Poppins"; font-size: 79px; font-weight: 700; line-height: 90px; text-transform: uppercase; letter-spacing: 0.4px; color: #ffffff; line-height: 80px; text-transform: capitalize;}
+.registerSectionSubtitle { margin: 0; padding: 0; font-family: "Poppins"; font-weight: 700; line-height: 48px; font-size: 40px; text-transform: uppercase; color: #ffffff; text-transform: capitalize;}
+
+.registerSectionContent { margin: 0; margin-bottom: 20px; padding: 0; color: #fdda66; font-size: 40px; font-family: "Poppins"; font-weight: 400; line-height: 47px; text-transform: capitalize;}
+
+.registerPoints { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+
+.registerPointsItem { display: flex; flex-direction: row; align-items: center; gap: 18px; }
+
+.checkBoxContainer { width: 18px; height: 18px; border: none; border-radius: 2px; background-color: #fdda66; display: flex; align-items: center; gap: 18px; }
+.registerPointsParticular { margin: 0; padding: 0; color: #f0f9fd; font-size: 20px; font-family: "Poppins"; font-weight: 500; text-transform: capitalize;}
+.registerMerchantButton { margin: 0; margin-top: 42px; padding: 18px 36px; background-color: rgb(253, 218, 102); color: #000000; font-weight: 500; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 4px; border: none; border-radius: 50px; cursor: pointer; }
+.registerMerchantText { margin: 0; padding: 0; color: #000000; font-size: 20px; font-family: "Poppins"; font-weight: 500; letter-spacing: 0.6px; }
+
+.agentSearchSection { margin: 0; padding: 120px 0; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 0px; position: relative; }
+.agentSearchSectionLeftContainer { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; width: 50%; }
+.agentSearchSectionTitle { margin: 0; padding: 0; font-size: 70px; line-height: 70px; font-family: "Poppins"; font-weight: 700; color: #1C94E4; text-transform: capitalize;}
+.agentSearchSectionTitle2 { margin: 0; padding: 0; font-size: 70px; line-height: 70px; font-family: "Poppins"; font-weight: 700; text-transform: capitalize; color: #1C94E4; }
+.agentSearchSectionSubtitle { margin: 0; padding: 0; font-family: "Poppins"; font-weight: 500; font-size: 40px; color: #3f3f3f; line-height: 44px; text-transform: capitalize;}
+.findAgentsPointsTitle { margin: 0; padding: 0; margin-bottom: 24px; font-size: 28px; color: #0052a4; font-family: "Poppins"; font-weight: 700; text-transform: capitalize;}
+.findAgentsPoints { margin: 0; padding: 0; margin-left: 4px; margin-bottom: 42px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.findAgentsPointsItem { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 16px; }
+.checkboxContainer { margin: 0; padding: 0; border: none; border-radius: 2px; background-color: #1876c0; display: flex; align-items: center; }
+.findAgentsParticulars { margin: 0; padding: 0; font-family: "Poppins"; font-size: 21px; color: #595959; text-transform: capitalize;}
+.agentSearchSectionRightContainer { margin: 0; padding: 0; width: 40%; height: 40%; }
+.agentSearchSectionImg { width: 100%; height: 100%; height: unset; }
+.merchantRegisterLeaflet { margin: 0 auto; padding: 50px 0 40px 0; font-family: "Poppins"; font-weight: 400; width: 100%; max-width: 1440px; background: #1C94E4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 25px; border: none; border-radius: 45px; }
+.merchantRegisterLeafletTitle { margin: 0; padding: 0; font-family: "Poppins"; font-size: 55px; line-height: 70px; font-weight: 700; color: #ffffff; text-align: center; text-transform: capitalize;}
+.merchantRegisterLeaflet .button_large {width: 302px;}
+
+.articleSection { /*margin: 75px 0;*/ padding: 120px 100px 50px; margin-bottom: 165px; background-color: #ffffff; display: flex; flex-direction: column; gap: 80px; align-items: center; width: auto; }
+.articleSectionInner { display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.articleSectionTitle { margin: 0; padding: 0; font-size: 70px; line-height: 85px; font-family: "Poppins"; font-weight: 600; width: 50%; text-align: center; color: #055eb0; text-transform: capitalize;}
+.articleItem { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 32%; }
+.articleImgContainer { margin: 0; padding: 0; width: 100%; max-height: 300px; border: none; border-radius: 12px; overflow: hidden; }
+.articleImg { margin: 0; padding: 0; width: 100%; height: 100%; object-fit: cover; }
+.articleItemContent { margin: 0; /*padding: 0 24px;*/ display: flex; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
+.articleTitle { margin: 0; padding: 0; font-family: "Poppins"; font-weight: 500; font-size: 30px; line-height: 35px; color: #393939; text-transform: capitalize;}
+.articleDesc { margin: 0; padding: 0; font-size: 18px; line-height: 28px; font-family: "Poppins"; font-weight: 400; color: #393939; text-transform: capitalize;}
+.articleButton { margin: 0; padding: 0; background: transparent; color: #22a1f1; border: none; display: flex; flex-direction: row; align-items: center; gap: 8px; font-family: "Poppins"; font-weight: 700; font-size: 18px; text-transform: uppercase; font-weight: 600; text-transform: capitalize;}
+
+/* /////////////////////    MERCHANT LIST    //////////////////////// */
+.merchantListLoaderWrapper { margin: 0; padding: 0; width: 100vw; height: 120vh; background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.merchantListLoadingText { margin-top: 12px; color: black; font-family: "Poppins"; font-weight: 400; font-size: 15px; }
+.merchantTableLoaderWrapper { margin: 0; padding: 0; width: 100%; height: 100%; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; font-size: 12px; font-weight: 400; font-family: "Poppins"; position: absolute; background-color: rgba(63, 63, 63, 0.8); }
+.merchantTableSearchLoaderContainer { margin: 0; padding: 0; width: 100%; height: 100%; color: white; font-family: "Poppins"; font-size: 15px; font-weight: 400; background-color: rgba(151, 200, 249, 0.7); display: flex; flex-direction: column; align-items: center; justify-content: center; position: absolute; }
+.merchantListPageWrapper { margin: 0 auto; padding: 73px 75px 100px 75px; margin-top: 120px; background-color: #d1eafa; min-height: 100vh; align-items: center; position: relative; }
+
+.topEclipseImg { margin: 0; padding: 0; opacity: 0.7; position: absolute; top: -140px; left: 0; }
+.merchantListPageWrapper .merchantListTopSearchSection { margin: 0; margin-bottom: 25px; padding: 20px 24px 24px 24px; display: flex; flex-direction: row; align-items: flex-end; gap: 18px; background-color: #8ccbf7; border: none; border-radius: 20px; position: relative; z-index: 1; justify-content: center;}
+.merchantListPageWrapper .merchantTopSearchSingleItem { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: start; gap: 8px; width: 20%;}
+.merchantListPageWrapper .searchTitle { color: white; text-transform: uppercase; font-family: "Sora" !important; font-size: 14px; font-weight: 500; }
+
+.merchantListPageWrapper .searchInputContainer { margin: 0; padding: 8px; width: 100%; background-color: white; border: none; border-radius: 10px; display: flex; flex-direction: row; align-items: center; gap: 6px; }
+.merchantListPageWrapper .searchInput { margin: 0; padding: 6px; width: 100%; font-family: "Poppins"; font-weight: 300; font-size: 14px; background-color: transparent; border: none; outline: none; color: black; }
+.searchInput::placeholder { color: #afafaf; }
+.merchantListPageWrapper .searchBtn { margin: 0; padding: 11px; width: 20%; display: flex; align-items: center; justify-content: center; gap: 10px; color: white; font-family: "Poppins"; font-weight: 600; font-size: 20px; background-color: #f54d5e; border: none; outline: none; border-radius: 10px; cursor: pointer; }
+.merchantListTableSection { margin: 0; display: flex; flex-direction: column; gap: 50px; padding: 24px 0 64px 0; padding-top: 24px; }
+
+.searchResultsText { margin: 0; padding: 0; margin-bottom: 18px; color: white; font-family: "Poppins"; font-size: 16px; font-weight: 500; }
+.noResultFound { margin: 0; padding: 0; text-align: center; color: white; font-family: "Poppins"; font-size: 16px; font-weight: 500; }
+
+.merchantListPageWrapper .merchantListSingleTablePart { margin: 0; padding: 28px 0 0 0; background-color: #ffffff; border: none; border-radius: 20px; box-shadow: 0 0 5px 0 rgb(196, 196, 196); }
+.merchantListPageWrapper .tableTitle { padding: 0 28px; color: #838383; font-family: "Sora"; font-weight: 600; font-size: 20px; }
+.merchantListPageWrapper .tableWrapper { margin: 25px 0; overflow: hidden !important; position: relative; }
+.merchantListPageWrapper .tableContainer { margin: 0; padding: 0; width: 100%; background-color: transparent; border-collapse: collapse; outline: none; border-spacing: 0; }
+.merchantListPageWrapper .merchantListTableSection .merchantListSingleTablePart .tableContainer .theadContainer { margin: 0; padding: 0; width: 100%; height: 60px; background-color: #71cdea; overflow: hidden; }
+/* .merchantListPageWrapper
+  .merchantListTableSection
+  .merchantListSingleTablePart
+  .tableContainer
+  .tbodyContainer {
+} */
+
+.merchantListPageWrapper .th { padding: 0 36px; color: white; font-family: "Poppins"; font-weight: 600; font-size: 14px; text-align: left; }
+.merchantListPageWrapper .thActions { margin: 0; padding: 0 40px 0 0; color: white; font-family: "Sora"; font-weight: 600; font-size: 14px; text-align: right; }
+.merchantListPageWrapper .merchantListTableSection .merchantListSingleTablePart .tr { height: 60px; border-bottom: 1px solid #eaeaed !important; overflow: hidden; }
+.merchantListPageWrapper .td { color: #6a8196; font-family: "Poppins"; font-weight: 400; font-size: 15px; padding: 0 36px; overflow: hidden; }
+.merchantListPageWrapper .actionTd { padding: 0 48px 0 0; text-align: right; }
+.merchantListPageWrapper .viewButton { width: 40px; height: 38px; background-color: transparent; border: 1px solid #23b7e5; border-radius: 50%; cursor: pointer; outline: none; }
+.merchantListPageWrapper .merchantTablePaginationContainer { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 8px; justify-content: center; }
+.merchantListPageWrapper .pageNo { margin: 0; width: 36px; height: 35px; color: #adabab; font-family: "Sora"; font-weight: 400; font-size: 16px; border: 1px solid #dddcdc; border-radius: 5px; background-color: white; text-align: center; align-content: center; cursor: pointer; }
+.activePage { color: white !important; border: 1px solid #23b7e5 !important; background-color: #23b7e5 !important; }
+.merchantListPageWrapper .pageChangeBtns { margin: 0; width: 36px; height: 36px; background-color: #23b7e5; border: 1px solid #23b7e5; outline: none; border-radius: 5px; cursor: pointer; }
+.merchantListPageWrapper .pageNo:hover { transition: 0.1s; color: white; border: 1px solid #23b7e5; background-color: #23b7e5; }
+.merchantListPageWrapper .pageChangeBtns:hover { background-color: #23b7e5; }
+.pageChangeDisabledBtn { background-color: gray !important; border: 1px solid gray !important; }
+.merchantListPageWrapper .searchInputDropdownContainer { margin: 0; padding: 8px; width: 100%; background-color: white; border: none; border-radius: 10px; display: flex; flex-direction: row; align-items: center; gap: 6px; }
+.merchantListPageWrapper .searchInputDropdown { margin: 0; padding: 6px; width: 100%; background-color: transparent; font-family: "Poppins"; font-weight: 300; font-size: 14px; border: none; outline: none; color: #afafaf; }
+
+.merchantListPageWrapper .merchantListTableSection .merchantListSingleTablePart .tableContainer .ratingColWrap .ratingCol {max-width: 115px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 7px 0px;}
+.merchantListPageWrapper .merchantListTableSection .merchantListSingleTablePart .tableContainer .companyHeadWrap {width: 290px; text-align: center; padding-left: 17px;}
+.merchantListPageWrapper .merchantListTableSection .merchantListSingleTablePart .tableContainer .companyNameWrap {width: 290px; text-align: center;}
+
+.tableOverlay { margin: 0; padding: 150px; width: 78%; color: black; font-family: "Poppins"; font-size: 15px; font-weight: 400; display: flex; justify-content: center; height: 480px; position: absolute; top: 0; left: 0; background-color: rgba(155, 155, 155, 0.5); z-index: 1000; }
+
+.merchantDetailsOverlay{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(4, 4, 4, 0.4); /* semi-transparent black */ z-index: 1000; overflow: hidden; }
+
+.merchantDetailsModalWrapper {position: relative;  margin: 0; padding: 0; width: 697px; height: 85vh; border: none; border-radius: 20px; background-color: #0085DA; position: fixed; top: 5vh; left: 50%; transform: translateX(-50%); overflow: hidden; overflow-y: auto; overflow: auto; scrollbar-width: none; -ms-overflow-style: none;  z-index: 9999; }
+.merchantDetailsModalContainer {position: relative; margin: 0; padding: 50px 40px 35px; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+.merchantDetailsModalWrapper::before {
+  content: '';
+    width: 1px;
+    height: 78%;
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);
+    transform: translateY(-50%);
+}
+/* .merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 4vh; right: -15px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; } */
+.merchantDetailsModalCloseBtn{margin: 0; padding: 8px 8px; position: absolute; top: 4vh; right: -15px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer;}
+.merchantDetailsModalWrapper::before { content: ''; width: 1px; height: 78%; position: absolute; left: 35%; top: 50%; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f); transform: translateY(-50%);}
+.merchantDetailsModalCloseBtnContainer{ margin: 0; padding: 8px 8px; position: absolute; top: 4vh; right: -15px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
+.merchantDetailsModalCloseBtn{margin: 0; padding: 8px 8px; position: absolute; top: 4vh; right: -16px; color: white; background-color: #fff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer;}
+.dataRowContainer { margin: 0; padding: 0; width: 100%; height: 53px; max-height: 200px; display: flex; flex-direction: row; align-items: center; column-gap: 50px; border: none; }
+.dataTitle { margin: 0; padding: 0; color: white; font: 500 16px/25px "Sora"; width: 38%; height: 100%; display: flex; align-items: center; }
+.data { margin: 0; padding: 5px 16px; width: 80%; max-width: 80%; font-family: "Sora"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; min-height: 40px; border: none; background: transparent;}
+.modalConnectBtn {transition: all .5s ease-in-out; margin: 0; padding: 0; width: 135px; height: 43px; text-align: center; color: #000; background-color: #FFBF61; font: 600 16px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 10px; }
+.modalConnectBtn:hover {background-color: #ffffff;}
+
+
+
+/* //////////////////      REGISTRATION PAGE      //////////////// */
+.mainRegistrationPageContainer { margin: 0; padding: 0; margin-top: 110px; width: 100vw; min-height: 100vh; background-color: #ffffff; position: relative; }
+.mainRegistrationPageInner { margin: 0; padding: 40px; min-height: 100vh; }
+
+.verificationBox { margin: 0; padding: 6px 24px; width: 14%; background-color: #f9f9f9; border: 1px solid #d7d7d7; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.verificationBoxRight { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.loginCaptcha { margin: 0; padding: 0; width: 36px; height: 36px; object-fit: contain; }
+.verificationBoxBottom { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 8px; }
+.dot { margin: 0; padding: 0; width: 4px; height: 4px; background-color: #000000; border: none; border-radius: 50%; }
+.checkbox { margin: 0; padding: 0; width: 32px; height: 32px; }
+.errorText { margin: 0; padding: 0; font-size: 13px; letter-spacing: 0.2px; color: red; }
+
+/* /////////////////////    LOGIN PAGE    ////////////////////   */
+.loginPageWrapper { margin: 0; padding: 50px; margin-top: 150px; }
+.passwordContainer { margin: 0; padding: 0 12px; width: 200px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid #000000; }
+.passwordInput { border: none; outline: none; background-color: #ffffff; }
+/* ///////////////    FORGET PASSWORD    ///////////////// */
+.otpVerificationModalContainer { margin: 0; background-color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; position: absolute; top: 7vh; left: 29vw; z-index: 999999; border: none; border-radius: 12px; box-shadow: 0 0 20px 0 gray; }
+.otpModalHeader { margin: 0; padding: 0; margin-bottom: 14px; font-family: "Poppins"; }
+.lightText { margin: 0; padding: 0; color: gray; font-size: 12px; font-family: "Poppins"; }
+.otpInputContainer { margin: 40px; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 16px; max-width: 350px;     margin: 0 auto; padding-top: 20px;}
+.otpInput { margin: 0; padding: 0; width: 52px; height: 52px; font-size: 24px; outline: none; border: 1.5px solid rgb(219, 219, 219); border-radius: 8px; text-align: center; }
+.otpModalCloseBtn { padding: 6px 14px; position: absolute; top: -5%; right: -2%; font-size: 32px; border: none; outline: none; border-radius: 50%; background-color: white; box-shadow: 0 0 10px 0 gray; cursor: pointer; }
+.verifyBtn { margin: 12px 0 0 0; padding: 12px 48px; font-family: "Poppins"; color: #ffffff; background-color: #1788d8; border: none; border-radius: 8px; text-align: center; font-size: 16px; font-weight: 500; }
+.grayText { margin: 0; padding: 0; font-size: 12px; font-family: "Poppins"; cursor: pointer; }
+
+/* ////////////////    LOGIN MODAL    //////////////// */
+
+.overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */ z-index: 1000; overflow-y: hidden; }
+.loginModalWrapper { margin: 0; padding: 24px 0; width: 700px; min-height: 60vh; border: none; border-radius: 20px; background-color: #ffffff; position: fixed; top: 20vh; left: 50%;  transform: translateX(-50%); z-index: 99999; box-shadow: 0 0 10px 0 gray; overflow: hidden; }
+.loginModalContainer { margin: 0; padding: 0 0 0 36px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 18px; }
+.loginModalBannerContainer { margin: 0; padding: 0; width: 360px; height: 360px; }
+.loginBannerImg { margin: 0; padding: 0; width: 100%; height: 100%; object-fit: cover; }
+.loginForm { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 10px; }
+.loginModalTitle { margin: 0; padding: 0; text-align: center; font-size: 32px; font-family: "Rubik"; font-weight: 500; letter-spacing: 0.2px; color: #363434; }
+.loginInputCol { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.loginFormInputField { margin: 0; padding: 12px; width: 300px; border: 1px solid #e7e7e7; border-radius: 4px; outline: none; font-size: 15px; }
+.checkBoxRow { margin: 0; margin-top: 0px; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 4px; }
+.loginCheckbox { width: 18px !important; height: 18px; border: 1px solid #e7e7e7; border-radius: 4px; }
+.showPassword { margin: 0; padding: 0; font-family: "Roboto"; font-size: 15px; font-weight: 400; color: #666565; }
+.loginBtn {transition: all .5s ease-in-out; margin: 12px 0; padding: 10px 28px; color: #ffffff; background-color: #1d95e6; font-size: 16px; font-family: "Rubik"; font-weight: 500; text-transform: uppercase; border: none; outline: none; border-radius: 10px; cursor: pointer; }
+.loginBtn:hover {background-color: #106cb5;}
+.forgetPassword { margin: 0; padding: 0; font-family: "Roboto"; font-weight: 400; font-size: 15px; color: #666565; }
+.forgetPasswordLink { color: #1b56aa; cursor: pointer; }
+.loginBlueShade { margin: 0; padding: 0; position: absolute; top: -50px; left: 150px; }
+.loginYellowShade { margin: 0; padding: 0; position: absolute; top: -200px; right: -150px; transform: rotate(180deg); }
+.loginCloseBtnContainer { margin: 0; padding: 6px 18px; font-size: 32px; line-height: 41px; position: absolute; top: 18%; right: 27%; background-color: #ffffff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
+.loginCloseBtn { margin: 0; }
+.loginRadioContainer { margin: 0; padding: 0; margin-top: 12px; display: flex; flex-direction: row; align-items: center; gap: 48px; }
+.radioButtonItem { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 6px; }
+.radioBtn { margin: 0; padding: 0; width: 18px; height: 18px; }
+.radioText { margin: 0; color: #000000; font-size: 16px; font-weight: 500; font-family: "Poppins"; }
+/* ////////////////    TOAST    ///////////////// */
+.toastContainer { margin: 0; padding: 10px; min-width: 240px; max-width: 520px; height: 65px; max-height: 65px; background-color: white; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; gap: 10px; border: none; border-radius: 6px; position: absolute; overflow: hidden; z-index: 99999999999999; transition: 100ms ease; }
+.toastLeft { margin: 0; padding: 0 0 0 4px; display: flex; flex-direction: row; align-items: flex-start; gap: 10px; }
+.toastTitle { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-size: 16px; font-weight: 500; }
+.toastMessage { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-size: 14px; font-weight: 400; }
+.toastCloseBtn { margin: 0; padding: 0; margin-top: -8px; color: #ffffff; font-family: "Poppins"; font-size: 24px; font-weight: 500; cursor: pointer; }
+/* ///////////////////    RESET PASSWORD    ///////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////        SUPER  ADMIN  PART  DESIGN       ////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* //////////////////////////////    SUPER ADMIN LAYOUT    ////////////////////////////// */
+.adminLayoutContainer { margin: 0; padding: 0; width: 100vw; height: 100vh; display: grid; grid-template-columns: 20vw 80vw; }
+.adminOutletContainer { margin: 0; padding: 0; margin-left: -36px; background-color: #d1eafa; width: 103%; border: none; border-top-left-radius: 42px; border-bottom-left-radius: 42px; overflow-x: hidden; /* 26.06.25*/ }
+
+/* ///////////////////////////    SUPER ADMIN SIDEBAR    //////////////////////////// */
+.adminSidebarWrapper { margin: 0; padding: 0; width: 100%; min-height: 100vh; background-color: #22a0f1 !important; }
+/* .adminSidebarInner {
+  width: 90%;
+} */
+.adminSidebarWrapper .adminSidebarTopContainer { margin: 0; padding: 30px 18px; width: 90%; }
+.adminSidebarWrapper .adminSidebarLogoContainer { margin: 0; padding: 0; /* margin-top: 10px; */ width: 100%; height: 50px; overflow: hidden; }
+.adminSidebarWrapper .adminSidebarLogoContainer .adminSidebarLogo { margin: 0; padding: 0; /* width: 100%; height: 100%; object-fit: cover; */ }
+.adminSidebarWrapper .adminSidebarDivider { margin-top: 20px; margin-left: 8px; width: 90%; height: 1px; background-color: #d9d9d9; }
+.adminSidebarWrapper .adminSidebarContainer { margin: 18px 24px; padding: 12px 0px 12px 0px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
+.adminSidebarWrapper .sidebarItem { margin: 0; padding: 10px 18px; width: 80%; display: flex; align-items: center; gap: 12px; color: white; font-family: "Sora"; font-size: 14px; font-weight: 300; border: none; border-radius: 8px; transition: 0.4s; cursor: pointer; z-index: 999; }
+.adminSidebarWrapper .sidebarItem.subSidebarItem {padding:5px 38px 5px;}
+
+.sidebarItemSubmenu { margin: 0; padding: 12px; display: flex; flex-direction: row; align-items: center; gap: 6px; cursor: pointer; }
+.sidebarItemSubmenu:hover { background-color: #eef5ff; }
+.accordion { margin: 0; padding: 0; box-shadow: "none"; }
+.adminSidebarWrapper .sidebarItem:hover { color: #838383; background-color: #eef5ff; }
+
+.adminSidebarWrapper .sidebarNonAccordionItem { padding: 18px 12px; }
+.adminSidebarWrapper .sidebarItemLeft { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 10px; }
+
+.adminSidebarWrapper .sidebarItemTitle { margin: 0; padding: 0; color: white; font-family: "Sora"; font-size: 14px; font-weight: 300; }
+.adminSidebarWrapper .iconContainer { margin: 0; color: white; background-color: rgb(183, 183, 183); display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; }
+.adminSidebarWrapper .sidebarIcon { width: 16px; height: 16px; }
+
+.adminSidebarContainer .sidebarItemActive {color: #838383 !important; background-color: #eef5ff;}
+.adminSidebarContainer .sidebarItemActive svg {stroke: #838383; color: #838383 !important;}
+.adminSidebarContainer .sidebarItemActive .sidebarItemTitle {color: #838383;}
+
+.adminSidebarContainer .sidebarItem:hover {color: #838383; background-color: #eef5ff; }
+.adminSidebarContainer .sidebarItem:hover svg {stroke: #838383; color: #838383 !important;}
+.adminSidebarContainer .sidebarItem:hover .sidebarItemTitle {color: #838383;}
+
+/* /////////////////////////////         ADMIN  DASHBOARD  DESIGN      /////////////////////////////////////// */
+.adminDashboardWrapper { margin: 0; padding: 0; /*background-color: #23b7e52b;*/ width: 100%; }
+.adminDashboardWrapper .adminDashboardContainer { margin: 0; padding: 0 52px 20px; /* shorthand for top, horizontal, bottom */  /*height: 100vh;*/ /* or any fixed height */ overflow-y: auto !important; /* enable vertical scrolling */ }
+.adminDashboardWrapper .adminDashboardContainer .adminDashboardTopbar,
+.adminProfileWrapper .adminDashboardContainer .adminDashboardTopbar,
+.adminUserlistWrapper .adminDashboardContainer .adminDashboardTopbar,
+.contactlistWrapper .adminDashboardContainer .adminDashboardTopbar { margin: 0; padding: 30px 0; width: 75%; background: transparent; display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden; position: fixed; background-color: #f5f5fe; z-index: 999; }
+
+.adminDashboardWrapper .adminDashboardContainer .adminDashboardTopbarLeft { display: flex; flex-direction: row; align-items: center; gap: 12px; width: 40%; }
+.adminDashboardWrapper .adminDashboardContainer .adminDashboardTopbarRight { display: flex; flex-direction: row; align-items: center; gap: 24px; padding-right: 40px; }
+.adminDashboardWrapper .adminDashboardContainer .adminDashboardTopTitle { color: #4f87bf; font-family: "Sora"; font-weight: 600; font-size: 25px; }
+.adminDashboardWrapper .adminDashboardContainer .adminDashboardTopSearchInputContainer { margin: 0; padding: 0 10px; width: 360px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; background-color: white; border: 1px solid #d9d9d9; border-radius: 25px; outline: none; }
+.adminDashboardWrapper .adminDashboardContainer .adminSearchInput { margin: 0; padding: 14px 4px; width: 90%; font-family: "Sora"; background-color: transparent; border: none; outline: none; }
+.adminDashboardWrapper .adminDashboardContainer .inputSearchIconContainer { width: 34px; height: 32px; display: flex; align-items: center; justify-content: center; background-color: #144d99; border: none; border-radius: 50%; }
+.adminDashboardWrapper .adminDashboardContainer .logoutIconContainer { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+.adminDashboardWrapper .adminDashboardContainer .adminDashboardMain {padding-right: 40px;}
+.adminDashboardWrapper .adminDashboardCountContainer { margin-top: 150px; display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; column-gap: 40px; row-gap: 31px;}
+.adminDashboardUserSection .userStatsSection{ margin: 0; padding: 16px 24px 12px 24px; background-color: #22a0f1; border: 1px solid #23b7e5; border-radius: 20px; position: relative;}
+
+.adminDashboardWrapper .adminDashboardCountPlate { margin: 0; padding: 16px 16px 12px; width: 31%; background-color: #bcbfc5; display: flex; flex-direction: row; align-items: flex-start; column-gap: 22px; border: none; outline: none; border-radius: 10px; }
+.adminDashboardWrapper .adminDashboardCountPlate:hover{opacity: 0.7; transition: .5s;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(1) { background-color: #717478; box-shadow: 7px 8px 0px #4d4f52;}
+
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(2) { background-color: #4d94ab; box-shadow: 7px 8px 0px #2d6e81;}
+
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(3) {background-color: #64b4cd; box-shadow: 7px 8px 0px #368197;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(4) { background-color: #585ea1; box-shadow: 7px 8px 0px #393d68;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(5) { background-color: #636bbfc2; box-shadow: 7px 8px 0px #393d68;}
+
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(6) { background-color: #003c76; box-shadow: 7px 8px 0px #032648;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(7) { background-color: #023260cf; box-shadow: 7px 8px 0px #032648;}
+
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(8) { background-color: #0c62d3; box-shadow: 7px 8px 0px #003478;}
+
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(9) { background-color: #0c62d3a1; box-shadow: 7px 8px 0px #003478;}
+
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(3) .countPlateIconContainer{background-color: #368197;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(5) .countPlateIconContainer{background-color: #393d68;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(7) .countPlateIconContainer{background-color: #032648;}
+.adminDashboardWrapper .adminDashboardCountPlate:nth-child(9) .countPlateIconContainer{background-color: #003478;}
+
+.adminDashboardWrapper .countPlateIconContainer { width: 64px; height: 64px; background-color: white; display: flex; align-items: center; justify-content: center; border: none; border-radius: 6px; }
+.adminDashboardWrapper .countPlateRightContainer { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 400; display: flex; flex-direction: column; gap: 4px; }
+.adminDashboardWrapper .countPlateRightContainer .countPlatetHeading{font-size: 14px;}
+.adminDashboardWrapper .countPlateRightContainer .countPlateNumber{font-size: 14px;}
+.dashboardRow { width: 100%; margin: 62px 0; padding: 0; display: flex; flex-direction: row; align-items: stretch; gap: 30px; }
+.adminDashboardWrapper .adminDashboardUserSection { margin: 0; padding: 12px; width: 70%; background-color: #ffffff63; border: 1px solid #fff; border-radius: 24px; position: relative; box-shadow: 0px 0px 10px #23b7e570;}
+.adminDashboardWrapper .userStatsTopContainer { width: 95%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.adminDashboardWrapper .userStatsTopRight { display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.adminDashboardWrapper .userStatsTopLeft, .merchantStatsSection .userStatsTopLeft { display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.adminDashboardWrapper .userStatsTop { display: flex; flex-direction: column; align-items: center; }
+.adminDashboardWrapper .userStatsSection .userStatsTitle { margin: 0; padding: 0; color: #ffffff; font-family: "Sora"; font-weight: 400; font-size: 14px; }
+.adminDashboardWrapper .userStatsSection .userStatsValue { margin: 8px 0; color: #ffffff; font-family: "Sora"; font-weight: 600; font-size: 30px; }
+.adminDashboardWrapper .userStatsContainer { margin: 8px 0; padding: 0 18px; }
+.adminDashboardWrapper .graphLoaderContainer { margin: 0; padding: 0; width: 100%; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.adminDashboardWrapper .graphLoadingText { margin-top: 24px; color: white; font-family: "Sora"; font-size: 14px; font-weight: 400; }
+.adminDashboardWrapper .userGraphFilterTitle { font-family: "Poppins"; font-size: 14px; color: white; }
+.adminDashboardWrapper .chartDropdownContainer { margin: 0; padding: 0; position: relative; cursor: pointer; z-index: 9; user-select: none; }
+.adminDashboardWrapper .chartDropdown { margin: 0; padding: 4px 10px; width: 140px; color: white; font-family: "Poppins"; font-size: 14px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid white; border-radius: 4px; outline: none; }
+.adminDashboardWrapper .dropdownOptions { margin: 0; width: 160px; padding: 6px 0; background-color: white; border: none; border-radius: 4px; position: absolute; top: 32px; left: 0; }
+.adminDashboardWrapper .dropdownOption { margin: 0; padding: 0 12px; padding-left: 12px !important; color: black; font-family: "Poppins"; font-size: 14px; background-color: white; cursor: pointer; }
+.adminDashboardWrapper .dropdownOption:hover { color: white; background-color: #096fc9; }
+.adminDashboardWrapper .userGraphTop { margin: 0; padding: 0; width: 97%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.adminDashboardWrapper .userGraphLeft { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.adminDashboardWrapper .userGraphLeftTitle { color: white; font-family: "Sora"; font-size: 14px; font-weight: 400; }
+.adminDashboardWrapper .userGraphRight { margin: 0; padding: 0; color: white; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.adminDashboardWrapper .userGraphRight .dateInput { visibility: none; }
+.adminDashboardWrapper .dropdownContainer { margin: 0; padding: 4px 8px; width: 140px; background-color: transparent; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid #ffffff; border-radius: 4px; outline: none; }
+.adminDashboardWrapper .dropdown { margin: 0; padding: 0; width: 80%; color: white; font-family: "Sora"; font-weight: 400; font-size: 12px; background-color: transparent; border: none; outline: none; appearance: none; }
+.adminDashboardWrapper .dropdownOption { margin: 0; padding: 0; color: black; }
+
+.adminDashboardWrapper .adminDashboardPieChartSection {width: 30%; background-color: #ffffffb0; border: 1px solid #fff; border-radius: 24px;
+position: relative; box-shadow: 0px 0px 10px #23b7e570; margin: 0; padding: 12px;}
+.adminDashboardWrapper .adminDashboardPieChartSection .adminDashboardPieChart{ margin: 0; padding: 37px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; background-color: #e3f1ff; border-radius: 20px; }
+.adminDashboardWrapper .adminDashboardPieChartSection .pieChartTitle { color: #404040; font-family: "Sora"; font-weight: 400; font-size: 20px; line-height: 20px; margin-bottom: 5px;}
+
+.adminDashboardWrapper .adminDashboardPieChartSection .colorDefineContainer { display: grid; flex-direction: row; align-items: center; gap: 12px; }
+.adminDashboardWrapper .adminDashboardPieChartSection .colorDefineSingleItem { display: flex; flex-direction: row; align-items: center; gap: 8px; }
+.adminDashboardWrapper .adminDashboardPieChartSection .colorDefineSingleItem .colorBoxTitle {font: 400 16px/16px "Sora"; color: #000000;}
+.adminDashboardWrapper .adminDashboardPieChartSection .colorBox:nth-child(1) { width: 20px; height: 20px; border: none; border-radius: 2px; background: gray;}
+.adminDashboardWrapper .adminDashboardPieChartSection .bottomStatisticsCountCntainer { display: flex; flex-direction: row; align-items: center; gap: 15px; width: 100%;  justify-content: center; }
+.adminDashboardWrapper .adminDashboardPieChartSection .statisticsCountItem { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 40%;}
+.adminDashboardWrapper .adminDashboardPieChartSection .statisticsCount { color: #333335; font-family: "Sora"; font-weight: 900; font-size: 30px; letter-spacing: 1px; }
+
+.adminDashboardWrapper .adminDashboardPieChartSection .statisticsCountTitle { color: #838383; font-family: "Sora"; font-size: 12px; font-weight: 300; text-align: center; height: 50px;}
+/* .adminDashboardWrapper .adminDashboardPieChartSection .recharts-wrapper .recharts-pie > .recharts-layer:first-child .recharts-pie-sector:first-child path[name="user"]{stroke-width: 3px; stroke: #fff;} */
+.adminDashboardWrapper .adminDashboardPieChartSection .recharts-wrapper .recharts-pie > .recharts-layer .recharts-pie-sector path[name="Users"]{stroke: #e3f1ff; stroke-width: 4px;}
+.adminDashboardWrapper .statisticsPercentage { color: #25c95f; font-family: "Sora"; font-weight: 400; font-size: 14px; }
+.adminDashboardWrapper .adminDashboardPieChartSection .divider { background-color: black; width: 1px; height: 60px; }
+.adminDashboardWrapper .adminDashboardPieChartSection .userPieChartContainer .chartTitle {color: #404040; font: 400 20px "Sora"; text-align: center;}
+
+
+
+.adminDashboardWrapper .adminDashboardConversationHistorySection {padding: 12px; background-color: #ffffffb0; border: 1px solid #fff;
+border-radius: 24px; position: relative; box-shadow: 0px 0px 10px #23b7e570;}
+.adminDashboardWrapper .adminDashboardConversationHistorySection .adminDashboardConversationHistoryWrap{ margin: 0; padding: 30px 13px 30px 23px; background-color: #e3f1ff; border: none; border-radius: 20px;}
+
+.adminDashboardWrapper .adminDashboardConversationHistorySection .tableHeader { display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+
+.adminDashboardWrapper .adminDashboardConversationHistorySection .tableHeaderLeft { display: flex; flex-direction: row; align-items: center; gap: 48px; }
+.adminDashboardWrapper .adminDashboardConversationHistorySection .tableTitle { color: #000; font-family: "Sora"; font-weight: 400; font-size: 20px; }
+.adminDashboardWrapper .adminDashboardConversationHistorySection .filterBy { color: #a0acb8; font-family: "Sora"; font-weight: 300; font-size: 14px; }
+.adminDashboardWrapper .adminDashboardConversationHistorySectiontableTitle .filterBy { color: #838383; font-size: 14px; font-family: "Sora"; font-weight: 300; font-size: 14px; }
+.adminDashboardWrapper .adminDashboardConversationHistorySection .tableHeaderRight { padding-right: 36px; display: flex; flex-direction: row; align-items: center; gap: 4px; }
+.adminDashboardWrapper .adminDashboardConversationHistorySection .tablefilter { margin: 0; padding: 3px 12px; min-width: 32px; color: #838383; font-family: "Sora"; font-weight: 400; font-size: 16px; text-align: center; background-color: white; border: 1px solid transparent; border-radius: 6px; cursor: pointer; }
+.adminDashboardWrapper .adminDashboardConversationHistorySection .tablefilterActive { color: #000; background-color: #ffbf61; border: 1px solid #ffbf61; }
+.adminDashboardWrapper .adminDashboardConversationHistorySection .tableHeaderRight { display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.adminDashboardWrapper .tableContainer { margin: 0; padding: 0; margin-top: 24px; width: 100%; background-color: transparent; border-collapse: collapse; outline: none; border-spacing: 0; }
+.adminDashboardWrapper .tableContainer .theadContainer { margin: 0; padding: 0; width: 100%; height: 60px; background-color: white; border-bottom: 1px solid #e5eaef !important; }
+.adminDashboardWrapper .th { padding: 0; color: #000; font-family: "Poppins"; font-weight: 500; letter-spacing: 0.4px; font-size: 14px; text-align: left; background: #e3f1ff; border-bottom: 1px solid #909091 !important; text-align: center;}
+.adminDashboardWrapper .thActions { margin: 0; padding: 0 40px 0 0; color: #000; font-family: "Sora"; font-weight: 600; font-size: 14px; text-align: center; width: 120px; background: #e3f1ff; border-bottom: 1px solid #909091 !important; text-align: center;}
+.adminDashboardWrapper .tr:not(:last-child){border-bottom: 1px solid #909091 !important; }
+.adminDashboardWrapper .tr{ height: 60px;}
+.adminDashboardWrapper .td { padding: 0; color: #383838; font-family: "Poppins"; font-weight: 400; font-size: 15px; text-align: center;}
+.adminDashboardWrapper .td.flag-agents{color: #585ea1;}
+.adminDashboardWrapper .td.flag-agents div{background-color: #5e65b152; border-radius: 5px; padding: 6px;}
+.adminDashboardWrapper .td.flag-service{color: #368197;}
+.adminDashboardWrapper .td.flag-service div{background-color: #36809745; border-radius: 5px; padding: 6px;}
+.adminDashboardWrapper .td.flag-processor{color: #3567A9;}
+.adminDashboardWrapper .td.flag-processor div{background-color: #3567a95c; border-radius: 5px; padding: 6px;}
+.adminDashboardWrapper .td.flag-iso{color: #003c76}
+.adminDashboardWrapper .td.flag-iso div{background-color: #003c7663; border-radius: 5px; padding: 6px;}
+.adminDashboardWrapper .actionTd { padding: 0 32px 0 0; text-align: center; }
+.adminDashboardWrapper .viewButton { padding: 4px 12px; width: 90px; color: white; font-family: "Poppins"; font-weight: 500; font-size: 17px; background-color: #4E688C; border-radius: 6px; border: none; outline: none; cursor: pointer; }
+.adminDashboardWrapper .viewButton:hover{opacity: .7; transition: .5s;}
+
+.adminDashboardWrapper .adminDashboardMerchantSection { margin: 0; padding: 12px 0 0; width: 70%; background: transparent; position: relative; }
+.adminDashboardWrapper .adminDashboardMerchantSection .merchantSectionTopTabbar { margin-bottom: 35px; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.merchantservice { padding: 4px 16px; color: #599CB1; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #599CB1; border-radius: 6px; cursor: pointer; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.processors { padding: 4px 16px; color: #0c62d3; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #4F7FBE; border-radius: 6px; cursor: pointer; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.isos { padding: 4px 16px; color: #4F7FBE; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #4F7FBE; border-radius: 6px; cursor: pointer; }
+
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItem.agents { padding: 4px 16px; color: #585ea1; font-family: "Sora"; font-weight: 400; font-size: 16px; background-color: transparent; border: 1px solid #585ea1; border-radius: 6px; cursor: pointer; }
+
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.merchantservice { color: white; background-color: #599CB1; border: 1px solid #599CB1; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.processors { color: white; background-color: #0c62d3; border: 1px solid #0c62d3; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.isos { color: white; background-color: #003c76; border: 1px solid #003c76; }
+.adminDashboardWrapper .adminDashboardMerchantSection .tabbarItemActive.agents { color: white; background-color: #585ea1; border: 1px solid #585ea1; }
+
+.adminDashboardWrapper .merchantStatsSection {margin: 0; box-shadow: 0px 0px 10px #23b7e570; background-color: #ffffff63;
+border: 1px solid #fff; border-radius: 24px; padding: 12px;}
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap{padding: 24px 12px 12px 24px; width: 100%; border-radius: 20px; position: relative; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Merchant{background-color: #599CB1; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Processors{background-color: #0c62d3; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Isos{background-color: #003c76; }
+.adminDashboardWrapper .merchantStatsSection .merchantStatsWrap.Agents{background-color: #585ea1; }
+.adminDashboardWrapper .merchantStatsSection .userStatsTitle { margin: 0; padding: 0; color: #ffffff; font-family: "Sora"; font-weight: 400; font-size: 14px; }
+.adminDashboardWrapper .merchantStatsSection .userStatsValue { margin: 8px 0; color: #ffffff; font-family: "Sora"; font-weight: 600; font-size: 30px; }
+
+.dashboardMerchantStatsRight { margin: 0; padding: 0; width: 30%; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.adminDashboardWrapper .percentageCountSection {width: 100%; box-shadow: 0px 0px 10px #23b7e570; background-color: #ffffffb0;
+ border: 1px solid #fff; border-radius: 24px; padding: 12px; margin-top: 81px;}
+.adminDashboardWrapper .percentageCountSection .percentageCountWrap{width: 100%; border: none; border-radius: 20px; display: flex; flex-direction: column; align-items: flex-start; overflow: hidden;}
+.adminDashboardWrapper .percentageCountHeader { padding: 25px; width: 100%; color: white; text-align: center; font-family: "Sora"; font-weight: 300; font-size: 20px; background-color: #6586b3; }
+.adminDashboardWrapper .percentageCountItem {padding: 23px 44px; background: #e3f1ff; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border-bottom: 1px solid #a8a8a8; }
+.adminDashboardWrapper .percentageColorBox { width: 22px; height: 22px; background-color: #22a4f2; border: none; border-radius: 4px; }
+.adminDashboardWrapper .percentageCountItemContent { font-family: "Sora"; font-weight: 400; font-size: 16px; font-weight: 500; flex: 0 0 150px;}
+.adminDashboardWrapper .connectedGraphSection { padding: 32px 24px; width: 100%; background-color: white; border: none; border-radius: 24px; box-shadow: 0 0 5px 0 rgb(192, 192, 192); }
+
+.adminDashboardWrapper .connectedGraphSectionHeader { margin-bottom: 12px; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; font-family: "Sora"; font-weight: 600; font-size: 20px; color: black; }
+.graphContainer { margin: 0; padding: 0; margin-top: 25px; }
+
+.merchantStatsSection { margin-top: -100px; padding: 0; width: 100%; }
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////         MERCHANT  PART  DESIGN        ///////////////////////////////////////// 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/* ///////////////////    MERCHANT SIDEBAR    ///////////////////// */
+.merchantSidebarWrapper { margin: 0; padding: 0; width: 20vw; min-height: 100vh; background-color: #22a0f1 !important; overflow: hidden; border-right: 1px solid #22a0f1; }
+.sidebarEclipse { margin: 0; padding: 0; position: absolute; top: -10px; left: 0; }
+.merchantSidebarWrapper .merchantSidebarContainer { margin: 0; padding: 15px 0px 24px 0px; }
+.merchantSidebarContainer .sidebarItem { margin: 19px 30px 17px 24px; padding: 10px 18px; display: flex; flex-direction: row; align-items: center; gap: 12px; width: 70%; transition: 0.2s; cursor: pointer; user-select: none; border: none; border-radius: 6px; position: relative; z-index: 1; }
+
+.sidebarItemTitle { margin: 0; padding: 0; color: #ffffff; font-family: "Sora"; font-size: 14px; font-weight: 400; }
+/* .sidebarItem:hover {
+  color: #ffffff;
+  background-color: #22a0f1;
+}
+
+.sidebarItemActive {
+  color: #838383;
+  background-color: #eef5ff;
+} */
+
+.sidebarItemTitleActive { margin: 0; padding: 0; color: #ffffff; }
+.merchantSidebarWrapper .merchantSidebarTopContainer {padding: 30px 18px; }
+.merchantSidebarWrapper .merchantSidebarDivider {margin-top: 20px; margin-left: 8px; width: 80%; height: 1px; background-color: #d9d9d9;} 
+.merchantSidebarWrapper .adminSidebarInner {position: fixed; width: auto; max-width: 283px;}
+.merchantSidebarContainer .sidebarItem .sidebarItemActive {color: #838383; background-color: #eef5ff; }
+.merchantSidebarContainer .sidebarItem .sidebarItemActive svg {stroke: #838383; color: #838383 !important;}
+.merchantSidebarContainer .sidebarItem .sidebarItemActive .sidebarItemTitle {color: #838383;}
+.merchantSidebarContainer .sidebarItem:hover {color: #838383; background-color: #eef5ff; }
+.merchantSidebarContainer .sidebarItem:hover svg {stroke: #838383; color: #838383 !important;}
+.merchantSidebarContainer .sidebarItem:hover .sidebarItemTitle {color: #838383;}
+/* 26.06.25 */
+.merchantSidebarContainer .sidebarItemActive {color: #838383 !important; background-color: #eef5ff;}
+.merchantSidebarContainer .sidebarItemActive svg {stroke: #838383; color: #838383 !important;}
+.merchantSidebarContainer .sidebarItemActive .sidebarItemTitle {color: #838383;}
+/* 26.06.25 */
+
+/* //////////////////    MERCHANT REGISTRATION    ////////////////// */
+.merchantRegistrationFormTop.disable {opacity: .5; }
+.merchantRegistrationFormTop.disable {pointer-events: none;}
+.merchantRegistrationFormTop.disable.enablewrapper {opacity: 1; }
+.merchantRegistrationFormTop.disable.enablewrapper {pointer-events: auto;}
+.merchantRegistrationWrapper { margin: 0; padding: 0; margin-top: 120px; background-color: white; align-items: center; width: 100vw; }
+.merchantRegistrationTop { margin: 0; padding: 24px; text-align: center; }
+.merchantTopTitle { margin: 0; padding: 0; color: #545454; font-size: 28px; font-weight: 600; font-family: "Poppins"; }
+h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28px; font-weight: 600; font-family: "Poppins"; }
+.merchantRegistrationTop p{margin: 0; padding-top: 10px; color: #545454; font-size: 14px; font-weight: 400; font-family: "Poppins"; }
+.merchantRegistrationFormTop p{margin: 0; padding-bottom: 30px; color: #545454; font-size: 14px; font-weight: 400; font-family: "Poppins"; }
+.merchantRegsitrationInnerContainer { margin: 0; padding: 0; width: 100%; background-color: #eff4f8; position: relative; overflow: hidden; }
+.merchantRegistrationFormTop p.infoText{font-size: 12px; padding-top: 10px;}
+
+.merchantFormDesignTop { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 40px; position: absolute; top: -240px; left: -450px; transform: rotate(-45deg); }
+.merchantFormDesignBottom { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; position: absolute; bottom: -240px; right: -450px; transform: rotate(-225deg); gap: 40px;}
+.merchantDesignTextureTop { margin: 0; padding: 0; width: 686px; height: 388px; background: #1C94E4; }
+.merchantDesignTextureBottom { margin: 0; padding: 0; width: 1308px; height: 254px; background: #1C94E4; }
+.merchantRegistrationForm { margin: 70px auto 200px auto; padding: 50px; background-color: white; width: 70%; position: relative; z-index: 1; }
+.merchantRegistrationForm .registrationFormTitle { margin: 0; padding: 0; margin-bottom: 24px; color: #0052a4; font-size: 24px; font-weight: 500; font-family: "Poppins"; }
+.merchantRegistrationForm .sendOtpButton{transition: all .5s ease-in-out; border: none; width: 48%; background: #003478; color: #fff; border-radius: 5px;     height: 58px;}
+.merchantRegistrationForm .sendOtpButton:hover {background: #1C94E4;}
+.merchantRegistrationForm .merchantRegistrationFormTop { margin: 0; }
+.merchantRegistrationForm .inputRowContainer { margin: 18px 0; padding: 0; width: 100%; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; border: none; border-bottom: 1px; border-color: #dadada; }
+.merchantRegistrationForm .inputRow { display: flex; flex-direction: column; align-items: flex-start; width: 48%;}
+.merchantRegistrationForm .inputContainer { margin: 0; padding: 0; width: 100%;  align-items: center; gap: 0; background-color: #ffffff; border: none; overflow: hidden; border-radius: 6px;}
+.merchantRegistrationForm .inputContainer .label { margin: 0;  padding: 12px 0; color: gray; font-size: 15px; background-color: #ffffff; }
+.merchantRegistrationForm .inputField { margin: 0; padding: 0 24px; width: 100%; font-size: 14px; letter-spacing: 0.5px; border: none; outline: none; height: 58px; border-radius: 6px; border: solid 1px #9b9898;}
+.merchantRegistrationForm .otp-feild .inputField{padding: 0 7px; text-align: center;} 
+.merchantRegistrationForm input[type=number]::-webkit-inner-spin-button, 
+.merchantRegistrationForm input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.merchantRegistrationForm textarea.inputField{height: 155px; padding: 25px;}
+.inputField::placeholder { color: rgb(183, 183, 183);}
+.merchantRegistrationForm .selectField { appearance: none; -webkit-appearance: none; -moz-appearance: none; background: url("./../assets/images/arrow_down.png") no-repeat right 10px center; padding-right: 30px;  }
+
+.verificationBox { margin: 0; padding: 5px 20px; margin-bottom: 36px; width: 350px; max-height: 103px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: #f9f9f9; border: 1px solid #d7d7d7; border-radius: 4px; }
+.verificationBoxLeft { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.registerVerificationCheckbox { width: 24px; height: 24px; accent-color: green; }
+.verificationBoxRight { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+.verificationCaptchaImg { width: 50px; height: 50px; object-fit: contain; }
+.verificationHeading { margin: 36px 0 20px 0; padding: 0; color: #acacac; font-family: "Poppins"; font-size: 15px; font-weight: 400; }
+.verificationBoxRightBottom { display: flex; flex-direction: row; align-items: center; gap: 8px; }
+
+/* .grayText { color: #fff; font-size: 12px; } */
+.grayText { color: gray; font-size: 12px; }
+
+.dot { width: 6px; height: 6px; background-color: gray; border: none; border-radius: 50%; }
+
+.registerButton{ margin: 0; padding: 0; width: 260px; height: 70px; background: #106ebc; font-family: "Poppins"; color: #ffffff; font-size: 22px; font-weight: 700; text-align: center; letter-spacing: 0.6px; border: none; outline: none; border-radius: 4px; cursor: pointer; }
+
+.link { margin: 0; padding: 0; color: #096fc9; font-family: "Poppins"; font-weight: 500; }
+/* //////////////////////////////    MERCHANT PRODUCT LIST    ///////////////////////////////   */
+.merchantProductListWrapper { margin: 0; padding: 42px; padding-bottom: 200px; background-color: #f5f5f5; min-height: 100vh; }
+.merchantProductListWrapper .merchantListTop { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.merchantProductListWrapper .merchantProductPageHeading { margin: 0; padding: 0; font-size: 35px; color: #163262; font-weight: 700; font-family: "Poppins"; }
+.merchantProductListWrapper .productUploadButton { margin: 0; padding: 18px 24px; color: #0f8cdd; font-family: "Poppins"; font-weight: 600; font-size: 18px; background-color: transparent; border: 1px solid #0f8cdd; outline: none; display: flex; flex-direction: row; align-items: center; gap: 24px; cursor: pointer; }
+.merchantListInnerContainer { margin: 0; padding: 42px 28px; margin-top: 32px; background-color: #ffffff; display: flex; flex-direction: column; align-items: flex-end; }
+.merchantProductListContainer { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 26px; row-gap: 48px; }
+.productContainer { margin: 0; padding: 0; width: 18%; background-color: white; display: flex; flex-direction: column; align-items: center; gap: 4px; overflow: hidden; }
+.productImageContainer { margin: 0; padding: 24px; width: 75%; height: 180px; border: 1px solid #d7d7d7; overflow: hidden; }
+.productImage { width: 100%; height: 100%; object-fit: contain; }
+.productDetailsContainer { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; overflow: hidden; }
+.productName { margin: 0; padding: 0; color: #0560b1; font-family: "Poppins"; font-size: 15px; font-weight: 400; }
+.productDescription { margin: 0; padding: 0; width: 80%; font-family: "Poppins"; font-weight: 400; font-size: 15px; color: #000000; text-align: center; line-height: 23px; }
+.productViewBtn { margin: 0; padding: 12px 24px; color: #1b91e1; font-size: 14px; font-family: "Poppins"; font-weight: 600; background-color: #ffffff; border: 1px solid #1b91e1; border-radius: 4px; letter-spacing: 0.6px; cursor: pointer; outline: none; transition: 0.2s ease; }
+.productViewBtn:hover { color: #ffffff; background-color: #1b91e1; }
+
+.paginationContainer { margin: 0; margin-top: 50px; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 0; width: initial; align-self: flex-end; border: none; }
+.prevBtn { margin: 0; padding: 10px 16px; color: gray; background-color: #e5e7e9; font-size: 14px; border: none; border-right: 1px solid #d4d6d7; border-radius: 4px 0 0 4px; cursor: pointer; }
+.nextBtn { margin: 0; padding: 10px 16px; color: gray; background-color: #e5e7e9; font-size: 14px; border: none; border-right: 1px solid #d4d6d7; border-top-right-radius: 4px; border-bottom-right-radius: 4px; cursor: pointer; }
+.prevBtn:hover { color: white; background-color: #0f6efd; }
+.nextBtn:hover { color: white; background-color: #0f6efd; }
+.pageNoBox { margin: 0; padding: 8px 12px; text-align: center; vertical-align: middle; border-top: 1px solid #d4d6d7; border-bottom: 1px solid #d4d6d7; border-right: 1px solid #d4d6d7; cursor: pointer; }
+.pageNoBox:hover { color: #ffffff; background-color: #0f6efd; }
+/* ///////////////////////////    PRODUCT DETAILS MODAL    ///////////////////////////////////// */
+.merchantProductDetailsModalOverlay { position: fixed; top: 0; left: 16vw; width: 84vw; height: 100vh; background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */ z-index: 1000; }
+.merchantProductDetailsModalWrapper { margin: 0; padding: 48px 48px 84px 48px; width: 50vw; height: 50vh; border: none; border-radius: 20px; background-color: #ffffff; position: fixed; top: 20vh; left: 25vw; z-index: 99999; box-shadow: 0 0 10px 0 gray; overflow: hidden; }
+.merchantProductDetailsModalWrapper .merchantProductDetailsModalTittle { margin: 0; padding: 0; color: #595959; font-size: 24px; font-family: "Poppins"; font-weight: 700; line-height: 100%; }
+.merchantProductDetailsModalWrapper .merchantProductDetailsModalContainer { margin: 0; padding: 0; margin-top: 42px; width: 100%; height: 100%; display: flex; flex-direction: row; align-items: flex-start; gap: 30px; }
+.merchantProductDetailsModalWrapper .merchantProductDetailModalLeft { margin: 0; padding: 24px; width: 40%; height: 72%; border: 1px solid #dadada; border-radius: 24px; overflow: hidden; }
+.merchantProductDetailsModalWrapper .productDetailsImage { width: 100%; height: 100%; object-fit: contain; }
+.merchantProductDetailsModalWrapper .merchantProductDetailModalRight { margin: 0; padding: 0; width: 68%; height: 85%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.merchantProductDetailsModalWrapper .merchantProductTitle { margin: 0; padding: 0; color: #0663b3; font-size: 36px; font-weight: 600; font-family: "Poppins"; }
+.merchantProductDetailsModalWrapper .merchantProductDesc { margin: 0; padding: 0; margin-top: 18px; color: #525252; font-size: 14px; font-family: "Poppins"; font-weight: 400; display: -webkit-box; -webkit-line-clamp: 11; /* Number of lines to show */ -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+.merchantProductDetailsModalWrapper .merchantProductButtons { margin: 0; padding: 0; display: flex; align-items: center; align-self: flex-end; gap: 20px; }
+.merchantProductEditBtn { margin: 0; padding: 12px 24px; width: 120px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; color: white; background-color: #0f8cdd; border: none; outline: none; border-radius: 6px; cursor: pointer; }
+.merchantProductDeleteBtn { margin: 0; padding: 12px 24px; width: 120px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; color: #474747; background-color: #dddddd; border: none; outline: none; border-radius: 6px; cursor: pointer; }
+.productEditIcon { margin: 0; padding: 0; width: 18px; height: 18px; object-fit: contain; }
+.productDetailsModalCloseBtnContainer { margin: 0; padding: 6px 18px; font-size: 34px; position: absolute; top: 18%; right: 21%; background-color: #ffffff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
+.merchantUploadProductModalOverlay { position: fixed; top: 0; left: 16vw; width: 84vw; height: 100vh; background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */ z-index: 1000; }
+.uploadProductModalCloseBtnContainer { margin: 0; padding: 6px 18px; font-size: 34px; position: absolute; top: 18%; right: 24%; background-color: #ffffff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
+.merchantUploadProductModalWrapper { margin: 0; padding: 48px 48px 84px 48px; width: 50vw; height: 50vh; border: none; border-radius: 20px; background-color: #ffffff; position: fixed; top: 20vh; left: 25vw; z-index: 99999; box-shadow: 0 0 10px 0 gray; overflow: hidden; }
+.merchantUploadProductModalWrapper .merchantProductDetailsModalTittle { margin: 0; padding: 0; color: #595959; font-size: 24px; font-family: "Poppins"; font-weight: 700; line-height: 100%; }
+.merchantUploadProductModalWrapper .merchantUploadProductModalContainer { margin: 0; padding: 0; margin-top: 24px; width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.merchantUploadProductModalWrapper .productUploadInputContainer { display: flex; width: 100%; flex-direction: row; align-items: center; gap: 0; border-bottom: 1px solid #daebf3; }
+.merchantUploadProductModalWrapper .uploadInputLabel { margin: 0; padding: 18px 0; width: 24%; color: #5b5b5b; background-color: white; font-size: 15px; font-weight: 600; font-family: "Poppins"; }
+.merchantUploadProductModalWrapper .uploadInputField { margin: 0; padding: 0; padding: 18px; font-size: 16px; width: 76%; border: none; outline: none; background-color: #f4fbfe; }
+.uploadFileInputContainer { margin: 0; padding: 24px; width: 76%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background-color: #f4fbfe; cursor: pointer; }
+.uploadFileOtherOptionsLinkContainer { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 8px; }
+.uploadFileOtherOptionsLink { margin: 0; padding: 0; color: #434343; font-family: "Poppins"; font-weight: 300; font-size: 12px; cursor: pointer; }
+.verticalDivider { margin: 0; padding: 0; width: 1px; height: 14px; background-color: #868889; }
+/* ///////////////////     MERCHANT DASHBOARD    /////////////////////    */
+.merchantDashboardWrapper { margin: 0; overflow-y: auto !important; }
+.merchantDashboardWrapper .adminDashboardTopbar {padding: 30px 70px 23px 52px; width: 83vw; justify-content: space-between;}
+
+
+.merchantDashboardWrapper .merchantDashboardTopbar { margin: 0; padding: 18px 0; width: 75%; background: transparent; display: flex; flex-direction: row; align-items: center; justify-content: space-between; overflow: hidden; position: fixed; background-color: #f5f5fe; z-index: 999; }
+.merchantDashboardWrapper .merchantDashboardTopbarLeft { display: flex; flex-direction: row; align-items: center; gap: 12px; width: 40%; }
+.merchantDashboardWrapper .merchantDashboardTopbarRight { display: flex; flex-direction: row; align-items: center; gap: 24px; padding-right: 40px; }
+.merchantDashboardWrapper .merchantDashboardTopTitle { color: #4f87bf; font-family: "Sora"; font-weight: 600; font-size: 25px; }
+.merchantDashboardWrapper .merchantDashboardTopSearchInputContainer { margin: 0; padding: 0 10px; width: 360px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; background-color: white; border: 1px solid #d9d9d9; border-radius: 25px; outline: none; }
+.merchantDashboardWrapper .merchantSearchInput { margin: 0; padding: 14px 4px; width: 90%; font-family: "Sora"; background-color: transparent; border: none; outline: none; }
+.merchantDashboardWrapper .inputSearchIconContainer { width: 34px; height: 32px; display: flex; align-items: center; justify-content: center; background-color: #144d99; border: none; border-radius: 50%; }
+.merchantDashboardWrapper .logoutIconContainer { display: flex; align-items: center; justify-content: center; }
+.merchantDashboardLoaderWrapper { margin: 0; padding: 0; width: 100%; height: 75vh; color: white; font-family: "Poppins"; font-weight: 400; font-size: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.merchantDashboardLoaderContainer{ margin: 0; padding: 0; background-color: #22a0f1; width: 100px; height: 100px; border: none; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; align-self: center; }
+.merchantDashboardLoaderContainer .loadingText { text-align: center; font-family: "Poppins"; font-size: 14px; color: white; }
+.merchantDashboardWrapper .dashboardEclipseImage { margin: 0; padding: 0; transform: rotate(90deg); position: absolute; top: -52vh; left: 34vw; }
+.merchantDashboardWrapper .merchantDashboardContainer { margin: 0; padding: 150px 52px 60px; width: 100%; z-index: -111; }
+.merchantDashboardWrapper .merchantDashboardTitle { margin: 0; padding: 18px 38px; color: white; width: 100%; font-family: "Sora"; border: 1px solid #3691c9; border-left: none; font-size: 20px; font-weight: 400; text-transform: uppercase; }
+.merchantDashboardContainer .merchantDashboardCountContainer { margin: 120px 0 160px 0; padding: 0; width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 64px; }
+.merchantDashboardWrapper .merchantDashboardCountPlate { margin: 0; padding: 22px 16px 22px;  /* Swati  30.06.2025*/ width: 315px;  /* Swati  30.06.2025*/ background-color: #bcbfc5; display: flex; flex-direction: row; align-items: flex-start; column-gap: 12px; border: none; outline: none; border-radius: 10px; /* Swati  30.06.2025*/ border-bottom: solid 6px #b0b3b9; /* Swati  30.06.2025*/ }
+
+.merchantDashboardWrapper .merchantDashboardCountPlate:nth-child(1){ background-color: #71CDEA; border-bottom: solid 6px #21aad5; /* Swati  30.06.2025*/ }
+.merchantDashboardWrapper .countPlateIconContainer { width: 64px; height: 64px; background-color: white; display: flex; align-items: center; justify-content: center; border: none; border-radius: 10px; /* Swati  30.06.2025*/ }
+.merchantDashboardWrapper .countPlateRightContainer { margin: 0; padding: 0; color: white; font-family: "Poppins"; font-weight: 400; font-size: 14px; display: flex; flex-direction: column; gap: 4px; }
+
+
+.merchantDashboardWrapper .countPlateRightContainer .merchant-prof{font-size: 22px;}
+
+.merchantDashboardContainer .userStatsSection { margin: 0; padding: 36px 30px 18px 38px; box-shadow: 0px 0px 10px #23b7e570;
+  border: 12px solid #f6fbff;   /* Swati  30.06.2025*/ width: 100%; background-color: #22a0f1;border-radius: 24px; position: relative; }
+.userStatsTopContainer { width: 68%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.merchantStatsSection .userStatsTopContainer{   /* Swati  30.06.2025*/ width: 100%; }    /* Swati  30.06.2025*/
+.merchantStatsSection .number-of-user{transform: rotate(-90deg); bottom: 172px; left: -90px; background: #F54D5E; padding: 4px 16px;
+ color: #fff; font-family: 'Sora'; text-transform: uppercase; position: absolute; border-radius: 3px;font-size: 12px;} /* Swati  30.06.2025*/
+.merchantStatsSection .UserStatistics{background: #E3F1FF; text-align: center; border-radius: 20px; border: solid 2px #fff; box-shadow: 0 0 8px 0 #c9c9c9; padding: 0 20px;}  /* Swati  30.06.2025 */
+.merchantStatsSection .UserStatistics .chartTitle{color: #404040; font:400 20px/22px 'Sora'; padding-top: 30px;} /* Swati  30.06.2025 */
+.merchantStatsSection .UserStatistics .totalUserCount{color: #333335; font:600 30px/40px 'Sora';}
+.merchantStatsSection .UserStatistics .totalUsertxt{color: #838383; font:400 16px/22px 'Sora';}
+
+.merchantStatsSection .number-of-provider{transform: rotate(-90deg); bottom: 172px; left: -58px; background: #F54D5E; padding: 4px 16px;
+  color: #fff; font-family: 'Sora'; text-transform: uppercase; position: absolute; border-radius: 3px;font-size: 12px;} 
+
+.merchantStatsSection .userStatsContainer .time-user span{background: #FFBF61; padding: 4px 8px; border-radius: 2px;     text-transform: uppercase; font:400 15px/40px 'Sora'; margin-left: 60px;}
+
+.userStatsTopRight { display: flex; flex-direction: row; align-items: center; gap: 64px; }
+.userStatsTop { display: flex; flex-direction: column; align-items: center; }
+.merchantDashboardContainer .userStatsSection .userStatsTitle { margin: 0; padding: 0; color: #ffffff; font-family: "Sora"; font-weight: 400; font-size: 14px; }
+.merchantDashboardContainer .userStatsSection .userStatsValue { margin: 8px 0; color: #ffffff; font-family: "Sora"; font-weight: 600; font-size: 30px; }
+.merchantDashboardContainer .userStatsContainer { /* Swati  30.06.2025*/ padding: 0 18px; background-color: #22a0f1; }
+.merchantDashboardContainer .graphLoaderContainer { margin: 0; padding: 0; width: 100%; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.merchantDashboardContainer .graphLoadingText { margin-top: 24px; color: white; font-family: "Sora"; font-size: 14px; font-weight: 400; }
+.merchantDashboardContainer .userGraphFilterTitle { font-family: "Poppins"; font-size: 14px; color: white; }
+
+.merchantDashboardContainer .chartDropdownContainer { margin: 0; padding: 0; position: relative; cursor: pointer; z-index: 9; user-select: none; }
+.merchantDashboardContainer .chartDropdown { margin: 0; padding: 4px 10px; width: 140px; font-family: "Poppins"; font-size: 14px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid white; border-radius: 4px; outline: none; }
+.merchantDashboardContainer .dropdownOptions { margin: 0; width: 160px; padding: 6px 0; background-color: white; border: none; border-radius: 4px; position: absolute; top: 32px; left: 0; }
+.merchantDashboardContainer .dropdownOption { margin: 0; padding: 0 12px; padding-left: 12px !important; color: black; font-family: "Poppins"; font-size: 14px; background-color: white; cursor: pointer; }
+.merchantDashboardContainer .dropdownOption:hover { color: white; background-color: #096fc9; }
+.merchantDashboardContainer .userGraphTop { margin: 0; padding: 0; width: 97%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.merchantDashboardContainer .userGraphLeft { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.merchantDashboardContainer .userGraphLeftTitle { color: white; font-family: "Sora"; font-size: 14px; font-weight: 400; }
+.merchantDashboardContainer .userGraphRight { margin: 0; padding: 0; color: white; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+.merchantDashboardContainer .userGraphRight .dateInput { visibility: none; }
+.merchantDashboardContainer .dropdownContainer { margin: 0; padding: 4px 8px; width: 140px; background-color: transparent; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid #ffffff; border-radius: 4px; outline: none; }
+.merchantDashboardContainer .dropdown { margin: 0; padding: 0; width: 80%; color: white; font-family: "Sora"; font-weight: 400; font-size: 12px; background-color: transparent; border: none; outline: none; appearance: none; }
+.merchantDashboardContainer .dropdownOption { margin: 0; padding: 0; color: black; }
+
+.merchantDashboardWrapper .merchantStatsSection {margin-top: 0;}
+.merchantDashboardWrapper .merchantProfileContainerHeader {margin: 0; padding: 0; background-color: #0085da; width: 73vw; height: 65px;
+ align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
+
+
+.forgetPasswordPageWrapper {background-color: #d1eafa; margin: 0; padding-bottom: 180px; margin-top: 150px; position: relative; padding-top: 100px;}
+.forgetPasswordPageWrapper .forgetPasswordWrapper {background-color: #0085DA; border-radius: 20px; max-width: 38vw;
+    margin: 0 auto; padding: 20px;}
+.forgetPasswordPageWrapper .forgetPasswordWrapper  .PasswordWrapper{border: solid 3px #fff; border-radius: 15px; padding: 40px; }
+.forgetPasswordPageWrapper .PasswordWrapper h1{font-family: "Sora"; font-size: 30px; text-align: center; font-weight: bold; color: #fff; padding: 20px 0 0px;}
+.forgetPasswordPageWrapper .PasswordWrapper .errorText{color: #fff; padding: 0px 0 20px;}
+.forgetPasswordPageWrapper .PasswordWrapper p{width: 100%;}
+.forgetPasswordPageWrapper .PasswordWrapper input{width: 100%; border: none; border-radius: 10px; height: 100%; padding: 20px;
+  margin: 5px 0 20px;}
+.forgetPasswordPageWrapper .PasswordWrapper input[type="checkbox"]{margin: 0;}
+ .forgetPasswordPageWrapper .PasswordWrapper p.forgetPasswordText{text-align: center; font-size: 14px; font-weight: 400; font-family: "Poppins"; color: #fff;}
+ .forgetPasswordPageWrapper .PasswordWrapper label{color: #fff; font-family: "Poppins"; font-weight: 400; font-size: 15px;}
+ .forgetPasswordPageWrapper .PasswordWrapper button{border: none; background-color: #FFBF61; color: #000; font-family: "Poppins"; font-weight: 600; font-size: 18px; text-transform: uppercase; border-radius: 10px; padding: 8px 20px}
+  .forgetPasswordPageWrapper .PasswordWrapper button:hover{background: #fff; transition: .5s;}
+ .forgetPasswordWrapper .checkBoxRow{margin-bottom: 20px;}
+ .forgetPasswordWrapper .showPassword{color: #fff;}
+ .forgetPasswordWrapper .inputRow{position: relative;}
+ .forgetPasswordWrapper .checkBoxRow{position: absolute; top: 49px; right: 18px; font-size: 20px; color: #0085DA;}
+ .resetPasswordPageContainer {padding: 90px 0 150px;}
+
+.otpVerificationModalContainer{background-color: #0085DA; padding: 20px; border-radius: 10px; text-align: center;}
+.otpVerificationModalContainer .otpVerificationModalWrap{border: solid 3px #fff; border-radius: 10px; padding: 25px 25px 40px;}
+.otpVerificationModalContainer p.lightText{color: #fff;}
+.otpVerificationModalWrap .lightText strong{font-size: 16px; font-weight: 400; color: #b7f4ff;}
+.otpModalHeader{padding-top: 20px; color: #fff;}
+
+
+
+.graphContainer { margin: 0; padding: 0; margin-top: 25px; }
+.merchantStatsTabbarContainer { margin: 0; padding: 0; display: flex; align-items: center; gap: 12px; }
+.merchantStatsTabbarItem { margin: 0; padding: 12px 24px; min-width: 120px; height: 50px; color: white; font-family: "Sora"; font-weight: 400; font-size: 16px; align-content: center; background-color: #23b7e5; text-align: center; border: 1px solid #23b7e5; border-top-right-radius: 6px; border-top-left-radius: 6px; cursor: pointer; }
+.merchantProfileWrapper { margin: 0; padding: 40px 0; padding-bottom: 60px; width: 100%; min-height: 100vh; position: relative; padding-top: 0px; }
+.merchantProfileWrapper .merchantProfileLoaderContainer { width: 100%; height: 75vh; color: white; font-family: "Poppins"; font-size: 15px; font-weight: 400; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.merchantProfileEclipseImage { margin: 0; padding: 0; transform: rotate(90deg); position: absolute; top: -52vh; left: 34vw; }
+.merchantProfileTitle { margin: 0; padding: 18px 38px; color: white; width: 100%; font-family: "Sora"; border: 1px solid #3691c9; border-left: none; font-size: 20px; font-weight: 400; text-transform: uppercase; }
+.merchantProfileContainer { margin: 0; padding: 0 52px; /* 26.06.25 */ width: 80vw; z-index: -111; padding-top: 150px; }
+.merchantProfileCountContainer { margin: 80px 0 160px 0; padding: 0; width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 64px; }
+.merchantProfileCountContainer .countCardItem { margin: 0; padding: 16px; width: 16%; height: 70px; display: flex; flex-direction: row; align-items: center; gap: 16px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid #8eca02; border-radius: 8px; position: relative; }
+.merchantProfileCountContainer .cardIconContainer { margin: 0; padding: 0 8px; width: 60px !important; height: 60px !important; background-color: #8eca02; border: none; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.merchantProfileCountContainer .cardContentContainer { width: 75%; gap: 12px; z-index: 9; }
+.merchantProfileCountContainer .cardTitle { color: white; font-family: "Poppins"; font-size: 14px; font-weight: 300 !important; }
+.merchantProfileCountContainer .cardValue { color: white; font-family: "Poppins"; font-size: 20px; font-weight: 300; }
+.circleGlowContainer { position: absolute; right: -120px; z-index: 11111111; }
+.merchantProfileForm { margin: 0; padding: 0; }
+.merchantProfileContainer .merchantProfileContainerHeader { margin: 0; padding: 0; background-color: #0085da; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192); }
+.merchantHeaderCompanyTitle { padding: 0 28px; color: #fff; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px; }
+.merchantProfileInnerDetailsContainer { margin: 0; width: 73vw; padding: 0 28px; border: 1px solid #1a77b8; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; align-content: center; border: none; border-radius: 20px; box-shadow: 0px 0px 10px #23b7e570;  border: 12px solid #f6fbff;  background-color: #e3f1ff; }
+.profileInnerDetailsHolder { margin: 0; padding: 32px 0 64px 0; width: 100%; align-content: center; }
+.merchantProfileDetailsBoxContainer { margin-top: 25px; display: flex; flex-direction: row; align-items: center; gap: 50px; }
+.merchantProfileDetailsBox { margin: 0; /*padding: 0 0 14px 0;*/ width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: none; /*border-bottom: 1px solid #0f8cdd;*/ }
+.merchantProfileDetailsBoxLeft { margin: 0; padding: 0; gap: 8px; border-bottom: 1px solid #0f8cdd; padding-bottom: 20px; width: 100%;}
+.merchantProfileDetailsLeft,
+.merchantProfileDetailsRight{margin: 0; padding: 0; gap: 8px; border-bottom: 1px solid #0f8cdd; padding-bottom: 20px;}
+.merchantProfileDetailsLeft{width:84%;}
+.merchantProfileDetailsRight{width:15%; padding-bottom: 0px; border-bottom: 0px solid #0f8cdd;}
+.companyLogo{text-align: left; width: 90px; height: 90px; border-radius: 20px; overflow: hidden;
+ margin: 0 0 0 auto; box-shadow: 2px 2px 11px #00000082;}
+.companyLogo img{width: 100%; height: 100%; object-fit: cover; border: 2px solid #ffffff; padding: 4px;
+ border-radius: 20px;}
+ .imageProf .camera{left: 18px;}
+ .imageProf .formGroup{display: grid !important; padding-left: 17%; width: 100%;}
+  .imageProf .formGroup label{padding-top: 70px;}
+.camera{position: absolute; left: 55px; top: -1px;}
+ .profphoto div[role="presentation"]{position: relative;}
+.merchantProfileDataTitle { color: #807B7B; font: 600 20px / 25px "Poppins"; margin-bottom: 8px;}
+.providerProfileWrapper .merchantProfileDataTitle { color: #807B7B; font: 600 18px / 25px "Poppins"; margin-bottom: 8px;}
+.merchantProfileData { color: #807B7B; font-family: "Poppins"; font-weight: 400; font-size: 15px; line-height: 25px; }
+.editIconContainer { width: 39px; height: 36px; text-align: center; align-content: center; background-color: #2d9ae1; border: none; border-radius: 50%; cursor: pointer; }
+.editIcon { width: 18px; height: 18px; object-fit: contain; }
+.merchantProfileDetailsHeading { margin: 48px 0 30px; padding: 0; color: #807B7B; font-family: "Poppins"; font-weight: 700; font-size: 20px; line-height: 25px; }
+.merchantProfileInputBox { margin: 0; padding: 0; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: none; /*border-bottom: 1px solid #0f8cdd;*/ }
+.merchantInputContainer { margin: 0; width: 100%; display: flex; flex-direction: row; align-items: center; gap: 0px; border-bottom: 1px solid #0f8cdd;
+  padding-bottom: 11px;}
+.merchantInputLabel { margin: 0; padding: 21px 0; width: 40%; font-family: "Poppins"; font-weight: 400; font-size: 14px; color: #807B7B; background-color: transparent; }
+.merchantProfileInputField {font-family: "Poppins"; margin: 0; padding: 22px; width: 76%; font-size: 15px; /* border: 1px solid #0f8cdd; */ border: none; outline: none; color: #807B7B; background-color: transparent; letter-spacing: 0.5px; }
+.merchantInputCloseBtn {margin: 0; padding: 4px 11px; color: #fff; font-size: 28px; cursor: pointer; background-color: #2d9ae1; line-height: 28px;
+  border-radius: 50%;}
+.merchantProfileUpdateButton { margin: 0; padding: 0; margin-top: 50px; width: 150px; height: 55px; background-color: #0f8cdd; font-family: "Poppins"; color: #ffffff; font-size: 17px; font-weight: 700; text-align: center; letter-spacing: 0.6px; border: none; outline: none; border-radius: 4px; cursor: pointer; }
+/* 26.06.25 */
+/* .merchantProfileWrapper .adminDashboardTopbar .adminDashboardTopbarLeft {padding-left: 52px;} */
+.merchantProfileWrapper .adminDashboardTopbar {border-top-left-radius: 42px; padding: 30px 0;}
+/* 26.06.25 */
+
+.adminDashboardTopbar {width: 83vw; display: flex; flex-direction: row; align-items: center; justify-content: center; position: fixed;  z-index: 999; top: 0; margin: 0; background: #F5F5FE; border-radius: 45px 0 0 0; padding: 30px 20px 23px;     box-shadow: 10px 0px 9px #4f87bf;}
+
+.adminDashboardTopbar .adminDashboardTopbarWrap{display: flex; width: 72vw; justify-content: space-between;}
+
+.adminDashboardTopbar .adminDashboardTopbarLeft {/* 26.06.25 */padding-left: 0px;/* 26.06.25 */ display: flex; flex-direction: row; align-items: center; gap: 12px;  width: 40%;}
+.adminDashboardTopbar .adminDashboardTopbarLeft .adminDashboardTopTitle {color: #4f87bf; font-family: "Sora"; font-weight: 600; font-size: 25px;}
+.adminDashboardTopbar .adminDashboardTopbarLeft .adminDashboardTopTitle .HeadingText {font-size: 25px; font-family: "Sora"; font-weight: 600;}
+.adminDashboardTopbar .adminDashboardTopbarRight {padding-right: 40px; display: flex; flex-direction: row; align-items: center; gap: 24px;}
+.adminDashboardTopbar .adminDashboardTopbarRight .adminDashboardTopSearchInputContainer {margin: 0; padding: 0 10px; width: 360px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; background-color: white; border: 1px solid #d9d9d9; border-radius: 25px; outline: none;}
+.adminDashboardTopbar .adminDashboardTopbarRight .adminSearchInput {margin: 0; padding: 14px 4px; width: 90%; font-family: "Sora"; background-color: transparent; border: none; outline: none;}
+.adminDashboardTopbar .adminDashboardTopbarRight .inputSearchIconContainer {width: 34px; height: 32px; display: flex; align-items: center; justify-content: center; background-color: #144d99; border: none; border-radius: 50%;}
+
+/* //////////////////////////  USER CONNECTED HISTORY  ///////////////////////////// */
+
+.userConnectedHistoryPageWrapper {min-height: calc(100% - 65px); margin: 0; width: auto;  position: relative; }
+
+.userConnectedHistoryPageWrapper .eclipseImg { margin: 0; padding: 0; position: absolute; top: -180px; left: -180px; }
+.userConnectedHistoryPageWrapper .merchantUserConnectedTitle { margin: 0; padding: 18px 38px; color: white; width: 100%; font-family: "Sora"; border: 1px solid #3691c9; border-left: none; font-size: 20px; font-weight: 400; text-transform: uppercase; }
+
+.userConnectedHistoryPageWrapper .userConnectedHistoryContainer { margin: 0; padding: 52px; padding-top: 150px; }
+.userConnectedHistoryPageWrapper .tableContainerWrap {box-shadow: 0px 0px 10px #23b7e570;
+  border: 12px solid #ffffffb0;
+  border-radius: 32px; width: 73vw;}
+.userConnectedHistoryPageWrapper .tableContainer { margin: 0; padding: 0; width: 100%; background-color: #e3f1ff; border: none; /* 30.06.25 */ box-shadow: 0 0 5px 0 rgb(192, 192, 192); /* 30.06.25 */ border-collapse: collapse; outline: none; border-spacing: 0; overflow: hidden; /* 30.06.25 */ border-radius: 20px; /* 30.06.25 */}
+.userConnectedHistoryPageWrapper .tableContainer .theadContainer { margin: 0; padding: 0; width: 100%; height: 60px; background-color: #0085da; /* border: 1px solid #1894d4; */ }
+.userConnectedHistoryPageWrapper .th { padding: 0 36px; color: white; font-family: "Sora"; font-weight: 600; letter-spacing: 0.4px; font-size: 14px; text-align: left; }
+.userConnectedHistoryPageWrapper .thActions { margin: 0; padding: 0 40px 0 0; color: white; font-family: "Sora"; font-weight: 600; font-size: 14px; text-align: center; }
+.userConnectedHistoryPageWrapper .tr { height: 60px; border-bottom: 1px solid #EAEAED !important; /* 30.06.25 */ }
+.userConnectedHistoryPageWrapper .td { color: #7D7D7E; /*27.06.25*/ font-family: "Poppins"; font-weight: 400; font-size: 15px; padding: 0 36px; }
+.userConnectedHistoryPageWrapper .actionTd { padding: 0 48px 0 0; text-align: center; /* 30.06.25 */ }
+.userConnectedHistoryPageWrapper .viewButton { width: 35px; height: 35px; background-color: #0085da; border: 1px solid #23b7e5; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px; /* 30.06.25 */ }
+
+/* 30.06.25 */
+/* .userConnectedHistoryPageWrapper .adminDashboardTopbarLeft {padding-left: 52px;} */
+.userConnectedHistoryPageWrapper .adminDashboardTopbar {border-top-left-radius: 42px; padding: 30px 0;}
+.userConnectedHistoryPageWrapper .merchantContainerHeader {margin: 0; padding: 0; background-color: #0085da; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
+.userConnectedHistoryContainer .merchantHeaderTitle .HeadingText {padding: 0 28px; color: #fff; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px; margin-bottom: 0;}
+.userConnectedHistoryPageWrapper .delButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none;}
+  /* 30.06.25 */
+
+
+
+.chatOverlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.4); /* semi-transparent black */ z-index: 1000; overflow-y: hidden; }
+.chatWindowLoaderContainer{ width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+/* .chatWindowWrapper { margin: 0; padding: 0; width: 45vw; height: 90vh; background-color: #71cdea; position: fixed; top: 5vh; left: 28vw; z-index: 99999; border: none; border-radius: 36px; } */
+.chatWindowWrapper {margin: 0;
+  padding: 0;
+  width: 400px;
+  height: 80vh;
+  position: fixed;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  border: none;
+  border-radius: 24px;
+  border: 13px solid #0085DA;
+  border-radius: 37px;}
+.chatWindowTop { padding: 0 0 0 24px; position: static; }
+.chatWindowContainer { margin: 0; padding: 12px 24px 24px 24px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; height: 100%; background-color: #0085DA; border: 2px solid #fff;
+  border-radius: 24px;}
+.eclipseImage { margin: 0; padding: 0; scale: 1; position: absolute; top: -180px; left: -500px; /* z-index: 999; */ }
+
+.chatWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: rgb(42, 38, 38); font-size: 24px; background-color: #fff; display: flex; align-items: center; justify-content: center; border: none; border-radius: 50%; position: absolute; top: -17px; right: -17px; z-index: 999999999; }
+.userName {width: 100%; margin: 0; padding: 0; margin-top: 0px; color: white; font-family: "Sora"; font-weight: 300 !important; font-size: 16px; }
+.chatWindowWrapper .successConnectionMessage{ padding: 12px 21px;
+  width: 100%; background-color: #ffbf61; color: white; font-family: 'Sora'; font-weight: 400; font-size: 15px; align-self: center; text-align: center; border: none; border-radius: 50px;}
+.chatWindowInner { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; background-color: transparent; width: 100%; max-height: 85%; overflow: auto; scrollbar-width: none; /* Firefox */ -ms-overflow-style: none; /* IE and Edge */ }
+.usersMessageContainer { margin: 0; padding: 10px 18px; max-width: 95%; color: white; font-size: 16px; /* 02.07.25 */ font-weight: 200; line-height: 25px; /* 02.07.25 */ font-family: "Sora"; align-self: flex-start; background-color: #3bb2ff; border: none; border-radius: 12px 12px 12px 0px; }
+.ownMessageContainer { margin: 0; padding: 18px 24px; max-width: 95%; color: white; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; background-color: #648cbb; border: none; border-radius: 12px 12px 0px 12px; width: 80%;}
+
+.writeMessageView { margin: 0; padding: 0 0 0 8px; width: 98%; background-color: white; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: none; overflow: hidden; border-radius: 30px; }
+.writeMessageInput { margin: 0; padding: 12px 10px 11px 14px; width: 90%; background-color: white; color: black; font-family: "Sora"; font-size: 14px; font-weight: 400; border: none; outline: none; }
+.sendMessageButton { margin: 0; padding: 0; width: 47px; height: 44px; background-color: #02bc6b; outline: none; border: none; border-radius: 50%; align-items: center; cursor: pointer; display: flex; /*02.07.25*/ justify-content: center; /*02.07.25*/ }
+.chatMessageSendingLoader{ top: 45%; left: 30%; width: 40%; height: 10%; background-color: #3bb2ff; display: flex; align-items: center; justify-content: center; align-self: center; position: absolute; border: none; color: white; font-family: 'Sora'; font-size: 14px; border: none; border-radius: 6px; }
+
+.messagesOverlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */ z-index: 1000; overflow-y: hidden; }
+.messagesWindowWrapper { margin: 0; padding: 0; width: 400px; height: 80vh; background-color: white; position: fixed; top: 10vh; left: 50%; transform: translateX(-50%); z-index: 99999; border: none; border-radius: 24px; overflow: hidden; border: 13px solid #0085DA; border-radius: 37px;}
+.messagesWindowWrapper .messagesWindowTop { padding: 0 0 0 24px; position: static; }
+.messagesWindowWrapper .messagesWindowContainer { margin: 0; padding: 12px 24px 24px 24px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; height: 100%; background-color: transparent; z-index: 99999999; }
+/* .eclipseImage {
+  margin: 0;
+  padding: 0;
+  scale: 1;
+  position: absolute;
+  top: -180px;
+  left: -500px;
+} */
+
+.messagesWindowWrapper .messagesWindowCloseBtn { width: 40px; height: 40px; color: rgb(42, 38, 38); font-size: 24px; background-color: #fff; display: flex; align-items: center; justify-content: center;  border-radius: 50%; position: absolute; top: 0; right: 0; z-index: 999999999; cursor: pointer; }
+.messagesWindowWrapper .messagesWindowInner { margin: 0; padding: 0; padding-bottom: 12px; max-height: 95%; display: flex; flex-direction: column; align-items: flex-end; gap: 24px; background-color: transparent; overflow: auto; scrollbar-width: none; /* Firefox */ -ms-overflow-style: none; /* IE and Edge */ }
+.messagesWindowWrapper .messageContainerTop{ margin-bottom: 6px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.messagesWindowWrapper .username { margin: 0; padding: 0; color: gray; font-family: "Sora"; font-weight: 300 !important; font-size: 12px; }
+.messagesWindowWrapper .messageTime{ text-align: right; color: gray; font-size: 10px; font-family: "Sora"; font-weight: 300 !important; }
+.messagesWindowWrapper .usersMessageContainer { margin: 0; padding: 10px 16px 0px 16px; max-width: 95%; color: black; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; align-self: flex-start; background-color: #3bb2ff; border: none;     border-radius: 12px 12px 12px 0px; }
+.messagesWindowWrapper .ownMessageContainer { margin: 0; padding: 10px 8px 0px 16px; max-width: 95%; color: black; background-color: #d7e9fe; font-size: 15px; font-weight: 200; line-height: 24px; font-family: "Sora"; border: 1px solid #1c79ba; border-radius: 12px 12px 0px 12px; width: 80%;}
+
+.loaderContainer {width: 86vw; height: 100vh; overflow-y: hidden;}
+
+.initialLoaderOverlay { margin: 0; padding: 0; width: 100%; height: 80%; background-color: #f4f8fb; z-index: 900000000; display: flex; align-items: center; justify-content: center; }
+.initialLoaderContainer { margin: 0; padding: 0; width: 360px; height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: transparent; z-index: 999999999; }
+.preloaderImageContainer { margin: 0; padding: 0; width: 240px; height: 180px; overflow: hidden; object-fit: cover; }
+.preloaderAnimation { width: 100%; height: 100%; object-fit: cover; }
+.loadingText { margin: 0; padding: 0; color: #000000; font-size: 18px; font-family: "Poppins"; font-weight: 400; }
+
+.animatingPreLoader { width: 48px; height: 48px; border-radius: 50%; position: relative; animation: rotate 1s linear infinite; margin: 0 auto; /* 02.07.25 */ }
+.animatingPreLoader::before, .animatingPreLoader::after { content: ""; box-sizing: border-box; position: absolute; inset: 0px; border-radius: 50%; border: 5px solid #8eca02; animation: prixClipFix 2s linear infinite; }
+.animatingPreLoader::after { inset: 8px; transform: rotate3d(90, 90, 0, 180deg); border-color: #ffffff; }
+@keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+@keyframes prixClipFix { 0% { clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0); } 50% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0); } 75%, 100% { clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%); } }
+
+
+/* ---------- Merchant Profile ----------- */
+
+/* ////////////////////////////// spinner for button ///////////////// */
+
+.spinner { border: 2px solid #f3f3f3; border-top: 2px solid #3498db; border-radius: 50%; width: 16px; height: 16px; animation: spin 0.6s linear infinite; display: inline-block; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* ---------------- Admin Profile -------------- */
+.adminProfileWrapper {min-height: calc(100% - 65px);}
+.adminProfileWrapper .adminDashboardContainer {padding: 0 52px 40px;}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainer {padding-top: 150px;}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader {margin: 0; margin-bottom: 0px; padding: 0; background-color: #0085da; width: 73vw; height: 65px; align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
+.adminProfileWrapper .adminDashboardContainer .adminProfileContainerHeader .adminProfileHeaderCompanyTitle {padding: 0 28px; color: #fff; font-family: "Poppins"; font-weight: 600; font-size: 18px; letter-spacing: 1px;}
+.adminProfileWrapper .profileInnerDetailsContainer {margin: 0; width: 73vw; background-color: #e3f1ff; overflow: hidden; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; padding: 36px 28px 15px; border: none; border-radius: 20px; /*box-shadow: 0 0 5px 0 rgb(192, 192, 192);*/ box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #f6fbff;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox {padding-bottom: 14px; margin-bottom: 25px;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox:first-child {border-bottom: 1px solid #0f8cdd;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileDataTitle {color: #807B7B; font: 600 20px/25px "Poppins";}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .profileData {color: #807B7B; font: 400 15px/25px "Poppins";}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .loginInputCol,
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputCol {border-bottom: 1px solid #0f8cdd; width: 45%; margin-bottom: 15px;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .loginFormInputField {border: none; padding: 0px 0 15px; background: transparent;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .checkBoxRow {margin-top: 19px; }
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .checkBoxRow .showPassword {color: #807B7B; font: 400 15px/25px "Poppins";}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .forgetPassword {color: #807B7B; font: 400 15px/25px "Poppins"; margin-top: 10px;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .forgetPassword .forgetPasswordLink {margin-left: 5px;}
+.adminProfileWrapper .profileInnerDetailsContainer .inputColWrapper {padding-top: 30px;}
+.adminProfileWrapper .profileInnerDetailsContainer .inputColWrapper .inputCol p {color: #807B7B; font: 600 15px/25px "Poppins";}
+
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputColWrapper > .row {border-bottom: none; margin: 0 0 15px; column-gap: 50px; width: 100%; justify-content: space-between;}
+.adminProfileWrapper .profileInnerDetailsContainer .profileDetailsBox .inputColWrapper > .row > .col-lg-6 {width: calc(50% - 25px); padding: 0; border-bottom: 1px solid #0f8cdd;}
+
+/* ------ Admin Connect ------  */
+.adminUserlistWrapper {min-height: calc(100% - 65px);}
+.adminUserlistWrapper .adminDashboardContainer {padding: 0 52px 40px; }
+.adminUserlistWrapper .adminDashboardContainer .adminUserlIstContainer {padding-top: 150px;}
+.adminUserlistWrapper .tableContainerWrap {box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0; border-radius: 32px; width: 73vw;}
+.adminUserlistWrapper .tableContainer {margin: 0; padding: 0; width: 100%; background-color: #e3f1ff; border: none; border-collapse: collapse; outline: none; border-spacing: 0; overflow: hidden; border-radius: 20px;}
+.adminUserlistWrapper .tableContainer .theadContainer {margin: 0; padding: 0; width: 100%; height: 60px; background-color: #0085da;}
+.adminUserlistWrapper .th {padding: 0 36px; color: #fff; letter-spacing: 0.4px; text-align: left; font: 600 14px "Sora";}
+.adminUserlistWrapper .thActions {margin: 0; padding: 0 40px 0 0; color: #fff; font: 600 14px "Sora"; text-align: center;}
+.adminUserlistWrapper .tr {height: 60px; }
+.adminUserlistWrapper .tr:not(:last-child) {border-bottom: 1px solid #91909036 !important; }
+.adminUserlistWrapper .td {color: #383838; font: 400 15px "Poppins"; padding: 0 36px;}
+.adminUserlistWrapper .viewButton {width: 35px; height: 35px; background-color: #0085da; border: 1px solid #23b7e5; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
+.adminUserlistWrapper .delButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none;}
+.adminUserlistWrapper .editButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #008000; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
+.adminUserlistWrapper .actionTd {padding: 0 48px 0 0; text-align: center;}
+.adminUserlistWrapper .chatWindowWrapper .writeMessageView {display: none;}
+
+
+/* ----------- Confirmation Modal ---------------- */
+
+.modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: flex; align-items: center; justify-content: center; z-index: 1000; animation: fadeIn 0.3s ease-in-out; }
+.modalContentWrap {border: 10px solid #0085DA; border-radius: 20px;  position: relative;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s ease;
+              border: 13px solid #0085DA;}
+.modalContent { background: #0085DA; color: #fff; padding: 25px; border-radius: 10px; width: 300px; text-align: center; border: 2px solid #fff;}
+.modalActions { margin-top: 20px; display: flex; justify-content: center; column-gap: 15px;}
+.cancelBtn { background-color: #FFBF61; padding: 6px 12px; border: none; border-radius: 5px; width: 72px;}
+.confirmBtn { background-color: #e60e4e; color: white; padding: 6px 12px; border: none; border-radius: 5px; width: 72px;}
+.modalContentWrap.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+/* ------------- User Details Modal ----------------- */
+.userDetailsOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(4, 4, 4, 0.4); display: flex; align-items: center; justify-content: center; z-index: 1000; animation: fadeIn 0.3s ease-in-out; }
+.userDetailsBoxWrapper {
+  position: relative;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s ease;
+              border: 13px solid #0085DA;
+    border-radius: 37px;
+}
+.userDetailsBoxWrapper.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* old modal css */
+/* .userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #6a8196; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -7px; right: -7px; z-index: 999999999;}
+.userDetailsBoxWrapper .userDetailsBox {background-color: #0085DA; padding: 50px 50px 35px; border-radius: 24px; width: 850px; position: relative; }
+.userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 20px; align-items: center; column-gap: 15px;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup label {color: #fff; font: 600 17px/25px "Sora"; flex: 0 0 150px;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup input, 
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea { width: 100%; padding: 8px 25px; border: 1px solid #FFFFFF; color: #fff; border-radius: 6px; background: transparent; height: 58px; outline: none; box-shadow: none; font: 300 17px/25px "Sora";}
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
+
+
+.userUpdateBoxWrapper .userDetailsBox {padding: 0px 40px 28px !important;}
+/* .userDetailsBoxWrapper {position: relative;}
+.userDetailsBoxWrapper::before {content: ''; width: 1px; height: 100%; position: absolute; left: 34%; top: 173px; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);} */
+
+.userDetailsBoxWrapper .messagesWindowCloseBtn {cursor: pointer; width: 40px; height: 40px; color: #fff; font-size: 24px; background-color: #fff; display: flex; align-items: center; justify-content: center; border: none;  border-radius: 50%; position: absolute; top: -17px; right: -17px; z-index: 999999999;}
+.userDetailsBoxWrapper .userDetailsBox {text-align: end; background-color: #0085DA; padding: 35px 40px 28px; border-radius: 24px; width: 650px; position: relative; border: 2px solid #fff; height: 80vh;  overflow-y: scroll;
+scrollbar-width: none;}
+
+.userDetailsBoxWrapper .userDetailsBox::before {content: ''; width: 1px; height: 1910px; position: absolute; left: 34%; top: 173px; background-image: linear-gradient(#ffffff1f, #ffffffdb, #ffffff1f);}
+.userDetailsBoxWrapper .userDetailsBox .formGroup {display: flex; margin-bottom: 15px; align-items: center; column-gap: 65px; text-align: left; }
+.userDetailsBoxWrapper .userDetailsBox .formGroup label {color: #fff; font: 500 16px/25px "Sora"; flex: 0 0 150px;}
+.userDetailsBoxWrapper .userDetailsBox .formGroup input, 
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {align-content: center; width: 100%; padding: 8px 20px; border: none; color: #fff; border-radius: 6px; background: transparent; height: 43px; outline: none; box-shadow: none; font: 300 16px/25px "Sora";}
+.userDetailsBoxWrapper .userDetailsBox .formGroup textarea {min-height: 43px;
+  height: auto;}
+.userDetailsBoxWrapper .userDetailsBox .popButton {margin-left: 17px; padding: 0; width: 120px; height: 42px; text-align: center; color: #000000; background-color: #FFBF61; font: 600 15px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 10px;  transition: all .5s ease-in-out;}
+.userDetailsBoxWrapper .userDetailsBox .popButton:hover {background: #ffffff;}
+/* .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {height: 85px;} */
+.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo {margin-bottom: 30px;  display: flex; justify-content: center; align-items: center; column-gap: 8px;}
+.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo .userImgWrapper {flex: 0 0 40%; width: 40%; min-width: 40%;}
+.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo .formGroup {margin-bottom: 0px; flex: 0 0 60%; width: 60%; max-width: 60%;}
+.userDetailsBoxWrapper .userDetailsBox .userHeaderInfo .formGroup input.userName {font-size: 25px; font-weight: 600 !important; text-transform: uppercase; padding-left: 5px;}
+.userDetailsBoxWrapper .userDetailsBox .userImg {text-align: left; width: 90px; height: 90px; border-radius: 20px; overflow: hidden; margin: 0 auto; box-shadow: 2px 2px 11px #00000082;}
+.userDetailsBoxWrapper .userDetailsBox .userImg img {width: 100%; height: 100%; object-fit: cover; border: 2px solid #fff; padding: 4px; border-radius: 20px;}
+
+.merchantDetailsModalWrapper .merchantDetailsModalContainer .userHeaderInfo {margin-bottom: 10px;  display: flex; justify-content: center; align-items: center; column-gap: 8px; width: 100%;}
+.merchantDetailsModalWrapper .merchantDetailsModalContainer .userHeaderInfo .userImgWrapper {flex: 0 0 40%; width: 40%; min-width: 40%;}
+.merchantDetailsModalWrapper .merchantDetailsModalContainer .userHeaderInfo .formGroup {margin-bottom: 0px; flex: 0 0 60%; width: 60%; max-width: 60%;}
+.merchantDetailsModalWrapper .merchantDetailsModalContainer .userHeaderInfo .formGroup input.userName {font-size: 25px; font-weight: 600 !important; text-transform: uppercase; padding-left: 5px;}
+.merchantDetailsModalWrapper .merchantDetailsModalContainer .userImg {text-align: left; width: 90px; height: 90px; border-radius: 20px; overflow: hidden; box-shadow: 2px 2px 11px #00000082;}
+.merchantDetailsModalWrapper .merchantDetailsModalContainer .userImg img {width: 100%; height: 100%; object-fit: cover; border: 2px solid #fff; padding: 4px; border-radius: 20px;}
+.msf_name{font-size: 25px; text-align: left; padding: 0; }
+
+@keyframes fadeIn {
+  from {
+    background-color: rgba(4, 4, 4, 0);
+  }
+  to {
+    background-color: rgba(4, 4, 4, 0.4);
+  }
+}
+
+.updateform .userDetailsBoxWrapper .userDetailsBox::before {width: 0;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup input, 
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup textarea,
+ .updateform .userDetailsBoxWrapper .userDetailsBox .formGroup select{border: 1px solid #fff; border-radius: 7px; background: #ffffff14; height: 40px; width: 100%; padding: 8px 16px;}
+  .updateform .userDetailsBoxWrapper .userDetailsBox .formGroup select{color: #fff;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup textarea {min-height: 43px; height: auto;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .popButton {margin: 0; padding: 0; width: 135px; height: 43px; text-align: center; color: #000000; background-color: #FFBF61; font: 600 16px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 10px; transition: all .5s ease-in-out;}
+.updateform .userDetailsBoxWrapper .userDetailsBox {text-align: end;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .formGroup {text-align: left; column-gap: 35px;}
+.updateform .userDetailsBoxWrapper .userDetailsBox .popButton:hover {background: #ffffff;}
+
+/* ------ Admin Contact list ------ */
+.contactlistWrapper {min-height: calc(100% - 65px);}
+.contactlistWrapper .adminDashboardContainer {padding: 0 52px 40px;}
+.contactlistWrapper .contactlistContainer  {padding-top: 150px; width: 73vw;}
+.contactlistWrapper .contactlistContainer .accordionWrap {box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0; border-radius: 32px;}
+.contactlistWrapper .contactlistContainer .accordion {border-radius: 20px; overflow: hidden; border: none;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item {border: none; background-color: #fff;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button {column-gap: 20px; text-transform: capitalize; padding-left: 40px; outline: none; box-shadow: none; padding-right: 85px; height: 75px; color: #6A8196; font: 400 16px "Sora"; background: #e3f1ff;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-header {display: flex; background-color: #fff;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-header .delButton {margin-left: -70px; z-index: 9; width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none; margin-top: 20px; display: flex; justify-content: center; align-items: center;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button[aria-expanded="true"] { box-shadow: 0px 3px 7px -6px rgb(192, 192, 192); background: #e3f1ff;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body {row-gap: 20px; background-color: #F5F5FE; padding: 40px 42px;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body > .col-lg-3 {font: 600 16px/24px "Sora"; color: #6A8196;}
+.contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body > .col-lg-9 {font: 300 16px/24px "Sora"; color: #6A8196;}
+.accordion-button::after { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230085DA'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;  }
+
+
+/* --------- connect popup ---------- */
+
+.messagesWindowWrapper {overflow: visible;}
+.messagesWindowWrapper .messagesWindowContainer {background-color: #0085DA; border-radius: 24px; padding: 25px 24px; border: 2px solid #fff;}
+.messagesWindowWrapper .messagesWindowInner {width: 100%;}
+.messagesWindowWrapper .usersMessageContainer {background-color: #3bb2ff; color: #fff;}
+.messagesWindowWrapper .username {color: #fff;}
+.messagesWindowWrapper .messageTime {color: #fff; margin-top: 5px;}
+.messagesWindowWrapper .messagesWindowCloseBtn {top: -17px; right: -17px;}
+.messagesWindowWrapper .messageText {font: 300 16px/25px "Sora";}
+.messagesOverlay {background-color: rgba(0, 0, 0, 0.4);}
+.messagesWindowWrapper .ownMessageContainer {background-color: #648cbb; font: 300 15px/24px "Sora"; border: none;}
+.messagesWindowWrapper .ownMessageContainer .messageContainerTop {color: #fff; font: 300 15px/24px "Sora"; }
+.messagesWindowWrapper .ownMessageContainer .messageText {color: #fff; font: 300 16px/24px "Sora"; }
+
+.adminDashboardWrapper .messagesWindowWrapper {overflow: visible;}
+.adminDashboardWrapper .messagesWindowWrapper .messagesWindowContainer { border-radius: 24px;}
+.adminDashboardWrapper .messagesWindowWrapper .messagesWindowInner {width: 100%;}
+.adminDashboardWrapper .messagesWindowWrapper .usersMessageContainer {background-color: #3bb2ff; color: #fff;}
+.adminDashboardWrapper .messagesWindowWrapper .username {color: #fff;}
+.adminDashboardWrapper .messagesWindowWrapper .messageTime {color: #fff;}
+
+/* --------------------- tooltip design ------------------------  */
+
+.tooltip.custom-tooltip .tooltip-inner {
+  background-color: #333 !important;
+  color: #fff !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  max-width: none !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.tooltip.custom-tooltip .tooltip-arrow::before {
+  content: "";
+  border-width: 5px !important;
+  border-style: solid !important;
+}
+
+/* Top arrow */
+.tooltip.custom-tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: #333 !important;
+}
+
+/* Bottom arrow */
+.tooltip.custom-tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: #333 !important;
+}
+.tooltipWrapper { position: relative; display: inline-block; }
+
+.tooltipWrapper:hover .tooltipText { visibility: visible; opacity: 1; }
+.tooltipText { visibility: hidden; width: max-content; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 6px 8px; position: absolute; z-index: 999; top: 125%; /* Changed from bottom: 125% to top: 125% */ left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; font-size: 12px; }
+.tooltipText::after { content: ""; position: absolute; bottom: 100%; /* Arrow points up now */ left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: transparent transparent #333 transparent; /* Changed arrow color direction */ }
+
+
+
+/*.......accordian start...........*/
+.merchantaccordian-table .accordion .accordion-header button{background: transparent;}
+.merchantaccordian-table .accordion .accordion-header{border-radius: 8px; border-width: 3px; border-bottom-style: solid;}
+.merchantaccordian-table .accordion .accordion-header .accordion-button::after{filter:  brightness(0) invert(1);}
+.merchantaccordian-table .accordion .accordion-header .merchant-icon svg{background: #fff; height: 43px; width: 40px; padding: 1px 7px;
+border-radius: 5px; margin-right: 30px;}
+.merchantaccordian-table .accordion .accordion-header button{padding: 12px 15px 8px; box-shadow: none;}
+.merchantaccordian-table .merchant-heading{color: #fff; font: 400 14px/45px 'Poppins';}
+.merchantaccordian-table .accordion-item{border: none; background: transparent;}
+.merchantListAdmin .adminDashboardContainer{width: 78.3vw;}
+.merchantaccordian-table .accordianTableWrap {box-shadow: 0px 0px 10px #23b7e570; border: 12px solid #ffffffb0; border-radius: 32px;}
+.merchantaccordian-table  .accordion-body{padding: 38px 10px 0;}
+.merchantaccordian-table .accordion-body table thead,
+.merchantaccordian-table .accordion-body table tbody{border-bottom: solid 1px transparent; border-right: solid 1px transparent; border-left: solid 1px transparent; border-top: solid 1px transparent;}
+.merchantaccordian-table .accordion-body table tbody tr td{box-shadow: none;}
+.merchantaccordian-table .accordion-body table thead tr th,
+.merchantaccordian-table .accordion-body table tbody tr td{background: transparent;}
+.merchantaccordian-table .accordion-body table{background: #e3f1ff; border-radius: 16px; margin-bottom: 0;} 
+.merchantaccordian-table .accordion-body table tbody tr td{border-top: solid 1px #91909036;}
+.merchantaccordian-table .accordion-body table thead tr th{font: 600 15px/24px 'Poppins'; color: #6A8196; padding: 30px 20px 26px;}
+.merchantaccordian-table .accordion-body table tbody tr td{font: 500 14px/24px 'Poppins'; color: #6A8196; padding: 20px 20px 15px;}
+.merchantaccordian-table{padding-bottom: 30px;}
+/*.......accordian End...........*/
+
+
+
+.tooltipText { visibility: hidden; width: max-content; background-color: #333; color: #fff; text-align: center; border-radius: 6px; padding: 6px 8px; position: absolute; z-index: 10; top: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; white-space: nowrap; font-size: 12px; }
+
+.tooltipText::after { content: ""; position: absolute; bottom: 100%;left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: transparent transparent #333 transparent; }
+
+
+
+/* ---------------- Contact Page --------------- */
+
+.contactPageWrapper { margin: 0; padding: 50px 80px 120px; margin-top: 150px; display: flex; background-color: #fff; justify-content: space-between; align-items: flex-start; font-family: "Poppins"; flex-wrap: wrap; }
+.contactPageWrapper .formContainer { flex: 0 0 50%; max-width: 50%; width: 50%;}
+.contactPageWrapper .formContainer h2 { font-size: 28px; font-weight: 600; margin-bottom: 30px; color: #545454; font-family: "Poppins";}
+.contactPageWrapper form { display: flex; flex-direction: column; }
+.contactPageWrapper .row { display: flex; margin-bottom: 15px; }
+.contactPageWrapper .row.fullWidth { flex-direction: column; }
+.contactPageWrapper .inputGroup { flex: 1; display: flex; flex-direction: column; }
+.contactPageWrapper .inputGroup label { font-size: 15px; margin-bottom: 6px; color: #555; }
+.contactPageWrapper .inputGroup input, 
+.inputGroup textarea {outline: none; box-shadow: none; padding: 12px 14px; border: 1px solid #E4E4E4; border-radius: 8px; font-size: 14px; background-color: #fff; height: 65px;}
+.contactPageWrapper .inputGroup textarea { resize: none; min-height: 100px; }
+.contactPageWrapper .inputGroup input:focus,
+.contactPageWrapper .inputGroup textarea:focus {border: 1px solid #0095ff;}
+.contactPageWrapper button { background-color: #0095ff; color: white; padding: 12px 32px; border: none; border-radius: 10px; cursor: pointer; width: fit-content; font-size: 16px; font-weight: 500; margin-top: 10px; transition: background-color 0.3s ease; text-transform: uppercase;}
+.contactPageWrapper button:hover { background-color: #007fd4; }
+.contactPageWrapper .imageContainer { flex: 1; max-width: 45%; display: flex; justify-content: center; align-items: center; }
+.contactPageWrapper .imageContainer img { max-width: 100%; height: auto; object-fit: contain; }
+
+
+/* ---------- Footer Bar -------------  */
+.footerBottomBar {background-color: #d1eafa; text-align: center; color: #535353; font: 500 16px "Poppins"; text-transform: uppercase; margin: 0; padding: 20px 10px;} 
+/* 
+.merchantListAdmin .merchantaccordianWrap .merchantaccordian-table:first-child .accordion-header {background-color: #599CB1 !important; border-bottom-color: #368197 !important;}
+.merchantListAdmin .merchantaccordianWrap .merchantaccordian-table:last-child .accordion-header {background-color: #4E688C !important; border-bottom-color: #364F71 !important;} */
+.merchantDashboardWrapper .adminDashboardTopbar,
+.merchantProfileWrapper .adminDashboardTopbar,
+.userConnectedHistoryPageWrapper .adminDashboardTopbar {padding: 30px 70px 23px 52px; width: 83vw; justify-content: space-between;}
+
+.mainLayoutContainer .userDetailsBoxWrapper {border: none; width: 680px;
+  left: 50%;
+  transform: translateX(-50%);}
+.mainLayoutContainer .merchantDetailsModalWrapper {border: 13px solid #0085DA;  border-radius: 37px; height: auto;}
+.mainLayoutContainer .merchantDetailsModalWrapper .merchantDetailsModalContainer {padding: 50px 35px 35px; border: 2px solid #fff;  border-radius: 24px; height: 86vh; overflow: auto; scrollbar-width: none;}
+.mainLayoutContainer .merchantDetailsModalWrapper .modalConnectBtn {padding: 10px;}
+
+/* ---------- radio button ------------ */
+
+.radioGroup { display: flex; gap: 30px; margin-top: 5px; }
+
+.radioLabel { display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
+.radioInput { accent-color: #106cb5; }
+
+/* ------------ modal popup -------------- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0f8cdd;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.modalContentWrapper {border: 13px solid #0085DA; border-radius: 20px;}
+.modalContentWrapper .modal-content {background: #0085DA; color: #fff; padding: 25px; border-radius: 10px; text-align: center; border: 2px solid #fff; box-shadow: none;}
+.modalContentWrapper .modal-content .modal-button {background-color: #FFBF61; color: #000; padding: 8px 25px; border: none; border-radius: 5px; margin: 5px auto;}
+
+.passwordRulesContainer ul.passwordRulesList {padding-left: 17px; margin-bottom: 4px;}
+.passwordRulesContainer ul.passwordRulesList li {font-size: 13px;}
+
+.selectField option {color: #000;}
+
+/* .merchantDetailsModalContainer .userHeaderInfo {
+  width: 100%;
+  margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 8px;
+}
+.merchantDetailsModalContainer .userHeaderInfo .userImg {text-align: left;
+  width: 90px; height: 90px; border-radius: 20px; overflow: hidden; margin: 0 auto; box-shadow: 2px 2px 11px #00000082; margin-right: 58px;}
+.merchantDetailsModalContainer .userHeaderInfo .formGroup {margin-bottom: 0px;
+    flex: 0 0 60%; width: 60%; max-width: 60%;}
+  
+    .merchantDetailsModalContainer .userHeaderInfo .formGroup .data {
+  font-size: 25px;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    padding-left: 5px;
+}
+.merchantDetailsModalWrapper::before {
+  height: 62%;
+  left: 35%;
+  top: 64%;
+}
+.merchantDetailsModalWrapper .merchantDetailsModalContainer {} */
+
+.providerProfileWrapper .inputField { margin: 0; padding: 0 24px; width: 50%; font-size: 14px; letter-spacing: 0.5px; border: none; outline: none; height: 58px; border-radius: 6px; border: solid 1px #9b9898;}
+
+
+/* cookieConsent.css */
+.cookie-consent { position: fixed; bottom: 20px; left: 20px; background-color: #d1eafa; color: #000; padding: 16px 24px; border-radius: 8px; z-index: 1000; max-width: 300px; box-shadow: 0px 0px 10px #00000066; text-align: center; }
+.cookie-buttons { margin-top: 10px; display: flex; gap: 10px; margin-left: 36px; }
+
+.cookie-buttons button { padding: 8px 16px; border: none; cursor: pointer; border-radius: 4px; }
+
+.cookie-buttons button:first-child { background-color: #003478; color: white; border-radius: 10px; }
+
+.cookie-buttons button:last-child { background-color: #f44336; color: white; border-radius: 10px; }
+
+
+
+
+/* ----------- Agent details  */
+.agentDetailsWrapper .dataTitle {color: #000;}
+.agentDetailsWrapper .data {color: #000;}
+.agentDetailsBoxWrapper .agentDetailsWrapper {margin: 0 auto; padding: 73px 75px 150px 75px; margin-top: 120px; background-color: #d1eafa; min-height: 100vh; align-items: center; position: relative;} 
+.agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsContainer {margin: 0; padding: 28px; background-color: #e3f1ff; border: 12px solid #f6fbff; border-radius: 20px; box-shadow: 0px 0px 10px #23b7e570;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsContainer .userHeaderInfo {display: flex; align-items: center; column-gap: 30px; margin-bottom: 30px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userImg {border: 2px solid #fff; width: 90px; height: 90px; border-radius: 20px; overflow: hidden; box-shadow: 2px 2px 11px #00000082;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userImg img {width: 100%; height: 100%; object-fit: cover; border: 4px solid #0085DA; padding: 0px; border-radius: 20px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .agentName {color: #807B7B; font: 500 20px/25px "Poppins";}
+.agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsInfo {display: flex; flex-wrap: wrap; column-gap: 50px; row-gap: 15px; padding-bottom: 35px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsInfo .dataRowContainer {width: 48%; flex: 0 0 48%; height: auto; column-gap: 20px; align-items: flex-start;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsInfo .dataRowContainer .dataTitle {color: #807B7B; font: 500 17px/25px "Poppins"; width: 100%; max-width: 500px; display: flex; align-items: flex-start;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsInfo .dataRowContainer .data {margin-top: -4px; font-weight: 400; font-size: 16px; line-height: 25px; color: #6a8196; font-family: "Poppins"; align-items: flex-start;}
+
+.agentDetailsBoxWrapper .modalContent {background-color: #0085DA; border:none; border-radius: 20px; max-width: 38vw; width: 100%; margin: 0 auto; padding: 20px;}
+.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap > h2 {font: 700 30px "Sora"; text-align: center; color: #fff; margin-bottom: 20px;}
+.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap > p {text-align: center; font-size: 14px; font-weight: 400; font-family: "Poppins"; color: #fff;}
+.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap {border: solid 3px #fff; border-radius: 15px; padding: 40px;}
+.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .connectInput .connectInputTitle {color: #fff; font-family: "Poppins"; font-weight: 400; font-size: 15px; text-align: start;}
+.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .connectInput .inputField {width: 100%; border: none; border-radius: 10px; height: 100%; padding: 20px; margin: 5px 0 20px;}
+/* .agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons {} */
+.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .cancelBtn {margin-right: 20px; border: none; background-color: #FFBF61; color: #000; font-family: "Poppins"; font-weight: 600; font-size: 18px; text-transform: uppercase; border-radius: 10px; padding: 8px 20px; width: auto;}
+.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .cancelBtn:hover {background: #fff; transition: .5s;}
+.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .confirmBtn {width: auto; font-family: "Poppins"; font-weight: 600; font-size: 18px; text-transform: uppercase; border-radius: 10px; padding: 8px 20px;}
+.agentDetailsBoxWrapper .modalContent .modalContentInnerWrap .modalButtons .confirmBtn:hover {background: #FFBF61; transition: .5s; color: #000;}
+
+/* ------ new agent details design  */
+.agentDetailsBoxWrapper .agentDetailsWrapper {margin: 0 auto; padding: 73px 75px 150px 75px; margin-top: 120px; background-color: #d1eafa; min-height: 100vh; align-items: center; position: relative;} 
+.agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsContainer {margin: 0; padding: 28px 28px 65px 28px; background-color: #e3f1ff; border: 12px solid #f6fbff; border-radius: 20px; box-shadow: 0px 0px 10px #23b7e570;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap {display: flex; padding-bottom: 50px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userImgWrapper {flex: 0 0 25%; width: 25%;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userImg {width: 100%; max-width: 342px; height: 100%; max-height: 450px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon {flex: 0 0 75%; width: 75%; padding-left: 50px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .agentNameWrap {display: flex; justify-content: space-between;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .agentName {color: #000000; font: 500 25px/35px "Poppins"; margin: 10px 0px 18px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .inputWrapCon {padding-bottom: 20px; border-bottom: 1px dashed #cdcdcd; margin-bottom: 20px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .inputWrapCon .titleField {color: #565656; font: 400 16px / 25px "Poppins"; margin-bottom: 8px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .inputWrapCon .titleData {color: #000; font: 500 19px / 25px "Poppins";}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap {padding-bottom: 50px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon {background: #f7fbfe; border-radius: 20px; min-height: 130px; padding: 20px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon .titleField {color: #565656; font: 400 16px / 25px "Poppins"; margin-bottom: 8px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon .titleData {color: #000; font: 500 19px / 25px "Poppins";}
+/* .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviews {padding-bottom: 50px;} */
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviews .titleField {color: #565656; font: 400 16px / 25px "Poppins"; margin-bottom: 8px;}
+.tableWrapper { position: relative; }
+
+.tableOverlayLoader { position: absolute; inset: 0; /* top: 0; right: 0; bottom: 0; left: 0 */ display: flex; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.6); z-index: 5; backdrop-filter: blur(2px); }
+
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap {background: #f7fbfe; border-radius: 20px; padding: 20px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .sectionTitle {color: #000000; font: 600 25px / 35px "Poppins"; margin-bottom: 25px; padding-bottom: 15px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection {margin-bottom: 30px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap {display: flex; align-items: center; column-gap: 30px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap progress {width: 82%; height: 10px; border: 1px solid #ebebeb; border-radius: 5px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap progress::-webkit-progress-bar {background-color: #f4f6f8; border-radius: 5px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap progress::-webkit-progress-value {background-color: #0085DA; /* inner */ border-radius: 5px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap .reviewCount {color: #565656; font: 400 16px / 25px "Poppins";}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap .reviewCount span {color: #000; font: 600 16px / 25px "Poppins"; margin-right: 10px;}
+
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection {padding: 23px 11px 15px 0px; margin-bottom: 10px; border-bottom: 1px dashed #cdcdcd;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingHeaderInfo {display: flex; justify-content: space-between; align-items: center;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingheaderInfoLeft {column-gap: 10px; display: flex; align-items: center;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingUserName {margin-bottom: 0px; font: 500 19px / 25px "Poppins"; color: #000;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingUserTime {margin-bottom: 0px; font: 400 13px / 13px "Poppins"; color: #565656;} 
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingConInfo {font: 400 16px / 25px "Poppins"; color: #565656; padding-top: 15px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingheaderInforight {display: flex; align-items: center;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingheaderInforight .startWrap span {font: 600 16px / 25px "Poppins";}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingheaderInforight span.avgRating {margin-right: 10px; font: 600 16px / 25px "Poppins"; color: #000;}
+
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .allReviews {font: 400 16px / 25px "Poppins"; color: #0085DA; margin: 25px 0px 15px;}
+
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .ratingCol {text-align: center; margin-top: 23px;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .ratingCol > span {font: 600 40px / 40px "Poppins"; color: #000;}
+.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .ratingCol .starWrap span {font: 600 20px / 20px "Poppins"; margin-right: 5px;}
+
+
+/* ----------- New Merchant Connected history 1 -------------  */
+.userConnectedHistoryPageWrapper .th {text-align: center;}
+.userConnectedHistoryPageWrapper .td {text-align: center; width: 25%; padding: 0 10px;}
+.userConnectedHistoryPageWrapper .tableContainer {border-radius: 20px 20px 0 0;}
+.userConnectedHistoryContainer .accordion .accordion-body {background-color: #e3f1ff;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .profileDetailsConHead {background: #fdfcff; padding: 30px 25px 25px; border-radius: 20px; border: 1px solid #f1f1f1;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopWrap {margin-bottom: 40px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopWrap .userImgWrapper {flex: 0 0 20%; width: 20%;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopWrap .userImgWrapper .userImg {width: 100%; max-width: 342px; height: 100%; max-height: 450px; border: 2px solid #fff; border-radius: 20px; overflow: hidden; box-shadow: 2px 2px 11px #00000082;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopWrap .userImgWrapper .userImg img {width: 100%; height: 100%; object-fit: cover; border: 4px solid #0085DA; padding: 0px; border-radius: 20px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon {flex: 0 0 80%; width: 80%; padding-left: 40px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .titleDataUserName {color: #000000; font: 500 25px / 35px "Poppins"; margin: 10px 0px 18px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .inputWrapCon {padding-bottom: 20px; border-bottom: 1px dashed #cdcdcd; margin-bottom: 20px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon:nth-child(1) {margin: 0; padding: 0; border: none;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon:last-child() {margin-bottom: 0;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .inputWrapCon .titleField {color: #565656; font: 400 16px / 25px "Poppins"; margin-bottom: 8px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .inputWrapCon .titleData {color: #000; font: 500 19px / 25px "Poppins";} 
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec {margin-top: 40px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec h2 {color: #000000; font: 500 25px / 35px "Poppins"; margin-bottom: 20px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec > .row {background: #fdfcff; padding: 30px 15px 30px; border-radius: 20px; border: 1px solid #f1f1f1; margin: 0; }
+.userConnectedHistoryContainer .accordion .accordion-header > button {box-shadow: none; outline: none; border-radius: 0;}
+.userConnectedHistoryContainer .accordion .accordion-header button .userBtn {width: 22%; text-align: center; padding-left: 45px;}
+.userConnectedHistoryContainer .tableContainerWrap .tbodyContainer {border-radius: 0 0 23px 23px; overflow: hidden;}
+
+
+/* ---------- New Merchant Connected History 2 -------------  */
+/* .userConnectedHistoryPageWrapper .th {text-align: center;}
+.userConnectedHistoryPageWrapper .td {text-align: center; width: 25%; padding: 0 10px;}
+.userConnectedHistoryPageWrapper .tableContainer {border-radius: 20px 20px 0 0;}
+.userConnectedHistoryContainer .accordion .accordion-body {background-color: #e3f1ff; padding: 25px 25px 40px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .profileDetailsConHead {background: #fdfcff; padding: 30px 25px 25px; border-radius: 20px; border: 1px solid #f1f1f1;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopWrap {margin-bottom: 40px; align-items: center;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopWrap .userImgWrapper {flex: 0 0 15%; width: 15%;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopWrap .userImgWrapper .userImg {width: 100%; max-width: 150px; height: 100%; max-height: 150px; border: 2px solid #fff; border-radius: 20px; overflow: hidden; box-shadow: 2px 2px 11px #00000082;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopWrap .userImgWrapper .userImg img {width: 100%; height: 100%; object-fit: cover; border: 4px solid #0085DA; padding: 0px; border-radius: 20px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon {flex: 0 0 80%; width: 80%; padding-left: 40px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .titleDataUserName {color: #000000; font: 500 25px / 35px "Poppins"; margin: 0px 0px 5px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .titleDataEmail {color: #565656; font: 400 15px / 15px "Poppins"; margin-bottom: 15px;;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .inputWrapCon {padding-bottom: 20px; display: flex; column-gap: 10px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .userinfoinner {column-gap: 80px; padding-top: 10px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon:last-child() {margin-bottom: 0;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .inputWrapCon .titleData {color: #565656; font: 400 16px / 25px "Poppins";}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .inputWrapCon .titleField {color: #000; font: 500 17px / 23px "Poppins";} 
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec {margin-top: 40px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec h2 {color: #fff; font: 500 25px / 35px "Poppins"; margin-bottom: 20px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec > .row {background: #fdfcff; padding: 30px 15px 30px; border-radius: 20px; border: 1px solid #f1f1f1; margin: 0; row-gap: 0px;}
+.userConnectedHistoryContainer .accordion .accordion-header > button {box-shadow: none; outline: none; border-radius: 0;}
+.userConnectedHistoryContainer .accordion .accordion-header button .userBtn {width: 22%; text-align: center; padding-left: 45px;}
+.userConnectedHistoryContainer .tableContainerWrap .tbodyContainer {border-radius: 0 0 23px 23px; overflow: hidden;}
+
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoBottomCardWrap .userInfoCenterSec {background: #22a0f1; padding: 30px 24px 30px; border-radius: 20px; color: #fff; box-shadow: 0px 0px 10px #23b7e570; border: 5px solid #f6fbff;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec .titleData {color: #fff; font: 400 16px / 25px "Poppins";}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec .titleField {color: #fff; font: 500 17px / 23px "Poppins";} 
+.inputWrapConCol {flex-direction: column;}
+.inputWrapConCol .titleData ul {padding-top: 17px; padding-left: 18px; margin-bottom: 12px;}
+.inputWrapConCol .titleData ul li {list-style-type: none;}
+.inputWrapConCol .titleData ul li svg  {margin-right: 7px;} */
+
+
+/* ----------- Merchant Agent list ----------  */
+.merchantAgentList .merchantListPageWrapper {padding: 0; margin: 0; width: 73vw;}
+.merchantAgentList .merchantListPageWrapper .tableContainer {border-radius: 0;}
+.merchantAgentList .merchantListPageWrapper .tableContainer .ratingColWrap .ratingCol {max-width: 100% !important; width: 100%;}
+.merchantAgentList .merchantListPageWrapper .tableContainer .tbodyContainer .tr {background-color: #fff;}
+.merchantAgentList .merchantListPageWrapper .tableContainer .tbodyContainer .viewButton {background-color: #fff; margin: 0;}
+/* ............. Notification .................. */
+.notificationDropdown { position: absolute; top: 35px; right: 0; background: white; border: 1px solid #ddd; border-radius: 8px; width: 300px; max-height: 300px; overflow-y: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.15); z-index: 100; padding: 10px; }
+.notificationItem { padding: 8px; border-bottom: 1px solid #f1f1f1; }
+.notificationItem p { margin: 0; font-size: 14px; color: #333; }
+.notificationItem small { font-size: 12px; color: gray; }
+.noNotification { padding: 10px; text-align: center; color: gray; }

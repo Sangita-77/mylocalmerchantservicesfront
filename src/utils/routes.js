@@ -30,6 +30,7 @@ export const routes = {
   merchant_products: () => "/merchant/products",
   merchant_profile: () => "/merchant/profile",
   merchant_user_history: () => "/merchant/user_connected_history",
+  merchant_agent_list: () => "/merchant/agent_list",
 
 
   ///////////   PROVIDERS ADMIN  ///////////////  
