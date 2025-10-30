@@ -341,37 +341,83 @@ const UserConnectedHistory = () => {
                         data-bs-parent="#accordionExample"
                       >
                         <div className="accordion-body">
+                          <div className="merchantContainerHeader">
+                              <div className="merchantHeaderTitle">
+                                <DashboardTopHeading text="Company Information" />{" "}
+                              </div>
+                            </div>
                           <div className="profileDetailsCon">
                             <div className="profileDetailsConHead">
                               <div className="userHeaderInfoTopWrap d-flex">
-                                <div className="userImgWrapper">
+
+                                {/* <div className="userImgWrapper">
                                   <div className="userImg">
                                     <img src={placeholderimg} />
                                   </div>
-                                </div>
+                                </div> */}
 
                                 <div className="userHeaderInfoTopCon">
-                                  <div className="inputWrapCon">
+                                  {/* <div className="inputWrapCon">
                                     <div className="titleDataUserName">
                                       Demo1
                                     </div>
+                                  </div> */}
+
+                                  <div className="inputWrapCon company_area">
+                                    <div className="userImg order-2"><img src={placeholderimg} /></div>
+                                    <div className="usercompany order-1">
+                                      <div className="titleField">Company Name *</div>
+                                      <div className="titleData">Abc</div>
+                                    </div>
                                   </div>
 
-                                  <div className="inputWrapCon">
-                                    <div className="titleField">
-                                      Company Name:
+                                  <div className="inputWrapCon company_area_details">  
+                                    <h3 className="titleField">Company Mailing Address *</h3>
+                                    <div className="company_details_row">
+                                      <h5>Street Details</h5>
+                                      <div className="companydata">1115 Lyndon Street</div>
                                     </div>
-                                    <div className="titleData">Abc</div>
+                                    <div className="company_details_row cell_format">
+                                      <div className="company_cell">
+                                        <h5>City:</h5>
+                                        <div className="companydata">Marlow</div>
+                                      </div>
+                                      <div className="company_cell">
+                                        <h5>State:</h5>
+                                        <div className="companydata">Oklahoma</div>
+                                      </div>                                      
+                                      <div className="company_cell companycountry">
+                                        <h5>Country:</h5>
+                                        <div className="companydata">US</div>
+                                      </div>                                      
+                                      <div className="company_cell companyzip">
+                                        <h5>Zip:</h5>
+                                        <div className="companydata">73055</div>
+                                      </div>                                      
+                                      <div className="company_cell companyphone">
+                                        <h5>Phone:</h5>
+                                        <div className="companydata">580-658-5178</div>
+                                      </div>                                      
+                                      <div className="company_cell companyemail">
+                                        <h5>Email:</h5>
+                                        <div className="companydata" title={getUserEmail(connection.merchant_id)}>{getUserEmail(connection.merchant_id)}</div>
+                                      </div>                                      
+                                      <div className="company_cell companyweb">
+                                        <h5>Website:</h5>
+                                        <div className="companydata">www.abc.com</div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div className="inputWrapCon">
+
+                                  {/* <div className="inputWrapCon">
                                     <div className="titleField">Phone:</div>
                                     <div className="titleData">
                                       580-658-5178
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
-                              <div className="inputWrapCon">
+                              {/* <div className="inputWrapCon">
                                 <div className="titleField">Email:</div>
                                 <div className="titleData">
                                   {getUserEmail(connection.merchant_id)}
@@ -381,16 +427,37 @@ const UserConnectedHistory = () => {
                               <div className="inputWrapCon">
                                 <div className="titleField">Website</div>
                                 <div className="titleData">www.abc.com</div>
+                              </div> */}
+                              <div className="inputWrapCon company_description">
+                                <div className="titleField">Company Description</div>
+                                <div className="titleData">The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, </div>
                               </div>
-                              <div className="inputWrapCon">
-                                <div className="titleField">
-                                  Company Description
+
+                              <div className="inputWrapCon marketing_details">
+                                <div className="titleField">Marketing Details</div>
+                                <div className="marketing_block d-flex">
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 1</h5>
+                                      <div className="companydata">It is a long established fact</div>
+                                  </div>
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 2</h5>
+                                      <div className="companydata">It is a long established fact</div>
+                                  </div>
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 3</h5>
+                                      <div className="companydata">It is a long established fact</div>
+                                  </div>
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 4</h5>
+                                      <div className="companydata">It is a long established fact</div>
+                                  </div>
                                 </div>
-                                <div className="titleData">demo</div>
                               </div>
+
                             </div>
 
-                            <div className="userInfoCenterSec">
+                            {/* <div className="userInfoCenterSec">
                               <h2>Company Mailing Address</h2>
 
                               <div className="row">
@@ -435,9 +502,9 @@ const UserConnectedHistory = () => {
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
 
-                            <div className="userInfoCenterSec">
+                            {/* <div className="userInfoCenterSec">
                               <h2>Marketing Details</h2>
 
                               <div className="row">
@@ -472,7 +539,7 @@ const UserConnectedHistory = () => {
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
 
                             {/* <div className="userInfoCenterSec">
                               <h2>Merchant Processing Features</h2>
