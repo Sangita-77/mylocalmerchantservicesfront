@@ -15,7 +15,7 @@ import DashboardTopHeading from "../../components/DashboardTopHeading";
 import DashBoardTopBar from "../../components/DashBoardTopBar";
 import ConfirmModal from "../../components/ConfirmModal";
 import placeholderimg from "../../assets/images/placeholderimg.jpg";
-import { FaChevronCircleRight } from "react-icons/fa";
+import { IMAGE_BASE_URL } from "../../utils/apiManager";
 
 const UserConnectedHistory = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -58,7 +58,7 @@ const UserConnectedHistory = () => {
       );
 
       if (response.data.status) {
-        // console.log("........response.data.connectedHistory............",response.data.connectedHistory);
+        // console.log("........response.data.connectedHistory............",response.data);
         setConnectedHistory(response.data.connectedHistory || []);
         setMerchantDetails(response.data.merchantDetails || []);
       } else {
@@ -146,101 +146,9 @@ const UserConnectedHistory = () => {
       <div className="userConnectedHistoryContainer">
         <div className="merchantContainerHeader">
           <div className="merchantHeaderTitle">
-            <DashboardTopHeading text="Agent Connected History" />
+            <DashboardTopHeading text="Merchant Services Providers Connected History" />{" "}
           </div>
         </div>
-
-        {/* --------- old design  */}
-        {/* <div className="tableContainerWrap">
-          <table className="tableContainer">
-            <thead className="theadContainer">
-              <tr>
-                <th className="th">Created</th>
-                <th className="th">Name</th>
-                <th className="th">E-mails</th>
-                <th className="th">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="tbodyContainer">
-              {loading ? (
-                <tr>
-                  <td
-                    colSpan="4"
-                    className="td"
-                    style={{ textAlign: "center", padding: "20px 0px" }}
-                  >
-                    <PreLoader />
-                  </td>
-                </tr>
-              ) : merchantDetails.length === 0 ? (
-                <tr>
-                  <td colSpan="4" className="td">
-                    No connections found
-                  </td>
-                </tr>
-              ) : (
-                merchantDetails.map((connection, index) => {
-                  const history = connectedHistory[index];
-                  const state = history?.state;
-
-                  return (
-                    <tr className="tr" key={index}>
-                      <td className="td">
-                        {history?.created_at
-                          ? new Date(history.created_at).toLocaleString()
-                          : "—"}
-                      </td>
-
-                      <td className="td">
-                        {getUserName(connection.merchant_id)}
-                      </td>
-
-                      <td className="td">
-                        {getUserEmail(connection.merchant_id)}
-                      </td>
-
-                      <td className="actionTd">
-                        {state === "accepted" ? (
-                          <>
-                            <button
-                              className="viewButton"
-                              onClick={() => handleViewClick(connection)}
-                              data-bs-toggle="tooltip"
-                              data-bs-placement="auto"
-                              title="View Details"
-                            >
-                              <PiEyeLight size={22} color="white" />
-                            </button>
-                            <button
-                              className="delButton"
-                              onClick={() => handleDeleteClick(connection)}
-                              data-bs-toggle="tooltip"
-                              data-bs-placement="auto"
-                              title="Delete"
-                            >
-                              <AiOutlineDelete
-                                size={22}
-                                color="#E60E4E"
-                                style={{ cursor: "pointer" }}
-                              />
-                            </button>
-                          </>
-                        ) : (
-                          <span className={`statusText status-${state}`}>
-                            {state
-                              ? state.charAt(0).toUpperCase() + state.slice(1)
-                              : "—"}
-                          </span>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
-        </div> */}
-        {/* --------- old design  */}
 
         {/* --------- New design  */}
         <div className="tableContainerWrap">
@@ -270,6 +178,8 @@ const UserConnectedHistory = () => {
                 merchantDetails.map((connection, index) => {
                   const history = connectedHistory[index];
                   const state = history?.state;
+                  const company_name = connection?.company_name;
+                  // console.log("........connection...........",connection);
 
                   return (
                     <div className="accordion-item" key={index}>
@@ -341,190 +251,109 @@ const UserConnectedHistory = () => {
                         aria-labelledby={`heading${index}`}
                         data-bs-parent="#accordionExample"
                       >
-                        {/* <div className="accordion-body">
+                        <div className="accordion-body">
+                          <div className="merchantContainerHeader">
+                              <div className="merchantHeaderTitle">
+                                <DashboardTopHeading text="Company Information" />{" "}
+                              </div>
+                            </div>
                           <div className="profileDetailsCon">
                             <div className="profileDetailsConHead">
                               <div className="userHeaderInfoTopWrap d-flex">
-                                <div className="userImgWrapper">
+
+                                {/* <div className="userImgWrapper">
                                   <div className="userImg">
                                     <img src={placeholderimg} />
                                   </div>
-                                </div>
+                                </div> */}
 
                                 <div className="userHeaderInfoTopCon">
-                                  <div className="inputWrapCon1">
+                                  {/* <div className="inputWrapCon">
                                     <div className="titleDataUserName">
                                       Demo1
                                     </div>
-                                    <div className="titleDataEmail">
-                                      {getUserEmail(connection.merchant_id)}
+                                  </div> */}
+
+                                  <div className="inputWrapCon company_area">
+                                    <div className="userImg order-2"><img src={
+                                      connection.logo && connection.logo.trim() !== ""
+                                        ? `${IMAGE_BASE_URL}/${connection.logo}`
+                                        : placeholderimg
+                                    } /></div>
+                                    <div className="usercompany order-1">
+                                      <div className="titleField">Company Name *</div>
+                                      <div className="titleData" title={connection?.company_name}>{connection?.company_name}</div>
                                     </div>
                                   </div>
 
-                                  <div className="userinfoinner d-flex align-items-center">
-                                    <div className="inputWrapCon">
-                                      <div className="titleField">Phone:</div>
-                                      <div className="titleData">
-                                        580-658-5178
-                                      </div>
+                                  <div className="inputWrapCon company_area_details">  
+                                    <h3 className="titleField">Company Mailing Address *</h3>
+                                    <div className="company_details_row">
+                                      <h5>Street Details</h5>
+                                      <div className="companydata" title={connection?.city}>{connection?.city}</div>
                                     </div>
-                                    <div className="inputWrapCon">
-                                      <div className="titleField">Website:</div>
-                                      <div className="titleData">
-                                        <a href="#" target="_blank">
-                                          www.abc.com
-                                        </a>
+                                    <div className="company_details_row cell_format">
+                                      <div className="company_cell">
+                                        <h5>City:</h5>
+                                        <div className="companydata" title={connection?.city}>{connection?.city}</div>
+                                      </div>
+                                      <div className="company_cell">
+                                        <h5>State:</h5>
+                                        <div className="companydata" title={connection?.state}>{connection?.state}</div>
+                                      </div>                                      
+                                      <div className="company_cell companycountry">
+                                        <h5>Country:</h5>
+                                        <div className="companydata">US</div>
+                                      </div>                                      
+                                      <div className="company_cell companyzip">
+                                        <h5>Zip:</h5>
+                                        <div className="companydata" title={connection?.zip_code}>{connection?.zip_code}</div>
+                                      </div>                                      
+                                      <div className="company_cell companyphone">
+                                        <h5>Phone:</h5>
+                                        <div className="companydata" title={connection?.phone}>{connection?.phone}</div>
+                                      </div>                                      
+                                      <div className="company_cell companyemail">
+                                        <h5>Email:</h5>
+                                        <div className="companydata" title={getUserEmail(connection.merchant_id)}>{getUserEmail(connection.merchant_id)}</div>
+                                      </div>                                      
+                                      <div className="company_cell companyweb">
+                                        <h5>Website:</h5>
+                                        <div className="companydata" title={connection?.website}>{connection?.website}</div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
-                              </div>
-                              <div className="inputWrapCon">
-                                <div className="titleField">Company Name:</div>
-                                <div className="titleData">Abc</div>
-                              </div>
-                              <div className="inputWrapCon">
-                                <div className="titleField">
-                                  Company Description:
-                                </div>
-                                <div className="titleData">demo</div>
-                              </div>
-                              <div className="inputWrapCon">
-                                <div className="titleField">
-                                Company Mailing Address: 
-                                </div>
-                                <div className="titleData">
-                                <span>10</span> <span>Marlow</span> <span>Marlow</span> <span>Oklahoma</span> <span>73055</span>, <span>US</span>
-                                </div>
-                              </div>
-                              <div className="inputWrapCon inputWrapConCol">
-                                <div className="titleField">
-                                Marketing Details:
-                                </div>
-                                <div className="titleData">
-                                  <ul>
-                                    <li><FaChevronCircleRight size={15} color={"#0d64a9"} /> demo1</li>
-                                    <li><FaChevronCircleRight size={15} color={"#0d64a9"} /> demo2</li>
-                                    <li><FaChevronCircleRight size={15} color={"#0d64a9"} /> demo3</li>
-                                  </ul>
-                                  <div className="titleDataSummary">summary</div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
 
-                        </div> */}
-                        <div class="accordion-body">
-                          <div class="profileDetailsCon">
-                            <div class="profileDetailsConHead">
-                              <div class="userHeaderInfoTopWrap d-flex">
-                                <div class="userImgWrapper">
-                                  <div class="userImg">
-                                    <img src={placeholderimg} />
-                                  </div>
-                                </div>
-                                <div class="userHeaderInfoTopCon">
-                                  <div class="inputWrapCon">
-                                    <div class="titleDataUserName">Demo1</div>
-                                  </div>
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">Company Name:</div>
-                                    <div class="titleData">Abc</div>
-                                  </div>
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">Phone:</div>
-                                    <div class="titleData">580-658-5178</div>
-                                  </div>
                                 </div>
                               </div>
-                              <div class="inputWrapCon">
-                                <div class="titleField">Email:</div>
-                                <div class="titleData">
-                                  demo2@dreamlogodesign.net
+
+                              <div className="inputWrapCon company_description">
+                                <div className="titleField">Company Description</div>
+                                <div className="titleData" title={connection?.company_description}>{connection?.company_description}</div>
+                              </div>
+
+                              <div className="inputWrapCon marketing_details">
+                                <div className="titleField">Marketing Details</div>
+                                <div className="marketing_block d-flex">
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 1</h5>
+                                      <div className="companydata" title={connection?.bulletOne}>{connection?.bulletOne}</div>
+                                  </div>
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 2</h5>
+                                      <div className="companydata" title={connection?.bulletTwo}>{connection?.bulletTwo}</div>
+                                  </div>
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 3</h5>
+                                      <div className="companydata" title={connection?.bulletThree}>{connection?.bulletThree}</div>
+                                  </div>
+                                  {/* <div className="marketing_cell">
+                                      <h5>Bullet Point 4</h5>
+                                      <div className="companydata">It is a long established fact</div>
+                                  </div> */}
                                 </div>
                               </div>
-                              <div class="inputWrapCon">
-                                <div class="titleField">Website</div>
-                                <div class="titleData">www.abc.com</div>
-                              </div>
-                              <div class="inputWrapCon">
-                                <div class="titleField">
-                                  Company Description
-                                </div>
-                                <div class="titleData">demo</div>
-                              </div>
-                            </div>
-                            <div class="userInfoCenterSec">
-                              <h2>Company Mailing Address</h2>
-                              <div class="row">
-                                <div class="col-lg-3">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">
-                                      Distance Willing to Travel:
-                                    </div>
-                                    <div class="titleData">10</div>
-                                  </div>
-                                </div>
-                                <div class="col-lg-3">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">Street:</div>
-                                    <div class="titleData">Marlow</div>
-                                  </div>
-                                </div>
-                                <div class="col-lg-3">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">City:</div>
-                                    <div class="titleData">Marlow</div>
-                                  </div>
-                                </div>
-                                <div class="col-lg-3">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">State:</div>
-                                    <div class="titleData">Oklahoma</div>
-                                  </div>
-                                </div>
-                                <div class="col-lg-3">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">Zip Code</div>
-                                    <div class="titleData">73055</div>
-                                  </div>
-                                </div>
-                                <div class="col-lg-3">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">Country Name:</div>
-                                    <div class="titleData">US</div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="userInfoCenterSec">
-                              <h2>Marketing Details</h2>
-                              <div class="row">
-                                <div class="col-lg-6">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">Bullet Point 1</div>
-                                    <div class="titleData">demo 1</div>
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">Bullet Point 2</div>
-                                    <div class="titleData">demo 1</div>
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">Bullet Point 3</div>
-                                    <div class="titleData">demo 1</div>
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="inputWrapCon">
-                                    <div class="titleField">Summary</div>
-                                    <div class="titleData">summary</div>
-                                  </div>
-                                </div>
-                              </div>
+
                             </div>
                           </div>
                         </div>
