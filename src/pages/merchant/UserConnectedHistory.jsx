@@ -184,7 +184,7 @@ const UserConnectedHistory = () => {
                   return (
                     <div className="accordion-item" key={index}>
                       <h2 className="accordion-header" id={`heading${index}`}>
-                        <button
+                        <div
                           className={`accordion-button ${
                             index !== 0 ? "collapsed" : ""
                           }`}
@@ -241,7 +241,7 @@ const UserConnectedHistory = () => {
                               </span>
                             )}
                           </div>
-                        </button>
+                        </div>
                       </h2>
                       <div
                         id={`collapse${index}`}
