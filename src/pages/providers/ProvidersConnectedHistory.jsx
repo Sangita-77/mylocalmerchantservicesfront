@@ -252,7 +252,7 @@ const handleDelete = async (connection) => {
               merchantDetails.map((connection, index) => {
                 const history = connectedHistory[index];
                 const state = history?.state;
-
+                // console.log("..........connection.........",connection);
                 return (
                   <div className="accordion-item" key={index}>
 
@@ -410,24 +410,6 @@ const handleDelete = async (connection) => {
                               <div className="inputWrapCon company_description">
                                 <div className="titleField">Company Description</div>
                                 <div className="titleData" title={connection?.company_description}>{connection?.company_description}</div>
-                              </div>
-
-                              <div className="inputWrapCon marketing_details">
-                                <div className="titleField">Marketing Details</div>
-                                <div className="marketing_block d-flex">
-                                  <div className="marketing_cell">
-                                      <h5>Bullet Point 1</h5>
-                                      <div className="companydata" title={connection?.bulletOne}>{connection?.bulletOne}</div>
-                                  </div>
-                                  <div className="marketing_cell">
-                                      <h5>Bullet Point 2</h5>
-                                      <div className="companydata" title={connection?.bulletTwo}>{connection?.bulletTwo}</div>
-                                  </div>
-                                  <div className="marketing_cell">
-                                      <h5>Bullet Point 3</h5>
-                                      <div className="companydata" title={connection?.bulletThree}>{connection?.bulletThree}</div>
-                                  </div>
-                                </div>
                               </div>
 
                             </div>
