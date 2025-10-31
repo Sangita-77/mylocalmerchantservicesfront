@@ -1407,8 +1407,8 @@ border-radius: 5px; margin-right: 30px;}
 .userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon:nth-child(1) {margin: 0; padding: 0; border: none;}
 .userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon.company_area{display: flex;align-items: center; flex-direction: row;flex-wrap: wrap;column-gap: 10px;border-bottom: 1px solid #d9d9d9;padding-bottom: 10px; margin-bottom:20px;}
 .userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon.company_area .usercompany{flex: 0 0 calc(100% - 87px);width: calc(100% - 87px);}
-.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon.company_area .userImg{flex: 0 0 77px;width: 77px;overflow: hidden;border-radius: 80px;}
-.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon.company_area .userImg > img{max-width: 100%;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon.company_area .userImg{flex: 0 0 77px;width: 77px;overflow: hidden;border-radius: 80px; height: 77px;}
+.userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon.company_area .userImg > img{width:77px; height: 77px;object-fit: cover;}
 .userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon.company_area_details{border-bottom: 1px solid #d9d9d9;}
 .userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon.company_area_details .company_details_row.cell_format{display:flex;align-items: flex-start; justify-content: flex-start;column-gap: 35px;flex-wrap: wrap;margin-top: 25px;}
 .userConnectedHistoryContainer .accordion .profileDetailsCon .userHeaderInfoTopCon .inputWrapCon.company_area_details .company_details_row.cell_format .company_cell{flex: 0 0 calc(12% - 35px * 6/7);width: calc(12% - 35px * 6/7);}

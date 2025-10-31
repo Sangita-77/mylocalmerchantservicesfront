@@ -16,6 +16,8 @@ import DashBoardTopBar from "../../components/DashBoardTopBar";
 import ConfirmModal from "../../components/ConfirmModal";
 import ProviderDashboardTopBar from "../../components/ProviderDashboardTopBar";
 import ConnectionRejectModal from "../../components/ConnectionRejectModal";
+import placeholderimg from "../../assets/images/placeholderimg.jpg";
+import { IMAGE_BASE_URL } from "../../utils/apiManager";
 
 const ProvidersConnectedHistory = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -234,99 +236,219 @@ const handleDelete = async (connection) => {
               <th className="thActions">Actions</th>
             </tr>
           </thead>
-          <tbody className="tbodyContainer">
+        </table>
+
+        <div className="tbodyContainer">
+          <div className="accordion" id="accordionExample">
             {loading ? (
-              <tr>
-                <td
-                  colSpan="4"
-                  className="td"
-                  style={{ textAlign: "center", padding: "20px 0px" }}
-                >
-                  <PreLoader />
-                </td>
-              </tr>
+              <div>
+                <div style={{ textAlign: "center", padding: "20px 0px" }}><PreLoader /></div>
+              </div>
             ) : merchantDetails.length === 0 ? (
-              <tr>
-                <td colSpan="4" className="td">
-                  No connections found
-                </td>
-              </tr>
+              <div>
+                <div>No connections found</div>
+              </div>
             ) : (
               merchantDetails.map((connection, index) => {
                 const history = connectedHistory[index];
                 const state = history?.state;
 
                 return (
-                  <tr className="tr" key={index}>
-                    {/* Created Date */}
-                    <td className="td">
-                      {history?.created_at
-                        ? new Date(history.created_at).toLocaleString()
-                        : "—"}
-                    </td>
+                  <div className="accordion-item" key={index}>
 
-                    {/* Name */}
-                    <td className="td">{getUserName(connection.merchant_id)}</td>
+                  	<h2 className="accordion-header" id={`heading${index}`}>
+                        <div
+                          className={`accordion-button ${
+                            index !== 0 ? "collapsed" : ""
+                          }`}
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target={`#collapse${index}`}
+                          aria-expanded={index === 0 ? "true" : "false"}
+                          aria-controls={`collapse${index}`}
+                        >
+                          <div className="td">
+                            {history?.created_at
+		                        ? new Date(history.created_at).toLocaleString()
+		                        : "—"}
+                          </div>
+                          <div className="td">
+                            {getUserName(connection.merchant_id)}
+                          </div>
+                          <div className="td">
+                            {getUserEmail(connection.merchant_id)}
+                          </div>
 
-                    {/* Email */}
-                    <td className="td">{getUserEmail(connection.merchant_id)}</td>
+                          <div className="userBtn">
+                            {state === "accepted" ? (
+		                        <>
+		                          <button
+		                            className="viewButton"
+		                            onClick={() => handleViewClick(connection)}
+		                            data-bs-toggle="tooltip"
+		                            data-bs-placement="auto"
+		                            title="View Details"
+		                          >
+		                            <PiEyeLight size={22} color="white" />
+		                          </button>
+		                          <button
+		                            className="delButton"
+		                            onClick={() => handleDeleteClick(connection)}
+		                            data-bs-toggle="tooltip"
+		                            data-bs-placement="auto"
+		                            title="Delete"
+		                          >
+		                            <AiOutlineDelete
+		                              size={22}
+		                              color="#E60E4E"
+		                              style={{ cursor: "pointer" }}
+		                            />
+		                          </button>
+		                        </>
+		                      ) : state === "declined" ? (
+		                        <span className="declinedText">Declined</span>
+		                      ) : (
+		                        <>
+		                          <button
+		                            className="cancelBtn"
+		                            disabled={loading}
+		                            onClick={() => statusChange(connectedHistory[index], "accepted")}
+		                          >
+		                            {loading ? "..." : "Approve"}
+		                          </button>
 
-                    {/* Actions */}
-                    <td className="actionTd">
-                      {state === "accepted" ? (
-                        <>
-                          <button
-                            className="viewButton"
-                            onClick={() => handleViewClick(connection)}
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="auto"
-                            title="View Details"
-                          >
-                            <PiEyeLight size={22} color="white" />
-                          </button>
-                          <button
-                            className="delButton"
-                            onClick={() => handleDeleteClick(connection)}
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="auto"
-                            title="Delete"
-                          >
-                            <AiOutlineDelete
-                              size={22}
-                              color="#E60E4E"
-                              style={{ cursor: "pointer" }}
-                            />
-                          </button>
-                        </>
-                      ) : state === "declined" ? (
-                        <span className="declinedText">Declined</span>
-                      ) : (
-                        <>
-                          <button
-                            className="cancelBtn"
-                            disabled={loading}
-                            onClick={() => statusChange(connectedHistory[index], "accepted")}
-                          >
-                            {loading ? "..." : "Approve"}
-                          </button>
+		                          <button
+		                            className="confirmBtn"
+		                            disabled={loading}
+		                            onClick={() => handleRejectClick(connectedHistory[index], "declined")}
+		                          >
+		                            {loading ? "..." : "Reject"}
+		                          </button>
+		                        </>
+		                      )}
+                          </div>
+                        </div>
+                      </h2>
 
-                          <button
-                            className="confirmBtn"
-                            disabled={loading}
-                            onClick={() => handleRejectClick(connectedHistory[index], "declined")}
-                          >
-                            {loading ? "..." : "Reject"}
-                          </button>
-                        </>
-                      )}
-                    </td>
 
-                  </tr>
+                      <div
+                        id={`collapse${index}`}
+                        className={`accordion-collapse collapse ${
+                          index === 0 ? "show" : ""
+                        }`}
+                        aria-labelledby={`heading${index}`}
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div className="accordion-body">
+                          <div className="merchantContainerHeader">
+                              <div className="merchantHeaderTitle">
+                                <DashboardTopHeading text="Company Information" />{" "}
+                              </div>
+                            </div>
+                          <div className="profileDetailsCon">
+                            <div className="profileDetailsConHead">
+                              <div className="userHeaderInfoTopWrap d-flex">
+
+                                
+
+                                <div className="userHeaderInfoTopCon">
+                                  
+
+                                  <div className="inputWrapCon company_area">
+                                    <div className="userImg order-2"><img src={
+                                      connection.logo && connection.logo.trim() !== ""
+                                        ? `${IMAGE_BASE_URL}/${connection.logo}`
+                                        : placeholderimg
+                                    } /></div>
+                                    <div className="usercompany order-1">
+                                      <div className="titleField">Company Name *</div>
+                                      <div className="titleData" title={connection?.company_name}>{connection?.company_name}</div>
+                                    </div>
+                                  </div>
+
+                                  <div className="inputWrapCon company_area_details">  
+                                    <h3 className="titleField">Company Mailing Address *</h3>
+                                    <div className="company_details_row">
+                                      <h5>Street Details</h5>
+                                      <div className="companydata" title={connection?.city}>{connection?.city}</div>
+                                    </div>
+                                    <div className="company_details_row cell_format">
+                                      <div className="company_cell">
+                                        <h5>City:</h5>
+                                        <div className="companydata" title={connection?.city}>{connection?.city}</div>
+                                      </div>
+                                      <div className="company_cell">
+                                        <h5>State:</h5>
+                                        <div className="companydata" title={connection?.state}>{connection?.state}</div>
+                                      </div>                                      
+                                      <div className="company_cell companycountry">
+                                        <h5>Country:</h5>
+                                        <div className="companydata">US</div>
+                                      </div>                                      
+                                      <div className="company_cell companyzip">
+                                        <h5>Zip:</h5>
+                                        <div className="companydata" title={connection?.zip_code}>{connection?.zip_code}</div>
+                                      </div>                                      
+                                      <div className="company_cell companyphone">
+                                        <h5>Phone:</h5>
+                                        <div className="companydata" title={connection?.phone}>{connection?.phone}</div>
+                                      </div>                                      
+                                      <div className="company_cell companyemail">
+                                        <h5>Email:</h5>
+                                        <div className="companydata" title={getUserEmail(connection.merchant_id)}>{getUserEmail(connection.merchant_id)}</div>
+                                      </div>                                      
+                                      <div className="company_cell companyweb">
+                                        <h5>Website:</h5>
+                                        <div className="companydata" title={connection?.website}>{connection?.website}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+
+                              <div className="inputWrapCon company_description">
+                                <div className="titleField">Company Description</div>
+                                <div className="titleData" title={connection?.company_description}>{connection?.company_description}</div>
+                              </div>
+
+                              <div className="inputWrapCon marketing_details">
+                                <div className="titleField">Marketing Details</div>
+                                <div className="marketing_block d-flex">
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 1</h5>
+                                      <div className="companydata" title={connection?.bulletOne}>{connection?.bulletOne}</div>
+                                  </div>
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 2</h5>
+                                      <div className="companydata" title={connection?.bulletTwo}>{connection?.bulletTwo}</div>
+                                  </div>
+                                  <div className="marketing_cell">
+                                      <h5>Bullet Point 3</h5>
+                                      <div className="companydata" title={connection?.bulletThree}>{connection?.bulletThree}</div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    
+
+                  </div>
                 );
               })
             )}
-          </tbody>
-        </table>
+          </div>
+        </div>
+
+
+
+
+
 
         </div>
       </div>
