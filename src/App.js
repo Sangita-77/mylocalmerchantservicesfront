@@ -41,6 +41,7 @@ import AdminProfile from "./pages/admin/AdminProfile";
 import AdminUserList from "./pages/admin/AdminUserList";
 import AdminConnect from "./pages/admin/AdminConnect";
 import ContactList from "./pages/admin/ContactList";
+import AdminServiceList from "./pages/admin/AdminServiceList";
 
 import Contact from "./pages/Contact";
 
@@ -240,6 +241,10 @@ function App() {
           {
             path: "/admin/agent-processor",
             element: <AdminProcessor />,
+          },
+          {
+            path: "/admin/service_list",
+            element: <AdminServiceList />,
           },
         ],
       },

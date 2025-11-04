@@ -7,6 +7,7 @@ import { BiUser } from "react-icons/bi";
 import { PiUsersThree } from "react-icons/pi";
 import { PiPhoneCall } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
+import { PiGearSix } from "react-icons/pi";
 import { MdOutlineStorefront } from "react-icons/md";
 import dashboardIcon from "./../assets/images/dashboard_icon.png";
 import storeIcon from "./../assets/images/store_icon.png";
@@ -163,6 +164,16 @@ const AdminSidebar = () => {
           >
             <PiPhoneCall color={"#fff"} size={24}/>
             <div>Contact</div>
+          </div>
+
+          <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/service_list` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_service_list())}
+          >
+            <PiGearSix
+              color={"#ffffff"} size={24}
+            />
+            <div>Service List</div>
           </div>
         </div>
       </div>

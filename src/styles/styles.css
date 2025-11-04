@@ -974,7 +974,9 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .adminUserlistWrapper .td {color: #383838; font: 400 15px "Poppins"; padding: 0 36px;}
 .adminUserlistWrapper .viewButton {width: 35px; height: 35px; background-color: #0085da; border: 1px solid #23b7e5; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
 .adminUserlistWrapper .delButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none;}
-.adminUserlistWrapper .editButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #008000; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
+.adminUserlistWrapper .editButton,
+.contactlistWrapper .contactlistContainer.servicelist .accordion .accordion-item .accordion-header .editButton{width: 35px; height: 35px; background-color: #fff; border: 1px solid #008000; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;}
+.contactlistWrapper .contactlistContainer.servicelist .accordion .accordion-item .accordion-header .editButton{margin-left: -95px; margin-right: 0; display: flex;align-items: center; justify-content: center;z-index: 9;margin-top: 20px;}
 .adminUserlistWrapper .actionTd {padding: 0 48px 0 0; text-align: center;}
 .adminUserlistWrapper .chatWindowWrapper .writeMessageView {display: none;}
 
@@ -1085,8 +1087,10 @@ scrollbar-width: none;}
 .contactlistWrapper .contactlistContainer .accordion {border-radius: 20px; overflow: hidden; border: none;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item {border: none; background-color: #fff;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button {column-gap: 20px; text-transform: capitalize; padding-left: 40px; outline: none; box-shadow: none; padding-right: 85px; height: 75px; color: #6A8196; font: 400 16px "Sora"; background: #e3f1ff;}
+.contactlistWrapper .contactlistContainer.servicelist .accordion .accordion-item .accordion-button{padding-right: 110px;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-header {display: flex; background-color: #fff;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-header .delButton {margin-left: -70px; z-index: 9; width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none; margin-top: 20px; display: flex; justify-content: center; align-items: center;}
+.contactlistWrapper .contactlistContainer.servicelist .accordion .accordion-item .accordion-header .delButton {margin-left:10px;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-button[aria-expanded="true"] { box-shadow: 0px 3px 7px -6px rgb(192, 192, 192); background: #e3f1ff;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body {row-gap: 20px; background-color: #F5F5FE; padding: 40px 42px;}
 .contactlistWrapper .contactlistContainer .accordion .accordion-item .accordion-body > .col-lg-3 {font: 600 16px/24px "Sora"; color: #6A8196;}
@@ -1443,3 +1447,26 @@ border-radius: 5px; margin-right: 30px;}
 .notificationItem p { margin: 0; font-size: 14px; color: #333; }
 .notificationItem small { font-size: 12px; color: gray; }
 .noNotification { padding: 10px; text-align: center; color: gray; }
+
+/* --------- Service List ---------- */
+.contactlistContainer.servicelist .accordionWrap_title{margin: 0; padding:13px 12px 13px 52px; background-color: #0085da; width: 73vw; align-content: center; border-radius: 15px; margin-bottom:20px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);display: flex;align-items: center;justify-content: flex-start;column-gap: 40px; font: 400 16px 'Poppins'; color: #fff;}
+.contactlistContainer.servicelist .accordionWrap_title .title_td{flex: 0 0 243px;max-width: 243px;}
+.contactlistContainer.servicelist .accordionWrap_title .desc_td{flex: 0 0 500px;max-width: 500px;}
+.contactlistContainer.servicelist .accordionWrap_title .action_td{flex: 0 0 calc(100% - 823px);max-width: calc(100% - 823px);text-align: right;padding-right: 50px;}
+.contactlistWrapper .contactlistContainer.servicelist .accordion .accordion-item .accordion-button .servicename{flex: 0 0 265px;max-width: 265px;overflow: hidden; text-overflow: ellipsis;}
+.contactlistWrapper .contactlistContainer.servicelist .accordion .accordion-item .accordion-button .servicedesc{flex: 0 0 500px;max-width: 500px;overflow: hidden; text-overflow: ellipsis;}
+
+.servicelist .accordion-body .tableContainer {margin: 0; padding: 0; width: 100%; background-color: #e3f1ff; border: none; border-collapse: collapse; outline: none; border-spacing: 0; overflow: hidden; border-radius: 20px;}
+.servicelist .accordion-body .tableContainer .theadContainer {margin: 0; padding: 0; width: 100%; height: 60px; background-color: #0085da;}
+.servicelist .accordion-body .th {padding: 0 36px; color: #fff; letter-spacing: 0.4px; text-align: left; font: 600 14px "Sora";width:20%;}
+.servicelist .accordion-body .th:nth-child(2){width: 60%;}
+.servicelist .accordion-body .thActions {margin: 0; padding: 0 40px 0 0; color: #fff; font: 600 14px "Sora"; text-align: center;}
+.servicelist .accordion-body .tr {height: 60px; }
+.servicelist .accordion-body .tr:not(:last-child) {border-bottom: 1px solid #91909036 !important; }
+.servicelist .accordion-body .td {color: #383838; font: 400 15px "Poppins"; padding: 10px 36px;}
+.servicelist .accordion-body .td:last-child{padding: 10px 40px 10px 0;text-align: center;}
+.servicelist .accordion-body .editButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #008000; border-radius: 50%; cursor: pointer; outline: none; margin-right: 14px;font-size:20px;display: inline-flex;align-items:center;justify-content: center;vertical-align: -15%;}
+.servicelist .accordion-body .delButton {width: 35px; height: 35px; background-color: #fff; border: 1px solid #E60E4E; border-radius: 50%; cursor: pointer; outline: none;}
+
+.servicelist .accordion-body .add_band{padding: 10px 0 0; text-align: right;}
+.servicelist .accordion-body .add_band > button{display: inline-block;padding:11px 15px;font:500 14px "Sora";color: #fff;background-color: #003478;border:none; border-radius:10px;text-transform: capitalize;}
