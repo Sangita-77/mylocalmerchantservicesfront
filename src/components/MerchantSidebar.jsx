@@ -9,6 +9,7 @@ import logo from "./../assets/images/logo.png";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { BiUser } from "react-icons/bi";
 import { GoLink } from "react-icons/go";
+import { GoSearch } from "react-icons/go";
 import { BASENAME } from "../config";
 
 const MerchantSidebar = () => {
@@ -67,7 +68,7 @@ const MerchantSidebar = () => {
           }`}
           onClick={() => navigate(routes.merchant_agent_list())}
         >
-          <GoLink color={"#ffffff"} size={24} />
+          <GoSearch color={"#ffffff"} size={24} />
           <div className="sidebarItemTitle">Find Agents</div>
         </div>
 

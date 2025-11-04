@@ -71,6 +71,11 @@ const MerchantRegistration = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [logoFile, setLogoFile] = useState(null);
 
+  // const [Services, setServices] = useState([]);     
+  // const [selectedService, setSelectedService] = useState(""); 
+  // const [Brands, setBrands] = useState([]);             
+  // const [selectedBrand, setSelectedBrand] = useState("");
+
   const messageBody=`Please Check Your Registered E-mail: ${email}`;
 
 
@@ -374,6 +379,8 @@ const MerchantRegistration = () => {
       formData.append("HighRisk", highRisk);
       formData.append("PointofSale", pointOfSale);
       formData.append("Financing", financing);
+      // formData.append("Services", selectedService);
+      // formData.append("Brands", selectedBrand);
   
       if (logoFile) {
         formData.append("logo", logoFile);
@@ -385,6 +392,8 @@ const MerchantRegistration = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      console.log("..........response............",response);
   
       if (response?.status === 200) {
         const { flag, data, message } = response.data;
@@ -852,6 +861,62 @@ const MerchantRegistration = () => {
     }
   };
   
+
+  // useEffect(() => {
+  //   getServices();
+  // }, []);
+  
+  // useEffect(() => {
+  //   if (selectedService) {
+  //     // Find the selected service from Services list
+  //     const selected = Services.find(s => s.type_id === Number(selectedService));
+  
+  //     if (selected && Array.isArray(selected.services)) {
+  //       setBrands(selected.services);
+  //     } else {
+  //       setBrands([]);
+  //     }
+  //   } else {
+  //     setBrands([]);
+  //   }
+
+  //   // getServices();
+
+  // }, [selectedService, Services]);
+
+  
+  // const getServices = async () => {
+  //   try {
+  //     setLoading(true);
+  //     setError("");
+  
+  //     const response = await axios.post(
+  //       `${BASE_URL}/getServicesAndBrand`,
+  //       {},
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+  
+  //     // console.log("Profile Response==========>", response);
+  
+  //     if (response.status === 200) {
+  //       const servicesData = response?.data?.data;
+  //       if (Array.isArray(servicesData)) {
+  //         setServices(servicesData); // full list of service objects with their brands
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     const errMsg = apiErrorHandler(error);
+  //     setError(errMsg);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   
   
   
@@ -1113,6 +1178,7 @@ const MerchantRegistration = () => {
 
 
          
+          {/* <div  className={`merchantRegistrationFormTop ${otpVerified ? "enablewrapper" : ""}`} > */}
           <div  className={`merchantRegistrationFormTop disable ${otpVerified ? "enablewrapper" : ""}`} >
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Address Details
@@ -1290,13 +1356,14 @@ const MerchantRegistration = () => {
 
           </div>
 
+          {/* <div className={`merchantRegistrationFormTop ${otpVerified ? "enablewrapper" : ""}`}> */}
           <div className={`merchantRegistrationFormTop disable ${otpVerified ? "enablewrapper" : ""}`}>
             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Marketing Details
             </p>
-            {/* <p style={{ color: "#4d627b" }}>Please enter up to three bullet points you want potential customers to see about you. These are limited to 50 characters.</p> */}
+            <p style={{ color: "#4d627b" }}>Please enter up to three bullet points you want potential customers to see about you. These are limited to 50 characters.</p>
 
-            {/* <div className="inputRowContainer">
+            <div className="inputRowContainer">
               <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
                     Bullet Point 1: <span style={{ color: "red" }}>*</span>
@@ -1321,8 +1388,8 @@ const MerchantRegistration = () => {
                     <div className="errorText">{validationError.bulletOneError}</div>
                   )}
               </div>
-            </div> */}
-             {/* <div className="inputRowContainer">
+            </div>
+             <div className="inputRowContainer">
               <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
                     Bullet Point 2: <span style={{ color: "red" }}>*</span>
@@ -1347,8 +1414,8 @@ const MerchantRegistration = () => {
                   )}
 
               </div>
-            </div> */}
-             {/* <div className="inputRowContainer">
+            </div>
+             <div className="inputRowContainer">
               <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
                     Bullet Point 3: <span style={{ color: "red" }}>*</span>
@@ -1374,10 +1441,60 @@ const MerchantRegistration = () => {
 
 
               </div>
+            </div>
+
+            {/* <div className="inputRowContainer">
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="Services" className="label">
+                    Services <span style={{ color: "red" }}>*</span>
+                  </label>
+
+                  <select
+                    name="Services"
+                    id="Services"
+                    className="inputField selectField"
+                    value={selectedService}
+                    onChange={(e) => setSelectedService(e.target.value)}
+                  >
+                    <option value="">Select a Service</option>
+                    {Services.map((item, index) => (
+                      <option key={index} value={item.type_id}>
+                        {item.type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="inputRow">
+                <div className="inputContainer">
+                  <label htmlFor="Brands" className="label">
+                    Brands <span style={{ color: "red" }}>*</span>
+                  </label>
+
+                  <select
+                    name="Brands"
+                    id="Brands"
+                    className="inputField selectField"
+                    value={selectedBrand}
+                    onChange={(e) => setSelectedBrand(e.target.value)}
+                    disabled={!Brands.length}
+                  >
+                    <option value="">Select a Brand</option>
+                    {Brands.map((brand, index) => (
+                      <option key={index} value={brand.brand_id}>
+                        {brand.brand}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
             </div> */}
-            <p style={{ color: "#4d627b" }}>Please enter a 500 character or less summary about your business and services provided.</p>
+
              <div className="inputRowContainer">
               <div className="inputContainer">
+                <p style={{ color: "#4d627b" }}>Please enter a 500 character or less summary about your business and services provided.</p>
                   <label htmlFor="merchantName" className="label">
                     Summary <span style={{ color: "red" }}>*</span>
                   </label>
@@ -1405,11 +1522,11 @@ const MerchantRegistration = () => {
 
 
           <div className={`merchantRegistrationFormTop disable ${otpVerified ? "enablewrapper" : ""}`}>
-             {/* <p className="registrationFormTitle" style={{ marginTop: 36 }}>
+             <p className="registrationFormTitle" style={{ marginTop: 36 }}>
               Merchant Processing Features
-            </p> */}
+            </p>
 
-            {/* <div className="inputRowContainer">
+            <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label className="label">
@@ -1449,10 +1566,10 @@ const MerchantRegistration = () => {
                 )}
               </div>
 
-            </div> */}
+            </div>
 
             {/* Sponsor Bank: only show if not agent or processor */}
-            {/* {!isAgent && !isProcessor && (
+            {!isAgent && !isProcessor && (
               <div className="inputRowContainer">
                 <div className="inputRow">
                   <div className="inputContainer">
@@ -1475,10 +1592,10 @@ const MerchantRegistration = () => {
                   )}
                 </div>
               </div>
-            )} */}
+            )}
 
             {/* Primary + Secondary PP: only show if not ISO or processor */}
-            {/* {!isISO && !isProcessor && (
+            {!isISO && !isProcessor && (
               <div className="inputRowContainer">
                 <div className="inputRow">
                   <div className="inputContainer">
@@ -1516,10 +1633,10 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-            )} */}
+            )}
 
             {/* Other: only show if not ISO or processor */}
-            {/* {!isISO && !isProcessor && (
+            {!isISO && !isProcessor && (
               <div className="inputRowContainer">
                 <div className="inputContainer">
                   <label htmlFor="companyDescription" className="label">
@@ -1534,10 +1651,10 @@ const MerchantRegistration = () => {
                   />
                 </div>
               </div>
-            )} */}
+            )}
 
 
-            {/* <div className="inputRowContainer">
+            <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label htmlFor="merchantName" className="label">
@@ -1661,8 +1778,8 @@ const MerchantRegistration = () => {
                 </div>
               </div>
 
-            </div> */}
-            {/* <div className="inputRowContainer">
+            </div>
+            <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label className="label">
@@ -1694,9 +1811,9 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
 
-            {/* <div className="inputRowContainer">
+            <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label className="label">
@@ -1728,9 +1845,9 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
 
-            {/* <div className="inputRowContainer">
+            <div className="inputRowContainer">
               <div className="inputRow">
                 <div className="inputContainer">
                   <label className="label">
@@ -1762,7 +1879,7 @@ const MerchantRegistration = () => {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
 
             <div className="verificationHeading">Verification</div>
 
