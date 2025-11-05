@@ -12,6 +12,8 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel }) => {
   const [errors, setErrors] = useState({});
   const { token } = useContext(AppContext);
 
+  const navigate = useNavigate();
+
 
   const { id } = useParams();
 
@@ -34,6 +36,11 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel }) => {
       if (response.data.status) {
         console.log("Connection successful:", response.data);
         setErrors({ success: "Connection request sent successfully!" });
+
+        setTimeout(() => {
+          navigate("/merchant/user_connected_history");
+        }, 1500);
+
       } else {
         setErrors({ api: response.data.message || "Failed to connect." });
       }
