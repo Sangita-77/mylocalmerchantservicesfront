@@ -10,6 +10,7 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { BiUser } from "react-icons/bi";
 import { GoLink } from "react-icons/go";
 import { GoSearch } from "react-icons/go";
+import { FaRegCommentDots } from "react-icons/fa";
 import { BASENAME } from "../config";
 
 const MerchantSidebar = () => {
@@ -70,6 +71,17 @@ const MerchantSidebar = () => {
         >
           <GoSearch color={"#ffffff"} size={24} />
           <div className="sidebarItemTitle">Find Agents</div>
+        </div>
+
+        <div
+          className={`sidebarItem ${
+            url === `${BASENAME}/merchant/review_list` &&
+            "sidebarItemActive"
+          }`}
+          onClick={() => navigate(routes.merchant_add_review())}
+        >
+          <FaRegCommentDots color={"#ffffff"} size={24} />
+          <div className="sidebarItemTitle">Reviews</div>
         </div>
 
       </div>
