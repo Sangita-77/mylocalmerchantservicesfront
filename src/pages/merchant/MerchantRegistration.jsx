@@ -1530,7 +1530,7 @@ const MerchantRegistration = () => {
               <div className="inputRow">
                 <div className="inputContainer">
                   <label className="label">
-                    Select type <span style={{ color: "red" }}>*</span>
+                    Business Type <span style={{ color: "red" }}>*</span>
                   </label>
                   <select
                     className="inputField selectField"
