@@ -378,7 +378,7 @@ const UserMerchantRegistration = () => {
           },
         }
       );
-      console.log("Registration response====>", response);
+      // console.log("Registration response====>", response);
 
       if (response?.status === 200) {
         const { flag, data, message } = response.data;
