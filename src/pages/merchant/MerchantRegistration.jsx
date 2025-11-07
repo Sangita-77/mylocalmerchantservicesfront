@@ -393,7 +393,7 @@ const MerchantRegistration = () => {
         },
       });
 
-      console.log("..........response............",response);
+      // console.log("..........response............",response);
   
       if (response?.status === 200) {
         const { flag, data, message } = response.data;

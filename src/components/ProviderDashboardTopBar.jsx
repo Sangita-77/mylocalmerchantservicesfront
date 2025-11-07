@@ -95,6 +95,9 @@ function ProviderDashboardTopBar({ heading }) {
         const merchantNotifications = data.filter(
           (item) => item.agent_notification
         );
+
+        // console.log("..............merchantNotifications...................",merchantNotifications);
+
         setNotifications(merchantNotifications);
         setShowNotifications(true);
       } else {
@@ -143,7 +146,7 @@ function ProviderDashboardTopBar({ heading }) {
                 {notifications.length > 0 ? (
                   notifications.map((item, index) => (
                     <div key={index} className="notificationItem">
-                      <p>{item.merchant_notification}</p>
+                      <p>{item.agent_notification}</p>
                       <small>{new Date(item.created_at).toLocaleString()}</small>
                     </div>
                   ))

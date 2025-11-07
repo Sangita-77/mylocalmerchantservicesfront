@@ -199,9 +199,9 @@ function App() {
       {
         path: "/admin",
         element: (
-          // <ProtectedRoute>
+          <ProtectedRoute>
             <SuperAdminLayout />
-          // </ProtectedRoute>
+          </ProtectedRoute>
         ),
         children: [
           {
@@ -253,9 +253,9 @@ function App() {
       {
         path: "/merchant",
         element: (
-          // <ProtectedRoute>
+          <ProtectedRoute>
             <MerchantAdminLayout />
-          // </ProtectedRoute>
+          </ProtectedRoute>
         ),
         children: [
           {
