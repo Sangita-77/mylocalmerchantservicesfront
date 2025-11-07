@@ -56,7 +56,7 @@ const MerchantReview = () => {
 
     try {
       const response = await axios.post(
-        `${BASE_URL}/getConnectedUser`,
+        `${BASE_URL}/getConnectedUserForMerchant`,
         { merchant_id: merchantId },
         {
           headers: {
@@ -67,9 +67,59 @@ const MerchantReview = () => {
       );
 
       if (response.data.status) {
-        // console.log("........response.data.connectedHistory............",response.data);
+        console.log("........response.data.connectedHistory............",response.data.data);
         setConnectedHistory(response.data.connectedHistory || []);
         setMerchantDetails(response.data.merchantDetails || []);
+        if (response.data.data) {
+          const data = response.data.data;
+          setAverageRating(data.average_rating || 0);
+          setTotalReviews(data.total_reviews || 0);
+  
+          const reviews = data.review || [];
+  
+          // Fetch details
+          const merchantIds = [...new Set(reviews.map((r) => r.merchant_id))];
+          const merchantPromises = merchantIds.map(async (merchant_id) => {
+            try {
+              const res = await axios.post(
+                `${BASE_URL}/getMerchantAgainstmerchant_id`,
+                { merchant_id },
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+              return { merchant_id, merchant: res.data.data || {} };
+            } catch (err) {
+              console.error(`Error fetching merchant ${merchant_id}:`, err);
+              return { merchant_id, merchant: {} };
+            }
+          });
+  
+          const merchantResults = await Promise.all(merchantPromises);
+  
+          const reviewsWithMerchant = reviews.map((review) => {
+            const match = merchantResults.find(
+              (m) => m.merchant_id === review.merchant_id
+            );
+            return {
+              ...review,
+              merchant_details: match ? match.merchant : {},
+            };
+          });
+  
+          setReviews(reviewsWithMerchant);
+  
+          // Calculate rating distribution
+          const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+          reviews.forEach((r) => {
+            const star = Math.round(r.rating);
+            if (counts[star] !== undefined) counts[star]++;
+          });
+          setRatingStats(counts);
+        }
       } else {
         console.error(response.data.message);
       }
@@ -235,9 +285,9 @@ const MerchantReview = () => {
     }
   };
 
-  useEffect(() => {
-    getReviews();
-  }, [id]);
+  // useEffect(() => {
+  //   getReviews();
+  // }, [id]);
 
   const getPercentage = (count) =>
     totalReviews > 0 ? Math.round((count / totalReviews) * 100) : 0;
@@ -602,33 +652,38 @@ const MerchantReview = () => {
                                         <div className="ratingBottomSection" key={item.id || index}>
                                           <div className="ratingHeaderInfo">
                                             <div className="ratingheaderInfoLeft">
-                                              <div className="ratingUserImg">
-                                                {item.merchant_details?.logo ? (
-                                                  <img
-                                                    src={`${BASE_URL}/${item.merchant_details.logo}`}
-                                                    alt="Merchant"
-                                                  />
-                                                ) : (
-                                                  <div
-                                                    style={{
-                                                      width: "25px",
-                                                      height: "25px",
-                                                      borderRadius: "50%",
-                                                      backgroundColor: "#007bff",
-                                                      display: "flex",
-                                                      alignItems: "center",
-                                                      justifyContent: "center",
-                                                      color: "white",
-                                                      fontWeight: "bold",
-                                                      fontSize: "16px",
-                                                    }}
-                                                  >
-                                                    {item.merchant_details?.merchant_name
-                                                      ? item.merchant_details.merchant_name.charAt(0).toUpperCase()
-                                                      : "U"}
-                                                  </div>
-                                                )}
+                                            <div className="ratingUserImg">
+                                              {item.merchant_details?.logo ? (
+
+                                                <div
+                                                style={{
+                                                  width: "25px",
+                                                  height: "25px",
+                                                  borderRadius: "50%",
+                                                  backgroundColor: "#007bff",
+                                                  display: "flex",
+                                                  alignItems: "center",
+                                                  justifyContent: "center",
+                                                  color: "white",
+                                                  fontWeight: "bold",
+                                                  fontSize: "16px",
+                                                }}
+                                              >
+                                                {item.merchant_details?.merchant_name
+                                                  ? item.merchant_details.merchant_name.charAt(0).toUpperCase()
+                                                  : "U"}
                                               </div>
+                                              ) : (
+                                                <img
+                                                  src={
+                                                    item.merchant_details?.logo
+                                                      ? `${BASE_URL}/${item.merchant_details.logo}`
+                                                      : contactlisticon
+                                                  }
+                                                  
+                                                />
+                                              )}
+                                            </div>
 
                                               <h3 className="ratingUserName">
                                                 {item.merchant_details?.merchant_name
@@ -666,138 +721,7 @@ const MerchantReview = () => {
                                     ) : (
                                       <p>No reviews yet.</p>
                                     )}
-                                  </div>
-                                  {/* <div className="userInfoReviewsCon">
-                                    <h2 className="sectionTitle">Review</h2>
-
-                                    <div className="ratingTopSection">
-                                      <div className="row">
-                                        <div className="col-lg-2">
-                                          <div className="ratingCol">
-                                            <span>
-                                              {averageRating
-                                                ? averageRating.toFixed(1)
-                                                : "0.0"}
-                                            </span>
-                                            <div className="starWrap">
-                                              {[...Array(5)].map((_, index) => {
-                                                const filled =
-                                                  index <
-                                                  Math.round(
-                                                    averageRating || 0
-                                                  );
-                                                return (
-                                                  <span
-                                                    key={index}
-                                                    style={{
-                                                      color: filled
-                                                        ? "#FFD700"
-                                                        : "#ccc",
-                                                    }}
-                                                  >
-                                                    ★
-                                                  </span>
-                                                );
-                                              })}
-                                            </div>
-                                            <div
-                                              style={{
-                                                fontSize: "12px",
-                                                color: "#666",
-                                              }}
-                                            >
-                                              ({totalReviews} review
-                                              {totalReviews !== 1 ? "s" : ""})
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div className="col-lg-10">
-                                          {[5, 4, 3, 2, 1].map((star) => (
-                                            <div
-                                              className="progressBarWrap"
-                                              key={star}
-                                            >
-                                              <progress
-                                                value={getPercentage(
-                                                  ratingStats[star]
-                                                )}
-                                                max="100"
-                                              >
-                                                {getPercentage(
-                                                  ratingStats[star]
-                                                )}
-                                                %
-                                              </progress>
-                                              <div className="reviewCount">
-                                                <span>{star}★</span>{" "}
-                                                {ratingStats[star]} Review
-                                                {ratingStats[star] !== 1
-                                                  ? "s"
-                                                  : ""}{" "}
-                                                (
-                                                {getPercentage(
-                                                  ratingStats[star]
-                                                )}
-                                                %)
-                                              </div>
-                                            </div>
-                                          ))}
-                                        </div>
-                                      </div>
-                                    </div>
-
-                                    <div
-                                      className="ratingBottomSection"
-                                      key={index}
-                                    >
-                                      <div className="ratingHeaderInfo">
-                                        <div className="ratingheaderInfoLeft">
-                                          <div className="ratingUserImg">
-                                            <div
-                                              style={{
-                                                width: "25px",
-                                                height: "25px",
-                                                borderRadius: "50%",
-                                                backgroundColor: "#007bff",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                color: "white",
-                                                fontWeight: "bold",
-                                                fontSize: "16px",
-                                              }}
-                                            >
-                                              S
-                                            </div>
-                                          </div>
-
-                                          <h3 className="ratingUserName">
-                                            Sangita
-                                          </h3>
-
-                                          <h4 className="ratingUserTime">
-                                            10/9/2025
-                                          </h4>
-                                        </div>
-
-                                        <div className="ratingheaderInforight">
-                                          <span className="avgRating">4</span>
-                                          <div className="startWrap">
-                                            <span>★</span>
-                                            <span>★</span>
-                                            <span>★</span>
-                                            <span>★</span>
-                                            <span>★</span>
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                      <div className="ratingConInfo">
-                                        <p>Fine</p>
-                                      </div>
-                                    </div>
-                                  </div> */}
+                                  </div>                              
 
                                   <div className="writeReview">
                                     <a onClick={writeReview}>Write a review</a>
