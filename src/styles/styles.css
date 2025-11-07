@@ -1366,31 +1366,31 @@ border-radius: 5px; margin-right: 30px;}
 
 .tableOverlayLoader { position: absolute; inset: 0; /* top: 0; right: 0; bottom: 0; left: 0 */ display: flex; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.6); z-index: 5; backdrop-filter: blur(2px); }
 
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap {background: #f7fbfe; border-radius: 20px; padding: 20px;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .sectionTitle {color: #000000; font: 600 25px / 35px "Poppins"; margin-bottom: 25px; padding-bottom: 15px;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection {margin-bottom: 30px;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap {display: flex; align-items: center; column-gap: 30px;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap progress {width: 82%; height: 10px; border: 1px solid #ebebeb; border-radius: 5px;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap progress::-webkit-progress-bar {background-color: #f4f6f8; border-radius: 5px;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap progress::-webkit-progress-value {background-color: #0085DA; /* inner */ border-radius: 5px;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap .reviewCount {color: #565656; font: 400 16px / 25px "Poppins";}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .progressBarWrap .reviewCount span {color: #000; font: 600 16px / 25px "Poppins"; margin-right: 10px;}
+.userInfoReviewsWrap {background: #f7fbfe; border-radius: 20px; padding: 20px;}
+.userInfoReviewsWrap .sectionTitle {color: #000000; font: 600 25px / 35px "Poppins"; margin-bottom: 25px; padding-bottom: 15px;}
+.userInfoReviewsWrap .ratingTopSection {margin-bottom: 30px;}
+.userInfoReviewsWrap .ratingTopSection .progressBarWrap {display: flex; align-items: center; column-gap: 30px;}
+.userInfoReviewsWrap .ratingTopSection .progressBarWrap progress {width: 82%; height: 10px; border: 1px solid #ebebeb; border-radius: 5px;}
+.userInfoReviewsWrap .ratingTopSection .progressBarWrap progress::-webkit-progress-bar {background-color: #f4f6f8; border-radius: 5px;}
+.userInfoReviewsWrap .ratingTopSection .progressBarWrap progress::-webkit-progress-value {background-color: #0085DA; /* inner */ border-radius: 5px;}
+.userInfoReviewsWrap .ratingTopSection .progressBarWrap .reviewCount {color: #565656; font: 400 16px / 25px "Poppins";}
+.userInfoReviewsWrap .ratingTopSection .progressBarWrap .reviewCount span {color: #000; font: 600 16px / 25px "Poppins"; margin-right: 10px;}
 
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection {padding: 23px 11px 15px 0px; margin-bottom: 10px; border-bottom: 1px dashed #cdcdcd;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingHeaderInfo {display: flex; justify-content: space-between; align-items: center;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingheaderInfoLeft {column-gap: 10px; display: flex; align-items: center;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingUserName {margin-bottom: 0px; font: 500 19px / 25px "Poppins"; color: #000;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingUserTime {margin-bottom: 0px; font: 400 13px / 13px "Poppins"; color: #565656;} 
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingConInfo {font: 400 16px / 25px "Poppins"; color: #565656; padding-top: 15px;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingheaderInforight {display: flex; align-items: center;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingheaderInforight .startWrap span {font: 600 16px / 25px "Poppins";}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingBottomSection .ratingheaderInforight span.avgRating {margin-right: 10px; font: 600 16px / 25px "Poppins"; color: #000;}
+.userInfoReviewsWrap .ratingBottomSection {padding: 23px 11px 15px 0px; margin-bottom: 10px; border-bottom: 1px dashed #cdcdcd;}
+.userInfoReviewsWrap .ratingBottomSection .ratingHeaderInfo {display: flex; justify-content: space-between; align-items: center;}
+.userInfoReviewsWrap .ratingBottomSection .ratingheaderInfoLeft {column-gap: 10px; display: flex; align-items: center;}
+.userInfoReviewsWrap .ratingBottomSection .ratingUserName {margin-bottom: 0px; font: 500 19px / 25px "Poppins"; color: #000;}
+.userInfoReviewsWrap .ratingBottomSection .ratingUserTime {margin-bottom: 0px; font: 400 13px / 13px "Poppins"; color: #565656;} 
+.userInfoReviewsWrap .ratingBottomSection .ratingConInfo {font: 400 16px / 25px "Poppins"; color: #565656; padding-top: 15px;}
+.userInfoReviewsWrap .ratingBottomSection .ratingheaderInforight {display: flex; align-items: center;}
+.userInfoReviewsWrap .ratingBottomSection .ratingheaderInforight .startWrap span {font: 600 16px / 25px "Poppins";}
+.userInfoReviewsWrap .ratingBottomSection .ratingheaderInforight span.avgRating {margin-right: 10px; font: 600 16px / 25px "Poppins"; color: #000;}
 
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .allReviews {font: 400 16px / 25px "Poppins"; color: #0085DA; margin: 25px 0px 15px;}
+.userInfoReviewsWrap .allReviews {font: 400 16px / 25px "Poppins"; color: #0085DA; margin: 25px 0px 15px;}
 
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .ratingCol {text-align: center; margin-top: 23px;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .ratingCol > span {font: 600 40px / 40px "Poppins"; color: #000;}
-.agentDetailsBoxWrapper .agentDetailsWrapper .userInfoReviewsWrap .ratingTopSection .ratingCol .starWrap span {font: 600 20px / 20px "Poppins"; margin-right: 5px;}
+.userInfoReviewsWrap .ratingTopSection .ratingCol {text-align: center; margin-top: 23px;}
+.userInfoReviewsWrap .ratingTopSection .ratingCol > span {font: 600 40px / 40px "Poppins"; color: #000;}
+.userInfoReviewsWrap .ratingTopSection .ratingCol .starWrap span {font: 600 20px / 20px "Poppins"; margin-right: 5px;}
 
 /* ---------- New Merchant Connected History  -------------  */
 .userConnectedHistoryPageWrapper .th {text-align: center;}
@@ -1436,9 +1436,10 @@ border-radius: 5px; margin-right: 30px;}
 .userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec h2 {color: #000000; font: 500 25px / 35px "Poppins"; margin-bottom: 20px;}
 .userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec > .row {background: #fdfcff; padding: 30px 15px 30px; border-radius: 20px; border: 1px solid #f1f1f1; margin: 0; row-gap: 40px;}
 /* .userConnectedHistoryContainer .accordion .profileDetailsCon .userInfoCenterSec .inputWrapCon {border-bottom: 1px dashed #cdcdcd; padding-bottom: 15px;} */
-.userConnectedHistoryContainer .accordion .accordion-header > button {box-shadow: none; outline: none; border-radius: 0;}
-.userConnectedHistoryContainer .accordion .accordion-header button .userBtn {width: 22%; text-align: center; padding-left: 45px;}
+.userConnectedHistoryContainer .accordion .accordion-header > .accordion-button {box-shadow: none; outline: none; border-radius: 0;}
+.userConnectedHistoryContainer .accordion .accordion-header .accordion-button  .userBtn {width: 22%; text-align: center; padding-left: 60px;}
 .userConnectedHistoryContainer .tableContainerWrap .tbodyContainer {border-radius: 0 0 23px 23px; overflow: hidden;}
+/* .userConnectedHistoryContainer .tableContainer .tbodyContainer .accordion-button .userBtn {padding-left: 60px;} */
 
 
 /* ............. Notification .................. */
@@ -1474,3 +1475,38 @@ border-radius: 5px; margin-right: 30px;}
 /* --------- Reviews List ---------- */
 
 .userConnectedHistoryPageWrapper.reviews_section .tbodyContaine.userConnectedHistoryPageWrapper.reviews_section .tbodyContainer h2.accordion-header .accordion-button{padding-left: 0;padding-right: 0;}
+
+/* ---------- Merchant Agent list -----------  */
+.merchantAgentList .userConnectedHistoryContainer .merchantListPageWrapper {width: 73vw; margin-left: 0; padding: 0; margin-top: 50px;}
+.merchantAgentList .userConnectedHistoryContainer .merchantListPageWrapper .tableContainer {border-radius: 0;}
+.merchantAgentList .userConnectedHistoryContainer .merchantListPageWrapper .tableContainer .tbodyContainer {background-color: #fff;}
+.merchantAgentList .userConnectedHistoryContainer .merchantListPageWrapper .tableContainer .tbodyContainer .ratingColWrap .ratingCol {margin: 0 auto;}
+.merchantAgentList .userConnectedHistoryContainer .merchantListPageWrapper .tableContainer .tbodyContainer .actionTd .viewButton {width: 40px;
+  height: 38px; background-color: transparent; border: 1px solid #23b7e5; border-radius: 50%; cursor: pointer; outline: none; margin-right: 0;}
+
+/* ----------- Merchant Review list ---------  */
+.merchantReview .userInfoReviewsWrap .ratingTopSection .progressBarWrap progress {width: 77%;}
+.merchantReview .userInfoReviewsWrap {background: #fdfcff; padding: 20px 25px 25px; margin-top: 30px;}
+.merchantReview .userInfoReviewsWrap .sectionTitle {color: #414141; text-transform: uppercase; font: 500 15px / 25px "Poppins"; margin-bottom: 12px;}
+.merchantReview .userInfoReviewsWrap .ratingTopSection .progressBarWrap .reviewCount {font: 400 14px / 24px "Poppins";}
+.merchantReview .userInfoReviewsWrap .ratingBottomSection .ratingUserName {font: 500 16px / 26px "Poppins"; color: #414141;}
+.merchantReview .userInfoReviewsWrap .ratingBottomSection .ratingConInfo {font: 400 15px / 25px "Poppins";}
+
+.writeReview a {color: #0085da !important; font: 500 16px / 26px "Poppins"; text-decoration: underline !important; cursor: pointer;}
+.writeReview .writeReviewSection { margin-top: 20px; }
+.writeReview .writeReviewSection textarea {outline: none; box-shadow: none; padding: 12px 14px; border: 1px solid #E4E4E4; border-radius: 8px; font-size: 14px; background-color: #fff; width: 100%; margin-bottom: 10px;}
+.writeReview .writeReviewSection textarea:focus {}
+.writeReview .writeReviewSection .startadd {margin-bottom: 10px;}
+.writeReview .writeReviewSection .startadd span {color: #ffd700; font: 600 20px/20px "Poppins"; margin-right: 3px; cursor: pointer;}
+.writeReview .writeReviewSection .submitbtn {border: none; background-color: #FFBF61; color: #000; font-family: "Poppins"; font-weight: 600; font-size: 16px; border-radius: 10px; padding: 8px 20px;  margin-right: 10px;}
+.writeReview .writeReviewSection .submitbtn:hover {background: #1C94E4; color: #fff; transition: .5s;}
+.writeReview .writeReviewSection .closebtn {border: none; background-color: #1C94E4; color: #fff; font-family: "Poppins"; font-weight: 600; font-size: 16px; border-radius: 10px; padding: 8px 20px; }
+.writeReview .writeReviewSection .closebtn:hover {background: #FFBF61; color: #000; transition: .5s;}
+
+
+
+
+
+
+
+

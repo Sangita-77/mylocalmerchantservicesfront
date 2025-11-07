@@ -9,6 +9,7 @@ import logo from "./../assets/images/logo.png";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { BiUser } from "react-icons/bi";
 import { GoLink } from "react-icons/go";
+import { FaRegCommentDots } from "react-icons/fa";
 import { BASENAME } from "../config";
 
 const ProviderSidebar = () => {
@@ -59,6 +60,17 @@ const ProviderSidebar = () => {
           <GoLink color={"#ffffff"} size={24} />
           <div className="sidebarItemTitle">Merchant  Connected History</div>
         </div>
+
+        <div
+          className={`sidebarItem ${
+            url === `${BASENAME}/provider/review_list` && "sidebarItemActive"
+          }`}
+          onClick={() => navigate(routes.provider_review_list())}
+        >
+          <FaRegCommentDots color={"#ffffff"} size={24} />
+          <div className="sidebarItemTitle">Reviews</div>
+        </div>
+
       </div>
     </div>
   );

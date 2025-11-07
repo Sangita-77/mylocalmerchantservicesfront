@@ -56,6 +56,7 @@ import ProvidersProfile from "./pages/providers/ProvidersProfile";
 import MerchantListDeatils from "./pages/MerchantListDeatils";
 import MerchantAgentList from "./pages/merchant/MerchantAgentList";
 import MerchantReview from "./pages/merchant/MerchantReview";
+import ProvidersReview from "./pages/providers/ProvidersReview";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -298,6 +299,10 @@ function App() {
           {
             path: "/provider/connected_history",
             element: <ProvidersConnectedHistory />,
+          },
+          {
+            path: "/provider/review_list",
+            element: <ProvidersReview />,
           },
         ],
       },

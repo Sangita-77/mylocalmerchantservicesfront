@@ -206,7 +206,7 @@ const UserConnectedHistory = () => {
                             {getUserEmail(connection.merchant_id)}
                           </div>
 
-                          <div className="userBtn">
+                          <div className="userBtn td">
                             {state === "accepted" ? (
                               <>
                                 <button

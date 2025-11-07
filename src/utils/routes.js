@@ -39,7 +39,8 @@ export const routes = {
 
   provider_dashboard: () => "/provider/dashboard",
   provider_profile: () => "/provider/profile",
-  provider_connectec_history: () => "/provider/connected_history"
+  provider_connectec_history: () => "/provider/connected_history",
+  provider_review_list: () => "/provider/review_list"
 
   
 };
