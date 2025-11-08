@@ -32,6 +32,7 @@ const MerchantReview = () => {
 
   const [showWriteReview, setShowWriteReview] = useState(false);
   const [reviewText, setReviewText] = useState("");
+  const [selectedRating, setSelectedRating] = useState(0);
 
   const { id } = useParams();
   const { token } = useContext(AppContext);
@@ -206,88 +207,6 @@ const MerchantReview = () => {
     5: 0,
   });
 
-  const getReviews = async () => {
-    try {
-      setLoading(true);
-      const agent_id = parseInt(id, 10);
-
-      console.log("agent_id",id);
-      // console.log("Testing...", `${BASE_URL}/getReviewRating`);
-
-      const response = await axios.post(
-        `${BASE_URL}/getReviewRating`,
-        { agent_id },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      
-
-      if (response.data.status && response.data.data) {
-        const data = response.data.data;
-        setAverageRating(data.average_rating || 0);
-        setTotalReviews(data.total_reviews || 0);
-
-        const reviews = data.review || [];
-
-        // Fetch details
-        const merchantIds = [...new Set(reviews.map((r) => r.merchant_id))];
-        const merchantPromises = merchantIds.map(async (merchant_id) => {
-          try {
-            const res = await axios.post(
-              `${BASE_URL}/getMerchantAgainstmerchant_id`,
-              { merchant_id },
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-            return { merchant_id, merchant: res.data.data || {} };
-          } catch (err) {
-            console.error(`Error fetching merchant ${merchant_id}:`, err);
-            return { merchant_id, merchant: {} };
-          }
-        });
-
-        const merchantResults = await Promise.all(merchantPromises);
-
-        const reviewsWithMerchant = reviews.map((review) => {
-          const match = merchantResults.find(
-            (m) => m.merchant_id === review.merchant_id
-          );
-          return {
-            ...review,
-            merchant_details: match ? match.merchant : {},
-          };
-        });
-
-        setReviews(reviewsWithMerchant);
-
-        // Calculate rating distribution
-        const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-        reviews.forEach((r) => {
-          const star = Math.round(r.rating);
-          if (counts[star] !== undefined) counts[star]++;
-        });
-        setRatingStats(counts);
-      }
-
-    } catch (error) {
-      console.error("Connection error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // useEffect(() => {
-  //   getReviews();
-  // }, [id]);
 
   const getPercentage = (count) =>
     totalReviews > 0 ? Math.round((count / totalReviews) * 100) : 0;
@@ -299,6 +218,49 @@ const MerchantReview = () => {
   const closeReviewSection = () => {
     setShowWriteReview(false);
     setReviewText("");
+  };
+
+
+  const SaveReview = async (agent_id) => {
+
+    const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+    if (!selectedRating) {
+      alert("Please select a rating before submitting.");
+      return;
+    }
+  
+    try {
+      setIsLoading(true);
+  
+      const body = {
+        merchant_id:merchant_id,
+        agent_id: agent_id,
+        rating: selectedRating,
+        review: reviewText,
+      };
+  
+      const response = await axios.post(`${BASE_URL}/reviewRating`, body, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      // console.log("..response......", response.data);
+  
+      if (response.data.status) {
+        // alert("Review submitted successfully!");
+        closeReviewSection();
+        fetchData(); // re-fetch reviews if you want to refresh instantly
+      } else {
+        alert(response.data.message || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error("Failed to submit review:", error);
+      alert("Error submitting review.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -757,6 +719,51 @@ const MerchantReview = () => {
                                       <p>No reviews yet for this merchant.</p>
                                     )}
                                   </div>
+                                  <div className="writeReview">
+                                    <a onClick={writeReview}>Write a review</a>
+
+                                    {showWriteReview && (
+                                      <div className="writeReviewSection">
+                                        <div className="startadd">
+                                          {[1, 2, 3, 4, 5].map((star) => (
+                                            <span
+                                              key={star}
+                                              onClick={() => setSelectedRating(star)}
+                                              style={{
+                                                cursor: "pointer",
+                                                color: star <= selectedRating ? "#FFD700" : "#ccc",
+                                                fontSize: "24px",
+                                                marginRight: "4px",
+                                              }}
+                                            >
+                                              ★
+                                            </span>
+                                          ))}
+                                        </div>
+
+                                        <textarea
+                                          value={reviewText}
+                                          onChange={(e) => setReviewText(e.target.value)}
+                                          placeholder="Write your review here..."
+                                          rows={4}
+                                        />
+
+                                        <div style={{ marginTop: "10px" }}>
+                                          <button
+                                            className="submitbtn"
+                                            onClick={() => SaveReview(connection.merchant_id)}
+                                            disabled={isLoading}
+                                          >
+                                            {isLoading ? "Submitting..." : "Submit"}
+                                          </button>
+                                          <button className="closebtn" onClick={closeReviewSection}>
+                                            Close
+                                          </button>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+
                                 </div>
                                 {/* ------------ */}
                               </div>
