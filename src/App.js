@@ -42,6 +42,7 @@ import AdminUserList from "./pages/admin/AdminUserList";
 import AdminConnect from "./pages/admin/AdminConnect";
 import ContactList from "./pages/admin/ContactList";
 import AdminServiceList from "./pages/admin/AdminServiceList";
+import AdminReview from "./pages/admin/AdminReview";
 
 import Contact from "./pages/Contact";
 
@@ -247,6 +248,10 @@ function App() {
           {
             path: "/admin/service_list",
             element: <AdminServiceList />,
+          },
+          {
+            path: "/admin/reviews",
+            element: <AdminReview />,
           },
         ],
       },

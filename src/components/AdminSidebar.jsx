@@ -8,6 +8,7 @@ import { PiUsersThree } from "react-icons/pi";
 import { PiPhoneCall } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import { PiGearSix } from "react-icons/pi";
+import { PiNotePencilBold } from "react-icons/pi";
 import { MdOutlineStorefront } from "react-icons/md";
 import dashboardIcon from "./../assets/images/dashboard_icon.png";
 import storeIcon from "./../assets/images/store_icon.png";
@@ -174,6 +175,16 @@ const AdminSidebar = () => {
               color={"#ffffff"} size={24}
             />
             <div>Service List</div>
+          </div>
+
+          <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/reviews` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_reviews())}
+          >
+            <PiNotePencilBold
+              color={"#ffffff"} size={24}
+            />
+            <div>Review List</div>
           </div>
         </div>
       </div>
