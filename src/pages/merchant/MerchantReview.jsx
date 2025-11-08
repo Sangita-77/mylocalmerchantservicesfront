@@ -67,7 +67,7 @@ const MerchantReview = () => {
       );
 
       if (response.data.status) {
-        console.log("........response.data.connectedHistory............",response.data.data);
+        // console.log("........response.data.connectedHistory............",response.data);
         setConnectedHistory(response.data.connectedHistory || []);
         setMerchantDetails(response.data.merchantDetails || []);
         if (response.data.data) {
@@ -341,7 +341,11 @@ const MerchantReview = () => {
                   const history = connectedHistory[index];
                   const state = history?.state;
                   const company_name = connection?.company_name;
-                  // console.log("........connection...........",connection);
+                  // console.log("........connection...........",connection.merchant_id);
+
+                  const merchantReviews = reviews.filter(
+                    (review) => review.agent_id === connection.merchant_id
+                  );
 
                   return (
                     <>
@@ -600,20 +604,36 @@ const MerchantReview = () => {
                                   <div className="userInfoReviewsCon">
                                     <h2 className="sectionTitle">Review</h2>
 
-                                    
+                                    {/* Optional: recalculate avg for this merchant */}
                                     <div className="ratingTopSection">
                                       <div className="row">
-                                        
                                         <div className="col-lg-2">
                                           <div className="ratingCol">
-                                            <span>{averageRating ? averageRating.toFixed(1) : "0.0"}</span>
+                                            <span>
+                                              {merchantReviews.length > 0
+                                                ? (
+                                                    merchantReviews.reduce(
+                                                      (sum, r) => sum + r.rating,
+                                                      0
+                                                    ) / merchantReviews.length
+                                                  ).toFixed(1)
+                                                : "0.0"}
+                                            </span>
                                             <div className="starWrap">
-                                              {[...Array(5)].map((_, index) => {
-                                                const filled = index < Math.round(averageRating || 0);
+                                              {[...Array(5)].map((_, i) => {
+                                                const avg =
+                                                  merchantReviews.length > 0
+                                                    ? merchantReviews.reduce(
+                                                        (sum, r) => sum + r.rating,
+                                                        0
+                                                      ) / merchantReviews.length
+                                                    : 0;
                                                 return (
                                                   <span
-                                                    key={index}
-                                                    style={{ color: filled ? "#FFD700" : "#ccc" }}
+                                                    key={i}
+                                                    style={{
+                                                      color: i < Math.round(avg) ? "#FFD700" : "#ccc",
+                                                    }}
                                                   >
                                                     ★
                                                   </span>
@@ -621,89 +641,105 @@ const MerchantReview = () => {
                                               })}
                                             </div>
                                             <div style={{ fontSize: "12px", color: "#666" }}>
-                                              ({totalReviews} review{totalReviews !== 1 ? "s" : ""})
+                                              ({merchantReviews.length} review
+                                              {merchantReviews.length !== 1 ? "s" : ""})
                                             </div>
                                           </div>
                                         </div>
 
-                                        
                                         <div className="col-lg-10">
-                                          {[5, 4, 3, 2, 1].map((star) => (
-                                            <div className="progressBarWrap" key={star}>
-                                              <progress value={getPercentage(ratingStats[star])} max="100">
-                                                {getPercentage(ratingStats[star])}%
-                                              </progress>
-                                              <div className="reviewCount">
-                                                <span>{star}★</span> {ratingStats[star]} Review
-                                                {ratingStats[star] !== 1 ? "s" : ""} (
-                                                {getPercentage(ratingStats[star])}%)
+                                          {[5, 4, 3, 2, 1].map((star) => {
+                                            // Count how many reviews have this star for the current merchant
+                                            const count = merchantReviews.filter(
+                                              (r) => Math.round(r.rating) === star
+                                            ).length;
+
+                                            // Calculate percentage of total reviews
+                                            const percentage =
+                                              merchantReviews.length > 0
+                                                ? Math.round((count / merchantReviews.length) * 100)
+                                                : 0;
+
+                                            return (
+                                              <div className="progressBarWrap" key={star}>
+                                                <progress value={percentage} max="100">
+                                                  {percentage}%
+                                                </progress>
+                                                <div className="reviewCount">
+                                                  <span>{star}★</span>{" "}
+                                                  {count} Review{count !== 1 ? "s" : ""} ({percentage}%)
+                                                </div>
                                               </div>
-                                            </div>
-                                          ))}
+                                            );
+                                          })}
                                         </div>
+
                                       </div>
                                     </div>
 
-                                    
-                                    {isLoading ? (
-                                      <p>Loading reviews...</p>
-                                    ) : reviews.length > 0 ? (
-                                      reviews.map((item, index) => (
-                                        <div className="ratingBottomSection" key={item.id || index}>
+                                    {/* Show merchant-specific reviews */}
+                                    {merchantReviews.length > 0 ? (
+                                      merchantReviews.map((item, i) => (
+                                        <div className="ratingBottomSection" key={item.id || i}>
                                           <div className="ratingHeaderInfo">
                                             <div className="ratingheaderInfoLeft">
-                                            <div className="ratingUserImg">
-                                              {item.merchant_details?.logo ? (
-
-                                                <div
-                                                style={{
-                                                  width: "25px",
-                                                  height: "25px",
-                                                  borderRadius: "50%",
-                                                  backgroundColor: "#007bff",
-                                                  display: "flex",
-                                                  alignItems: "center",
-                                                  justifyContent: "center",
-                                                  color: "white",
-                                                  fontWeight: "bold",
-                                                  fontSize: "16px",
-                                                }}
-                                              >
-                                                {item.merchant_details?.merchant_name
-                                                  ? item.merchant_details.merchant_name.charAt(0).toUpperCase()
-                                                  : "U"}
+                                              <div className="ratingUserImg">
+                                                {item.merchant_details?.logo ? (
+                                                  <img
+                                                    src={`${IMAGE_BASE_URL}/${item.merchant_details.logo}`}
+                                                    alt="merchant"
+                                                    style={{
+                                                      width: "25px",
+                                                      height: "25px",
+                                                      borderRadius: "50%",
+                                                      backgroundColor: "#007bff",
+                                                      display: "flex",
+                                                      alignItems: "center",
+                                                      justifyContent: "center",
+                                                      color: "white",
+                                                      fontWeight: "bold",
+                                                      fontSize: "16px",
+                                                    }}
+                                                  />
+                                                ) : (
+                                                  <div
+                                                    style={{
+                                                      width: "25px",
+                                                      height: "25px",
+                                                      borderRadius: "50%",
+                                                      backgroundColor: "#007bff",
+                                                      display: "flex",
+                                                      alignItems: "center",
+                                                      justifyContent: "center",
+                                                      color: "white",
+                                                      fontWeight: "bold",
+                                                      fontSize: "16px",
+                                                    }}
+                                                  >
+                                                    {item.merchant_details?.merchant_name
+                                                      ? item.merchant_details.merchant_name
+                                                          .charAt(0)
+                                                          .toUpperCase()
+                                                      : "U"}
+                                                  </div>
+                                                )}
                                               </div>
-                                              ) : (
-                                                <img
-                                                  src={
-                                                    item.merchant_details?.logo
-                                                      ? `${BASE_URL}/${item.merchant_details.logo}`
-                                                      : contactlisticon
-                                                  }
-                                                  
-                                                />
-                                              )}
-                                            </div>
-
                                               <h3 className="ratingUserName">
-                                                {item.merchant_details?.merchant_name
-                                                  ? item.merchant_details.merchant_name
-                                                  : `User #${item.merchant_id || "Anonymous"}`}
+                                                {item.merchant_details?.merchant_name ||
+                                                  `User #${item.merchant_id}`}
                                               </h3>
-
                                               <h4 className="ratingUserTime">
                                                 {new Date(item.created_at).toLocaleDateString()}
                                               </h4>
                                             </div>
-
                                             <div className="ratingheaderInforight">
                                               <span className="avgRating">{item.rating}</span>
                                               <div className="startWrap">
-                                                {[...Array(5)].map((_, i) => (
+                                                {[...Array(5)].map((_, j) => (
                                                   <span
-                                                    key={i}
+                                                    key={j}
                                                     style={{
-                                                      color: i < item.rating ? "#FFD700" : "#ccc",
+                                                      color: j < item.rating ? "#FFD700" : "#ccc",
                                                     }}
                                                   >
                                                     ★
@@ -712,50 +748,13 @@ const MerchantReview = () => {
                                               </div>
                                             </div>
                                           </div>
-
                                           <div className="ratingConInfo">
                                             <p>{item.review}</p>
                                           </div>
                                         </div>
                                       ))
                                     ) : (
-                                      <p>No reviews yet.</p>
-                                    )}
-                                  </div>                              
-
-                                  <div className="writeReview">
-                                    <a onClick={writeReview}>Write a review</a>
-
-                                    {showWriteReview && (
-                                      <div className="writeReviewSection">
-                                        <div className="startadd">
-                                          <span>★</span>
-                                          <span>★</span>
-                                          <span>★</span>
-                                          <span>★</span>
-                                          <span>★</span>
-                                        </div>
-                                        <textarea
-                                          value={reviewText}
-                                          onChange={(e) =>
-                                            setReviewText(e.target.value)
-                                          }
-                                          placeholder="Write your review here..."
-                                          rows={4}
-                                        />
-
-                                        <div>
-                                          <button className="submitbtn">
-                                            Submit
-                                          </button>
-                                          <button
-                                            className="closebtn"
-                                            onClick={closeReviewSection}
-                                          >
-                                            Close
-                                          </button>
-                                        </div>
-                                      </div>
+                                      <p>No reviews yet for this merchant.</p>
                                     )}
                                   </div>
                                 </div>
