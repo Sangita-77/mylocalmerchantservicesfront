@@ -414,10 +414,26 @@ const MerchantListDetails = () => {
                       <div className="ratingHeaderInfo">
                         <div className="ratingheaderInfoLeft">
 
-                          <div className="ratingUserImg">
-                            {item.merchant_details?.logo ? (
-
-                              <div
+                        <div className="ratingUserImg">
+                          {item.merchant_details?.logo ? (
+                            <img
+                              src={`${IMAGE_BASE_URL}/${item.merchant_details.logo}`}
+                              alt="merchant"
+                              style={{
+                                width: "25px",
+                                height: "25px",
+                                borderRadius: "50%",
+                                backgroundColor: "#007bff",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                color: "white",
+                                fontWeight: "bold",
+                                fontSize: "16px",
+                              }}
+                            />
+                          ) : (
+                            <div
                               style={{
                                 width: "25px",
                                 height: "25px",
@@ -432,20 +448,13 @@ const MerchantListDetails = () => {
                               }}
                             >
                               {item.merchant_details?.merchant_name
-                                ? item.merchant_details.merchant_name.charAt(0).toUpperCase()
+                                ? item.merchant_details.merchant_name
+                                    .charAt(0)
+                                    .toUpperCase()
                                 : "U"}
                             </div>
-                            ) : (
-                              <img
-                                src={
-                                  item.merchant_details?.logo
-                                    ? `${BASE_URL}/${item.merchant_details.logo}`
-                                    : contactlisticon
-                                }
-                                
-                              />
-                            )}
-                          </div>
+                          )}
+                        </div>
 
                   
                           <h3 className="ratingUserName">
