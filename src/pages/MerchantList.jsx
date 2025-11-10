@@ -288,10 +288,9 @@ const MerchantList = () => {
                 onChange={(e) => setSearchByService(e.target.value)}
               >
                 <option value=""> Select Any Services </option>
-                <option value="service1"> Service 1 </option>
-                <option value="service2"> Service 2 </option>
-                <option value="service3"> Service 3 </option>
-                <option value="service4"> Service 4 </option>
+                <option value="HighRisk"> High Risk </option>
+                <option value="PointofSale"> Point Of Sale </option>
+                <option value="Financing"> Merchant Cash Advance or Financing </option>
               </select>
             </div>
           </div>
