@@ -89,7 +89,7 @@ const ProvidersReview = () => {
           };
         });
 
-        console.log(".........reviewsWithMerchant..........",reviewsWithMerchant);
+        // console.log(".........reviewsWithMerchant..........",reviewsWithMerchant);
   
         //  Set reviews with merchant info
         setReviews(reviewsWithMerchant);
