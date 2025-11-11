@@ -700,21 +700,37 @@ const MerchantReview = () => {
                                             <div className="writeReview">
                                               {/* <a onClick={editReview}>Edit review here..</a> */}
 
-                                              {showEditReview && (
-                                                <div className="writeReviewSection">
-                                                  <textarea
-                                                    value={reviewEditText}
-                                                    onChange={(e) => setReviewText(e.target.value)}
-                                                    placeholder="Edit review here..."
-                                                    rows={4}
-                                                  />
-
-                                                  <div style={{ marginTop: "10px" }}>
-                                                    <button className="submitbtn">Submit</button>
-                                                    <button className="closebtn" onClick={closeEditReviewSection}>Close</button>
-                                                  </div>
-                                                </div>
-                                              )}
+                                               {showEditReview && (
+                                                 <div className="writeReviewSection">
+                                                   <div className="startadd">
+                                                     {[1, 2, 3, 4, 5].map((star) => (
+                                                       <span
+                                                         key={star}
+                                                         onClick={() => setSelectedRating(star)}
+                                                         style={{
+                                                           cursor: "pointer",
+                                                           color: star <= selectedRating ? "#FFD700" : "#ccc",
+                                                           fontSize: "24px",
+                                                           marginRight: "4px",
+                                                         }}
+                                                       >
+                                                         ★
+                                                       </span>
+                                                     ))}
+                                                   </div>
+                                                   <textarea
+                                                     value={reviewEditText}
+                                                     onChange={(e) => setReviewEditText(e.target.value)}
+                                                     placeholder="Edit review here..."
+                                                     rows={4}
+                                                   />
+ 
+                                                   <div style={{ marginTop: "10px" }}>
+                                                     <button className="submitbtn">Submit</button>
+                                                     <button className="closebtn" onClick={closeEditReviewSection}>Close</button>
+                                                   </div>
+                                                 </div>
+                                               )}
                                             </div>
                                           </div>
 
