@@ -16,6 +16,7 @@ import { IMAGE_BASE_URL } from "../../utils/apiManager";
 import ChatWindow from "../../components/ChatWindow";
 import ConfirmModal from "../../components/ConfirmModal";
 import contactlisticon from "../../assets/images/contactlisticon.png";
+import { FaRegEdit } from "react-icons/fa";
 
 const MerchantReview = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -33,6 +34,9 @@ const MerchantReview = () => {
   const [showWriteReview, setShowWriteReview] = useState(false);
   const [reviewText, setReviewText] = useState("");
   const [selectedRating, setSelectedRating] = useState(0);
+
+  const [showEditReview, setShowEditReview] = useState(false);
+  const [reviewEditText, setReviewEditText] = useState("");
 
   const { id } = useParams();
   const { token } = useContext(AppContext);
@@ -220,6 +224,14 @@ const MerchantReview = () => {
     setReviewText("");
   };
 
+  const editReview = () => {
+    setShowEditReview(true);
+  };
+
+  const closeEditReviewSection = () => {
+    setShowEditReview(false);
+    setReviewEditText("");
+  };
 
   const SaveReview = async (agent_id) => {
 
@@ -641,8 +653,10 @@ const MerchantReview = () => {
 
                                     {/* Own review Section  */}
                                     <div className="ratingBottomSection ownReviewSection">
-                                    <div className="ratingHeaderInfo">
+                                          <div className="ratingHeaderInfo">
                                             <div className="ratingheaderInfoLeft">
+
+                                              
                                               <div className="ratingUserImg">
                                                   <div
                                                     style={{
@@ -661,22 +675,46 @@ const MerchantReview = () => {
                                                   </div>
                                               
                                               </div>
-                                              <h3 className="ratingUserName">
-                                                Demo
-                                              </h3>
-                                              <h4 className="ratingUserTime">
-                                              11/10/2025
-                                              </h4>
+                                              <h3 className="ratingUserName">Demo</h3>
+                                              <h4 className="ratingUserTime">11/10/2025</h4>
+                                              <div className="editBtnWrap" onClick={editReview}><span><FaRegEdit /></span> abcd</div>
+
                                             </div>
                                             <div className="ratingheaderInforight">
-                                              <span className="avgRating">4</span>
-                                              <div className="startWrap">
-                                                  <span>★</span>
-                                                  <span>★</span>
-                                                  <span>★</span>
-                                                  <span>★</span>
-                                                  <span>★</span>
+                                              
+                                              <div className="starRationCol">
+                                                <span className="avgRating">4</span>
+                                                <div className="startWrap">
+                                                    <span>★</span>
+                                                    <span>★</span>
+                                                    <span>★</span>
+                                                    <span>★</span>
+                                                    <span>★</span>
+                                                </div>
                                               </div>
+
+                                            </div>
+                                          </div>
+                                          <div className="ratingConInfo">
+                                            <p>Wowwww</p>
+                                            <div className="writeReview">
+                                              {/* <a onClick={editReview}>Edit review here..</a> */}
+
+                                              {showEditReview && (
+                                                <div className="writeReviewSection">
+                                                  <textarea
+                                                    value={reviewEditText}
+                                                    onChange={(e) => setReviewText(e.target.value)}
+                                                    placeholder="Edit review here..."
+                                                    rows={4}
+                                                  />
+
+                                                  <div style={{ marginTop: "10px" }}>
+                                                    <button className="submitbtn">Submit</button>
+                                                    <button className="closebtn" onClick={closeEditReviewSection}>Close</button>
+                                                  </div>
+                                                </div>
+                                              )}
                                             </div>
                                           </div>
 
