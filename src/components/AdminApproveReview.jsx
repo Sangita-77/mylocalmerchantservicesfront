@@ -17,7 +17,7 @@ const AdminApproveReview = ({ reviews = [], isLoading = false }) => {
 
   return (
     <>
-      <div className="accordionWrap">
+      <div className="accordionWrap approveReviewList">
         <div className="merchantaccordian-table">
           <Accordion defaultActiveKey={["0"]} alwaysOpen>
             <Accordion.Item eventKey="0">
