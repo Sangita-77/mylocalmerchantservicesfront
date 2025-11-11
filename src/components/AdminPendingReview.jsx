@@ -1,9 +1,12 @@
-import React, { useMemo, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import "../styles/styles.css";
 import { Accordion, Table } from "react-bootstrap";
 import AdminRejectPopup from "./AdminRejectPopup";
 import { IoMdCheckmark } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
+import axios from "axios";
+import { BASE_URL } from "../utils/apiManager";
+import { AppContext } from "../utils/context";
 
 const AdminPendingReview = ({
   reviews = [],
@@ -13,6 +16,9 @@ const AdminPendingReview = ({
 }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
+  const { token } = useContext(AppContext);
+  const [submittingId, setSubmittingId] = useState(null);
+  const [rejectingId, setRejectingId] = useState(null);
 
   const pendingReviews = useMemo(
     () => reviews.filter((review) => Number(review.status) === 0 || review.status === undefined),
@@ -24,9 +30,64 @@ const AdminPendingReview = ({
     setShowPopup(true);
   };
 
-  const handleApproveClick = (review) => {
-    if (typeof onApprove === "function") {
-      onApprove(review);
+  const handleRejectConfirm = async (review, reasonForRejection) => {
+    try {
+      const targetId = review?.review_id || null;
+      setRejectingId(targetId);
+
+      const payload = {
+        review_id: review.review_id,
+        status: 2,
+        reasonForRejection,
+      };
+
+      await axios.post(`${BASE_URL}/updateRatingStatus`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      // Optimistic UI update
+      if (typeof onReject === "function") {
+        onReject({ ...review, status: 2, rejected_reason: reasonForRejection });
+      }
+
+      setShowPopup(false);
+      setSelectedReview(null);
+    } catch (error) {
+      console.error("Failed to reject review:", error);
+      alert("Failed to reject review. Please try again.");
+    } finally {
+      setRejectingId(null);
+    }
+  };
+
+  const handleApproveClick = async (review) => {
+    try {
+      setSubmittingId(review.review_id || null);
+
+      const payload = {
+        review_id: review.review_id,
+        status: 1,
+      };
+
+      await axios.post(`${BASE_URL}/updateRatingStatus`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      // Notify parent to update UI optimistically without refresh
+      if (typeof onApprove === "function") {
+        onApprove({ ...review, status: 1 });
+      }
+    } catch (error) {
+      console.error("Failed to approve review:", error);
+      alert("Failed to approve review. Please try again.");
+    } finally {
+      setSubmittingId(null);
     }
   };
 
@@ -64,7 +125,7 @@ const AdminPendingReview = ({
     }
 
     return pendingReviews.map((review) => {
-      const reviewId = review.id || `${review.merchant_id}-${review.agent_id}`;
+      const reviewId = review.review_id || `${review.merchant_id}-${review.agent_id}`;
       const ratingValue = Number(review.rating) || 0;
       const reviewText = review.review || "-";
       const merchantName =
@@ -98,8 +159,9 @@ const AdminPendingReview = ({
               className="approveBtn"
               type="button"
               onClick={() => handleApproveClick(review)}
+              disabled={submittingId === (review.review_id || null)}
             >
-              <IoMdCheckmark /> Approve
+              <IoMdCheckmark /> {submittingId === (review.review_id || null) ? "..." : "Approve"}
             </button>
             <button
               className="rejectBtn"
@@ -156,7 +218,8 @@ const AdminPendingReview = ({
         show={showPopup}
         title="Reject Review"
         onClose={handleClosePopup}
-        review={selectedReview}
+        onConfirm={(reason) => selectedReview && handleRejectConfirm(selectedReview, reason)}
+        isSubmitting={rejectingId === (selectedReview?.review_id || null)}
       />
       
     </>

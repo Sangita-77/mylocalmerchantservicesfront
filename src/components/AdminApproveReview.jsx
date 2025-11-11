@@ -51,7 +51,7 @@ const AdminApproveReview = ({ reviews = [], isLoading = false }) => {
                         </tr>
                       ) : (
                         approvedReviews.map((review) => {
-                          const reviewId = review.id || `${review.merchant_id}-${review.agent_id}`;
+                          const reviewId = review.review_id || `${review.merchant_id}-${review.agent_id}`;
                           const ratingValue = Number(review.rating) || 0;
                           const reviewText = review.review || "-";
                           const merchantName =

@@ -119,7 +119,7 @@ const AdminReview = () => {
           };
         });
 
-        console.log(".........reviewsWithDetails..........",reviewsWithDetails);
+        // console.log(".........reviewsWithDetails..........",reviewsWithDetails);
   
         //  Set reviews with merged details
         setReviews(reviewsWithDetails);
@@ -168,6 +168,33 @@ const AdminReview = () => {
           <AdminPendingReview
             reviews={pendingUsers}
             isLoading={isLoading}
+            onApprove={(updatedReview) => {
+              // Move item from pending to approved without refresh
+              const getKey = (r) => r.review_id || `${r.merchant_id}-${r.agent_id}`;
+              const updatedKey = getKey(updatedReview);
+
+              setPendingUsers((prev) =>
+                prev.filter((r) => getKey(r) !== updatedKey)
+              );
+              setApprovedUsers((prev) => {
+                // Avoid duplicates if already present
+                const exists = prev.some((r) => getKey(r) === updatedKey);
+                return exists ? prev.map((r) => (getKey(r) === updatedKey ? updatedReview : r)) : [updatedReview, ...prev];
+              });
+            }}
+            onReject={(updatedReview) => {
+              // Move item from pending to rejected without refresh
+              const getKey = (r) => r.review_id || `${r.merchant_id}-${r.agent_id}`;
+              const updatedKey = getKey(updatedReview);
+
+              setPendingUsers((prev) =>
+                prev.filter((r) => getKey(r) !== updatedKey)
+              );
+              setRejectedUsers((prev) => {
+                const exists = prev.some((r) => getKey(r) === updatedKey);
+                return exists ? prev.map((r) => (getKey(r) === updatedKey ? updatedReview : r)) : [updatedReview, ...prev];
+              });
+            }}
           />
           <AdminApproveReview
             reviews={approvedUsers}

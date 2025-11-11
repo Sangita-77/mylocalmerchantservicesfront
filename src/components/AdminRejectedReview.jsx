@@ -52,7 +52,7 @@ const AdminRejectedReview = ({ reviews = [], isLoading = false }) => {
                         </tr>
                       ) : (
                         rejectedReviews.map((review) => {
-                          const reviewId = review.id || `${review.merchant_id}-${review.agent_id}`;
+                          const reviewId = review.review_id || `${review.merchant_id}-${review.agent_id}`;
                           const ratingValue = Number(review.rating) || 0;
                           const reviewText = review.review || "-";
                           const merchantName =
