@@ -639,6 +639,49 @@ const MerchantReview = () => {
                                       </div>
                                     </div>
 
+                                    {/* Own review Section  */}
+                                    <div className="ratingBottomSection ownReviewSection">
+                                    <div className="ratingHeaderInfo">
+                                            <div className="ratingheaderInfoLeft">
+                                              <div className="ratingUserImg">
+                                                  <div
+                                                    style={{
+                                                      width: "25px",
+                                                      height: "25px",
+                                                      borderRadius: "50%",
+                                                      backgroundColor: "#007bff",
+                                                      display: "flex",
+                                                      alignItems: "center",
+                                                      justifyContent: "center",
+                                                      color: "white",
+                                                      fontWeight: "bold",
+                                                      fontSize: "16px",
+                                                    }}
+                                                  > S
+                                                  </div>
+                                              
+                                              </div>
+                                              <h3 className="ratingUserName">
+                                                Demo
+                                              </h3>
+                                              <h4 className="ratingUserTime">
+                                              11/10/2025
+                                              </h4>
+                                            </div>
+                                            <div className="ratingheaderInforight">
+                                              <span className="avgRating">4</span>
+                                              <div className="startWrap">
+                                                  <span>★</span>
+                                                  <span>★</span>
+                                                  <span>★</span>
+                                                  <span>★</span>
+                                                  <span>★</span>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                    </div>
+
                                     {/* Show merchant-specific reviews */}
                                     {merchantReviews.length > 0 ? (
                                       merchantReviews.map((item, i) => (
