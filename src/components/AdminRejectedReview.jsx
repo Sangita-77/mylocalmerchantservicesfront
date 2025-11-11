@@ -68,7 +68,7 @@ const AdminRejectedReview = ({ reviews = [], isLoading = false }) => {
                             review.merchant_details?.last_name ||
                             review.merchant_name ||
                             "-";
-                          const reason = review.rejected_reason || review.reason || "-";
+                          const reason = review.reasonForRejection || "-";
 
                           return (
                             <tr className="tr" key={reviewId}>
