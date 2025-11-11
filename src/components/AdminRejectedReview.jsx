@@ -72,7 +72,7 @@ const AdminRejectedReview = ({ reviews = [], isLoading = false }) => {
 
                           return (
                             <tr className="tr" key={reviewId}>
-                              <td>{reviewId}</td>
+                              <td className="reviewId">{reviewId}</td>
                               <td>
                                 <div className="ratingCol">
                                   <span>{ratingValue}</span>

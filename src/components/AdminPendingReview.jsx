@@ -2,6 +2,8 @@ import React, { useMemo, useState } from "react";
 import "../styles/styles.css";
 import { Accordion, Table } from "react-bootstrap";
 import AdminRejectPopup from "./AdminRejectPopup";
+import { IoMdCheckmark } from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
 
 const AdminPendingReview = ({
   reviews = [],
@@ -81,7 +83,7 @@ const AdminPendingReview = ({
 
       return (
         <tr key={reviewId}>
-          <td>{reviewId}</td>
+          <td className="reviewId">{reviewId}</td>
           <td>
             <div className="ratingCol">
               <span>{ratingValue}</span>
@@ -97,14 +99,14 @@ const AdminPendingReview = ({
               type="button"
               onClick={() => handleApproveClick(review)}
             >
-              Approve
+              <IoMdCheckmark /> Approve
             </button>
             <button
               className="rejectBtn"
               type="button"
               onClick={() => handleRejectClick(review)}
             >
-              Reject
+              <RxCross2 /> Reject
             </button>
           </td>
         </tr>

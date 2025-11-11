@@ -1513,14 +1513,18 @@ border-radius: 5px; margin-right: 30px;}
 .adminReviewList .accordionWrap h2 .merchant-heading {font-size: 16px;}
 .adminReviewList .accordionWrap .accordion-body {padding: 38px 0px 0px;}
 .adminReviewList .accordionWrap .accordion-body .table .ratingCol {display: flex; column-gap: 5px;}
-.adminReviewList .accordionWrap .accordion-body .table .approveBtn {transition: all .5s ease-in-out; background-color: #FFBF61; color: #000; font: 600 15px "Sora"; text-align: center; text-transform: capitalize; border: none; outline: none; border-radius: 10px; padding: 10px 20px; margin-right: 15px;}
-.adminReviewList .accordionWrap .accordion-body .table .approveBtn:hover {background-color: #1C94E4; color: #fff;}
+.adminReviewList .accordionWrap .accordion-body .table .approveBtn {transition: all .5s ease-in-out; background-color: #026f3d; color: #fff; font: 500 14px "Sora"; text-align: center; text-transform: capitalize; border: none; outline: none; border-radius: 10px; padding: 8px 14px 8px 11px; margin-right: 15px;}
+.adminReviewList .accordionWrap .accordion-body .table .approveBtn:hover {background-color: #026f3dc4;}
 
-.adminReviewList .accordionWrap .accordion-body .table .rejectBtn {transition: all .5s ease-in-out; background-color: #e60e4e; color: #fff; font: 600 15px "Sora"; text-align: center; text-transform: capitalize; border: none; outline: none; border-radius: 10px; padding: 10px 20px;}
-.adminReviewList .accordionWrap .accordion-body .table .rejectBtn:hover {background-color: #1C94E4; }
+.adminReviewList .accordionWrap .accordion-body .table .rejectBtn {transition: all .5s ease-in-out; background-color: #d62e18; color: #fff; font: 500 14px "Sora"; text-align: center; text-transform: capitalize; border: none; outline: none; border-radius: 10px; padding: 8px 14px 8px 11px;}
+.adminReviewList .accordionWrap .accordion-body .table .rejectBtn:hover {background-color: #d62e18d4; }
 .adminReviewList .accordionWrap .accordion-body .table .reviewText {width: 220px;}
 .adminReviewList .accordionWrap .accordion-body .table .actionBtn {width: 245px; padding-left: 10px; padding-right: 10px; text-align: center;}
 .merchantaccordian-table .accordion-body table thead tr th:last-child {text-align: center;}
+.adminReviewList .accordionWrap .accordion-body .table .reviewId {max-width: 150px; width: 150px; word-wrap: break-word;}
+.adminReviewList .accordionWrap.approveReviewList .accordion-body .table .actionBtn {width: 150px; color: #026f3d;}
+.adminReviewList .accordionWrap.rejectReviewList .accordion-body .table .actionBtn {width: 150px; color: #d62e18;}
+.adminReviewList .accordionWrap .accordion-body .table .starWrap span {color: #ffbf61; font-size: 18px;}
 
 .adminReviewList .approveReviewList .accordion-header {background-color: #64b4cd;}
 .adminReviewList .rejectReviewList .accordion-header {background-color: #023260cf;}
