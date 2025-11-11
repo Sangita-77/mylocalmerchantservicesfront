@@ -160,24 +160,6 @@ const AdminSidebar = () => {
           </div>
 
           <div
-            className={`sidebarItem ${url === `${BASENAME}/admin/contact` && "sidebarItemActive"}`}
-            onClick={() => navigate(routes.admin_contact())}
-          >
-            <PiPhoneCall color={"#fff"} size={24}/>
-            <div>Contact</div>
-          </div>
-
-          <div
-            className={`sidebarItem ${url === `${BASENAME}/admin/service_list` && "sidebarItemActive"}`}
-            onClick={() => navigate(routes.admin_service_list())}
-          >
-            <PiGearSix
-              color={"#ffffff"} size={24}
-            />
-            <div>Service List</div>
-          </div>
-
-          <div
             className={`sidebarItem ${url === `${BASENAME}/admin/reviews` && "sidebarItemActive"}`}
             onClick={() => navigate(routes.admin_reviews())}
           >
@@ -186,6 +168,25 @@ const AdminSidebar = () => {
             />
             <div>Review List</div>
           </div>
+
+          <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/contact` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_contact())}
+          >
+            <PiPhoneCall color={"#fff"} size={24}/>
+            <div>Contact</div>
+          </div>
+
+          {/* <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/service_list` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_service_list())}
+          >
+            <PiGearSix
+              color={"#ffffff"} size={24}
+            />
+            <div>Service List</div>
+          </div> */}
+
         </div>
       </div>
     </div>
