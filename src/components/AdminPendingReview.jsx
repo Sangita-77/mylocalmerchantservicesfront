@@ -1,22 +1,115 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "../styles/styles.css";
 import { Accordion, Table } from "react-bootstrap";
 import AdminRejectPopup from "./AdminRejectPopup";
 
-const AdminPendingReview = () => {
-  const items = ["1", "2", "3"];
+const AdminPendingReview = ({
+  reviews = [],
+  isLoading = false,
+  onApprove,
+  onReject,
+}) => {
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedReview, setSelectedReview] = useState(null);
 
-  const handleRejectClick = (item) => {
-    setSelectedItem(item);
+  const pendingReviews = useMemo(
+    () => reviews.filter((review) => Number(review.status) === 0 || review.status === undefined),
+    [reviews]
+  );
+
+  const handleRejectClick = (review) => {
+    setSelectedReview(review);
     setShowPopup(true);
   };
 
+  const handleApproveClick = (review) => {
+    if (typeof onApprove === "function") {
+      onApprove(review);
+    }
+  };
 
   const handleClosePopup = () => {
     setShowPopup(false);
-    setSelectedItem(null);
+    setSelectedReview(null);
+  };
+
+  const renderStars = (rating) => {
+    const rounded = Math.round(Number(rating) || 0);
+    return Array.from({ length: 5 }, (_, index) => (
+      <span key={index}>{index < rounded ? "★" : "☆"}</span>
+    ));
+  };
+
+  const renderBodyContent = () => {
+    if (isLoading) {
+      return (
+        <tr>
+          <td colSpan={6} className="text-center">
+            Loading reviews...
+          </td>
+        </tr>
+      );
+    }
+
+    if (!pendingReviews.length) {
+      return (
+        <tr>
+          <td colSpan={6} className="text-center">
+            No pending reviews found.
+          </td>
+        </tr>
+      );
+    }
+
+    return pendingReviews.map((review) => {
+      const reviewId = review.id || `${review.merchant_id}-${review.agent_id}`;
+      const ratingValue = Number(review.rating) || 0;
+      const reviewText = review.review || "-";
+      const merchantName =
+        review.agent_details?.merchant_name ||
+        review.agent_name ||
+        review.agent_email ||
+        review.agent_id ||
+        "-";
+      const reviewer =
+        review.merchant_details?.merchant_name ||
+        review.merchant_details?.company_name ||
+        review.merchant_details?.first_name ||
+        review.merchant_details?.last_name ||
+        review.merchant_name ||
+        "-";
+
+      return (
+        <tr key={reviewId}>
+          <td>{reviewId}</td>
+          <td>
+            <div className="ratingCol">
+              <span>{ratingValue}</span>
+              <div className="starWrap">{renderStars(ratingValue)}</div>
+            </div>
+          </td>
+          <td className="reviewText">{reviewText}</td>
+          <td>{reviewer}</td>
+          <td>{merchantName}</td>
+          <td className="actionBtn">
+            <button
+              className="approveBtn"
+              type="button"
+              onClick={() => handleApproveClick(review)}
+            >
+              Approve
+            </button>
+            <button
+              className="rejectBtn"
+              type="button"
+              onClick={() => handleRejectClick(review)}
+            >
+              Reject
+            </button>
+          </td>
+        </tr>
+      );
+    });
   };
 
   return (
@@ -45,37 +138,7 @@ const AdminPendingReview = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {items.map((item, index) => (
-                        <tr key={index}>
-                          <td>{item}</td>
-                          <td>
-                            <div className="ratingCol">
-                              <span>5</span>
-                              <div className="starWrap">
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="reviewText">
-                            Lorem ipsum is a dummy or placeholder text
-                          </td>
-                          <td>Sangite</td>
-                          <td>Demo</td>
-                          <td className="actionBtn">
-                            <button className="approveBtn">Approve</button>
-                            <button
-                              className="rejectBtn"
-                              onClick={() => handleRejectClick(item)}
-                            >
-                              Reject
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
+                      {renderBodyContent()}
                     </tbody>
                   </Table>
                 </div>
@@ -91,6 +154,7 @@ const AdminPendingReview = () => {
         show={showPopup}
         title="Reject Review"
         onClose={handleClosePopup}
+        review={selectedReview}
       />
       
     </>

@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "../styles/styles.css";
 import { Accordion, Table } from "react-bootstrap";
 
-const AdminRejectedReview = () => {
-  const items = ["1"];
+const AdminRejectedReview = ({ reviews = [], isLoading = false }) => {
+  const rejectedReviews = useMemo(
+    () => reviews.filter((r) => Number(r.status) === 2 || r.status === undefined),
+    [reviews]
+  );
+
+  const renderStars = (rating) => {
+    const rounded = Math.round(Number(rating) || 0);
+    return Array.from({ length: 5 }, (_, index) => (
+      <span key={index}>{index < rounded ? "★" : "☆"}</span>
+    ));
+  };
 
   return (
     <>
@@ -32,30 +42,52 @@ const AdminRejectedReview = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {items.map((item, index) => (
-                        <tr className="tr" key={index}>
-                          <td>1</td>
-                          <td>
-                            <div className="ratingCol">
-                              <span>5</span>
-                              <div className="starWrap">
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="reviewText">
-                            Lorem ipsum is a dummy or placeholder text
-                          </td>
-                          <td>Sangite</td>
-                          <td>Demo</td>
-                          <td> - </td>
-                          <td className="actionBtn">Rejected</td>
+                      {isLoading ? (
+                        <tr>
+                          <td colSpan={7} className="text-center">Loading reviews...</td>
                         </tr>
-                      ))}
+                      ) : rejectedReviews.length === 0 ? (
+                        <tr>
+                          <td colSpan={7} className="text-center">No rejected reviews found.</td>
+                        </tr>
+                      ) : (
+                        rejectedReviews.map((review) => {
+                          const reviewId = review.id || `${review.merchant_id}-${review.agent_id}`;
+                          const ratingValue = Number(review.rating) || 0;
+                          const reviewText = review.review || "-";
+                          const merchantName =
+                            review.agent_details?.merchant_name ||
+                            review.agent_name ||
+                            review.agent_email ||
+                            review.agent_id ||
+                            "-";
+                          const reviewer =
+                            review.merchant_details?.merchant_name ||
+                            review.merchant_details?.company_name ||
+                            review.merchant_details?.first_name ||
+                            review.merchant_details?.last_name ||
+                            review.merchant_name ||
+                            "-";
+                          const reason = review.rejected_reason || review.reason || "-";
+
+                          return (
+                            <tr className="tr" key={reviewId}>
+                              <td>{reviewId}</td>
+                              <td>
+                                <div className="ratingCol">
+                                  <span>{ratingValue}</span>
+                                  <div className="starWrap">{renderStars(ratingValue)}</div>
+                                </div>
+                              </td>
+                              <td className="reviewText">{reviewText}</td>
+                              <td>{reviewer}</td>
+                              <td>{merchantName}</td>
+                              <td>{reason}</td>
+                              <td className="actionBtn">Rejected</td>
+                            </tr>
+                          );
+                        })
+                      )}
                     </tbody>
                   </Table>
                 </div>
