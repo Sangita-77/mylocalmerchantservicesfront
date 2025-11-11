@@ -54,13 +54,13 @@ const AdminApproveReview = ({ reviews = [], isLoading = false }) => {
                           const reviewId = review.id || `${review.merchant_id}-${review.agent_id}`;
                           const ratingValue = Number(review.rating) || 0;
                           const reviewText = review.review || "-";
-                          const reviewer =
+                          const merchantName =
                             review.agent_details?.merchant_name ||
                             review.agent_name ||
                             review.agent_email ||
                             review.agent_id ||
                             "-";
-                          const merchantName =
+                          const reviewer =
                             review.merchant_details?.merchant_name ||
                             review.merchant_details?.company_name ||
                             review.merchant_details?.first_name ||
