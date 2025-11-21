@@ -18,7 +18,7 @@ const ProvidersReview = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { token } = useContext(AppContext);
 
-  const [showReportReview, setShowReportReview] = useState(false);
+  const [openReportReviewId, setOpenReportReviewId] = useState(null);
   const [reviewReportText, setReviewReportText] = useState("");
 
 
@@ -123,12 +123,12 @@ const ProvidersReview = () => {
     totalReviews > 0 ? Math.round((count / totalReviews) * 100) : 0;
   const dataArray = [1, 2];
 
-  const reportReview = () => {
-    setShowReportReview(true);
+  const reportReview = (reviewId) => {
+    setOpenReportReviewId(reviewId);
   };
 
   const closeReportReviewSection = () => {
-    setShowReportReview(false);
+    setOpenReportReviewId(null);
     setReviewReportText("");
   };
 
@@ -260,7 +260,7 @@ const ProvidersReview = () => {
                             <h4 className="ratingUserTime">
                               {new Date(item.created_at).toLocaleDateString()}
                             </h4>
-                            <div className="reportBtnWrap" onClick={reportReview}><span><MdOutlineReport /></span> Report</div>
+                            <div className="reportBtnWrap" onClick={() => reportReview(item.id || index)}><span><MdOutlineReport /></span> Report</div>
                           </div>
                     
                           <div className="ratingheaderInforight">
@@ -284,7 +284,7 @@ const ProvidersReview = () => {
                           <p>{item.review}</p>
 
                           <div className="writeReview">
-                          {showReportReview && (
+                          {openReportReviewId === (item.id || index) && (
                             <div className="writeReviewSection">
                               <textarea
                                 value={reviewReportText}
