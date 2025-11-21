@@ -245,6 +245,38 @@ const MerchantReview = () => {
       return;
     }
   
+    // Check if a review already exists for this merchant-agent pair
+    const existingReview = reviews.find(
+      (review) =>
+        review.agent_id === agent_id &&
+        merchantId &&
+        String(review.merchant_id) === String(merchantId)
+    );
+
+    // If review exists and is approved (status 1), prevent creating/editing
+    if (existingReview && !isEditingOwnReview) {
+      const status = existingReview.status;
+      const isApproved = status === 1 || status === "1";
+      if (isApproved) {
+        alert("You have already submitted a review for this merchant. Approved reviews cannot be edited.");
+        return;
+      }
+    }
+
+    // If review exists but we're not in edit mode, switch to edit mode
+    if (existingReview && !isEditingOwnReview) {
+      const status = existingReview.status;
+      const isPending = status === 0 || status === "0" || status === null || status === undefined;
+      if (isPending) {
+        // Update the existing pending review instead of creating a new one
+        const reviewId = existingReview.review_id || existingReview.id;
+        if (reviewId) {
+          setIsEditingOwnReview(true);
+          setEditingReviewId(reviewId);
+        }
+      }
+    }
+  
     if (isEditingOwnReview && !editingReviewId) {
       alert("Unable to determine which review to update. Please try again.");
       return;
@@ -255,9 +287,17 @@ const MerchantReview = () => {
   
       let response;
 
-      if (isEditingOwnReview && editingReviewId) {
+      // If editing or if review exists, update it
+      if ((isEditingOwnReview && editingReviewId) || existingReview) {
+        const reviewId = editingReviewId || existingReview?.review_id || existingReview?.id;
+        if (!reviewId) {
+          alert("Unable to determine which review to update. Please try again.");
+          setIsLoading(false);
+          return;
+        }
+
         const body = {
-          review_id: editingReviewId,
+          review_id: reviewId,
           review: reviewText,
           rating: selectedRating,
         };
@@ -269,6 +309,7 @@ const MerchantReview = () => {
           },
         });
       } else {
+        // Create new review only if none exists
         const body = {
           merchant_id: merchant_id,
           agent_id: agent_id,
@@ -348,12 +389,56 @@ const MerchantReview = () => {
                       merchantId &&
                       String(review.merchant_id) === String(merchantId)
                   );
-                  const primaryOwnReview = ownReviews[0];
+                  
+                  // Separate pending (status 0) and approved (status 1) reviews
+                  // Handle status as string "0", number 0, null, or undefined
+                  const pendingOwnReviews = ownReviews.filter(
+                    (review) => {
+                      const status = review.status;
+                      // Check if status is 0 (handles string "0", number 0, null, undefined)
+                      const isPending = status === 0 || status === "0" || status === null || status === undefined;
+                      return isPending;
+                    }
+                  );
+                  const approvedOwnReviews = ownReviews.filter(
+                    (review) => {
+                      const status = review.status;
+                      return status === 1 || status === "1";
+                    }
+                  );
+                  // Only one review per merchant per agent - get the existing review (pending or approved)
+                  const primaryOwnReview = pendingOwnReviews[0] || approvedOwnReviews[0];
+                  const existingReview = ownReviews[0]; // Get the first (and should be only) review
+
+                  // Include all reviews except pending own reviews (pending ones show in ownReviewSection)
+                  // Approved own reviews should appear in the main list
+                  const merchantReviewsForDisplay = merchantReviews.filter(
+                    (review) => {
+                      const isOwnReview = merchantId && String(review.merchant_id) === String(merchantId);
+                      const status = review.status;
+                      const isPending = status === 0 || status === "0" || status === null || status === undefined;
+                      // Exclude pending own reviews (they show in ownReviewSection)
+                      return !(isOwnReview && isPending);
+                    }
+                  );
+
+                  // Calculate review status for UI
+                  const existingReviewStatus = existingReview ? existingReview.status : null;
+                  const isExistingReviewPending = existingReviewStatus === 0 || existingReviewStatus === "0" || existingReviewStatus === null || existingReviewStatus === undefined;
+                  const isExistingReviewApproved = existingReviewStatus === 1 || existingReviewStatus === "1";
 
                   const handleReviewButtonClick = () => {
-                    if (primaryOwnReview) {
-                      startEditOwnReview(primaryOwnReview);
+                    // If there's an existing review, always edit it (if pending) or show message (if approved)
+                    if (existingReview) {
+                      if (isExistingReviewPending) {
+                        // Can edit pending reviews
+                        startEditOwnReview(existingReview);
+                      } else {
+                        // Approved reviews cannot be edited
+                        alert("You have already submitted a review for this merchant. Approved reviews cannot be edited.");
+                      }
                     } else {
+                      // No review exists, create a new one
                       writeReview();
                     }
                   };
@@ -621,23 +706,23 @@ const MerchantReview = () => {
                                         <div className="col-lg-2">
                                           <div className="ratingCol">
                                             <span>
-                                              {merchantReviews.length > 0
+                                              {merchantReviewsForDisplay.length > 0
                                                 ? (
-                                                    merchantReviews.reduce(
+                                                    merchantReviewsForDisplay.reduce(
                                                       (sum, r) => sum + r.rating,
                                                       0
-                                                    ) / merchantReviews.length
+                                                    ) / merchantReviewsForDisplay.length
                                                   ).toFixed(1)
                                                 : "0.0"}
                                             </span>
                                             <div className="starWrap">
                                               {[...Array(5)].map((_, i) => {
                                                 const avg =
-                                                  merchantReviews.length > 0
-                                                    ? merchantReviews.reduce(
+                                                  merchantReviewsForDisplay.length > 0
+                                                    ? merchantReviewsForDisplay.reduce(
                                                         (sum, r) => sum + r.rating,
                                                         0
-                                                      ) / merchantReviews.length
+                                                      ) / merchantReviewsForDisplay.length
                                                     : 0;
                                                 return (
                                                   <span
@@ -652,8 +737,8 @@ const MerchantReview = () => {
                                               })}
                                             </div>
                                             <div style={{ fontSize: "12px", color: "#666" }}>
-                                              ({merchantReviews.length} review
-                                              {merchantReviews.length !== 1 ? "s" : ""})
+                                              ({merchantReviewsForDisplay.length} review
+                                              {merchantReviewsForDisplay.length !== 1 ? "s" : ""})
                                             </div>
                                           </div>
                                         </div>
@@ -661,14 +746,14 @@ const MerchantReview = () => {
                                         <div className="col-lg-10">
                                           {[5, 4, 3, 2, 1].map((star) => {
                                             // Count how many reviews have this star for the current merchant
-                                            const count = merchantReviews.filter(
+                                            const count = merchantReviewsForDisplay.filter(
                                               (r) => Math.round(r.rating) === star
                                             ).length;
 
                                             // Calculate percentage of total reviews
                                             const percentage =
-                                              merchantReviews.length > 0
-                                                ? Math.round((count / merchantReviews.length) * 100)
+                                              merchantReviewsForDisplay.length > 0
+                                                ? Math.round((count / merchantReviewsForDisplay.length) * 100)
                                                 : 0;
 
                                             return (
@@ -688,11 +773,11 @@ const MerchantReview = () => {
                                       </div>
                                     </div>
 
-                                    {/* Own review Section  */}
+                                    {/* Own review Section - Only show pending reviews (status 0) */}
                                     <div className="ratingBottomSection ownReviewSection">
                                       {merchantId ? (
-                                        ownReviews.length > 0 ? (
-                                          ownReviews.map((item, ownIndex) => (
+                                        pendingOwnReviews.length > 0 ? (
+                                          pendingOwnReviews.map((item, ownIndex) => (
                                             <div key={item.id || ownIndex}>
                                               <div className="ratingHeaderInfo">
                                                 <div className="ratingheaderInfoLeft">
@@ -743,7 +828,6 @@ const MerchantReview = () => {
                                                   <h4 className="ratingUserTime">
                                                     {new Date(item.created_at).toLocaleDateString()}
                                                   </h4>
-                                                  {/* <div className="editBtnWrap" onClick={editReview}><span><FaRegEdit /></span> abcd</div> */}
                                                 </div>
                                                 <div className="ratingheaderInforight">
                                                   <div className="starRationCol">
@@ -768,6 +852,127 @@ const MerchantReview = () => {
                                               </div>
                                               <div className="ratingConInfo">
                                                 <p>{item.review}</p>
+                                                {(() => {
+                                                  const status = item.status;
+                                                  const isPending = status === 0 || status === "0" || status === null || status === undefined;
+                                                  return isPending && (
+                                                    <div style={{ marginTop: "10px" }}>
+                                                      <button
+                                                        onClick={() => startEditOwnReview(item)}
+                                                        style={{
+                                                          padding: "6px 12px",
+                                                          backgroundColor: "#007bff",
+                                                          color: "white",
+                                                          border: "none",
+                                                          borderRadius: "4px",
+                                                          cursor: "pointer",
+                                                          fontSize: "14px",
+                                                        }}
+                                                      >
+                                                        Edit Review & Rating
+                                                      </button>
+                                                      <div
+                                                        style={{
+                                                          fontSize: "12px",
+                                                          color: "#ff9800",
+                                                          marginTop: "8px",
+                                                          fontStyle: "italic",
+                                                        }}
+                                                      >
+                                                        ⚠ Pending - You can edit this review
+                                                      </div>
+                                                    </div>
+                                                  );
+                                                })()}
+                                              </div>
+                                            </div>
+                                          ))
+                                        ) : approvedOwnReviews.length > 0 ? (
+                                          approvedOwnReviews.map((item, ownIndex) => (
+                                            <div key={item.id || ownIndex}>
+                                              <div className="ratingHeaderInfo">
+                                                <div className="ratingheaderInfoLeft">
+                                                  <div className="ratingUserImg">
+                                                    {item.merchant_details?.logo ? (
+                                                      <img
+                                                        src={`${IMAGE_BASE_URL}/${item.merchant_details.logo}`}
+                                                        alt="merchant"
+                                                        style={{
+                                                          width: "25px",
+                                                          height: "25px",
+                                                          borderRadius: "50%",
+                                                          backgroundColor: "#007bff",
+                                                          display: "flex",
+                                                          alignItems: "center",
+                                                          justifyContent: "center",
+                                                          color: "white",
+                                                          fontWeight: "bold",
+                                                          fontSize: "16px",
+                                                        }}
+                                                      />
+                                                    ) : (
+                                                      <div
+                                                        style={{
+                                                          width: "25px",
+                                                          height: "25px",
+                                                          borderRadius: "50%",
+                                                          backgroundColor: "#007bff",
+                                                          display: "flex",
+                                                          alignItems: "center",
+                                                          justifyContent: "center",
+                                                          color: "white",
+                                                          fontWeight: "bold",
+                                                          fontSize: "16px",
+                                                        }}
+                                                      >
+                                                        {item.merchant_details?.merchant_name
+                                                          ? item.merchant_details.merchant_name
+                                                              .charAt(0)
+                                                              .toUpperCase()
+                                                          : "U"}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                  <h3 className="ratingUserName">
+                                                    {item.merchant_details?.merchant_name || "You"}
+                                                  </h3>
+                                                  <h4 className="ratingUserTime">
+                                                    {new Date(item.created_at).toLocaleDateString()}
+                                                  </h4>
+                                                </div>
+                                                <div className="ratingheaderInforight">
+                                                  <div className="starRationCol">
+                                                    <span className="avgRating">{item.rating}</span>
+                                                    <div className="startWrap">
+                                                      {[...Array(5)].map((_, starIndex) => (
+                                                        <span
+                                                          key={starIndex}
+                                                          style={{
+                                                            color:
+                                                              starIndex < Number(item.rating)
+                                                                ? "#FFD700"
+                                                                : "#ccc",
+                                                          }}
+                                                        >
+                                                          ★
+                                                        </span>
+                                                      ))}
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div className="ratingConInfo">
+                                                <p>{item.review}</p>
+                                                <div
+                                                  style={{
+                                                    fontSize: "12px",
+                                                    color: "#28a745",
+                                                    marginTop: "8px",
+                                                    fontStyle: "italic",
+                                                  }}
+                                                >
+                                                  ✓ Approved - This review cannot be edited
+                                                </div>
                                               </div>
                                             </div>
                                           ))
@@ -786,8 +991,8 @@ const MerchantReview = () => {
                                     </div>
 
                                     {/* Show merchant-specific reviews */}
-                                    {merchantReviews.length > 0 ? (
-                                      merchantReviews.map((item, i) => (
+                                    {merchantReviewsForDisplay.length > 0 ? (
+                                      merchantReviewsForDisplay.map((item, i) => (
                                         <div className="ratingBottomSection" key={item.id || i}>
                                           <div className="ratingHeaderInfo">
                                             <div className="ratingheaderInfoLeft">
@@ -866,9 +1071,39 @@ const MerchantReview = () => {
                                     )}
                                   </div>
                                     <div className="writeReview">
-                                    <a onClick={handleReviewButtonClick}>
-                                      {primaryOwnReview ? "Edit your review" : "Write a review"}
+                                    <a
+                                      onClick={
+                                        existingReview && isExistingReviewPending
+                                          ? handleReviewButtonClick
+                                          : existingReview && isExistingReviewApproved
+                                          ? undefined
+                                          : handleReviewButtonClick
+                                      }
+                                      style={
+                                        existingReview && isExistingReviewPending
+                                          ? { cursor: "pointer" }
+                                          : existingReview && isExistingReviewApproved
+                                          ? { cursor: "not-allowed", opacity: 0.5 }
+                                          : { cursor: "pointer" }
+                                      }
+                                    >
+                                      {existingReview
+                                        ? isExistingReviewPending
+                                          ? "Edit your review"
+                                          : "Review approved (cannot edit)"
+                                        : "Write a review"}
                                     </a>
+                                    {existingReview && isExistingReviewApproved && (
+                                      <div
+                                        style={{
+                                          fontSize: "12px",
+                                          color: "#888",
+                                          marginTop: "4px",
+                                        }}
+                                      >
+                                        You can only submit one review per merchant. Approved reviews cannot be edited.
+                                      </div>
+                                    )}
 
                                     {showWriteReview && (
                                       <div className="writeReviewSection">
