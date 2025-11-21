@@ -16,7 +16,6 @@ import { IMAGE_BASE_URL } from "../../utils/apiManager";
 import ChatWindow from "../../components/ChatWindow";
 import ConfirmModal from "../../components/ConfirmModal";
 import contactlisticon from "../../assets/images/contactlisticon.png";
-import { FaRegEdit } from "react-icons/fa";
 
 const MerchantReview = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -34,9 +33,8 @@ const MerchantReview = () => {
   const [showWriteReview, setShowWriteReview] = useState(false);
   const [reviewText, setReviewText] = useState("");
   const [selectedRating, setSelectedRating] = useState(0);
-
-  const [showEditReview, setShowEditReview] = useState(false);
-  const [reviewEditText, setReviewEditText] = useState("");
+  const [isEditingOwnReview, setIsEditingOwnReview] = useState(false);
+  const [editingReviewId, setEditingReviewId] = useState(null);
 
   const { id } = useParams();
   const { token } = useContext(AppContext);
@@ -216,21 +214,27 @@ const MerchantReview = () => {
     totalReviews > 0 ? Math.round((count / totalReviews) * 100) : 0;
 
   const writeReview = () => {
+    setIsEditingOwnReview(false);
+    setReviewText("");
+    setSelectedRating(0);
     setShowWriteReview(true);
+    setEditingReviewId(null);
+  };
+
+  const startEditOwnReview = (review) => {
+    setIsEditingOwnReview(true);
+    setReviewText(review?.review || "");
+    setSelectedRating(review?.rating || 0);
+    setShowWriteReview(true);
+    setEditingReviewId(review?.review_id || review?.id || null);
   };
 
   const closeReviewSection = () => {
     setShowWriteReview(false);
     setReviewText("");
-  };
-
-  const editReview = () => {
-    setShowEditReview(true);
-  };
-
-  const closeEditReviewSection = () => {
-    setShowEditReview(false);
-    setReviewEditText("");
+    setSelectedRating(0);
+    setIsEditingOwnReview(false);
+    setEditingReviewId(null);
   };
 
   const SaveReview = async (agent_id) => {
@@ -241,31 +245,50 @@ const MerchantReview = () => {
       return;
     }
   
+    if (isEditingOwnReview && !editingReviewId) {
+      alert("Unable to determine which review to update. Please try again.");
+      return;
+    }
+  
     try {
       setIsLoading(true);
   
-      const body = {
-        merchant_id:merchant_id,
-        agent_id: agent_id,
-        rating: selectedRating,
-        review: reviewText,
-      };
-  
-      const response = await axios.post(`${BASE_URL}/reviewRating`, body, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-  
-      // console.log("..response......", response.data);
-  
-      if (response.data.status) {
-        // alert("Review submitted successfully!");
-        closeReviewSection();
-        fetchData(); // re-fetch reviews if you want to refresh instantly
+      let response;
+
+      if (isEditingOwnReview && editingReviewId) {
+        const body = {
+          review_id: editingReviewId,
+          review: reviewText,
+          rating: selectedRating,
+        };
+
+        response = await axios.post(`${BASE_URL}/updateReview`, body, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
       } else {
-        alert(response.data.message || "Something went wrong.");
+        const body = {
+          merchant_id: merchant_id,
+          agent_id: agent_id,
+          rating: selectedRating,
+          review: reviewText,
+        };
+
+        response = await axios.post(`${BASE_URL}/reviewRating`, body, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      }
+
+      if (response?.data?.status) {
+        closeReviewSection();
+        fetchData();
+      } else {
+        alert(response?.data?.message || "Something went wrong.");
       }
     } catch (error) {
       console.error("Failed to submit review:", error);
@@ -325,6 +348,15 @@ const MerchantReview = () => {
                       merchantId &&
                       String(review.merchant_id) === String(merchantId)
                   );
+                  const primaryOwnReview = ownReviews[0];
+
+                  const handleReviewButtonClick = () => {
+                    if (primaryOwnReview) {
+                      startEditOwnReview(primaryOwnReview);
+                    } else {
+                      writeReview();
+                    }
+                  };
 
                   return (
                     <>
@@ -711,7 +743,7 @@ const MerchantReview = () => {
                                                   <h4 className="ratingUserTime">
                                                     {new Date(item.created_at).toLocaleDateString()}
                                                   </h4>
-                                                  <div className="editBtnWrap" onClick={editReview}><span><FaRegEdit /></span> abcd</div>
+                                                  {/* <div className="editBtnWrap" onClick={editReview}><span><FaRegEdit /></span> abcd</div> */}
                                                 </div>
                                                 <div className="ratingheaderInforight">
                                                   <div className="starRationCol">
@@ -833,8 +865,10 @@ const MerchantReview = () => {
                                       <p>No reviews yet for this merchant.</p>
                                     )}
                                   </div>
-                                  <div className="writeReview">
-                                    <a onClick={writeReview}>Write a review</a>
+                                    <div className="writeReview">
+                                    <a onClick={handleReviewButtonClick}>
+                                      {primaryOwnReview ? "Edit your review" : "Write a review"}
+                                    </a>
 
                                     {showWriteReview && (
                                       <div className="writeReviewSection">
@@ -868,7 +902,13 @@ const MerchantReview = () => {
                                             onClick={() => SaveReview(connection.merchant_id)}
                                             disabled={isLoading}
                                           >
-                                            {isLoading ? "Submitting..." : "Submit"}
+                                            {isEditingOwnReview
+                                              ? isLoading
+                                                ? "Updating..."
+                                                : "Update review"
+                                              : isLoading
+                                              ? "Submitting..."
+                                              : "Submit"}
                                           </button>
                                           <button className="closebtn" onClick={closeReviewSection}>
                                             Close
