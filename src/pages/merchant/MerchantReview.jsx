@@ -40,6 +40,8 @@ const MerchantReview = () => {
 
   const { id } = useParams();
   const { token } = useContext(AppContext);
+  const merchantId =
+    typeof window !== "undefined" ? localStorage.getItem("merchant_id") : null;
 
   const toggleChatWindow = () => {
     setShowChatWindow(false);
@@ -50,8 +52,6 @@ const MerchantReview = () => {
   }, [token]);
 
   const fetchData = async () => {
-    const merchantId = localStorage.getItem("merchant_id");
-
     if (!merchantId) {
       console.error("No merchant_id in localStorage");
       return;
@@ -319,6 +319,11 @@ const MerchantReview = () => {
 
                   const merchantReviews = reviews.filter(
                     (review) => review.agent_id === connection.merchant_id
+                  );
+                  const ownReviews = merchantReviews.filter(
+                    (review) =>
+                      merchantId &&
+                      String(review.merchant_id) === String(merchantId)
                   );
 
                   return (
@@ -653,87 +658,99 @@ const MerchantReview = () => {
 
                                     {/* Own review Section  */}
                                     <div className="ratingBottomSection ownReviewSection">
-                                          <div className="ratingHeaderInfo">
-                                            <div className="ratingheaderInfoLeft">
-
-                                              
-                                              <div className="ratingUserImg">
-                                                  <div
-                                                    style={{
-                                                      width: "25px",
-                                                      height: "25px",
-                                                      borderRadius: "50%",
-                                                      backgroundColor: "#007bff",
-                                                      display: "flex",
-                                                      alignItems: "center",
-                                                      justifyContent: "center",
-                                                      color: "white",
-                                                      fontWeight: "bold",
-                                                      fontSize: "16px",
-                                                    }}
-                                                  > S
+                                      {merchantId ? (
+                                        ownReviews.length > 0 ? (
+                                          ownReviews.map((item, ownIndex) => (
+                                            <div key={item.id || ownIndex}>
+                                              <div className="ratingHeaderInfo">
+                                                <div className="ratingheaderInfoLeft">
+                                                  <div className="ratingUserImg">
+                                                    {item.merchant_details?.logo ? (
+                                                      <img
+                                                        src={`${IMAGE_BASE_URL}/${item.merchant_details.logo}`}
+                                                        alt="merchant"
+                                                        style={{
+                                                          width: "25px",
+                                                          height: "25px",
+                                                          borderRadius: "50%",
+                                                          backgroundColor: "#007bff",
+                                                          display: "flex",
+                                                          alignItems: "center",
+                                                          justifyContent: "center",
+                                                          color: "white",
+                                                          fontWeight: "bold",
+                                                          fontSize: "16px",
+                                                        }}
+                                                      />
+                                                    ) : (
+                                                      <div
+                                                        style={{
+                                                          width: "25px",
+                                                          height: "25px",
+                                                          borderRadius: "50%",
+                                                          backgroundColor: "#007bff",
+                                                          display: "flex",
+                                                          alignItems: "center",
+                                                          justifyContent: "center",
+                                                          color: "white",
+                                                          fontWeight: "bold",
+                                                          fontSize: "16px",
+                                                        }}
+                                                      >
+                                                        {item.merchant_details?.merchant_name
+                                                          ? item.merchant_details.merchant_name
+                                                              .charAt(0)
+                                                              .toUpperCase()
+                                                          : "U"}
+                                                      </div>
+                                                    )}
                                                   </div>
-                                              
-                                              </div>
-                                              <h3 className="ratingUserName">Demo</h3>
-                                              <h4 className="ratingUserTime">11/10/2025</h4>
-                                              <div className="editBtnWrap" onClick={editReview}><span><FaRegEdit /></span> abcd</div>
-
-                                            </div>
-                                            <div className="ratingheaderInforight">
-                                              
-                                              <div className="starRationCol">
-                                                <span className="avgRating">4</span>
-                                                <div className="startWrap">
-                                                    <span>★</span>
-                                                    <span>★</span>
-                                                    <span>★</span>
-                                                    <span>★</span>
-                                                    <span>★</span>
+                                                  <h3 className="ratingUserName">
+                                                    {item.merchant_details?.merchant_name || "You"}
+                                                  </h3>
+                                                  <h4 className="ratingUserTime">
+                                                    {new Date(item.created_at).toLocaleDateString()}
+                                                  </h4>
+                                                  <div className="editBtnWrap" onClick={editReview}><span><FaRegEdit /></span> abcd</div>
+                                                </div>
+                                                <div className="ratingheaderInforight">
+                                                  <div className="starRationCol">
+                                                    <span className="avgRating">{item.rating}</span>
+                                                    <div className="startWrap">
+                                                      {[...Array(5)].map((_, starIndex) => (
+                                                        <span
+                                                          key={starIndex}
+                                                          style={{
+                                                            color:
+                                                              starIndex < Number(item.rating)
+                                                                ? "#FFD700"
+                                                                : "#ccc",
+                                                          }}
+                                                        >
+                                                          ★
+                                                        </span>
+                                                      ))}
+                                                    </div>
+                                                  </div>
                                                 </div>
                                               </div>
-
+                                              <div className="ratingConInfo">
+                                                <p>{item.review}</p>
+                                              </div>
                                             </div>
-                                          </div>
+                                          ))
+                                        ) : (
                                           <div className="ratingConInfo">
-                                            <p>Wowwww</p>
-                                            <div className="writeReview">
-                                              {/* <a onClick={editReview}>Edit review here..</a> */}
-
-                                               {showEditReview && (
-                                                 <div className="writeReviewSection">
-                                                   <div className="startadd">
-                                                     {[1, 2, 3, 4, 5].map((star) => (
-                                                       <span
-                                                         key={star}
-                                                         onClick={() => setSelectedRating(star)}
-                                                         style={{
-                                                           cursor: "pointer",
-                                                           color: star <= selectedRating ? "#FFD700" : "#ccc",
-                                                           fontSize: "24px",
-                                                           marginRight: "4px",
-                                                         }}
-                                                       >
-                                                         ★
-                                                       </span>
-                                                     ))}
-                                                   </div>
-                                                   <textarea
-                                                     value={reviewEditText}
-                                                     onChange={(e) => setReviewEditText(e.target.value)}
-                                                     placeholder="Edit review here..."
-                                                     rows={4}
-                                                   />
- 
-                                                   <div style={{ marginTop: "10px" }}>
-                                                     <button className="submitbtn">Submit</button>
-                                                     <button className="closebtn" onClick={closeEditReviewSection}>Close</button>
-                                                   </div>
-                                                 </div>
-                                               )}
-                                            </div>
+                                            <p>
+                                              You have not submitted a review for this merchant yet.
+                                            </p>
                                           </div>
-
+                                        )
+                                      ) : (
+                                        <div className="ratingConInfo">
+                                          <p>Merchant information is not available.</p>
+                                        </div>
+                                      )}
                                     </div>
 
                                     {/* Show merchant-specific reviews */}
