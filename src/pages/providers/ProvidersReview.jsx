@@ -6,6 +6,7 @@ import PreLoader from "./../../components/PreLoader";
 import { AppContext } from "./../../utils/context";
 import DashboardTopHeading from '../../components/DashboardTopHeading';
 import ProviderDashboardTopBar from '../../components/ProviderDashboardTopBar';
+import { MdOutlineReport } from "react-icons/md";
 
 
 
@@ -16,6 +17,9 @@ const ProvidersReview = () => {
   const [totalReviews, setTotalReviews] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const { token } = useContext(AppContext);
+
+  const [showReportReview, setShowReportReview] = useState(false);
+  const [reviewReportText, setReviewReportText] = useState("");
 
 
   const [ratingStats, setRatingStats] = useState({
@@ -119,9 +123,18 @@ const ProvidersReview = () => {
     totalReviews > 0 ? Math.round((count / totalReviews) * 100) : 0;
   const dataArray = [1, 2];
 
+  const reportReview = () => {
+    setShowReportReview(true);
+  };
+
+  const closeReportReviewSection = () => {
+    setShowReportReview(false);
+    setReviewReportText("");
+  };
+
 
   return (
-    <div className='userConnectedHistoryPageWrapper agentReviewWrap'>
+    <div className='userConnectedHistoryPageWrapper agentReviewWrap agentreviewList'>
 
     <ProviderDashboardTopBar heading="Reviews" />
 
@@ -247,6 +260,7 @@ const ProvidersReview = () => {
                             <h4 className="ratingUserTime">
                               {new Date(item.created_at).toLocaleDateString()}
                             </h4>
+                            <div className="reportBtnWrap" onClick={reportReview}><span><MdOutlineReport /></span> Report</div>
                           </div>
                     
                           <div className="ratingheaderInforight">
@@ -268,6 +282,24 @@ const ProvidersReview = () => {
                     
                         <div className="ratingConInfo">
                           <p>{item.review}</p>
+
+                          <div className="writeReview">
+                          {showReportReview && (
+                            <div className="writeReviewSection">
+                              <textarea
+                                value={reviewReportText}
+                                onChange={(e) => setReviewReportText(e.target.value)}
+                                placeholder="Write Report here..."
+                                rows={4}
+                              />
+                              <div style={{ marginTop: "10px" }}>
+                                <button className="submitbtn">Submit</button>
+                                <button className="closebtn" onClick={closeReportReviewSection}>Close</button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
                         </div>
                       </div>
                     ))

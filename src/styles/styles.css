@@ -1532,6 +1532,9 @@ border-radius: 5px; margin-right: 30px;}
 .adminReviewList .accordionWrap.approveReviewList .accordion-body .table .actionBtn {width: 150px; color: #026f3d;}
 .adminReviewList .accordionWrap.rejectReviewList .accordion-body .table .actionBtn {width: 150px; color: #d62e18;}
 .adminReviewList .accordionWrap .accordion-body .table .starWrap span {color: #ffbf61; font-size: 18px;}
+.reportBtnWrap {color: #fff; background: #d62e18; padding: 3px 10px 3px 9px; border-radius: 7px; cursor: pointer;}
+.agentreviewList .agentReviewWrap {width: 73vw;}
+.agentreviewList .ratingTopSection .progressBarWrap progress {width: 78%;}
 
 .adminReviewList .approveReviewList .accordion-header {background-color: #64b4cd;}
 .adminReviewList .rejectReviewList .accordion-header {background-color: #023260cf;}
