@@ -86,6 +86,11 @@ const MerchantList = () => {
   };
 
   const handleSearchTableData = async (page = 1) => {
+    // Prevent duplicate API calls
+    if (loading) {
+      return;
+    }
+
     const errors = {};
     if (
       !searchByName &&
@@ -147,7 +152,12 @@ const MerchantList = () => {
 
       const { users, pageCount, activePage } = response?.data;
 
-      setTableData(users || []);
+      // Deduplicate results by merchant_id to prevent double results
+      const uniqueUsers = users ? users.filter((user, index, self) => 
+        index === self.findIndex((u) => u.merchant_id === user.merchant_id)
+      ) : [];
+
+      setTableData(uniqueUsers);
       setPageCount(pageCount || 1);
       setActivePage(pageNumber); // use the same page we passed
     } catch (error) {
@@ -158,11 +168,11 @@ const MerchantList = () => {
   };
 
   useEffect(() => {
-    if (!searchByName && !searchByState && !searchByZip && !searchByService) {
+    if (!searchByName && !searchByState && !searchByZip && !searchByService && !DWtoTravel) {
       setSearched(false);
       fetchTableData(0);
     }
-  }, [searchByName, searchByState, searchByZip, searchByService]);
+  }, [searchByName, searchByState, searchByZip, searchByService, DWtoTravel]);
 
   useEffect(() => {
     fetchTableData();
@@ -529,7 +539,7 @@ const MerchantList = () => {
                     !loading && (
                       <tr>
                         <td colSpan="4" className="noResultFound">
-                          No Entries Found
+                          {searched ? "No search result found" : "No Entries Found"}
                         </td>
                       </tr>
                     )
