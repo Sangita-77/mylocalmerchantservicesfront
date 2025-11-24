@@ -33,6 +33,39 @@ const ProvidersReview = () => {
     5: 0,
   });
 
+  const fetchReportedReviewMap = async (agent_id) => {
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/getReportedReview`,
+        { agent_id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data?.status) {
+        const reportList = response.data?.data?.report || [];
+        return reportList.reduce((acc, report) => {
+          const key =
+            report?.review_id ?? report?.reviewId ?? report?.review_report_id;
+          if (key) {
+            acc[key] = {
+              reason: report.reason,
+              ...report,
+            };
+          }
+          return acc;
+        }, {});
+      }
+    } catch (error) {
+      console.error("Failed to fetch reported reviews:", error);
+    }
+    return {};
+  };
+
   const getReviews = async () => {
     try {
       setIsLoading(true);
@@ -96,10 +129,23 @@ const ProvidersReview = () => {
           };
         });
 
-        // console.log(".........reviewsWithMerchant..........",reviewsWithMerchant);
-  
-        //  Set reviews with merchant info
-        setReviews(reviewsWithMerchant);
+        const reportedMap = await fetchReportedReviewMap(agent_id);
+
+        const reviewsWithReportStatus = reviewsWithMerchant.map((review, idx) => {
+          const reviewKey = getReviewKey(review, idx);
+          const reportedData =
+            reportedMap[review.review_id ?? reviewKey] ||
+            reportedMap[reviewKey];
+          if (!reportedData) return review;
+          return {
+            ...review,
+            report_reason: reportedData.reason,
+            report_details: reportedData,
+          };
+        });
+
+        //  Set reviews with merchant info and reported state
+        setReviews(reviewsWithReportStatus);
   
         //  Calculate star distribution
         const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
@@ -157,7 +203,7 @@ const ProvidersReview = () => {
     setReportError("");
   };
 
-  const handleReportSubmit = async (review) => {
+  const handleReportSubmit = async (review, reviewKey = null) => {
     if (!reviewReportText.trim()) {
       setReportError("Please enter a reason before submitting.");
       return;
@@ -177,6 +223,8 @@ const ProvidersReview = () => {
       setReportError("Unable to determine review reference.");
       return;
     }
+
+    const targetReviewKey = reviewKey ?? review_id;
 
     const payload = {
       merchant_id: review.merchant_id,
@@ -200,8 +248,18 @@ const ProvidersReview = () => {
       );
 
       if (response.data?.status) {
+        setReviews((prevReviews) =>
+          prevReviews.map((rev, idx) => {
+            const key = getReviewKey(rev, idx);
+            if (key !== targetReviewKey) return rev;
+            return {
+              ...rev,
+              report_reason: payload.reason,
+            };
+          })
+        );
         closeReportReviewSection();
-        window.location.reload();
+        setVisibleReasonReviewId(targetReviewKey);
         return;
       }
       setReportError(response.data?.message || "Unable to submit report.");
@@ -348,6 +406,15 @@ const ProvidersReview = () => {
                                 className={`reportBtnWrap ${
                                   isReported ? "reported" : ""
                                 }`}
+                                style={
+                                  isReported
+                                    ? {
+                                        backgroundColor: "#fdecec",
+                                        color: "#c53030",
+                                        borderColor: "#f5b5b5",
+                                      }
+                                    : undefined
+                                }
                                 onClick={() =>
                                   handleReportButtonClick(item, reviewKey, isReported)
                                 }
@@ -381,8 +448,28 @@ const ProvidersReview = () => {
 
                             <div className="writeReview">
                               {isReported && visibleReasonReviewId === reviewKey && (
-                                <div className="reportReasonMessage">
-                                  <strong>Report reason:</strong> {reportedReason}
+                                <div
+                                  className="reportReasonMessage"
+                                  style={{
+                                    border: "1px solid #f5b5b5",
+                                    backgroundColor: "#fff5f5",
+                                    borderRadius: "8px",
+                                    padding: "12px",
+                                    color: "#742a2a",
+                                  }}
+                                >
+                                  <div
+                                    style={{
+                                      fontSize: "13px",
+                                      fontWeight: 600,
+                                      textTransform: "uppercase",
+                                      letterSpacing: "0.05em",
+                                      marginBottom: "6px",
+                                    }}
+                                  >
+                                    Reported Reason
+                                  </div>
+                                  <div style={{ lineHeight: 1.5 }}>{reportedReason}</div>
                                 </div>
                               )}
                               {!isReported && openReportReviewId === reviewKey && (
@@ -400,7 +487,7 @@ const ProvidersReview = () => {
                                     <button
                                       className="submitbtn"
                                       disabled={isSubmittingReport}
-                                      onClick={() => handleReportSubmit(item)}
+                                  onClick={() => handleReportSubmit(item, reviewKey)}
                                     >
                                       {isSubmittingReport ? "Submitting..." : "Submit"}
                                     </button>
