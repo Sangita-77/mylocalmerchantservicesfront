@@ -20,6 +20,9 @@ const ProvidersReview = () => {
 
   const [openReportReviewId, setOpenReportReviewId] = useState(null);
   const [reviewReportText, setReviewReportText] = useState("");
+  const [isSubmittingReport, setIsSubmittingReport] = useState(false);
+  const [visibleReasonReviewId, setVisibleReasonReviewId] = useState(null);
+  const [reportError, setReportError] = useState("");
 
 
   const [ratingStats, setRatingStats] = useState({
@@ -123,13 +126,91 @@ const ProvidersReview = () => {
     totalReviews > 0 ? Math.round((count / totalReviews) * 100) : 0;
   const dataArray = [1, 2];
 
-  const reportReview = (reviewId) => {
-    setOpenReportReviewId(reviewId);
+  const getReviewKey = (review, fallback) =>
+    review?.id ?? review?.review_id ?? review?.reviewId ?? fallback;
+
+  const resolveReportedReason = (review) =>
+    review?.report_reason ||
+    review?.reportReason ||
+    review?.report_details?.reason ||
+    review?.reportReview?.reason ||
+    review?.report?.reason ||
+    null;
+
+  const handleReportButtonClick = (review, reviewKey, isReported) => {
+    if (isReported) {
+      setOpenReportReviewId(null);
+      setVisibleReasonReviewId((prev) =>
+        prev === reviewKey ? null : reviewKey
+      );
+      return;
+    }
+    setReportError("");
+    setVisibleReasonReviewId(null);
+    setOpenReportReviewId(reviewKey);
+    setReviewReportText("");
   };
 
   const closeReportReviewSection = () => {
     setOpenReportReviewId(null);
     setReviewReportText("");
+    setReportError("");
+  };
+
+  const handleReportSubmit = async (review) => {
+    if (!reviewReportText.trim()) {
+      setReportError("Please enter a reason before submitting.");
+      return;
+    }
+    setReportError("");
+
+    const agent_id = parseInt(localStorage.getItem("merchant_id"), 10);
+    if (!agent_id) {
+      setReportError("Unable to determine the logged-in agent.");
+      return;
+    }
+
+    const review_id =
+      review?.review_id ?? review?.id ?? review?.reviewId ?? null;
+
+    if (!review_id) {
+      setReportError("Unable to determine review reference.");
+      return;
+    }
+
+    const payload = {
+      merchant_id: review.merchant_id,
+      agent_id,
+      reason: reviewReportText.trim(),
+      status: 1,
+      review_id,
+    };
+
+    try {
+      setIsSubmittingReport(true);
+      const response = await axios.post(
+        `${BASE_URL}/reportReview`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data?.status) {
+        closeReportReviewSection();
+        window.location.reload();
+        return;
+      }
+      setReportError(response.data?.message || "Unable to submit report.");
+    } catch (error) {
+      console.error("Failed to submit report:", error);
+      setReportError("Something went wrong while submitting the report.");
+    } finally {
+      setIsSubmittingReport(false);
+    }
   };
 
 
@@ -203,106 +284,140 @@ const ProvidersReview = () => {
                   {isLoading ? (
                     <p>Loading reviews...</p>
                   ) : reviews.length > 0 ? (
-                    reviews.map((item, index) => (
-                      <div className="ratingBottomSection" key={item.id || index}>
-                        <div className="ratingHeaderInfo">
-                          <div className="ratingheaderInfoLeft">
+                    reviews.map((item, index) => {
+                      const reviewKey = getReviewKey(item, index);
+                      const reportedReason = resolveReportedReason(item);
+                      const isReported = Boolean(reportedReason);
 
-                          <div className="ratingUserImg">
-                            {item.merchant_details?.logo ? (
-                              <img
-                                src={`${IMAGE_BASE_URL}/${item.merchant_details.logo}`}
-                                alt="merchant"
-                                style={{
-                                  width: "25px",
-                                  height: "25px",
-                                  borderRadius: "50%",
-                                  backgroundColor: "#007bff",
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  color: "white",
-                                  fontWeight: "bold",
-                                  fontSize: "16px",
-                                }}
-                              />
-                            ) : (
-                              <div
-                                style={{
-                                  width: "25px",
-                                  height: "25px",
-                                  borderRadius: "50%",
-                                  backgroundColor: "#007bff",
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  color: "white",
-                                  fontWeight: "bold",
-                                  fontSize: "16px",
-                                }}
-                              >
+                      return (
+                        <div className="ratingBottomSection" key={reviewKey}>
+                          <div className="ratingHeaderInfo">
+                            <div className="ratingheaderInfoLeft">
+                              <div className="ratingUserImg">
+                                {item.merchant_details?.logo ? (
+                                  <img
+                                    src={`${IMAGE_BASE_URL}/${item.merchant_details.logo}`}
+                                    alt="merchant"
+                                    style={{
+                                      width: "25px",
+                                      height: "25px",
+                                      borderRadius: "50%",
+                                      backgroundColor: "#007bff",
+                                      display: "flex",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      color: "white",
+                                      fontWeight: "bold",
+                                      fontSize: "16px",
+                                    }}
+                                  />
+                                ) : (
+                                  <div
+                                    style={{
+                                      width: "25px",
+                                      height: "25px",
+                                      borderRadius: "50%",
+                                      backgroundColor: "#007bff",
+                                      display: "flex",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      color: "white",
+                                      fontWeight: "bold",
+                                      fontSize: "16px",
+                                    }}
+                                  >
+                                    {item.merchant_details?.merchant_name
+                                      ? item.merchant_details.merchant_name
+                                          .charAt(0)
+                                          .toUpperCase()
+                                      : "U"}
+                                  </div>
+                                )}
+                              </div>
+
+                              <h3 className="ratingUserName">
                                 {item.merchant_details?.merchant_name
                                   ? item.merchant_details.merchant_name
-                                      .charAt(0)
-                                      .toUpperCase()
-                                  : "U"}
+                                  : `User #${item.merchant_id || "Anonymous"}`}
+                              </h3>
+
+                              <h4 className="ratingUserTime">
+                                {new Date(item.created_at).toLocaleDateString()}
+                              </h4>
+                              <div
+                                className={`reportBtnWrap ${
+                                  isReported ? "reported" : ""
+                                }`}
+                                onClick={() =>
+                                  handleReportButtonClick(item, reviewKey, isReported)
+                                }
+                              >
+                                <span>
+                                  <MdOutlineReport />
+                                </span>{" "}
+                                {isReported ? "Reported" : "Report"}
                               </div>
-                            )}
+                            </div>
+
+                            <div className="ratingheaderInforight">
+                              <span className="avgRating">{item.rating}</span>
+                              <div className="startWrap">
+                                {[...Array(5)].map((_, i) => (
+                                  <span
+                                    key={i}
+                                    style={{
+                                      color: i < item.rating ? "#FFD700" : "#ccc",
+                                    }}
+                                  >
+                                    ★
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
                           </div>
 
-                    
-                            <h3 className="ratingUserName">
-                              {item.merchant_details?.merchant_name
-                                ? item.merchant_details.merchant_name
-                                : `User #${item.merchant_id || "Anonymous"}`}
-                            </h3>
-                    
-                            <h4 className="ratingUserTime">
-                              {new Date(item.created_at).toLocaleDateString()}
-                            </h4>
-                            <div className="reportBtnWrap" onClick={() => reportReview(item.id || index)}><span><MdOutlineReport /></span> Report</div>
-                          </div>
-                    
-                          <div className="ratingheaderInforight">
-                            <span className="avgRating">{item.rating}</span>
-                            <div className="startWrap">
-                              {[...Array(5)].map((_, i) => (
-                                <span
-                                  key={i}
-                                  style={{
-                                    color: i < item.rating ? "#FFD700" : "#ccc",
-                                  }}
-                                >
-                                  ★
-                                </span>
-                              ))}
+                          <div className="ratingConInfo">
+                            <p>{item.review}</p>
+
+                            <div className="writeReview">
+                              {isReported && visibleReasonReviewId === reviewKey && (
+                                <div className="reportReasonMessage">
+                                  <strong>Report reason:</strong> {reportedReason}
+                                </div>
+                              )}
+                              {!isReported && openReportReviewId === reviewKey && (
+                                <div className="writeReviewSection">
+                                  <textarea
+                                    value={reviewReportText}
+                                    onChange={(e) => setReviewReportText(e.target.value)}
+                                    placeholder="Write Report here..."
+                                    rows={4}
+                                  />
+                                  {reportError && (
+                                    <div className="reportErrorText">{reportError}</div>
+                                  )}
+                                  <div style={{ marginTop: "10px" }}>
+                                    <button
+                                      className="submitbtn"
+                                      disabled={isSubmittingReport}
+                                      onClick={() => handleReportSubmit(item)}
+                                    >
+                                      {isSubmittingReport ? "Submitting..." : "Submit"}
+                                    </button>
+                                    <button
+                                      className="closebtn"
+                                      onClick={closeReportReviewSection}
+                                    >
+                                      Close
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           </div>
                         </div>
-                    
-                        <div className="ratingConInfo">
-                          <p>{item.review}</p>
-
-                          <div className="writeReview">
-                          {openReportReviewId === (item.id || index) && (
-                            <div className="writeReviewSection">
-                              <textarea
-                                value={reviewReportText}
-                                onChange={(e) => setReviewReportText(e.target.value)}
-                                placeholder="Write Report here..."
-                                rows={4}
-                              />
-                              <div style={{ marginTop: "10px" }}>
-                                <button className="submitbtn">Submit</button>
-                                <button className="closebtn" onClick={closeReportReviewSection}>Close</button>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-
-                        </div>
-                      </div>
-                    ))
+                      );
+                    })
                   ) : (
                     <p>No reviews yet.</p>
                   )}
