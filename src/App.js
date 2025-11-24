@@ -43,6 +43,7 @@ import AdminConnect from "./pages/admin/AdminConnect";
 import ContactList from "./pages/admin/ContactList";
 import AdminServiceList from "./pages/admin/AdminServiceList";
 import AdminReview from "./pages/admin/AdminReview";
+import AdminReportedReviews from "./pages/admin/AdminReportedReviews";
 
 import Contact from "./pages/Contact";
 
@@ -252,6 +253,10 @@ function App() {
           {
             path: "/admin/reviews",
             element: <AdminReview />,
+          },
+          {
+            path: "/admin/reported-reviews",
+            element: <AdminReportedReviews />,
           },
         ],
       },

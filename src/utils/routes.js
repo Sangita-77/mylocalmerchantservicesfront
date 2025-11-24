@@ -23,6 +23,7 @@ export const routes = {
   admin_iso: () => "/admin/agent-iso",
   admin_processor: () => "/admin/agent-processor",
   admin_reviews: () => "/admin/reviews",
+  admin_reported_reviews: () => "/admin/reported-reviews",
 
 
 

@@ -170,6 +170,16 @@ const AdminSidebar = () => {
           </div>
 
           <div
+            className={`sidebarItem ${url === `${BASENAME}/admin/reported-reviews` && "sidebarItemActive"}`}
+            onClick={() => navigate(routes.admin_reported_reviews())}
+          >
+            <PiNotePencilBold
+              color={"#ffffff"} size={24}
+            />
+            <div>Report Reviews</div>
+          </div>
+
+          <div
             className={`sidebarItem ${url === `${BASENAME}/admin/contact` && "sidebarItemActive"}`}
             onClick={() => navigate(routes.admin_contact())}
           >
