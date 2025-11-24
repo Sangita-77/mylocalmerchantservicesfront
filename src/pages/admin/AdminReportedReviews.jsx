@@ -31,6 +31,10 @@ const AdminReportedReviews = () => {
   const [reports, setReports] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [actionState, setActionState] = useState({
+    loadingId: null,
+    error: "",
+  });
 
   const fetchReports = async () => {
     if (!token) return;
@@ -61,6 +65,50 @@ const AdminReportedReviews = () => {
       setReports([]);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const updateReportStatus = async (reportId, status) => {
+    if (!reportId || token == null) return;
+    try {
+      setActionState({ loadingId: reportId, error: "" });
+      const response = await axios.post(
+        `${BASE_URL}/ReportReviewStatusUpdate`,
+        {
+          review_report_id: reportId,
+          status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data?.status) {
+        const updated = response.data?.data;
+        setReports((prev) =>
+          prev.map((report) =>
+            report.review_report_id === reportId
+              ? { ...report, ...updated, status }
+              : report
+          )
+        );
+      } else {
+        setActionState({
+          loadingId: null,
+          error: response.data?.message || "Unable to update status.",
+        });
+        return;
+      }
+      setActionState({ loadingId: null, error: "" });
+    } catch (err) {
+      console.error("Failed to update report status", err);
+      setActionState({
+        loadingId: null,
+        error: "Connection error while updating status.",
+      });
     }
   };
 
@@ -100,64 +148,6 @@ const AdminReportedReviews = () => {
     );
   };
 
-  const renderReportCard = (report) => {
-    const review = report.review || {};
-    const statusMeta = statusCopy[report.status] || statusCopy[0];
-    return (
-      <div className="reportedReviewCard" key={report.review_report_id}>
-        <div className="reportedReviewCardHeader">
-          <div>
-            <h4>Report #{report.review_report_id}</h4>
-            <p>
-              Submitted on{" "}
-              {new Date(report.created_at).toLocaleString(undefined, {
-                dateStyle: "medium",
-                timeStyle: "short",
-              })}
-            </p>
-          </div>
-          {renderStatusBadge(report.status)}
-        </div>
-
-        <div className="reportedReviewContent">
-          <div className="reportedReason">
-            <h5>Reported Reason</h5>
-            <p>{report.reason || "—"}</p>
-            <span style={{ color: statusMeta.color, fontSize: "12px" }}>
-              {statusMeta.description}
-            </span>
-          </div>
-          <div className="reportedReviewDetails">
-            <div>
-              <label>Merchant ID</label>
-              <p>{report.merchant_id ?? "—"}</p>
-            </div>
-            <div>
-              <label>Agent ID</label>
-              <p>{report.agent_id ?? "—"}</p>
-            </div>
-            <div>
-              <label>Review Rating</label>
-              <p>{review.rating ?? "—"}</p>
-            </div>
-            <div>
-              <label>Review Created</label>
-              <p>
-                {review.created_at
-                  ? new Date(review.created_at).toLocaleDateString()
-                  : "—"}
-              </p>
-            </div>
-          </div>
-          <div className="reportedReviewQuote">
-            <label>Original Review</label>
-            <p>{review.review || "Review text not available."}</p>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="adminUserlistWrapper adminReportedReviewPage">
       <AdminDashBoardTopBar heading="Reported Reviews" />
@@ -169,12 +159,102 @@ const AdminReportedReviews = () => {
         </div>
 
         {error && <div className="errorText">{error}</div>}
+        {actionState.error && (
+          <div className="errorText" style={{ marginTop: "10px" }}>
+            {actionState.error}
+          </div>
+        )}
 
         {isLoading && !hasReports ? (
           <p>Loading reported reviews...</p>
         ) : hasReports ? (
-          <div className="reportedReviewGrid">
-            {reports.map((report) => renderReportCard(report))}
+          <div
+            className="reportedReviewTableWrapper"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <table
+              className="reportedReviewTable"
+              style={{ maxWidth: "1200px", width: "90%" }}
+            >
+              <thead>
+                <tr>
+                  <th>Report ID</th>
+                  <th>Submitted On</th>
+                  <th>Merchant</th>
+                  <th>Agent</th>
+                  <th>Rating</th>
+                  <th>Reason</th>
+                  <th>Review</th>
+                  <th>Status</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reports.map((report) => {
+                  const review = report.review || {};
+                  const isPending = Number(report.status) === 0;
+                  const rowLoading = actionState.loadingId === report.review_report_id;
+                  return (
+                    <tr key={report.review_report_id}>
+                      <td>{report.review_report_id}</td>
+                      <td>
+                        {new Date(report.created_at).toLocaleString(undefined, {
+                          dateStyle: "medium",
+                          timeStyle: "short",
+                        })}
+                      </td>
+                      <td>{report.merchant_id ?? "—"}</td>
+                      <td>{report.agent_id ?? "—"}</td>
+                      <td>{review.rating ?? "—"}</td>
+                      <td>
+                        <div className="reasonCell">
+                          <strong>{report.reason || "—"}</strong>
+                          <div className="reasonMeta">
+                            {(statusCopy[report.status] || statusCopy[0])
+                              .description}
+                          </div>
+                        </div>
+                      </td>
+                      <td className="reviewCell">
+                        {review.review || "Review text not available."}
+                      </td>
+                      <td>{renderStatusBadge(report.status)}</td>
+                      <td>
+                        {isPending ? (
+                          <div className="reportedActionBtns">
+                            <button
+                              className="submitbtn"
+                              disabled={rowLoading}
+                              onClick={() =>
+                                updateReportStatus(report.review_report_id, 1)
+                              }
+                            >
+                              {rowLoading ? "Updating..." : "Approve"}
+                            </button>
+                            <button
+                              className="closebtn"
+                              disabled={rowLoading}
+                              onClick={() =>
+                                updateReportStatus(report.review_report_id, 2)
+                              }
+                            >
+                              Reject
+                            </button>
+                          </div>
+                        ) : (
+                          <span style={{ fontSize: "12px", color: "#666" }}>
+                            {Number(report.status) === 1
+                              ? "Approved"
+                              : "Rejected"}
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         ) : (
           <div className="emptyState">
