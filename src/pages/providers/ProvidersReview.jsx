@@ -345,6 +345,7 @@ const ProvidersReview = () => {
                     reviews.map((item, index) => {
                       const reviewKey = getReviewKey(item, index);
                       const reportedReason = resolveReportedReason(item);
+                      const reportedStatus = item?.report_details?.status;
                       const isReported = Boolean(reportedReason);
 
                       return (
@@ -470,6 +471,21 @@ const ProvidersReview = () => {
                                     Reported Reason
                                   </div>
                                   <div style={{ lineHeight: 1.5 }}>{reportedReason}</div>
+                                  {reportedStatus !== undefined && (
+                                    <div
+                                      style={{
+                                        marginTop: "10px",
+                                        paddingTop: "8px",
+                                        borderTop: "1px dashed #f5b5b5",
+                                        fontSize: "12px",
+                                        color: reportedStatus === 1 ? "#276749" : "#92400e",
+                                      }}
+                                    >
+                                      {reportedStatus === 1
+                                        ? "Approved by admin and removed from the user review section."
+                                        : "Awaiting admin approval. The review is still visible to users until approved."}
+                                    </div>
+                                  )}
                                 </div>
                               )}
                               {!isReported && openReportReviewId === reviewKey && (
