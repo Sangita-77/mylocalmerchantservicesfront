@@ -149,7 +149,7 @@ const AdminReportedReviews = () => {
   };
 
   return (
-    <div className="adminUserlistWrapper adminReportedReviewPage">
+    <div className="adminUserlistWrapper adminReportedReviewPage" style={{"padding-top": "100px"}}>
       <AdminDashBoardTopBar heading="Reported Reviews" />
       <div className="adminReviewListCon">
         <div className="reportedReviewActions">
