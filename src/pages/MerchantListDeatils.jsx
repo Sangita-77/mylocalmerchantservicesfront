@@ -52,6 +52,7 @@ const MerchantListDetails = () => {
   useEffect(() => {
     getConnectStatus();
     if (id) fetchMerchantDetails();
+    if (id) fetchFavoriteStatus();
   }, [id]);
 
   const handleConnect = () => {
@@ -138,6 +139,41 @@ const MerchantListDetails = () => {
     } finally {
       setIsLoading(false);
       setShowModal(false);
+    }
+  };
+
+  const fetchFavoriteStatus = async () => {
+    const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+    const agent_id = parseInt(id, 10);
+
+    if (!merchant_id || !agent_id) {
+      setIsFavorite(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/getAllFavorite`,
+        { merchant_id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response?.data?.status && Array.isArray(response?.data?.favorites)) {
+        const match = response.data.favorites.some(
+          (fav) => parseInt(fav.agent_id, 10) === agent_id
+        );
+        setIsFavorite(match);
+      } else {
+        setIsFavorite(false);
+      }
+    } catch (error) {
+      console.error("Failed to fetch favorites:", error);
+      setIsFavorite(false);
     }
   };
 
