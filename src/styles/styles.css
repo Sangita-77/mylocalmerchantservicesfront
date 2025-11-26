@@ -255,6 +255,9 @@
 .data { margin: 0; padding: 5px 16px; width: 80%; max-width: 80%; font-family: "Sora"; font-weight: 400; color: #ffffff; display: flex; align-items: center; border: 1px solid #ffffff; border-radius: 6px; overflow-x: hidden; background: #ffffff14; min-height: 40px; border: none; background: transparent;}
 .modalConnectBtn {transition: all .5s ease-in-out; margin: 0; padding: 0; width: 135px; height: 43px; text-align: center; color: #000; background-color: #FFBF61; font: 600 16px "Sora"; text-transform: capitalize; border: none; outline: none; border-radius: 10px; }
 .modalConnectBtn:hover {background-color: #ffffff;}
+.agentNameActions {display: flex; align-items: center; gap: 12px;}
+.heartIconBtn {margin: 0; padding: 0; width: 43px; height: 43px; border-radius: 50%; border: 1px solid #FFBF61; background-color: #FFF5E8; display: inline-flex; align-items: center; justify-content: center; color: #FF8A00; cursor: pointer; transition: all .3s ease-in-out;}
+.heartIconBtn:hover {background-color: #FFBF61; color: #000;}
 
 
 

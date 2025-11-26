@@ -8,6 +8,7 @@ import placeholderimg from "./../assets/images/placeholderimg.jpg";
 import ConnectConfirmationModal from "../components/ConnectConfirmationModal";
 import contactlisticon from "../assets/images/contactlisticon.png";
 import "./../styles/styles.css";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const MerchantListDetails = () => {
   const { id } = useParams();
@@ -234,21 +235,31 @@ const MerchantListDetails = () => {
                       ? `${data.first_name} ${data.last_name}`
                       : data.merchant_name}
                   </div>
-                  <button
-                    className={`modalConnectBtn ${
-                      buttonText === "Requested"
-                        ? "btnRequested"
-                        : buttonText === "Connected"
-                        ? "btnConnected"
-                        : ""
-                    }`}
-                    onClick={
-                      buttonText === "Connect" ? handleConnect : undefined
-                    } // only clickable if "Connect"
-                    disabled={isLoading || buttonText !== "Connect"} // disable if not "Connect"
-                  >
-                    {isLoading ? "Checking..." : buttonText}
-                  </button>
+                  <div className="agentNameActions">
+                    <button
+                      className={`modalConnectBtn ${
+                        buttonText === "Requested"
+                          ? "btnRequested"
+                          : buttonText === "Connected"
+                          ? "btnConnected"
+                          : ""
+                      }`}
+                      onClick={
+                        buttonText === "Connect" ? handleConnect : undefined
+                      } // only clickable if "Connect"
+                      disabled={isLoading || buttonText !== "Connect"} // disable if not "Connect"
+                    >
+                      {isLoading ? "Checking..." : buttonText}
+                    </button>
+                    <button
+                      type="button"
+                      className="heartIconBtn"
+                      title="Save to favorites"
+                      aria-label="Save to favorites"
+                    >
+                      <AiOutlineHeart size={20} />
+                    </button>
+                  </div>
                 </div>
 
                 <div className="inputWrapCon">
