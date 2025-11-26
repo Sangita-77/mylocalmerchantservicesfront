@@ -22,6 +22,8 @@ const MerchantListDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [averageRating, setAverageRating] = useState(0);
   const [totalReviews, setTotalReviews] = useState(0);
+  const [isSavingFavorite, setIsSavingFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const fetchMerchantDetails = async () => {
     try {
@@ -60,6 +62,46 @@ const MerchantListDetails = () => {
       navigate("/merchant-service-providers-registration");
     } else {
       setShowModal(true);
+    }
+  };
+
+  const handleSaveFavorite = async () => {
+    const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+    const agent_id = parseInt(id, 10);
+
+    if (!merchant_id || !agent_id) {
+      alert("Please login as a merchant to save favorites.");
+      return;
+    }
+
+    try {
+      setIsSavingFavorite(true);
+      const response = await axios.post(
+        `${BASE_URL}/savedFavorite`,
+        { merchant_id, agent_id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response?.data?.status) {
+        const action = response?.data?.action;
+        if (action === "added") {
+          setIsFavorite(true);
+        } else if (action === "removed") {
+          setIsFavorite(false);
+        }
+      } else {
+        throw new Error(response?.data?.message || "Failed to save favorite.");
+      }
+    } catch (error) {
+      console.error("Failed to save favorite:", error);
+      alert("Unable to save favorite. Please try again.");
+    } finally {
+      setIsSavingFavorite(false);
     }
   };
 
@@ -253,9 +295,14 @@ const MerchantListDetails = () => {
                     </button>
                     <button
                       type="button"
-                      className="heartIconBtn"
+                      className={`heartIconBtn ${
+                        isFavorite ? "heartIconBtnSaved" : ""
+                      }`}
                       title="Save to favorites"
                       aria-label="Save to favorites"
+                      aria-pressed={isFavorite}
+                      onClick={handleSaveFavorite}
+                      disabled={isSavingFavorite}
                     >
                       <AiOutlineHeart size={20} />
                     </button>

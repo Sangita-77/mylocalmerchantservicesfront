@@ -258,6 +258,9 @@
 .agentNameActions {display: flex; align-items: center; gap: 12px;}
 .heartIconBtn {margin: 0; padding: 0; width: 43px; height: 43px; border-radius: 50%; border: 1px solid #FFBF61; background-color: #FFF5E8; display: inline-flex; align-items: center; justify-content: center; color: #FF8A00; cursor: pointer; transition: all .3s ease-in-out;}
 .heartIconBtn:hover {background-color: #FFBF61; color: #000;}
+.heartIconBtn:disabled {cursor: not-allowed; opacity: 0.8;}
+.heartIconBtnSaved {background-color: #FF8A00; color: #fff; border-color: #FF8A00;}
+.heartIconBtnSaved:hover {background-color: #FF8A00; color: #fff;}
 
 
 
