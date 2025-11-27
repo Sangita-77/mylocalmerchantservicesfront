@@ -16,6 +16,7 @@ import { IMAGE_BASE_URL } from "../../utils/apiManager";
 import ChatWindow from "../../components/ChatWindow";
 import ConfirmModal from "../../components/ConfirmModal";
 import contactlisticon from "../../assets/images/contactlisticon.png";
+import { trackActivity } from "../../utils/activityTracker";
 
 const MerchantReview = () => {
   const [showChatWindow, setShowChatWindow] = useState(false);
@@ -282,6 +283,10 @@ const MerchantReview = () => {
       return;
     }
   
+    const isUpdateMode = Boolean(
+      (isEditingOwnReview && editingReviewId) || existingReview
+    );
+
     try {
       setIsLoading(true);
   
@@ -326,6 +331,20 @@ const MerchantReview = () => {
       }
 
       if (response?.data?.status) {
+        if (merchant_id && agent_id && token) {
+          trackActivity({
+            merchant_id,
+            agent_id,
+            action: "review",
+            token,
+            meta: {
+              rating: selectedRating,
+              mode: isUpdateMode ? "update" : "create",
+            },
+          }).catch((err) =>
+            console.warn("Failed to log review activity", err)
+          );
+        }
         closeReviewSection();
         fetchData();
       } else {

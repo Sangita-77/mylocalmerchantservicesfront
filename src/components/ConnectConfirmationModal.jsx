@@ -4,6 +4,7 @@ import "./../styles/styles.css";
 import { AppContext } from "../utils/context";
 import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
+import { trackActivity } from "../utils/activityTracker";
 
 const ConnectConfirmationModal = ({ onConfirm, onCancel }) => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -17,7 +18,7 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel }) => {
 
   const { id } = useParams();
 
-  const connectFun = async (user_id, merchant_id,reason) => {
+  const connectFun = async (user_id, merchant_id, reason) => {
     try {
       setIsLoading(true);
       // const token = localStorage.getItem("token");
@@ -34,8 +35,16 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel }) => {
       );
 
       if (response.data.status) {
-        console.log("Connection successful:", response.data);
         setErrors({ success: "Connection request sent successfully!" });
+        trackActivity({
+          merchant_id,
+          agent_id: user_id,
+          action: "connect",
+          token,
+          meta: { reason },
+        }).catch((error) =>
+          console.warn("Failed to log connect activity", error)
+        );
 
         setTimeout(() => {
           navigate("/merchant/user_connected_history");
@@ -85,7 +94,7 @@ const ConnectConfirmationModal = ({ onConfirm, onCancel }) => {
       : selectedOption;
 
 
-    await connectFun(agent_id, merchant_id , reason);
+    await connectFun(agent_id, merchant_id, reason);
   };
   
 

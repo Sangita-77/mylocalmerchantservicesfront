@@ -7,6 +7,7 @@ import axios from "axios";
 import { BASE_URL } from "../utils/apiManager";
 import { AppContext } from "../utils/context";
 import PreLoader from "../components/PreLoader";
+import { trackActivity } from "../utils/activityTracker";
 
 const ChatWindow = ({
   onClose,
@@ -50,6 +51,21 @@ const ChatWindow = ({
         if (response.data.status) {
           setChatList((prev) => [...prev, response.data.chat]);
           setMessage("");
+
+          if (merchant_id && user_id) {
+            trackActivity({
+              merchant_id,
+              agent_id: Number(user_id),
+              action: "chat",
+              token,
+              meta: {
+                connected_id,
+                message_excerpt: message.slice(0, 120),
+              },
+            }).catch((err) =>
+              console.warn("Failed to log chat activity", err)
+            );
+          }
 
           // Save unique connection info if not already stored
           setSentConnections((prev) => {

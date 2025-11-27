@@ -7,6 +7,7 @@ import { apiErrorHandler } from "../utils/helper";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../utils/routes";
 import ContactImage from "./../assets/images/contactForm.png"; 
+import { trackActivity } from "../utils/activityTracker";
 
 const Contact = () => {
 
@@ -87,6 +88,17 @@ const Contact = () => {
                 setMessage(successMessage);
                 setSeverity("success"); 
 
+                const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+                if (merchant_id && token) {
+                  trackActivity({
+                    merchant_id,
+                    action: "contact",
+                    token,
+                    meta: { name, email, phone },
+                  }).catch((err) =>
+                    console.warn("Failed to log contact activity", err)
+                  );
+                }
 
             }
         } catch (error) {
