@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL, IMAGE_BASE_URL } from "../utils/apiManager";
+import { trackActivity } from "../utils/activityTracker";
 import PreLoader from "../components/PreLoader";
 import { AppContext } from "../utils/context";
 import placeholderimg from "./../assets/images/placeholderimg.jpg";
@@ -95,6 +96,15 @@ const MerchantListDetails = () => {
         } else if (action === "removed") {
           setIsFavorite(false);
         }
+
+        // fire-and-forget activity tracking
+        trackActivity({
+          merchant_id,
+          agent_id,
+          action: "favorite",
+          token,
+          meta: { state: action },
+        }).catch((err) => console.warn("Failed to log favorite activity", err));
       } else {
         throw new Error(response?.data?.message || "Failed to save favorite.");
       }
