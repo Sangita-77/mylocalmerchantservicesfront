@@ -34,6 +34,7 @@ export const routes = {
   merchant_profile: () => "/merchant/profile",
   merchant_user_history: () => "/merchant/user_connected_history",
   merchant_agent_list: () => "/merchant/agent_list",
+  merchant_saved_agents: () => "/merchant/saved-agents",
   merchant_add_review: () => "/merchant/review_list",
 
 

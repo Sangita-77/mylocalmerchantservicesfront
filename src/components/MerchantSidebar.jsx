@@ -12,6 +12,7 @@ import { GoLink } from "react-icons/go";
 import { GoSearch } from "react-icons/go";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BASENAME } from "../config";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const MerchantSidebar = () => {
   const navigate = useNavigate();
@@ -71,6 +72,17 @@ const MerchantSidebar = () => {
         >
           <GoSearch color={"#ffffff"} size={24} />
           <div className="sidebarItemTitle">Find Agents</div>
+        </div>
+
+        <div
+          className={`sidebarItem ${
+            url === `${BASENAME}/merchant/saved-agents` &&
+            "sidebarItemActive"
+          }`}
+          onClick={() => navigate(routes.merchant_saved_agents())}
+        >
+          <AiOutlineHeart color={"#ffffff"} size={24} />
+          <div className="sidebarItemTitle">Saved Agents</div>
         </div>
 
         <div

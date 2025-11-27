@@ -59,6 +59,7 @@ import MerchantListDeatils from "./pages/MerchantListDeatils";
 import MerchantAgentList from "./pages/merchant/MerchantAgentList";
 import MerchantReview from "./pages/merchant/MerchantReview";
 import ProvidersReview from "./pages/providers/ProvidersReview";
+import MerchantSavedAgents from "./pages/merchant/MerchantSavedAgents";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -283,6 +284,10 @@ function App() {
           {
             path: "/merchant/agent_list",
             element: <MerchantAgentList />,
+          },
+          {
+            path: "/merchant/saved-agents",
+            element: <MerchantSavedAgents />,
           },
           {
             path: "/merchant/review_list",
