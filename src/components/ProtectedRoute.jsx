@@ -26,17 +26,19 @@ const ProtectedRoute = ({ children }) => {
       const storedToken = localStorage.getItem("is_authenticated");
       const personType = localStorage.getItem("person_type");
 
-      // Block unauthorized access by URL path
       const pathname = location.pathname;
-      // console.log("pathname",pathname);
+      const isAdminRoute = pathname.startsWith("/admin");
+      const isMerchantRoute =
+        pathname.startsWith("/merchant") &&
+        !pathname.startsWith("/admin/merchant");
 
-      if (pathname.includes("/admin") && personType !== "admin") {
+      if (isAdminRoute && personType !== "admin") {
         setIsAllowed(false);
         setChecking(false);
         return;
       }
 
-      if (pathname.includes("/merchant") && personType === "admin") {
+      if (isMerchantRoute && personType === "admin") {
         setIsAllowed(false);
         setChecking(false);
         return;

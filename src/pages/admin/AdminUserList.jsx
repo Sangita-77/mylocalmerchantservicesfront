@@ -6,12 +6,14 @@ import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
 import { AiOutlineDelete } from "react-icons/ai";
 import { PiEyeLight } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
 import PreLoader from "../../components/PreLoader";
 import ConfirmModal from "../../components/ConfirmModal";
 import UserDetailsModal from "../../components/UserDetailsModal"; 
 import Tooltip from "../../components/Tooltip";
 import DashBoardFooter from "../../components/DashBoardFooter";
+import { routes } from "../../utils/routes";
 
 const AdminUserList = () => {
 
@@ -19,6 +21,7 @@ const AdminUserList = () => {
   const [userList, setUserList] = useState({ contactList: [] });
 
   const { token } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
@@ -33,6 +36,18 @@ const [selectedUserDetails, setSelectedUserDetails] = useState(null);
 // Function to handle view
 const handleViewClick = (user) => {
   setSelectedUserDetails(user);
+};
+
+const resolveMerchantId = (user) =>
+  user?.merchant_id ?? user?.id ?? user?.merchantId ?? null;
+
+const handleTrackActivity = (user) => {
+  const merchantId = resolveMerchantId(user);
+  if (!merchantId) {
+    alert("Unable to determine merchant for this row.");
+    return;
+  }
+  navigate(routes.admin_merchant_activity(merchantId));
 };
 
 const confirmDelete = async () => {
@@ -110,6 +125,7 @@ const confirmDelete = async () => {
                   <th className="th">Name</th>
                   <th className="th">E-mail</th>
                   <th className="th">Industry</th>
+                  <th className="th">Track Activity</th>
                   <th className="thActions">Actions</th>
                 </tr>
               </thead>
@@ -126,6 +142,15 @@ const confirmDelete = async () => {
                       <td className="td">{user.company_name}</td>
                       <td className="td">{user.user_id}</td>
                       <td className="td">{user.industry || "N/A"}</td>
+                      <td className="td">
+                        <button
+                          className="tableActionBtn"
+                          style={{ minWidth: 140 }}
+                          onClick={() => handleTrackActivity(user)}
+                        >
+                          Track Activity
+                        </button>
+                      </td>
                       <td className="actionTd">
                         <button className="viewButton" onClick={() => handleViewClick(user)} data-bs-toggle="tooltip"
                         data-bs-placement="auto"

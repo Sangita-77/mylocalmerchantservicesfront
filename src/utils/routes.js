@@ -24,6 +24,8 @@ export const routes = {
   admin_processor: () => "/admin/agent-processor",
   admin_reviews: () => "/admin/reviews",
   admin_reported_reviews: () => "/admin/reported-reviews",
+  admin_merchant_activity: (merchantId = ":merchantId") =>
+    `/admin/merchant-activity/${merchantId}`,
 
 
 

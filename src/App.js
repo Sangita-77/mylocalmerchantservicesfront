@@ -44,6 +44,7 @@ import ContactList from "./pages/admin/ContactList";
 import AdminServiceList from "./pages/admin/AdminServiceList";
 import AdminReview from "./pages/admin/AdminReview";
 import AdminReportedReviews from "./pages/admin/AdminReportedReviews";
+import MerchantActivity from "./pages/admin/MerchantActivity";
 
 import Contact from "./pages/Contact";
 
@@ -258,6 +259,10 @@ function App() {
           {
             path: "/admin/reported-reviews",
             element: <AdminReportedReviews />,
+          },
+          {
+            path: "/admin/merchant-activity/:merchantId",
+            element: <MerchantActivity />,
           },
         ],
       },

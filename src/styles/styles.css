@@ -588,6 +588,51 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
 .merchantRegistrationForm .registrationFormTitle { margin: 0; padding: 0; margin-bottom: 24px; color: #0052a4; font-size: 24px; font-weight: 500; font-family: "Poppins"; }
 .merchantRegistrationForm .sendOtpButton{transition: all .5s ease-in-out; border: none; width: 48%; background: #003478; color: #fff; border-radius: 5px;     height: 58px;}
 .merchantRegistrationForm .sendOtpButton:hover {background: #1C94E4;}
+
+.merchantActivityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.merchantActivityHeader h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #0f2239;
+}
+
+.merchantActivityHeaderActions .tableActionBtn {
+  background-color: #0f8cdd;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+.merchantActivityHeaderActions .tableActionBtn:hover {
+  background-color: #0c74b7;
+}
+
+.merchantActivityPage .tableWrapper {
+  min-height: 320px;
+}
+
+.activityPayloadCell {
+  min-width: 220px;
+}
+
+.activityPayloadItem {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.activityPayloadItem strong {
+  text-transform: capitalize;
+  color: #0f2239;
+}
 .merchantRegistrationForm .merchantRegistrationFormTop { margin: 0; }
 .merchantRegistrationForm .inputRowContainer { margin: 18px 0; padding: 0; width: 100%; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-between; border: none; border-bottom: 1px; border-color: #dadada; }
 .merchantRegistrationForm .inputRow { display: flex; flex-direction: column; align-items: flex-start; width: 48%;}
