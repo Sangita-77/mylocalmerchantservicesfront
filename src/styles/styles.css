@@ -620,6 +620,14 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
   min-height: 320px;
 }
 
+.merchantActivityPage .tableContainer tbody tr {
+  border-bottom: 1px solid #e5eaef;
+}
+
+.merchantActivityPage .tableContainer tbody tr:last-child {
+  border-bottom: none;
+}
+
 .activityPayloadCell {
   min-width: 220px;
 }

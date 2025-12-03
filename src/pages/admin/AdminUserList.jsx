@@ -6,6 +6,7 @@ import { BASE_URL } from "../../utils/apiManager";
 import { AppContext } from "../../utils/context";
 import { AiOutlineDelete } from "react-icons/ai";
 import { PiEyeLight } from "react-icons/pi";
+import { FiDownload } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
 import PreLoader from "../../components/PreLoader";
@@ -108,6 +109,107 @@ const confirmDelete = async () => {
     }
   };
 
+  // Helper function to escape CSV values
+  const escapeCSV = (value) => {
+    if (value === null || value === undefined) return "";
+    const stringValue = String(value);
+    if (stringValue.includes(",") || stringValue.includes('"') || stringValue.includes("\n")) {
+      return `"${stringValue.replace(/"/g, '""')}"`;
+    }
+    return stringValue;
+  };
+
+  const handleDownloadCSV = () => {
+    if (!Array.isArray(userList.contactList) || userList.contactList.length === 0) {
+      alert("No data available to download");
+      return;
+    }
+
+    // CSV headers
+    const headers = ["Email", "Headline", "City", "State", "Services"];
+    
+    // Convert data to CSV rows
+    const csvRows = userList.contactList.map((user) => {
+      const email = user.email || user.user_id || "";
+      const headline = user.company_description || "";
+      const city = user.city || "";
+      const state = user.state || "";
+      const services = user.type_of_service || "";
+      
+      return [
+        escapeCSV(email),
+        escapeCSV(headline),
+        escapeCSV(city),
+        escapeCSV(state),
+        escapeCSV(services)
+      ].join(",");
+    });
+    
+    // Combine headers and rows
+    const csvContent = [headers.join(","), ...csvRows].join("\n");
+    
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute("href", url);
+    link.setAttribute("download", `merchants_export_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = "hidden";
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleDownloadSingleMerchantCSV = (user) => {
+    if (!user) {
+      alert("No merchant data available to download");
+      return;
+    }
+
+    // CSV headers
+    const headers = ["Email", "Headline", "City", "State", "Services"];
+    
+    // Extract merchant data
+    const email = user.email || user.user_id || "";
+    const headline = user.company_description || "";
+    const city = user.city || "";
+    const state = user.state || "";
+    const services = user.type_of_service || "";
+    
+    // Create CSV row
+    const csvRow = [
+      escapeCSV(email),
+      escapeCSV(headline),
+      escapeCSV(city),
+      escapeCSV(state),
+      escapeCSV(services)
+    ].join(",");
+    
+    // Combine headers and row
+    const csvContent = [headers.join(","), csvRow].join("\n");
+    
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    
+    // Generate filename from merchant name or email
+    const merchantName = (user.company_name || user.merchant_name || email || "merchant")
+      .replace(/[^a-z0-9]/gi, "_")
+      .toLowerCase()
+      .substring(0, 50);
+    
+    link.setAttribute("href", url);
+    link.setAttribute("download", `${merchantName}_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = "hidden";
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
 
   return (
     <>
@@ -118,6 +220,22 @@ const confirmDelete = async () => {
           
 
      <div className="adminUserlIstContainer">
+      <div style={{ marginBottom: "15px", display: "flex", justifyContent: "flex-end" }}>
+        <button
+          onClick={handleDownloadCSV}
+          className="tableActionBtn"
+          style={{ 
+            display: "flex", 
+            alignItems: "center", 
+            gap: "8px",
+            padding: "10px 20px"
+          }}
+          disabled={loading || !Array.isArray(userList.contactList) || userList.contactList.length === 0}
+        >
+          <FiDownload size={18} />
+          Download CSV
+        </button>
+      </div>
       <div className="tableContainerWrap">
             <table className="tableContainer">
               <thead className="theadContainer">
@@ -156,6 +274,16 @@ const confirmDelete = async () => {
                         data-bs-placement="auto"
                         title="View Details">
                           <PiEyeLight size={22} color="white" />
+                        </button>
+                        <button 
+                          className="viewButton" 
+                          onClick={() => handleDownloadSingleMerchantCSV(user)} 
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="auto"
+                          title="Download CSV"
+                          style={{ backgroundColor: "#28a745" }}
+                        >
+                          <FiDownload size={22} color="white" />
                         </button>
                         <button className="delButton" onClick={() => {
                             handleDeleteClick(user.user_id);
