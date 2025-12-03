@@ -8,6 +8,7 @@ import AdminDashBoardTopBar from "../../components/AdminDashBoardTopBar";
 import PreLoader from "../../components/PreLoader";
 import DashBoardFooter from "../../components/DashBoardFooter";
 import { routes } from "../../utils/routes";
+import { FiDownload } from "react-icons/fi";
 
 const MerchantActivity = () => {
   const { merchantId } = useParams();
@@ -73,6 +74,80 @@ const MerchantActivity = () => {
     ));
   };
 
+  // Helper function to escape CSV values
+  const escapeCSV = (value) => {
+    if (value === null || value === undefined) return "";
+    const stringValue = String(value);
+    if (stringValue.includes(",") || stringValue.includes('"') || stringValue.includes("\n")) {
+      return `"${stringValue.replace(/"/g, '""')}"`;
+    }
+    return stringValue;
+  };
+
+  // Helper function to format payload for CSV
+  const formatPayloadForCSV = (payload) => {
+    if (!payload || typeof payload !== "object") return "";
+    try {
+      // Convert object to formatted string (key: value pairs)
+      const entries = Object.entries(payload)
+        .map(([key, value]) => {
+          const val = value === null || value === "" ? "—" : String(value);
+          return `${key}: ${val}`;
+        })
+        .join("; ");
+      return entries || "";
+    } catch (error) {
+      return JSON.stringify(payload);
+    }
+  };
+
+  const handleDownloadCSV = () => {
+    if (!Array.isArray(activity) || activity.length === 0) {
+      alert("No activity data available to download");
+      return;
+    }
+
+    // CSV headers
+    const headers = ["Action", "Agent ID", "Source", "Payload", "Timestamp"];
+    
+    // Convert data to CSV rows
+    const csvRows = activity.map((item) => {
+      const action = item.action || "—";
+      const agentId = item.agent_id ?? "—";
+      const source = item.source_model 
+        ? item.source_model.split("\\").pop() 
+        : "—";
+      const payload = formatPayloadForCSV(item.payload);
+      const timestamp = item.created_at
+        ? new Date(item.created_at).toLocaleString()
+        : "—";
+      
+      return [
+        escapeCSV(action),
+        escapeCSV(agentId),
+        escapeCSV(source),
+        escapeCSV(payload),
+        escapeCSV(timestamp)
+      ].join(",");
+    });
+    
+    // Combine headers and rows
+    const csvContent = [headers.join(","), ...csvRows].join("\n");
+    
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute("href", url);
+    link.setAttribute("download", `merchant_activity_${parsedMerchantId}_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = "hidden";
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="adminUserlistWrapper merchantActivityPage">
       <AdminDashBoardTopBar heading="Merchant Activity" />
@@ -86,7 +161,28 @@ const MerchantActivity = () => {
           <div className="merchantActivityHeaderActions">
             <button
               className="tableActionBtn"
+              onClick={handleDownloadCSV}
+              disabled={loading || !Array.isArray(activity) || activity.length === 0}
+              style={{ 
+                display: "flex", 
+                alignItems: "center", 
+                gap: "8px",
+                padding: "10px 20px",
+                minWidth: "150px",
+                justifyContent: "center",
+                marginTop: "100px"
+              }}
+            >
+              <FiDownload size={18} />
+              Download CSV
+            </button>
+            <button
+              className="tableActionBtn"
               onClick={() => navigate(routes.admin_user_list())}
+              style={{ 
+                padding: "10px 20px",
+                marginTop: "100px"
+              }}
             >
               Back to Merchant List
             </button>

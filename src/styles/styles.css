@@ -603,6 +603,12 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
   color: #0f2239;
 }
 
+.merchantActivityHeaderActions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 .merchantActivityHeaderActions .tableActionBtn {
   background-color: #0f8cdd;
   color: #fff;
@@ -612,8 +618,13 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
   cursor: pointer;
 }
 
-.merchantActivityHeaderActions .tableActionBtn:hover {
+.merchantActivityHeaderActions .tableActionBtn:hover:not(:disabled) {
   background-color: #0c74b7;
+}
+
+.merchantActivityHeaderActions .tableActionBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .merchantActivityPage .tableWrapper {
