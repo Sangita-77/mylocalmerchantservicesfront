@@ -7,6 +7,7 @@ import PreLoader from "../components/PreLoader";
 import { AppContext } from "../utils/context";
 import placeholderimg from "./../assets/images/placeholderimg.jpg";
 import ConnectConfirmationModal from "../components/ConnectConfirmationModal";
+import BlockAgentModal from "../components/BlockAgentModal";
 import contactlisticon from "../assets/images/contactlisticon.png";
 import "./../styles/styles.css";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -25,6 +26,9 @@ const MerchantListDetails = () => {
   const [totalReviews, setTotalReviews] = useState(0);
   const [isSavingFavorite, setIsSavingFavorite] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isBlocking, setIsBlocking] = useState(false);
+  const [showBlockModal, setShowBlockModal] = useState(false);
+  const [isBlocked, setIsBlocked] = useState(false);
 
   const fetchMerchantDetails = async () => {
     try {
@@ -54,6 +58,7 @@ const MerchantListDetails = () => {
     getConnectStatus();
     if (id) fetchMerchantDetails();
     if (id) fetchFavoriteStatus();
+    if (id) checkBlockedStatus();
   }, [id]);
 
   const handleConnect = () => {
@@ -184,6 +189,144 @@ const MerchantListDetails = () => {
     } catch (error) {
       console.error("Failed to fetch favorites:", error);
       setIsFavorite(false);
+    }
+  };
+
+  const checkBlockedStatus = async () => {
+    const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+    const agent_id = parseInt(id, 10);
+
+    if (!merchant_id || !agent_id) {
+      setIsBlocked(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/getBlockedUser`,
+        { blocker_id: merchant_id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response?.data?.status && response?.data?.data?.blockUser) {
+        const blockedUsers = response.data.data.blockUser;
+        // Check if agent is blocked (action must be "block", not "unblock")
+        const isAgentBlocked = blockedUsers.some(
+          (blocked) => 
+            parseInt(blocked.blocked_id, 10) === agent_id &&
+            blocked.action === "block"
+        );
+        setIsBlocked(isAgentBlocked);
+      } else {
+        setIsBlocked(false);
+      }
+    } catch (error) {
+      console.error("Failed to check blocked status:", error);
+      setIsBlocked(false);
+    }
+  };
+
+  const handleBlockAgent = () => {
+    const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+    const agent_id = parseInt(id, 10);
+
+    if (!merchant_id || !agent_id) {
+      alert("Please login as a merchant to block agents.");
+      return;
+    }
+
+    // If already blocked, unblock directly without modal
+    if (isBlocked) {
+      handleUnblockAgent();
+      return;
+    }
+
+    // If not blocked, show modal to enter reason
+    setShowBlockModal(true);
+  };
+
+  const handleUnblockAgent = async () => {
+    const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+    const agent_id = parseInt(id, 10);
+
+    try {
+      setIsBlocking(true);
+      const response = await axios.post(
+        `${BASE_URL}/blockUser`,
+        { 
+          blocker_id: merchant_id,
+          blocked_id: agent_id,
+          reason: "unblock",
+          action: "unblock",
+          blocker: "merchant",
+          blocked: "agent",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response?.data?.status) {
+        // alert(response?.data?.message || "User unblocked successfully.");
+        // Update blocked status after successful unblock
+        setIsBlocked(false);
+      } else {
+        throw new Error(response?.data?.message || "Failed to unblock user.");
+      }
+    } catch (error) {
+      console.error("Failed to unblock agent:", error);
+      alert(error?.response?.data?.message || "Unable to unblock agent. Please try again.");
+    } finally {
+      setIsBlocking(false);
+    }
+  };
+
+  const confirmBlockAgent = async (reason) => {
+    const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+    const agent_id = parseInt(id, 10);
+
+    try {
+      setIsBlocking(true);
+      const response = await axios.post(
+        `${BASE_URL}/blockUser`,
+        { 
+          blocker_id: merchant_id,
+          blocked_id: agent_id,
+          reason: reason,
+          action: "block",
+          blocker: "merchant",
+          blocked: "agent",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response?.data?.status) {
+        // alert(response?.data?.message || "User blocked successfully.");
+        setShowBlockModal(false);
+        // Update blocked status after successful block
+        setIsBlocked(true);
+        // Optionally refresh or update UI
+      } else {
+        throw new Error(response?.data?.message || "Failed to block user.");
+      }
+    } catch (error) {
+      console.error("Failed to block agent:", error);
+      alert(error?.response?.data?.message || "Unable to block agent. Please try again.");
+    } finally {
+      setIsBlocking(false);
     }
   };
 
@@ -332,12 +475,36 @@ const MerchantListDetails = () => {
                           ? "btnConnected"
                           : ""
                       }`}
-                      onClick={
-                        buttonText === "Connect" ? handleConnect : undefined
-                      } // only clickable if "Connect"
-                      disabled={isLoading || buttonText !== "Connect"} // disable if not "Connect"
+                      onClick={handleConnect}
+                      disabled={
+                        isLoading || buttonText !== "Connect" ||
+                        !localStorage.getItem("is_authenticated") ||
+                        !localStorage.getItem("merchant_id") ||
+                        isLoading ||
+                        buttonText === "Requested" ||
+                        buttonText === "Connected"
+                      } // When logged in: disabled if Requested, Connected, or loading
                     >
                       {isLoading ? "Checking..." : buttonText}
+                    </button>
+                    <button
+                      className={`modalConnectBtn ${
+                        isBlocked ? "btnBlocked" : ""
+                      }`}
+                      onClick={handleBlockAgent}
+                      disabled={
+                        !localStorage.getItem("is_authenticated") ||
+                        !localStorage.getItem("merchant_id") ||
+                        isBlocking
+                      } // When logged in: always active, only disabled if blocking in progress
+                    >
+                      {isBlocking
+                        ? isBlocked
+                          ? "Unblocking..."
+                          : "Blocking..."
+                        : isBlocked
+                        ? "Unblock"
+                        : "Block"}
                     </button>
                     <button
                       type="button"
@@ -348,7 +515,11 @@ const MerchantListDetails = () => {
                       aria-label="Save to favorites"
                       aria-pressed={isFavorite}
                       onClick={handleSaveFavorite}
-                      disabled={isSavingFavorite}
+                      disabled={
+                        !localStorage.getItem("is_authenticated") ||
+                        !localStorage.getItem("merchant_id") ||
+                        isSavingFavorite
+                      }
                     >
                       <AiOutlineHeart size={20} />
                     </button>
@@ -719,6 +890,14 @@ const MerchantListDetails = () => {
           onCancel={() => setShowModal(false)}
           //   onConfirm={confirmConnect}
           isLoading={isLoading}
+        />
+      )}
+
+      {showBlockModal && (
+        <BlockAgentModal
+          onCancel={() => setShowBlockModal(false)}
+          onConfirm={confirmBlockAgent}
+          isLoading={isBlocking}
         />
       )}
     </div>
