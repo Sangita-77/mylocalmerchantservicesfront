@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/dev/mylocalmerchantservicesfront/static/css/main.4cac2ce8.css",
+    "main.js": "/dev/mylocalmerchantservicesfront/static/js/main.7b4da8b5.js",
+    "static/js/453.6cc15d40.chunk.js": "/dev/mylocalmerchantservicesfront/static/js/453.6cc15d40.chunk.js",
+    "static/media/merchant_list_bg_eclipse.png": "/dev/mylocalmerchantservicesfront/static/media/merchant_list_bg_eclipse.241c8257d76577befdd9.png",
+    "static/media/credit_card_machine_ad_02.png": "/dev/mylocalmerchantservicesfront/static/media/credit_card_machine_ad_02.461947530449a272759c.png",
+    "static/media/person_search_03.png": "/dev/mylocalmerchantservicesfront/static/media/person_search_03.a0e3c8687e653feceabd.png",
+    "static/media/3d-logo-loader.gif": "/dev/mylocalmerchantservicesfront/static/media/3d-logo-loader.37dae24eeb376110aa74.gif",
+    "static/media/smiling_person_03.png": "/dev/mylocalmerchantservicesfront/static/media/smiling_person_03.b0953f1d34b39a85fe6c.png",
+    "static/media/Ellipse 12.png": "/dev/mylocalmerchantservicesfront/static/media/Ellipse 12.40efc3fe222933fa6637.png",
+    "static/media/stripe_logo_03.png": "/dev/mylocalmerchantservicesfront/static/media/stripe_logo_03.36893821a74bbc580d89.png",
+    "static/media/circle.png": "/dev/mylocalmerchantservicesfront/static/media/circle.a6dd30f35bb4866be140.png",
+    "static/media/walmart_logo_03.png": "/dev/mylocalmerchantservicesfront/static/media/walmart_logo_03.b48d8847066f88c1e62f.png",
+    "static/media/onboarding_banner_bg.jpg": "/dev/mylocalmerchantservicesfront/static/media/onboarding_banner_bg.960746fdfa12162f72d6.jpg",
+    "static/media/login_banner_bg.jpg": "/dev/mylocalmerchantservicesfront/static/media/login_banner_bg.3c660ad419139df0e3d1.jpg",
+    "static/media/blue_shades_circle.png": "/dev/mylocalmerchantservicesfront/static/media/blue_shades_circle.cab332c1bd9d70131eae.png",
+    "static/media/id_card.png": "/dev/mylocalmerchantservicesfront/static/media/id_card.2653247bbe896bc7ba21.png",
+    "static/media/dollar_bag.png": "/dev/mylocalmerchantservicesfront/static/media/dollar_bag.eeca6a3e28440a04d483.png",
+    "static/media/person_lock.png": "/dev/mylocalmerchantservicesfront/static/media/person_lock.9e074358ef811ffb2ac7.png",
+    "static/media/yellow_shade.png": "/dev/mylocalmerchantservicesfront/static/media/yellow_shade.9eb8926d205beec6cd10.png",
+    "static/media/logo.png": "/dev/mylocalmerchantservicesfront/static/media/logo.39ebd290a0b792d6678e.png",
+    "index.html": "/dev/mylocalmerchantservicesfront/index.html",
+    "main.4cac2ce8.css.map": "/dev/mylocalmerchantservicesfront/static/css/main.4cac2ce8.css.map",
+    "main.7b4da8b5.js.map": "/dev/mylocalmerchantservicesfront/static/js/main.7b4da8b5.js.map",
+    "453.6cc15d40.chunk.js.map": "/dev/mylocalmerchantservicesfront/static/js/453.6cc15d40.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4cac2ce8.css",
+    "static/js/main.7b4da8b5.js"
+  ]
+}

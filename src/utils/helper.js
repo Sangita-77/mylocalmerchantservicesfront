@@ -34,7 +34,7 @@ export const testAuthToken = async () => {
       api_secret: "dream1234!!",
     });
 
-    // console.log("test token====>", response);
+    console.log("test token====>", response);
     const token = response?.data?.data?.token;
     return token;
   } catch (error) {

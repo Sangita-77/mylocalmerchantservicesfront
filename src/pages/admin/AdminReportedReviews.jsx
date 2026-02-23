@@ -166,7 +166,9 @@ const AdminReportedReviews = () => {
         )}
 
         {isLoading && !hasReports ? (
-          <p>Loading reported reviews...</p>
+          <p>Loading reported reviews...ok
+            
+          </p>
         ) : hasReports ? (
           <div
             className="reportedReviewTableWrapper"

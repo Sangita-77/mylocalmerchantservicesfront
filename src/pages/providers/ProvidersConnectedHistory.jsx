@@ -109,23 +109,59 @@ const ProvidersConnectedHistory = () => {
   };
 
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  // const [selectedUserId, setSelectedUserId] = useState(null);
 
-  const handleDeleteClick = (user_id) => {
-    setSelectedUserId(user_id);
+  // const handleDeleteClick = (connection) => {
+  //   setSelectedUserId(connection);
+  //   setShowConfirmModal(true);
+  // };
+
+  const handleDeleteClick = (connection) => {
+    setSelectedConnection(connection);  // ✅ correct state
     setShowConfirmModal(true);
   };
-const handleDelete = async (connection) => { 
-  const confirmed = window.confirm('Are you sure you want to delete this connection?');
-  const user_id = parseInt(connection.merchant_id, 10);
+// const handleDelete = async (connection) => { 
+//   const confirmed = window.confirm('Are you sure you want to delete this connection?');
+//   const user_id = parseInt(connection.merchant_id, 10);
+//   const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
+//   if (!confirmed) return;
+//   try {
+//     const response = await axios.post(
+//       `${BASE_URL}/merchantDeleteConnectedHistory`,
+//       {
+//         user_id: user_id,
+//         merchant_id: merchant_id, 
+//       },
+//       {
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer ${token}`,
+//         },
+//       }
+//     );
+//     // console.log("dd.d,l,,,,,,,,,,,,,,,,,",response);
+
+//     if (response.data.status) {
+//       fetchData();
+//       }
+//     } catch (error) {
+//       setShowConfirmModal(false);
+//       setSelectedUserId(null);
+//     }
+// };
+
+const handleDelete = async () => {
+  if (!selectedConnection) return;
+
+  const user_id = parseInt(selectedConnection.merchant_id, 10);
   const merchant_id = parseInt(localStorage.getItem("merchant_id"), 10);
-  if (!confirmed) return;
+
   try {
     const response = await axios.post(
       `${BASE_URL}/merchantDeleteConnectedHistory`,
       {
-        user_id: user_id,
-        merchant_id: merchant_id, 
+        user_id,
+        merchant_id,
       },
       {
         headers: {
@@ -134,18 +170,18 @@ const handleDelete = async (connection) => {
         },
       }
     );
-    // console.log("dd.d,l,,,,,,,,,,,,,,,,,",response);
 
     if (response.data.status) {
       fetchData();
-      }
-    } catch (error) {
       setShowConfirmModal(false);
-      setSelectedUserId(null);
+      setSelectedConnection(null);
     }
+  } catch (error) {
+    console.error(error);
+    setShowConfirmModal(false);
+    setSelectedConnection(null);
+  }
 };
-
-
   useEffect(() => {
     const localPersonType = localStorage.getItem("person_type");
     if (localPersonType) {

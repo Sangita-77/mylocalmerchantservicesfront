@@ -53,7 +53,9 @@ const OnboardingPageHeader = () => {
       // Clear session
       localStorage.removeItem("is_authenticated");
       localStorage.removeItem("user_id");
-      window.location.href = routes.msr_registration(); // or navigate()
+
+      // Use SPA navigation so React Router (with basename) handles the redirect
+      navigate(routes.msr_registration());
     } catch (error) {
       console.log(error);
       const errMsg = apiErrorHandler(error);
