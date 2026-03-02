@@ -149,12 +149,12 @@ const AdminReportedReviews = () => {
       return (
         <tr key={report.review_report_id}>
           <td className="reviewId">{report.review_report_id}</td>
-          <td>
+          {/* <td>
             {new Date(report.created_at).toLocaleString(undefined, {
               dateStyle: "medium",
               timeStyle: "short",
             })}
-          </td>
+          </td> */}
           <td>{report.merchant_id ?? "—"}</td>
           <td>{report.agent_id ?? "—"}</td>
           <td>
@@ -216,12 +216,12 @@ const AdminReportedReviews = () => {
       return (
         <tr className="tr" key={report.review_report_id}>
           <td className="reviewId">{report.review_report_id}</td>
-          <td>
+          {/* <td>
             {new Date(report.created_at).toLocaleString(undefined, {
               dateStyle: "medium",
               timeStyle: "short",
             })}
-          </td>
+          </td> */}
           <td>{report.merchant_id ?? "—"}</td>
           <td>{report.agent_id ?? "—"}</td>
           <td>
@@ -266,12 +266,12 @@ const AdminReportedReviews = () => {
       return (
         <tr className="tr" key={report.review_report_id}>
           <td className="reviewId">{report.review_report_id}</td>
-          <td>
+          {/* <td>
             {new Date(report.created_at).toLocaleString(undefined, {
               dateStyle: "medium",
               timeStyle: "short",
             })}
-          </td>
+          </td> */}
           <td>{report.merchant_id ?? "—"}</td>
           <td>{report.agent_id ?? "—"}</td>
           <td>
@@ -318,7 +318,7 @@ const AdminReportedReviews = () => {
                         <thead>
                           <tr>
                             <th>Report ID</th>
-                            <th>Submitted On</th>
+                            {/* <th>Submitted On</th> */}
                             <th>Merchant</th>
                             <th>Agent</th>
                             <th>Rating</th>
@@ -353,7 +353,7 @@ const AdminReportedReviews = () => {
                         <thead>
                           <tr>
                             <th>Report ID</th>
-                            <th>Submitted On</th>
+                            {/* <th>Submitted On</th> */}
                             <th>Merchant</th>
                             <th>Agent</th>
                             <th>Rating</th>
@@ -388,7 +388,7 @@ const AdminReportedReviews = () => {
                         <thead>
                           <tr>
                             <th>Report ID</th>
-                            <th>Submitted On</th>
+                            {/* <th>Submitted On</th> */}
                             <th>Merchant</th>
                             <th>Agent</th>
                             <th>Rating</th>
