@@ -89,7 +89,7 @@ const OnboardingPageFooter = () => {
         <div className="footerCol">
           <p className="footerColTitle">Contact us</p>
           <div className="footerRow footerLocation">
-            <IoLocationSharp size={28} color="#ffffff"/>
+            <IoLocationSharp size={22} color="#ffffff"/>
             <p className="footerColDesc">1 Chestnut Hill Plaza #1452 <br />Newark, DE 19713 <br />United States</p>
           </div>
           <div className="footerRow">
@@ -97,7 +97,7 @@ const OnboardingPageFooter = () => {
             <p className="footerColDesc"><a href="mailto:support@mylocalmerchantservices.com">support@mylocalmerchantservices.com</a></p>
           </div>
           <div className="footerRow">
-            <IoIosCall size={24} color="#ffffff"/>
+            <IoIosCall size={22} color="#ffffff"/>
             <p className="footerColDesc"><a href="tel:13024519144">+1-302-451-9144</a></p>
           </div>
 
