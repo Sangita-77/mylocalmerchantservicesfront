@@ -567,7 +567,7 @@ const MerchantListDetails = () => {
 
             <div className="userInfoBottomWrap">
               <div className="row">
-                <div className="col-lg-3">
+                <div className="col-lg-3 col-md-6 col-12">
                   <div className="inputWrapCon">
                     <div className="titleField">Company Name:</div>
                     <div className="titleData">
@@ -575,7 +575,7 @@ const MerchantListDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3">
+                <div className="col-lg-3 col-md-6 col-12">
                   <div className="inputWrapCon">
                     <div className="titleField">Website:</div>
                     <div className="titleData">
@@ -589,13 +589,13 @@ const MerchantListDetails = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3">
+                <div className="col-lg-3 col-md-6 col-12">
                   <div className="inputWrapCon">
                     <div className="titleField">Serviced Clients:</div>
                     <div className="titleData">{data.clientCount || "N/A"}</div>
                   </div>
                 </div>
-                <div className="col-lg-3">
+                <div className="col-lg-3 col-md-6 col-12">
                   <div className="inputWrapCon">
                     <div className="titleField">Average Rating:</div>
                     <div className="titleData"><span>4.5</span></div>

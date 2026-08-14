@@ -110,8 +110,8 @@ const OnboardingPage = () => {
         <img src={blueShade} alt="" className="blueShadeLeftWard" />
 
         <div className="onboardingPageBannerContentContainer">
-          <p className="bannerTitleLarge">Find Local</p>
-          <p className="bannerTitleMedium">Credit Card Processing Agents</p>
+          <h1 className="bannerTitleLarge">Find Local</h1>
+          <h2 className="bannerTitleMedium">Credit Card Processing Agents</h2>
           <p className="bannerTitleSmall">
             Save Time and Money while Improving Service
           </p>
@@ -156,9 +156,9 @@ const OnboardingPage = () => {
         <img src={yellowShade} alt="" className="bottomYellowShade" />
 
         <div className="findAgentsSectionTop">
-          <p className="findAgentsSectionTitle">
+          <h2 className="findAgentsSectionTitle">
             The smart way to shop for payment processing
-          </p>
+          </h2>
           <p className="findAgentsSectionSubtitle">
             We show you local agents. You choose who's best for your business.
           </p>
@@ -259,14 +259,13 @@ const OnboardingPage = () => {
         </div>
 
         <div className="merchantRegisterSectionRight">
-          <div>
-            <p className="registerSectionTitle">Register your</p>
+          <div className="registerSectionTitleWrap">
+            <h2 className="registerSectionTitle">Register your</h2>
             <p className="registerSectionSubtitle">merchant services company</p>
           </div>
 
           <p className="registerSectionContent">
-            Increase your leads <br /> 100% free! Both ISOs and <br />{" "}
-            independent
+            Increase your leads 100% free! Both ISOs and independent
           </p>
 
           <div className="registerPoints">
@@ -313,9 +312,9 @@ const OnboardingPage = () => {
         <img src={yellowShade} alt="" className="agentBottomYellowShade" />
 
         <div className="agentSearchSectionLeftContainer">
-          <div style={{ marginBottom: 40, width: "100%" }}>
-            <p className="agentSearchSectionTitle">The Power</p>
-            <p className="agentSearchSectionTitle2">of agent search</p>
+          <div className="agentSearchSectionLeftContainerTitle" style={{ marginBottom: 40, width: "100%" }}>
+            <h2 className="agentSearchSectionTitle">The Power</h2>
+            <h2 className="agentSearchSectionTitle2">of agent search</h2>
           </div>
 
           <div>
@@ -371,12 +370,12 @@ const OnboardingPage = () => {
 
       <div className="merchantRegisterLeaflet">
         <div>
-          <p className="merchantRegisterLeafletTitle">
+          <h2 className="merchantRegisterLeafletTitle">
             Get Merchant services LEADS near you!
-          </p>
-          <p className="merchantRegisterLeafletTitle">
+          </h2>
+          <h2 className="merchantRegisterLeafletTitle">
             Real, local, and 100% free!
-          </p>
+          </h2>
         </div>
           <ButtonLarge
             title={"Register Now"}
@@ -386,9 +385,9 @@ const OnboardingPage = () => {
       </div>
 
       <div className="articleSection">
-        <p className="articleSectionTitle">
+        <h2 className="articleSectionTitle">
           Explore Our Latest Blog & Articles
-        </p>
+        </h2>
 
         <div className="articleSectionInner">
           <div className="articleItem">
