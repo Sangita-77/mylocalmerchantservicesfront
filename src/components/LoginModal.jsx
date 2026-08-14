@@ -214,131 +214,133 @@ const LoginModal = ({ handleClose }) => {
   return (
     <>
       <div className="overlay">
-        <div className="loginCloseBtnContainer" onClick={handleClose}>
-          <div className="loginCloseBtn">&times;</div>
-        </div>
-        <div className="loginModalWrapper">
-          <img src={blueShade} alt="" className="loginBlueShade" />
-          <img src={yellowShade} alt="" className="loginYellowShade" />
+        <div className="loginPopupWrap">
+          <div className="loginCloseBtnContainer" onClick={handleClose}>
+            <div className="loginCloseBtn">&times;</div>
+          </div>
+          <div className="loginModalWrapper">
+            <img src={blueShade} alt="" className="loginBlueShade" />
+            <img src={yellowShade} alt="" className="loginYellowShade" />
 
-          <p className="loginModalTitle">Login</p>
-          <div className="loginModalContainer">
-            <div className="loginForm">
-              <div className="loginInputCol">
-                <label htmlFor="">Username</label>
-                <input
-                  type="text"
-                  className="loginFormInputField"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                {validationError?.emailError && (
-                  <div className="errorText" style={{ marginTop: -4 }}>
-                    {validationError?.emailError}
+            <p className="loginModalTitle">Login</p>
+            <div className="loginModalContainer">
+              <div className="loginForm">
+                <div className="loginInputCol">
+                  <label htmlFor="">Username</label>
+                  <input
+                    type="text"
+                    className="loginFormInputField"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {validationError?.emailError && (
+                    <div className="errorText" style={{ marginTop: -4 }}>
+                      {validationError?.emailError}
+                    </div>
+                  )}
+                </div>
+
+                <div className="loginInputCol">
+                  <label htmlFor="">Password</label>
+                  <input
+                    type={!showPassword ? "password" : "text"}
+                    className="loginFormInputField"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onFocus={() => setShowPasswordRules(true)}
+                    onBlur={() => setTimeout(() => setShowPasswordRules(false), 200)}
+                  />
+                  {showPasswordRules && (
+                    <div className="passwordRulesContainer">
+                      <ul className="passwordRulesList">
+                        <li style={{ color: passwordValidationStatus.length ? "green" : "red" }}>
+                          Minimum 8 & maximum 12 characters
+                        </li>
+                        <li style={{ color: passwordValidationStatus.lowercase ? "green" : "red" }}>
+                          At least one lowercase letter
+                        </li>
+                        <li style={{ color: passwordValidationStatus.uppercase ? "green" : "red" }}>
+                          At least one uppercase letter
+                        </li>
+                        <li style={{ color: passwordValidationStatus.number ? "green" : "red" }}>
+                          At least one number
+                        </li>
+                        <li style={{ color: passwordValidationStatus.specialChar ? "green" : "red" }}>
+                          At least one special character
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                {validationError.passwordError && (
+                  <div className="errorText" style={{ marginTop: -8 }}>
+                    {validationError.passwordError}
                   </div>
                 )}
-              </div>
+                <div className="checkBoxRow">
+                  <input
+                    type="checkbox"
+                    className="loginCheckbox"
+                    onClick={() => togglePasswordVisibility()}
+                  />
+                  <div className="showPassword">Show Password</div>
+                </div>
 
-              <div className="loginInputCol">
-                <label htmlFor="">Password</label>
-                <input
-                  type={!showPassword ? "password" : "text"}
-                  className="loginFormInputField"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  onFocus={() => setShowPasswordRules(true)}
-                  onBlur={() => setTimeout(() => setShowPasswordRules(false), 200)}
-                />
-                {showPasswordRules && (
-                  <div className="passwordRulesContainer">
-                    <ul className="passwordRulesList">
-                      <li style={{ color: passwordValidationStatus.length ? "green" : "red" }}>
-                        Minimum 8 & maximum 12 characters
-                      </li>
-                      <li style={{ color: passwordValidationStatus.lowercase ? "green" : "red" }}>
-                        At least one lowercase letter
-                      </li>
-                      <li style={{ color: passwordValidationStatus.uppercase ? "green" : "red" }}>
-                        At least one uppercase letter
-                      </li>
-                      <li style={{ color: passwordValidationStatus.number ? "green" : "red" }}>
-                        At least one number
-                      </li>
-                      <li style={{ color: passwordValidationStatus.specialChar ? "green" : "red" }}>
-                        At least one special character
-                      </li>
-                    </ul>
+                {/* <div className="loginRadioContainer">
+                  <div className="radioButtonItem">
+                    <input
+                      type="radio"
+                      className="radioBtn"
+                      value={"user"}
+                      onChange={(e) => setPersonType(e.target.value)}
+                      checked={
+                        personType === "merchant" || personType === ""
+                          ? false
+                          : true
+                      }
+                    />
+                    <div className="radioText">User</div>
+                  </div>
+
+                  <div className="radioButtonItem">
+                    <input
+                      type="radio"
+                      className="radioBtn"
+                      value={"merchant"}
+                      onChange={(e) => setPersonType(e.target.value)}
+                      checked={
+                        personType === "user" || personType === "" ? false : true
+                      }
+                    />
+                    <div className="radioText">Merchant</div>
+                  </div>
+                </div> */}
+
+                {validationError.flagError && (
+                  <div className="errorText" style={{ marginTop: -8 }}>
+                    {validationError.flagError}
                   </div>
                 )}
+
+                <button className="loginBtn" onClick={() => handleLogin()}>
+                  {loading ? "Loading..." : "Submit"}
+                </button>
+
+                <div className="forgetPassword">
+                  Forgot Password?{" "}
+                  <span
+                    className="forgetPasswordLink"
+                    onClick={() => navigate(routes.forget_password())}
+                  >
+                    Click here
+                  </span>
+                </div>
+              </div> 
+
+              <div className="loginModalBannerContainer">
+                <img src={loginBanner} alt="" className="loginBannerImg" />
               </div>
-
-              {validationError.passwordError && (
-                <div className="errorText" style={{ marginTop: -8 }}>
-                  {validationError.passwordError}
-                </div>
-              )}
-              <div className="checkBoxRow">
-                <input
-                  type="checkbox"
-                  className="loginCheckbox"
-                  onClick={() => togglePasswordVisibility()}
-                />
-                <div className="showPassword">Show Password</div>
-              </div>
-
-              {/* <div className="loginRadioContainer">
-                <div className="radioButtonItem">
-                  <input
-                    type="radio"
-                    className="radioBtn"
-                    value={"user"}
-                    onChange={(e) => setPersonType(e.target.value)}
-                    checked={
-                      personType === "merchant" || personType === ""
-                        ? false
-                        : true
-                    }
-                  />
-                  <div className="radioText">User</div>
-                </div>
-
-                <div className="radioButtonItem">
-                  <input
-                    type="radio"
-                    className="radioBtn"
-                    value={"merchant"}
-                    onChange={(e) => setPersonType(e.target.value)}
-                    checked={
-                      personType === "user" || personType === "" ? false : true
-                    }
-                  />
-                  <div className="radioText">Merchant</div>
-                </div>
-              </div> */}
-
-              {validationError.flagError && (
-                <div className="errorText" style={{ marginTop: -8 }}>
-                  {validationError.flagError}
-                </div>
-              )}
-
-              <button className="loginBtn" onClick={() => handleLogin()}>
-                {loading ? "Loading..." : "Submit"}
-              </button>
-
-              <div className="forgetPassword">
-                Forgot Password?{" "}
-                <span
-                  className="forgetPasswordLink"
-                  onClick={() => navigate(routes.forget_password())}
-                >
-                  Click here
-                </span>
-              </div>
-            </div> 
-
-            <div className="loginModalBannerContainer">
-              <img src={loginBanner} alt="" className="loginBannerImg" />
             </div>
           </div>
         </div>
