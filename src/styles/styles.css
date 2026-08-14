@@ -1,7 +1,7 @@
 /* ///////////////  LAYOUT STYLES  /////////////// */
 
 /* ////////////////  MERCHANT LAYOUT /////////////// */
-.merchantLayoutContainer { margin: 0; padding: 0; width: 100vw; display: flex; flex-direction: column; }
+.merchantLayoutContainer { margin: 0; padding: 0; width: 100vw; display: flex; flex-direction: column;}
 .merchantOutletWrapper { margin: 0; padding: 0; /* display: flex; flex-direction: row; align-items: flex-start; gap: 0; */ display: grid; grid-template-columns: 20vw 80vw; }
 .merchantOutletContainer { margin: 0; padding: 0; /* margin-left: 20vw; */ /* margin-top: 16vh; */ background-color: #F5F5FE; margin-left: -36px; }
 /* ////////////////// MERCHANT FOOTER //////////////////////// */
@@ -87,7 +87,7 @@
 .blueShadeLeftWard { position: absolute; top: 200px; left: -180px; transform: rotate(-90deg); }
 
 .bannerTitleLarge { margin: 0; padding: 0; font-size: 100px; letter-spacing: -2px; font-weight: 800; font-family: "Poppins"; background: #1C94E4; text-transform: capitalize; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.bannerTitleMedium { margin: -32px 0 0 6px; padding: 0; font-size: 34px; font-family: "Poppins"; font-weight: 600; color: #0c64aa; text-transform: capitalize; }
+.bannerTitleMedium { margin: 0px 0 0 6px; padding: 0; font-size: 34px; font-family: "Poppins"; font-weight: 600; color: #0c64aa; text-transform: capitalize; }
 .bannerTitleSmall { margin: 14px 0 36px 8px; padding: 0; color: rgb(70, 70, 70); font-size: 24px; font-weight: 500; font-family: 'Poppins';}
 .bannerButton { margin: 0; margin-top: 24px; padding: 12px 36px; background-color: rgb(253, 218, 102); color: #000000; display: flex; outline: none; flex-direction: row; align-items: center; justify-content: center; gap: 4px; border: none; border-radius: 50px; cursor: pointer; }
 .bannerButtonTitle { margin: 0; padding: 0; font-size: 14px; font-weight: 700; }
@@ -295,7 +295,8 @@
 /* ////////////////    LOGIN MODAL    //////////////// */
 
 .overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */ z-index: 1000; overflow-y: hidden; }
-.loginModalWrapper { margin: 0; padding: 24px 0; width: 700px; min-height: 60vh; border: none; border-radius: 20px; background-color: #ffffff; position: fixed; top: 20vh; left: 50%;  transform: translateX(-50%); z-index: 99999; box-shadow: 0 0 10px 0 gray; overflow: hidden; }
+.loginModalWrapper { margin: 0; padding: 24px 0; width: 700px; min-height: 60vh; border: none; border-radius: 20px; background-color: #ffffff; position: fixed; /*top: 20vh;*/ top: 0;  left: 50%;  transform: translateX(-50%); z-index: 99999; box-shadow: 0 0 10px 0 gray; overflow: hidden; }
+.loginPopupWrap {width: 700px; min-height: 60vh; position: fixed; top: 20vh; left: 50%; transform: translateX(-50%);} /* new line*/
 .loginModalContainer { margin: 0; padding: 0 0 0 36px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 18px; }
 .loginModalBannerContainer { margin: 0; padding: 0; width: 360px; height: 360px; }
 .loginBannerImg { margin: 0; padding: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -312,7 +313,7 @@
 .forgetPasswordLink { color: #1b56aa; cursor: pointer; }
 .loginBlueShade { margin: 0; padding: 0; position: absolute; top: -50px; left: 150px; }
 .loginYellowShade { margin: 0; padding: 0; position: absolute; top: -200px; right: -150px; transform: rotate(180deg); }
-.loginCloseBtnContainer { margin: 0; padding: 6px 18px; font-size: 32px; line-height: 41px; position: absolute; top: 18%; right: 27%; background-color: #ffffff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
+.loginCloseBtnContainer { margin: 0; padding: 6px 18px; font-size: 32px; line-height: 41px; position: absolute; /*top: 18%; right: 27%;*/ top: -15px; right: -15px; background-color: #ffffff; border: none; border-radius: 50%; z-index: 9999999; cursor: pointer; }
 .loginCloseBtn { margin: 0; }
 .loginRadioContainer { margin: 0; padding: 0; margin-top: 12px; display: flex; flex-direction: row; align-items: center; gap: 48px; }
 .radioButtonItem { margin: 0; padding: 0; display: flex; flex-direction: row; align-items: center; gap: 6px; }
@@ -806,7 +807,7 @@ h1.merchantTopTitle{ margin: 0; padding-top: 30px; color: #003478; font-size: 28
  align-content: center; border-radius: 15px; margin-bottom: 35px; box-shadow: 0 0 5px 0 rgb(192, 192, 192);}
 
 
-.forgetPasswordPageWrapper {background-color: #d1eafa; margin: 0; padding-bottom: 180px; margin-top: 150px; position: relative; padding-top: 100px;}
+.forgetPasswordPageWrapper {background-color: #d1eafa; margin: 0; padding-bottom: 180px; margin-top: 130px; position: relative; padding-top: 100px;}
 .forgetPasswordPageWrapper .forgetPasswordWrapper {background-color: #0085DA; border-radius: 20px; max-width: 38vw;
     margin: 0 auto; padding: 20px;}
 .forgetPasswordPageWrapper .forgetPasswordWrapper  .PasswordWrapper{border: solid 3px #fff; border-radius: 15px; padding: 40px; }
@@ -1292,9 +1293,8 @@ border-radius: 5px; margin-right: 30px;}
 .merchantProfileWrapper .adminDashboardTopbar,
 .userConnectedHistoryPageWrapper .adminDashboardTopbar {padding: 30px 70px 23px 52px; width: 83vw; justify-content: space-between;}
 
-.mainLayoutContainer .userDetailsBoxWrapper {border: none; width: 680px;
-  left: 50%;
-  transform: translateX(-50%);}
+.mainLayoutContainer {overflow-x: hidden;}
+.mainLayoutContainer .userDetailsBoxWrapper {border: none; width: 680px; left: 50%; transform: translateX(-50%);}
 .mainLayoutContainer .merchantDetailsModalWrapper {border: 13px solid #0085DA;  border-radius: 37px; height: auto;}
 .mainLayoutContainer .merchantDetailsModalWrapper .merchantDetailsModalContainer {padding: 50px 35px 35px; border: 2px solid #fff;  border-radius: 24px; height: 86vh; overflow: auto; scrollbar-width: none;}
 .mainLayoutContainer .merchantDetailsModalWrapper .modalConnectBtn {padding: 10px;}
@@ -1628,6 +1628,330 @@ border-radius: 5px; margin-right: 30px;}
 
 
 
+/* responsive */
+@media screen and (max-width: 1366px){
+
+  /* -------- Header -------- */
+  .onboardingPageHeaderMainContainer {padding: 12px 10px;}
+
+  /* -------- Home -------  */
+  /* ----- Hero banner -------  */
+  .onboardingPageBannerContentContainer {left: 20px;}
+
+  .onboardingBannerLeaflet {margin-left: auto; margin-right: auto; max-width: 98vw; width: 98vw; padding: 45px 50px;}
+  .onboardingBannerLeaflet .bannerLeafletItem {flex: 0 0 25%; padding: 0 10px;}
+
+  .merchantRegisterLeaflet {margin-left: auto; margin-right: auto; max-width: 98vw; width: 98vw; padding: 45px 50px;}
+  
+  .findAgentsSection {padding: 20px 10px !important;}
+  .findAgentsSection .topBlueShade {right: -179px;}
+  .findAgentsSection .findAgentsSectionBottomItemSubtitle {font-size: 20px;}
+  .findAgentsSectionBottom {width: 100%; padding: 48px 10px;}
+  
+  .merchantRegisterSection .registerSectionTitle {font-size: 75px; line-height: 85px; margin-bottom: 20px;}
+  .merchantRegisterSection .merchantRegisterSectionRight {gap: 20px;}
+  .merchantRegisterSection .registerSectionContent {font-size: 30px; line-height: 40px;}
+  
+  .agentSearchSection {padding-left: 20px; padding-right: 20px;}
+  .agentSearchSection .agentSearchSectionLeftContainer {width: 55%;}
+  .agentSearchSection .agentSearchSectionRightContainer {width: 45%;}
+  .agentSearchSection .agentTopBlueShade {right: -175px;}
+  
+  .articleSection {padding-left: 20px; padding-right: 20px;}
+  .articleSection .articleSectionTitle {width: 100%;}
+  .articleSection .articleSectionInner {align-items: start;}
+
+  .footerInnerContainer {padding-left: 20px; padding-right: 20px;}
+  .footerInnerContainer .footerCol {padding-left: 8px;}
+
+  /* ------------- Merchant service provider ---------  */
+  .merchantListPageWrapper {padding-left: 15px; padding-right: 15px;}
+
+  /* --------- Agent Details -----------  */
+  .agentDetailsBoxWrapper .agentDetailsWrapper {padding: 73px 20px 150px 20px;}
+  .userInfoReviewsWrap .ratingTopSection .progressBarWrap .reviewCount {width: 100%; max-width: 200px;}
+  .agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap {flex-direction: column; row-gap: 30px; padding-bottom: 25px;}
+  .agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon {flex: 0 0 100%; width: 100%; padding-left: 0px;}
+
+
+}
+
+@media screen and (max-width: 1299px){
+}
+
+@media screen and (max-width: 1180px){
+  /* ------ Header start -----  */
+  .headerRight {gap: 25px; padding: 0 10px;}
+  .headerRight .li_item {font-size: 18px;}
+}
+
+@media screen and (max-width: 1024px){
+  /* -------- Header ---------  */
+  .onboardingPageHeaderMainContainer > .headerRight {display: none;}
+  .onboardingPageHeaderMainContainer .headerRightMobileView {display: block;}
+  .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper {display: block;}
+  .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper .mobileViewMenuModalContainer {position: absolute; top: 0; right: 0; bottom: 0; background: #fff; width: 420px; height: 100vh; padding: 20px;}
+  .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper .mobileViewMenuModalContainer .headerRight {flex-direction: column; gap: 25px; top: 50px; align-items: flex-start;}
+  .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper .mobileViewMenuModalContainer .closeIcon {position: absolute; right: 20px; font-size: 25px;}
+  .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper .mobileViewMenuModalContainer .headerRight .header_Btn {width: auto; margin: 0; padding: 0; color: #000000; background-color: white; font-size: 20px; line-height: 22px; letter-spacing: 0.5px; font-weight: 500; font-family: "Josefin Sans"; border: none;}
+  /* .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper .mobileViewMenuModalContainer .headerRight .dropdown {text-align: center;} */
+  .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper .mobileViewMenuModalContainer .headerRight .dropdown-menu {position: unset !important; transform: none !important; margin-top: 15px; width: auto;}
+  /* .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper .mobileViewMenuModalContainer .headerRight .dropdown-menu .dropdown-item {text-align: center;} */
+  .onboardingPageHeaderMainContainer .headerLeft .headerWebsiteTitleContainer .headerWebsiteTitleLight {font-size: 20px;}
+  .onboardingPageHeaderMainContainer .headerLeft .headerWebsiteTitleContainer .headerWebsiteTitleDark {font-size: 20px;}
+
+
+  /* -------- Home -------  */
+  .onboardingPageBannerContentContainer .bannerTitleLarge {font-size: 85px;}
+  .onboardingPageBannerContentContainer .bannerTitleMedium {font-size: 30px;}
+
+  .onboardingBannerLeaflet {padding: 45px 20px; align-items: start;}
+  .bannerLeafletItem .leafletItemTitle {text-align: center; font-size: 21px;}
+  .bannerLeafletItem .leafletItemSubTitle {text-align: center; font-size: 17px;}
+
+  .findAgentsSectionBottomItemImg {width: 100px; height: 100px;}
+  .findAgentsSectionBottomItem {max-width: 220px;}
+  .findAgentsSectionBottom img.arrow {width: 100%;}
+
+  .merchantRegisterSection {flex-direction: column; height: auto; gap: 30px;}
+  .merchantRegisterSection .merchantRegisterSectionLeft {width: 50vw; border-radius: 20px;}
+  .merchantRegisterSection .merchantRegisterSectionRight {width: 97vw; border-radius: 20px; padding: 40px; align-items: center;}
+  .merchantRegisterSection .merchantRegisterSectionRight .button_large {margin-top: 25px;}
+  .merchantRegisterSection .merchantRegisterSectionRight .registerSectionTitleWrap {width: 100%;}
+  .merchantRegisterSection .registerSectionTitle {text-align: center;}
+  .merchantRegisterSection .registerSectionSubtitle {text-align: center;}
+  .merchantRegisterSection .registerSectionContent {text-align: center;}
+
+  .agentSearchSection {flex-wrap: wrap; flex-direction: column-reverse;}
+  .agentSearchSection .agentSearchSectionRightContainer {width: 100%; padding: 20px; text-align: center;}
+  .agentSearchSection .agentSearchSectionRightContainer img {max-width: 600px;}
+  .agentSearchSection .agentSearchSectionLeftContainer {width: 100%; align-items: center;}
+  .agentSearchSection .agentSearchSectionLeftContainer .agentSearchSectionTitle,
+  .agentSearchSection .agentSearchSectionLeftContainer .agentSearchSectionTitle2  {text-align: center;}
+  .agentSearchSection .agentSearchSectionLeftContainer .findAgentsPointsTitle  {text-align: center;}
+  .agentSearchSection .agentSearchSectionSubtitle {text-align: center;}
+  .agentSearchSection .findAgentsPoints {max-width: 306px; margin-left: auto; margin-right: auto;}
+  .agentSearchSection .button_large {margin-left: auto; margin-right: auto;}
+
+  .footerInnerContainer {gap: 20px;}
+  .footerInnerContainer .footerColDesc {font-size: 15px;}
+
+
+  /* --------- merchant-service-providers ---------- */
+  .merchantListPageWrapper .searchTitle {font-size: 12px;}
+  .merchantListPageWrapper .searchInput {font-size: 12px;}
+  .merchantListPageWrapper .searchBtn {font-size: 16px;}
+
+  /* --------- Agent Details --------  */
+  .agentDetailsBoxWrapper .agentDetailsWrapper {padding: 73px 20px 150px 20px;}
+
+  /* --------- contact page ----------- */
+  .contactPageWrapper {padding-left: 20px; padding-right: 20px;}
+
+  /* ----------- Lost Password ----------  */
+  .forgetPasswordPageWrapper .forgetPasswordWrapper {max-width: 500px;}
+
+
+
+	
+}
+
+@media screen and (max-width: 991px){
+
+  /* ---------- --------- */
+  .onboardingBannerLeaflet {flex-wrap: wrap; row-gap: 30px;}
+  .onboardingBannerLeaflet .bannerLeafletItem {flex: 0 0 50%;}
+
+  .findAgentsSection .findAgentsSectionTop .findAgentsSectionSubtitle {margin-bottom: 50px;}
+  .findAgentsSection .findAgentsSectionBottomItem {max-width: 175px; width: 175px; flex: 0 0 175px;}
+  .findAgentsSection .findAgentsSectionBottomItemTitle {font-size: 20px;}
+  .findAgentsSection .findAgentsSectionBottomItemSubtitle {width: auto; font-size: 18px !important;}
+
+  .merchantRegisterLeafletTitle {font-size: 45px; line-height: 55px;}
+
+  .articleSectionInner .articleTitle {font-size: 22px; line-height: 32px;}
+  .articleSectionInner .articleDesc {font-size: 17px; line-height: 27px;}
+
+  .articleSection .articleSectionTitle {font-size: 60px; line-height: 75px;}
+
+  .footerInnerContainer {padding-left: 10px; padding-right: 10px; flex-wrap: wrap;}
+  .footerInnerContainer .footerCol {padding-left: 5px;}
+  .footerInnerContainer .footerCol:nth-child(1) {width: 45%;}
+  .footerInnerContainer .footerCol:nth-child(3) {width: 47%;}
+  .footerInnerContainer .divider:nth-child(4) {display: none;}
+
+  .footerInnerContainer .footerCol:nth-child(5) {width: 100%; margin-top: 25px;}
+
+  /* -------- merchant-service-providers-registration --------  */
+  .merchantRegistrationForm {width: 90%;}
+
+  /* ---------- Agent Details ----------  */
+  .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap > .row {row-gap: 20px;}
+
+  .userInfoReviewsWrap .ratingTopSection .progressBarWrap .reviewCount {max-width: 170px;}
+  .userInfoReviewsWrap .ratingTopSection .ratingCol {margin-bottom: 30px;}
+  .userInfoReviewsWrap .sectionTitle {margin-bottom: 0px;}
+  
+
+}
+
+@media screen and (max-width: 767px){
+
+  /* ----------- Header ---------  */
+  .onboardingPageChildHeaderContainer .childHeaderText {font-size: 13px; letter-spacing: 1px;}
+  .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper .mobileViewMenuModalContainer {width: 270px;}
+  .onboardingPageHeaderMainContainer .dropdown-menu {width: 235px;}
+  .mobileViewMenuModalContainer .headerRight {gap: 20px;}
+  .mobileViewMenuModalContainer .headerRight .li_item {font-size: 17px; line-height: 25px;}
+  .onboardingPageHeaderMainContainer .mobileViewMenuModalWrapper .mobileViewMenuModalContainer .headerRight .header_Btn {font-size: 17px; line-height: 25px;}
+
+  /* ---------- Footer ------------  */
+  .footerInnerContainer {gap: 35px; padding-top: 115px;}
+  .footerInnerContainer .footerCol {width: 100% !important; gap: 15px;}
+  .footerInnerContainer .divider {display: none;}
+  .footerInnerContainer .footerCol:nth-child(5) {margin-top: 0px;}
+  .footerLabel {padding: 24px 0 25px 0;}
+  .footerLabel .footerLabelTitle {font-size: 25px;}
+  .footerLabel .footerLabelSubtitle {font-size: 25px; margin-top: -6px;}
+  .footerColTitle {font-size: 25px; line-height: 27px;}
+  .footerInnerContainer .footerColDesc {font-size: 15px; line-height: 25px;}
+  .footerInnerContainer .footerCol:first-child .footerColDesc {font: 400 16px / 26px "Poppins";}
+  
+
+  /* ------- Home -------  */
+  .onboardingBannerContainer {padding: 30px 0px;}
+  .onboardingPageBannerContentContainer {width: 95%; padding: 20px 10px 15px; position: unset; text-align: center; margin: 0 auto;}
+  .onboardingPageBannerContentContainer .bannerTitleLarge {font-size: 50px; line-height: 60px;}
+  .onboardingPageBannerContentContainer .bannerTitleMedium {font-size: 22px; line-height: 32px; margin: 0;}
+  .onboardingPageBannerContentContainer .bannerTitleSmall {margin: 14px 0 26px 0px; font-size: 19px;}
+  .button_large {width: 230px; padding: 10px 20px; margin: 0 auto;}
+  .button_large .large_button_text {font-size: 15px;}
+  .button_large svg {width: 25px; height: 25px;}
+  .onboardingBannerContainer .bannerBgContainer {/*height: 515px;*/ height: auto;}
+  .onboardingBannerContainer .sticker:nth-child(2) {top: 32% !important; left: -1% !important; width: 65px !important; height: 65px !important;}
+  .onboardingBannerContainer .sticker:nth-child(3) {right: 54% !important; width: 60px !important; height: 60px !important;}
+  .onboardingBannerContainer .sticker:nth-child(4) {top: 40% !important; right: 65% !important; width: 65px !important; height: 65px !important;}
+
+  /* --------- ---------  */
+  .onboardingBannerLeaflet {max-width: 95vw; width: 95vw;}
+  .onboardingBannerLeaflet .bannerLeafletItem {flex: 0 0 100%;}
+  .leafletItemImg {width: 100px; height: 100px; object-fit: contain;}
+
+  .findAgentsSection {margin: 50px 0;}
+  .findAgentsSection .findAgentsSectionTop .findAgentsSectionTitle {font-size: 30px; line-height: 40px; }
+  .findAgentsSection .findAgentsSectionTop .findAgentsSectionSubtitle {font-size: 20px; line-height: 30px; margin-bottom: 20px;}
+  .findAgentsSection .findAgentsSectionBottom {flex-wrap: wrap;}
+  .findAgentsSection .findAgentsSectionBottomItem {max-width: 100%; width: 100%; flex: 0 0 100%;}
+  .findAgentsSectionBottom img.arrow {display: none !important;}
+  .findAgentsSection #findAgentsSectionBottomItemMiddle {margin-top: 40px; margin-bottom: 50px;}
+  .findAgentsSection .findAgentButton {width: 230px; font-size: 16px; margin-top: 20px; padding: 10px 18px;}
+  .findAgentsSection .findAgentButton svg {width: 25px; height: 25px;}
+
+  .merchantRegisterSection .merchantRegisterSectionLeft {width: 95vw;}
+  .merchantRegisterSection .merchantRegisterSectionRight {padding: 40px 15px;}
+  .merchantRegisterSection .registerSectionTitle {font-size: 30px; line-height: 40px; margin-bottom: 5px;}
+  .merchantRegisterSection .registerSectionSubtitle {font-size: 30px; line-height: 40px;}
+  .merchantRegisterSection .registerSectionContent {font-size: 20px; line-height: 30px;}
+  .registerPointsItem {align-items: start;}
+  .registerPointsItem svg {flex: 0 0 16px; margin-top: 5px;}
+  .registerPointsItem .registerPointsParticular {font-size: 18px;}
+
+  .agentSearchSection {padding: 65px 10px !important;}
+  .agentSearchSection .agentSearchSectionLeftContainer .agentSearchSectionTitle, 
+  .agentSearchSection .agentSearchSectionLeftContainer .agentSearchSectionTitle2 {font-size: 30px; line-height: 40px;}
+  .agentSearchSection .agentSearchSectionSubtitle {font-size: 20px; line-height: 30px;}
+  .agentSearchSection .agentSearchSectionLeftContainer .agentSearchSectionLeftContainerTitle {margin-bottom: 15px;}
+  .agentSearchSection .agentSearchSectionLeftContainer .findAgentsPointsTitle {font-size: 22px;}
+  .agentSearchSection .findAgentsParticulars {font-size: 18px; line-height: 28px;}
+  .agentSearchSection .button_large {width: auto;}
+  .agentSearchSection .findAgentsPoints {row-gap: 12px;}
+
+  .merchantRegisterLeaflet {padding: 45px 20px; max-width: 95vw; width: 95vw;}
+  .merchantRegisterLeafletTitle {font-size: 30px; line-height: 40px;}
+  
+  .articleSection {padding: 50px 15px 50px; row-gap: 30px;}
+  .articleSection .articleSectionTitle {font-size: 30px; line-height: 40px;}
+  .articleSection .articleSectionInner {flex-wrap: wrap; row-gap: 45px;}
+  .articleSection .articleSectionInner .articleItem {width: 100%;}
+  .articleSection .articleSectionInner .articleItem .articleItemContent {gap: 11px;}
+
+
+  /* --------- merchant-service-providers ---------- */
+  .merchantListPageWrapper {padding-top: 50px;}
+  .merchantListPageWrapper .merchantListTopSearchSection {flex-direction: column; align-items: start;}
+  .merchantListPageWrapper .merchantTopSearchSingleItem {width: 100%;}
+  .merchantListPageWrapper .searchBtn {width: 120px;}
+  .merchantListPageWrapper .tableWrapper {overflow-x: scroll !important; scrollbar-width: thin;}
+  .merchantListPageWrapper .tableWrapper::-webkit-scrollbar {width: 2px !important;}
+  /* .merchantListPageWrapper .tableWrapper::-webkit-scrollbar-track {background-color: #f5f5fe9c !important; border-radius: 10px;}
+  .merchantListPageWrapper .tableWrapper::-webkit-scrollbar-thumb {background-color: #0085da !important; border: none !important;} */
+  .merchantListPageWrapper .tableWrapper table.tableContainer {width: 600px;}
+  .merchantListPageWrapper .th {padding: 0 20px;}
+  .merchantListPageWrapper .td {padding: 0 14px;}
+
+
+   /* -------- merchant-service-providers-registration --------  */
+   .merchantRegistrationForm {width: 95%; padding: 25px 20px; margin-bottom: 135px;}
+   .merchantRegistrationForm .registrationFormTitle {margin-bottom: 14px;}
+   .merchantRegistrationForm .inputRowContainer {flex-direction: column; margin: 10px 0;}
+   .merchantRegistrationForm .inputRow {width: 100%;}
+   .merchantRegistrationForm .inputRow .inputField {height: 50px;}
+   .merchantRegistrationForm .inputRow .sendOtpButton {height: 50px;}
+   .registerButton {width: 200px; height: 55px; font-size: 19px;}
+   .merchantRegistrationForm .inputContainer {width: 100% !important;}
+   .merchantRegistrationForm .inputField {height: 50px;}
+   .merchantRegistrationForm .sendOtpButton {height: 50px;}
+
+   /* --------- contact page ----------- */
+   .contactPageWrapper {padding-left: 15px; padding-right: 15px; flex-direction: column-reverse; }
+   .contactPageWrapper .formContainer {flex: 0 0 100%; max-width: 100%; width: 100%; margin-top: 40px;}
+   .contactPageWrapper .row {row-gap: 15px;}
+   .contactPageWrapper .inputGroup input {height: 50px;}
+   .contactPageWrapper .imageContainer {max-width: 100%; width: 100%;}
+   .contactPageWrapper .imageContainer img {width: 300px;}
+   .contactPageWrapper .formContainer h2 {font-size: 25px;}
+
+   /* ------- Login popup -------  */
+   .loginPopupWrap {width: 90%; min-height: 60vh; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+   .loginModalWrapper {width: 100%;}
+   .loginModalContainer {gap: 18px; flex-direction: column-reverse; align-items: center; padding: 10px;}
+   .loginModalContainer .loginModalBannerContainer {display: none;}
+   .loginCloseBtnContainer {font-size: 25px; line-height: 37px;}
+
+   /* -------- Lost password ------  */
+   .forgetPasswordPageWrapper {padding-top: 45px; padding-bottom: 130px;}
+   .forgetPasswordPageWrapper .forgetPasswordWrapper {width: 90%; padding: 10px;}
+   .forgetPasswordPageWrapper .forgetPasswordWrapper .PasswordWrapper {padding: 12px;}
+
+   /* ------------ Agent Details ---------  */
+   .agentDetailsBoxWrapper .agentDetailsWrapper .agentDetailsContainer {padding: 28px 10px 65px 10px;}
+   .agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap {row-gap: 20px; padding-bottom: 15px;}
+   .agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userImgWrapper {flex: 0 0 100%; width: 100%;}
+   .agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userImg {max-width: 142px; max-height: 150px;}
+   .agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .agentNameWrap {flex-wrap: wrap; margin-bottom: 25px;}
+   .agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .agentNameWrap .agentNameActions .modalConnectBtn {width: 95px; height: 40px; font: 600 15px "Sora";}
+   .agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .agentName {font: 500 20px/30px "Poppins";}
+   .agentDetailsBoxWrapper .agentDetailsWrapper .userHeaderInfoTopWrap .userHeaderInfoTopCon .inputWrapCon .titleData {font: 500 17px/23px "Poppins";}
+   .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon .titleField {font: 400 14px/25px "Poppins";}
+   .agentDetailsBoxWrapper .agentDetailsWrapper .userInfoBottomWrap .inputWrapCon .titleData {font: 500 17px / 25px "Poppins";}
+   .userInfoReviewsWrap .ratingTopSection .progressBarWrap {row-gap: 10px; flex-direction: column; margin-bottom: 15px;}
+   .userInfoReviewsWrap .ratingTopSection .progressBarWrap progress {width: 100%;}
+   .userInfoReviewsWrap .sectionTitle {text-align: center;}
+   .userInfoReviewsWrap .ratingBottomSection .ratingHeaderInfo {flex-direction: column; align-items: left;}
+   
+
+
+
+  
+
+}
+
+@media screen and (max-width: 575px){
+
+}
+
+@media screen and (max-width: 400px){
+}
 
 
 
