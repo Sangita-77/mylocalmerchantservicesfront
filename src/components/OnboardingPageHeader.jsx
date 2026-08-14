@@ -149,25 +149,25 @@ const OnboardingPageHeader = () => {
               >
                 Registration
               </div> */}
-      <Dropdown>
-      <Dropdown.Toggle id="dropdown-basic"  
-      className={`li_item ${ location.pathname === routes.msr_registration() && `li_item_active` }
-      ${ location.pathname === routes.user_registration() && `li_item_active` }`}
-      >
-        Registration
-      </Dropdown.Toggle>
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic"  
+                className={`li_item ${ location.pathname === routes.msr_registration() && `li_item_active` }
+                ${ location.pathname === routes.user_registration() && `li_item_active` }`}
+                >
+                  Registration
+                </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item 
-         className={`li_item ${ location.pathname === routes.msr_registration() && `li_item_active` }`}
-                onClick={() => navigate(routes.msr_registration())} href="">
-                  Merchant Services Providers Registration
-        </Dropdown.Item>
-          <Dropdown.Item 
-         className={`li_item ${ location.pathname === routes.user_registration() && `li_item_active` }`}
-                onClick={() => navigate(routes.user_registration())}>Merchant Registration</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+                <Dropdown.Menu>
+                  <Dropdown.Item 
+                  className={`li_item ${ location.pathname === routes.msr_registration() && `li_item_active` }`}
+                          onClick={() => navigate(routes.msr_registration())} href="">
+                            Merchant Services Providers Registration
+                  </Dropdown.Item>
+                    <Dropdown.Item 
+                  className={`li_item ${ location.pathname === routes.user_registration() && `li_item_active` }`}
+                          onClick={() => navigate(routes.user_registration())}>Merchant Registration</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
 
                 <div
                 className={`li_item ${
@@ -197,11 +197,88 @@ const OnboardingPageHeader = () => {
               <div className="closeIcon" onClick={() => toggleMenu()}>
                 &times;
               </div>
-              <div className="menuModalInner">
+              {/* <div className="menuModalInner">
                 <p className="mobileViewMenuItem">Home</p>
                 <p className="mobileViewMenuItem">Registration</p>
                 <button className="menuBtn">Contact</button>
-              </div>
+              </div> */}
+              <div className="headerRight">
+          <div
+            className={`li_item ${
+              location.pathname === routes.home_page() && `li_item_active`
+            }`}
+            onClick={() => navigate(routes.home_page())}
+          >
+            Home
+          </div>
+
+          <div
+            className={`li_item ${
+              location.pathname === routes.merchant_list() && `li_item_active`
+            }`}
+            onClick={() => navigate(routes.merchant_list())}
+          >
+            Merchant Services Provides
+          </div>
+
+          {localStorage.getItem("is_authenticated") && localStorage.getItem("user_id") ? (
+            <div
+              className="li_item"
+              onClick={() => {
+                handleLogout();
+                localStorage.removeItem("is_authenticated");
+                localStorage.removeItem("user_id");
+                navigate(routes.msr_registration()); // Redirect after logout
+              }}
+            >
+              Logout
+            </div>
+          ) : (
+            <>
+              {/* <div
+                className={`li_item ${
+                  location.pathname === routes.msr_registration() && `li_item_active`
+                }`}
+                onClick={() => navigate(routes.msr_registration())}
+              >
+                Registration
+              </div> */}
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic"  
+                className={`li_item ${ location.pathname === routes.msr_registration() && `li_item_active` }
+                ${ location.pathname === routes.user_registration() && `li_item_active` }`}
+                >
+                  Registration
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item 
+                  className={`li_item ${ location.pathname === routes.msr_registration() && `li_item_active` }`}
+                          onClick={() => navigate(routes.msr_registration())} href="">
+                            Merchant Services Providers Registration
+                  </Dropdown.Item>
+                    <Dropdown.Item 
+                  className={`li_item ${ location.pathname === routes.user_registration() && `li_item_active` }`}
+                          onClick={() => navigate(routes.user_registration())}>Merchant Registration</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+                <div
+                className={`li_item ${
+                  location.pathname === routes.msr_registration() && `li_item_active`
+                }`}
+                onClick={() => setShowLogin(true)}
+                >
+                Login
+                </div>
+              </>
+          )}
+
+
+
+          <button className="header_Btn" onClick={() => navigate(routes.contact())}>Contact</button>
+        </div>
+        
             </div>
           </div>
         )}
